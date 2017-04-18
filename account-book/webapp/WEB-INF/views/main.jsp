@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>편리가계부</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
+<title>편리가계부</title>
 </head>
 <body>
 <div class="div-left">
