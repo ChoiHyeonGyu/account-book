@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,32 @@
     </form:form>
 </div>
 <div id="joinform" title="회원가입" style="display:none">
-<p class="validateTips" style="padding:20px 0; font-weight:bold; font-size:14px; color:#ff0000">삭제가 정상적으로 처리되지 못했습니다.</p>
+	<form:form method="post">
+		<h3><span class="label label-default">Account</span></h3>
+		<input type="account" id="inputAccount" class="form-control" placeholder="Email / Phone"><br/>
+		<button type="button" name="userRegBtn" class="btn btn-lg btn-join">Confirm</button>
+		<h3><span class="label label-default">Password</span></h3>
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required><br/> 
+		<h3><span class="label label-default">Password Confirm</span></h3>
+		<input type="passwordConfirm" id="inputPasswordConfirm" class="form-control" placeholder="Password Confirm" required><br/>
+		<h3><span class="label label-default">Name</span></h3>
+		<input type="name" id="inputName" class="form-control" placeholder="Name" required><br/> 
+		<h3><span class="label label-default">Birth</span></h3>
+		<div class="dropdown theme-dropdown clearfix">
+		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">Year</a></option>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1970</a></option>
+		</select>
+		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">Month</a></option>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1</a></option>
+		</select>
+		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">Day</a></option>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1</a></option>
+		</select>
+		</div>
+	</form:form>
 </div>
 </body>
 </html>

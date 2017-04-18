@@ -21,8 +21,8 @@ $(function(){
 	
 	var joinform = $( "#joinform" ).dialog({
 		autoOpen: false,
-		height: 280,
-		width: 300,
+		height: 600,
+		width: 600,
 		modal: true,
 		buttons: {
 			"생성하기": function() {
