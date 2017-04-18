@@ -2,8 +2,8 @@ $(function(){
 	
 	var loginform = $( "#loginform" ).dialog({
 		autoOpen: false,
-		height: 280,
-		width: 300,
+		height: 230,
+		width: 265,
 		modal: true,
 		buttons: {
 			"로그인": function() {
@@ -21,7 +21,7 @@ $(function(){
 	
 	var joinform = $( "#joinform" ).dialog({
 		autoOpen: false,
-		height: 600,
+		height: 700,
 		width: 600,
 		modal: true,
 		buttons: {

@@ -22,15 +22,15 @@
 <button id="join" type="button" class="btn btn-lg btn-default">회원가입</button>
 <div id="loginform" title="로그인" style="display:none">
 	<form:form method="post">
-    	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br/>
+    	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
     	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
     </form:form>
 </div>
 <div id="joinform" title="회원가입" style="display:none">
 	<form:form method="post">
 		<h3><span class="label label-default">Account</span></h3>
-		<input type="account" id="inputAccount" class="form-control" placeholder="Email / Phone"><br/>
-		<button type="button" name="userRegBtn" class="btn btn-lg btn-join">Confirm</button>
+		<input type="account" id="inputAccount" class="form-control" placeholder="Email / Phone">
+		<button type="button" name="userRegBtn" class="btn btn-join">Confirm</button>
 		<h3><span class="label label-default">Password</span></h3>
 		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required><br/> 
 		<h3><span class="label label-default">Password Confirm</span></h3>

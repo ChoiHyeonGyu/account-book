@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <section class="no-padding" id="graph-user">
 <div class="container-fluid">
     <div class="row no-gutter popup-gallery">
