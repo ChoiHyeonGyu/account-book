@@ -9,7 +9,27 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc">
 	<aop:aspectj-autoproxy />
 	
-	<mvc:annotation-driven/>
+	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>text/html; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<value>application/json; charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 햔들러 (디스패쳐 서블릿으로부터 위임받아 스프링에서 쓸 수 있게 해줘야 프로젝트 내에 파일들을 인식할 수 있다.) -->
 	<mvc:default-servlet-handler />
