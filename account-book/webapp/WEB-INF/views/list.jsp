@@ -1,43 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <section id="list">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">At Your Service</h2>
-                <hr class="primary">
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
-                    <h3>Sturdy Templates</h3>
-                    <p class="text-muted">Our templates are updated regularly so they don't break.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-                    <h3>Ready to Ship</h3>
-                    <p class="text-muted">You can use this theme as is, or you can make changes!</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
-                    <h3>Up to Date</h3>
-                    <p class="text-muted">We update dependencies to keep things fresh.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 text-center">
-                <div class="service-box">
-                    <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-                    <h3>Made with Love</h3>
-                    <p class="text-muted">You have to make your websites with love these days!</p>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="row">
+		<div class="col-lg-6 col-md-6 text-center syd">
+			<div class="service-box">
+				<table border='1' class="syd2">
+					<tr bgcolor='#33ffff'>
+						<td>결제수단</td>
+						<td>금액</td>
+						<td>상호명</td>
+						<td>카테고리</td>
+						<td>날짜</td>
+					</tr>
+
+					<c:forEach var="list" items="list" varStatus="status">
+						<tr>
+							<td>${list.paid}</td>
+							<td>${list.money}</td>
+							<td>${list.name}</td>
+							<td>${list.category}</td>
+							<td>${list.date}</td>
+						</tr>
+					</c:forEach>
+
+				</table>
+		</div>
+		</div>
+		<div class="col-lg-6 col-md-6 text-center syd1">
+			<div class="service-box">
+				<table border='1' class="syd2">
+					<tr bgcolor='#33ffff'>
+						<td>결제수단</td>
+						<td>금액</td>
+						<td>상호명</td>
+						<td>카테고리</td>
+						<td>날짜</td>
+					</tr>
+					<tr>
+						<td>card</td>
+						<td>20000</td>
+						<td>고깃집</td>
+						<td>생활비</td>
+						<td>날짜</td>
+					</tr>
+					<tr>
+						<td>card</td>
+						<td>20000</td>
+						<td>고깃집</td>
+						<td>생활비</td>
+						<td>날짜</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
 </section>
