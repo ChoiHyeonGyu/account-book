@@ -45,6 +45,9 @@ p {
 .bg-primary {
   background-color: #F05F40;
 }
+.bg-theme {
+  background-color: #33ffff;
+}
 .bg-dark {
   background-color: #222222;
   color: white;

@@ -1590,6 +1590,11 @@ a.text-danger:hover {
 	background-color: #337ab7
 }
 
+.bg-theme {
+	color: #000;
+	backgroud-color: #33ffff;
+}
+
 a.bg-primary:hover {
 	background-color: #286090
 }
@@ -1813,7 +1818,8 @@ pre code {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
-	margin-left: auto
+	margin-left: auto;
+	
 }
 
 @media ( min-width :768px) {

@@ -55,7 +55,11 @@ p {
 }
 
 .bg-primary {
-	background-color: #F05F40
+	background-color: #3abdc0;
+}
+
+.bg-theme {
+	backgroud-color: #33ffff;
 }
 
 .bg-dark {
@@ -63,8 +67,15 @@ p {
 	color: #fff
 }
 
-.text-faded {
-	color: rgba(255, 255, 255, .7)
+.text-name {
+	color: rgba(255, 255, 255, .8);
+	font-size: 35px;
+}
+
+.text-comments{
+	color: rgba(255, 255, 255, .6);
+	font-size: 20px;
+	
 }
 
 section {
