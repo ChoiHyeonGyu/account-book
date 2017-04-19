@@ -21,7 +21,7 @@ $(function(){
 	
 	var joinform = $( "#joinform" ).dialog({
 		autoOpen: false,
-		height: 700,
+		height: 750,
 		width: 600,
 		modal: true,
 		buttons: {

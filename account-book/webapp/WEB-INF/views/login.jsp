@@ -52,6 +52,8 @@
 				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1</a></option>
 		</select>
 		</div>
+		<h3><span class="label label-default">Total</span></h3>
+		<input type="total" id="inputTotal" class="form-control" placeholder="Total">
 	</form:form>
 </div>
 </body>
