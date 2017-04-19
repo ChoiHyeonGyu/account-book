@@ -21,18 +21,24 @@ $(function(){
 	
 	var joinform = $( "#joinform" ).dialog({
 		autoOpen: false,
-		height: 850,
+		height: 930,
 		width: 600,
 		modal: true,
 		buttons: {
 			"생성하기": function() {
 				//$( "#dialog-upload-form form" ).submit();
+				
 				$( this ).dialog( "close" );
 			},
 		},
 		close: function() {
 				
 		}
+	});
+	
+	$("#create").click(function(event){
+		
+		joinform.submit();
 	});
 	
 	$("#login").click(function(event){
