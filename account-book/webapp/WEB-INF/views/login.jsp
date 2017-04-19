@@ -63,7 +63,7 @@ $(document).ready(function(){
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/facebook.js"></script>
 <img alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
 <button id="login" type="button" class="btn btn-lg btn-default">로그인</button><br/>
-<div id="fb" class="fb-login-button fackbook-login-button" data-width="400" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+<div class="fb-login-button fackbook-login-button" data-width="400" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 <button type="button" class="btn btn-lg btn-default">XX와 연동하여 로그인</button><br/>
 <button id="join" type="button" class="btn btn-lg btn-default">회원가입</button>
 <div id="loginform" title="로그인" style="display:none">
