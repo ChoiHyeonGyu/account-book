@@ -9,8 +9,6 @@ html {
 	-ms-text-size-adjust: 100%
 }
 
-
-
 body {
 	margin: 0
 }
@@ -1821,6 +1819,7 @@ pre code {
 	padding-left: 15px;
 	margin-right: auto;
 	margin-left: auto;
+	
 }
 
 @media ( min-width :768px) {
@@ -3772,7 +3771,7 @@ tbody.collapse.in {
 	line-height: 1.42857143;
 	color: #777;
 	white-space: nowrap
-} 
+}
 
 .dropdown-backdrop {
 	position: fixed;

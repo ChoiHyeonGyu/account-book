@@ -3613,6 +3613,11 @@ select[multiple].form-group-lg .form-control, textarea.form-group-lg .form-contr
 	margin-top: 5px
 }
 
+.fackbook-login-button {
+	margin-left:750px;
+	margin-bottom:10px;
+}
+
 input[type=button].btn-block, input[type=reset].btn-block, input[type=submit].btn-block
 	{
 	width: 100%
