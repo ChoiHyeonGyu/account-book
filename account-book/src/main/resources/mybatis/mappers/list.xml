@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="listview">
+
+	<select id="list" resultType="listvo">
+<![CDATA[
+select * from list ,listDate
+]]>
+	</select> 
+	 
+	<!-- 	<select id="getlistpost" resultType="postvo" parameterType="int">
+<![CDATA[ select post_no as postNo ,title,content, reg_date as regDate, no from post where no = #{no} order by regDate desc
+]]>
+
+
+	</select>
+	 
+		<select id="giveNo" resultType="postvo" parameterType="postvo">
+<![CDATA[
+			select title,content,reg_date as regDate,no,post_No as postNo from post where post_No = #{postNo} and no =#{no}
+]]>
+
+
+	</select>
+	
+	<insert id="write" parameterType="postvo">
+	
+	<![CDATA[
+	
+insert into post values(seq_post.nextval,#{title},#{content},sysdate,#{no})
+	]]>
+	</insert>
+	
+	<select id="maxno" parameterType="postvo"> 
+	<![CDATA[
+select post_no as postNo, title, content ,reg_date as regDate , no from post order by regDate desc
+	]]>
+	</select>
+ 
+ 
+	<select id="gettop" resultType="postvo"> 
+	<![CDATA[
+select post_no as postNo, title, content ,reg_date as regDate , no from post order by regDate desc
+	]]>
+	</select>
+	
+	<select id="gettop1" resultType="postvo" parameterType="postvo"> 
+	<![CDATA[
+select post_no as postNo, title, content ,reg_date as regDate , no from post where post_No = #{post_No}
+	]]>
+	</select>
+ --></mapper>
+
+	
+

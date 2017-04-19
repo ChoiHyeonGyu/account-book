@@ -12,54 +12,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login.js"></script>
-<script>
-$(document).ready(function(){
-	$( "#create" ).click( function(){
-		/* 회원 가입 폼 유효성 검증(validation) */
-		
-		//1.이름
-		var id = $( "#id" ).val();
-		if( id == "" ) {
-			alert( "아이디가 비어 있습니다." );
-			$( "#id" ).focus();
-			return;
-		}
-		
-		var password = $( "#password" ).val();
-		if( password == "" ) {
-			alert( "비밀번호가 비어 있습니다." );
-			$( "#password" ).focus();
-			return;
-		}
-		
-		var passwordConfirm = $( "#passwordConfirm" ).val();
-		if( passwordConfirm != password ) {
-			alert( "비밀번호가 다릅니다." );
-			$( "#passwordConfirm" ).focus();
-			return;
-		}
-		
-		var name = $( "#name" ).val();
-		if( name == "" ) {
-			alert( "이름이 비어 있습니다." );
-			$( "#name" ).focus();
-			return;
-		}
-		
-		var total = $( "#total" ).val();
-		if( total == "" ) {
-			alert( "총액이 비어있습니다." );
-			$( "#total" ).focus();
-			return;
-		}
-		
-		
-	});
-	});
-</script>
 <title>편리가계부</title>
-
-
 </head>
 <body>
 <img alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
@@ -74,50 +27,33 @@ $(document).ready(function(){
     </form:form>
 </div>
 <div id="joinform" title="회원가입" style="display:none">
-	<form:form name="joinform" action="account-book/main" method="post">
+	<form:form method="post">
 		<h3><span class="label label-default">Account</span></h3>
-		<input type="id" id="id" class="form-control" placeholder="Email / Phone"><br/>
-		<button type="button" id="confirm" name="userRegBtn" class="btn btn-join" onClick="idCheck()">Confirm</button>
-		
+		<input type="account" id="inputAccount" class="form-control" placeholder="Email / Phone">
+		<button type="button" name="userRegBtn" class="btn btn-join">Confirm</button>
 		<h3><span class="label label-default">Password</span></h3>
-		<input type="password" id="password" class="form-control" placeholder="Password" required><br/> 
-		
+		<input type="password" id="inputPassword" class="form-control" placeholder="Password" required><br/> 
 		<h3><span class="label label-default">Password Confirm</span></h3>
-		<input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required><br/>
-		
+		<input type="passwordConfirm" id="inputPasswordConfirm" class="form-control" placeholder="Password Confirm" required><br/>
 		<h3><span class="label label-default">Name</span></h3>
-		<input type="name" id="name" class="form-control" placeholder="Name" required><br/> 
-		
-		<h3><span class="label label-default">Gender</span></h3>
-		<input type="radio" name="gener" value="male" checked="checked" /> 
-		<span class="up">Male</span>&nbsp;&nbsp; <input type="radio"     name="gener" value="female"/> 
-		<span class="up">Female</span><br/><br/>
-
+		<input type="name" id="inputName" class="form-control" placeholder="Name" required><br/> 
 		<h3><span class="label label-default">Birth</span></h3>
 		<div class="dropdown theme-dropdown clearfix">
 		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<option role="presentation"><a role="menuitem" tabindex="year" href="#">Year</a></option>
-				<c:forEach begin="1970" end="2017" var="i">
-				<option role="presentation"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
-				</c:forEach>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">Year</a></option>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1970</a></option>
 		</select>
 		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<option role="presentation"><a role="menuitem" tabindex="month" href="#">Month</a></option>
-				<c:forEach begin="1" end="12" var="i">
-				<option role="presentation"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
-				</c:forEach>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">Month</a></option>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1</a></option>
 		</select>
 		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-				<option role="presentation"><a role="menuitem" tabindex="day" href="#">Day</a></option>
-				<c:forEach begin="1" end="31" var="i">
-				<option role="presentation"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
-				</c:forEach>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">Day</a></option>
+				<option role="presentation"><a role="menuitem" tabindex="1" href="#">1</a></option>
 		</select>
 		</div>
 		<h3><span class="label label-default">Total</span></h3>
-		<input type="total" id="total" class="form-control" placeholder="Total"><br/><br/>
-		
-		<button type="button" id="create" name="create" class="btn btn-join">Create</button>
+		<input type="total" id="inputTotal" class="form-control" placeholder="Total">
 	</form:form>
 </div>
 </body>
