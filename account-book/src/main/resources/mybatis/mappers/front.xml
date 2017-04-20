@@ -3,6 +3,10 @@
 
 <mapper namespace="user">
 
-	
+	<insert id="fbinsert" parameterType="uservo">
+		<![CDATA[
+			insert into users values(#{id}, #{password}, #{name}, #{gender}, #{age}, '', '')
+		]]>
+	</insert>
 
 </mapper>

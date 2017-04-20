@@ -3,6 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="listvo" type="com.hipo.account_book.vo.ListVo" />
+		<typeAlias alias="uservo" type="com.hipo.account_book.vo.UserVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/front.xml" />

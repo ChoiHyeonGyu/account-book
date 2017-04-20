@@ -11,13 +11,13 @@ public class ListVo {
 	private String category;
 	private String locationX;
 	private String locationY;
-	private String date;
+	private String dat;
 	
 	@Override
 	public String toString() {
 		return "ListVo [listId=" + listId + ", id=" + id + ", paid=" + paid + ", bank=" + bank + ", operations="
 				+ operations + ", money=" + money + ", name=" + name + ", category=" + category + ", locationX="
-				+ locationX + ", locationY=" + locationY + ", date=" + date + "]";
+				+ locationX + ", locationY=" + locationY + ", dat=" + dat + "]";
 	}
 	public String getListId() {
 		return listId;
@@ -79,11 +79,11 @@ public class ListVo {
 	public void setLocationY(String locationY) {
 		this.locationY = locationY;
 	}
-	public String getDate() {
-		return date;
+	public String getDat() {
+		return dat;
 	}
-	public void setDate(String date) {
-		this.date = date;
+	public void setDat(String dat) {
+		this.dat = dat;
 	}
 	
 	

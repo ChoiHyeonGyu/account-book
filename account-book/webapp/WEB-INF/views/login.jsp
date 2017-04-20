@@ -69,10 +69,11 @@ function checkfield(){
 <body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/facebook.js"></script>
 <img alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
-<button id="login" type="button" class="btn btn-lg btn-default">로그인</button><br/>
-<fb:login-button class="fackbook-login-button" scope="public_profile,email" onlogin="checkLoginState()"></fb:login-button>
+<button id="login" type="button" class="btn btn-lg btn-default">Login</button><br/>
+<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">FACEBOOK과 연동하여 Login</fb:login-button>
+<input type="hidden" id="fbhidden">
 <button type="button" class="btn btn-lg btn-default">XX와 연동하여 로그인</button><br/>
-<button id="join" type="button" class="btn btn-lg btn-default">회원가입</button>
+<button id="join" type="button" class="btn btn-lg btn-default">Join</button>
 <div id="loginform" title="로그인" style="display:none">
 	<form:form method="post">
     	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
