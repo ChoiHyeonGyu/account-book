@@ -1,4 +1,21 @@
-var login = false;
+function checkLoginState() {
+	
+	FB.getLoginStatus(function(response) {
+		console.log(response);
+		
+		if (response.status === 'connected') {
+			
+			FB.api('/me', function(response) {
+				console.log(JSON.stringify(response));
+			});
+			
+	    }
+	});
+	
+	FB.logout(function(response) {
+		
+	});
+}
 
 window.fbAsyncInit = function() {
 	FB.init({
@@ -6,27 +23,7 @@ window.fbAsyncInit = function() {
 		xfbml : true,
 		version : 'v2.89465164'
 	});
-	
-	FB.getLoginStatus(function(response) {
-		console.log(response);
-		if ((response.status === 'unknown')&&(login == true)) {
-			FB.login(function(response) {
-				if (response.status === 'connected') {
-					FB.api('/me', function(response) {
-						console.log(JSON.stringify(response));
-					});
-			    } else if(response.status === 'connected') {
-			    	FB.api('/me', function(response) {
-						console.log(JSON.stringify(response));
-					});
-			    }
-			}, {scope: 'public_profile,email'});
-		}
-		FB.logout(function(response) {
-			
-		});
-		login = false;
-	});
+	FB.AppEvents.logPageView();
 };
 
 (function(d, s, id) {
