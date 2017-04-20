@@ -1,19 +1,43 @@
+var obj = null;
+
 function checkLoginState() {
 	
 	FB.getLoginStatus(function(response) {
-		console.log(response);
 		
 		if (response.status === 'connected') {
-			
-			FB.api('/me', function(response) {
+			FB.api('/me?fields=id,email,name,gender,birthday,age_range', function(response) {
+				console.log(response);
 				console.log(JSON.stringify(response));
+				obj = response;
+				document.getElementById('fbhidden').click();
 			});
-			
 	    }
+		
+		FB.logout(function(response) {
+			
+		});
 	});
 	
-	FB.logout(function(response) {
-		
+	$(function(){
+		$("#fbhidden").click(function(){
+			if(obj!=null){
+//				var response = obj;
+				$.ajax( {
+				    url : "/account-book/fbjoin",
+				    type: "POST",
+				    dataType: "JSON",
+				    data: obj,
+//				    contentType: "application/json; charset=UTF-8",
+				    success: function( response ){
+//				    	"id="+response.email+"&"+"password=facebook"+"&"+"name="+response.name+"&"+"gender="+response.gender+"&"+"birth="+response.birthday+"&"+"age="+response.age_range.max
+				    },
+				    error: function( XHR, status, error ){
+				       console.error( status + " : " + error );	       
+				    }
+				});
+				obj = null;
+			}
+		});
 	});
 }
 
@@ -32,6 +56,6 @@ window.fbAsyncInit = function() {
 		return;
 	js = d.createElement(s);
 	js.id = id;
-	js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.9&appId=287459421697705";
+	js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.9&appId=287459421697705";	
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));

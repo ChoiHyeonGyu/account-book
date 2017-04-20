@@ -5,6 +5,7 @@ public class UserVo {
 	private String password;
 	private String name;
 	private String gender;
+	private String birth;
 	private int age;
 	private String photo;
 	private int total;
@@ -35,6 +36,13 @@ public class UserVo {
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
+	}
+	
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
 	}
 	
 	public int getAge() {
