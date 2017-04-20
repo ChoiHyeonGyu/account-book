@@ -13,13 +13,20 @@ public class ListService {
 	@Autowired
 	public ListDao dao;
 
-	public List<ListVo> getList() {
-		System.out.println("여긴 서비스!!!!!!!!!!!!!!!!!!!!!!!!");
-		List<ListVo> list = dao.list();
-		
-		System.out.println("서비스 끝!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
+	public List<ListVo> getList(ListVo vo) {
+		List<ListVo> list = dao.list(vo);
 		return list;
-
 	}
+
+	public boolean delete(ListVo vo) {
+		return dao.delete(vo); 
+		
+	}
+
+	public boolean add(ListVo vo) {
+		
+		return dao.add(vo);
+		
+	}
+
 }

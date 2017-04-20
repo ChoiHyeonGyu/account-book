@@ -12,12 +12,23 @@ public class ListDao {
 @Autowired
 private SqlSession sql;
 
-	public List<ListVo> list() {
-		System.out.println("여긴 다오!!!!!!!!!!!!!!!!!!!!!!!!!");
-		List<ListVo> list = sql.selectList("listview.list"); 
-
-		System.out.println("여기 리스트" + list);
+	public List<ListVo> list(ListVo vo) {
+		List<ListVo> list = sql.selectList("listview.list",vo); 
 		return list;
+	}
+
+
+	public boolean delete(ListVo vo) {
+		 sql.delete("listview.delete1",vo);
+		 sql.delete("listview.delete",vo);
+		return false;
+	}
+
+
+	public boolean add(ListVo vo) {
+		sql.insert("listview.add",vo);
+		sql.insert("listview.add1",vo);
+		return false;
 	}
 
 }
