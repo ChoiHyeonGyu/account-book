@@ -57,6 +57,13 @@ $(document).ready(function(){
 	});
 });
 </script>
+<script type="text/javascript">
+ 
+function checkfield(){
+ document.joinform.submit();
+ 
+}
+</script>
 <title>편리가계부</title>
 </head>
 <body>
@@ -73,7 +80,7 @@ $(document).ready(function(){
     </form:form>
 </div>
 <div id="joinform" title="회원가입" style="display:none">
-	<form:form name="joinform" action="account-book/main" method="post">
+	<form:form name="joinform" action="${pageContext.request.contextPath }/join" method="post">
 		<h3><span class="label label-default">Account</span></h3>
 		<input type="id" id="id" class="form-control" placeholder="Email / Phone"><br/>
 		<button type="button" id="confirm" name="userRegBtn" class="btn btn-join" onClick="idCheck()">Confirm</button>
@@ -94,29 +101,29 @@ $(document).ready(function(){
 
 		<h3><span class="label label-default">Birth</span></h3>
 		<div class="dropdown theme-dropdown clearfix">
-		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="year">
 				<option role="presentation"><a role="menuitem" tabindex="year" href="#">Year</a></option>
 				<c:forEach begin="1970" end="2017" var="i">
-				<option role="presentation"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
+				<option role="presentation" value="${i }"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
 				</c:forEach>
 		</select>
-		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="month">
 				<option role="presentation"><a role="menuitem" tabindex="month" href="#">Month</a></option>
 				<c:forEach begin="1" end="12" var="i">
-				<option role="presentation"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
+				<option role="presentation" value="${i }"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
 				</c:forEach>
 		</select>
-		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="day">
 				<option role="presentation"><a role="menuitem" tabindex="day" href="#">Day</a></option>
 				<c:forEach begin="1" end="31" var="i">
-				<option role="presentation"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
+				<option role="presentation"  value="${i }"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
 				</c:forEach>
 		</select>
 		</div>
 		<h3><span class="label label-default">Total</span></h3>
 		<input type="total" id="total" class="form-control" placeholder="Total"><br/><br/>
 		
-		<button type="button" id="create" name="create" class="btn btn-join">Create</button>
+		<input type="submit" id="create" name="create" value="Create"class="btn btn-join" >
 	</form:form>
 </div>
 </body>

@@ -1,5 +1,7 @@
 package com.hipo.account_book.vo;
 
+import java.util.Date;
+
 public class UserVo {
 	private String id;
 	private String password;
@@ -58,9 +60,5 @@ public class UserVo {
 		this.total = total;
 	}
 	
-	@Override
-	public String toString() {
-		return "UserVo [id=" + id + ", password=" + password + ", name=" + name + ", gender=" + gender + ", age="
-				+ age + ", photo=" + photo + ", total=" + total + "]";
-	}
+	
 }

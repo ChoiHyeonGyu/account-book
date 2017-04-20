@@ -24,12 +24,7 @@ $(function(){
 		height: 930,
 		width: 600,
 		modal: true,
-		buttons: {
-			"생성하기": function() {
-				//$( "#dialog-upload-form form" ).submit();
-				$( this ).dialog( "close" );
-			},
-		},
+	
 		close: function() {
 				
 		}
