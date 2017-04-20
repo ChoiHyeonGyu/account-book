@@ -9,19 +9,29 @@
 				<table border='1' class="syd2">
 					<tr bgcolor='#33ffff'>
 						<td>결제수단</td>
+						<td>은행</td>
+						<td>+/-</td>
 						<td>금액</td>
 						<td>상호명</td>
 						<td>카테고리</td>
 						<td>날짜</td>
+						<td>삭제</td>
+						<td>맵 확인하기</td>
+						
+						
 					</tr>
 
-					<c:forEach var="list" items="list" varStatus="status">
+					<c:forEach var="vo" items="${list}" varStatus="status">
 						<tr>
-							<td>${list.paid}</td>
-							<td>${list.money}</td>
-							<td>${list.name}</td>
-							<td>${list.category}</td>
-							<td>${list.date}</td>
+							<td>${vo.paid}</td>
+							<td>${vo.bank}</td>
+							<td>${vo.operations}</td>
+							<td>${vo.money}</td>
+							<td>${vo.name}</td>
+							<td>${vo.category}</td>
+							<td>${vo.dat}</td>
+							<td><a href="${pageContext.request.contextPath}/{id}/listdelete?id=${vo.id}&listId=${vo.listId}"><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+							<td><a href="${pageContext.request.contextPath}">ㄱㄱ</a></td>
 						</tr>
 					</c:forEach>
 
