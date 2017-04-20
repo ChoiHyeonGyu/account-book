@@ -1,12 +1,13 @@
 package com.hipo.account_book.controller;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.hipo.account_book.service.FrontService;
-import com.hipo.account_book.vo.FBUserVo;
 
 @Controller
 public class FrontController {
@@ -19,8 +20,9 @@ public class FrontController {
 	}
 	
 	@RequestMapping("/fbjoin")
-	public String fbjoin(@RequestBody(required=false) FBUserVo fbuservo){
-		frontService.fbjoin(fbuservo);
+	public String fbjoin(@RequestBody Map<String, Object> map){
+		System.out.println(map);
+		frontService.fbjoin(map);
 		return "main";
 	}
 }

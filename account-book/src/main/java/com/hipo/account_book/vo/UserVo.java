@@ -1,7 +1,5 @@
 package com.hipo.account_book.vo;
 
-import java.util.Date;
-
 public class UserVo {
 	private String id;
 	private String password;

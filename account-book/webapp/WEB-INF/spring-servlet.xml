@@ -9,6 +9,23 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc">
 	<aop:aspectj-autoproxy />
 	
+	<bean id="jacksonObjectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+		<property name="serializationInclusion">
+			<value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+		</property>
+	</bean>
+	
+	<bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+		<property name="targetObject" ref="jacksonObjectMapper" />
+		<property name="targetMethod" value="configure" />
+		<property name="arguments">
+			<list>
+				<value type="com.fasterxml.jackson.databind.DeserializationFeature">FAIL_ON_UNKNOWN_PROPERTIES</value>
+				<value>false</value>
+			</list>
+		</property>
+	</bean>
+	
 	<!-- validator, conversionService, messageConverter를 자동으로 등록 -->
 	<mvc:annotation-driven>
 		<mvc:message-converters>
@@ -19,19 +36,13 @@
 					</list>
 				</property>
 			</bean>
-			<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-				<property name="messageConverters">
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="supportedMediaTypes">
 					<list>
-						<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-							<property name="supportedMediaTypes">
-								<list>
-									<value>text/html; charset=UTF-8</value>
-									<value>application/json; charset=UTF-8</value>
-								</list>
-							</property>
-						</bean>
+						<value>application/json; charset=UTF-8</value>
 					</list>
 				</property>
+				<property name="objectMapper" ref="jacksonObjectMapper" />
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>

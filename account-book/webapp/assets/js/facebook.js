@@ -19,17 +19,19 @@ function checkLoginState() {
 	});
 	
 	$(function(){
+		
 		$("#fbhidden").click(function(){
+			
 			if(obj!=null){
-//				var response = obj;
+				
 				$.ajax( {
 				    url : "/account-book/fbjoin",
 				    type: "POST",
 				    dataType: "JSON",
-				    data: obj,
-//				    contentType: "application/json; charset=UTF-8",
+				    data: JSON.stringify(obj),
+				    contentType: "application/json; charset=UTF-8",
 				    success: function( response ){
-//				    	"id="+response.email+"&"+"password=facebook"+"&"+"name="+response.name+"&"+"gender="+response.gender+"&"+"birth="+response.birthday+"&"+"age="+response.age_range.max
+				    	
 				    },
 				    error: function( XHR, status, error ){
 				       console.error( status + " : " + error );	       
