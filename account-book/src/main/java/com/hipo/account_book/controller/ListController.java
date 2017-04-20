@@ -17,7 +17,7 @@ public class ListController {
 	@Autowired
 	private ListService service;
 
-	@RequestMapping("/{id}/list")
+	@RequestMapping("/{id}/main")
 	public String List(Model model ,@ModelAttribute ListVo vo) {
 		System.out.println("hi");
 		List<ListVo> list = service.getList(vo);
@@ -30,7 +30,7 @@ public class ListController {
 		System.out.println("아이디 잘가지고 옵니까??" + id);
 		System.out.println("vo 잘가지고 옵니까???" + vo);
 		 service.delete(vo);
-		return "redirect:/{id}/list";
+		return "/main";
 		
 	}
 	@RequestMapping("/{id}/add")

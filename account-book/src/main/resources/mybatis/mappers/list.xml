@@ -32,9 +32,28 @@ delete from list where id = #{id} and list_Id = #{listId}
 	
 	<![CDATA[
 	
-insert into post values(seq_post.nextval,#{content},sysdate,#{no})where id = #{id}
-	select a.ID,a.LIST_ID as listId,a.bank,a.operations,a.locationX,a.locationY,a.PAID,a.MONEY,a.name,a.category,b.day as dat from list a, LISTDATE b  where a.id = #{id}
+INSERT INTO list 
+     VALUES (seq_list.NEXTVAL,
+             #{id},
+             #{paid},
+             #{bank},
+             #{operations},
+             #{money},
+             #{name},
+             #{category},
+             #{locationX},
+             #{locationY})
 	
+	]]>
+	</insert>
+	<insert id="add1" parameterType="listvo">
+	
+	<![CDATA[
+	
+INSERT INTO listdate 
+     VALUES (#{listId},
+             #{sysdate})
+							
 	]]>
 	</insert>
 

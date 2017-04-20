@@ -8,6 +8,7 @@
 			<div class="service-box">
 				<table border='1' class="syd2">
 					<tr bgcolor='#33ffff'>
+						<td>중복확인</td>
 						<td>결제수단</td>
 						<td>은행</td>
 						<td>+/-</td>
@@ -23,6 +24,7 @@
 
 					<c:forEach var="vo" items="${list}" varStatus="status">
 						<tr>
+							<td>${vo.listId}</td>
 							<td>${vo.paid}</td>
 							<td>${vo.bank}</td>
 							<td>${vo.operations}</td>
