@@ -9,14 +9,6 @@ select list_id as listId,id,paid,bank,operations,money,name,category,day,locatio
  ]]>
 	</select>
 	
-	<delete id="delete1" parameterType="listvo">
-	
-<![CDATA[
-delete from listDate where list_Id = #{listId}
-
-]]>
-
-	</delete>
 	<delete id="delete" parameterType="listvo">
 	
 <![CDATA[
@@ -37,12 +29,11 @@ INSERT INTO list
              #{id},
              #{paid},
              #{bank},
-             #{operations},
+              #{operations},
              #{money},
              #{name},
              #{category},
-             #{locationX},
-             #{locationY})
+             #{day})
 	
 	]]>
 	</insert>
