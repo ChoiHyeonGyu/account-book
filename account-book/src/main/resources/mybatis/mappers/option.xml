@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="listview">
+
+	<select id="list" resultType="listvo">
+<![CDATA[
+select list_id as listId,id,paid,bank,operations,money,name,category,day,locationX,locationY from list where id = #{id}
+ ]]>
+	</select>
+	
+	<delete id="delete1" parameterType="listvo">
+	
+<![CDATA[
+delete from listDate where list_Id = #{listId}
+
+]]>
+
+	</delete>
+	<delete id="delete" parameterType="listvo">
+	
+<![CDATA[
+delete from list where id = #{id} and list_Id = #{listId}
+
+]]>
+
+	</delete>
+	
+	
+
+	<insert id="add" parameterType="listvo">
+	
+	<![CDATA[
+	
+INSERT INTO list 
+     VALUES (seq_list.NEXTVAL,
+             #{id},
+             #{paid},
+             #{bank},
+             #{operations},
+             #{money},
+             #{name},
+             #{category},
+             #{locationX},
+             #{locationY})
+	
+	]]>
+	</insert>
+	<insert id="add1" parameterType="listvo">
+	
+	<![CDATA[
+	
+INSERT INTO listdate 
+     VALUES (#{listId},
+             #{sysdate})
+							
+	]]>
+	</insert>
+
+	<!-- <select id="getlistpost" resultType="postvo" parameterType="int"> <![CDATA[ 
+		select post_no as postNo ,title,content, reg_date as regDate, no from post 
+		where no = #{no} order by regDate desc ]]> </select> <select id="giveNo" 
+		resultType="postvo" parameterType="postvo"> <![CDATA[ select title,content,reg_date 
+		as regDate,no,post_No as postNo from post where post_No = #{postNo} and no 
+		=#{no} ]]> </select> <select id="maxno" parameterType="postvo"> <![CDATA[ 
+		select post_no as postNo, title, content ,reg_date as regDate , no from post 
+		order by regDate desc ]]> </select> <select id="gettop" resultType="postvo"> 
+		<![CDATA[ select post_no as postNo, title, content ,reg_date as regDate , 
+		no from post order by regDate desc ]]> </select> <select id="gettop1" resultType="postvo" 
+		parameterType="postvo"> <![CDATA[ select post_no as postNo, title, content 
+		,reg_date as regDate , no from post where post_No = #{post_No} ]]> </select> 
+		select c.id,a.list_id as listId ,a.paid, a.money, a.name,a.category, sysdate 
+		as dat from list a, LISTdate b , users c where a.LIST_ID = b.LIST_ID and 
+		a.ID = c.ID -->
+</mapper>
+
+	
+
