@@ -19,24 +19,21 @@ public class ListController {
 
 	@RequestMapping("/{id}/main")
 	public String List(Model model ,@ModelAttribute ListVo vo) {
-		System.out.println("아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = service.getList(vo);
-		System.out.println("리스트 불러옵니까????" + list);
 		model.addAttribute("list", list);
 		return "/main";
 	}
 	@RequestMapping("/{id}/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
-		
-		System.out.println("아이디 잘가지고 옵니까??" + id);
-		System.out.println("vo 잘가지고 옵니까???" + vo);
 		 service.delete(vo);
 		return "/main";
 		
 	}
 	@RequestMapping("/{id}/add")
-	public String add(@ModelAttribute ListVo vo){
+	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
+		List<ListVo> list = service.getList(vo);
 		System.out.println("더하는 부분 아이디 잘가지고 옵니다" + vo);
+		
 		service.add(vo);
 		return null;
 		
