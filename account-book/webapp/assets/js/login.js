@@ -31,8 +31,9 @@ $(function(){
 	});
 	
 	$("#confirm").click(function(){
+		var id = $("#id").val();
 		$.ajax( {
-		    url : "/account-book/checkid?id="+$("#id").val(),
+		    url : "/account-book/checkid?id="+id,
 		    type: "GET",
 		    dataType: "JSON",
 		    data: "",
