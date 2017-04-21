@@ -50,7 +50,7 @@ public class FrontController {
 	@RequestMapping(value="/join", method=RequestMethod.POST)
 	public String join(@ModelAttribute @Valid UserVo uservo, BindingResult result, Model model){
 		if (result.hasErrors()) {
-			model.addAttribute("error", result.getModel());
+			model.addAttribute("result", result.getModel());
 			return "redirect:/login";
 		}
 		frontService.join(uservo);
