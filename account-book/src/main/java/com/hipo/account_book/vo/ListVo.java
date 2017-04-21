@@ -9,15 +9,16 @@ public class ListVo {
 	private int money;
 	private String name;
 	private String category;
+	private String day;
 	private String locationX;
 	private String locationY;
-	private String dat;
+	
 	
 	@Override
 	public String toString() {
 		return "ListVo [listId=" + listId + ", id=" + id + ", paid=" + paid + ", bank=" + bank + ", operations="
 				+ operations + ", money=" + money + ", name=" + name + ", category=" + category + ", locationX="
-				+ locationX + ", locationY=" + locationY + ", dat=" + dat + "]";
+				+ locationX + ", locationY=" + locationY + ", day=" + day + "]";
 	}
 	public String getListId() {
 		return listId;
@@ -79,11 +80,11 @@ public class ListVo {
 	public void setLocationY(String locationY) {
 		this.locationY = locationY;
 	}
-	public String getDat() {
-		return dat;
+	public String getDay() {
+		return day;
 	}
-	public void setDat(String dat) {
-		this.dat = dat;
+	public void setDay(String day) {
+		this.day = day;
 	}
 	
 	

@@ -19,8 +19,9 @@ public class ListController {
 
 	@RequestMapping("/{id}/main")
 	public String List(Model model ,@ModelAttribute ListVo vo) {
-		System.out.println("hi");
+		System.out.println("아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = service.getList(vo);
+		System.out.println("리스트 불러옵니까????" + list);
 		model.addAttribute("list", list);
 		return "/main";
 	}

@@ -31,7 +31,7 @@
 							<td>${vo.money}</td>
 							<td>${vo.name}</td>
 							<td>${vo.category}</td>
-							<td>${vo.dat}</td>
+							<td>${vo.day}</td>
 							<td><a href="${pageContext.request.contextPath}/{id}/listdelete?id=${vo.id}&listId=${vo.listId}"><img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
 							<td><a href="${pageContext.request.contextPath}">ㄱㄱ</a></td>
 						</tr>
