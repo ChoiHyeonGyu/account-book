@@ -14,7 +14,10 @@ public class ListService {
 	public ListDao dao;
 
 	public List<ListVo> getList(ListVo vo) {
+		System.out.println("아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = dao.list(vo);
+		System.out.println("리스트 불러옵니까????" + list);
+
 		return list;
 	}
 

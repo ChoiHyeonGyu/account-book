@@ -13,7 +13,9 @@ public class ListDao {
 private SqlSession sql;
 
 	public List<ListVo> list(ListVo vo) {
+		System.out.println("아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = sql.selectList("listview.list",vo); 
+		System.out.println("리스트 불러옵니까????" + list);
 		return list;
 	}
 

@@ -5,8 +5,8 @@
 
 	<select id="list" resultType="listvo">
 <![CDATA[
-select a.ID,a.LIST_ID as listId,a.bank,a.operations,a.locationX,a.locationY,a.PAID,a.MONEY,a.name,a.category,b.day as dat from list a, LISTDATE b  where a.id = #{id}
-]]>
+select list_id as listId,id,paid,bank,operations,money,name,category,day,locationX,locationY from list where id = #{id}
+ ]]>
 	</select>
 	
 	<delete id="delete1" parameterType="listvo">
