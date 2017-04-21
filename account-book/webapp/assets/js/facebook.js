@@ -31,7 +31,8 @@ function checkLoginState() {
 				    data: JSON.stringify(obj),
 				    contentType: "application/json; charset=UTF-8",
 				    success: function( response ){
-				    	
+				    	$("#fbhidden").val(response.data);
+				    	$("#fbpost").submit();
 				    },
 				    error: function( XHR, status, error ){
 				       console.error( status + " : " + error );	       

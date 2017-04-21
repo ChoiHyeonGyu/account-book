@@ -8,5 +8,11 @@
 			insert into users values(#{id}, #{password}, #{name}, #{gender}, #{age}, '', '')
 		]]>
 	</insert>
+	
+	<select id="fbselect" parameterType="string" resultType="uservo">
+		<![CDATA[
+			select id, password from users where password = 'facebook' and id = #{value}
+		]]>
+	</select>
 
 </mapper>

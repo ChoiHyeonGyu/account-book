@@ -16,6 +16,16 @@ public class FrontService {
 	@Autowired
 	private FrontDao frontDao;
 	
+	public UserVo fblogin(Map<String, Object> map){
+		UserVo uservo = new UserVo();
+		if(map.get("email") != null){
+			uservo.setId(map.get("email").toString());
+		} else {
+			uservo.setId(map.get("id").toString());
+		}
+		return frontDao.fbselect(uservo);
+	}
+	
 	public void fbjoin(Map<String, Object> map){
 		UserVo uservo = new UserVo();
 		if(map.get("email") != null){

@@ -71,7 +71,9 @@ function checkfield(){
 <img alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
 <button id="login" type="button" class="btn btn-lg btn-default">Login</button><br/>
 <fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">FACEBOOK과 연동하여 Login</fb:login-button>
-<input type="hidden" id="fbhidden">
+<form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
+	<input type="hidden" id="fbhidden" name="fbhidden" value="">
+</form>
 <button type="button" class="btn btn-lg btn-default">XX와 연동하여 로그인</button><br/>
 <button id="join" type="button" class="btn btn-lg btn-default">Join</button>
 <div id="loginform" title="로그인" style="display:none">
