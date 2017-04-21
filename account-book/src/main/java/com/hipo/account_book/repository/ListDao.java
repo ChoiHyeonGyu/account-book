@@ -21,7 +21,6 @@ private SqlSession sql;
 
 
 	public boolean delete(ListVo vo) {
-		 sql.delete("listview.delete1",vo);
 		 sql.delete("listview.delete",vo);
 		return false;
 	}
