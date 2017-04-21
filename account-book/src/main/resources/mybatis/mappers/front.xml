@@ -14,5 +14,11 @@
 			select id, password from users where password = 'facebook' and id = #{value}
 		]]>
 	</select>
+	
+	<select id="checkselect" parameterType="string" resultType="string">
+		<![CDATA[
+			select id from users where id = #{value}
+		]]>
+	</select>
 
 </mapper>

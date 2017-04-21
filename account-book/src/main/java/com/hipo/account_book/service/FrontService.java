@@ -59,4 +59,12 @@ public class FrontService {
 		uservo.setPassword("facebook");
 		frontDao.fbinsert(uservo);
 	}
+	
+	public String checkId(Map<String, Object> map){
+		String id = frontDao.checkselect(map.get("id").toString());
+		if(id.isEmpty()){
+			return "fail";
+		}
+		return "success";
+	}
 }

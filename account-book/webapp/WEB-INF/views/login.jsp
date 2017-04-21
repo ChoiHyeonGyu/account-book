@@ -12,51 +12,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login.js"></script>
-<script>
-$(document).ready(function(){
-	$( "#create" ).click( function(){
-		/* 회원 가입 폼 유효성 검증(validation) */
-		
-		//1.이름
-		var id = $( "#id" ).val();
-		if( id == "" ) {
-			alert( "아이디가 비어 있습니다." );
-			$( "#id" ).focus();
-			return;
-		}
-		
-		var password = $( "#password" ).val();
-		if( password == "" ) {
-			alert( "비밀번호가 비어 있습니다." );
-			$( "#password" ).focus();
-			return;
-		}
-		
-		var passwordConfirm = $( "#passwordConfirm" ).val();
-		if( passwordConfirm != password ) {
-			alert( "비밀번호가 다릅니다." );
-			$( "#passwordConfirm" ).focus();
-			return;
-		}
-		
-		var name = $( "#name" ).val();
-		if( name == "" ) {
-			alert( "이름이 비어 있습니다." );
-			$( "#name" ).focus();
-			return;
-		}
-		
-		var total = $( "#total" ).val();
-		if( total == "" ) {
-			alert( "총액이 비어있습니다." );
-			$( "#total" ).focus();
-			return;
-		}
-		
-		
-	});
-});
-</script>
 <script type="text/javascript">
  
 function checkfield(){
@@ -86,7 +41,7 @@ function checkfield(){
 	<form:form name="joinform" action="${pageContext.request.contextPath }/join" method="post">
 		<h3><span class="label label-default">Account</span></h3>
 		<input type="id" id="id" class="form-control" placeholder="Email / Phone"><br/>
-		<button type="button" id="confirm" name="userRegBtn" class="btn btn-join" onClick="idCheck()">Confirm</button>
+		<button type="button" id="confirm" name="userRegBtn" class="btn btn-join">Confirm</button>
 		
 		<h3><span class="label label-default">Password</span></h3>
 		<input type="password" id="password" class="form-control" placeholder="Password" required><br/>
