@@ -30,8 +30,10 @@ public class ListController {
 		
 	}
 	@RequestMapping("/{id}/add")
-	public String add(@ModelAttribute ListVo vo){
+	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
+		List<ListVo> list = service.getList(vo);
 		System.out.println("더하는 부분 아이디 잘가지고 옵니다" + vo);
+		
 		service.add(vo);
 		return null;
 		

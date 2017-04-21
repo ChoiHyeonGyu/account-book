@@ -29,13 +29,11 @@ INSERT INTO list
              #{id},
              #{paid},
              #{bank},
-             #{operations},
+              #{operations},
              #{money},
              #{name},
              #{category},
-             #{day},
-             #{locationX},
-             #{locationY})
+             #{day})
 	
 	]]>
 	</insert>
