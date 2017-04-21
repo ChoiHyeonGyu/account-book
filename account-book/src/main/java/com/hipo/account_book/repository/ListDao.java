@@ -28,7 +28,6 @@ private SqlSession sql;
 
 	public boolean add(ListVo vo) {
 		sql.insert("listview.add",vo);
-		sql.insert("listview.add1",vo);
 		return false;
 	}
 
