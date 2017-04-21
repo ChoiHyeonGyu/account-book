@@ -26,9 +26,18 @@ public class FrontController {
 	@RequestMapping("/fbjoin")
 	public JSONResult fbjoin(@RequestBody Map<String, Object> map){
 		UserVo uservo = frontService.fblogin(map);
-		if(uservo.getId().toString()==null){
+		if(uservo==null){
 			frontService.fbjoin(map);
 		}
 		return JSONResult.success(map.get("email"));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/checkid")
+	public JSONResult checkid(@RequestBody Map<String, Object> map){
+		if(frontService.checkId(map)=="fail"){
+			return JSONResult.fail("");
+		}
+		return JSONResult.success(frontService.checkId(map));
 	}
 }
