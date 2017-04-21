@@ -23,7 +23,7 @@
 	<input type="hidden" id="fbhidden" name="fbhidden" value="">
 </form>
 <button type="button" class="btn btn-lg btn-default">XX와 연동하여 로그인</button><br/>
-<button id="join" type="button" class="btn btn-lg btn-default">Join</button>
+<button id="join" type="button" class="btn btn-lg btn-default">Join</button><br/>
 <div id="loginform" title="로그인" style="display:none">
 	<form:form method="post">
     	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
@@ -71,6 +71,7 @@
 				</c:forEach>
 		</select>
 		</div>
+		
 		<h3><span class="label label-default">Total Money</span></h3>
 		<input type="text" id="total" name="total" class="form-control" placeholder="Total Money" required><br/><br/>
 		<input type="hidden" name="age" value="0"><input type="hidden" name="photo" value="">
@@ -78,5 +79,11 @@
 		<input type="submit" value="Create" class="btn btn-join">
 	</form>
 </div>
+<p id="em" style="font-weight:bold; text-align:center; padding:5px 0 5px 0; color:red">
+${error}
+	<c:if test="">
+		회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.
+	</c:if>
+</p>
 </body>
 </html>

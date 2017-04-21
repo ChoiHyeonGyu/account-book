@@ -63,12 +63,6 @@
 			<version>2.0.0.Alpha2</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>6.0.0.Alpha2</version>
-		</dependency>
-
 		<!-- spring jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>

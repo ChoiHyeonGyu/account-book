@@ -76,7 +76,7 @@ $(function(){
 			return false;
 		}
 		
-		if($("#year option:selected").val() == "Year"){
+		/*if($("#year option:selected").val() == "Year"){
 			alert("생년을 선택하세요.");
 			return false;
 		} else if($("#month option:selected").val() == "Month") {
@@ -85,7 +85,7 @@ $(function(){
 		} else if($("#day option:selected").val() == "Day") {
 			alert("생일을 선택하세요.");
 			return false;
-		}
+		}*/
 		
 		if(String(Number($("#total").val())) == "NaN"){
 			alert("숫자로만 입력해주세요.");
@@ -100,6 +100,7 @@ $(function(){
 			return false;
 		}
 		isOverlap = false;
+		$("#total").val(Number($("#total").val()));
 		return true;
 	});
 	
@@ -112,4 +113,5 @@ $(function(){
 		event.preventDefault();
 		joinform.dialog("open");
 	});
+	
 });

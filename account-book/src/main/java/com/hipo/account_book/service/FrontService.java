@@ -70,7 +70,7 @@ public class FrontService {
 	}
 	
 	public void join(UserVo uservo){
-		uservo.setAge(calendar.getWeekYear()-Integer.parseInt(uservo.getBirthYear())+1);
+		uservo.setAge(calendar.getWeekYear()-uservo.getBirthYear()+1);
 		frontDao.insert(uservo);
 	}
 }

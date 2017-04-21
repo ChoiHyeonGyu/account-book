@@ -6,9 +6,12 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hipo.account_book.dto.JSONResult;
@@ -44,9 +47,12 @@ public class FrontController {
 		return JSONResult.success(frontService.checkId(map));
 	}
 	
-	@RequestMapping("/join")
-	public String join(@ModelAttribute @Valid UserVo uservo){
-		System.out.println("못 들어오냐?");
+	@RequestMapping(value="/join", method=RequestMethod.POST)
+	public String join(@ModelAttribute @Valid UserVo uservo, BindingResult result, Model model){
+		if (result.hasErrors()) {
+			model.addAttribute("error", result.getModel());
+			return "redirect:/login";
+		}
 		frontService.join(uservo);
 		return "redirect:/login";
 	}
