@@ -63,6 +63,9 @@
                     <li>
                         <a class="page-scroll" href="#graph-average">Graph-Average</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="#option">Option</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -111,6 +114,8 @@
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/js/creative.min.js"></script>
+    
+    <c:import url="/WEB-INF/views/option.jsp"/>
 </body>
 <!--
 	<div class="div-bottom-right"><c:import url="/WEB-INF/views/board.jsp"/></div>

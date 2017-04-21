@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class MainController {
 	
 	@RequestMapping("/main")
-	public String main(@RequestParam("fbhidden") String id, Model model){
+	public String main(@RequestParam(value="fbhidden", required=false, defaultValue="") String id, Model model){
 		model.addAttribute("id", id);
 		return "main";
 	}
