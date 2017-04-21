@@ -12,13 +12,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login.js"></script>
-<script type="text/javascript">
- 
-function checkfield(){
- document.joinform.submit();
- 
-}
-</script>
 <title>편리가계부</title>
 </head>
 <body>
@@ -38,51 +31,52 @@ function checkfield(){
     </form:form>
 </div>
 <div id="joinform" title="회원가입" style="display:none">
-	<form:form name="joinform" action="${pageContext.request.contextPath }/join" method="post">
+	<form id="joinpost" name="joinform" action="${pageContext.request.contextPath}/join" method="post">
 		<h3><span class="label label-default">Account</span></h3>
-		<input type="id" id="id" class="form-control" placeholder="Email / Phone"><br/>
+		<input type="text" id="id" name="id" class="form-control" placeholder="Email / Phone" required><br/>
 		<button type="button" id="confirm" name="userRegBtn" class="btn btn-join">Confirm</button>
 		
 		<h3><span class="label label-default">Password</span></h3>
-		<input type="password" id="password" class="form-control" placeholder="Password" required><br/>
+		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required><br/>
 		
 		<h3><span class="label label-default">Password Confirm</span></h3>
 		<input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required><br/>
 		
 		<h3><span class="label label-default">Name</span></h3>
-		<input type="name" id="name" class="form-control" placeholder="Name" required><br/> 
+		<input type="text" id="name" name="name" class="form-control" placeholder="Name" required><br/>
 		
 		<h3><span class="label label-default">Gender</span></h3>
-		<input type="radio" name="gener" value="male" checked="checked" /> 
-		<span class="up">Male</span>&nbsp;&nbsp; <input type="radio"     name="gener" value="female"/> 
+		<input type="radio" name="gender" value="남자" checked="checked"/>
+		<span class="up">Male</span>&nbsp;&nbsp; <input type="radio" name="gender" value="여자"/> 
 		<span class="up">Female</span><br/><br/>
 
 		<h3><span class="label label-default">Birth</span></h3>
 		<div class="dropdown theme-dropdown clearfix">
-		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="year">
-				<option role="presentation"><a role="menuitem" tabindex="year" href="#">Year</a></option>
+		<select id="year" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="birthYear">
+				<option role="presentation" value="Year"><a role="menuitem" tabindex="0" href="#">Year</a></option>
 				<c:forEach begin="1970" end="2017" var="i">
-				<option role="presentation" value="${i }"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
+				<option role="presentation" value="${i}"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
 				</c:forEach>
 		</select>
-		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="month">
-				<option role="presentation"><a role="menuitem" tabindex="month" href="#">Month</a></option>
+		<select id="month" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="birthMonth">
+				<option role="presentation" value="Month"><a role="menuitem" tabindex="0" href="#">Month</a></option>
 				<c:forEach begin="1" end="12" var="i">
-				<option role="presentation" value="${i }"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
+				<option role="presentation" value="${i}"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
 				</c:forEach>
 		</select>
-		<select class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="day">
-				<option role="presentation"><a role="menuitem" tabindex="day" href="#">Day</a></option>
+		<select id="day" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="birthDay">
+				<option role="presentation" value="Day"><a role="menuitem" tabindex="0" href="#">Day</a></option>
 				<c:forEach begin="1" end="31" var="i">
-				<option role="presentation"  value="${i }"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
+				<option role="presentation"  value="${i}"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
 				</c:forEach>
 		</select>
 		</div>
-		<h3><span class="label label-default">Total</span></h3>
-		<input type="total" id="total" class="form-control" placeholder="Total"><br/><br/>
+		<h3><span class="label label-default">Total Money</span></h3>
+		<input type="text" id="total" name="total" class="form-control" placeholder="Total Money" required><br/><br/>
+		<input type="hidden" name="age" value="0"><input type="hidden" name="photo" value="">
 		
-		<input type="submit" id="create" name="create" value="Create"class="btn btn-join" >
-	</form:form>
+		<input type="submit" value="Create" class="btn btn-join">
+	</form>
 </div>
 </body>
 </html>

@@ -16,6 +16,8 @@ public class FrontService {
 	@Autowired
 	private FrontDao frontDao;
 	
+	Calendar calendar = Calendar.getInstance();
+	
 	public UserVo fblogin(Map<String, Object> map){
 		UserVo uservo = new UserVo();
 		if(map.get("email") != null){
@@ -43,7 +45,6 @@ public class FrontService {
 			String birth = map.get("birthday").toString();
 			Pattern p = Pattern.compile("(\\d{2})/(\\d{2})/(\\d{4})");
 			Matcher m = p.matcher(birth);
-			Calendar calendar = Calendar.getInstance();
 			if(m.find()){
 				uservo.setAge(calendar.getWeekYear()-Integer.parseInt(m.group(3))+1);
 			}
@@ -62,9 +63,14 @@ public class FrontService {
 	
 	public String checkId(Map<String, Object> map){
 		String id = frontDao.checkselect(map.get("id").toString());
-		if(id.isEmpty()){
+		if(id!=null){
 			return "fail";
 		}
 		return "success";
+	}
+	
+	public void join(UserVo uservo){
+		uservo.setAge(calendar.getWeekYear()-Integer.parseInt(uservo.getBirthYear())+1);
+		frontDao.insert(uservo);
 	}
 }

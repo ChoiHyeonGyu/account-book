@@ -20,5 +20,11 @@
 			select id from users where id = #{value}
 		]]>
 	</select>
+	
+	<insert id="insert" parameterType="uservo">
+		<![CDATA[
+			insert into users values(#{id}, #{password}, #{name}, #{gender}, #{age}, #{photo}, #{total})
+		]]>
+	</insert>
 
 </mapper>

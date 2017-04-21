@@ -2,8 +2,11 @@ package com.hipo.account_book.controller;
 
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,5 +42,12 @@ public class FrontController {
 			return JSONResult.fail("");
 		}
 		return JSONResult.success(frontService.checkId(map));
+	}
+	
+	@RequestMapping("/join")
+	public String join(@ModelAttribute @Valid UserVo uservo){
+		System.out.println("못 들어오냐?");
+		frontService.join(uservo);
+		return "redirect:/login";
 	}
 }

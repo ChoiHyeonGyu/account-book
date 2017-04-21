@@ -1,4 +1,6 @@
 $(function(){
+	var isOverlap = false;
+	var word = "";
 	
 	var loginform = $( "#loginform" ).dialog({
 		autoOpen: false,
@@ -31,12 +33,13 @@ $(function(){
 	});
 	
 	$("#confirm").click(function(){
-		var id = $("#id").val();
+		var obj = {id:$("#id").val()};
+		
 		$.ajax( {
-		    url : "/account-book/checkid?id="+id,
-		    type: "GET",
+		    url : "/account-book/checkid",
+		    type: "POST",
 		    dataType: "JSON",
-		    data: "",
+		    data: JSON.stringify(obj),
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
 		    	if(response.result == "fail"){
@@ -45,6 +48,7 @@ $(function(){
 			    }
 		    	if(response.result == "success"){
 		    		alert("사용하실 수 있는 ID입니다.");
+		    		isOverlap = true;
 			    	return;
 			    }
 		    },
@@ -54,44 +58,49 @@ $(function(){
 		});
 	});
 	
-	$("#create").click(function(event){
+	$("#joinpost").submit(function(){
 		/* 회원 가입 폼 유효성 검증(validation) */
 		
-		var id = $( "#id" ).val();
-		if( id == "" ) {
-			alert( "아이디가 비어 있습니다." );
-			$( "#id" ).focus();
-			return;
+		if(isOverlap==false){
+			alert("중복을 확인해주세요.");
+			$("#id").focus();
+			word = $("#id").val();
+			return false;
 		}
 		
-		var password = $( "#password" ).val();
-		if( password == "" ) {
-			alert( "비밀번호가 비어 있습니다." );
-			$( "#password" ).focus();
-			return;
-		}
-		
+		var password = $( "#password" ).val();		
 		var passwordConfirm = $( "#passwordConfirm" ).val();
 		if( passwordConfirm != password ) {
 			alert( "비밀번호가 다릅니다." );
 			$( "#passwordConfirm" ).focus();
-			return;
+			return false;
 		}
 		
-		var name = $( "#name" ).val();
-		if( name == "" ) {
-			alert( "이름이 비어 있습니다." );
-			$( "#name" ).focus();
-			return;
+		if($("#year option:selected").val() == "Year"){
+			alert("생년을 선택하세요.");
+			return false;
+		} else if($("#month option:selected").val() == "Month") {
+			alert("생월을 선택하세요.");
+			return false;
+		} else if($("#day option:selected").val() == "Day") {
+			alert("생일을 선택하세요.");
+			return false;
 		}
 		
-		var total = $( "#total" ).val();
-		if( total == "" ) {
-			alert( "총액이 비어있습니다." );
-			$( "#total" ).focus();
-			return;
+		if(String(Number($("#total").val())) == "NaN"){
+			alert("숫자로만 입력해주세요.");
+			$("#total").focus();
+			return false;
 		}
-		joinform.submit();
+		
+		if(word.val() != $("#id").val()){
+			alert("중복을 확인해주세요.");
+			$("#id").focus();
+			isOverlap = false;
+			return false;
+		}
+		isOverlap = false;
+		return true;
 	});
 	
 	$("#login").click(function(event){

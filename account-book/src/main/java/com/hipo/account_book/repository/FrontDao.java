@@ -22,4 +22,8 @@ public class FrontDao {
 	public String checkselect(String id){
 		return sqlSession.selectOne("user.checkselect", id);
 	}
+	
+	public void insert(UserVo uservo){
+		sqlSession.insert("user.insert", uservo);
+	}
 }
