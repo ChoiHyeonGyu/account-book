@@ -48,7 +48,7 @@
 	text-decoration: none;
 	cursor: pointer;
 }
-</style>
+</style> 
 </head>
 <body>
 	<!-- Trigger/Open The Modal -->
