@@ -4,16 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
 <title>편리가계부</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Creative - Start Bootstrap Theme</title>
-
     <!-- Bootstrap Core CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -27,13 +18,12 @@
 
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/creative.min.css" rel="stylesheet">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
+	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
 </head>
 <body id="page-top">
 
@@ -116,8 +106,12 @@
     <script src="${pageContext.request.contextPath}/assets/js/creative.min.js"></script>
     
     <c:import url="/WEB-INF/views/option.jsp"/>
+    
+    <div id="boardform" title="작성하기" style="display:none">
+		<form id="loginpost" method="post" action="${pageContext.request.contextPath}/connmain">
+    		<input type="text" id="inputEmail" name="id" class="form-control" placeholder="Email address" required>
+    		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    	</form>
+	</div>
 </body>
-<!--
-	<div class="div-bottom-right"><c:import url="/WEB-INF/views/board.jsp"/></div>
--->
 </html>
