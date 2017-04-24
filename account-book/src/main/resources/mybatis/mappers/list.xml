@@ -5,7 +5,7 @@
 
 	<select id="list" resultType="listvo">
 <![CDATA[
-select list_id as listId,id,paid,bank,operations,money,name,category,day,locationX,locationY from list where id = #{id}
+select list_id as listId,id,paid,bank,operations,money,name,category,DAY,locationX,locationY from list where id = #{id}
  ]]>
 	</select>
 	
@@ -17,27 +17,18 @@ delete from list where id = #{id} and list_Id = #{listId}
 ]]>
 
 	</delete>
-	
+	 
 	
 
 	<insert id="add" parameterType="listvo">
 	
 	<![CDATA[
 	
-INSERT INTO list 
-     VALUES (seq_list.NEXTVAL,
-             #{id},
-             #{paid},
-             #{bank},
-              #{operations},
-             #{money},
-             #{name},
-             #{category},
-             #{day})
-	
+	insert INTO list (LIST_ID, ID, PAID, BANK, OPERATIONS, MONEY, NAME, CATEGORY, DAY, LOCATIONX, LOCATIONY)
+values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},#{category},sysdate, #{locationX},#{locationY})
 	]]>
-	</insert>
-	<insert id="add1" parameterType="listvo">
+ 	</insert> 
+	<!--<insert id="add1" parameterType="listvo">
 	
 	<![CDATA[
 	
@@ -46,7 +37,7 @@ INSERT INTO listdate
              #{sysdate})
 							
 	]]>
-	</insert>
+	</insert> -->
 
 	<!-- <select id="getlistpost" resultType="postvo" parameterType="int"> <![CDATA[ 
 		select post_no as postNo ,title,content, reg_date as regDate, no from post 
