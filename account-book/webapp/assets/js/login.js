@@ -9,7 +9,7 @@ $(function(){
 		modal: true,
 		buttons: {
 			"로그인": function() {
-				//$( "#dialog-upload-form form" ).submit();
+				$("#loginpost").submit();
 				$( this ).dialog( "close" );
 			},
 			"ID/Password 찾기" : function() {
@@ -17,7 +17,7 @@ $(function(){
 			}
 		},
 		close: function() {
-				
+			
 		}
 	});
 	
@@ -76,7 +76,7 @@ $(function(){
 			return false;
 		}
 		
-		/*if($("#year option:selected").val() == "Year"){
+		if($("#year option:selected").val() == "Year"){
 			alert("생년을 선택하세요.");
 			return false;
 		} else if($("#month option:selected").val() == "Month") {
@@ -85,7 +85,7 @@ $(function(){
 		} else if($("#day option:selected").val() == "Day") {
 			alert("생일을 선택하세요.");
 			return false;
-		}*/
+		}
 		
 		if(String(Number($("#total").val())) == "NaN"){
 			alert("숫자로만 입력해주세요.");

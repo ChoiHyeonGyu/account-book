@@ -23,8 +23,14 @@
 	
 	<insert id="insert" parameterType="uservo">
 		<![CDATA[
-			insert into users values(#{id}, #{password}, #{name}, #{gender}, #{age}, #{photo}, #{total})
+			insert into users values(#{id}, #{password}, #{name}, #{gender}, #{age}, '', #{total})
 		]]>
 	</insert>
+	
+	<select id="login" parameterType="uservo" resultType="uservo">
+		<![CDATA[
+			select id, password from users where id = #{id} and password = #{password}
+		]]>
+	</select>
 
 </mapper>

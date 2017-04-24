@@ -1,16 +1,25 @@
 package com.hipo.account_book.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hipo.account_book.service.AndroidService;
 import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/android/{id}")
 public class AndroidController {
+
+	@Autowired
+	private AndroidService androidService;
 
 	@RequestMapping("/test")
 	public void test(@PathVariable String id) {
@@ -18,7 +27,7 @@ public class AndroidController {
 	}
 
 	@RequestMapping("/join")
-	public void getUserVo(HttpServletRequest request) {
+	public void joinUserVo(HttpServletRequest request) {
 		UserVo vo = null;
 		vo = new UserVo();
 		vo.setName(request.getParameter("name"));
@@ -30,6 +39,22 @@ public class AndroidController {
 
 		System.out.println(vo.toString());
 
+		androidService.join(vo);
+
+	}
+
+	@RequestMapping("/login")
+	@ResponseBody
+	public Map<String, String> loginUserVo(@PathVariable String id) {
+		UserVo vo = androidService.login(id);
+		System.out.println("login : " + vo.toString());
+		Map<String, String> userInfo = new HashMap<String, String>();
+		userInfo.put("name", vo.getName());
+		userInfo.put("id", vo.getId());
+		userInfo.put("gender", vo.getGender());
+		userInfo.put("age", String.valueOf(vo.getAge()));
+
+		return userInfo;
 	}
 
 }

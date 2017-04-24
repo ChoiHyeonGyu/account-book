@@ -182,34 +182,6 @@
 				</table>
 			</div>
 		</div>
-		<div class="col-lg-6 col-md-6 text-center syd1">
-			<div class="service-box">
-				<table border='1' class="syd2">
-					<tr bgcolor='#33ffff'>
-						<td>결제수단</td>
-						<td>금액</td>
-						<td>상호명</td>
-						<td>카테고리</td>
-						<td>날짜</td>
-					</tr>
-					<tr>
-						<td>card</td>
-						<td>20000</td>
-						<td>고깃집</td>
-						<td>생활비</td>
-						<td>날짜</td>
-					</tr>
-					<tr>
-						<td>card</td>
-						<td>20000</td>
-						<td>고깃집</td>
-						<td>생활비</td>
-						<td>날짜</td>
-					</tr>
-				</table>
-			</div>
-		</div>
+		<c:import url="/WEB-INF/views/board.jsp"/>
 	</div>
-
-
 </section>

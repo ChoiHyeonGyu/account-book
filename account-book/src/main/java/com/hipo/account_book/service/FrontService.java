@@ -73,4 +73,8 @@ public class FrontService {
 		uservo.setAge(calendar.getWeekYear()-uservo.getBirthYear()+1);
 		frontDao.insert(uservo);
 	}
+	
+	public UserVo connmain(UserVo uservo){
+		return frontDao.login(uservo);
+	}
 }

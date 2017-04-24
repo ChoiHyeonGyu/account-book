@@ -1,4 +1,4 @@
-<%@ page isELIgnored="false" language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,13 +22,12 @@
 <form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
 	<input type="hidden" id="fbhidden" name="fbhidden" value="">
 </form>
-<button type="button" class="btn btn-lg btn-default">XX와 연동하여 로그인</button><br/>
 <button id="join" type="button" class="btn btn-lg btn-default">Join</button><br/>
 <div id="loginform" title="로그인" style="display:none">
-	<form:form method="post">
-    	<input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-    	<input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-    </form:form>
+	<form id="loginpost" method="post" action="${pageContext.request.contextPath}/connmain">
+    	<input type="text" id="inputEmail" name="id" class="form-control" placeholder="Email address" required>
+    	<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+    </form>
 </div>
 <div id="joinform" title="회원가입" style="display:none">
 	<form id="joinpost" name="joinform" action="${pageContext.request.contextPath}/join" method="post">
@@ -74,15 +73,16 @@
 		
 		<h3><span class="label label-default">Total Money</span></h3>
 		<input type="text" id="total" name="total" class="form-control" placeholder="Total Money" required><br/><br/>
-		<input type="hidden" name="age" value="0"><input type="hidden" name="photo" value="">
 		
 		<input type="submit" value="Create" class="btn btn-join">
 	</form>
 </div>
 <p style="font-weight:bold; text-align:center; padding:5px 0 5px 0; color:red">
-${result}
-	<c:if test="">
+	<c:if test="${result != error}">
 		회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.
+	</c:if>
+	<c:if test="${res != ult}">
+		로그인에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.
 	</c:if>
 </p>
 </body>
