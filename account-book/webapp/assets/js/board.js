@@ -1,8 +1,8 @@
 $(function(){
 	var boardform = $("#boardform").dialog({
 		autoOpen: false,
-		height: 230,
-		width: 265,
+		height: 660,
+		width: 500,
 		modal: true,
 		buttons: {
 			"작성하기": function() {
