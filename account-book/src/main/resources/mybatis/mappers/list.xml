@@ -28,6 +28,15 @@ delete from list where id = #{id} and list_Id = #{listId}
 values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},#{category},sysdate, #{locationX},#{locationY})
 	]]>
  	</insert> 
+ 	
+ 	<update id="modify" parameterType="listvo">
+ 	<![CDATA[
+ 	update list set paid=#{paid},
+ 	bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category} where id=#{id} and list_Id=#{listId}
+ 	]]>
+ 	</update>
+ 	
+ 	
 	<!--<insert id="add1" parameterType="listvo">
 	
 	<![CDATA[

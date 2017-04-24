@@ -32,4 +32,9 @@ public class ListService {
 		return null;
 	}
 
+	public boolean modify(ListVo vo) {
+		return  dao.modify(vo);
+		
+	} 
+
 }

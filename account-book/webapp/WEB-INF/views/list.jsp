@@ -10,7 +10,7 @@
 				<!DOCTYPE html>
 				<html>
 <head>
-<style>
+ <style>
 /* The Modal (background) */
 .modal {
 	display: none; /* Hidden by default */
@@ -47,12 +47,12 @@
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
-}
+} 
 </style> 
 </head>
 <body>
 	<!-- Trigger/Open The Modal -->
-	<button id="myBtn">추가하기</button>
+	<button id="myBtn">추가하기</button> 
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -61,7 +61,7 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<p>
-			<div id="listadd" title="추가하기" style="">
+			<div id="listadd1" title="추가하기" style="" >
 				<form name="listadd" var="vo" items="${list}" varStatus="status"
 					action="${pageContext.request.contextPath }/{id}/add?locationX=o&locationY=o&id=1" method="post">
 						<%-- <input type='hidden' name="id" value="${id}"> --%>
@@ -81,7 +81,7 @@
 						<span class="label label-default">+/-</span>
 					</h3>
 					<input type="text" name="operations" class="form-control"
-						placeholder="+/-" value=""><br />
+						placeholder="저금/지출" value=""><br />
 
 					<h3>
 						<span class="label label-default">금액</span>
@@ -107,7 +107,7 @@
 					<input type="text" name="day" class="form-control"
 						placeholder="day" value=""><br /> --> <input type="submit"
 						id="submitbt" name="submitbt" class="btn btn-join" value="확인">
-					<input type=button name="reset"value="취소" OnClick="javascript:history.back(-1)" class="btn btn-join">
+					<input type="reset" name="reset"value="취소"  OnClick="javascript:history.back(-1)" class="btn btn-join">
 				</form> 
 				<p>
 			</div>
@@ -167,12 +167,12 @@
 							<td>${vo.paid}</td>
 							<td>${vo.bank}</td>
 							<td>${vo.operations}</td>
-							<td>${vo.money}</td>
+							<td><a href="${pageContext.request.contextPath}/${id}/modify?listId=${vo.listId}&id=${vo.id}">${vo.money}</a></td>
 							<td>${vo.name}</td>
 							<td>${vo.category}</td>
 							<td>${vo.day}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/{id}/listdelete?id=${vo.id}&listId=${vo.listId}"><img
+								href="${pageContext.request.contextPath}/${id}/listdelete?id=${vo.id}&listId=${vo.listId}"><img
 									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
 							<td><a href="${pageContext.request.contextPath}">ㄱㄱ</a></td>
 						</tr>
