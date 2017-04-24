@@ -4,11 +4,20 @@
 	<typeAliases>
 		<typeAlias alias="listvo" type="com.hipo.account_book.vo.ListVo" />
 		<typeAlias alias="uservo" type="com.hipo.account_book.vo.UserVo" />
+<<<<<<< HEAD
 		<typeAlias alias="optionvo" type="com.hipo.account_book.vo.OptionVo" />
+=======
+		
+>>>>>>> branch 'master' of https://github.com/ChoiHyeonGyu/account-book.git
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/front.xml" />
 		<mapper resource="mybatis/mappers/list.xml" />
+<<<<<<< HEAD
 		<mapper resource="mybatis/mappers/option.xml" />
+=======
+		<mapper resource="mybatis/mappers/android.xml" />
+		
+>>>>>>> branch 'master' of https://github.com/ChoiHyeonGyu/account-book.git
 	</mappers>
 </configuration>
