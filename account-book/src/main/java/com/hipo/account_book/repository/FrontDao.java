@@ -26,4 +26,8 @@ public class FrontDao {
 	public void insert(UserVo uservo){
 		sqlSession.insert("user.insert", uservo);
 	}
+	
+	public UserVo login(UserVo uservo){
+		return sqlSession.selectOne("user.login", uservo);
+	}
 }
