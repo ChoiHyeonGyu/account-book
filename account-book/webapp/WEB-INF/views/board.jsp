@@ -31,3 +31,10 @@
 	    </table>
 	</div>
 </div>
+
+<div id="boardform" title="작성하기" style="display:none">
+	<form id="loginpost" method="post" action="${pageContext.request.contextPath}/connmain">
+   		<input type="text" id="inputEmail" name="id" class="form-control" placeholder="Email address" required>
+   		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
+   	</form>
+</div>

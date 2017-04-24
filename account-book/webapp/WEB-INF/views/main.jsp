@@ -19,8 +19,10 @@
     <!-- Theme CSS -->
     <link href="${pageContext.request.contextPath}/assets/css/creative.min.css" rel="stylesheet">
     
+    <!-- jQuery -->
+    <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-    <script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
 	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
@@ -90,12 +92,11 @@
     </aside>
 
     <c:import url="/WEB-INF/views/graph_avg.jsp"/>
-
-    <!-- jQuery -->
-    <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
+    
+    <c:import url="/WEB-INF/views/option.jsp"/>
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="${pageContext.request.contextPath}/assets/css/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
@@ -104,14 +105,5 @@
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/js/creative.min.js"></script>
-    
-    <c:import url="/WEB-INF/views/option.jsp"/>
-    
-    <div id="boardform" title="작성하기" style="display:none">
-		<form id="loginpost" method="post" action="${pageContext.request.contextPath}/connmain">
-    		<input type="text" id="inputEmail" name="id" class="form-control" placeholder="Email address" required>
-    		<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    	</form>
-	</div>
 </body>
 </html>
