@@ -40,7 +40,8 @@ public class ListController {
 	}
 	@RequestMapping("/modify")
 	public String modify(@ModelAttribute ListVo vo,@PathVariable String id){
-		
-		return null;
+		System.out.println("고치는 부분 입니다.무엇을 가지고 오나요" + vo);
+		service.modify(vo);
+		return null; 
 	}
 }

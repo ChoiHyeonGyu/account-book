@@ -4,12 +4,13 @@
 	<typeAliases>
 		<typeAlias alias="listvo" type="com.hipo.account_book.vo.ListVo" />
 		<typeAlias alias="uservo" type="com.hipo.account_book.vo.UserVo" />
+		<typeAlias alias="optionvo" type="com.hipo.account_book.vo.OptionVo" />
 		
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/front.xml" />
 		<mapper resource="mybatis/mappers/list.xml" />
+		<mapper resource="mybatis/mappers/option.xml" />
 		<mapper resource="mybatis/mappers/android.xml" />
-		
 	</mappers>
 </configuration>

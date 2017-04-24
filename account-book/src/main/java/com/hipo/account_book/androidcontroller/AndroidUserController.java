@@ -1,4 +1,4 @@
-package com.hipo.account_book.controller;
+package com.hipo.account_book.androidcontroller;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +16,7 @@ import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/android/{id}")
-public class AndroidController {
+public class AndroidUserController {
 
 	@Autowired
 	private AndroidService androidService;

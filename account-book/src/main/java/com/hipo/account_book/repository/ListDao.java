@@ -22,7 +22,7 @@ private SqlSession sql;
 
 	public boolean delete(ListVo vo) {
 		 sql.delete("listview.delete",vo);
-		return false;
+		 return false;
 	}
 
 
@@ -30,6 +30,12 @@ private SqlSession sql;
 		System.out.println("제발 형님 가지고 오시나요" + vo);
 		return sql.insert("listview.add",vo);
 		 
+	}
+
+
+	public boolean modify(ListVo vo) {
+		sql.update("listview.modify",vo);
+		return false;
 	}
 
 }
