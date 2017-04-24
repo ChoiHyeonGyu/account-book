@@ -66,6 +66,6 @@ public class FrontController {
 			model.addAttribute("ult", uservo2);
 			return "login";
 		}
-		return "main";
+		return "redirect:/"+uservo.getId()+"/main";
 	}
 }

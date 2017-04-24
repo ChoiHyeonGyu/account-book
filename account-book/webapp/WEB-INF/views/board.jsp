@@ -34,10 +34,10 @@
 </div>
 
 <div id="boardform" title="작성하기" style="display:none">
-	<form id="loginpost" method="post" action="${pageContext.request.contextPath}/" enctype="multipart/form-data">
+	<form id="boardpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardadd" enctype="multipart/form-data">
    		<h3><span class="label label-primary">결산월</span></h3>
    		<div class="dropdown theme-dropdown clearfix">
-	   		<select class="dropdown-menu">
+	   		<select class="dropdown-menu" name="month">
 	   			<c:forEach begin="2017" end="2018" var="i">
 	   				<c:forEach begin="1" end="12" var="j" >
 	   					<c:choose>
@@ -49,10 +49,10 @@
 	   		</select>
       	</div>
       	<h3><span class="label label-primary">제목</span></h3>
-      	<input type="text" class="form-control" placeholder="Title" required>
+      	<input type="text" name="title" class="form-control" placeholder="Title" required>
       	<h3><span class="label label-primary">내용</span></h3>
-      	<textarea rows="10" cols="64"></textarea>
+      	<textarea rows="10" cols="64" name="content"></textarea>
       	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
-      	<input type="file" multiple="multiple">
+      	<input type="file" name="file" multiple="multiple">
    	</form>
 </div>

@@ -63,6 +63,30 @@ INSERT INTO listdate
 		select c.id,a.list_id as listId ,a.paid, a.money, a.name,a.category, sysdate 
 		as dat from list a, LISTdate b , users c where a.LIST_ID = b.LIST_ID and 
 		a.ID = c.ID -->
+	
+	<select id="usernameselect" parameterType="string" resultType="string">
+		<![CDATA[
+			select name from users where id = #{value}
+		]]>
+	</select>
+	
+	<insert id="boardinsert" parameterType="boardvo">
+		<![CDATA[
+			insert into board values(seq_board.nextval, #{id}, #{month}, #{title}, #{content}, #{name}, sysdate, 0, 0, #{photo}, '')
+		]]>
+	</insert>
+	
+	<select id="boardidselect" parameterType="boardvo" resultType="int">
+		<![CDATA[
+			select board_id from users where id = #{id} and month = #{month} and title = #{title} and content = #{content}
+		]]>
+	</select>
+	
+	<insert id="imageinsert" parameterType="boardvo">
+		<![CDATA[
+			insert into picture values(#{photo}, #{boardId})
+		]]>
+	</insert>
 </mapper>
 
 	
