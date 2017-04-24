@@ -24,6 +24,7 @@ public class ListController {
 	@RequestMapping("/main")
 	public String List(Model model ,@ModelAttribute ListVo vo) {
 		List<ListVo> list = service.getList(vo);
+		model.addAttribute("board", service.showboard());
 		model.addAttribute("list", list);
 		return "main";
 	}

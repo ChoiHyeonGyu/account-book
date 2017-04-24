@@ -72,13 +72,13 @@ INSERT INTO listdate
 	
 	<insert id="boardinsert" parameterType="boardvo">
 		<![CDATA[
-			insert into board values(seq_board.nextval, #{id}, #{month}, #{title}, #{content}, #{name}, sysdate, 0, 0, #{photo}, '')
+			insert into board values(seq_board.nextval, #{id}, #{month}, #{title}, #{content}, #{name}, sysdate, 0, 0, '')
 		]]>
 	</insert>
 	
 	<select id="boardidselect" parameterType="boardvo" resultType="int">
 		<![CDATA[
-			select board_id from users where id = #{id} and month = #{month} and title = #{title} and content = #{content}
+			select board_id from board where id = #{id} and month = #{month} and title = #{title} and content = #{content}
 		]]>
 	</select>
 	
@@ -87,6 +87,12 @@ INSERT INTO listdate
 			insert into picture values(#{photo}, #{boardId})
 		]]>
 	</insert>
+	
+	<select id="boardselect" resultType="boardvo">
+		<![CDATA[
+			select board_id as boardId, comment_id as commentId, board.* from board
+		]]>
+	</select>
 </mapper>
 
 	

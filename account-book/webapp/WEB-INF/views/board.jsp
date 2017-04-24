@@ -20,14 +20,16 @@
 	        </tr>
 	      </thead>
 	      <tbody>
-	        <tr>
-	          <td>1</td>
-	          <td>Mark</td>
-	          <td>Otto</td>
-	          <td>@mdo</td>
-	          <td>Otto</td>
-	          <td>@mdo</td>
-	        </tr>
+	      	<c:forEach var="board" items="${board}">
+		        <tr>
+		          <td>${board.month}</td>
+		          <td>${board.title}</td>
+		          <td>${board.name}</td>
+		          <td>${board.day}</td>
+		          <td>${board.good}</td>
+		          <td>${board.hit}</td>
+		        </tr>
+	     	</c:forEach>
 	      </tbody>
 	    </table>
 	</div>

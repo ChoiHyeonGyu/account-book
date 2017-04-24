@@ -54,5 +54,9 @@ private SqlSession sql;
 	public void imagesave(BoardVo boardvo){
 		sql.insert("listview.imageinsert", boardvo);
 	}
+	
+	public List<BoardVo> boardselect(){
+		return sql.selectList("listview.boardselect");
+	}
 
 }

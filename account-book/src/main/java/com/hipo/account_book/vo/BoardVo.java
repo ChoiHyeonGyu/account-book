@@ -9,6 +9,8 @@ public class BoardVo {
 	private String name;
 	private String day;
 	private String photo;
+	private int good;
+	private int hit;
 	private int commentId;
 	
 	public int getBoardId() {
@@ -58,6 +60,18 @@ public class BoardVo {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public int getGood() {
+		return good;
+	}
+	public void setGood(int good) {
+		this.good = good;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
 	}
 	public int getCommentId() {
 		return commentId;

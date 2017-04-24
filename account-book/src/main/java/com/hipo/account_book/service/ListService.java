@@ -94,5 +94,9 @@ public class ListService {
 		fos.write(data);
 		fos.close();
 	}
+	
+	public List<BoardVo> showboard(){
+		return dao.boardselect();
+	}
 
 }
