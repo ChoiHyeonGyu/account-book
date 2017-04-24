@@ -51,9 +51,21 @@ public class FrontController {
 	public String join(@ModelAttribute @Valid UserVo uservo, BindingResult result, Model model){
 		if (result.hasErrors()) {
 			model.addAttribute("result", result.getModel());
-			return "redirect:/login";
+			model.addAttribute("error", result.getAllErrors());
+			return "login";
 		}
 		frontService.join(uservo);
 		return "redirect:/login";
+	}
+	
+	@RequestMapping("/connmain")
+	public String connmain(@ModelAttribute UserVo uservo, Model model){
+		UserVo uservo2 = frontService.connmain(uservo);
+		if(uservo2==null){
+			model.addAttribute("res", uservo);
+			model.addAttribute("ult", uservo2);
+			return "login";
+		}
+		return "main";
 	}
 }
