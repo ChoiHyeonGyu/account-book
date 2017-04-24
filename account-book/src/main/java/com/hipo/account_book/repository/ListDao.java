@@ -13,7 +13,7 @@ public class ListDao {
 private SqlSession sql;
 
 	public List<ListVo> list(ListVo vo) {
-		System.out.println("아이디 ! 불러옵니다" + vo);
+		System.out.println(" 다오 !!!!!!아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = sql.selectList("listview.list",vo); 
 		System.out.println("리스트 불러옵니까????" + list);
 		return list;
@@ -26,9 +26,10 @@ private SqlSession sql;
 	}
 
 
-	public boolean add(ListVo vo) {
-		sql.insert("listview.add",vo);
-		return false;
+	public int add(ListVo vo) {
+		System.out.println("제발 형님 가지고 오시나요" + vo);
+		return sql.insert("listview.add",vo);
+		 
 	}
 
 }

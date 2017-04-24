@@ -26,10 +26,10 @@ public class ListService {
 		
 	}
 
-	public boolean add(ListVo vo) {
+	public String add(ListVo vo) {
 		System.out.println("서비스 보 다가지고 오냐??????????" + vo);
-		return dao.add(vo);
-		
+		int list = dao.add(vo);
+		return null;
 	}
 
 }

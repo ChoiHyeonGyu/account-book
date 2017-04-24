@@ -48,7 +48,7 @@
 	text-decoration: none;
 	cursor: pointer;
 }
-</style>
+</style> 
 </head>
 <body>
 	<!-- Trigger/Open The Modal -->
@@ -61,9 +61,10 @@
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<p>
-			<div id="listadd" title="추가하기" style="display:">
-				<form name="listadd" var="vo" items="${list}" varStatus="status
-					action="${pageContext.request.contextPath }/{id}/add?id=${vo.id}" method="post">
+			<div id="listadd" title="추가하기" style="">
+				<form name="listadd" var="vo" items="${list}" varStatus="status"
+					action="${pageContext.request.contextPath }/{id}/add?locationX=o&locationY=o&id=1" method="post">
+						<%-- <input type='hidden' name="id" value="${id}"> --%>
 					<h3>
 						<span class="label label-default">결제 수단</span>
 					</h3>
@@ -100,15 +101,14 @@
 					<input type="text" name="category" class="form-control"
 						placeholder="category" value=""><br />
 
-					<h3>
+					<!--  <h3>
 						<span class="label label-default">날짜</span>
-					</h3>
+					</h3> 
 					<input type="text" name="day" class="form-control"
-						placeholder="day" value=""><br /> <input type="submit"
+						placeholder="day" value=""><br /> --> <input type="submit"
 						id="submitbt" name="submitbt" class="btn btn-join" value="확인">
-					<input type="reset" id="resetbt" name="userRegBtn"
-						class="btn btn-join" value="취소">
-				</form>
+					<input type=button name="reset"value="취소" OnClick="javascript:history.back(-1)" class="btn btn-join">
+				</form> 
 				<p>
 			</div>
 		</div>
