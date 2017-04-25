@@ -27,14 +27,26 @@ public class MainController {
 		return "redirect:/"+id+"/main";
 	}
 	
-	@RequestMapping(value="/categoryadd", method=RequestMethod.POST)
-	public String option(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @ModelAttribute UserVo uservo){
+	@RequestMapping(value="/categoryAdd", method=RequestMethod.POST)
+	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @ModelAttribute UserVo uservo){
 		if (result.hasErrors()) {
 			model.addAttribute("result", result.getModel());
 			model.addAttribute("error", result.getAllErrors());
 			return "main";
 		}
 		optionService.Add(optionvo);
+		return "redirect:/"+uservo.getId()+"/main";
+	}
+	
+	@RequestMapping("/categoryModify")
+	public String categoryModify(@ModelAttribute OptionVo optionvo, BindingResult result, Model model, @ModelAttribute UserVo uservo){
+		System.out.println("ddddd"+optionvo);
+		if (result.hasErrors()) {
+			model.addAttribute("result", result.getModel());
+			model.addAttribute("error", result.getAllErrors());
+			return "main";
+		}
+		optionService.Update(optionvo);
 		return "redirect:/"+uservo.getId()+"/main";
 	}
 }

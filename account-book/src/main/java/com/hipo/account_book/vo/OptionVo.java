@@ -2,14 +2,14 @@ package com.hipo.account_book.vo;
 
 public class OptionVo {
 
-	private int category_id;
+	private int categoryId;
 	private String category;
 	
 	public int getCategoryId() {
-		return category_id;
+		return categoryId;
 	}
-	public void setCategeoryId(int category_id) {
-		this.category_id = category_id;
+	public void setCategeoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 	
 	public String getCategory() {

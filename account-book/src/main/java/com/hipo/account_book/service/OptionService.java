@@ -19,8 +19,11 @@ public class OptionService {
 		optionDao.add(optionvo);
 	}
 	
+	public void Update(OptionVo optionvo){
+		optionDao.update(optionvo);
+	}
+	
 	public List<OptionVo> getCategory(OptionVo vo) {
-		
 		List<OptionVo> option = optionDao.category(vo);
 		return option;
 	}

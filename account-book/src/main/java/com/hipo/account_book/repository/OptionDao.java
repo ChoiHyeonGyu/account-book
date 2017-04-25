@@ -19,6 +19,11 @@ public class OptionDao {
 		return false;
 	}
 	
+	public boolean update(OptionVo vo) {
+		sql.update("option.update",vo);
+		return false;
+	}
+	
 	public List<OptionVo> category(OptionVo vo) {
 		List<OptionVo> category = sql.selectList("option.category",vo);
 		return category;
