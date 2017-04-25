@@ -1,6 +1,6 @@
 $(function(){
-	var isOverlap = false;
-	var word = "";
+	var isOverlap = false;//?
+	var word = "";//??
 	
 	var loginform = $( "#loginform" ).dialog({
 		autoOpen: false,
@@ -21,7 +21,7 @@ $(function(){
 		}
 	});
 	
-	var joinform = $( "#joinform" ).dialog({
+	var joinform = $( "#joinform" ).dialog({// dialog가 뭐지
 		autoOpen: false,
 		height: 930,
 		width: 600,
@@ -33,7 +33,7 @@ $(function(){
 	});
 	
 	$("#confirm").click(function(){
-		var obj = {id:$("#id").val()};
+		var obj = {id:$("#id").val()};//??이게 뭐냐 val()입력값 가져오기
 		
 		$.ajax( {
 		    url : "/account-book/checkid",
@@ -42,13 +42,13 @@ $(function(){
 		    data: JSON.stringify(obj),
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
-		    	if(response.result == "fail"){
+		    	if(response.result == "fail"){// result ???? 어디서 정보를 가져오는지
 		    		alert("이미 있는 ID입니다.");
 			    	return;
 			    }
-		    	if(response.result == "success"){
+		    	if(response.result == "success"){// that too
 		    		alert("사용하실 수 있는 ID입니다.");
-		    		isOverlap = true;
+		    		isOverlap = true;				//??overlap??
 			    	return;
 			    }
 		    },
@@ -68,11 +68,11 @@ $(function(){
 			return false;
 		}
 		
-		var password = $( "#password" ).val();		
+		var password = $( "#password" ).val();		//? val 의미
 		var passwordConfirm = $( "#passwordConfirm" ).val();
 		if( passwordConfirm != password ) {
 			alert( "비밀번호가 다릅니다." );
-			$( "#passwordConfirm" ).focus();
+			$( "#passwordConfirm" ).focus();//focus??
 			return false;
 		}
 		
@@ -95,12 +95,12 @@ $(function(){
 		
 		if(word.val() != $("#id").val()){
 			alert("중복을 확인해주세요.");
-			$("#id").focus();
-			isOverlap = false;
+			$("#id").focus();// focus 커서
+			isOverlap = false;//??????
 			return false;
 		}
 		isOverlap = false;
-		$("#total").val(Number($("#total").val()));
+		$("#total").val(Number($("#total").val()));//????????
 		return true;
 	});
 	

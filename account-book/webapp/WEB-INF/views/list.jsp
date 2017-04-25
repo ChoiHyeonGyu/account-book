@@ -54,95 +54,96 @@
 	<!-- Trigger/Open The Modal -->
 	<button id="myBtn">추가하기</button> 
 
-	<!-- The Modal -->
-	<div id="myModal" class="modal">
-
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<p>
-			<div id="listadd1" title="추가하기" style="" >
-				<form name="listadd" var="vo" items="${list}" varStatus="status"
-					action="${pageContext.request.contextPath }/{id}/add?locationX=o&locationY=o&id=1" method="post">
-						<%-- <input type='hidden' name="id" value="${id}"> --%>
+ 			<p>
+			<div id="listadd" title="추가하기" style="display:none" >
+				<form id="commit" name="listadd"  var="vo" items="${list}" varStatus="status" 
+					action="${pageContext.request.contextPath }/${currentuserid}/add?locationX=o&locationY=o" method="post">
+						 <input type='hidden' name="id" value="${currentuserid}"> 
 					<h3>
 						<span class="label label-default">결제 수단</span>
 					</h3>
 					<input type="text" class="form-control" name="paid"
-						placeholder="card / cash" value=""><br />
+						placeholder="card / cash" value="" required><br />
 
 					<h3>
 						<span class="label label-default">은행</span>
 					</h3>
 					<input type="text" name="bank" class="form-control"
-						placeholder="bank" value=""><br />
+						placeholder="bank" value="" required><br />
 
 					<h3>
 						<span class="label label-default">+/-</span>
 					</h3>
 					<input type="text" name="operations" class="form-control"
-						placeholder="저금/지출" value=""><br />
+						placeholder="저금/지출" value="" required><br />
 
 					<h3>
 						<span class="label label-default">금액</span>
 					</h3>
 					<input type="text" name="money" class="form-control"
-						placeholder="money" value=""><br />
+						placeholder="money" value="" required><br />
 
 					<h3>
 						<span class="label label-default">상호명</span>
 					</h3>
 					<input type="text" name="name" class="form-control"
-						placeholder="name" value=""><br />
+						placeholder="name" value="" required><br />
 
 					<h3>
 						<span class="label label-default">카테고리</span>
 					</h3>
 					<input type="text" name="category" class="form-control"
-						placeholder="category" value=""><br />
+						placeholder="category" value="" required><br />
 
-					<!--  <h3>
-						<span class="label label-default">날짜</span>
-					</h3> 
-					<input type="text" name="day" class="form-control"
-						placeholder="day" value=""><br /> --> <input type="submit"
-						id="submitbt" name="submitbt" class="btn btn-join" value="확인">
-					<input type="reset" name="reset"value="취소"  OnClick="javascript:history.back(-1)" class="btn btn-join">
 				</form> 
-				<p>
-			</div>
-		</div>
+				</div>
+			 </p>
+			
+	
+<p>
+			<div id="modify" title="수정하기" style="display:none" >
+				<form id="modify1" name="listadd1"  var="vo" items="${list}" varStatus="status" 
+					action="${pageContext.request.contextPath }/${currentuserid}/modify?listId=${vo.listId}&locationX=0&locationY=0" method="post">
+						 <input type='hidden' name="id" value="${currentuserid}"> 
+					<h3>
+						<span class="label label-default">결제 수단</span>
+					</h3>
+					<input type="text" class="form-control" name="paid"
+						placeholder="card / cash" value="" required><br />
 
-	</div>
+					<h3>
+						<span class="label label-default">은행</span>
+					</h3>
+					<input type="text" name="bank" class="form-control"
+						placeholder="bank" value="" required><br />
 
-	<script>
-		// Get the modal
-		var modal = document.getElementById('myModal');
+					<h3>
+						<span class="label label-default">+/-</span>
+					</h3>
+					<input type="text" name="operations" class="form-control"
+						placeholder="저금/지출" value="" required><br />
 
-		// Get the button that opens the modal
-		var btn = document.getElementById("myBtn");
+					<h3>
+						<span class="label label-default">금액</span>
+					</h3>
+					<input type="text" name="money" class="form-control"
+						placeholder="money" value="" required><br />
 
-		// Get the <span> element that closes the modal
-		var span = document.getElementsByClassName("close")[0];
+					<h3>
+						<span class="label label-default">물건이름</span>
+					</h3>
+					<input type="text" name="name" class="form-control"
+						placeholder="name" value="" required><br />
 
-		// When the user clicks the button, open the modal 
-		btn.onclick = function() {
-			modal.style.display = "block";
-		}
+					<h3>
+						<span class="label label-default">카테고리</span>
+					</h3>
+					<input type="text" name="category" class="form-control"
+						placeholder="category" value="" required><br />
 
-		// When the user clicks on <span> (x), close the modal
-		span.onclick = function() {
-			modal.style.display = "none";
-		}
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function(event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
-			}
-		}
-	</script>
-
+				</form> 
+				</div>
+			 </p>
 </body>
 				</html>
 				<table border='1' class="syd2">
@@ -162,25 +163,29 @@
 					</tr>
 
 					<c:forEach var="vo" items="${list}" varStatus="status">
+						<script>
+							listarray.push("${vo.listId}");
+	      				</script>
 						<tr>
 							<td>${vo.listId}</td>
 							<td>${vo.paid}</td>
 							<td>${vo.bank}</td>
 							<td>${vo.operations}</td>
-							<td><a href="${pageContext.request.contextPath}/${id}/modify?listId=${vo.listId}&id=${vo.id}">${vo.money}</a></td>
+							<td><button id="myBtn1">${vo.money}</button></td>
 							<td>${vo.name}</td>
 							<td>${vo.category}</td>
 							<td>${vo.day}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/${id}/listdelete?id=${vo.id}&listId=${vo.listId}"><img
+								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-							<td><a href="${pageContext.request.contextPath}">ㄱㄱ</a></td>
+							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
 					</c:forEach>
 
 
 				</table>
 			</div>
+			
 		</div>
 		<c:import url="/WEB-INF/views/board.jsp"/>
 	</div>

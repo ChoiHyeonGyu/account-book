@@ -1,16 +1,19 @@
+var listarray = [];
+
 $(function(){
 	
-	var loginform = $( "#listadd" ).dialog({
+	var myBtnform = $( "#listadd" ).dialog({
 		autoOpen: false,
-		height: 230,
-		width: 265,
-		modal: true,
+		height: 800,
+		width: 600,
+		modal: false,
 		buttons: {
-			"로그인": function() {
+			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
+				$("#commit").submit();
 				$( this ).dialog( "close" );
 			},
-			"ID/Password 찾기" : function() {
+			"취소" : function() {
 				$( this ).dialog( "close" );
 			}
 		},
@@ -19,18 +22,52 @@ $(function(){
 		}
 	});
 	
-	var joinform = $( "#joinform" ).dialog({
-		autoOpen: false,
-		height: 930,
-		width: 600,
-		modal: true,
+	$(function(){
+		
+		var myBtnform1 = $("#modify").dialog({
+			autoOpen: false,
+			height: 800,
+			width: 600,
+			modal: false,
+			buttons: {
+				"확인": function() {
+					//$( "#dialog-upload-form form" ).submit();
+					$("#modify1").submit();
+					$( this ).dialog( "close" );
+				},
+				"취소" : function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+					
+			}
+		});
 	
-		close: function() {
-				
-		}
-	});
+	$(function(){
+		
+		var mm1 = $( "#modify" ).dialog({
+			autoOpen: false,
+			height: 800,
+			width: 600,
+			modal: false,
+			buttons: {
+				"확인": function() {
+					//$( "#dialog-upload-form form" ).submit();
+					$("#modify1").submit();
+					$( this ).dialog( "close" );
+				},
+				"취소" : function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+					
+			}
+		});
 	
-	$("#confirm").click(function(){
+	
+	/*$("#confirm").click(function(){
 		var id = $("#id").val();
 		$.ajax( {
 		    url : "/account-book/checkid?id="+id,
@@ -55,7 +92,7 @@ $(function(){
 	});
 	
 	$("#create").click(function(event){
-		/* 회원 가입 폼 유효성 검증(validation) */
+		 회원 가입 폼 유효성 검증(validation) 
 		
 		var id = $( "#id" ).val();
 		if( id == "" ) {
@@ -92,15 +129,40 @@ $(function(){
 			return;
 		}
 		joinform.submit();
+	});*/
+	
+	$("#myBtn").click(function(event){
+		event.preventDefault();
+		myBtnform.dialog("open");
+	});
+	$("#myBtn1").click(function(event){
+		event.preventDefault();
+		myBtnform1.dialog("open");
 	});
 	
-	$("#login").click(function(event){
-		event.preventDefault();
-		loginform.dialog("open");
-	});
-	
-	$("#join").click(function(event){
-		event.preventDefault();
-		joinform.dialog("open");
+	for(var i=0; i<listarray.length; i++){
+		var num = listarray[i];
+		$("#"+listarray[i]).click(function(num){
+			mm1.dialog("open");
+			
+			var listid = {"listid":num.target.id};
+			
+			$.ajax( {
+			    url : "/account-book/"+currentid+"/modify",
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(listid),
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){
+			    	console.log(response);
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+			}
+		});
 	});
 });
+	
