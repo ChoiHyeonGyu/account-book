@@ -61,16 +61,15 @@ $(function(){
 			    	$("#contentmonth").text(response.data["0"].month);
 			    	$("#contenttitle").text(response.data["0"].title);
 			    	$("#contentname").text("작성자 : "+response.data["0"].name);
-			    	for(var i=response.data.length; i<=100; i++){
-			    		$("#contentphoto"+i).create();
+			    	for(var i=0; i<=100; i++){
+			    		$("#contentphoto"+i).css('display', 'block');
 			    	}
 			    	for(var i=0; i<response.data.length; i++){
 			    		$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
 			    	}
 			    	for(var i=response.data.length; i<=100; i++){
-			    		$("#contentphoto"+i).remove();
+			    		$("#contentphoto"+i).css('display', 'none');
 			    	}
-			    	photolength = response.data.length;
 			    	$("#contentcontent").text(response.data["0"].content);
 			    	$("#contentday").text(response.data["0"].day);
 			    	$("#contentgood").text("추천 : "+response.data["0"].good);
