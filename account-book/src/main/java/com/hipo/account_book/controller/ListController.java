@@ -22,7 +22,7 @@ public class ListController {
 	private ListService service;
 
 	@RequestMapping("/main")
-	public String List(Model model ,@ModelAttribute ListVo vo) {
+	public String List(Model model ,@ModelAttribute ListVo vo, @RequestParam("search") String search) {
 		List<ListVo> list = service.getList(vo);
 		model.addAttribute("board", service.showboard());
 		model.addAttribute("list", list);
