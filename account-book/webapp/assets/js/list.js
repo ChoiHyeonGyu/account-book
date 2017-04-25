@@ -21,50 +21,46 @@ $(function(){
 				
 		}
 	});
-	
-	$(function(){
 		
-		var myBtnform1 = $("#modify").dialog({
-			autoOpen: false,
-			height: 800,
-			width: 600,
-			modal: false,
-			buttons: {
-				"확인": function() {
-					//$( "#dialog-upload-form form" ).submit();
-					$("#modify1").submit();
-					$( this ).dialog( "close" );
-				},
-				"취소" : function() {
-					$( this ).dialog( "close" );
-				}
+	var myBtnform1 = $("#modify").dialog({
+		autoOpen: false,
+		height: 800,
+		width: 600,
+		modal: false,
+		buttons: {
+			"확인": function() {
+				//$( "#dialog-upload-form form" ).submit();
+				$("#modify1").submit();
+				$( this ).dialog( "close" );
 			},
-			close: function() {
-					
+			"취소" : function() {
+				$( this ).dialog( "close" );
 			}
-		});
-	
-	$(function(){
+		},
+		close: function() {
+				
+		}
+	});
 		
-		var mm1 = $( "#modify" ).dialog({
-			autoOpen: false,
-			height: 800,
-			width: 600,
-			modal: false,
-			buttons: {
-				"확인": function() {
-					//$( "#dialog-upload-form form" ).submit();
-					$("#modify1").submit();
-					$( this ).dialog( "close" );
-				},
-				"취소" : function() {
-					$( this ).dialog( "close" );
-				}
+	var mm1 = $( "#modify" ).dialog({
+		autoOpen: false,
+		height: 800,
+		width: 600,
+		modal: false,
+		buttons: {
+			"확인": function() {
+				//$( "#dialog-upload-form form" ).submit();
+				$("#modify1").submit();
+				$( this ).dialog( "close" );
 			},
-			close: function() {
-					
+			"취소" : function() {
+				$( this ).dialog( "close" );
 			}
-		});
+		},
+		close: function() {
+				
+		}
+	});
 	
 	
 	/*$("#confirm").click(function(){
@@ -161,8 +157,6 @@ $(function(){
 			    }
 			});
 		});
-			}
-		});
-	});
+	}
 });
 	

@@ -11,7 +11,7 @@ $(function(){
 		buttons: {
 			"작성하기": function() {
 				$("#boardpost").submit();
-				$( this ).dialog( "close" );//close 의미 dialog 의미."작성하기 의미"
+				$( this ).dialog( "close" );
 			},
 			"취소" : function() {
 				$( this ).dialog( "close" );
@@ -41,7 +41,7 @@ $(function(){
 	});
 	
 	$("#boardadd").click(function(){
-		boardform.dialog("open");// 보드폼 오픈 어디서 행해지는지.
+		boardform.dialog("open");
 	});
 	
 	for(var i=0; i<arrays.length; i++){
