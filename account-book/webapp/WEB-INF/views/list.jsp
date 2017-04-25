@@ -54,15 +54,15 @@
 	<!-- Trigger/Open The Modal -->
 	<button id="myBtn">추가하기</button> 
 
-	<!-- The Modal -->
-	<div id="myModal" class="modal"> 
+ 	<!-- The Modal -->
+	<!--<div id="myModal" class="modal"> 
 
-		<!-- Modal content -->
+		Modal content
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			<p>
+			<p> -->
 			<div id="listadd" title="추가하기" style="display:none" >
-				<form id="commit" name="listadd" var="vo" items="${list}" varStatus="status"
+				<form id="commit" name="listadd" <%-- var="vo" items="${list}" varStatus="status" --%>
 					action="${pageContext.request.contextPath }/${currentuserid}/add?locationX=o&locationY=o" method="post">
 						 <input type='hidden' name="id" value="${currentuserid}"> 
 					<h3>
@@ -110,7 +110,7 @@
 					<input type="reset" name="reset"value="취소"   class="btn btn-join"> -->
 				</form> 
 				</div>
-			<p>
+			<!-- <p>
 			
 		</div>
 
@@ -142,7 +142,7 @@
 				modal.style.display = "none";
 			}
 		}
-	</script>
+	</script> -->
 
 </body>
 				</html>
