@@ -57,7 +57,6 @@ $(function(){
 			    data: JSON.stringify(obj2),
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
-			    	console.log(response);
 			    	$("#contentmonth").text(response.data["0"].month);
 			    	$("#contenttitle").text(response.data["0"].title);
 			    	$("#contentname").text("작성자 : "+response.data["0"].name);
