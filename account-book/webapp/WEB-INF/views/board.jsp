@@ -21,9 +21,12 @@
 	      </thead>
 	      <tbody>
 	      	<c:forEach var="board" items="${board}">
+	      		<script>
+		      		arrays.push("${board.boardId}");
+	      		</script>
 		        <tr>
 		          <td>${board.month}</td>
-		          <td>${board.title}</td>
+		          <td><label id="${board.boardId}">${board.title}</label></td>
 		          <td>${board.name}</td>
 		          <td>${board.day}</td>
 		          <td>${board.good}</td>
@@ -57,4 +60,8 @@
       	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
       	<input type="file" name="file" multiple="multiple">
    	</form>
+</div>
+
+<div id="contentform" title="자세히 보기" style="display:none">
+	<h3><span class="label label-warning"></span></h3>
 </div>

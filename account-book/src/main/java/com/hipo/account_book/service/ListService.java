@@ -102,5 +102,9 @@ public class ListService {
 	public List<BoardVo> searchboard(String search){
 		return dao.searchboardselect(search);
 	}
+	
+	public BoardVo boardcontent(int num){
+		return dao.contentselect(num);
+	}
 
 }
