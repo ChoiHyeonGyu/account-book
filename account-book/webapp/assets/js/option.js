@@ -1,26 +1,27 @@
-$(function(){
-	var isOverlap = false;
-	var word = "";
-	
-	$("#modify").click(function(event){
-		event.preventDefault();
-		modifyform.dialog("open");
-	});
-	
-	var modifyform = $( "#modifyform" ).dialog({
-		autoOpen: false,
-		height: 230,
-		width: 265,
-		modal: true,
-		buttons: {
-			"수정": function() {
+var categoryarray = [];
+
+$(function() {
+	var modifyform = $("#modifyform").dialog({
+		autoOpen : false,
+		height : 130,
+		width : 265,
+		modal : true,
+		buttons : {
+			"수정" : function() {
 				$("#modifypost").submit();
-				$( this ).dialog( "close" );
+				$(this).dialog("close");
 			}
 		},
-		close: function() {
-			
+		close : function() {
+
 		}
 	});
-	
+
+	for (var i = 0; i < categoryarray.length; i++) {
+		var num = categoryarray[i];
+
+		$("#"+categoryarray[i]).click(function(num) {
+			modifyform.dialog("open");
+		});
+	}
 });

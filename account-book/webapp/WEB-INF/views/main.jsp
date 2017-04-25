@@ -27,6 +27,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
 	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/list.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/option.js"></script>
 </head>
 <body id="page-top">
 

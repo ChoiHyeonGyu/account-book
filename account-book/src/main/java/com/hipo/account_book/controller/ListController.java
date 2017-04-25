@@ -12,24 +12,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hipo.account_book.service.ListService;
+import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.ListVo;
+import com.hipo.account_book.vo.OptionVo;
 
 @Controller
 @RequestMapping("/{id}")
 public class ListController {
 	@Autowired
 	private ListService service;
+	@Autowired
+	private OptionService optionservice;
 
 	@RequestMapping("/main")
-	public String List(Model model ,@ModelAttribute ListVo vo, @RequestParam(value="search", required=false) String search) {
+	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam(value="search", required=false) String search) {
 		List<ListVo> list = service.getList(vo);
+		
+		List<OptionVo> option = optionservice.getCategory(optionvo);
 		if(search == null){
 			model.addAttribute("board", service.showboard());
 		} else {
 			model.addAttribute("board", service.searchboard(search));
 		}
 		model.addAttribute("list", list);
+		System.out.println("카테고리 ~~~!!!!!!!!!"+ option);
+		model.addAttribute("option", option);
 		return "main";
 	}
 	@RequestMapping("/listdelete")
