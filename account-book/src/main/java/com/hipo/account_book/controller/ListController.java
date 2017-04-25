@@ -35,7 +35,7 @@ public class ListController {
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
 		 service.delete(vo);
-		return "main";
+		return "redirect:/"+id+"/main";
 		
 	}
 	@RequestMapping("/add")
@@ -43,14 +43,14 @@ public class ListController {
 		System.out.println("더하는 부분 아이디 잘가지고 옵니다" + vo);
 		String list = service.add(vo);
 		
-		return "main";
+		return "redirect:/"+id+"/main";
 		
 	}
 	@RequestMapping("/modify")
 	public String modify(@ModelAttribute ListVo vo,@PathVariable String id){
 		System.out.println("고치는 부분 입니다.무엇을 가지고 오나요" + vo);
 		service.modify(vo);
-		return null; 
+		return "redirect:/"+id+"/main"; 
 	}
 	
 	@RequestMapping("/boardadd")

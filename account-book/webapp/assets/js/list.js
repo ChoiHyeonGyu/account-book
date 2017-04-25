@@ -1,16 +1,17 @@
 $(function(){
 	
-	var loginform = $( "#listadd" ).dialog({
+	var myBtnform = $( "#listadd" ).dialog({
 		autoOpen: false,
 		height: 230,
 		width: 265,
 		modal: true,
 		buttons: {
-			"로그인": function() {
+			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
+				$("#commit").submit();
 				$( this ).dialog( "close" );
 			},
-			"ID/Password 찾기" : function() {
+			"취소" : function() {
 				$( this ).dialog( "close" );
 			}
 		},
@@ -19,18 +20,8 @@ $(function(){
 		}
 	});
 	
-	var joinform = $( "#joinform" ).dialog({
-		autoOpen: false,
-		height: 930,
-		width: 600,
-		modal: true,
 	
-		close: function() {
-				
-		}
-	});
-	
-	$("#confirm").click(function(){
+	/*$("#confirm").click(function(){
 		var id = $("#id").val();
 		$.ajax( {
 		    url : "/account-book/checkid?id="+id,
@@ -55,7 +46,7 @@ $(function(){
 	});
 	
 	$("#create").click(function(event){
-		/* 회원 가입 폼 유효성 검증(validation) */
+		 회원 가입 폼 유효성 검증(validation) 
 		
 		var id = $( "#id" ).val();
 		if( id == "" ) {
@@ -92,15 +83,10 @@ $(function(){
 			return;
 		}
 		joinform.submit();
-	});
+	});*/
 	
-	$("#login").click(function(event){
+	$("#myBtn").click(function(event){
 		event.preventDefault();
-		loginform.dialog("open");
-	});
-	
-	$("#join").click(function(event){
-		event.preventDefault();
-		joinform.dialog("open");
+		myBtnform.dialog("open");
 	});
 });
