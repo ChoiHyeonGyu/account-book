@@ -55,7 +55,7 @@
 	<button id="myBtn">추가하기</button> 
 
 	<!-- The Modal -->
-	<div id="myModal" class="modal">
+	<div id="myModal" class="modal"> 
 
 		<!-- Modal content -->
 		<div class="modal-content">
@@ -68,7 +68,7 @@
 					<h3>
 						<span class="label label-default">결제 수단</span>
 					</h3>
-					<input type="text" class="form-control" name="paid"
+					<input type="text" class="form-control1" name="paid"
 						placeholder="card / cash" value=""><br />
 
 					<h3>
