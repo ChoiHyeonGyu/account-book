@@ -58,5 +58,9 @@ private SqlSession sql;
 	public List<BoardVo> boardselect(){
 		return sql.selectList("listview.boardselect");
 	}
+	
+	public List<BoardVo> searchboardselect(String search){
+		return sql.selectList("listview.searchboardselect", search);
+	}
 
 }
