@@ -3,7 +3,7 @@
 <div class="row">
 	<div class="col-md-6">
 		<h1 align="center">자신의 씀씀이 이야기</h1>
-		<form action="${pageContext.request.contextPath}/" method="post">
+		<form action="${pageContext.request.contextPath}/${currentuserid}/main" method="post">
 			<input type="search" name="search" size="90">
 			<input type="submit" value="검색하기">
 			<button id="boardadd" type="button">작성하기</button>

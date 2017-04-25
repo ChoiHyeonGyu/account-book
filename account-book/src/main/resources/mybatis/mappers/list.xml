@@ -93,6 +93,13 @@ INSERT INTO listdate
 			select board_id as boardId, comment_id as commentId, board.* from board
 		]]>
 	</select>
+	
+	<select id="searchboardselect" parameterType="string" resultType="boardvo">
+		<![CDATA[
+			select board_id as boardId, comment_id as commentId, board.* from board where month like '%${_parameter}%' or title like '%${_parameter}%' or name like '%${_parameter}%' or 
+			day like '%${_parameter}%'
+		]]>
+	</select>
 </mapper>
 
 	
