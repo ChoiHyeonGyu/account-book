@@ -36,9 +36,8 @@ public class ListController {
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 
-		model.addAttribute("board", service.showboard(search));
-		model.addAttribute("map", service.getBoardList(page, search));
-
+		model.addAttribute("board", service.getBoardList(page, search));
+		
 		model.addAttribute("list", list);
 		System.out.println("카테고리 ~~~!!!!!!!!!"+ option);
 		model.addAttribute("option", option);

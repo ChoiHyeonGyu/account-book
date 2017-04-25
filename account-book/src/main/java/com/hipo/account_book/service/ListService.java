@@ -146,10 +146,6 @@ public class ListService {
 		}
 	}
 	
-	public List<BoardVo> showboard(String search){
-		return dao.boardselect(search);
-	}
-	
 	public List<BoardVo> boardcontent(int num){
 		return dao.contentselect(num);
 	}
@@ -160,13 +156,13 @@ public class ListService {
 	}
 	
 	public Map<String, Object> getBoardList(int currentPage, String keyword){
-		//3. 페이징을 위한 기본 데이터 계산
+		//1. 페이징을 위한 기본 데이터 계산
 		int totalCount = dao.boardcount(keyword);
 		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );
 		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );
 		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
 		
-		//4. 파라미터 page 값  검증
+		//2. 파라미터 page 값  검증
 		if( currentPage < 1 ) {
 			currentPage = 1;
 			currentBlock = 1;
@@ -175,7 +171,7 @@ public class ListService {
 			currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
 		}
 		
-		//5. view에서 페이지 리스트를 렌더링 하기위한 데이터 값 계산
+		//3. view에서 페이지 리스트를 렌더링 하기위한 데이터 값 계산
 		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1)*PAGE_SIZE + 1;
 		int prevPage = ( currentBlock > 1 ) ? ( currentBlock - 1 ) * PAGE_SIZE : 0;
 		int nextPage = ( currentBlock < blockCount ) ? currentBlock * PAGE_SIZE + 1 : 0;

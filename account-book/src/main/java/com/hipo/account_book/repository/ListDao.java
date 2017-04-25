@@ -57,10 +57,6 @@ private SqlSession sql;
 		sql.insert("listview.imageinsert", boardvo);
 	}
 	
-	public List<BoardVo> boardselect(String search){
-		return sql.selectList("listview.boardselect", search);
-	}
-	
 	public List<BoardVo> contentselect(int num){
 		return sql.selectList("listview.contentselect", num);
 	}
@@ -90,7 +86,7 @@ private SqlSession sql;
 		map.put("keyword", keyword);
 		map.put("page", page);
 		map.put("size", size);
-		return sql.selectList("board.getList", map);
+		return sql.selectList("listview.getList", map);
 	}
 
 }

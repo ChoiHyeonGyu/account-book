@@ -20,7 +20,7 @@
 	        </tr>
 	      </thead>
 	      <tbody>
-	      	<c:forEach var="board" items="${board}">
+	      	<c:forEach var="board" items="${board.list}">
 	      		<script>
 		      		arrays.push("${board.boardId}");
 	      		</script>
@@ -35,31 +35,31 @@
 	     	</c:forEach>
 	      </tbody>
 	    </table>
-	    <%-- <div class="pager">
+	    <div class="pager">
 			<ul>
-				<c:if test="${map.prevPage > 0}" >
-					<li><a href="${pageContext.request.contextPath }/board?p=${map.prevPage}&kwd=${map.keyword}">◀</a></li>
+				<c:if test="${board.prevPage > 0}" >
+					<li><a href="${pageContext.request.contextPath}/${currentuserid}/main?p=${board.prevPage}&search=${board.keyword}">◀</a></li>
 				</c:if>
 				
-				<c:forEach begin="${map.beginPage}" end="${map.beginPage + map.listSize - 1}" var="page">
+				<c:forEach begin="${board.beginPage}" end="${board.beginPage + board.listSize - 1}" var="page">
 					<c:choose>
-						<c:when test="${map.endPage < page}">
+						<c:when test="${board.endPage < page}">
 							<li>${page}</li>
 						</c:when> 
-						<c:when test="${map.currentPage == page}">
+						<c:when test="${board.currentPage == page}">
 							<li class="selected">${page}</li>
 						</c:when>
 						<c:otherwise> 
-							<li><a href="${pageContext.request.contextPath }/board?p=${page}&kwd=${map.keyword}">${page}</a></li>
+							<li><a href="${pageContext.request.contextPath }/${currentuserid}/main?p=${page}&search=${board.keyword}">${page}</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				
-				<c:if test="${map.nextPage > 0}" >
-					<li><a href="${pageContext.request.contextPath }/board?p=${map.nextPage}&kwd=${map.keyword}">▶</a></li>
+				<c:if test="${board.nextPage > 0}" >
+					<li><a href="${pageContext.request.contextPath }/${currentuserid}/main?p=${board.nextPage}&search=${board.keyword}">▶</a></li>
 				</c:if>
 			</ul>
-		</div> --%>
+		</div>
 	</div>
 </div>
 

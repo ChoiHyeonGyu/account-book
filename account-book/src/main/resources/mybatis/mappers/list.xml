@@ -88,17 +88,6 @@ INSERT INTO listdate
 		]]>
 	</insert>
 	
-	<select id="boardselect" parameterType="string" resultType="boardvo">
-		<![CDATA[
-			select board_id as boardId, comment_id as commentId, board.* from board
-		]]>
-		<if test="_parameter != null and _parameter != ''">
-			<![CDATA[
-				where month like '%${_parameter}%' or title like '%${_parameter}%' or name like '%${_parameter}%'
-			]]>
-		</if>
-	</select>
-	
 	<select id="contentselect" parameterType="int" resultType="boardvo">
 		<![CDATA[
 			select board.board_id as boardId, board.comment_id as commentId, board.*, picture.photo from board, picture where board.board_id = picture.board_id and board.board_id = #{value}
@@ -142,12 +131,11 @@ INSERT INTO listdate
 	
 	<select id="getList" parameterType="map" resultType="boardvo">
     	<![CDATA[
-			select * from (select a.*, rownum as rn from (
-			select board.board_id as boardId, board.comment_id as commentId, board.*, picture.photo from board, picture where board.board_id = picture.board_id 
+			select * from (select a.*, rownum as rn from (select board_id as boardId, comment_id as commentId, board.* from board 
 		]]>
 		<if test="keyword != null and keyword != ''">
 			<![CDATA[					  
-				and (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
+				where (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
 			]]>
 		</if>
 		<![CDATA[					  
