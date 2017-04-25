@@ -20,7 +20,7 @@
 <button id="login" type="button" class="btn btn-lg btn-default">Login</button><br/>
 <fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">FACEBOOK과 연동하여 Login</fb:login-button>
 <form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
-	<input type="hidden" id="fbhidden" name="fbhidden" value="">
+	<input type="hidden" id="fbhidden" name="id" value="">
 </form>
 <button id="join" type="button" class="btn btn-lg btn-default">Join</button><br/>
 <div id="loginform" title="로그인" style="display:none">

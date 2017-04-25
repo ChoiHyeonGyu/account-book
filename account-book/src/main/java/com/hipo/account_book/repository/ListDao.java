@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.ListVo;
 @Repository
 public class ListDao {
@@ -36,6 +37,26 @@ private SqlSession sql;
 	public boolean modify(ListVo vo) {
 		sql.update("listview.modify",vo);
 		return false;
+	}
+	
+	public String usernameselect(String id){
+		return sql.selectOne("listview.usernameselect", id);
+	}
+	
+	public void boardinsert(BoardVo boardvo){
+		sql.insert("listview.boardinsert", boardvo);
+	}
+	
+	public int boardidselect(BoardVo boardvo){
+		return sql.selectOne("listview.boardidselect", boardvo);
+	}
+	
+	public void imagesave(BoardVo boardvo){
+		sql.insert("listview.imageinsert", boardvo);
+	}
+	
+	public List<BoardVo> boardselect(){
+		return sql.selectList("listview.boardselect");
 	}
 
 }

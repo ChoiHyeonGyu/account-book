@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.hipo.account_book.service.FrontService;
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Controller
 public class MainController {
@@ -23,9 +22,8 @@ public class MainController {
 	private OptionService optionService;
 	
 	@RequestMapping("/main")
-	public String main(@RequestParam(value="fbhidden", required=false, defaultValue="") String id, Model model){
-		model.addAttribute("id", id);
-		return "main";
+	public String main(@RequestParam(value="id", required=false, defaultValue="") String id){
+		return "redirect:/"+id+"/main";
 	}
 	
 	@RequestMapping(value="/option", method=RequestMethod.POST)

@@ -6,6 +6,7 @@ $(function(){
 		modal: true,
 		buttons: {
 			"작성하기": function() {
+				$("#boardpost").submit();
 				$( this ).dialog( "close" );
 			},
 			"취소" : function() {

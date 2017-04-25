@@ -46,13 +46,29 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
+	
+	<!-- Interceptors -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/main" />
+			<bean class="com.hipo.account_book.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/connmain" />
+			<bean class="com.hipo.account_book.interceptor.LoginInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="" />
+			<bean class="com.hipo.account_book.interceptor.LogoutInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
 
 	<!-- 서블릿 컨테이너의 디폴트 서블릿 위임 햔들러 (디스패쳐 서블릿으로부터 위임받아 스프링에서 쓸 수 있게 해줘야 프로젝트 내에 파일들을 인식할 수 있다.) -->
 	<mvc:default-servlet-handler />
 
 	<context:annotation-config />
 	<context:component-scan
-		base-package="com.hipo.account_book.controller" />
+		base-package="com.hipo.account_book.controller, com.hipo.account_book.interceptor" />
 		
 	<!-- the mvc resources tag does the magic -->
 	<mvc:resources mapping="/image/**" location="file:/uploadImage/" />

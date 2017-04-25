@@ -5,7 +5,7 @@
 		<typeAlias alias="listvo" type="com.hipo.account_book.vo.ListVo" />
 		<typeAlias alias="uservo" type="com.hipo.account_book.vo.UserVo" />
 		<typeAlias alias="optionvo" type="com.hipo.account_book.vo.OptionVo" />
-		
+		<typeAlias alias="boardvo" type="com.hipo.account_book.vo.BoardVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/front.xml" />
