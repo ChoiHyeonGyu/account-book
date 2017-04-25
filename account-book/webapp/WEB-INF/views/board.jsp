@@ -35,6 +35,31 @@
 	     	</c:forEach>
 	      </tbody>
 	    </table>
+	    <%-- <div class="pager">
+			<ul>
+				<c:if test="${map.prevPage > 0}" >
+					<li><a href="${pageContext.request.contextPath }/board?p=${map.prevPage}&kwd=${map.keyword}">◀</a></li>
+				</c:if>
+				
+				<c:forEach begin="${map.beginPage}" end="${map.beginPage + map.listSize - 1}" var="page">
+					<c:choose>
+						<c:when test="${map.endPage < page}">
+							<li>${page}</li>
+						</c:when> 
+						<c:when test="${map.currentPage == page}">
+							<li class="selected">${page}</li>
+						</c:when>
+						<c:otherwise> 
+							<li><a href="${pageContext.request.contextPath }/board?p=${page}&kwd=${map.keyword}">${page}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<c:if test="${map.nextPage > 0}" >
+					<li><a href="${pageContext.request.contextPath }/board?p=${map.nextPage}&kwd=${map.keyword}">▶</a></li>
+				</c:if>
+			</ul>
+		</div> --%>
 	</div>
 </div>
 
@@ -74,4 +99,36 @@
 	<span id="contentday" class="label label-warning" style="font-size:25px"></span>
 	<span id="contentgood" class="label label-warning" style="font-size:25px"></span>
 	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/>
+</div>
+
+<div id="contenteditform" title="수정하기" style="display:none">
+	<form id="contenteditpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardedit" enctype="multipart/form-data">
+		<input type="hidden" id="editboardId" name="boardId" value="">
+   		<h3><span class="label label-primary">결산월</span></h3>
+   		<div class="dropdown theme-dropdown clearfix">
+	   		<select class="dropdown-menu" id="editmonth" name="month">
+	   			<option></option>
+	   			<c:forEach begin="2017" end="2018" var="i">
+	   				<c:forEach begin="1" end="12" var="j" >
+	   					<c:choose>
+	   						<c:when test="${j<10}"><option>${i}.0${j}</option></c:when>
+	   						<c:otherwise><option>${i}.${j}</option></c:otherwise>
+	   					</c:choose>
+	   				</c:forEach>
+	   			</c:forEach>
+	   		</select>
+      	</div>
+      	<h3><span class="label label-primary">제목</span></h3>
+      	<input type="text" id="edittitle" name="title" class="form-control">
+      	<h3><span class="label label-primary">내용</span></h3>
+      	<textarea rows="10" cols="64" id="editcontent" name="content"></textarea>
+      	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
+      	<input type="file" name="file" multiple="multiple">
+   	</form>
+</div>
+
+<div style="display:none">
+	<form id="contentremovepost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardremove">
+		<input type="hidden" id="removeboardId" name="boardId" value="">
+	</form>
 </div>

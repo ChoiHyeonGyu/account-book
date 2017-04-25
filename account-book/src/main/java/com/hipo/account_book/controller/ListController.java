@@ -30,15 +30,15 @@ public class ListController {
 	private OptionService optionservice;
 
 	@RequestMapping("/main")
-	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam(value="search", required=false) String search) {
+	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search) {
 		List<ListVo> list = service.getList(vo);
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
-		if(search == null){
-			model.addAttribute("board", service.showboard());
-		} else {
-			model.addAttribute("board", service.searchboard(search));
-		}
+
+		model.addAttribute("board", service.showboard(search));
+		model.addAttribute("map", service.getBoardList(page, search));
+
 		model.addAttribute("list", list);
 		System.out.println("카테고리 ~~~!!!!!!!!!"+ option);
 		model.addAttribute("option", option);
@@ -75,5 +75,17 @@ public class ListController {
 	@RequestMapping("/boardcontent")
 	public JSONResult boardcontent(@RequestBody Map<String, Object> map){
 		return JSONResult.success(service.boardcontent(Integer.parseInt(map.get("boardid").toString())));
+	}
+	
+	@RequestMapping("/boardedit")
+	public String boardedit(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
+		service.boardedit(id, boardvo, file);
+		return "redirect:/"+id+"/main";
+	}
+	
+	@RequestMapping("/boardremove")
+	public String boardremove(@PathVariable String id, @ModelAttribute BoardVo boardvo){
+		service.boardremove(boardvo.getBoardId());
+		return "redirect:/"+id+"/main";
 	}
 }

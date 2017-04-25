@@ -1,6 +1,8 @@
 package com.hipo.account_book.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,16 +57,40 @@ private SqlSession sql;
 		sql.insert("listview.imageinsert", boardvo);
 	}
 	
-	public List<BoardVo> boardselect(){
-		return sql.selectList("listview.boardselect");
-	}
-	
-	public List<BoardVo> searchboardselect(String search){
-		return sql.selectList("listview.searchboardselect", search);
+	public List<BoardVo> boardselect(String search){
+		return sql.selectList("listview.boardselect", search);
 	}
 	
 	public List<BoardVo> contentselect(int num){
 		return sql.selectList("listview.contentselect", num);
+	}
+	
+	public void boardupdate(BoardVo boardvo){
+		sql.insert("listview.boardupdate", boardvo);
+	}
+	
+	public List<BoardVo> imagelist(int id){
+		return sql.selectList("listview.imageselect", id);
+	}
+	
+	public void imagedelete(int id){
+		sql.delete("listview.imagedelete", id);
+	}
+	
+	public void boarddelete(int num){
+		sql.delete("listview.boarddelete", num);
+	}
+	
+	public int boardcount(String search){
+		return sql.selectOne("listview.boardcount", search);
+	}
+	
+	public List<BoardVo> getList(String keyword, Integer page, Integer size){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("keyword", keyword);
+		map.put("page", page);
+		map.put("size", size);
+		return sql.selectList("board.getList", map);
 	}
 
 }

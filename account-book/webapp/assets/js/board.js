@@ -29,9 +29,30 @@ $(function(){
 		modal: true,
 		buttons: {
 			"수정하기": function() {
+				contenteditform.dialog("open");
 				$( this ).dialog( "close" );
 			},
 			"삭제하기" : function() {
+				$("#contentremovepost").submit();
+				$( this ).dialog( "close" );
+			}
+		},
+		close: function() {
+			
+		}
+	});
+	
+	var contenteditform = $("#contenteditform").dialog({
+		autoOpen: false,
+		height: 660,
+		width: 500,
+		modal: true,
+		buttons: {
+			"수정하기": function() {
+				$("#contenteditpost").submit();
+				$( this ).dialog( "close" );
+			},
+			"취소" : function() {
 				$( this ).dialog( "close" );
 			}
 		},
@@ -66,13 +87,26 @@ $(function(){
 			    	for(var i=0; i<response.data.length; i++){
 			    		$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
 			    	}
-			    	for(var i=response.data.length; i<=100; i++){
-			    		$("#contentphoto"+i).css('display', 'none');
+			    	if(response.data[0].photo.indexOf('無',0) != -1){
+			    		for(var i=0; i<=100; i++){
+				    		$("#contentphoto"+i).css('display', 'none');
+				    	}
+			    	} else {
+			    		for(var i=response.data.length; i<=100; i++){
+				    		$("#contentphoto"+i).css('display', 'none');
+				    	}
 			    	}
 			    	$("#contentcontent").text(response.data["0"].content);
 			    	$("#contentday").text(response.data["0"].day);
 			    	$("#contentgood").text("추천 : "+response.data["0"].good);
 			    	$("#contenthit").text("조회 : "+response.data["0"].hit);
+			    	
+			    	$("#editboardId").val(response.data["0"].boardId);
+			    	$("#editmonth option:selected").text(response.data["0"].month);
+			    	$("#edittitle").val(response.data["0"].title);
+			    	$("#editcontent").text(response.data["0"].content);
+			    	
+			    	$("#removeboardId").val(response.data["0"].boardId);
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       

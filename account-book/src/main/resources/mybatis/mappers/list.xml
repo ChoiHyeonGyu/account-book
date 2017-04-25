@@ -88,23 +88,71 @@ INSERT INTO listdate
 		]]>
 	</insert>
 	
-	<select id="boardselect" resultType="boardvo">
+	<select id="boardselect" parameterType="string" resultType="boardvo">
 		<![CDATA[
 			select board_id as boardId, comment_id as commentId, board.* from board
 		]]>
-	</select>
-	
-	<select id="searchboardselect" parameterType="string" resultType="boardvo">
-		<![CDATA[
-			select board_id as boardId, comment_id as commentId, board.* from board where month like '%${_parameter}%' or title like '%${_parameter}%' or name like '%${_parameter}%' or 
-			day like '%${_parameter}%'
-		]]>
+		<if test="_parameter != null and _parameter != ''">
+			<![CDATA[
+				where month like '%${_parameter}%' or title like '%${_parameter}%' or name like '%${_parameter}%'
+			]]>
+		</if>
 	</select>
 	
 	<select id="contentselect" parameterType="int" resultType="boardvo">
 		<![CDATA[
 			select board.board_id as boardId, board.comment_id as commentId, board.*, picture.photo from board, picture where board.board_id = picture.board_id and board.board_id = #{value}
 		]]>
+	</select>
+	
+	<update id="boardupdate" parameterType="boardvo">
+		<![CDATA[
+			update board set month = #{month}, title = #{title}, content = #{content} where board_id = #{boardId}
+		]]>
+	</update>
+	
+	<select id="imageselect" parameterType="int" resultType="boardvo">
+		<![CDATA[
+			select photo from picture where board_id = #{value}
+		]]>
+	</select>
+	
+	<delete id="imagedelete" parameterType="int">
+		<![CDATA[
+			delete from picture where board_id = #{value}
+		]]>
+	</delete>
+	
+	<delete id="boarddelete" parameterType="int">
+		<![CDATA[
+			delete from board where board_id = #{value}
+		]]>
+	</delete>
+	
+	<select id="boardcount" parameterType="string" resultType="int">
+		<![CDATA[
+			select count(*) from board
+		]]>
+		<if test="_parameter != null and _parameter != ''">
+			<![CDATA[
+				where month like '%${_parameter}%' or title like '%${_parameter}%' or name like '%${_parameter}%'
+			]]>
+		</if>
+	</select>
+	
+	<select id="getList" parameterType="map" resultType="boardvo">
+    	<![CDATA[
+			select * from (select a.*, rownum as rn from (
+			select board.board_id as boardId, board.comment_id as commentId, board.*, picture.photo from board, picture where board.board_id = picture.board_id 
+		]]>
+		<if test="keyword != null and keyword != ''">
+			<![CDATA[					  
+				and (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
+			]]>
+		</if>
+		<![CDATA[					  
+			order by board.day desc) a) where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
+		]]>	
 	</select>
 </mapper>
 
