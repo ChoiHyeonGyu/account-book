@@ -63,7 +63,7 @@
 			<p>
 			<div id="listadd1" title="추가하기" style="" >
 				<form name="listadd" var="vo" items="${list}" varStatus="status"
-					action="${pageContext.request.contextPath }/{id}/add?locationX=o&locationY=o&id=1" method="post">
+					action="${pageContext.request.contextPath }/${currentuserid}/add?locationX=o&locationY=o&id=1" method="post">
 						<%-- <input type='hidden' name="id" value="${id}"> --%>
 					<h3>
 						<span class="label label-default">결제 수단</span>
@@ -167,14 +167,14 @@
 							<td>${vo.paid}</td>
 							<td>${vo.bank}</td>
 							<td>${vo.operations}</td>
-							<td><a href="${pageContext.request.contextPath}/${id}/modify?listId=${vo.listId}&id=${vo.id}">${vo.money}</a></td>
+							<td><a href="${pageContext.request.contextPath}/${currentuserid}/modify?listId=${vo.listId}&id=${vo.id}">${vo.money}</a></td>
 							<td>${vo.name}</td>
 							<td>${vo.category}</td>
 							<td>${vo.day}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/${id}/listdelete?id=${vo.id}&listId=${vo.listId}"><img
+								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?id=${vo.id}&listId=${vo.listId}"><img
 									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-							<td><a href="${pageContext.request.contextPath}">ㄱㄱ</a></td>
+							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
 					</c:forEach>
 
