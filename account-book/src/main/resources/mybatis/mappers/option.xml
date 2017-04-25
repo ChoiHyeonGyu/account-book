@@ -3,13 +3,23 @@
 
 <mapper namespace="option">
 
-<insert id="add" parameterType="optionvo">
+	<insert id="add" parameterType="optionvo">
 		<![CDATA[
 			insert into category values(seq_category.nextval, #{category}, 0, 0)
 		]]>
 	</insert>
 
+	<insert id="update" parameterType="optionvo">
+		<![CDATA[
+			update category set category=#{category} where category_id=#{categoryId}
+		]]>
+	</insert>
 
+	<select id="category" resultType="optionvo">
+<![CDATA[
+select category, category_id as categoryId from category
+ ]]>
+	</select>
 
 </mapper>
 

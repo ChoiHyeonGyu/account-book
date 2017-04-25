@@ -26,6 +26,7 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
 	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/option.js"></script>
 </head>
 <body id="page-top">
 
