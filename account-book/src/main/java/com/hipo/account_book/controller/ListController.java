@@ -26,7 +26,7 @@ public class ListController {
 		List<ListVo> list = service.getList(vo);
 		model.addAttribute("board", service.showboard());
 		model.addAttribute("list", list);
-		return "main";
+		return "main"     ;
 	}
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
