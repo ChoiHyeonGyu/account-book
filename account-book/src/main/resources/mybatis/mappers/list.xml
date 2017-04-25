@@ -100,6 +100,12 @@ INSERT INTO listdate
 			day like '%${_parameter}%'
 		]]>
 	</select>
+	
+	<select id="contentselect" parameterType="int" resultType="boardvo">
+		<![CDATA[
+			select board_id as boardId, comment_id as commentId, board.* from board where board_id = #{value}
+		]]>
+	</select>
 </mapper>
 
 	
