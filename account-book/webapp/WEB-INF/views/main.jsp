@@ -106,5 +106,9 @@
 
     <!-- Theme JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/js/creative.min.js"></script>
+    
+    <script>
+    	currentid = "${currentuserid}";
+    </script>
 </body>
 </html>

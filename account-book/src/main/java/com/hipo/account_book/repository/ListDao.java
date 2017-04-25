@@ -62,5 +62,9 @@ private SqlSession sql;
 	public List<BoardVo> searchboardselect(String search){
 		return sql.selectList("listview.searchboardselect", search);
 	}
+	
+	public BoardVo contentselect(int num){
+		return sql.selectOne("listview.contentselect", num);
+	}
 
 }
