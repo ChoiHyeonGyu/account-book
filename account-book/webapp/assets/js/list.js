@@ -1,10 +1,12 @@
+var listarray = [];
+
 $(function(){
 	
 	var myBtnform = $( "#listadd" ).dialog({
 		autoOpen: false,
-		height: 230,
-		width: 265,
-		modal: true,
+		height: 800,
+		width: 600,
+		modal: false,
 		buttons: {
 			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
@@ -19,6 +21,50 @@ $(function(){
 				
 		}
 	});
+	
+	$(function(){
+		
+		var myBtnform1 = $("#modify").dialog({
+			autoOpen: false,
+			height: 800,
+			width: 600,
+			modal: false,
+			buttons: {
+				"확인": function() {
+					//$( "#dialog-upload-form form" ).submit();
+					$("#modify1").submit();
+					$( this ).dialog( "close" );
+				},
+				"취소" : function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+					
+			}
+		});
+	
+	$(function(){
+		
+		var mm1 = $( "#modify" ).dialog({
+			autoOpen: false,
+			height: 800,
+			width: 600,
+			modal: false,
+			buttons: {
+				"확인": function() {
+					//$( "#dialog-upload-form form" ).submit();
+					$("#modify1").submit();
+					$( this ).dialog( "close" );
+				},
+				"취소" : function() {
+					$( this ).dialog( "close" );
+				}
+			},
+			close: function() {
+					
+			}
+		});
 	
 	
 	/*$("#confirm").click(function(){
@@ -89,4 +135,34 @@ $(function(){
 		event.preventDefault();
 		myBtnform.dialog("open");
 	});
+	$("#myBtn1").click(function(event){
+		event.preventDefault();
+		myBtnform1.dialog("open");
+	});
+	
+	for(var i=0; i<listarray.length; i++){
+		var num = listarray[i];
+		$("#"+listarray[i]).click(function(num){
+			mm1.dialog("open");
+			
+			var listid = {"listid":num.target.id};
+			
+			$.ajax( {
+			    url : "/account-book/"+currentid+"/modify",
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(listid),
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){
+			    	console.log(response);
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+			}
+		});
+	});
 });
+	
