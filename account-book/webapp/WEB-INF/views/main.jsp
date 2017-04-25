@@ -108,6 +108,7 @@
     
     <script>
     	currentid = "${currentuserid}";
+    	path = "${pageContext.request.contextPath}";
     </script>
 </body>
 </html>

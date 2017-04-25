@@ -63,8 +63,8 @@ private SqlSession sql;
 		return sql.selectList("listview.searchboardselect", search);
 	}
 	
-	public BoardVo contentselect(int num){
-		return sql.selectOne("listview.contentselect", num);
+	public List<BoardVo> contentselect(int num){
+		return sql.selectList("listview.contentselect", num);
 	}
 
 }

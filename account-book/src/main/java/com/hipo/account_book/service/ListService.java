@@ -64,8 +64,11 @@ public class ListService {
 					writeFile(cm, saveFileName);
 					
 					boardvo.setPhoto(saveFileName);
+					
 					dao.imagesave(boardvo);
 		        }
+		        boardvo.setPhoto("없다 임마");
+				dao.imagesave(boardvo);
 		    }
 		} catch(IOException e) {
 			new RuntimeException("upload file:"+e);
@@ -103,7 +106,7 @@ public class ListService {
 		return dao.searchboardselect(search);
 	}
 	
-	public BoardVo boardcontent(int num){
+	public List<BoardVo> boardcontent(int num){
 		return dao.contentselect(num);
 	}
 

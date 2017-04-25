@@ -103,7 +103,7 @@ INSERT INTO listdate
 	
 	<select id="contentselect" parameterType="int" resultType="boardvo">
 		<![CDATA[
-			select board_id as boardId, comment_id as commentId, board.* from board where board_id = #{value}
+			select board.board_id as boardId, board.comment_id as commentId, board.*, picture.photo from board, picture where board.board_id = picture.board_id and board.board_id = #{value}
 		]]>
 	</select>
 </mapper>

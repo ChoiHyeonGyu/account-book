@@ -1,5 +1,6 @@
 var arrays = [];
 var currentid = "";
+var path = "";
 
 $(function(){
 	var boardform = $("#boardform").dialog({
@@ -23,8 +24,8 @@ $(function(){
 	
 	var contentform = $("#contentform").dialog({
 		autoOpen: false,
-		height: 660,
-		width: 500,
+		height: 850,
+		width: 700,
 		modal: true,
 		buttons: {
 			"수정하기": function() {
@@ -57,6 +58,23 @@ $(function(){
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
 			    	console.log(response);
+			    	$("#contentmonth").text(response.data["0"].month);
+			    	$("#contenttitle").text(response.data["0"].title);
+			    	$("#contentname").text("작성자 : "+response.data["0"].name);
+			    	for(var i=response.data.length; i<=100; i++){
+			    		$("#contentphoto"+i).create();
+			    	}
+			    	for(var i=0; i<response.data.length; i++){
+			    		$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    	}
+			    	for(var i=response.data.length; i<=100; i++){
+			    		$("#contentphoto"+i).remove();
+			    	}
+			    	photolength = response.data.length;
+			    	$("#contentcontent").text(response.data["0"].content);
+			    	$("#contentday").text(response.data["0"].day);
+			    	$("#contentgood").text("추천 : "+response.data["0"].good);
+			    	$("#contenthit").text("조회 : "+response.data["0"].hit);
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       

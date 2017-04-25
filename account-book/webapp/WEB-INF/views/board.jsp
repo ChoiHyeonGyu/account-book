@@ -63,5 +63,15 @@
 </div>
 
 <div id="contentform" title="자세히 보기" style="display:none">
-	<h3><span class="label label-warning"></span></h3>
+	<br/>
+	<span id="contentmonth" class="label label-warning" style="font-size:25px"></span>
+	<span id="contenttitle" class="label label-warning" style="font-size:25px"></span>
+	<span id="contentname" class="label label-warning" style="font-size:25px"></span><br/><br/>
+	<c:forEach var="i" begin="0" end="100">
+		<img alt="사진" src="" id="contentphoto${i}">
+	</c:forEach>
+	<h3><span id="contentcontent" class="label label-warning"></span></h3><br/>
+	<span id="contentday" class="label label-warning" style="font-size:25px"></span>
+	<span id="contentgood" class="label label-warning" style="font-size:25px"></span>
+	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/>
 </div>

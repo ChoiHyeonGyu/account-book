@@ -71,7 +71,7 @@
 		base-package="com.hipo.account_book.controller, com.hipo.account_book.interceptor, com.hipo.account_book.androidcontroller" />
 		
 	<!-- the mvc resources tag does the magic -->
-	<mvc:resources mapping="/image/**" location="file:/uploadImage/" />
+	<mvc:resources mapping="/image/**" location="file:/image/" />
 	
 	<!-- 기본 뷰 리졸버 -->
 	<bean id="viewResolver"
