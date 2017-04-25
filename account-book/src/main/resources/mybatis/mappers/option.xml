@@ -9,7 +9,11 @@
 		]]>
 	</insert>
 
-
+<select id="category" resultType="optionvo">
+<![CDATA[
+select category from category
+ ]]>
+</select>
 
 </mapper>
 

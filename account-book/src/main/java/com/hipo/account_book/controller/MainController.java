@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.OptionVo;
+import com.hipo.account_book.vo.UserVo;
 
 @Controller
 public class MainController {
@@ -26,14 +27,14 @@ public class MainController {
 		return "redirect:/"+id+"/main";
 	}
 	
-	@RequestMapping(value="/option", method=RequestMethod.POST)
-	public String join(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model){
+	@RequestMapping(value="/categoryadd", method=RequestMethod.POST)
+	public String option(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @ModelAttribute UserVo uservo){
 		if (result.hasErrors()) {
 			model.addAttribute("result", result.getModel());
 			model.addAttribute("error", result.getAllErrors());
 			return "main";
 		}
 		optionService.Add(optionvo);
-		return "redirect:/main";
+		return "redirect:/"+uservo.getId()+"/main";
 	}
 }

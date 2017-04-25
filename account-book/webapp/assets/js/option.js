@@ -1,11 +1,5 @@
 $(function(){
-	var isOverlap = false;
-	var word = "";
 	
-	$("#modify").click(function(event){
-		event.preventDefault();
-		modifyform.dialog("open");
-	});
 	
 	var modifyform = $( "#modifyform" ).dialog({
 		autoOpen: false,
@@ -21,6 +15,10 @@ $(function(){
 		close: function() {
 			
 		}
+	});
+	
+	$("#categorymodify").click(function(event){
+		modifyform.dialog("open");
 	});
 	
 });
