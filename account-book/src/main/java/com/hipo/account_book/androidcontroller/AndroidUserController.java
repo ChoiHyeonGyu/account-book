@@ -22,8 +22,10 @@ public class AndroidUserController {
 	private AndroidService androidService;
 
 	@RequestMapping("/test")
-	public void test(@PathVariable String id) {
+	@ResponseBody
+	public String test(@PathVariable String id) {
 		System.out.println("okok" + id);
+		return id;
 	}
 
 	@RequestMapping("/join")
