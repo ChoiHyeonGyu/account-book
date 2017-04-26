@@ -27,4 +27,9 @@ public class OptionService {
 		List<OptionVo> option = optionDao.category(vo);
 		return option;
 	}
+	
+	public boolean delete(OptionVo vo) {
+		return optionDao.delete(vo); 
+		
+	}
 }

@@ -42,7 +42,7 @@ $(function(){
 		}
 	});
 		
-	var mm1 = $( "#modify" ).dialog({
+	var mm1 = $( "#modify" ).dialog({// div 
 		autoOpen: false,
 		height: 800,
 		width: 600,
@@ -131,23 +131,24 @@ $(function(){
 		event.preventDefault();
 		myBtnform.dialog("open");
 	});
-	$("#myBtn1").click(function(event){
+	/*$("#myBtn1").click(function(event){
 		event.preventDefault();
 		myBtnform1.dialog("open");
-	});
+	}*/
 	
 	for(var i=0; i<listarray.length; i++){
 		var num = listarray[i];
 		$("#"+listarray[i]).click(function(num){
+			console.log(num);
 			mm1.dialog("open");
 			
-			var listid = {"listid":num.target.id};
+			var listid = {"listid":num.target.id};// 보내는 데이터
 			
 			$.ajax( {
-			    url : "/account-book/"+currentid+"/modify",
+			    url : "/account-book/"+currentid+"/modify",// 보낼주소
 			    type: "POST",
 			    dataType: "JSON",
-			    data: JSON.stringify(listid),
+			    data: JSON.stringify(listid),//제이슨 보낼때 형식
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
 			    	console.log(response);

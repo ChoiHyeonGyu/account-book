@@ -5,6 +5,11 @@ public class OptionVo {
 	private int categoryId;
 	private String category;
 	
+	@Override
+	public String toString() {
+		return "OptionVo [categoryId=" + categoryId + ", category=" + category + "]";
+	}
+	
 	public int getCategoryId() {
 		return categoryId;
 	}
