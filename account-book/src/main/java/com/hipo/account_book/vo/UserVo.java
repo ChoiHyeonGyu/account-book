@@ -101,4 +101,11 @@ public class UserVo {
 		this.total = total;
 	}
 
+	@Override
+	public String toString() {
+		return "UserVo [id=" + id + ", password=" + password + ", name=" + name + ", gender=" + gender + ", birthYear="
+				+ birthYear + ", birthMonth=" + birthMonth + ", birthDay=" + birthDay + ", age=" + age + ", photo="
+				+ photo + ", total=" + total + "]";
+	}
+
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import com.hipo.account_book.vo.UserVo;
 
 @Repository
-public class AndroidDao {
+public class AndroidUserDao {
 
 	@Autowired
 	private SqlSession session;
@@ -18,7 +18,7 @@ public class AndroidDao {
 	}
 
 	public UserVo login(String id) {
-		UserVo uservo = session.selectOne("getVoById", id);
+		UserVo uservo = session.selectOne("android.getVoById", id);
 		return uservo;
 	}
 

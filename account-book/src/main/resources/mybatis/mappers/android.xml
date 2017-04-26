@@ -15,4 +15,16 @@
  		]]>
 	</select>
 
+	<insert id="add" parameterType="listvo">
+	<![CDATA[
+	insert INTO list (LIST_ID, ID, PAID, BANK, OPERATIONS, MONEY, NAME, CATEGORY, DAY, LOCATIONX, LOCATIONY)
+	values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},#{category},sysdate, #{locationX},#{locationY})
+	]]>
+	</insert>
+
+	<select id="getListById" parameterType="string" resultType="listvo">
+<![CDATA[
+select list_id as listId,id,paid,bank,operations,money,name,category,DAY,locationX,locationY from list where id = #{id }
+ ]]>
+	</select>
 </mapper>
