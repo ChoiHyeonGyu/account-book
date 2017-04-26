@@ -3,7 +3,7 @@ var categoryarray = [];
 $(function() {
 	var modifyform = $("#modifyform").dialog({
 		autoOpen : false,
-		height : 130,
+		height : 160,
 		width : 265,
 		modal : true,
 		buttons : {
@@ -18,9 +18,9 @@ $(function() {
 	});
 
 	for (var i = 0; i < categoryarray.length; i++) {
-		var num = categoryarray[i];
+		var number = categoryarray[i];
 
-		$("#"+categoryarray[i]).click(function(num) {
+		$("#"+categoryarray[i]).click(function(number) {
 			modifyform.dialog("open");
 		});
 	}
