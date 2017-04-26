@@ -44,8 +44,10 @@ public class ListService {
 		return null;
 	}
 
-	public boolean modify(ListVo vo) {
-		return  dao.modify(vo);
+	public List<ListVo> modify(int i) {
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		map1.put( "listid", dao.modify(i) );
+		return  (List<ListVo>) map1 ;
 		
 	}
 	

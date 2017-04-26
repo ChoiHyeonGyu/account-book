@@ -7,12 +7,12 @@ public class JSONResult {
 	private JSONResult(){
 		
 	}
-	private JSONResult(String result, String message, Object data){
+	private JSONResult(String result, String message, Object data){// 두번째 데이터 받는곳 
 		this.result = result;
 		this.message = message;
 		this.data = data;
 	}
-	public static JSONResult success(Object data){
+	public static JSONResult success(Object data){//처음 데이터 받는곳
 		return new JSONResult("success", null, data);
 	}
 	public static JSONResult fail(String message){

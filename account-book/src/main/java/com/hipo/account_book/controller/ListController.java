@@ -1,5 +1,6 @@
 package com.hipo.account_book.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -59,12 +60,15 @@ public class ListController {
 		return "redirect:/"+id+"/main";
 		
 	}
+	
+	@ResponseBody
 	@RequestMapping("/modify")
-	public String modify(@ModelAttribute ListVo vo,@PathVariable String id){
-		System.out.println("고치는 부분 입니다.무엇을 가지고 오나요" + vo);
-		service.modify(vo);
-		return "redirect:/"+id+"/main"; 
-	}
+	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
+		System.out.println("고치는 부분 입니다.무엇을 가지고 오나요" + map);
+		//service.modify(map);
+		
+		return JSONResult.success(service.modify (Integer.parseInt(map.get("listId").toString())));
+	} 
 	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
