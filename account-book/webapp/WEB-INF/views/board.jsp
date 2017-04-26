@@ -85,6 +85,7 @@
       	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
       	<input type="file" name="file" multiple="multiple">
    	</form>
+   	
 </div>
 
 <div id="contentform" title="자세히 보기" style="display:none">

@@ -17,9 +17,9 @@ public class UserVo {
 	private int birthMonth;
 	@Pattern(regexp = "^[0~9]{1,2}$", message = "생일을 선택하세요.")
 	private int birthDay;
-	private int age;
+	private String age;
 	private String photo;
-	private int total;
+	private String total;
 
 	public String getId() {
 		return id;
@@ -77,11 +77,11 @@ public class UserVo {
 		this.birthDay = birthDay;
 	}
 
-	public int getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 
@@ -92,20 +92,13 @@ public class UserVo {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-
-	public int getTotal() {
+	
+	public String getTotal() {
 		return total;
 	}
 
-	public void setTotal(int total) {
+	public void setTotal(String total) {
 		this.total = total;
-	}
-
-	@Override
-	public String toString() {
-		return "UserVo [id=" + id + ", password=" + password + ", name=" + name + ", gender=" + gender + ", birthYear="
-				+ birthYear + ", birthMonth=" + birthMonth + ", birthDay=" + birthDay + ", age=" + age + ", photo="
-				+ photo + ", total=" + total + "]";
 	}
 
 }

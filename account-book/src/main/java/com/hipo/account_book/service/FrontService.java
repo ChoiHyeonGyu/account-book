@@ -46,16 +46,16 @@ public class FrontService {
 			Pattern p = Pattern.compile("(\\d{2})/(\\d{2})/(\\d{4})");
 			Matcher m = p.matcher(birth);
 			if(m.find()){
-				uservo.setAge(calendar.getWeekYear()-Integer.parseInt(m.group(3))+1);
+				uservo.setAge(String.valueOf(calendar.getWeekYear()-Integer.parseInt(m.group(3))+1));
 			}
 		} else if(map.get("age_range") != null) {
 			@SuppressWarnings("unchecked")
 			Map<String, Object> map2 = (Map<String, Object>) map.get("age_range");
 			if(map2.get("max") != null) {
-				uservo.setAge(Integer.parseInt(map2.get("max").toString()));
+				uservo.setAge(map2.get("max").toString());
 			}
 		} else {
-			uservo.setAge(0);
+			uservo.setAge("0");
 		}
 		uservo.setPassword("facebook");
 		frontDao.fbinsert(uservo);
@@ -70,7 +70,7 @@ public class FrontService {
 	}
 	
 	public void join(UserVo uservo){
-		uservo.setAge(calendar.getWeekYear()-uservo.getBirthYear()+1);
+		uservo.setAge(String.valueOf(calendar.getWeekYear()-uservo.getBirthYear()+1));
 		frontDao.insert(uservo);
 	}
 	
