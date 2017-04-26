@@ -109,4 +109,26 @@ public class ListController {
 		service.comment(id, boardvo);
 		return "redirect:/"+id+"/main";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/replylist")
+	public JSONResult replylist(@RequestBody Map<String, Object> map){
+		return JSONResult.success(service.replylist(Integer.parseInt(map.get("commentid").toString())));
+	}
+	
+	@RequestMapping("/reply")
+	public String reply(@PathVariable String id, @ModelAttribute BoardVo boardvo){
+		service.reply(id, boardvo);
+		return "redirect:/"+id+"/main";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/commentremove")
+	public JSONResult commentremove(@PathVariable String id, @RequestBody Map<String, Object> map){
+		if(id.equals(map.get("id").toString())){
+			service.commentremove(Integer.parseInt(map.get("commentid").toString()));
+			return JSONResult.success(new Object());
+		}
+		return JSONResult.fail("실패");
+	}
 }

@@ -95,7 +95,7 @@
 	<c:forEach var="i" begin="0" end="100">
 		<img alt="사진" src="" id="contentphoto${i}">
 	</c:forEach>
-	<h3><span id="contentcontent" class="label label-warning"></span></h3><br/>
+	<h5 id="contentcontent" style="white-space:pre-line"></h5><br/>
 	<span id="contentday" class="label label-warning" style="font-size:25px"></span>
 	<span id="contentgood" class="label label-warning" style="font-size:25px"></span>
 	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/><br/>
@@ -112,27 +112,29 @@
 	</form>
 	<p class="line"></p>
 	<c:forEach var="i" begin="0" end="1000">
-		<pre id="commneteffect${i}">
-		<span id="commentname${i}" style="word-break:"></span><span id="commentdate${i}"></span>
-		<span><button id="commentreply${i}" type="button" class="btn btn-lg btn-link">답글</button></span>
-		<span><button id="commentdelete${i}" type="button" class="btn btn-lg btn-link">삭제</button></span>
-		<span id="commentcontent${i}"></span>
+		<pre id="commenteffect${i}" style="white-space:nowrap">
+			<button id="commentdelete${i}" type="button" class="btn btn-lg btn-link" style="float:right">삭제</button>
+			<button id="commentreply${i}" type="button" class="btn btn-lg btn-link" style="float:right">답글</button>
+			<span id="commentname${i}"></span><span id="commentdate${i}"></span>
+			<span id="commentcontent${i}" style="white-space:pre-line"></span>
 		</pre>
 	</c:forEach>
 </div>
 
 <div id="comment1form" title="답글 보기" style="display:none">
-	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
-		<input type="hidden" id="commentboardId" name="boardId" value="">
-		<input type="hidden" id="commentName" name="name" value="">
-		<textarea rows="5" cols="92" name="content"></textarea><br/><br/>
+	<form action="${pageContext.request.contextPath}/${currentuserid}/reply" method="post">
+		<input type="hidden" id="commentId" name="commentId" value="">
+		<input type="hidden" id="comment1Name" name="name" value="">
+		<textarea rows="5" cols="63" name="content"></textarea><br/><br/>
 		<input type="submit" value="답글 쓰기">
 	</form>
 	<p class="line"></p>
-	<c:forEach var="comment" items="">
-		<p></p>
-		<p></p>
-		<p></p>
+	<c:forEach var="i" begin="0" end="1000">
+		<pre id="comment1effect${i}" style="white-space:nowrap">
+			<button id="comment1delete${i}" type="button" class="btn btn-lg btn-link" style="float:right">삭제</button>
+			<span id="comment1name${i}"></span><span id="comment1date${i}"></span>
+			<span id="comment1content${i}" style="white-space:pre-line"></span>
+		</pre>
 	</c:forEach>
 </div>
 

@@ -22,7 +22,7 @@ public class ListService {
 	@Autowired
 	public ListDao dao;
 	
-	private static final int LIST_SIZE = 8;
+	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
 
 	public List<ListVo> getList(ListVo vo) {
@@ -203,6 +203,20 @@ public class ListService {
 		dao.commentinsert(boardvo);
 		boardvo.setCommentId(dao.commentidselect(boardvo));
 		dao.boardcommentsinsert(boardvo);
+	}
+	
+	public List<BoardVo> replylist(int num){
+		return dao.replysselect(num);
+	}
+	
+	public void reply(String id, BoardVo boardvo){
+		boardvo.setId(id);
+		dao.replyinsert(boardvo);
+	}
+	
+	public void commentremove(int num){
+		dao.boardcommentsdelete(num);
+		dao.commentdelete(num);
 	}
 
 }

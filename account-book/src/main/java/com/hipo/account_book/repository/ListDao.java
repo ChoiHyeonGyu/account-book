@@ -104,5 +104,21 @@ private SqlSession sql;
 	public void boardcommentsinsert(BoardVo boardvo){
 		sql.insert("listview.boardcommentsinsert", boardvo);
 	}
+	
+	public List<BoardVo> replysselect(int num){
+		return sql.selectList("listview.replysselect", num);
+	}
+	
+	public void replyinsert(BoardVo boardvo){
+		sql.insert("listview.replyinsert", boardvo);
+	}
+	
+	public void boardcommentsdelete(int num){
+		sql.delete("listview.boardcommentsdelete", num);
+	}
+	
+	public void commentdelete(int num){
+		sql.delete("listview.commentdelete", num);
+	}
 
 }
