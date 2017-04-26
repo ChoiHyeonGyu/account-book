@@ -92,7 +92,7 @@ public class UserVo {
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-	
+
 	public String getTotal() {
 		return total;
 	}

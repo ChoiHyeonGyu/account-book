@@ -33,7 +33,7 @@ public class AndroidUserController {
 		UserVo vo = null;
 		vo = new UserVo();
 		vo.setName(request.getParameter("name"));
-		vo.setAge(Integer.parseInt(request.getParameter("age")));
+		vo.setAge(request.getParameter("age"));
 		vo.setGender(request.getParameter("gender"));
 		vo.setPassword(request.getParameter("password"));
 		vo.setId(request.getParameter("id"));
