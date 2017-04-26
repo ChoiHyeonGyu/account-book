@@ -1,6 +1,7 @@
 var arrays = [];
 var currentid = "";
 var path = "";
+var obj2 = {};
 
 $(function(){
 	var boardform = $("#boardform").dialog({
@@ -29,11 +30,19 @@ $(function(){
 		modal: true,
 		buttons: {
 			"수정하기": function() {
-				contenteditform.dialog("open");
+				if(currentid != $("#editId").val()){
+					alert("너가 수정을 할 수 있을 것 같아?");
+				} else {
+					contenteditform.dialog("open");
+				}
 				$( this ).dialog( "close" );
 			},
 			"삭제하기" : function() {
-				$("#contentremovepost").submit();
+				if(currentid != $("#editId").val()){
+					alert("너가 삭제를 할 수 있을 것 같아?");
+				} else {
+					$("#contentremovepost").submit();
+				}
 				$( this ).dialog( "close" );
 			}
 		},
@@ -61,15 +70,77 @@ $(function(){
 		}
 	});
 	
+	var commentsform = $("#commentform").dialog({
+		autoOpen: false,
+		height: 660,
+		width: 500,
+		modal: true,
+		buttons: {
+		},
+		close: function() {
+			
+		}
+	});
+	
 	$("#boardadd").click(function(){
 		boardform.dialog("open");
+	});
+	
+	$("#commentsviewer").click(function(){
+		commentsform.dialog("open");
+		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/commentlist",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(obj2),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	console.log(response);
+		    	for(var i=0; i<=1000; i++){
+		    		$("#commentname"+i).css('display', 'block');
+		    		$("#commentdate"+i).css('display', 'block');
+		    		$("#commentreply"+i).css('display', 'block');
+		    		$("#commentdelete"+i).css('display', 'block');
+		    		$("#commentcontent"+i).css('display', 'block');
+		    		$("#commneteffect"+i).css('display', 'block');
+		    	}
+		    	for(var i=0; i<response.data.length; i++){
+		    		$("#commentname"+i).text("작성자 : "+response.data[i].name);
+		    		$("#commentdate"+i).text(response.data[i].day);
+		    		$("#commentcontent"+i).text(response.data[i].content);
+		    	}
+		    	if(response.data.length == 0){
+		    		for(var i=0; i<=1000; i++){
+		    			$("#commentname"+i).css('display', 'none');
+			    		$("#commentdate"+i).css('display', 'none');
+			    		$("#commentreply"+i).css('display', 'none');
+			    		$("#commentdelete"+i).css('display', 'none');
+			    		$("#commentcontent"+i).css('display', 'none');
+			    		$("#commneteffect"+i).css('display', 'none');
+			    	}
+		    	} else {
+		    		for(var i=response.data.length; i<=1000; i++){
+		    			$("#commentname"+i).css('display', 'none');
+			    		$("#commentdate"+i).css('display', 'none');
+			    		$("#commentreply"+i).css('display', 'none');
+			    		$("#commentdelete"+i).css('display', 'none');
+			    		$("#commentcontent"+i).css('display', 'none');
+			    		$("#commneteffect"+i).css('display', 'none');
+			    	}
+		    	}
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
 	});
 	
 	for(var i=0; i<arrays.length; i++){
 		var num = arrays[i];
 		$("#"+arrays[i]).click(function(num){
 			contentform.dialog("open");
-			var obj2 = {"boardid":num.target.id};
+			obj2 = {"boardid":num.target.id};
 			
 			$.ajax( {
 			    url : "/account-book/"+currentid+"/boardcontent",
@@ -102,11 +173,16 @@ $(function(){
 			    	$("#contenthit").text("조회 : "+response.data["0"].hit);
 			    	
 			    	$("#editboardId").val(response.data["0"].boardId);
+			    	$("#editId").val(response.data["0"].id);
 			    	$("#editmonth option:selected").text(response.data["0"].month);
 			    	$("#edittitle").val(response.data["0"].title);
 			    	$("#editcontent").text(response.data["0"].content);
 			    	
 			    	$("#removeboardId").val(response.data["0"].boardId);
+			    	$("#removeId").val(response.data["0"].id);
+			    	
+			    	$("#commentboardId").val(response.data["0"].boardId);
+			    	$("#commentName").val(response.data["0"].name);
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       

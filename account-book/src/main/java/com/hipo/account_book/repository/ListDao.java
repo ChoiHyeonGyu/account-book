@@ -62,7 +62,7 @@ private SqlSession sql;
 	}
 	
 	public void boardupdate(BoardVo boardvo){
-		sql.insert("listview.boardupdate", boardvo);
+		sql.update("listview.boardupdate", boardvo);
 	}
 	
 	public List<BoardVo> imagelist(int id){
@@ -87,6 +87,22 @@ private SqlSession sql;
 		map.put("page", page);
 		map.put("size", size);
 		return sql.selectList("listview.getList", map);
+	}
+	
+	public List<BoardVo> commentsselect(int num){
+		return sql.selectList("listview.commentsselect", num);
+	}
+	
+	public void commentinsert(BoardVo boardvo){
+		sql.insert("listview.commentinsert", boardvo);
+	}
+	
+	public int commentidselect(BoardVo boardvo){
+		return sql.selectOne("listview.commentidselect", boardvo);
+	}
+	
+	public void boardcommentsinsert(BoardVo boardvo){
+		sql.insert("listview.boardcommentsinsert", boardvo);
 	}
 
 }

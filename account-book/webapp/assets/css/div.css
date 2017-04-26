@@ -44,3 +44,10 @@ div.pager  ul li a:visited,
 div.pager  ul li a:link,
 div.pager  ul li a:active	{ text-decoration: none; color:#555 }
 div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
+
+.line {
+	height: 1px;
+	margin: 9px 0;
+	overflow: hidden;
+	background-color: #080808;
+}

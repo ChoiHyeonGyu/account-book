@@ -85,7 +85,6 @@
       	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
       	<input type="file" name="file" multiple="multiple">
    	</form>
-   	
 </div>
 
 <div id="contentform" title="자세히 보기" style="display:none">
@@ -99,12 +98,48 @@
 	<h3><span id="contentcontent" class="label label-warning"></span></h3><br/>
 	<span id="contentday" class="label label-warning" style="font-size:25px"></span>
 	<span id="contentgood" class="label label-warning" style="font-size:25px"></span>
-	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/>
+	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/><br/>
+	<p class="line"></p>
+	<button id="commentsviewer" type="button" class="btn btn-lg btn-default form-control">댓글 보기</button><br/>
+</div>
+
+<div id="commentform" title="댓글 보기" style="display:none">
+	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
+		<input type="hidden" id="commentboardId" name="boardId" value="">
+		<input type="hidden" id="commentName" name="name" value="">
+		<textarea rows="5" cols="63" name="content"></textarea><br/><br/>
+		<input type="submit" value="댓글 쓰기">
+	</form>
+	<p class="line"></p>
+	<c:forEach var="i" begin="0" end="1000">
+		<pre id="commneteffect${i}">
+		<span id="commentname${i}" style="word-break:"></span><span id="commentdate${i}"></span>
+		<span><button id="commentreply${i}" type="button" class="btn btn-lg btn-link">답글</button></span>
+		<span><button id="commentdelete${i}" type="button" class="btn btn-lg btn-link">삭제</button></span>
+		<span id="commentcontent${i}"></span>
+		</pre>
+	</c:forEach>
+</div>
+
+<div id="comment1form" title="답글 보기" style="display:none">
+	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
+		<input type="hidden" id="commentboardId" name="boardId" value="">
+		<input type="hidden" id="commentName" name="name" value="">
+		<textarea rows="5" cols="92" name="content"></textarea><br/><br/>
+		<input type="submit" value="답글 쓰기">
+	</form>
+	<p class="line"></p>
+	<c:forEach var="comment" items="">
+		<p></p>
+		<p></p>
+		<p></p>
+	</c:forEach>
 </div>
 
 <div id="contenteditform" title="수정하기" style="display:none">
 	<form id="contenteditpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardedit" enctype="multipart/form-data">
 		<input type="hidden" id="editboardId" name="boardId" value="">
+		<input type="hidden" id="editId" name="id" value="">
    		<h3><span class="label label-primary">결산월</span></h3>
    		<div class="dropdown theme-dropdown clearfix">
 	   		<select class="dropdown-menu" id="editmonth" name="month">
@@ -131,5 +166,6 @@
 <div style="display:none">
 	<form id="contentremovepost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardremove">
 		<input type="hidden" id="removeboardId" name="boardId" value="">
+		<input type="hidden" id="removeId" name="id" value="">
 	</form>
 </div>

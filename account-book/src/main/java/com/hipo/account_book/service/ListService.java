@@ -191,5 +191,16 @@ public class ListService {
 		
 		return map;
 	}
+	
+	public List<BoardVo> commentlist(int num){
+		return dao.commentsselect(num);
+	}
+	
+	public void comment(String id, BoardVo boardvo){
+		boardvo.setId(id);
+		dao.commentinsert(boardvo);
+		boardvo.setCommentId(dao.commentidselect(boardvo));
+		dao.boardcommentsinsert(boardvo);
+	}
 
 }

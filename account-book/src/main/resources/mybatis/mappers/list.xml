@@ -142,6 +142,30 @@ INSERT INTO listdate
 			order by board.day desc) a) where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
 		]]>	
 	</select>
+	
+	<select id="commentsselect" parameterType="int" resultType="boardvo">
+		<![CDATA[
+			select comments.comment_id as commentId, comments.* from boardcomments, comments where boardcomments.comment_id = comments.comment_id and boardcomments.board_id = #{value}
+		]]>
+	</select>
+	
+	<insert id="commentinsert" parameterType="boardvo">
+		<![CDATA[
+			insert into comments values(seq_comments.nextval, #{id}, #{name}, sysdate, #{content}, '')
+		]]>
+	</insert>
+	
+	<select id="commentidselect" parameterType="boardvo" resultType="int">
+		<![CDATA[
+			select comment_id from comments where id = #{id} and content = #{content}
+		]]>
+	</select>
+	
+	<insert id="boardcommentsinsert" parameterType="boardvo">
+		<![CDATA[
+			insert into boardcomments values(#{boardId}, #{commentId})
+		]]>
+	</insert>
 </mapper>
 
 	

@@ -78,13 +78,29 @@ public class ListController {
 	
 	@RequestMapping("/boardedit")
 	public String boardedit(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
-		service.boardedit(id, boardvo, file);
+		if(id.equals(boardvo.getId())){
+			service.boardedit(id, boardvo, file);
+		}
 		return "redirect:/"+id+"/main";
 	}
 	
 	@RequestMapping("/boardremove")
 	public String boardremove(@PathVariable String id, @ModelAttribute BoardVo boardvo){
-		service.boardremove(boardvo.getBoardId());
+		if(id.equals(boardvo.getId())){
+			service.boardremove(boardvo.getBoardId());
+		}
+		return "redirect:/"+id+"/main";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/commentlist")
+	public JSONResult commentlist(@RequestBody Map<String, Object> map){
+		return JSONResult.success(service.commentlist(Integer.parseInt(map.get("boardid").toString())));
+	}
+	
+	@RequestMapping("/comment")
+	public String comment(@PathVariable String id, @ModelAttribute BoardVo boardvo){
+		service.comment(id, boardvo);
 		return "redirect:/"+id+"/main";
 	}
 }

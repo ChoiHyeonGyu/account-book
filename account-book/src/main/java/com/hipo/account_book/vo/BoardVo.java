@@ -12,6 +12,7 @@ public class BoardVo {
 	private int good;
 	private int hit;
 	private int commentId;
+	private int reply;
 	
 	public int getBoardId() {
 		return boardId;
@@ -78,5 +79,11 @@ public class BoardVo {
 	}
 	public void setCommentId(int commentId) {
 		this.commentId = commentId;
+	}
+	public int getReply() {
+		return reply;
+	}
+	public void setReply(int reply) {
+		this.reply = reply;
 	}
 }
