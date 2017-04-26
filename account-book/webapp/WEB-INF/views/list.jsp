@@ -84,7 +84,7 @@
 						placeholder="money" value="" required><br />
 
 					<h3>
-						<span class="label label-default">상호명</span>
+						<span class="label label-default">구입물이름</span>
 					</h3>
 					<input type="text" name="name" class="form-control"
 						placeholder="name" value="" required><br />
@@ -153,16 +153,17 @@
 						<td>은행</td>
 						<td>+/-</td>
 						<td>금액</td>
-						<td>상호명</td>
+						<td>구입물이름</td>
 						<td>카테고리</td>
 						<td>날짜</td>
 						<td>삭제</td>
+						<td>수정하기</td>
 						<td>맵 확인하기</td>
 
 
 					</tr>
 
-					<c:forEach var="vo" items="${list}" varStatus="status">
+				<c:forEach var="vo" items="${list}" varStatus="status">
 						<script>
 							listarray.push("${vo.listId}");
 	      				</script>
@@ -178,6 +179,7 @@
 							<td><a
 								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+									
 							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
 					</c:forEach>
