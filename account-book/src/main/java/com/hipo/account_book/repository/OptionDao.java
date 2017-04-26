@@ -25,7 +25,13 @@ public class OptionDao {
 	}
 	
 	public List<OptionVo> category(OptionVo vo) {
+		System.out.println(" 카테카테카테카테카테" + vo);
 		List<OptionVo> category = sql.selectList("option.category",vo);
 		return category;
+	}
+	
+	public boolean delete(OptionVo vo) {
+		 sql.delete("option.delete",vo);
+		 return false;
 	}
 }

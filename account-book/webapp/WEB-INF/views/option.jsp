@@ -11,7 +11,7 @@
 			<div id="categoryform" title="카테고리 추가"
 				class="col-lg-6 col-lg-6 text-center op">
 				<form method="post" name="카테고리 추가" id="categorypost"
-					action="${pageContext.request.contextPath}/categoryAdd">
+					action="${pageContext.request.contextPath}/${currentuserid}/categoryAdd">
 
 					<h3>
 						<span class="label label-default">카데고리 추가</span>
@@ -40,9 +40,11 @@
 								<td>${vo.categoryId}</td>
 								<td> <button type="button" id="${vo.categoryId}"
 										name="categorymodify" class="btn btn-join">수정</button></td>
-								<td><button type="button" id="delete" name="delete"
-										class="btn btn-join">삭제</button></td>
+							<td><a href="${pageContext.request.contextPath}/${currentuserid}/categorydelete?categoryId=${vo.categoryId}" >
+							<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+							
 							</tr>
+								
 						</c:forEach>
 
 
@@ -101,7 +103,9 @@
 			<form id="modifypost" method="post"
 				action="${pageContext.request.contextPath}/categoryModify">
 				<input type="text" value="" name="category"
-					class="form-control" placeholder="Category" required>
+					class="form-control" placeholder="Category" required><br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<input type="submit" value="MODIFY" class="btn btn-join">
 			</form>
 		</div>
 	</section>

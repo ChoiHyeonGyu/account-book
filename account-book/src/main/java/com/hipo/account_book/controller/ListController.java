@@ -45,6 +45,8 @@ public class ListController {
 	}
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
+		
+		System.out.println("리스트아이디.........."+ vo);
 		 service.delete(vo);
 		return "redirect:/"+id+"/main";
 		

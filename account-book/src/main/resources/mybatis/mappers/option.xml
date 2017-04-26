@@ -21,5 +21,12 @@ select category, category_id as categoryId from category
  ]]>
 	</select>
 
+	<delete id="delete" parameterType="optionvo">
+		<![CDATA[
+					delete from category where category_id = #{categoryId}
+
+				]]>
+	</delete>
+
 </mapper>
 
