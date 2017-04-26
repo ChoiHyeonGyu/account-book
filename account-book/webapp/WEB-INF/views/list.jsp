@@ -63,7 +63,7 @@
 						<span class="label label-default">결제 수단</span>
 					</h3>
 					<input type="text" class="form-control" name="paid"
-						placeholder="card / cash" value="" required><br />
+						placeholder="card / cash" value="" required ><br />
 
 					<h3>
 						<span class="label label-default">은행</span>
@@ -171,7 +171,7 @@
 							<td>${vo.paid}</td>
 							<td>${vo.bank}</td>
 							<td>${vo.operations}</td>
-							<td><button id="myBtn1">${vo.money}</button></td>
+							<td><button id="${vo.listId}">${vo.money}</button></td>
 							<td>${vo.name}</td>
 							<td>${vo.category}</td>
 							<td>${vo.day}</td>
