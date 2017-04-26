@@ -120,5 +120,9 @@ private SqlSession sql;
 	public void commentdelete(int num){
 		sql.delete("listview.commentdelete", num);
 	}
+	
+	public void hit(int num){
+		sql.update("listview.hit", num);
+	}
 
 }

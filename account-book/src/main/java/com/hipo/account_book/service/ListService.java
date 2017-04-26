@@ -218,5 +218,9 @@ public class ListService {
 		dao.boardcommentsdelete(num);
 		dao.commentdelete(num);
 	}
+	
+	public void hit(int num){
+		dao.hit(num);
+	}
 
 }

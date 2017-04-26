@@ -182,6 +182,10 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			delete from comments where comment_id = #{value} or reply = #{value}
 		]]>
 	</delete>
+	
+	<update id="hit" parameterType="int">
+		update board set hit = hit + 1 where board_id = #{value}
+	</update>
 </mapper>
 
 	

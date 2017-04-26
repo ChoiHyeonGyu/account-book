@@ -60,6 +60,9 @@
                     <li>
                         <a class="page-scroll" href="#option">Option</a>
                     </li>
+                    <li>
+                        <a class="page-scroll" href="${pageContext.request.contextPath}/logout">logout</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->

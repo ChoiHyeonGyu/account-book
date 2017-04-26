@@ -79,6 +79,7 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/boardcontent")
 	public JSONResult boardcontent(@RequestBody Map<String, Object> map){
+		service.hit(Integer.parseInt(map.get("boardid").toString()));
 		return JSONResult.success(service.boardcontent(Integer.parseInt(map.get("boardid").toString())));
 	}
 	

@@ -58,7 +58,7 @@
 			<bean class="com.hipo.account_book.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
 		<mvc:interceptor>
-			<mvc:mapping path="" />
+			<mvc:mapping path="/logout" />
 			<bean class="com.hipo.account_book.interceptor.LogoutInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
