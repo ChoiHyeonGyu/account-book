@@ -1,4 +1,4 @@
-var listarray = [];
+var listarray = [];// 첫번째 여기로 푸쉬값이 담긴다.
 
 $(function(){
 	
@@ -22,7 +22,7 @@ $(function(){
 		}
 	});
 		
-	var myBtnform1 = $("#modify").dialog({
+/*	var myBtnform1 = $("#modify").dialog({
 		autoOpen: false,
 		height: 800,
 		width: 600,
@@ -40,7 +40,7 @@ $(function(){
 		close: function() {
 				
 		}
-	});
+	});*/
 		
 	var mm1 = $( "#modify" ).dialog({// div 
 		autoOpen: false,
@@ -50,7 +50,7 @@ $(function(){
 		buttons: {
 			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
-				$("#modify1").submit();
+				$("#modify11").submit();
 				$( this ).dialog( "close" );
 			},
 			"취소" : function() {
@@ -131,27 +131,36 @@ $(function(){
 		event.preventDefault();
 		myBtnform.dialog("open");
 	});
-	/*$("#myBtn1").click(function(event){
+	$("#listvo").click(function(event){
 		event.preventDefault();
+		console.log("dddddddddd");
 		myBtnform1.dialog("open");
-	}*/
+	});
 	
-	for(var i=0; i<listarray.length; i++){
+	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		$("#"+listarray[i]).click(function(num){
+		$("#"+listarray[i]).click(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 			console.log(num);
-			mm1.dialog("open");
+			mm1.dialog("open");//여기서 폼을 띄운다,.
 			
-			var listid = {"listid":num.target.id};// 보내는 데이터
+			var listid = {"listid":num.target.id};// 보내는 데이터 sending to the controller.!!!
 			
-			$.ajax( {
+			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify",// 보낼주소
 			    type: "POST",
 			    dataType: "JSON",
-			    data: JSON.stringify(listid),//제이슨 보낼때 형식
+			    data: JSON.stringify(listid),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
-			    success: function( response ){
+			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
 			    	console.log(response);
+			    	$("#listId").val(response.data.listId);//웹에 쏘아지는 정보들 !!!! 이건 폼안에쏘아진다.
+			    	$("#listpaid").val(response.data.paid);//!!! 폼에 아이디를 만들고 여기 샵내용물을 매칭한다 그럼 정보가 쏘아진다.
+			    	$("#listbank").val(response.data.bank);
+			    	$("#listcategory").val(response.data.category);
+			    	$("#listoperations").val(response.data.operations);
+			    	$("#listmoney").val(response.data.money);
+			    	$("#listname").val(response.data.name);
+			    	
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       

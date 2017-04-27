@@ -40,21 +40,18 @@ public class ListController {
 		model.addAttribute("board", service.getBoardList(page, search));
 		
 		model.addAttribute("list", list);
-		System.out.println("카테고리 ~~~!!!!!!!!!"+ option);
 		model.addAttribute("option", option);
 		return "main";
 	}
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
 		
-		System.out.println("리스트아이디.........."+ vo);
 		 service.delete(vo);
 		return "redirect:/"+id+"/main";
 		
 	}
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
-		System.out.println("더하는 부분 아이디 잘가지고 옵니다" + vo);
 		String list = service.add(vo);
 		
 		return "redirect:/"+id+"/main";
@@ -64,11 +61,18 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
-		System.out.println("고치는 부분 입니다.무엇을 가지고 오나요" + map);
-		//service.modify(map);
 		
-		return JSONResult.success(service.modify (Integer.parseInt(map.get("listId").toString())));
+		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));//여기서 에러.
+		
 	} 
+	@RequestMapping("/modify1")
+	public String modify1(@ModelAttribute ListVo vo,@PathVariable String id){
+		System.out.println("마지막 수정 옵니까.?" + vo);
+		service.modify1(vo);
+		
+		return "redirect:/"+id+"/main";
+		
+	}
 	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
@@ -141,4 +145,5 @@ public class ListController {
 		}
 		return JSONResult.success(map);
 	}
+	
 }

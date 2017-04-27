@@ -19,8 +19,8 @@ public class OptionService {
 		optionDao.add(optionvo);
 	}
 	
-	public void Update(OptionVo optionvo){
-		optionDao.update(optionvo);
+	public void Update(OptionVo vo){
+		optionDao.update(vo);
 	}
 	
 	public List<OptionVo> getCategory(OptionVo vo) {
@@ -30,6 +30,5 @@ public class OptionService {
 	
 	public boolean delete(OptionVo vo) {
 		return optionDao.delete(vo); 
-		
 	}
 }

@@ -26,9 +26,7 @@ public class ListService {
 	private static final int PAGE_SIZE = 10;
 
 	public List<ListVo> getList(ListVo vo) {
-		System.out.println("아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = dao.list(vo);
-		System.out.println("리스트 불러옵니까????" + list);
 
 		return list;
 	}
@@ -39,16 +37,12 @@ public class ListService {
 	}
 
 	public String add(ListVo vo) {
-		System.out.println("서비스 보 다가지고 오냐??????????" + vo);
 		int list = dao.add(vo);
 		return null;
 	}
 
-	public List<ListVo> modify(int i) {
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put( "listid", dao.modify(i) );
-		return  (List<ListVo>) map1 ;
-		
+	public ListVo modify(int i) {
+		return dao.modify(i);
 	}
 	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
@@ -234,5 +228,12 @@ public class ListService {
 		dao.good(num);
 		return true;
 	}
+
+	public boolean modify1(ListVo vo) {
+		dao.modify1(vo);
+		return false; 
+		
+	}
+
 
 }
