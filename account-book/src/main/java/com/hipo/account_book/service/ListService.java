@@ -26,9 +26,7 @@ public class ListService {
 	private static final int PAGE_SIZE = 10;
 
 	public List<ListVo> getList(ListVo vo) {
-		System.out.println("아이디 ! 불러옵니다" + vo);
 		List<ListVo> list = dao.list(vo);
-		System.out.println("리스트 불러옵니까????" + list);
 
 		return list;
 	}
@@ -39,7 +37,6 @@ public class ListService {
 	}
 
 	public String add(ListVo vo) {
-		System.out.println("서비스 보 다가지고 오냐??????????" + vo);
 		int list = dao.add(vo);
 		return null;
 	}

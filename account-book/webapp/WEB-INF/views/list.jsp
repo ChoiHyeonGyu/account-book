@@ -98,11 +98,52 @@
 				</form> 
 				</div>
 			 </p>
-			 <p>
+			
+	
+
+			 <table border='1' class="syd2">
+					<tr bgcolor='red'>
+						<td>중복확인</td>
+						<td>결제수단</td>
+						<td>은행</td>
+						<td>+/-</td>
+						<td>금액</td>
+						<td>구입물이름</td>
+						<td>카테고리</td>
+						<td>날짜</td>
+						<td>삭제</td>
+						<td>맵 확인하기</td>
+
+
+					</tr>
+						<c:forEach var="vo" items="${list}" varStatus="status">
+						 <script>
+							listarray.push("${vo.listId}");
+	      				</script> 
+						<tr>
+							<td>${vo.listId}</td>
+							<td>${vo.paid}</td>
+							<td>${vo.bank}</td>
+							<td>${vo.operations}</td>
+							<td><button id="${vo.listId}">${vo.money}</button></td>
+							
+							<td>${vo.name}</td>
+							<td>${vo.category}</td>
+							<td>${vo.day}</td>
+							<td><a
+								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
+									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+									
+							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
+						</tr>
+					</c:forEach>
+			<p>
 			<div id="modify" title="수정하기" style="display:none" >
-				<form id="modify1" name="listadd1"  var="vo" items="${list}" varStatus="status" 
-					action="${pageContext.request.contextPath }/${currentuserid}/modify1?listId=${vo.listId}" method="post">
-						 <input type='hidden' name="id" value="${currentuserid}"> 
+				<form id="modify11" name="listadd"  var="vo" items="${list}" varStatus="status" 
+					action="${pageContext.request.contextPath }/${currentuserid}/modify1?listId=170" method="post">
+					
+						 <input type='hidden' name="id" value="${currentuserid}"/>
+						 <input type='hidden' name="listId1" value="${vo.listId}"/>
 					<h3>
 						<span class="label label-default">결제 수단</span>
 					</h3>
@@ -141,51 +182,16 @@
 
 				</form> 
 				</div>
-			 </p>
-	
-
-			 <table border='1' class="syd2">
-					<tr bgcolor='red'>
-						<td>중복확인</td>
-						<td>결제수단</td>
-						<td>은행</td>
-						<td>+/-</td>
-						<td>금액</td>
-						<td>구입물이름</td>
-						<td>카테고리</td>
-						<td>날짜</td>
-						<td>삭제</td>
-						<td>맵 확인하기</td>
-
-
-					</tr>
-
-				<c:forEach var="vo" items="${list}" varStatus="status">
-						 <script>
-							listarray.push("${vo.listId}");
-	      				</script> 
-						<tr>
-							<td>${vo.listId}</td>
-							<td>${vo.paid}</td>
-							<td>${vo.bank}</td>
-							<td>${vo.operations}</td>
-							<td><button id="${vo.listId}">${vo.money}</button></td>
-							<td>${vo.name}</td>
-							<td>${vo.category}</td>
-							<td>${vo.day}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
-									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-									
-							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
-						</tr>
-					</c:forEach>
+			 </p>				
+			 
 
 
 				</table>
 </body>
+
 				</html>
-				
+
+ 
 			</div>
 			
 		</div>

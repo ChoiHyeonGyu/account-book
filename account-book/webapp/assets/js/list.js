@@ -22,7 +22,7 @@ $(function(){
 		}
 	});
 		
-	var myBtnform1 = $("#modify").dialog({
+/*	var myBtnform1 = $("#modify").dialog({
 		autoOpen: false,
 		height: 800,
 		width: 600,
@@ -40,7 +40,7 @@ $(function(){
 		close: function() {
 				
 		}
-	});
+	});*/
 		
 	var mm1 = $( "#modify" ).dialog({// div 
 		autoOpen: false,
@@ -50,7 +50,7 @@ $(function(){
 		buttons: {
 			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
-				$("#modify1").submit();
+				$("#modify11").submit();
 				$( this ).dialog( "close" );
 			},
 			"취소" : function() {
@@ -154,6 +154,7 @@ $(function(){
 			    success: function( response ){
 			    	console.log(response.data.paid);
 			    	console.log(response);
+			    	$("#listId").val(response.data.listId1);
 			    	$("#listpaid").val(response.data.paid);
 			    	$("#listbank").val(response.data.bank);
 			    	$("#listcategory").val(response.data.category);

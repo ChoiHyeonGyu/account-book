@@ -40,21 +40,18 @@ public class ListController {
 		model.addAttribute("board", service.getBoardList(page, search));
 		
 		model.addAttribute("list", list);
-		System.out.println("카테고리 ~~~!!!!!!!!!"+ option);
 		model.addAttribute("option", option);
 		return "main";
 	}
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
 		
-		System.out.println("리스트아이디.........."+ vo);
 		 service.delete(vo);
 		return "redirect:/"+id+"/main";
 		
 	}
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
-		System.out.println("더하는 부분 아이디 잘가지고 옵니다" + vo);
 		String list = service.add(vo);
 		
 		return "redirect:/"+id+"/main";
@@ -68,11 +65,11 @@ public class ListController {
 		
 	} 
 	@RequestMapping("/modify1")
-	public String modify1(@ModelAttribute ListVo vo){
+	public String modify1(@ModelAttribute ListVo vo,@PathVariable String id){
 		System.out.println("마지막 수정 옵니까.?" + vo);
 		service.modify1(vo);
 		
-		return null;
+		return "redirect:/"+id+"/main";
 		
 	}
 	
