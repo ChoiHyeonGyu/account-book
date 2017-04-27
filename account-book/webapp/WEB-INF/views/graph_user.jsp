@@ -1,97 +1,75 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<section class="no-padding" id="graph-user">
-<div class="container-fluid">
-    <div class="row no-gutter popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-            <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="img/portfolio/fullsize/4.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="img/portfolio/fullsize/6.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
+<section id="graph-user" class="bg-dark">
+	<div class="container">
+		<div class="row">
+			<div class="page-header" align="center">
+				<h1>나의 소비동향</h1>
+			</div>
+			<div id="carousel-example-generic" class="carousel slide"
+				data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0"
+						class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner" role="listbox">
+					<div class="item active">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">일 단위</div>
+								<!-- /.panel-heading -->
+								<div class="panel-body">
+									<div class="flot-chart">
+										<div class="flot-chart-content" id="flot-pie-chart1"></div>
+									</div>
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</div>
+					</div>
+					<div class="item">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">월 단위</div>
+								<!-- /.panel-heading -->
+								<div class="panel-body">
+									<div class="flot-chart">
+										<div class="flot-chart-content" id="flot-pie-chart2"></div>
+									</div>
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</div>
+					</div>
+					<div class="item">
+						<div class="col-lg-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">연 단위</div>
+								<!-- /.panel-heading -->
+								<div class="panel-body">
+									<div class="flot-chart">
+										<div class="flot-chart-content" id="flot-pie-chart3"></div>
+									</div>
+								</div>
+								<!-- /.panel-body -->
+							</div>
+							<!-- /.panel -->
+						</div>
+					</div>
+				</div>
+				<a class="left carousel-control" href="#carousel-example-generic"
+					role="button" data-slide="prev"> <span
+					class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a> <a class="right carousel-control" href="#carousel-example-generic"
+					role="button" data-slide="next"> <span
+					class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+	</div>
 </section>

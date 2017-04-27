@@ -24,7 +24,16 @@
     
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
+	<script src="${pageContext.request.contextPath}/assets/js/sb-admin-2.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/flot/excanvas.min.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.pie.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.resize.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.time.js"></script>
+    <script src="${pageContext.request.contextPath}/assets/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/flot-data.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/list.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/option.js"></script>
@@ -86,15 +95,6 @@
     <c:import url="/WEB-INF/views/list.jsp"/>
 
     <c:import url="/WEB-INF/views/graph_user.jsp"/>
-
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download Now!</a>
-            </div>
-        </div>
-    </aside>
 
     <c:import url="/WEB-INF/views/graph_avg.jsp"/>
     
