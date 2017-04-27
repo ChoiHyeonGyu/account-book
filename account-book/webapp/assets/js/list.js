@@ -152,9 +152,8 @@ $(function(){
 			    data: JSON.stringify(listid),//제이슨 보낼때 형식
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
-			    	console.log(response.data.paid);
 			    	console.log(response);
-			    	$("#listId").val(response.data.listId1);
+			    	$("#listId").val(response.data.listId);
 			    	$("#listpaid").val(response.data.paid);
 			    	$("#listbank").val(response.data.bank);
 			    	$("#listcategory").val(response.data.category);
