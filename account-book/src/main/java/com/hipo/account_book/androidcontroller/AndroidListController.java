@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -44,7 +43,6 @@ public class AndroidListController {
 	@ResponseBody
 	public Map<String, ListVo> loginUserVo(HttpServletRequest request) {
 		String id = request.getParameter("id");
-		id="610401595830207";
 		List<ListVo> list = listService.getList(id);
 		Map<String, ListVo> ListData = new HashMap<String, ListVo>();
 		for (int i = 0; i < list.size(); i++) {
