@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.OptionVo;
@@ -22,37 +23,43 @@ public class OptionController {
 	private OptionService optionService;
 	
 	@RequestMapping(value="/categoryAdd", method=RequestMethod.POST)
-	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @ModelAttribute UserVo uservo){
+	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @PathVariable String id){
 		if (result.hasErrors()) {
 			model.addAttribute("result", result.getModel());
 			model.addAttribute("error", result.getAllErrors());
 			return "main";
 		}
 		optionService.Add(optionvo);
-		return "redirect:/"+uservo.getId()+"/main";
+		return "redirect:/"+id+"/main#option";
 	}
 	
 	@RequestMapping("/categoryModify")
-	public String categoryModify(@ModelAttribute OptionVo optionvo, BindingResult result, Model model, @ModelAttribute UserVo uservo){
+	public String categoryModify(@ModelAttribute OptionVo optionvo, BindingResult result, Model model, @PathVariable String id){
 		
 		if (result.hasErrors()) {
 			model.addAttribute("result", result.getModel());
 			model.addAttribute("error", result.getAllErrors());
 			return "main";
 		}
+		//optionvo.setCategeoryId(cid);
 		System.out.println("수정수정수정"+ optionvo);
 		optionService.Update(optionvo);
-		return "redirect:/"+uservo.getId()+"/main";
+		return "redirect:/"+id+"/main#option";
 	}
 	
 	@RequestMapping("/categorydelete")
-	public String categoryDelete(@ModelAttribute OptionVo vo){
-		 System.out.println("딜리트.............."+vo);
-/*		 System.out.println("아이디.............."+id);*/
+	public String categorydelete(@PathVariable String id, @ModelAttribute OptionVo vo, @RequestParam("categoryId") int cid){
+		vo.setCategeoryId(cid); 
+		System.out.println("딜리트.............."+vo);
+		 System.out.println("아이디.............."+id);
+		 System.out.println("호로로로로롤.............."+cid);
+		 
+		 
 		
 		optionService.delete(vo);
-		return "/main";
-				/*"redirect:/"+id+"/main"*/
 		
+		//return "main";
+		return "redirect:/"+id+"/main#option";
 	}
+	
 }

@@ -18,7 +18,7 @@
 					</h3>
 					<br /> 
 					<input type="text" id="category" name="category"
-						class="form-control1" valus="" placeholder="Category" required> 
+						class="form-control1" value="" placeholder="Category" required> 
 					<input type="submit" value="ADD" class="btn btn-join">
 
 				</form>
@@ -66,9 +66,9 @@
 					</h3>
 					<br /> 금액한도:&nbsp;&nbsp; <select name="limit">
 						<option value="카테고리 설정">카테고리 설정</option>
-						<option value="식비">식비</option>
-						<option value="생활비">생활비</option>
-						<option value="문화생활">문화생활</option>
+						<c:forEach var="vo" items="${option}" >
+						<option value="${vo.category}">${vo.category}</option>
+						</c:forEach>
 					</select><br> <input type="text" id="limit" name="limit"
 						class="form-control1" placeholder="Limit" required>
 					<button type="button" id="modify1" name="modify1"
@@ -81,18 +81,13 @@
 						</tr>
 
 						<tbody>
+						<c:forEach var="vo" items="${option}" >
 							<tr>
-								<td>식비</td>
+								<td>${vo.category}</td>
 								<td>2000</td>
 							</tr>
-							<tr>
-								<td>생활비</td>
-								<td>40000</td>
-							</tr>
-							<tr>
-								<td>문화생활</td>
-								<td>1230000</td>
-							</tr>
+							
+							</c:forEach>
 						</tbody>
 					</table>
 				</form>
@@ -101,7 +96,7 @@
 
 		<div id="modifyform" title="수정" style="display: none">
 			<form id="modifypost" method="post"
-				action="${pageContext.request.contextPath}/categoryModify">
+				action="${pageContext.request.contextPath}/${currentuserid}/categoryModify">
 				<input type="text" value="" name="category"
 					class="form-control" placeholder="Category" required><br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
