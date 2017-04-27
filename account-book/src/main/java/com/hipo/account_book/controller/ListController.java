@@ -64,10 +64,7 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
-		System.out.println("고치는 부분 입니다.무엇을 가지고 오나요" + map);
-		//service.modify(map);
-		
-		return JSONResult.success(service.modify (Integer.parseInt(map.get("listId").toString())));
+		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));//여기서 에러.
 	} 
 	
 	@RequestMapping("/boardadd")

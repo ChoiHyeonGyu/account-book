@@ -44,11 +44,8 @@ public class ListService {
 		return null;
 	}
 
-	public List<ListVo> modify(int i) {
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put( "listid", dao.modify(i) );
-		return  (List<ListVo>) map1 ;
-		
+	public ListVo modify(int i) {
+		return dao.modify(i);
 	}
 	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
@@ -222,5 +219,6 @@ public class ListService {
 	public void hit(int num){
 		dao.hit(num);
 	}
+
 
 }

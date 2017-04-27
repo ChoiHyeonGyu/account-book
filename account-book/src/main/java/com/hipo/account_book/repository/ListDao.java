@@ -36,9 +36,8 @@ private SqlSession sql;
 	}
 
 
-	public List<ListVo> modify(int i) {
-		 sql.update("listview.modify",i);
-		return null;
+	public ListVo modify(int i) {
+		return sql.selectOne("listview.modify", i);
 	}
 	
 	public String usernameselect(String id){
