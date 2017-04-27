@@ -112,7 +112,7 @@
 						<td>카테고리</td>
 						<td>날짜</td>
 						<td>삭제</td>
-						<td>추가하기</td>
+						<td><button id="myBtn">추가하기</button> </td>
 						<td>맵 확인하기</td>
 					</tr>
 						<c:forEach var="vo" items="${list}" varStatus="status">
@@ -132,15 +132,15 @@
 							<td><a
 								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-									<td><button id="myBtn">추가하기</button> </td>
+								<td><button id="myBtn">추가하기</button> </td>	
 							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
 					</c:forEach>
 			<p>
 			<div id="modify" title="수정하기" style="display:none" >
-				<form id="modify11" name="listadd" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post">
+				<form id="modify11"  action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post">
 					
-						 <input type='hidden' name="id" value="${currentuserid}"/>
+						 <input type='hidden' name="id" value="${currentuserid}"/><!-- 히든으로 1가지 이상의 값을 보낼수있다. -->
 						 <input type='hidden' id="listId" name="listId" value=""/>
 						 
 					<h3>
