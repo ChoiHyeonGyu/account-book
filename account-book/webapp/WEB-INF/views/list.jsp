@@ -100,53 +100,8 @@
 			 </p>
 			
 	
-<p>
-			<div id="modify" title="수정하기" style="display:none" >
-				<form id="modify1" name="listadd1"  var="vo" items="${list}" varStatus="status" 
-					action="${pageContext.request.contextPath }/${currentuserid}/modify?listId=${vo.listId}&locationX=0&locationY=0" method="post">
-						 <input type='hidden' name="id" value="${currentuserid}"> 
-					<h3>
-						<span class="label label-default">결제 수단</span>
-					</h3>
-					<input type="text" class="form-control" name="paid"
-						placeholder="card / cash" value="" required><br />
 
-					<h3>
-						<span class="label label-default">은행</span>
-					</h3>
-					<input type="text" name="bank" class="form-control"
-						placeholder="bank" value="" required><br />
-
-					<h3>
-						<span class="label label-default">+/-</span>
-					</h3>
-					<input type="text" name="operations" class="form-control"
-						placeholder="저금/지출" value="" required><br />
-
-					<h3>
-						<span class="label label-default">금액</span>
-					</h3>
-					<input type="text" name="money" class="form-control"
-						placeholder="money" value="" required><br />
-
-					<h3>
-						<span class="label label-default">물건이름</span>
-					</h3>
-					<input type="text" name="name" class="form-control"
-						placeholder="name" value="" required><br />
-
-					<h3>
-						<span class="label label-default">카테고리</span>
-					</h3>
-					<input type="text" name="category" class="form-control"
-						placeholder="category" value="" required><br />
-
-				</form> 
-				</div>
-			 </p>
-</body>
-				</html>
-				<table border='1' class="syd2">
+			 <table border='1' class="syd2">
 					<tr bgcolor='red'>
 						<td>중복확인</td>
 						<td>결제수단</td>
@@ -157,22 +112,21 @@
 						<td>카테고리</td>
 						<td>날짜</td>
 						<td>삭제</td>
-						<td>수정하기</td>
 						<td>맵 확인하기</td>
 
 
 					</tr>
-
-				<c:forEach var="vo" items="${list}" varStatus="status">
-						<script>
+						<c:forEach var="vo" items="${list}" varStatus="status">
+						 <script>
 							listarray.push("${vo.listId}");
-	      				</script>
+	      				</script> 
 						<tr>
 							<td>${vo.listId}</td>
 							<td>${vo.paid}</td>
 							<td>${vo.bank}</td>
 							<td>${vo.operations}</td>
 							<td><button id="${vo.listId}">${vo.money}</button></td>
+							
 							<td>${vo.name}</td>
 							<td>${vo.category}</td>
 							<td>${vo.day}</td>
@@ -183,9 +137,61 @@
 							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
 					</c:forEach>
+			<p>
+			<div id="modify" title="수정하기" style="display:none" >
+				<form id="modify11" name="listadd"  var="vo" items="${list}" varStatus="status" 
+					action="${pageContext.request.contextPath }/${currentuserid}/modify1?listId=170" method="post">
+					
+						 <input type='hidden' name="id" value="${currentuserid}"/>
+						 <input type='hidden' name="listId1" value="${vo.listId}"/>
+					<h3>
+						<span class="label label-default">결제 수단</span>
+					</h3>
+					<input id="listpaid" type="text" class="form-control" name="paid"
+						placeholder="card / cash" value="" required><br />
+
+					<h3>
+						<span class="label label-default">은행</span>
+					</h3>
+					<input id="listbank" type="text" name="bank" class="form-control"
+						placeholder="bank" value="" required><br />
+
+					<h3>
+						<span class="label label-default">+/-</span>
+					</h3>
+					<input id="listoperations" type="text" name="operations" class="form-control"
+						placeholder="저금/지출" value="" required><br />
+
+					<h3>
+						<span class="label label-default">금액</span>
+					</h3>
+					<input id="listmoney" type="text" name="money" class="form-control"
+						placeholder="money" value="" required><br />
+
+					<h3>
+						<span class="label label-default">물건이름</span>
+					</h3>
+					<input id="listname" type="text" name="name" class="form-control"
+						placeholder="name" value="" required><br />
+
+					<h3>
+						<span class="label label-default">카테고리</span>
+					</h3>
+					<input id="listcategory" type="text" name="category" class="form-control"
+						placeholder="category" value="" required><br />
+
+				</form> 
+				</div>
+			 </p>				
+			 
 
 
 				</table>
+</body>
+
+				</html>
+
+ 
 			</div>
 			
 		</div>

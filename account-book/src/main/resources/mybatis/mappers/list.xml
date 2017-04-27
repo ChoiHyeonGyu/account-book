@@ -29,14 +29,23 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	]]>
 	</insert>
 
-	<update id="modify" parameterType="int">
- 	<![CDATA[
- 	update list set paid=#{paid},
- 	bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category} where list_Id=#{listId}
- 	]]>
+	<select id="modify" parameterType="int" resultType="listvo">
+ 		<![CDATA[
+ 			select list_id as listId, paid,bank,operations,money,name,category from list where list_id=#{listId}
+ 		]]>
+	</select>
+	
+	<update id="modify1" parameterType="listvo" >
+ 		<![CDATA[
+		update list set paid=#{paid},
+ 		bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category}
+ 		 where list_Id=#{listId} 	 	
+ 	 	]]>
 	</update>
 
-
+	<!-- update list set paid=#{paid},
+ 	bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category}
+ 	 where list_Id=#{listId} -->
 	<!--<insert id="add1" parameterType="listvo"> <![CDATA[ INSERT INTO listdate 
 		VALUES (#{listId}, #{sysdate}) ]]> </insert> -->
 

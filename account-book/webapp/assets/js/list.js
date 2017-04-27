@@ -22,7 +22,7 @@ $(function(){
 		}
 	});
 		
-	var myBtnform1 = $("#modify").dialog({
+/*	var myBtnform1 = $("#modify").dialog({
 		autoOpen: false,
 		height: 800,
 		width: 600,
@@ -40,7 +40,7 @@ $(function(){
 		close: function() {
 				
 		}
-	});
+	});*/
 		
 	var mm1 = $( "#modify" ).dialog({// div 
 		autoOpen: false,
@@ -50,7 +50,7 @@ $(function(){
 		buttons: {
 			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
-				$("#modify1").submit();
+				$("#modify11").submit();
 				$( this ).dialog( "close" );
 			},
 			"취소" : function() {
@@ -131,10 +131,11 @@ $(function(){
 		event.preventDefault();
 		myBtnform.dialog("open");
 	});
-	/*$("#myBtn1").click(function(event){
+	$("#listvo").click(function(event){
 		event.preventDefault();
+		console.log("dddddddddd");
 		myBtnform1.dialog("open");
-	}*/
+	});
 	
 	for(var i=0; i<listarray.length; i++){
 		var num = listarray[i];
@@ -151,7 +152,16 @@ $(function(){
 			    data: JSON.stringify(listid),//제이슨 보낼때 형식
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
+			    	console.log(response.data.paid);
 			    	console.log(response);
+			    	$("#listId").val(response.data.listId1);
+			    	$("#listpaid").val(response.data.paid);
+			    	$("#listbank").val(response.data.bank);
+			    	$("#listcategory").val(response.data.category);
+			    	$("#listoperations").val(response.data.operations);
+			    	$("#listmoney").val(response.data.money);
+			    	$("#listname").val(response.data.name);
+			    	
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       
