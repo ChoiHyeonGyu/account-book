@@ -6,9 +6,9 @@ $(function() {
 		height : 150,
 		width : 265,
 		modal : true,
-	
-		close : function() {
-
+		
+		close: function() {
+			
 		}
 	});
 
@@ -17,6 +17,21 @@ $(function() {
 
 		$("#"+categoryarray[i]).click(function(number) {
 			modifyform.dialog("open");
+			var cat = {"categoryId":number.target.id};
+			
+			$.ajax( {
+			    url : "/account-book/"+currentid+"/categoryModify",
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(cat),
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){
+			    	
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
 		});
 	}
 });

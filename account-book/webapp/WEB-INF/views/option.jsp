@@ -17,7 +17,7 @@
 						<span class="label label-default">카데고리 추가</span>
 					</h3>
 					<br /> 
-					<input type="text" id="category" name="category"
+					<input type="text" name="category"
 						class="form-control1" value="" placeholder="Category" required> 
 					<input type="submit" value="ADD" class="btn btn-join">
 
@@ -39,7 +39,7 @@
 								<td>${vo.category}</td>
 								<td>${vo.categoryId}</td>
 								<td> <button type="button" id="${vo.categoryId}"
-										name="categorymodify" class="btn btn-join">수정</button></td>
+										 class="btn btn-join">수정</button></td>
 							<td><a href="${pageContext.request.contextPath}/${currentuserid}/categorydelete?categoryId=${vo.categoryId}" >
 							<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
 							
@@ -96,7 +96,7 @@
 
 		<div id="modifyform" title="수정" style="display: none">
 			<form id="modifypost" method="post"
-				action="${pageContext.request.contextPath}/${currentuserid}/categoryModify">
+				action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1">
 				<input type="text" value="" name="category"
 					class="form-control" placeholder="Category" required><br>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
