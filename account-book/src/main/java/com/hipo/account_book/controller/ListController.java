@@ -129,4 +129,13 @@ public class ListController {
 		}
 		return JSONResult.fail("실패");
 	}
+	
+	@ResponseBody
+	@RequestMapping("/good")
+	public JSONResult good(@PathVariable String id, @RequestBody Map<String, Object> map){
+		if(service.good(id, Integer.parseInt(map.get("boardid").toString()))==false){
+			return JSONResult.fail("실패");
+		}
+		return JSONResult.success(map);
+	}
 }

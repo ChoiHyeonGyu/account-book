@@ -100,7 +100,8 @@
 	<span id="contentgood" class="label label-warning" style="font-size:25px"></span>
 	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/><br/>
 	<p class="line"></p>
-	<button id="commentsviewer" type="button" class="btn btn-lg btn-default form-control">댓글 보기</button><br/>
+	<button id="commentsviewer" type="button" class="btn btn-lg btn-default">댓글 보기</button>
+	<button id="good" type="button" class="btn btn-lg btn-default">추천</button>
 </div>
 
 <div id="commentform" title="댓글 보기" style="display:none">

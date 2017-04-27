@@ -301,4 +301,24 @@ $(function(){
 			});
 		});
 	}
+	
+	$("#good").click(function(){		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/good",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(obj2),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	if(response.result == "fail"){
+		    		alert("이미 추천을 하셨습니다.");
+		    	} else {
+		    		alert("이 게시글이 추천되었습니다.");
+		    	}
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
+	});
 });
