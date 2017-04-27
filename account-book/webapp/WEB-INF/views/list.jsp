@@ -52,7 +52,7 @@
 </head>
 <body>
 	<!-- Trigger/Open The Modal -->
-	<button id="myBtn">추가하기</button> 
+	
 
  			<p>
 			<div id="listadd" title="추가하기" style="display:none" >
@@ -112,9 +112,8 @@
 						<td>카테고리</td>
 						<td>날짜</td>
 						<td>삭제</td>
+						<td>추가하기</td>
 						<td>맵 확인하기</td>
-
-
 					</tr>
 						<c:forEach var="vo" items="${list}" varStatus="status">
 						 <script>
@@ -133,17 +132,17 @@
 							<td><a
 								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-									
+									<td><button id="myBtn">추가하기</button> </td>
 							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
 					</c:forEach>
 			<p>
 			<div id="modify" title="수정하기" style="display:none" >
-				<form id="modify11" name="listadd"  var="vo" items="${list}" varStatus="status" 
-					action="${pageContext.request.contextPath }/${currentuserid}/modify1?listId=170" method="post">
+				<form id="modify11" name="listadd" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post">
 					
 						 <input type='hidden' name="id" value="${currentuserid}"/>
-						 <input type='hidden' name="listId1" value="${vo.listId}"/>
+						 <input type='hidden' id="listId" name="listId" value=""/>
+						 
 					<h3>
 						<span class="label label-default">결제 수단</span>
 					</h3>
@@ -179,7 +178,6 @@
 					</h3>
 					<input id="listcategory" type="text" name="category" class="form-control"
 						placeholder="category" value="" required><br />
-
 				</form> 
 				</div>
 			 </p>				
@@ -191,7 +189,6 @@
 
 				</html>
 
- 
 			</div>
 			
 		</div>
