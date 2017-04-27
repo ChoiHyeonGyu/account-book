@@ -124,5 +124,17 @@ private SqlSession sql;
 	public void hit(int num){
 		sql.update("listview.hit", num);
 	}
+	
+	public int gdselect(BoardVo boardvo){
+		return sql.selectOne("listview.gdselect", boardvo);
+	}
+	
+	public void gdinsert(BoardVo boardvo){
+		sql.insert("listview.gdinsert", boardvo);
+	}
+	
+	public void good(int num){
+		sql.update("listview.good", num);
+	}
 
 }

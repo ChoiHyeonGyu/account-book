@@ -186,6 +186,22 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	<update id="hit" parameterType="int">
 		update board set hit = hit + 1 where board_id = #{value}
 	</update>
+	
+	<select id="gdselect" parameterType="boardvo" resultType="int">
+		<![CDATA[
+			select count(*) from GD where board_id = #{boardId} and id = #{id}
+		]]>
+	</select>
+	
+	<insert id="gdinsert" parameterType="boardvo">
+		<![CDATA[
+			insert into GD values(#{boardId}, #{id})
+		]]>
+	</insert>
+	
+	<update id="good" parameterType="int">
+		update board set good = good + 1 where board_id = #{value}
+	</update>
 </mapper>
 
 	

@@ -222,5 +222,17 @@ public class ListService {
 	public void hit(int num){
 		dao.hit(num);
 	}
+	
+	public boolean good(String id, int num){
+		BoardVo boardvo = new BoardVo();
+		boardvo.setId(id);
+		boardvo.setBoardId(num);
+		if(dao.gdselect(boardvo) >= 1){
+			return false;
+		}
+		dao.gdinsert(boardvo);
+		dao.good(num);
+		return true;
+	}
 
 }
