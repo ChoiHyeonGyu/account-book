@@ -136,4 +136,12 @@ private SqlSession sql;
 		sql.update("listview.good", num);
 	}
 
+
+	public boolean modify1(ListVo vo) {
+		sql.update("listview.modify1", vo);
+		return false;
+		
+		
+	}
+
 }

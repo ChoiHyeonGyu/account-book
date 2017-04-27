@@ -65,7 +65,16 @@ public class ListController {
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));//여기서 에러.
+		
 	} 
+	@RequestMapping("/modify1")
+	public String modify1(@ModelAttribute ListVo vo){
+		System.out.println("마지막 수정 옵니까.?" + vo);
+		service.modify1(vo);
+		
+		return null;
+		
+	}
 	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){

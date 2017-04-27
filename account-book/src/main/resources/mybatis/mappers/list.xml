@@ -34,6 +34,14 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  			select paid,bank,operations,money,name,category from list where list_id=#{listId}
  		]]>
 	</select>
+	
+	<update id="modify1" parameterType="listvo" >
+ 		<![CDATA[
+		pdate list set paid=#{paid},
+ 		bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category}
+ 		 where list_Id=#{listId} 		
+ 	 	]]>
+	</update>
 
 	<!-- update list set paid=#{paid},
  	bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category}

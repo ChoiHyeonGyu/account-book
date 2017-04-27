@@ -101,7 +101,7 @@
 			 <p>
 			<div id="modify" title="수정하기" style="display:none" >
 				<form id="modify1" name="listadd1"  var="vo" items="${list}" varStatus="status" 
-					action="${pageContext.request.contextPath }/${currentuserid}/modify?listId=${vo.listId}" method="post">
+					action="${pageContext.request.contextPath }/${currentuserid}/modify1?listId=${vo.listId}" method="post">
 						 <input type='hidden' name="id" value="${currentuserid}"> 
 					<h3>
 						<span class="label label-default">결제 수단</span>

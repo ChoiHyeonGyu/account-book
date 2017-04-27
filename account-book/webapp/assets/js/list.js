@@ -140,6 +140,7 @@ $(function(){
 	for(var i=0; i<listarray.length; i++){
 		var num = listarray[i];
 		$("#"+listarray[i]).click(function(num){
+			console.log(num);
 			mm1.dialog("open");
 			
 			var listid = {"listid":num.target.id};// 보내는 데이터
@@ -152,7 +153,14 @@ $(function(){
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
 			    	console.log(response.data.paid);
+			    	console.log(response);
 			    	$("#listpaid").val(response.data.paid);
+			    	$("#listbank").val(response.data.bank);
+			    	$("#listcategory").val(response.data.category);
+			    	$("#listoperations").val(response.data.operations);
+			    	$("#listmoney").val(response.data.money);
+			    	$("#listname").val(response.data.name);
+			    	
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       

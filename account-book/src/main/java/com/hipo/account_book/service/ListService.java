@@ -232,5 +232,11 @@ public class ListService {
 		return true;
 	}
 
+	public boolean modify1(ListVo vo) {
+		dao.modify1(vo);
+		return false; 
+		
+	}
+
 
 }
