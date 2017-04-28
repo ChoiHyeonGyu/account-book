@@ -95,7 +95,7 @@
     <c:import url="/WEB-INF/views/list.jsp"/>
 
     <c:import url="/WEB-INF/views/graph_user.jsp"/>
-
+    
     <c:import url="/WEB-INF/views/graph_avg.jsp"/>
     
     <c:import url="/WEB-INF/views/option.jsp"/>

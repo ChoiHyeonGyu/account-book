@@ -3,23 +3,20 @@
 <section id="graph-average" class="bg-brown">
 	<div class="container">
     	<div class="row">
-    		<div class="page-header" align="center">
+			<div class="page-header" align="center">
 				<h1>편리가계부 회원들의 소비 동향</h1>
 			</div>
-    		<div class="col-lg-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        Default - ${currentuserid}과 같은 성별,나이의 평균 소비 동향
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">
-                        <div class="flot-chart">
-                            <div class="flot-chart-content" id="flot-pie-chart4"></div>
-                        </div>
-                    </div>
-                    <!-- /.panel-body -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Default - ${currentuserid}님과 같은 성별,나이의 평균 소비 동향
                 </div>
-                <!-- /.panel -->
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="flot-chart">
+                        <div class="flot-chart-content" id="flot-pie-chart4"></div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
             </div>
             <div class="dropdown theme-dropdown clearfix">
 				<select id="graph-gender" class="dropdown-menu" style="margin-left:317px">
