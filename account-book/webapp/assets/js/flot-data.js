@@ -66,7 +66,7 @@ $(function() {
         data: 20
     }];
     
-    for(var i=1; i<4; i++){
+    for(var i=1; i<5; i++){
     	var plotObj = $.plot($("#flot-pie-chart"+i), data, {
             series: {
                 pie: {
