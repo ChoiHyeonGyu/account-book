@@ -77,24 +77,7 @@ public class ListController {
 		return "redirect:/"+id+"/main";
 		
 	}
-	@RequestMapping(value="/list", method=RequestMethod.GET)
-	public ModelAndView list(Sample sample) throws Exception {
-	    try {
-	        // (Before) Doing...
-
-	        ListPagingVo paging = new ListPagingVo();
-	        paging.setPageNo(1);
-	        paging.setPageSize(10);
-	        paging.setTotalCount(10);
-
-
-	        // (After) Doing...
-	    } catch (Exception e) {
-	        throw e;
-	    }
-		return null;
-	}
-
+	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
