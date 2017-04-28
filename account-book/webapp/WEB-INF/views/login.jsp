@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -51,24 +50,24 @@
 
 		<h3><span class="label label-default">Birth</span></h3>
 		<div class="dropdown theme-dropdown clearfix">
-		<select id="year" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="birthYear">
-				<option role="presentation" value="Year"><a role="menuitem" tabindex="0" href="#">Year</a></option>
-				<c:forEach begin="1970" end="2017" var="i">
-				<option role="presentation" value="${i}"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
-				</c:forEach>
-		</select>
-		<select id="month" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="birthMonth">
-				<option role="presentation" value="Month"><a role="menuitem" tabindex="0" href="#">Month</a></option>
-				<c:forEach begin="1" end="12" var="i">
-				<option role="presentation" value="${i}"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
-				</c:forEach>
-		</select>
-		<select id="day" class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" name="birthDay">
-				<option role="presentation" value="Day"><a role="menuitem" tabindex="0" href="#">Day</a></option>
-				<c:forEach begin="1" end="31" var="i">
-				<option role="presentation"  value="${i}"><a role="menuitem" tabindex="${i }" href="#">${i }</a></option>
-				</c:forEach>
-		</select>
+			<select id="year" class="dropdown-menu" name="birthYear">
+					<option value="Year">Year</option>
+					<c:forEach begin="1970" end="2017" var="i">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+			</select>
+			<select id="month" class="dropdown-menu" name="birthMonth">
+					<option value="Month">Month</option>
+					<c:forEach begin="1" end="12" var="i">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+			</select>
+			<select id="day" class="dropdown-menu" name="birthDay">
+					<option value="Day">Day</option>
+					<c:forEach begin="1" end="31" var="i">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+			</select>
 		</div>
 		
 		<h3><span class="label label-default">Total Money</span></h3>

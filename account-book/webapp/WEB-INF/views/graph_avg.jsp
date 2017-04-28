@@ -1,97 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<section class="no-padding" id="graph-average">
-<div class="container-fluid">
-    <div class="row no-gutter popup-gallery">
-        <div class="col-lg-4 col-sm-6">
-            <a href="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/1.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<section id="graph-average" class="bg-brown">
+	<div class="container">
+    	<div class="row">
+    		<div class="page-header" align="center">
+				<h1>편리가계부 회원들의 소비 동향</h1>
+			</div>
+    		<div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Default - ${currentuserid}과 같은 성별,나이의 평균 소비 동향
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="flot-pie-chart4"></div>
                         </div>
                     </div>
+                    <!-- /.panel-body -->
                 </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/2.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/3.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/4.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/5.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
-                <div class="portfolio-box-caption">
-                    <div class="portfolio-box-caption-content">
-                        <div class="project-category text-faded">
-                            Category
-                        </div>
-                        <div class="project-name">
-                            Project Name
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-            <a href="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/6.jpg" class="portfolio-box">
-                <img src="${pageContext.request.contextPath}/assets/images/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
-                    <div class="portfolio-box-caption">
-                        <div class="portfolio-box-caption-content">
-                            <div class="project-category text-faded">
-                                Category
-                            </div>
-                            <div class="project-name">
-                                Project Name
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <!-- /.panel -->
             </div>
+            <div class="dropdown theme-dropdown clearfix">
+				<select id="graph-gender" class="dropdown-menu" style="margin-left:317px">
+						<option>남자</option>
+						<option>여자</option>
+				</select>
+				<select id="graph-age" class="dropdown-menu" style="margin-left:20px">
+						<c:forEach begin="20" end="48" var="i">
+							<option>${i}</option>
+						</c:forEach>
+				</select>
+				<select id="graph-category" class="dropdown-menu" style="margin-left:20px">
+						<c:forEach var="i" items="">
+							<option >${i}</option>
+						</c:forEach>
+				</select>
+			</div>
         </div>
     </div>
 </section>
