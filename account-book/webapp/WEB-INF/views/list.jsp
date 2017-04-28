@@ -135,7 +135,10 @@
 								<td><button id="myBtn">추가하기</button> </td>	
 							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
 						</tr>
+						
 					</c:forEach>
+	
+
 			<p>
 			<div id="modify" title="수정하기" style="display:none" >
 				<form id="modify11"  action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post">

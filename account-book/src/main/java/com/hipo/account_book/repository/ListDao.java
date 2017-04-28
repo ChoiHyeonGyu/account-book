@@ -85,7 +85,7 @@ private SqlSession sql;
 	}
 	
 	public List<BoardVo> getList(String keyword, Integer page, Integer size){
-		Map<String, Object> map = new HashMap<String, Object>();
+		Map<String, Object> map = new HashMap<String, Object>();// map으로 담으면 xml사용가능?? 가능하다면 형식물어보기.
 		map.put("keyword", keyword);
 		map.put("page", page);
 		map.put("size", size);
