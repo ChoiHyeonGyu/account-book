@@ -45,6 +45,11 @@ public class ListService {
 		return dao.modify(i);
 	}
 	
+	public boolean modify1(ListVo vo) {
+		dao.modify1(vo);
+		return false;
+	}
+	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
 		boardvo.setId(id);
 		boardvo.setName(dao.usernameselect(id));
@@ -228,12 +233,5 @@ public class ListService {
 		dao.good(num);
 		return true;
 	}
-
-	public boolean modify1(ListVo vo) {
-		dao.modify1(vo);
-		return false; 
-		
-	}
-
 
 }

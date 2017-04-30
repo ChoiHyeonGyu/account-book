@@ -139,6 +139,5 @@ private SqlSession sql;
 	public void good(int num){
 		sql.update("listview.good", num);
 	}
-
-
+	
 }

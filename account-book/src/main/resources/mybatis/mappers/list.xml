@@ -212,6 +212,3 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		update board set good = good + 1 where board_id = #{value}
 	</update>
 </mapper>
-
-	
-

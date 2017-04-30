@@ -64,28 +64,12 @@ $(function() {
     }, {
         label: "Series 3",
         data: 20
-    }, {
-        label: "Series 4",
-        data: 30
-    }, {
-        label: "Series 5",
-        data: 30
-    }, {
-        label: "Series 6",
-        data: 30
-    }, {
-        label: "Series 7",
-        data: 30
-    }, {
-        label: "Series 8",
-        data: 30
-    }, {
-        label: "Series 9",
-        data: 30
-    }, {
-        label: "Series 10",
-        data: 30
     }];
+    
+    /*var data1 [];
+	var data2 [];
+	var data3 [];
+	var data4 [];*/
     
     for(var i=1; i<5; i++){
     	var plotObj = $.plot($("#flot-pie-chart"+i), data, {
