@@ -19,8 +19,14 @@ public class OptionService {
 		optionDao.add(optionvo);
 	}
 	
-	public void Update(OptionVo vo){
-		optionDao.update(vo);
+	public OptionVo categoryModify(int i) {
+		System.out.println("intintint"+i);
+		return optionDao.categoryModify(i);
+	}
+	
+	public boolean categoryModify1(OptionVo vo) {
+		optionDao.categoryModify1(vo);
+		return false;
 	}
 	
 	public List<OptionVo> getCategory(OptionVo vo) {

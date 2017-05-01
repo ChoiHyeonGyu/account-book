@@ -44,6 +44,17 @@ private SqlSession sql;
 		
 		
 	}
+	public int dealWithSearching(String searching) {
+		return sql.selectOne("listview.dealwithsearching", searching);
+		
+	}
+	public List<ListVo> totallist(String searching, int pagination, int listSize) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searching",searching);
+		map.put("pagination",pagination);
+		map.put("listSize",listSize);
+		return sql.selectList("listview.totallist",map);
+	}
 	
 	public String usernameselect(String id){
 		return sql.selectOne("listview.usernameselect", id);
@@ -140,6 +151,10 @@ private SqlSession sql;
 	public void good(int num){
 		sql.update("listview.good", num);
 	}
+
+
+
+
 	
 	public List<GraphVo> graphdayselect(String id){
 		return sql.selectList("listview.graphdayselect", id);

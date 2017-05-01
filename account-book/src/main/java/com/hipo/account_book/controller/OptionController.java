@@ -38,25 +38,26 @@ public class OptionController {
 		return "redirect:/"+id+"/main#option";
 	}
 	
-	@RequestMapping(value="/categoryModify1", method=RequestMethod.POST)
-	public String categoryModify1(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @PathVariable String id){
-		System.out.println("---------------------------------------------------"+optionvo);
-		optionService.Update(optionvo);
-		return "redirect:/"+id+"/main#option";
-	}
+	
+	
 	
 	@ResponseBody
-	@RequestMapping(value="/categoryModify", method=RequestMethod.POST)
-	public String categoryModify(@RequestBody Map<String, Object> map, @ModelAttribute OptionVo vo, @PathVariable String id){
-		//optionvo.setCategeoryId(cid);
-		System.out.println("수정수정수정"+ map);
+	@RequestMapping("/categoryModify")
+	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
+		System.out.println("ididididididi"+map);
+		return JSONResult.success(optionService.categoryModify(Integer.parseInt(map.get("categoryId").toString())));//여기서 에러.
 		
-		
-		vo.setCategeoryId(Integer.parseInt(map.get("categoryId").toString()));
-		System.out.println("---------------------------------------------------"+vo);
-		
-		
-		//optionService.Update(vo);
+	} 
+	
+	
+	
+	@RequestMapping("/categoryModify1")
+	public String categoryModify(@ModelAttribute OptionVo vo, @PathVariable String id, @RequestParam("categoryId") int cid){
+		System.out.println("--------------------------------vovovovovo---------"+vo);
+		System.out.println("idididcatididicatid"+cid);
+		System.out.println("------------------idididi----------------------"+id);
+		vo.setCategeoryId(cid);
+		optionService.categoryModify1(vo);
 		return "redirect:/"+id+"/main#option";
 	}
 	
