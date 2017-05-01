@@ -7,50 +7,78 @@
 	<div class="row">
 		<div class="col-lg-6 col-md-6 text-center syd">
 			<div class="service-box">
-				<!DOCTYPE html>
-				<html>
-<head>
- <style>
-/* The Modal (background) */
-.modal {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
 
-/* Modal Content */
-.modal-content {
-	background-color: #fefefe;
-	margin: auto;
-	padding: 20px;
-	border: 1px solid #888;
-	width: 80%;
-}
-
-/* The Close Button */
-.close {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close:hover, .close:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
-} 
-</style> 
-</head>
-<body>
+<form action="${pageContext.request.contextPath}/${currentuserid}/pageSearching" method="post">
+			<input type="search" name="search" size="63"> 
+			<input type="submit" value="검색">
+		</form>
+		<table  class="table">
+		<thead>
+					<tr bgcolor='#33cc33'>
+						<td>중복확인</td>
+						<td>결제수단</td>
+						<td>은행</td>
+						<td>+/-</td>
+						<td>금액</td>
+						<td>구입물이름</td>
+						<td>카테고리</td>
+						<td>날짜</td>
+						<td>삭제</td>
+						<td><button id="myBtn">추가하기</button> </td>
+						<td>맵 확인하기</td>
+					</tr>
+</thead>
+<tbody>
+	<c:forEach var="vo" items="${list}" varStatus="status">
+						 <script>
+							listarray.push("${vo.listId}");
+	      				</script> 
+						<tr>
+							<td>${vo.listId}</td>
+							<td>${vo.paid}</td>
+							<td>${vo.bank}</td>
+							<td>${vo.operations}</td>
+							<td><button id="${vo.listId}">${vo.money}</button></td>
+							
+							<td>${vo.name}</td>
+							<td>${vo.category}</td>
+							<td>${vo.day}</td>
+							<td><a
+								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
+									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+								<td><button id="myBtn">추가하기</button> </td>	
+							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
+						</tr>
+						
+					</c:forEach>
+					</tbody>
+					</table>
+					</div>
+					<div class="pager">
+			<ul>
+				<c:if test="${ps.prevPage > 0}" >
+					<li><a href="${pageContext.request.contextPath}/${currentuserid}/pageSearching?pagination=${ps.prevPage}&searching=${ps.keyword}">◀</a></li>
+				</c:if>
+				
+				<c:forEach begin="${ps.beginPage}" end="${ps.beginPage + ps.listSize - 1}" var="page">
+					<c:choose>
+						<c:when test="${ps.endPage < page}">
+							<li>${page}</li>
+						</c:when> 
+						<c:when test="${ps.currentPage == page}">
+							<li class="selected">${page}</li>
+						</c:when>
+						<c:otherwise> 
+							<li><a href="${pageContext.request.contextPath }/${currentuserid}/pageSearching?pagination=${page}&searching=${ps.keyword}">${page}</a></li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<c:if test="${ps.nextPage > 0}" >
+					<li><a href="${pageContext.request.contextPath }/${currentuserid}/pageSearching?pagination=${ps.nextPage}&searching=${ps.keyword}">▶</a></li>
+				</c:if>
+			</ul>
+		</div>
 	<!-- Trigger/Open The Modal -->
 	
 
@@ -98,47 +126,6 @@
 				</form> 
 				</div>
 			 </p>
-			
-	
-
-			 <table border='1' class="syd2">
-					<tr bgcolor='red'>
-						<td>중복확인</td>
-						<td>결제수단</td>
-						<td>은행</td>
-						<td>+/-</td>
-						<td>금액</td>
-						<td>구입물이름</td>
-						<td>카테고리</td>
-						<td>날짜</td>
-						<td>삭제</td>
-						<td><button id="myBtn">추가하기</button> </td>
-						<td>맵 확인하기</td>
-					</tr>
-						<c:forEach var="vo" items="${list}" varStatus="status">
-						 <script>
-							listarray.push("${vo.listId}");
-	      				</script> 
-						<tr>
-							<td>${vo.listId}</td>
-							<td>${vo.paid}</td>
-							<td>${vo.bank}</td>
-							<td>${vo.operations}</td>
-							<td><button id="${vo.listId}">${vo.money}</button></td>
-							
-							<td>${vo.name}</td>
-							<td>${vo.category}</td>
-							<td>${vo.day}</td>
-							<td><a
-								href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
-									src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-								<td><button id="myBtn">추가하기</button> </td>	
-							<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
-						</tr>
-						
-					</c:forEach>
-	
-
 			<p>
 			<div id="modify" title="수정하기" style="display:none" >
 				<form id="modify11"  action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post">
@@ -171,7 +158,7 @@
 						placeholder="money" value="" required><br />
 
 					<h3>
-						<span class="label label-default">물건이름</span>
+						<span class="label label-default">상호명</span>
 					</h3>
 					<input id="listname" type="text" name="name" class="form-control"
 						placeholder="name" value="" required><br />
@@ -184,15 +171,7 @@
 				</form> 
 				</div>
 			 </p>				
-			 
-
-
-				</table>
-</body>
-
-				</html>
-
-			</div>
+			
 			
 		</div>
 		<c:import url="/WEB-INF/views/board.jsp"/>

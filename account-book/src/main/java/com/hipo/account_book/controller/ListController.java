@@ -41,7 +41,7 @@ public class ListController {
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 
-		model.addAttribute("board", service.getBoardList(page, search));
+		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
 		
 		model.addAttribute("list", list);
 		model.addAttribute("option", option);
@@ -71,11 +71,16 @@ public class ListController {
 	} 
 	@RequestMapping("/modify1")
 	public String modify1(@ModelAttribute ListVo vo,@PathVariable String id){
-		System.out.println("마지막 수정 옵니까.?" + vo);
 		service.modify1(vo);
 		
 		return "redirect:/"+id+"/main";
 		
+	}
+	@RequestMapping("/pageSearching")
+	public String pageSearching(Model model,@RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
+			@RequestParam (value="searching", required=false)String searching){
+		model.addAttribute("ps", service.pageSearching(pagination,searching));
+		return "main";
 	}
 	
 	@RequestMapping("/boardadd")

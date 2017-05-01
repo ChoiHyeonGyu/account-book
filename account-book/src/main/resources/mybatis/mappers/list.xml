@@ -42,6 +42,31 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  		 where list_Id=#{listId} 	 	
  	 	]]>
 	</update>
+	
+	<select id="dealwithsearching" parameterType="string" resultType="int">
+		<![CDATA[
+			select count(*) from list
+		]]>
+		<if test="_parameter != null and _parameter != ''">
+			<![CDATA[
+				where name like '%${_parameter}%' or category like '%${_parameter}%' or name like '%${_parameter}%'
+			]]>
+		</if>
+	</select>
+	
+		<select id="totallist" parameterType="map" resultType="listvo">
+    	<![CDATA[
+			select * from (select a.*, rownum as rn from (select board_id as boardId, board.* from board 
+		]]>
+		<if test="keyword != null and keyword != ''">
+			<![CDATA[					  
+				where (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
+			]]>
+		</if>
+		<![CDATA[					  
+			order by board.day desc) a) where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
+		]]>
+	</select>
 
 	<!-- update list set paid=#{paid},
  	bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category}
