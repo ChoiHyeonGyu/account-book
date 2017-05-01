@@ -20,18 +20,18 @@
             </div>
             <div class="dropdown theme-dropdown clearfix">
 				<select id="graph-gender" class="dropdown-menu" style="margin-left:317px">
-					<option>전체</option>
+					<option>기본</option>
 					<option>남자</option>
 					<option>여자</option>
 				</select>
 				<select id="graph-age" class="dropdown-menu" style="margin-left:20px">
-					<option>전체</option>
+					<option>기본</option>
 					<c:forEach begin="20" end="48" var="i">
 						<option>${i}</option>
 					</c:forEach>
 				</select>
 				<select id="graph-category" class="dropdown-menu" style="margin-left:20px">
-					<option>전체</option>
+					<option>기본</option>
 					<c:forEach var="i" items="">
 						<option >${i}</option>
 					</c:forEach>

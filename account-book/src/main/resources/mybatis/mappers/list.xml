@@ -257,6 +257,14 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		]]>
 	</select>
 	
+	<select id="catlistselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select * from (select cnt, c.category, category.category_id from (select count(*) as cnt, category from (select id from (select gender, age from users where id = 'a') a, 
+			users where users.gender = a.gender and users.age = a.age) b, list where b.id = list.id and operations = '-' group by category) c, category where c.category = category.category) 
+			d, category where d.category_id = category.category_id or d.category_id = category.slave_id
+		]]>
+	</select>
+	
 	<select id="graphavgdefaultselect" resultType="graphvo">
 		<![CDATA[
 			select count(*) as cnt, category from list where day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy') -1/86400 group by category
