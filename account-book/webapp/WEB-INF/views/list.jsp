@@ -56,7 +56,7 @@
 					</div>
 					<div class="pager">
 			<ul>
-				<c:if test="${ps.prevPage > 0}" >
+				<%-- <c:if test="${ps.prevPage > 0}" >
 					<li><a href="${pageContext.request.contextPath}/${currentuserid}/pageSearching?pagination=${ps.prevPage}&searching=${ps.keyword}">◀</a></li>
 				</c:if>
 				
@@ -76,7 +76,7 @@
 				
 				<c:if test="${ps.nextPage > 0}" >
 					<li><a href="${pageContext.request.contextPath }/${currentuserid}/pageSearching?pagination=${ps.nextPage}&searching=${ps.keyword}">▶</a></li>
-				</c:if>
+				</c:if> --%>
 			</ul> 
 		</div>
 	<!-- Trigger/Open The Modal -->
