@@ -7,13 +7,17 @@
 <application generated-by="eclipse" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.zeroturnaround.com" xsi:schemaLocation="http://www.zeroturnaround.com http://update.zeroturnaround.com/jrebel/rebel-2_1.xsd">
 
 	<classpath>
+<<<<<<< HEAD
 		<dir name="C:\Users\leegi\git\account-book\account-book\target\classes"> <!-- bit-user -->
+=======
+		<dir name="C:\Users\jason\git\account-book\account-book\target\classes"> <!-- bit-user -->
+>>>>>>> branch 'master' of https://github.com/ChoiHyeonGyu/account-book.git
 		</dir>
 	</classpath>
 
 	<web>
 		<link target="/">
-			<dir name="C:\Users\bit-user\git\account-book\account-book\webapp"> <!-- bit-user -->
+			<dir name="C:\Users\jason\git\account-book\account-book\webapp"> <!-- bit-user -->
 			</dir>
 		</link>
 	</web>
