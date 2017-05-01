@@ -9,16 +9,23 @@
 		]]>
 	</insert>
 
-	<insert id="update" parameterType="optionvo">
-		<![CDATA[
-			update category set category=#{category} where category_id=#{categoryId}
-		]]>
-	</insert>
+	<select id="categoryModify" parameterType="int" resultType="optionvo">
+ 		<![CDATA[
+ 			select category_id as categoryId, category from category where category_id=#{categoryId}
+ 		]]>
+	</select>
+	
+	<update id="categoryModify1" parameterType="optionvo" >
+ 		<![CDATA[
+		update category set category=#{category}
+ 		 where category_id=#{categoryId} 	 	
+ 	 	]]>
+	</update>
 
 	<select id="category" resultType="optionvo">
-<![CDATA[
-select category, category_id as categoryId from category
- ]]>
+		<![CDATA[
+			select category, category_id as categoryId from category order by category_id
+ 		]]>
 	</select>
 
 	<delete id="delete" parameterType="optionvo">
