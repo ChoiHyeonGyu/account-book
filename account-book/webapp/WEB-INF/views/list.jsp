@@ -77,7 +77,7 @@
 				<c:if test="${ps.nextPage > 0}" >
 					<li><a href="${pageContext.request.contextPath }/${currentuserid}/pageSearching?pagination=${ps.nextPage}&searching=${ps.keyword}">▶</a></li>
 				</c:if>
-			</ul>
+			</ul> 
 		</div>
 	<!-- Trigger/Open The Modal -->
 	

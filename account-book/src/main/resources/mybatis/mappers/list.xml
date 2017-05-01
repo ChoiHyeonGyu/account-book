@@ -43,7 +43,7 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  	 	]]>
 	</update>
 	
-	<select id="dealwithsearching" parameterType="string" resultType="int">
+<!-- 	<select id="dealwithsearching" parameterType="string" resultType="int">
 		<![CDATA[
 			select count(*) from list
 		]]>
@@ -52,7 +52,7 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 				where name like '%${_parameter}%' or category like '%${_parameter}%' or name like '%${_parameter}%'
 			]]>
 		</if>
-	</select>
+	</select> -->
 	
 		<select id="totallist" parameterType="map" resultType="listvo">
     	<![CDATA[
