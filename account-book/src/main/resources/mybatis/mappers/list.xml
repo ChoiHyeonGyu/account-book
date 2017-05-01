@@ -209,6 +209,32 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	</insert>
 	
 	<update id="good" parameterType="int">
-		update board set good = good + 1 where board_id = #{value}
+		<![CDATA[
+			update board set good = good + 1 where board_id = #{value}
+		]]>
 	</update>
+	
+	<select id="graphdayselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate-1, 'dd') and trunc(sysdate, 'dd') -1/86400 group by category
+		]]>
+	</select>
+	
+	<select id="graphmonthselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate-1, 'mm') and trunc(sysdate, 'mm') -1/86400 group by category
+		]]>
+	</select>
+	
+	<select id="graphyearselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy') -1/86400 group by category
+		]]>
+	</select>
+	
+	<select id="graphavgdefaultselect" resultType="graphvo">
+		<![CDATA[
+			select count(*) as cnt, category from list where day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy') -1/86400 group by category
+		]]>
+	</select>
 </mapper>

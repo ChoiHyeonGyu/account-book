@@ -15,6 +15,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.hipo.account_book.repository.ListDao;
 import com.hipo.account_book.vo.BoardVo;
+import com.hipo.account_book.vo.GraphVo;
 import com.hipo.account_book.vo.ListVo;
 
 @Service
@@ -232,6 +233,22 @@ public class ListService {
 		dao.gdinsert(boardvo);
 		dao.good(num);
 		return true;
+	}
+	
+	public List<GraphVo> graphday(String id){
+		return dao.graphdayselect(id);
+	}
+	
+	public List<GraphVo> graphmonth(String id){
+		return dao.graphmonthselect(id);
+	}
+	
+	public List<GraphVo> graphyear(String id){
+		return dao.graphyearselect(id);
+	}
+	
+	public List<GraphVo> graphavgdefault(){
+		return dao.graphavgdefaultselect();
 	}
 
 }

@@ -150,4 +150,27 @@ public class ListController {
 		return JSONResult.success(map);
 	}
 	
+	@ResponseBody
+	@RequestMapping("/graphday")
+	public JSONResult graphday(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphday(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphmonth")
+	public JSONResult graphmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphmonth(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphyear")
+	public JSONResult graphyear(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphyear(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphavgdefault")
+	public JSONResult graphavgdefault(@RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphavgdefault());
+	}
 }

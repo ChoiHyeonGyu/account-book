@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hipo.account_book.vo.BoardVo;
+import com.hipo.account_book.vo.GraphVo;
 import com.hipo.account_book.vo.ListVo;
 @Repository
 public class ListDao {
@@ -140,4 +141,19 @@ private SqlSession sql;
 		sql.update("listview.good", num);
 	}
 	
+	public List<GraphVo> graphdayselect(String id){
+		return sql.selectList("listview.graphdayselect", id);
+	}
+	
+	public List<GraphVo> graphmonthselect(String id){
+		return sql.selectList("listview.graphmonthselect", id);
+	}
+	
+	public List<GraphVo> graphyearselect(String id){
+		return sql.selectList("listview.graphyearselect", id);
+	}
+	
+	public List<GraphVo> graphavgdefaultselect(){
+		return sql.selectList("listview.graphavgdefaultselect");
+	}
 }

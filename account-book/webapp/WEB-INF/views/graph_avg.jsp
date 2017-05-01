@@ -4,7 +4,7 @@
 	<div class="container">
     	<div class="row">
 			<div class="page-header" align="center">
-				<h1>편리가계부 회원들의 소비 동향</h1>
+				<h1>편리가계부 회원들의 올해 소비 동향</h1>
 			</div>
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -20,18 +20,21 @@
             </div>
             <div class="dropdown theme-dropdown clearfix">
 				<select id="graph-gender" class="dropdown-menu" style="margin-left:317px">
-						<option>남자</option>
-						<option>여자</option>
+					<option>전체</option>
+					<option>남자</option>
+					<option>여자</option>
 				</select>
 				<select id="graph-age" class="dropdown-menu" style="margin-left:20px">
-						<c:forEach begin="20" end="48" var="i">
-							<option>${i}</option>
-						</c:forEach>
+					<option>전체</option>
+					<c:forEach begin="20" end="48" var="i">
+						<option>${i}</option>
+					</c:forEach>
 				</select>
 				<select id="graph-category" class="dropdown-menu" style="margin-left:20px">
-						<c:forEach var="i" items="">
-							<option >${i}</option>
-						</c:forEach>
+					<option>전체</option>
+					<c:forEach var="i" items="">
+						<option >${i}</option>
+					</c:forEach>
 				</select>
 			</div>
         </div>
