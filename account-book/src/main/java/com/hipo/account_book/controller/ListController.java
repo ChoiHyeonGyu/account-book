@@ -172,7 +172,6 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/graphavgdefault")
 	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
-		//service.searchcatlist(id);
-		return JSONResult.success(service.graphavgdefault());
+		return JSONResult.success(service.graphavgdefault(id));
 	}
 }

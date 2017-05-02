@@ -165,11 +165,7 @@ private SqlSession sql;
 		return sql.selectList("listview.graphyearselect", id);
 	}
 	
-	/*public List<ListVo> catlistselect(String id){
-		return sql.selectList("listview.catlistselect", id);
-	}*/
-	
-	public List<GraphVo> graphavgdefaultselect(){
+	public List<GraphVo> graphavgdefaultselect(String id){
 		return sql.selectList("listview.graphavgdefaultselect");
 	}
 }
