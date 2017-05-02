@@ -1,5 +1,6 @@
 package com.hipo.account_book.androidcontroller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hipo.account_book.service.AndroidListService;
 import com.hipo.account_book.vo.ListVo;
 
@@ -50,6 +54,21 @@ public class AndroidListController {
 		}
 
 		return ListData;
+	}
+
+	@RequestMapping("/updateList")
+	public void updateList(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		System.out.println("updateListMethod : " + request.getParameter("updateListVo"));
+		ObjectMapper mapper = new ObjectMapper();
+		ListVo listVo = mapper.readValue(request.getParameter("updateListVo"), ListVo.class);
+
+		StringBuilder dateSet = new StringBuilder(listVo.getDay());
+		dateSet.append(":00");
+		listVo.setDay("");
+		listVo.setDay(dateSet.toString());
+		System.out.println("convert! : " + listVo);
+		dateSet.setLength(0);
+		listService.updateList(listVo);
 	}
 
 }
