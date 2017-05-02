@@ -247,7 +247,7 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	
 	<select id="graphmonthselect" parameterType="string" resultType="graphvo">
 		<![CDATA[
-			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate-1, 'mm') and trunc(sysdate, 'mm') -1/86400 group by category
+			select count(*) as cnt, category from list where id = #{value} and day between trunc(add_months(sysdate, -1), 'mm') and trunc(sysdate, 'mm') -1/86400 group by category
 		]]>
 	</select>
 	

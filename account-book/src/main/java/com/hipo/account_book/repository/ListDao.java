@@ -166,6 +166,6 @@ private SqlSession sql;
 	}
 	
 	public List<GraphVo> graphavgdefaultselect(String id){
-		return sql.selectList("listview.graphavgdefaultselect");
+		return sql.selectList("listview.graphavgdefaultselect", id);
 	}
 }
