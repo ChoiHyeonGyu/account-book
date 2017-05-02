@@ -6,6 +6,7 @@
 		<typeAlias alias="uservo" type="com.hipo.account_book.vo.UserVo" />
 		<typeAlias alias="optionvo" type="com.hipo.account_book.vo.OptionVo" />
 		<typeAlias alias="boardvo" type="com.hipo.account_book.vo.BoardVo" />
+		<typeAlias alias="graphvo" type="com.hipo.account_book.vo.GraphVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/front.xml" />

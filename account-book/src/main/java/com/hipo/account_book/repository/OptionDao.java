@@ -18,10 +18,16 @@ public class OptionDao {
 		sql.insert("option.add",vo);
 		return false;
 	}
+	public OptionVo categoryModify(int i) {
+		System.out.println("daodaodao"+i);
+		return sql.selectOne("option.categoryModify", i);
+	}
 	
-	public boolean update(OptionVo vo) {
-		sql.update("option.update",vo);
+	public boolean categoryModify1(OptionVo vo) {
+		sql.update("option.categoryModify1", vo);
 		return false;
+		
+		
 	}
 	
 	public List<OptionVo> category(OptionVo vo) {

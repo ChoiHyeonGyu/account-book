@@ -20,6 +20,7 @@ import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.OptionVo;
+import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -62,7 +63,7 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
-		
+		System.out.println("sssssss"+map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));//여기서 에러.
 		
 	} 
@@ -146,4 +147,28 @@ public class ListController {
 		return JSONResult.success(map);
 	}
 	
+	@ResponseBody
+	@RequestMapping("/graphday")
+	public JSONResult graphday(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphday(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphmonth")
+	public JSONResult graphmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphmonth(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphyear")
+	public JSONResult graphyear(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphyear(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphavgdefault")
+	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
+		//service.searchcatlist(id);
+		return JSONResult.success(service.graphavgdefault());
+	}
 }

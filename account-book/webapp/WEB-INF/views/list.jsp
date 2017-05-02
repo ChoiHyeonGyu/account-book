@@ -1,20 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <section id="list">
 	<div class="row">
-		<div class="col-md-6 text-center">
+		<div class="col-md-6">
 		<h1 align="center">가계부 리스트</h1>
 				<form action="${pageContext.request.contextPath}/${currentuserid}/main"
 					method="post">
 					<input type="search" name="searching" size="83">
-					<input
-						type="submit" value="검색">
-						<button id="myBtn">추가하기</button>
+					<input type="submit" value="검색">
+					<button id="myBtn">추가하기</button>
 				</form>
-				<table class="table table-bordered">
+				<table class="table">
 					<thead>
 						<tr bgcolor='#33cc33'>
 							<th>결제수단</th>
@@ -37,8 +35,7 @@
 								<td>${vo.paid}</td>
 								<td>${vo.bank}</td>
 								<td>${vo.operations}</td>
-								<td><button id="${vo.listId}">${vo.money}</button></td>
-
+								<td><button id="${vo.listId}">${vo.money}</button></td>	
 								<td>${vo.name}</td>
 								<td>${vo.category}</td>
 								<td>${vo.day}</td>
@@ -46,11 +43,10 @@
 									href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 										src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
 								<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
-							</tr>
-
+							</tr>				
 						</c:forEach>
 					</tbody>
-				</table>
+					</table>
 			<div class="pager">
 				<ul>
 					<c:if test="${ps.prevPage > 0}">
@@ -62,7 +58,7 @@
 						end="${ps.beginPage + ps.listSize - 1}" var="page">
 						<c:choose>
 							<c:when test="${ps.endPage < page}">
-								<li>${page}</li>
+								<li>${page}</li> 
 							</c:when>
 							<c:when test="${ps.pagination == page}">
 								<li class="selected">${page}</li>
@@ -78,17 +74,12 @@
 						<li><a
 							href="${pageContext.request.contextPath }/${currentuserid}/main?pagination=${ps.nextPage}&searching=${ps.searching}">▶</a></li>
 					</c:if>
-				</ul>
+					</ul>
 			</div>
-
-			<!-- Trigger/Open The Modal -->
-
-
-			<p>
+			 
 			<div id="listadd" title="추가하기" style="display: none">
-				<form id="commit" name="listadd" var="vo" items="${list}"
-					varStatus="status"
-					action="${pageContext.request.contextPath }/${currentuserid}/add?locationX=o&locationY=o"
+				<form id="commit" name="listadd" var="vo" items="${list}"varStatus="status"
+					action="${pageContext.request.contextPath }/${currentuserid}/add"
 					method="post">
 					<input type='hidden' name="id" value="${currentuserid}">
 					
@@ -126,13 +117,9 @@
 					</h3>
 					<input type="text" name="name" class="form-control"
 						placeholder="name" value="" required><br />
-
-					
-
 				</form>
 			</div>
-			</p>
-			<p>
+			
 			<div id="modify" title="수정하기" style="display: none">
 				<form id="modify11"
 					action="${pageContext.request.contextPath }/${currentuserid}/modify1"
@@ -179,9 +166,6 @@
 						class="form-control" placeholder="category" value="" required><br />
 				</form>
 			</div>
-			</p>
-
-
 		</div>
 		<c:import url="/WEB-INF/views/board.jsp" />
 	</div>

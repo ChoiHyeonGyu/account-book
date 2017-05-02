@@ -17,7 +17,7 @@
 					<div class="item active">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">일 단위</div>
+								<div class="panel-heading">어제 소비 동향</div>
 								<!-- /.panel-heading -->
 								<div class="panel-body">
 									<div class="flot-chart">
@@ -32,7 +32,7 @@
 					<div class="item">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">월 단위</div>
+								<div class="panel-heading">지난 달 소비 동향</div>
 								<!-- /.panel-heading -->
 								<div class="panel-body">
 									<div class="flot-chart">
@@ -47,7 +47,7 @@
 					<div class="item">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
-								<div class="panel-heading">연 단위</div>
+								<div class="panel-heading">올해 소비 동향</div>
 								<!-- /.panel-heading -->
 								<div class="panel-body">
 									<div class="flot-chart">

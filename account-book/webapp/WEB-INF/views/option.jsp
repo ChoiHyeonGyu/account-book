@@ -88,19 +88,19 @@
 							</tr>
 							
 							</c:forEach>
+							
 						</tbody>
 					</table>
 				</form>
 			</div>
 		</div>
 
-		<div id="modifyform" title="수정" style="display: none">
-			<form id="modifypost" method="post"
-				action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1">
+		<div id="modifyform1" title="수정" style="display: none">
+			<form id="modifypost" action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1"  method="post">
+		
+				<input id="categoryId" type="hidden" name="categoryId">
 				<input type="text" value="" name="category"
 					class="form-control" placeholder="Category" required><br>
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<input type="submit" value="MODIFY" class="btn btn-join">
 			</form>
 		</div>
 	</section>

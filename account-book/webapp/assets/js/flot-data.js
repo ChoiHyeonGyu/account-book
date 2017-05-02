@@ -51,8 +51,8 @@ $(document).ready(function() {
 
 //Flot Pie Chart
 $(function() {
-	
-    var data = [{
+
+    /*var data = [{
         label: "Series 0",
         data: 1
     }, {
@@ -66,32 +66,179 @@ $(function() {
         data: 20
     }];
     
-    /*var data1 [];
-	var data2 [];
-	var data3 [];
-	var data4 [];*/
-    
-    for(var i=1; i<5; i++){
-    	var plotObj = $.plot($("#flot-pie-chart"+i), data, {
-            series: {
-                pie: {
-                    show: true
-                }
-            },
-            grid: {
-                hoverable: true
-            },
-            tooltip: true,
-            tooltipOpts: {
-                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-                shifts: {
-                    x: 20,
-                    y: 0
-                },
-                defaultTheme: false
+	var plotObj = $.plot($("#flot-pie-chart"), data, {
+        series: {
+            pie: {
+                show: true
             }
-        });
-    }
+        },
+        grid: {
+            hoverable: true
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            shifts: {
+                x: 20,
+                y: 0
+            },
+            defaultTheme: false
+        }
+    });*/
+	
+	var beanobj = {};
+	var data1 = [];
+	var data2 = [];
+	var data3 = [];
+	var data4 = [];
+	
+	$.ajax( {
+	    url : "/account-book/"+currentid+"/graphday",
+	    type: "POST",
+	    dataType: "JSON",
+	    data: JSON.stringify(beanobj),
+	    contentType: "application/json; charset=UTF-8",
+	    success: function( response ){
+	    	
+	    	for(var i=0; i<response.data.length; i++){
+		    	 data1[i] = {label: response.data[i].category, data: response.data[i].cnt};
+	    	}
+	    	
+	    	var plotObj = $.plot($("#flot-pie-chart"+1), data1, {
+	            series: {
+	                pie: {
+	                    show: true
+	                }
+	            },
+	            grid: {
+	                hoverable: true
+	            },
+	            tooltip: true,
+	            tooltipOpts: {
+	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+	                shifts: {
+	                    x: 20,
+	                    y: 0
+	                },
+	                defaultTheme: false
+	            }
+	        });
+	    },
+	    error: function( XHR, status, error ){
+	       console.error( status + " : " + error );	       
+	    }
+	});
+	
+	$.ajax( {
+	    url : "/account-book/"+currentid+"/graphmonth",
+	    type: "POST",
+	    dataType: "JSON",
+	    data: JSON.stringify(beanobj),
+	    contentType: "application/json; charset=UTF-8",
+	    success: function( response ){
+	    	
+	    	for(var i=0; i<response.data.length; i++){
+		    	data2[i] = {label: response.data[i].category, data: response.data[i].cnt};
+	    	}
+	    	
+	    	var plotObj = $.plot($("#flot-pie-chart"+2), data2, {
+	            series: {
+	                pie: {
+	                    show: true
+	                }
+	            },
+	            grid: {
+	                hoverable: true
+	            },
+	            tooltip: true,
+	            tooltipOpts: {
+	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+	                shifts: {
+	                    x: 20,
+	                    y: 0
+	                },
+	                defaultTheme: false
+	            }
+	        });
+	    },
+	    error: function( XHR, status, error ){
+	       console.error( status + " : " + error );	       
+	    }
+	});
+	
+	$.ajax( {
+	    url : "/account-book/"+currentid+"/graphyear",
+	    type: "POST",
+	    dataType: "JSON",
+	    data: JSON.stringify(beanobj),
+	    contentType: "application/json; charset=UTF-8",
+	    success: function( response ){
+	    	
+	    	for(var i=0; i<response.data.length; i++){
+		    	data3[i] = {label: response.data[i].category, data: response.data[i].cnt};
+	    	}
+	    	
+	    	var plotObj = $.plot($("#flot-pie-chart"+3), data3, {
+	            series: {
+	                pie: {
+	                    show: true
+	                }
+	            },
+	            grid: {
+	                hoverable: true
+	            },
+	            tooltip: true,
+	            tooltipOpts: {
+	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+	                shifts: {
+	                    x: 20,
+	                    y: 0
+	                },
+	                defaultTheme: false
+	            }
+	        });
+	    },
+	    error: function( XHR, status, error ){
+	       console.error( status + " : " + error );	       
+	    }
+	});
+	
+	$.ajax( {
+	    url : "/account-book/"+currentid+"/graphavgdefault",
+	    type: "POST",
+	    dataType: "JSON",
+	    data: JSON.stringify(beanobj),
+	    contentType: "application/json; charset=UTF-8",
+	    success: function( response ){
+	    	
+	    	for(var i=0; i<response.data.length; i++){
+		    	data4[i] = {label: response.data[i].category, data: response.data[i].cnt};
+	    	}
+	    	
+	    	var plotObj = $.plot($("#flot-pie-chart"+4), data4, {
+	            series: {
+	                pie: {
+	                    show: true
+	                }
+	            },
+	            grid: {
+	                hoverable: true
+	            },
+	            tooltip: true,
+	            tooltipOpts: {
+	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+	                shifts: {
+	                    x: 20,
+	                    y: 0
+	                },
+	                defaultTheme: false
+	            }
+	        });
+	    },
+	    error: function( XHR, status, error ){
+	       console.error( status + " : " + error );	       
+	    }
+	});
 });
 
 //Flot Multiple Axes Line Chart
