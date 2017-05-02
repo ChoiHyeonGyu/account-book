@@ -8,14 +8,26 @@
 			insert into category values(seq_category.nextval, #{category}, 0, 0)
 		]]>
 	</insert>
+	
+	<insert id="add1" parameterType="optionvo">
+		<![CDATA[
+			insert into userscategory values(#{id}, seq_category.nextval, '')
+		]]>
+	</insert>
+	
+	<select id="add2" parameterType="int" resultType="int">
+		<![CDATA[
+			select category_id as categoryId from category
+		]]>
+	</select>
 
 	<select id="categoryModify" parameterType="int" resultType="optionvo">
  		<![CDATA[
  			select category_id as categoryId, category from category where category_id=#{categoryId}
  		]]>
 	</select>
-	
-	<update id="categoryModify1" parameterType="optionvo" >
+
+	<update id="categoryModify1" parameterType="optionvo">
  		<![CDATA[
 		update category set category=#{category}
  		 where category_id=#{categoryId} 	 	
@@ -24,15 +36,24 @@
 
 	<select id="category" resultType="optionvo">
 		<![CDATA[
-			select category, category_id as categoryId from category order by category_id
+			select category.category, count(list.category) as postCount, category.category_id as categoryId, userscategory.money_limit as limit
+			from users
+			left outer join userscategory
+			on users.id=userscategory.id and users.id=#{id}
+			left outer join category
+			on userscategory.category_id=category.category_id
+			left outer join list
+			on (category.category = list.category) where category.category is not NULL
+			group by category.category, category.category_id, userscategory.money_limit
+			order by category.category
  		]]>
 	</select>
 
 	<delete id="delete" parameterType="optionvo">
 		<![CDATA[
-					delete from category where category_id = #{categoryId}
+					delete from userscategory where category_id = #{categoryId}
 
-				]]>
+			]]>
 	</delete>
 
 </mapper>

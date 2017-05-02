@@ -53,6 +53,7 @@ public class ListService {
 	}
 	public Map<String,Object> pageSearching(int pagination, String searching) {
 		//1. 페이징을 위한 기본 데이터 계산
+
 		int totalCount = dao.dealWithSearching(searching); // 데이터 수 . 왜 키워드로 받는지 . 걸러서 가지고 오는것
 		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );//리스팅 되는 페이지
 		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );//페이지수 .
@@ -60,7 +61,7 @@ public class ListService {
 		
 		//2. 파라미터 page 값  검증
 		if( pagination < 1 ) { 
-			pagination = 1;
+			pagination = 1; 
 			currentBlock = 1;
 		} else if( pagination > pageCount ) {
 			pagination = pageCount;
@@ -74,16 +75,15 @@ public class ListService {
 		int endPage = ( nextPage > 0 ) ? ( beginPage - 1 ) + LIST_SIZE : pageCount;
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		
 		map.put( "list", dao.totallist(searching, pagination, LIST_SIZE) );
 		map.put( "totalCount", totalCount );
 		map.put( "listSize", LIST_SIZE );
-		map.put( "currentPage", pagination );
+		map.put( "pagination", pagination );
 		map.put( "beginPage", beginPage );// 이것의 값은 . 어디서 뽑습니까
 		map.put( "endPage", endPage );
 		map.put( "prevPage", prevPage );
 		map.put( "nextPage", nextPage );
-		map.put( "keyword", searching );
+		map.put( "searching", searching );
 		
 		return map;
 		

@@ -18,6 +18,13 @@ public class OptionService {
 	public void Add(OptionVo optionvo){
 		optionDao.add(optionvo);
 	}
+	public int Add2(OptionVo vo){
+		int num = optionDao.add2(vo);
+		return num;
+	}
+	public void Add1(OptionVo optionvo){
+		optionDao.add1(optionvo);
+	}
 	
 	public OptionVo categoryModify(int i) {
 		System.out.println("intintint"+i);
@@ -35,6 +42,7 @@ public class OptionService {
 	}
 	
 	public boolean delete(OptionVo vo) {
+		System.out.println(".........딜리딜리디리디....."+vo);
 		return optionDao.delete(vo); 
 	}
 }
