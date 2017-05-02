@@ -43,28 +43,28 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  	 	]]>
 	</update>
 	
-<!-- 	<select id="dealwithsearching" parameterType="string" resultType="int">
+	<select id="dealwithsearching" parameterType="string" resultType="int">
 		<![CDATA[
 			select count(*) from list
 		]]>
-		<if test="_parameter != null and _parameter != ''">
+		<if test="_parameter != null and _parameter !=''">
 			<![CDATA[
-				where name like '%${_parameter}%' or category like '%${_parameter}%' or name like '%${_parameter}%'
+				where name like '%${_parameter}%' or category like '%${_parameter}%' or paid like '%${_parameter}%' or money like '%${_parameter}%'
 			]]>
 		</if>
-	</select> -->
+	</select> 
 	
 		<select id="totallist" parameterType="map" resultType="listvo">
     	<![CDATA[
-			select * from (select a.*, rownum as rn from (select board_id as boardId, board.* from board 
+			select * from (select a.*, rownum as rn from (select list_id as listId, list.* from list 
 		]]>
-		<if test="keyword != null and keyword != ''">
+		<if test="searching != null and searching !=''"> 
 			<![CDATA[					  
-				where (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
+				where (name like '%${searching}%' or category like '%${searching}%' or paid like '%${searching}%' or money like '%${searching}%') 
 			]]>
 		</if>
 		<![CDATA[					  
-			order by board.day desc) a) where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
+			order by list.day desc) a) where (#{page}-1)*#{listSize}+1 <= rn and rn <= #{page}*#{listSize}
 		]]>
 	</select>
 

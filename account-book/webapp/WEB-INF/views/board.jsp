@@ -44,7 +44,7 @@
 				<c:forEach begin="${board.beginPage}" end="${board.beginPage + board.listSize - 1}" var="page">
 					<c:choose>
 						<c:when test="${board.endPage < page}">
-							<li>${page}</li>
+							<li>${page}</li> 
 						</c:when> 
 						<c:when test="${board.currentPage == page}">
 							<li class="selected">${page}</li>
