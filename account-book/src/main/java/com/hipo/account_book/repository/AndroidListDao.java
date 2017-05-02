@@ -14,15 +14,21 @@ public class AndroidListDao {
 	@Autowired
 	private SqlSession sqlSession;
 
-	public boolean addList(ListVo vo) {
-		return ((sqlSession.insert("android.add", vo)) == 1);
+	public boolean addList(ListVo listVo) {
+		return ((sqlSession.insert("android.add", listVo)) == 1);
 	}
 
 	public List<ListVo> getList(String id) {
-		System.out.println("idididid : "+id);
+		System.out.println("idididid : " + id);
 		List<ListVo> list = sqlSession.selectList("android.getListById", id);
 		System.out.println(list.toString());
 		return list;
+	}
+
+	public boolean updateList(ListVo listVo) {
+		int count = sqlSession.update("android.updateList", listVo);
+		return count == 1;
+
 	}
 
 }

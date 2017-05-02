@@ -23,8 +23,16 @@
 	</insert>
 
 	<select id="getListById" parameterType="string" resultType="listvo">
-<![CDATA[
-select list_id as listId,id,paid,bank,operations,money,name,category,DAY,locationX,locationY from list where id = #{id }
- ]]>
+	<![CDATA[
+	select list_id as listId,id,paid,bank,operations,money,name,category,DAY,locationX,locationY from list where id = #{id }
+	 ]]>
 	</select>
+
+	<update id="updateList" parameterType="listvo">
+ 		<![CDATA[
+		update list set 
+		paid=#{paid },bank=#{bank },operations=#{operations },money=#{money },name=#{name },category=#{category },day=to_date(#{day },'yyyy-mm-dd hh:mi:ss')
+ 		 where list_Id = #{listId }  	
+ 	 	]]>
+	</update>
 </mapper>
