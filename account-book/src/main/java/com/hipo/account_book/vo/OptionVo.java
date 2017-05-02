@@ -6,12 +6,12 @@ public class OptionVo {
 	private String category;
 	private int postCount;
 	private String limit;
-	
+	private String id;
 	
 
 	@Override
 	public String toString() {
-		return "OptionVo [categoryId=" + categoryId + ", category=" + category + "]";
+		return "OptionVo [categoryId=" + categoryId + ", category=" + category + ", postCount=" + postCount + ", limit=" + limit + ", id=" + id + "]";
 	}
 	
 	public int getCategoryId() {
@@ -42,6 +42,14 @@ public class OptionVo {
 
 	public void setLimit(String limit) {
 		this.limit = limit;
+	}
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }

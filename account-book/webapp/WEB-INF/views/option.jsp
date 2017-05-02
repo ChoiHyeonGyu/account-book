@@ -37,7 +37,7 @@
 							</script>
 							<tr>
 								<td>${vo.category}</td>
-								<td>${vo.categoryId}</td>
+								<td>${vo.postCount}</td>
 								<td> <button type="button" id="${vo.categoryId}"
 										 class="btn btn-join">수정</button></td>
 							<td><a href="${pageContext.request.contextPath}/${currentuserid}/categorydelete?categoryId=${vo.categoryId}" >
@@ -60,11 +60,11 @@
 			</div>
 
 			<div class="col-lg-6 col-lg-6 text-center op">
-				<form method="post" name="한도 설정">
+				<form method="post" name="한도 설정" action="${pageContext.request.contextPath}/${currentuserid}/limitModify">
 					<h3>
 						<span class="label label-default">한도 설정</span>
 					</h3>
-					<br /> 금액한도:&nbsp;&nbsp; <select name="limit">
+					<br /> 금액한도:&nbsp;&nbsp; <select name="category">
 						<option value="카테고리 설정">카테고리 설정</option>
 						<c:forEach var="vo" items="${option}" >
 						<option value="${vo.category}">${vo.category}</option>
@@ -84,7 +84,7 @@
 						<c:forEach var="vo" items="${option}" >
 							<tr>
 								<td>${vo.category}</td>
-								<td>2000</td>
+								<td>${vo.limit}</td>
 							</tr>
 							
 							</c:forEach>

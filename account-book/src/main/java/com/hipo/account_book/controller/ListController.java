@@ -39,7 +39,9 @@ public class ListController {
 			@RequestParam(value="search", required=false) String search) {
 		List<ListVo> list = service.getList(vo);
 		
+		System.out.println("safasgasgasg***********"+optionvo);
 		List<OptionVo> option = optionservice.getCategory(optionvo);
+		
 
 		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
 		
@@ -76,13 +78,13 @@ public class ListController {
 		return "redirect:/"+id+"/main";
 		
 	}
-	@RequestMapping("/pageSearching")
+	/*@RequestMapping("/pageSearching")
 	public String pageSearching(Model model,@RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
 			@RequestParam (value="searching", required=false)String searching){
 		model.addAttribute("ps", service.pageSearching(pagination,searching));
 		return "main";
 	}
-	
+	*/
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
