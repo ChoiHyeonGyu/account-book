@@ -1,10 +1,8 @@
 package com.hipo.account_book.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.ibatis.javassist.tools.reflect.Sample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,19 +10,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.hipo.account_book.dto.JSONResult;
 import com.hipo.account_book.service.ListService;
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.BoardVo;
-import com.hipo.account_book.vo.ListPagingVo;
 import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.OptionVo;
+import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -36,31 +32,33 @@ public class ListController {
 
 	@RequestMapping("/main")
 	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
-			@RequestParam(value="search", required=false) String search) {
+			@RequestParam(value="search", required=false) String search ,@RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
+			@RequestParam (value="searching", required=false)String searching) {
 		List<ListVo> list = service.getList(vo);
+		
 		
 		System.out.println("safasgasgasg***********"+optionvo);
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		
 
 		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
-		
+		model.addAttribute("ps", service.pageSearching(pagination,searching));
 		model.addAttribute("list", list);
 		model.addAttribute("option", option);
 		return "main";
 	}
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
-		
 		 service.delete(vo);
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 		
 	}
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
+		
 		String list = service.add(vo);
 		
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 		
 	}
 	
@@ -75,16 +73,9 @@ public class ListController {
 	public String modify1(@ModelAttribute ListVo vo,@PathVariable String id){
 		service.modify1(vo);
 		
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
+	}
 		
-	}
-	/*@RequestMapping("/pageSearching")
-	public String pageSearching(Model model,@RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
-			@RequestParam (value="searching", required=false)String searching){
-		model.addAttribute("ps", service.pageSearching(pagination,searching));
-		return "main";
-	}
-	*/
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
@@ -177,7 +168,8 @@ public class ListController {
 	
 	@ResponseBody
 	@RequestMapping("/graphavgdefault")
-	public JSONResult graphavgdefault(@RequestBody Map<String, Object> map){
+	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
+		//service.searchcatlist(id);
 		return JSONResult.success(service.graphavgdefault());
 	}
 }

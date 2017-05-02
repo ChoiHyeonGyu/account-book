@@ -22,4 +22,8 @@ public class AndroidListService {
 		return listDao.getList(id);
 	}
 
+	public boolean updateList(ListVo listVo) {
+		return listDao.updateList(listVo);
+	}
+
 }

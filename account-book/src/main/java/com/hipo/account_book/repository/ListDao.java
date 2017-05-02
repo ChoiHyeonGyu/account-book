@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.GraphVo;
 import com.hipo.account_book.vo.ListVo;
+import com.hipo.account_book.vo.UserVo;
 @Repository
 public class ListDao {
 @Autowired
@@ -48,10 +49,10 @@ private SqlSession sql;
 		return sql.selectOne("listview.dealwithsearching", searching);
 		
 	}
-	public List<ListVo> totallist(String searching, int pagination, int listSize) {
+	public List<ListVo> totallist(String searching, int page, int listSize) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searching",searching);
-		map.put("pagination",pagination);
+		map.put("page",page);  
 		map.put("listSize",listSize);
 		return sql.selectList("listview.totallist",map);
 	}
@@ -152,10 +153,6 @@ private SqlSession sql;
 		sql.update("listview.good", num);
 	}
 
-
-
-
-	
 	public List<GraphVo> graphdayselect(String id){
 		return sql.selectList("listview.graphdayselect", id);
 	}
@@ -167,6 +164,10 @@ private SqlSession sql;
 	public List<GraphVo> graphyearselect(String id){
 		return sql.selectList("listview.graphyearselect", id);
 	}
+	
+	/*public List<ListVo> catlistselect(String id){
+		return sql.selectList("listview.catlistselect", id);
+	}*/
 	
 	public List<GraphVo> graphavgdefaultselect(){
 		return sql.selectList("listview.graphavgdefaultselect");
