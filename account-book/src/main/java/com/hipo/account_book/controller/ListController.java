@@ -35,11 +35,8 @@ public class ListController {
 			@RequestParam (value="searching", required=false)String searching) {
 		List<ListVo> list = service.getList(vo);
 		
-		
-		System.out.println("safasgasgasg***********"+optionvo);
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		
-
 		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
 		model.addAttribute("ps", service.pageSearching(pagination,searching));
 		model.addAttribute("list", list);
@@ -64,7 +61,6 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
-		System.out.println("sssssss"+map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));//여기서 에러.
 		
 	} 
@@ -167,6 +163,19 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/graphavgdefault")
 	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(service.graphavgdefault(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/transgraphavg")
+	public JSONResult transgraphavg(@PathVariable String id, @RequestBody Map<String, Object> map){
+		if(map.get("gender").toString().equals("성별") == false && map.get("age").toString().equals("나이") == false){
+			return JSONResult.success(service.transgraphavg(map.get("gender").toString(), map.get("age").toString()));
+		} else if(map.get("gender").toString().equals("성별") == false && map.get("age").toString().equals("나이")) {
+			return JSONResult.success(service.transgraphavg1(map.get("gender").toString()));
+		} else if(map.get("gender").toString().equals("성별") && map.get("age").toString().equals("나이") == false) {
+			return JSONResult.success(service.transgraphavg2(map.get("age").toString()));
+		}
 		return JSONResult.success(service.graphavgdefault(id));
 	}
 }

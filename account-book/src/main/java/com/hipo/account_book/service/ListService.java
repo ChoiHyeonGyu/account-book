@@ -288,5 +288,20 @@ public class ListService {
 	public List<GraphVo> graphavgdefault(String id){
 		return dao.graphavgdefaultselect(id);
 	}
+	
+	public List<GraphVo> transgraphavg(String gen, String age){
+		UserVo uservo = new UserVo();
+		uservo.setGender(gen);
+		uservo.setAge(age);
+		return dao.transgraphavgselect(uservo);
+	}
+	
+	public List<GraphVo> transgraphavg1(String gen){
+		return dao.transgraphavgselect1(gen);
+	}
+	
+	public List<GraphVo> transgraphavg2(String age){
+		return dao.transgraphavgselect2(age);
+	}
 
 }

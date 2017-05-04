@@ -110,7 +110,7 @@
 	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
 		<input type="hidden" id="commentboardId" name="boardId" value="">
 		<input type="hidden" id="commentName" name="name" value="">
-		<textarea rows="5" cols="63" name="content"></textarea><br/><br/>
+		<textarea rows="5" cols="63" name="content" required></textarea><br/><br/>
 		<input type="submit" value="댓글 쓰기">
 	</form>
 	<p class="line"></p>
@@ -128,7 +128,7 @@
 	<form action="${pageContext.request.contextPath}/${currentuserid}/reply" method="post">
 		<input type="hidden" id="commentId" name="commentId" value="">
 		<input type="hidden" id="comment1Name" name="name" value="">
-		<textarea rows="5" cols="63" name="content"></textarea><br/><br/>
+		<textarea rows="5" cols="63" name="content" required></textarea><br/><br/>
 		<input type="submit" value="답글 쓰기">
 	</form>
 	<p class="line"></p>

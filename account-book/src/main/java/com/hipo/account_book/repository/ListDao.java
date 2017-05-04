@@ -168,4 +168,16 @@ private SqlSession sql;
 	public List<GraphVo> graphavgdefaultselect(String id){
 		return sql.selectList("listview.graphavgdefaultselect", id);
 	}
+	
+	public List<GraphVo> transgraphavgselect(UserVo uservo){
+		return sql.selectList("listview.transgraphavgselect", uservo);
+	}
+	
+	public List<GraphVo> transgraphavgselect1(String gen){
+		return sql.selectList("listview.transgraphavgselect1", gen);
+	}
+	
+	public List<GraphVo> transgraphavgselect2(String age){
+		return sql.selectList("listview.transgraphavgselect2", age);
+	}
 }

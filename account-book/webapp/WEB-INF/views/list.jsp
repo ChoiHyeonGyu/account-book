@@ -95,6 +95,7 @@
 					<h3>
 						<span class="label label-default">은행</span>
 					</h3>
+
 					<input type="text" name="bank" class="form-control"
 						placeholder="bank" required><br/>
 
@@ -108,14 +109,14 @@
 					
 						<span class="label label-default">금액</span>
 					</h3>
+
 					<input type="text" name="money" class="form-control"
 						placeholder="money" required><br/>
-
 					<h3>
 						<span class="label label-default">구입물이름</span>
 					</h3>
-					<input type="text" name="name" class="form-control"
-						placeholder="name" required><br/>
+					
+					<input type="text" name="name" class="form-control"><br/>
 						
 					<input type="submit" value="확인" style="margin-left:245px">
       				<input type="reset" value="취소">	
