@@ -36,7 +36,9 @@ public class ListController {
 		List<ListVo> list = service.getList(vo);
 		
 		
+		System.out.println("safasgasgasg***********"+optionvo);
 		List<OptionVo> option = optionservice.getCategory(optionvo);
+		
 
 		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
 		model.addAttribute("ps", service.pageSearching(pagination,searching));
@@ -71,10 +73,7 @@ public class ListController {
 		service.modify1(vo);
 		
 		return "redirect:/"+id+"/main#list";
-		
 	}
-	
-	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
@@ -168,7 +167,6 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/graphavgdefault")
 	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
-		//service.searchcatlist(id);
-		return JSONResult.success(service.graphavgdefault());
+		return JSONResult.success(service.graphavgdefault(id));
 	}
 }

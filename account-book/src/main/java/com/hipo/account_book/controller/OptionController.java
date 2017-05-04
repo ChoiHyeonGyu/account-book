@@ -28,13 +28,14 @@ public class OptionController {
 	private OptionService optionService;
 	
 	@RequestMapping(value="/categoryAdd", method=RequestMethod.POST)
-	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, BindingResult result, Model model, @PathVariable String id){
-		if (result.hasErrors()) {
-			model.addAttribute("result", result.getModel());
-			model.addAttribute("error", result.getAllErrors());
-			return "main";
-		}
+	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, @PathVariable String id){
+		OptionVo vo;
+		System.out.println("더하기더하기더하기"+optionvo);
+		
 		optionService.Add(optionvo);
+		//int num = optionService.Add2(optionvo);
+		//optionService.Add1(optionvo);
+		//System.out.println("2222222더하기더하기더하기"+num);
 		return "redirect:/"+id+"/main#option";
 	}
 	
@@ -57,6 +58,7 @@ public class OptionController {
 		System.out.println("idididcatididicatid"+cid);
 		System.out.println("------------------idididi----------------------"+id);
 		vo.setCategeoryId(cid);
+		System.out.println("vovovovovo---------"+vo);
 		optionService.categoryModify1(vo);
 		return "redirect:/"+id+"/main#option";
 	}

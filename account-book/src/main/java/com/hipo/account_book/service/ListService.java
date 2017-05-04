@@ -285,12 +285,8 @@ public class ListService {
 		return dao.graphyearselect(id);
 	}
 	
-	/*public List<ListVo> searchcatlist(String id){
-		return dao.catlistselect(id);
-	}*/
-	
-	public List<GraphVo> graphavgdefault(){
-		return dao.graphavgdefaultselect();
+	public List<GraphVo> graphavgdefault(String id){
+		return dao.graphavgdefaultselect(id);
 	}
 
 }

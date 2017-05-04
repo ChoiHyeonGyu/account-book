@@ -18,6 +18,18 @@ public class OptionDao {
 		sql.insert("option.add",vo);
 		return false;
 	}
+	
+	public boolean add1(OptionVo vo) {
+		sql.insert("option.add1",vo);
+		return false;
+	}
+	
+	public int add2(OptionVo vo) {
+		int num = sql.selectOne("option.add2",vo);
+		return num;
+		
+	}
+	
 	public OptionVo categoryModify(int i) {
 		System.out.println("daodaodao"+i);
 		return sql.selectOne("option.categoryModify", i);
@@ -31,13 +43,14 @@ public class OptionDao {
 	}
 	
 	public List<OptionVo> category(OptionVo vo) {
-		System.out.println(" 카테카테카테카테카테" + vo);
 		List<OptionVo> category = sql.selectList("option.category",vo);
+		System.out.println(" 카테카테카테카테카테" + vo);
 		return category;
 	}
 	
 	public boolean delete(OptionVo vo) {
-		 sql.delete("option.delete",vo);
+		System.out.println("딜리딜리디리디....."+vo);
+		sql.delete("option.delete",vo);
 		 return false;
 	}
 }
