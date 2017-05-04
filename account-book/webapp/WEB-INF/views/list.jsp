@@ -77,7 +77,7 @@
 					</ul>
 			</div>
 			<div id="listadd" title="추가하기" style="display: none">
-				<form id="commit" name="listadd" var="vo" items="${list}"varStatus="status"
+				<form id="commit" name="listadd"
 					action="${pageContext.request.contextPath }/${currentuserid}/add"
 					method="post">
 					<input type='hidden' name="id" value="${currentuserid}">
@@ -116,6 +116,9 @@
 					</h3>
 					<input type="text" name="name" class="form-control"
 						placeholder="name" required><br/>
+						
+					<input type="submit" value="확인" style="margin-left:245px">
+      				<input type="reset" value="취소">	
 				</form>
 			</div>
 			<div id="modify" title="수정하기" style="display: none">
