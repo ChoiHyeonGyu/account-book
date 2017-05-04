@@ -7,10 +7,10 @@ $(function(){
 		width: 600,
 		modal: true,
 		buttons: {
-
+			
 		},
 		close: function() {
-				
+				 
 		}
 	});
 		

@@ -76,7 +76,6 @@
 					</c:if>
 					</ul>
 			</div>
-			 
 			<div id="listadd" title="추가하기" style="display: none">
 				<form id="commit" name="listadd"
 					action="${pageContext.request.contextPath }/${currentuserid}/add"
@@ -92,10 +91,11 @@
 						<span class="label label-default">결제 수단</span>
 					</h3>
 					<input type="text" class="form-control" name="paid"
-						placeholder="card / cash" required><br />
+						placeholder="card / cash" required><br/>
 					<h3>
 						<span class="label label-default">은행</span>
 					</h3>
+
 					<input type="text" name="bank" class="form-control"
 						placeholder="bank" required><br/>
 
@@ -109,20 +109,19 @@
 					
 						<span class="label label-default">금액</span>
 					</h3>
+
 					<input type="text" name="money" class="form-control"
 						placeholder="money" required><br/>
-
 					<h3>
 						<span class="label label-default">구입물이름</span>
 					</h3>
-					<input type="text" name="name" class="form-control"
-						placeholder="name" required><br/>
+					
+					<input type="text" name="name" class="form-control"><br/>
 						
 					<input type="submit" value="확인" style="margin-left:245px">
       				<input type="reset" value="취소">	
 				</form>
 			</div>
-			
 			<div id="modify" title="수정하기" style="display: none">
 				<form id="modify11"
 					action="${pageContext.request.contextPath }/${currentuserid}/modify1"
@@ -136,37 +135,37 @@
 						<span class="label label-default">결제 수단</span>
 					</h3>
 					<input id="listpaid" type="text" class="form-control" name="paid"
-						placeholder="card / cash" value="" required><br />
+						placeholder="card / cash" value="" required/><br/>
 
 					<h3>
 						<span class="label label-default">은행</span>
 					</h3>
 					<input id="listbank" type="text" name="bank" class="form-control"
-						placeholder="bank" value="" required><br />
+						placeholder="bank" value="" required/><br/>
 
 					<h3>
 						<span class="label label-default">+/-</span>
 					</h3>
 					<input id="listoperations" type="text" name="operations"
-						class="form-control" placeholder="저금/지출" value="" required><br />
+						class="form-control" placeholder="저금/지출" value="" required/><br/>
 
 					<h3>
 						<span class="label label-default">금액</span>
 					</h3>
 					<input id="listmoney" type="text" name="money" class="form-control"
-						placeholder="money" value="" required><br />
+						placeholder="money" value="" required/><br/>
 
 					<h3>
 						<span class="label label-default">상호명</span>
 					</h3>
 					<input id="listname" type="text" name="name" class="form-control"
-						placeholder="name" value="" required><br />
+						placeholder="name" value="" required/><br/>
 
 					<h3>
 						<span class="label label-default">카테고리</span>
 					</h3>
 					<input id="listcategory" type="text" name="category"
-						class="form-control" placeholder="category" value="" required><br />
+						class="form-control" placeholder="category" value="" required/><br/>
 				</form>
 			</div>
 		</div>

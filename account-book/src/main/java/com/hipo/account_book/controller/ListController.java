@@ -20,7 +20,6 @@ import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -71,7 +70,6 @@ public class ListController {
 		
 		return "redirect:/"+id+"/main#list";
 	}
-		
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
