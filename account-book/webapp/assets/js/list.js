@@ -10,6 +10,7 @@ $(function(){
 		buttons: {
 			"확인": function() {
 				//$( "#dialog-upload-form form" ).submit();
+				$("[name=category]").attr("required", true);
 				$("#commit").submit();
 				$( this ).dialog( "close" );
 			},
