@@ -30,7 +30,6 @@ public class OptionController {
 	@RequestMapping(value="/categoryAdd", method=RequestMethod.POST)
 	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, @PathVariable String id){
 		OptionVo vo;
-		System.out.println("더하기더하기더하기"+optionvo);
 		
 		optionService.Add(optionvo);
 		//int num = optionService.Add2(optionvo);
@@ -45,7 +44,6 @@ public class OptionController {
 	@ResponseBody
 	@RequestMapping("/categoryModify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map){
-		System.out.println("ididididididi"+map);
 		return JSONResult.success(optionService.categoryModify(Integer.parseInt(map.get("categoryId").toString())));//여기서 에러.
 		
 	} 
@@ -54,11 +52,7 @@ public class OptionController {
 	
 	@RequestMapping("/categoryModify1")
 	public String categoryModify(@ModelAttribute OptionVo vo, @PathVariable String id, @RequestParam("categoryId") int cid){
-		System.out.println("--------------------------------vovovovovo---------"+vo);
-		System.out.println("idididcatididicatid"+cid);
-		System.out.println("------------------idididi----------------------"+id);
 		vo.setCategeoryId(cid);
-		System.out.println("vovovovovo---------"+vo);
 		optionService.categoryModify1(vo);
 		return "redirect:/"+id+"/main#option";
 	}
@@ -66,9 +60,6 @@ public class OptionController {
 	@RequestMapping("/categorydelete")
 	public String categorydelete(@PathVariable String id, @ModelAttribute OptionVo vo, @RequestParam("categoryId") int cid){
 		vo.setCategeoryId(cid); 
-		System.out.println("딜리트.............."+vo);
-		 System.out.println("아이디.............."+id);
-		 System.out.println("호로로로로롤.............."+cid);
 		
 		optionService.delete(vo);
 		

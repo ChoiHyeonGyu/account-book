@@ -273,4 +273,40 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			group by category order by cnt desc
 		]]>
 	</select>
+	
+	<select id="transgraphavgselect" parameterType="uservo" resultType="graphvo">
+		<![CDATA[
+			select sum(cnt) as cnt, category from (select count(*) as cnt, c.category as category from (select id from 
+			users where gender = #{gender} and age = #{age}) b, list, category c where b.id = list.id and list.operations = '-' and list.category = c.category and c.slave_id = 0 
+			and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c.category union all
+			select count(*) as cnt, c2.category as category from (select id from 
+			users where gender = #{gender} and age = #{age}) b, list, category c1, category c2 where b.id = list.id and list.operations = '-' and list.category = c1.category 
+			and c1.slave_id = c2.category_id and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c2.category) 
+			group by category order by cnt desc
+		]]>
+	</select>
+	
+	<select id="transgraphavgselect1" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select sum(cnt) as cnt, category from (select count(*) as cnt, c.category as category from (select id from (select gender, age from users where gender = #{value}) a, 
+			users where users.gender = a.gender and users.age = a.age) b, list, category c where b.id = list.id and list.operations = '-' and list.category = c.category and c.slave_id = 0 
+			and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c.category union all
+			select count(*) as cnt, c2.category as category from (select id from (select gender, age from users where gender = #{value}) a, 
+			users where users.gender = a.gender and users.age = a.age) b, list, category c1, category c2 where b.id = list.id and list.operations = '-' and list.category = c1.category 
+			and c1.slave_id = c2.category_id and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c2.category) 
+			group by category order by cnt desc
+		]]>
+	</select>
+	
+	<select id="transgraphavgselect2" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select sum(cnt) as cnt, category from (select count(*) as cnt, c.category as category from (select id from (select gender, age from users where age = #{value}) a, 
+			users where users.gender = a.gender and users.age = a.age) b, list, category c where b.id = list.id and list.operations = '-' and list.category = c.category and c.slave_id = 0 
+			and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c.category union all
+			select count(*) as cnt, c2.category as category from (select id from (select gender, age from users where age = #{value}) a, 
+			users where users.gender = a.gender and users.age = a.age) b, list, category c1, category c2 where b.id = list.id and list.operations = '-' and list.category = c1.category 
+			and c1.slave_id = c2.category_id and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c2.category) 
+			group by category order by cnt desc
+		]]>
+	</select>
 </mapper>
