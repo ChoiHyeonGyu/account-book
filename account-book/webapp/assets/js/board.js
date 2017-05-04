@@ -8,19 +8,14 @@ var cmtuid = 0;
 var cmtuid1 = 0;
 
 $(function(){
+	
 	var boardform = $("#boardform").dialog({
 		autoOpen: false,
 		height: 660,
 		width: 500,
 		modal: true,
 		buttons: {
-			"작성하기": function() {
-				$("#boardpost").submit();
-				$( this ).dialog( "close" );
-			},
-			"취소" : function() {
-				$( this ).dialog( "close" );
-			}
+			
 		},
 		close: function() {
 			

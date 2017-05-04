@@ -78,7 +78,7 @@
 			</div>
 			 
 			<div id="listadd" title="추가하기" style="display: none">
-				<form id="commit" name="listadd" var="vo" items="${list}"varStatus="status"
+				<form id="commit" name="listadd"
 					action="${pageContext.request.contextPath }/${currentuserid}/add"
 					method="post">
 					<input type='hidden' name="id" value="${currentuserid}">
@@ -87,36 +87,39 @@
 						<span class="label label-default">카테고리</span>
 					</h3>
 					<input type="text" name="category" class="form-control"
-						placeholder="category" value="" required><br/>
+						placeholder="category" required><br/>
 					<h3>
 						<span class="label label-default">결제 수단</span>
 					</h3>
 					<input type="text" class="form-control" name="paid"
-						placeholder="card / cash"  required><br />
+						placeholder="card / cash" required><br />
 					<h3>
 						<span class="label label-default">은행</span>
 					</h3>
 					<input type="text" name="bank" class="form-control"
-						placeholder="bank" value="" required><br />
+						placeholder="bank" required><br />
 
 					<h3>
 						<span class="label label-default">+/-</span>
 					</h3>
 					<input type="text" name="operations" class="form-control"
-						placeholder="저금/지출" value="" required><br />
+						placeholder="저금/지출" required><br />
 
 					<h3>
 					
 						<span class="label label-default">금액</span>
 					</h3>
 					<input type="text" name="money" class="form-control"
-						placeholder="money" value="" required><br />
+						placeholder="money" required><br />
 
 					<h3>
 						<span class="label label-default">구입물이름</span>
 					</h3>
 					<input type="text" name="name" class="form-control"
-						placeholder="name" value="" required><br />
+						placeholder="name" required><br />
+						
+					<input type="submit" value="확인" style="margin-left:245px">
+      				<input type="reset" value="취소">	
 				</form>
 			</div>
 			

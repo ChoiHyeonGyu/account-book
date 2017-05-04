@@ -1,21 +1,13 @@
 var listarray = [];// 첫번째 여기로 푸쉬값이 담긴다.
 
 $(function(){
-	
 	var myBtnform = $( "#listadd" ).dialog({
 		autoOpen: false,
-		height: 800,
+		height: 720,
 		width: 600,
-		modal: false,
+		modal: true,
 		buttons: {
-			"확인": function() {
-				//$( "#dialog-upload-form form" ).submit();
-				$("#commit").submit();
-				$( this ).dialog( "close" );
-			},
-			"취소" : function() {
-				$( this ).dialog( "close" );
-			}
+
 		},
 		close: function() {
 				

@@ -83,7 +83,9 @@
       	<h3><span class="label label-primary">내용</span></h3>
       	<textarea rows="10" cols="64" name="content"></textarea>
       	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
-      	<input type="file" name="file" multiple="multiple">
+      	<input type="file" name="file" multiple="multiple"><br/>
+      	<input type="submit" value="작성하기" style="margin-left:180px">
+      	<input type="reset" value="취소">
    	</form>
 </div>
 
