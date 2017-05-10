@@ -99,6 +99,9 @@ $(function() {
 	    data: JSON.stringify(beanobj),
 	    contentType: "application/json; charset=UTF-8",
 	    success: function( response ){
+	    	if(response.data.length == 0){
+	    		data1[0] = {label: "데이터가 없음", data: 1};
+	    	}
 	    	
 	    	for(var i=0; i<response.data.length; i++){
 		    	 data1[i] = {label: response.data[i].category, data: response.data[i].cnt};
@@ -136,6 +139,9 @@ $(function() {
 	    data: JSON.stringify(beanobj),
 	    contentType: "application/json; charset=UTF-8",
 	    success: function( response ){
+	    	if(response.data.length == 0){
+	    		data1[0] = {label: "데이터가 없음", data: 1};
+	    	}
 	    	
 	    	for(var i=0; i<response.data.length; i++){
 		    	data2[i] = {label: response.data[i].category, data: response.data[i].cnt};

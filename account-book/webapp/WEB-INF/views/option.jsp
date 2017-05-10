@@ -16,10 +16,9 @@
 					<h3>
 						<span class="label label-default">카데고리 추가</span>
 					</h3>
-					<br /> 
-					<input type="text" name="category"
-						class="form-control1" value="" placeholder="Category" required> 
-					<input type="submit" value="ADD" class="btn btn-join">
+					<br /> <input type="text" name="category" class="form-control1"
+						value="" placeholder="Category" required> 
+						<input type="submit" value="ADD" class="btn btn-join">
 
 				</form>
 				<table class="table table-bordered">
@@ -31,20 +30,25 @@
 					</tr>
 					<tbody>
 
-						<c:forEach var="vo" items="${option}" >
+						<c:forEach var="vo" items="${option}">
 							<script>
 								categoryarray.push("${vo.categoryId}");
 							</script>
 							<tr>
 								<td>${vo.category}</td>
 								<td>${vo.postCount}</td>
-								<td> <button type="button" id="${vo.categoryId}"
-										 class="btn btn-join">수정</button></td>
-							<td><a href="${pageContext.request.contextPath}/${currentuserid}/categorydelete?categoryId=${vo.categoryId}" >
-							<img src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-							
+								<td>
+									<button type="button" id="${vo.categoryId}"
+										class="btn btn-join">수정</button>
+								</td>
+								<td><a
+									href="${pageContext.request.contextPath}/${currentuserid}/categorydelete?categoryId=${vo.categoryId}">
+										<img
+										src="${pageContext.request.contextPath}/assets/images/delete.jpg">
+								</a></td>
+
 							</tr>
-								
+
 						</c:forEach>
 
 
@@ -60,47 +64,49 @@
 			</div>
 
 			<div class="col-lg-6 col-lg-6 text-center op">
-				<form method="post" name="한도 설정" action="${pageContext.request.contextPath}/${currentuserid}/limitModify">
+				<form method="post" name="한도 설정"
+					action="${pageContext.request.contextPath}/${currentuserid}/limitModify">
 					<h3>
 						<span class="label label-default">한도 설정</span>
 					</h3>
 					<br /> 금액한도:&nbsp;&nbsp; <select name="category">
 						<option value="카테고리 설정">카테고리 설정</option>
-						<c:forEach var="vo" items="${option}" >
-						<option value="${vo.category}">${vo.category}</option>
+						<c:forEach var="vo" items="${option}">
+							<option value="${vo.category}">${vo.category}</option>
 						</c:forEach>
-					</select><br> <input type="text" id="limit" name="limit"
-						class="form-control1" placeholder="Limit" required>
-					<button type="button" id="modify1" name="modify1"
-						class="btn btn-join">수정</button>
+					</select><br> 
+					<input type="text" id="limit" name="limit" class="form-control1" placeholder="Limit" required>
+					<input type="submit" value="수정" class="btn btn-join">
+				</form>
+				
+				<table class="table table-bordered">
+					<tr>
+						<th>카테고리</th>
+						<th>금액</th>
+					</tr>
 
-					<table class="table table-bordered">
-						<tr>
-							<th>카테고리</th>
-							<th>금액</th>
-						</tr>
-
-						<tbody>
-						<c:forEach var="vo" items="${option}" >
+					<tbody>
+						<c:forEach var="vo" items="${option}">
 							<tr>
 								<td>${vo.category}</td>
 								<td>${vo.limit}</td>
 							</tr>
-							
-							</c:forEach>
-							
-						</tbody>
-					</table>
-				</form>
+
+						</c:forEach>
+
+					</tbody>
+				</table>
 			</div>
 		</div>
 
 		<div id="modifyform1" title="수정" style="display: none">
-			<form id="modifypost" action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1"  method="post">
-		
-				<input id="categoryId" type="hidden" name="categoryId">
-				<input type="text" value="" name="category"
-					class="form-control" placeholder="Category" required><br>
+			<form id="modifypost"
+				action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1"
+				method="post">
+
+				<input id="categoryId" type="hidden" name="categoryId"> <input
+					type="text" value="" name="category" class="form-control"
+					placeholder="Category" required><br>
 			</form>
 		</div>
 	</section>
