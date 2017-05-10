@@ -57,6 +57,10 @@ private SqlSession sql;
 		return sql.selectList("listview.totallist",map);
 	}
 	
+	public ListVo selectlocation(int listId){
+		return sql.selectOne("listview.selectlocation", listId);
+	}
+	
 	public String usernameselect(String id){
 		return sql.selectOne("listview.usernameselect", id);
 	}
