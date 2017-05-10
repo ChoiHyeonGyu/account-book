@@ -68,28 +68,12 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		]]>
 	</select>
 
-	<!-- update list set paid=#{paid},
- 	bank=#{bank},operations=#{operations},money=#{money},name=#{name},category=#{category}
- 	 where list_Id=#{listId} -->
-	<!--<insert id="add1" parameterType="listvo"> <![CDATA[ INSERT INTO listdate 
-		VALUES (#{listId}, #{sysdate}) ]]> </insert> -->
-
-	<!-- <select id="getlistpost" resultType="postvo" parameterType="int"> <![CDATA[ 
-		select post_no as postNo ,title,content, reg_date as regDate, no from post 
-		where no = #{no} order by regDate desc ]]> </select> <select id="giveNo" 
-		resultType="postvo" parameterType="postvo"> <![CDATA[ select title,content,reg_date 
-		as regDate,no,post_No as postNo from post where post_No = #{postNo} and no 
-		=#{no} ]]> </select> <select id="maxno" parameterType="postvo"> <![CDATA[ 
-		select post_no as postNo, title, content ,reg_date as regDate , no from post 
-		order by regDate desc ]]> </select> <select id="gettop" resultType="postvo"> 
-		<![CDATA[ select post_no as postNo, title, content ,reg_date as regDate , 
-		no from post order by regDate desc ]]> </select> <select id="gettop1" resultType="postvo" 
-		parameterType="postvo"> <![CDATA[ select post_no as postNo, title, content 
-		,reg_date as regDate , no from post where post_No = #{post_No} ]]> </select> 
-		select c.id,a.list_id as listId ,a.paid, a.money, a.name,a.category, sysdate 
-		as dat from list a, LISTdate b , users c where a.LIST_ID = b.LIST_ID and 
-		a.ID = c.ID -->
-
+	<select id="selectlocation" parameterType="int" resultType="listvo">
+		<![CDATA[
+			select * from list where list_id = #{value}
+		]]>
+	</select>
+	
 	<select id="usernameselect" parameterType="string" resultType="string">
 		<![CDATA[
 			select name from users where id = #{value}

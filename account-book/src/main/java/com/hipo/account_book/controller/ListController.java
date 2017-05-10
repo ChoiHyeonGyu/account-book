@@ -70,6 +70,13 @@ public class ListController {
 		
 		return "redirect:/"+id+"/main#list";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/maps")
+	public JSONResult maps(@RequestBody Map<String, Object> map){
+		return JSONResult.success(service.loadmap(map.get("lid").toString()));
+	}
+	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
