@@ -39,7 +39,7 @@ public class ListController {
 		
 		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
 		model.addAttribute("ps", service.pageSearching(pagination,searching));
-		model.addAttribute("list", list);
+		/*model.addAttribute("list", list);*/
 		model.addAttribute("option", option);
 		return "main";
 	}

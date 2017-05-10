@@ -168,6 +168,7 @@
 						class="form-control" placeholder="category" value="" required/><br/>
 				</form>
 			</div>
+
 		</div>
 		<c:import url="/WEB-INF/views/board.jsp" />
 	</div>

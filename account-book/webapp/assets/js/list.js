@@ -123,11 +123,11 @@ $(function(){
 		event.preventDefault();
 		myBtnform.dialog("open");
 	});
-	$("#listvo").click(function(event){
+	/*$("#listvo").click(function(event){
 		event.preventDefault();
 		console.log("dddddddddd");
 		myBtnform1.dialog("open");
-	});
+	});*/
 	
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
