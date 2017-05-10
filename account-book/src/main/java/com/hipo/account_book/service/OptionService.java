@@ -1,6 +1,7 @@
 package com.hipo.account_book.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -52,5 +53,16 @@ public class OptionService {
 	public boolean delete(OptionVo vo) {
 		System.out.println(".........딜리딜리디리디....."+vo);
 		return optionDao.delete(vo); 
+	}
+	
+	public String checkPassword(Map<String, Object> map){
+		/* 
+		String id = frontDao.checkselect(map.get("id").toString());
+		if(id!=null){
+			return "fail";
+		}
+		return "success";
+		*/
+		return "success";
 	}
 }
