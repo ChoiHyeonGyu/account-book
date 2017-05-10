@@ -3,30 +3,43 @@
 
 <mapper namespace="option">
 
-	<insert id="add" parameterType="optionvo">
+	<insert id="add" parameterType="optionvo" >
 		<![CDATA[
 			insert into category values(seq_category.nextval, #{category}, 0, 0)
 		]]>
 	</insert>
 	
-	<insert id="add1" parameterType="optionvo">
+	<select id="add1" parameterType="String" resultType="int">
 		<![CDATA[
-			insert into userscategory values(#{id}, seq_category.nextval, '')
-		]]>
-	</insert>
-	
-	<select id="add2" parameterType="int" resultType="int">
-		<![CDATA[
-			select category_id as categoryId from category
+			select category_id as categoryId from category where category=#{category}
 		]]>
 	</select>
+	
+	<insert id="add2" parameterType="optionvo">
+		<![CDATA[
+			insert into userscategory values(#{id}, #{categoryId}, '0')
+		]]>
+	</insert>
+
+	<select id="limitModify" parameterType="optionvo" resultType="int">
+		<![CDATA[
+			select category_id as categoryId from category where category=#{category}
+		]]>
+	</select>
+	
+	<update id="limitModify1" parameterType="optionvo">
+		<![CDATA[
+			update userscategory set money_limit=#{limit}
+ 			 where category_id=#{categoryId} 	 	
+ 	 	]]>
+	</update>
 
 	<select id="categoryModify" parameterType="int" resultType="optionvo">
  		<![CDATA[
  			select category_id as categoryId, category from category where category_id=#{categoryId}
  		]]>
 	</select>
-
+	
 	<update id="categoryModify1" parameterType="optionvo">
  		<![CDATA[
 		update category set category=#{category}

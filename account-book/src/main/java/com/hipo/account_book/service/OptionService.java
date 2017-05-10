@@ -18,15 +18,24 @@ public class OptionService {
 	public void Add(OptionVo optionvo){
 		optionDao.add(optionvo);
 	}
-	public int Add2(OptionVo vo){
-		int num = optionDao.add2(vo);
-		return num;
+	public void Add2(OptionVo optionvo){
+		System.out.println("daoadd2-------"+optionvo);
+		optionDao.add2(optionvo);
 	}
-	public void Add1(OptionVo optionvo){
-		optionDao.add1(optionvo);
+	public int Add1(String category){
+		return optionDao.add1(category);
+	}
+	
+	public int limitModify(OptionVo optionvo){
+		return optionDao.limitModify(optionvo);
+	}
+	
+	public void limitModify1(OptionVo optionvo){
+		optionDao.limitModify1(optionvo);
 	}
 	
 	public OptionVo categoryModify(int i) {
+		System.out.println("intintint"+i);
 		return optionDao.categoryModify(i);
 	}
 	
@@ -41,6 +50,7 @@ public class OptionService {
 	}
 	
 	public boolean delete(OptionVo vo) {
+		System.out.println(".........딜리딜리디리디....."+vo);
 		return optionDao.delete(vo); 
 	}
 }
