@@ -30,7 +30,7 @@ body {
 }
 
 hr {
-	border-color: #F05F40;
+	border-color: #3abdc0;
 	border-width: 3px;
 	max-width: 50px
 }
@@ -385,8 +385,8 @@ header .header-content .header-content-inner p {
 
 .btn-primary {
 	color: #fff;
-	background-color: #F05F40;
-	border-color: #F05F40;
+	background-color: #3abdc0;
+	border-color: #3abdc0;
 	-webkit-transition: all .35s;
 	-moz-transition: all .35s;
 	transition: all .35s
@@ -408,8 +408,8 @@ header .header-content .header-content-inner p {
 	fieldset[disabled] .btn-primary.focus, fieldset[disabled] .btn-primary:active,
 	fieldset[disabled] .btn-primary:focus, fieldset[disabled] .btn-primary:hover
 	{
-	background-color: #F05F40;
-	border-color: #F05F40
+	background-color: #3abdc0;
+	border-color: #3abdc0
 }
 
 .btn-primary .badge {

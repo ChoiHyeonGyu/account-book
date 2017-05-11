@@ -5,8 +5,8 @@
 		<h1 align="center">자신의 씀씀이 이야기</h1>
 		<form action="${pageContext.request.contextPath}/${currentuserid}/main" method="post">
 			<input type="search" name="search" size="90">
-			<input type="submit" value="검색하기">
-			<button id="boardadd" type="button">작성하기</button>
+			<button type="submit" class="fa fa-search fa-2x sr-contact"></button>
+			<button id="boardadd" type="button" class="fa fa-pencil fa-2x sr-contact"></button>
 		</form>
 	    <table class="table">
 	      <thead>
@@ -63,7 +63,7 @@
 	</div>
 </div>
 
-<div id="boardform" title="작성하기" style="display:none">
+<div id="boardform" title="작성" style="display:none">
 	<form id="boardpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardadd" enctype="multipart/form-data">
    		<h3><span class="label label-primary">결산월</span></h3>
    		<div class="dropdown theme-dropdown clearfix">
@@ -81,15 +81,15 @@
       	<h3><span class="label label-primary">제목</span></h3>
       	<input type="text" name="title" class="form-control" placeholder="Title" required>
       	<h3><span class="label label-primary">내용</span></h3>
-      	<textarea rows="10" cols="64" name="content"></textarea>
+      	<textarea rows="10" cols="64" name="content" placeholder="Content"></textarea>
       	<h3><span class="label label-primary">이미지 첨부</span></h3><br/>
       	<input type="file" name="file" multiple="multiple"><br/>
-      	<input type="submit" value="작성하기" style="margin-left:180px">
+      	<input type="submit" value="작성" style="margin-left:190px">
       	<input type="reset" value="취소">
    	</form>
 </div>
 
-<div id="contentform" title="자세히 보기" style="display:none">
+<div id="contentform" title="상세 보기" style="display:none">
 	<br/>
 	<span id="contentmonth" class="label label-warning" style="font-size:25px"></span>
 	<span id="contenttitle" class="label label-warning" style="font-size:25px"></span>
@@ -102,11 +102,11 @@
 	<span id="contentgood" class="label label-warning" style="font-size:25px"></span>
 	<span id="contenthit" class="label label-warning" style="font-size:25px"></span><br/><br/>
 	<p class="line"></p>
-	<button id="commentsviewer" type="button" class="btn btn-lg btn-default">댓글 보기</button>
-	<button id="good" type="button" class="btn btn-lg btn-default">추천</button>
+	<button id="commentsviewer" type="button" class="btn btn-lg btn-outline btn-info">댓글 보기</button>
+	<button id="good" type="button" class="btn btn-lg btn-outline btn-info">추천</button>
 </div>
 
-<div id="commentform" title="댓글 보기" style="display:none">
+<div id="commentform" title="댓글" style="display:none">
 	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
 		<input type="hidden" id="commentboardId" name="boardId" value="">
 		<input type="hidden" id="commentName" name="name" value="">
@@ -124,7 +124,7 @@
 	</c:forEach>
 </div>
 
-<div id="comment1form" title="답글 보기" style="display:none">
+<div id="comment1form" title="답글" style="display:none">
 	<form action="${pageContext.request.contextPath}/${currentuserid}/reply" method="post">
 		<input type="hidden" id="commentId" name="commentId" value="">
 		<input type="hidden" id="comment1Name" name="name" value="">
@@ -141,7 +141,7 @@
 	</c:forEach>
 </div>
 
-<div id="contenteditform" title="수정하기" style="display:none">
+<div id="contenteditform" title="수정" style="display:none">
 	<form id="contenteditpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardedit" enctype="multipart/form-data">
 		<input type="hidden" id="editboardId" name="boardId" value="">
 		<input type="hidden" id="editId" name="id" value="">

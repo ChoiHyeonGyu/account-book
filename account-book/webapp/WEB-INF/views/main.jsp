@@ -24,7 +24,7 @@
     
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/div.css">
 	<script src="${pageContext.request.contextPath}/assets/js/sb-admin-2.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/flot/excanvas.min.js"></script>
@@ -86,7 +86,7 @@
                 <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
                 <hr>
                 <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a href="#profile" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <a href="#profile" class="btn btn-primary btn-xl page-scroll">Begin Service</a>
             </div>
         </div>
     </header>

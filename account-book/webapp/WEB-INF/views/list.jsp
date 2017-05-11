@@ -42,7 +42,7 @@
 								<td><a
 									href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 										src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-								<td><strong id="maps${vo.listId}">지도 보기</strong></td>
+								<td><strong id="maps${vo.listId}" class="fa fa-map-marker fa-2x sr-contact"></strong></td>
 							</tr>				
 						</c:forEach>
 					</tbody>
