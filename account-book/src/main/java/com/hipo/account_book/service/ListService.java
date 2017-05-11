@@ -90,7 +90,6 @@ public class ListService {
 	}
 	
 	public ListVo loadmap(String listId){
-		System.out.println("아이디 !" + listId);
 		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
 	}
 	
