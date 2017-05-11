@@ -16,12 +16,12 @@
 <body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/facebook.js"></script>
 <img alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
-<button id="login" type="button" class="btn btn-lg btn-default">Login</button><br/>
-<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">FACEBOOK과 연동하여 Login</fb:login-button>
+<button id="login" type="button" class="btn btn-lg btn-default">로그인</button><br/>
+<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">FACEBOOK과 연동하여 로그인</fb:login-button>
 <form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
 	<input type="hidden" id="fbhidden" name="id" value="">
 </form>
-<button id="join" type="button" class="btn btn-lg btn-default">Join</button><br/>
+<button id="join" type="button" class="btn btn-lg btn-default">회원가입</button><br/>
 <div id="loginform" title="로그인" style="display:none">
 	<form id="loginpost" method="post" action="${pageContext.request.contextPath}/connmain">
     	<input type="text" id="inputEmail" name="id" class="form-control" placeholder="Email address" required>
