@@ -42,6 +42,17 @@ public class OptionController {
 		return "redirect:/"+id+"/main#option";
 	}
 	
+	@ResponseBody
+	@RequestMapping("/reset")
+	public JSONResult reset(@RequestBody Map<String, Object> map, @PathVariable String id){
+		String pp = optionService.checkPassword(map, id);
+		if(pp.equals("fail")==true){
+			return JSONResult.fail(pp);
+		} else {
+			return JSONResult.success(pp);
+		}
+	}
+	
 	@RequestMapping("/limitModify")
 	public String limitModify(@ModelAttribute OptionVo optionvo, @PathVariable String id){
 		int categoryId;

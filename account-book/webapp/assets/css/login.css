@@ -6,6 +6,8 @@ html {
 
 body {
 	margin: 0;
+	background-image:url("/account-book/assets/images/login-background4.jpg");
+	background-size:100%;
 }
 
 img {

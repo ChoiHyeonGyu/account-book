@@ -28,7 +28,7 @@ $(function(){
 		width: 700,
 		modal: true,
 		buttons: {
-			"수정하기": function() {
+			"수정": function() {
 				if(currentid != $("#editId").val()){
 					alert("너가 수정을 할 수 있을 것 같아?");
 				} else {
@@ -36,7 +36,7 @@ $(function(){
 				}
 				$( this ).dialog( "close" );
 			},
-			"삭제하기" : function() {
+			"삭제" : function() {
 				if(currentid != $("#editId").val()){
 					alert("너가 삭제를 할 수 있을 것 같아?");
 				} else {
@@ -56,7 +56,7 @@ $(function(){
 		width: 500,
 		modal: true,
 		buttons: {
-			"수정하기": function() {
+			"수정": function() {
 				$("#contenteditpost").submit();
 				$( this ).dialog( "close" );
 			},
