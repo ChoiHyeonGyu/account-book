@@ -42,7 +42,7 @@
 								<td><a
 									href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 										src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-								<td><a href="${pageContext.request.contextPath}">맵보기!!!!!</a></td>
+								<td><strong id="maps${vo.listId}">지도 보기</strong></td>
 							</tr>				
 						</c:forEach>
 					</tbody>
@@ -168,7 +168,10 @@
 						class="form-control" placeholder="category" value="" required/><br/>
 				</form>
 			</div>
+
 		</div>
 		<c:import url="/WEB-INF/views/board.jsp" />
 	</div>
 </section>
+
+<div id="map_ma"></div>

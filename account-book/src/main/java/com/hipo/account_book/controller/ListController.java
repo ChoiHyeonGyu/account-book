@@ -39,7 +39,7 @@ public class ListController {
 		
 		model.addAttribute("board", service.getBoardList(page, search));//board.list ????
 		model.addAttribute("ps", service.pageSearching(pagination,searching));
-		model.addAttribute("list", list);
+		/*model.addAttribute("list", list);*/
 		model.addAttribute("option", option);
 		return "main";
 	}
@@ -70,6 +70,13 @@ public class ListController {
 		
 		return "redirect:/"+id+"/main#list";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/maps")
+	public JSONResult maps(@RequestBody Map<String, Object> map){
+		return JSONResult.success(service.loadmap(map.get("lid").toString()));
+	}
+	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);

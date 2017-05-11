@@ -34,6 +34,7 @@
     <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.time.js"></script>
     <script src="${pageContext.request.contextPath}/assets/flot-tooltip/jquery.flot.tooltip.min.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/flot-data.js"></script>
+	<script src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/list.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/option.js"></script>

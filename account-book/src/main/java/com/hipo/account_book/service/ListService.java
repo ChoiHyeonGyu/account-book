@@ -89,6 +89,10 @@ public class ListService {
 		
 	}
 	
+	public ListVo loadmap(String listId){
+		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
+	}
+	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
 		boardvo.setId(id);
 		boardvo.setName(dao.usernameselect(id));
