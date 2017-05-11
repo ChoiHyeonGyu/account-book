@@ -34,7 +34,7 @@
 							<tr>
 								<td>${vo.paid}</td>
 								<td>${vo.bank}</td>
-								<td>${vo.operations}</td>
+							 	<td>${vo.operations}</td>
 								<td><button id="${vo.listId}">${vo.money}</button></td>	
 								<td>${vo.name}</td>
 								<td>${vo.category}</td>
