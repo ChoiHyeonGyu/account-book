@@ -15,6 +15,12 @@
 		]]>
 	</select>
 	
+	<select id="checkPassword" parameterType="string" resultType="string">
+		<![CDATA[
+			select password from users where id=#{value}
+		]]>
+	</select>
+	
 	<insert id="add2" parameterType="optionvo">
 		<![CDATA[
 			insert into userscategory values(#{id}, #{categoryId}, '0')

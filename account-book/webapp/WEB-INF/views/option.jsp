@@ -56,7 +56,7 @@
 				</table>
 				<br>
 				<form>
-					<input type="text" id="password" name="password"
+					<input type="text" id="resetpassword" name="resetpassword"
 						class="form-control1" placeholder="Password" required>
 					<button type="button" id="reset" name="reset" class="btn btn-join">가계부
 						초기화</button>
@@ -64,7 +64,7 @@
 			</div>
 
 			<div class="col-lg-6 col-lg-6 text-center op">
-				<form method="post" name="한도 설정"
+				<form id="limitmodify" method="post" name="한도 설정"
 					action="${pageContext.request.contextPath}/${currentuserid}/limitModify">
 					<h3>
 						<span class="label label-default">한도 설정</span>
@@ -89,7 +89,7 @@
 						<c:forEach var="vo" items="${option}">
 							<tr>
 								<td>${vo.category}</td>
-								<td>${vo.limit}</td>
+								<td>${vo.limit}원</td>
 							</tr>
 
 						</c:forEach>

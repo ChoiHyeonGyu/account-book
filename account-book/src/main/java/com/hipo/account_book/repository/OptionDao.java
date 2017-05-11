@@ -27,6 +27,10 @@ public class OptionDao {
 		sql.insert("option.add2",vo);	
 	}
 	
+	public String checkPassword(String id){
+		return sql.selectOne("option.checkPassword", id);
+	}
+	
 	public int limitModify(OptionVo optionvo){
 		return sql.selectOne("option.limitModify", optionvo);
 	}
