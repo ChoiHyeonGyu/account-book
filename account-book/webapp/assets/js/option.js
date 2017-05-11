@@ -23,15 +23,16 @@ $(function() {
 	});
 	
 	$("#reset").click(function(){
-		var rsp = {resetpassword:$("#resetpassword").val()};
+		var rsp = {password:$("#resetpassword").val()};
 		
 		$.ajax( {
-		    url : "/account-book/reset",
+		    url :  "/account-book/" + currentid + "/reset",
 		    type: "POST",
 		    dataType: "JSON",
 		    data: JSON.stringify(rsp),
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
+		    	console.log(response);
 		    	if(response.result == "fail"){
 		    		alert("비밀번호를 확인해주세요.");
 			    	return;

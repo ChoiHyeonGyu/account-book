@@ -55,14 +55,14 @@ public class OptionService {
 		return optionDao.delete(vo); 
 	}
 	
-	public String checkPassword(Map<String, Object> map){
-		/* 
-		String id = frontDao.checkselect(map.get("id").toString());
-		if(id!=null){
+	public String checkPassword(Map<String, Object> map, String id){
+		String resetPassword = map.get("password").toString();
+		String password = optionDao.checkPassword(id);
+		
+		if(password.equals(resetPassword) == true){
+			return "success";
+		} else{
 			return "fail";
 		}
-		return "success";
-		*/
-		return "success";
 	}
 }

@@ -42,12 +42,14 @@ public class OptionController {
 		return "redirect:/"+id+"/main#option";
 	}
 	
-	@RequestMapping("/resetpassword")
-	public JSONResult checkid(@RequestBody Map<String, Object> map){
-		if(optionService.checkPassword(map)=="fail"){
-			return JSONResult.fail("");
+	@RequestMapping("/reset")
+	public JSONResult reset(@RequestBody Map<String, Object> map, @PathVariable String id){
+		String pp = optionService.checkPassword(map, id);
+		if(pp.equals("fail")==true){
+			return JSONResult.fail(pp);
+		} else {
+			return JSONResult.success(pp);
 		}
-		return JSONResult.success(optionService.checkPassword(map));
 	}
 	
 	@RequestMapping("/limitModify")

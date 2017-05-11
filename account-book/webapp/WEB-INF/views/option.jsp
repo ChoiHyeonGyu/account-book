@@ -55,7 +55,7 @@
 					</tbody>
 				</table>
 				<br>
-				<form id="resetpassword" action="${pageContext.request.contextPath}/${currentuserid}/resetpassword">
+				<form>
 					<input type="text" id="resetpassword" name="resetpassword"
 						class="form-control1" placeholder="Password" required>
 					<button type="button" id="reset" name="reset" class="btn btn-join">가계부
