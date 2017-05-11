@@ -11,9 +11,6 @@ $(function(){
 			"로그인": function() {
 				$("#loginpost").submit();
 				$( this ).dialog( "close" );
-			},
-			"ID/Password 찾기" : function() {
-				$( this ).dialog( "close" );
 			}
 		},
 		close: function() {

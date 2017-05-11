@@ -83,10 +83,12 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+                <h1 id="homeHeading">안녕하세요. 편리가계부입니다.</h1>
                 <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a href="#profile" class="btn btn-primary btn-xl page-scroll">Begin Service</a>
+                <p>저희 서비스는 가계부는 써야 되는데 일일히 다 쓰기는 바쁜 직장인들을 위해 문자로 오는 결제내역을 자동적으로 가계부에 써질 수 있게 되어 있습니다. 
+                	또한 그래프를 통해 자신과 전체 회원의 통계를 보면서 좀 더 효율적으로 돈을 관리할 수 있습니다. 마지막으로 자신의 씀씀이 이야기를 통해 다른 사용자와 돈 관리에 대한 정보를 공유할 수 있습니다. 
+               		 저희 서비스를 이용해주신 고객 여러분께 감사드립니다. 이제 버튼을 누르고 시작해보세요.</p>
+                <a href="#profile" class="btn btn-primary btn-xl page-scroll">사용해보자</a>
             </div>
         </div>
     </header>
