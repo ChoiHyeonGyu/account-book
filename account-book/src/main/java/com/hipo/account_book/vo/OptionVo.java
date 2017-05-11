@@ -7,11 +7,13 @@ public class OptionVo {
 	private int postCount;
 	private String limit;
 	private String id;
+	private String resetPassword;
 	
+
 
 	@Override
 	public String toString() {
-		return "OptionVo [categoryId=" + categoryId + ", category=" + category + ", postCount=" + postCount + ", limit=" + limit + ", id=" + id + "]";
+		return "OptionVo [categoryId=" + categoryId + ", category=" + category + ", postCount=" + postCount + ", limit=" + limit + ", id=" + id + ", resetPassword=" + resetPassword +"]";
 	}
 	
 	public int getCategoryId() {
@@ -50,6 +52,14 @@ public class OptionVo {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public String getResetPassword() {
+		return resetPassword;
+	}
+
+	public void setResetPassword(String resetPassword) {
+		this.resetPassword = resetPassword;
 	}
 	
 }

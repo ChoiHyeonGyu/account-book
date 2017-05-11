@@ -62,4 +62,10 @@ public class OptionDao {
 		sql.delete("option.delete",vo);
 		 return false;
 	}
+	
+	public void reset(String id){
+		sql.delete("option.resetcategory", id);
+		sql.delete("option.resetlist", id);
+		
+	}
 }

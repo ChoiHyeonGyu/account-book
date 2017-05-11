@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hipo.account_book.dto.JSONResult;
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
+
 
 @Controller
 @RequestMapping("/{id}")
@@ -31,25 +31,23 @@ public class OptionController {
 	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, @PathVariable String id){
 		String category;
 		int categoryId;
-		System.out.println("더하기더하기더하기"+optionvo);
 		optionService.Add(optionvo);
 		category = optionvo.getCategory();
 		categoryId = optionService.Add1(category);
-		System.out.println("ggfg++++"+categoryId);
 		optionvo.setCategeoryId(categoryId);
-		System.out.println("eee+++eeee+++++"+optionvo);
 		optionService.Add2(optionvo);
 		return "redirect:/"+id+"/main#option";
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping("/reset")
-	public JSONResult reset(@RequestBody Map<String, Object> map, @PathVariable String id){
-		String pp = optionService.checkPassword(map, id);
+	public String reset(@RequestParam("resetPassword") String resetPassword, @PathVariable String id){
+		String pp = optionService.checkPassword(resetPassword, id);
 		if(pp.equals("fail")==true){
-			return JSONResult.fail(pp);
+			return "redirect:/"+id+"/main#option";
 		} else {
-			return JSONResult.success(pp);
+			optionService.reset(id);
+			return "redirect:/"+id+"/main#option";
 		}
 	}
 	

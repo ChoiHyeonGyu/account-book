@@ -9,7 +9,7 @@
 		]]>
 	</insert>
 	
-	<select id="add1" parameterType="String" resultType="int">
+	<select id="add1" parameterType="string" resultType="int">
 		<![CDATA[
 			select category_id as categoryId from category where category=#{category}
 		]]>
@@ -53,7 +53,7 @@
  	 	]]>
 	</update>
 
-	<select id="category" resultType="optionvo">
+	<select id="category" parameterType="optionvo" resultType="optionvo">
 		<![CDATA[
 			select category.category, count(list.category) as postCount, category.category_id as categoryId, userscategory.money_limit as limit
 			from users
@@ -71,6 +71,20 @@
 	<delete id="delete" parameterType="optionvo">
 		<![CDATA[
 					delete from userscategory where category_id = #{categoryId}
+
+			]]>
+	</delete>
+	
+	<delete id="resetlist" parameterType="string">
+		<![CDATA[
+					delete from userscategory where id = #{value}
+
+			]]>
+	</delete>
+	
+	<delete id="resetcategory" parameterType="string">
+		<![CDATA[
+					delete from list where id = #{value}
 
 			]]>
 	</delete>

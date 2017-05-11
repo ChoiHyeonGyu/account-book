@@ -55,11 +55,11 @@
 					</tbody>
 				</table>
 				<br>
-				<form>
-					<input type="text" id="resetpassword" name="resetpassword"
+				<form id="reset" method="post" name="가계부 초기화"
+					action="${pageContext.request.contextPath}/${currentuserid}/reset">
+					<input type="text" name="resetPassword"
 						class="form-control1" placeholder="Password" required>
-					<button type="button" id="reset" name="reset" class="btn btn-join">가계부
-						초기화</button>
+					<input type="submit" value="가계부 초기화" class="btn btn-join">
 				</form>
 			</div>
 

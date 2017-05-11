@@ -55,8 +55,11 @@ public class OptionService {
 		return optionDao.delete(vo); 
 	}
 	
-	public String checkPassword(Map<String, Object> map, String id){
-		String resetPassword = map.get("password").toString();
+	public void reset(String id){
+		optionDao.reset(id);
+	}
+	
+	public String checkPassword(String resetPassword, String id){
 		String password = optionDao.checkPassword(id);
 		
 		if(password.equals(resetPassword) == true){
