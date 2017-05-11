@@ -42,6 +42,7 @@ public class OptionController {
 		return "redirect:/"+id+"/main#option";
 	}
 	
+	@ResponseBody
 	@RequestMapping("/reset")
 	public JSONResult reset(@RequestBody Map<String, Object> map, @PathVariable String id){
 		String pp = optionService.checkPassword(map, id);
