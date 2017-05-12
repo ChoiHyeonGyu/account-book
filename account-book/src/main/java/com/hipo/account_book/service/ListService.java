@@ -88,6 +88,7 @@ public class ListService {
 		return map;
 		
 	}
+
 	
 	public ListVo loadmap(String listId){
 		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
