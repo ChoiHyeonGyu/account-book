@@ -8,7 +8,7 @@
                 
                 <p class="text-name" >${v1.name}</p>
                 <p class="text-comments">잔액 :${v1.total}&nbsp; &nbsp; &nbsp; &nbsp;나이:${v1.age}</p>
-                <a href="#list" class="page-scroll btn btn-default btn-xl sr-button" id="tt">Get Started!</a>
+                <a href="" class="page-scroll btn btn-default btn-xl sr-button" id="tt">Get Started!</a>
             </div>
         </div>
         

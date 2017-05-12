@@ -1,7 +1,7 @@
 
 
 $(function(){
-	var myBtnform1 = $("#listadd1").dialog({
+	var myBtnform1 = $("#editprofile").dialog({
 		autoOpen: false,
 		height: 800,
 		width: 600,
