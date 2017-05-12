@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -197,6 +198,15 @@ public class ListService {
 	
 	public void boardremove(int num){
 		dao.imagedelete(num);
+		
+		List<BoardVo> list = dao.commentsselect(num);
+		Iterator<BoardVo> iterator = list.iterator();
+		while(iterator.hasNext()){
+			int num2 = iterator.next().getCommentId();
+			dao.boardcommentsdelete(num2);
+			dao.commentdelete(num2);
+		}
+		dao.gddelete(num);
 		dao.boarddelete(num);
 	}
 	

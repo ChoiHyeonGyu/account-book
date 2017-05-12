@@ -153,6 +153,10 @@ private SqlSession sql;
 		sql.insert("listview.gdinsert", boardvo);
 	}
 	
+	public void gddelete(int num){
+		sql.insert("listview.gddelete", num);
+	}
+	
 	public void good(int num){
 		sql.update("listview.good", num);
 	}

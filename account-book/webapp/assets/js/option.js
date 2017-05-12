@@ -22,32 +22,7 @@ $(function() {
 		}
 	});
 	
-	$("#reset").click(function(){
-		var rsp = {password:$("#resetpassword").val()};
-		
-		$.ajax( {
-		    url :  "/account-book/" + currentid + "/reset",
-		    type: "POST",
-		    dataType: "JSON",
-		    data: JSON.stringify(rsp),
-		    contentType: "application/json; charset=UTF-8",
-		    success: function( response ){
-		    	console.log(response);
-		    	if(response.result == "fail"){
-		    		alert("비밀번호를 확인해주세요.");
-			    	return;
-			    }
-		    	if(response.result == "success"){
-		    		alert("초기화 되었습니다.");
-		    		different = true;
-			    	return;
-			    }
-		    },
-		    error: function( XHR, status, error ){
-		       console.error( status + " : " + error );	       
-		    }
-		});
-	});
+	
 
 	
 	$("#limitmodify").submit(function(){
