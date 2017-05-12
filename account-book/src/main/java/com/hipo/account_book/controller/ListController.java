@@ -80,7 +80,7 @@ public class ListController {
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		service.boardadd(id, boardvo, file);
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 	}
 	
 	@ResponseBody
@@ -95,7 +95,7 @@ public class ListController {
 		if(id.equals(boardvo.getId())){
 			service.boardedit(id, boardvo, file);
 		}
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 	}
 	
 	@RequestMapping("/boardremove")
@@ -103,7 +103,7 @@ public class ListController {
 		if(id.equals(boardvo.getId())){
 			service.boardremove(boardvo.getBoardId());
 		}
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 	}
 	
 	@ResponseBody
@@ -115,7 +115,7 @@ public class ListController {
 	@RequestMapping("/comment")
 	public String comment(@PathVariable String id, @ModelAttribute BoardVo boardvo){
 		service.comment(id, boardvo);
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 	}
 	
 	@ResponseBody
@@ -127,7 +127,7 @@ public class ListController {
 	@RequestMapping("/reply")
 	public String reply(@PathVariable String id, @ModelAttribute BoardVo boardvo){
 		service.reply(id, boardvo);
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/main#list";
 	}
 	
 	@ResponseBody
