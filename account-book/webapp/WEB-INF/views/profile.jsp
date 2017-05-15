@@ -34,7 +34,7 @@
 						placeholder="bank" value="" required/><br/>
 
 					<h3>
-						<span class="label label-default">+/-</span>
+						<span class="label label-default">저금/지출</span>
 					</h3>
 					<input id="" type="text" name="operations"
 						class="form-control" placeholder="저금/지출" value="" required/><br/>

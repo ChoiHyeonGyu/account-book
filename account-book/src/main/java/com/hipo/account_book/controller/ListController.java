@@ -64,7 +64,7 @@ public class ListController {
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
 		
 		String list = service.add(vo);
-		
+		System.out.println("정보 확인" + vo);
 		return "redirect:/"+id+"/main#list";
 		
 	}
