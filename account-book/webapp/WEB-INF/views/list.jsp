@@ -14,6 +14,7 @@
 				</form>
 				<table class="table">
 					<thead>
+					
 						<tr bgcolor='#33cc33'>
 							<th>결제수단</th>
 							<th>은행</th>
@@ -110,15 +111,16 @@
 						<span class="label label-default">금액</span>
 					</h3>
 
-					<input type="text" name="money" class="form-control"
+					<input type="text" name="money" id="money" class="form-control"
 						placeholder="money" required><br/>
 					<h3>
 						<span class="label label-default">구입물이름</span>
 					</h3>
 					
 					<input type="text" name="name" class="form-control"><br/>
-						
-					<input type="submit" value="확인" style="margin-left:245px">
+						<!-- Indicates a successful or positive action -->
+					<button type="submit" class="btn btn-success" value="확인">확인</button>
+					<!-- <input type="submit" value="확인" style="margin-left:245px"> -->
       				<input type="reset" value="취소">	
 				</form>
 			</div>

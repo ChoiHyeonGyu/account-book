@@ -48,6 +48,7 @@ $(function(){
 			"취소" : function() {
 				$( this ).dialog( "close" );
 			}
+			
 		},
 		close: function() {
 				
@@ -129,13 +130,21 @@ $(function(){
 		myBtnform1.dialog("open");
 	});*/
 	
+	$("#commit").submit(function(){
+		if(String(Number($("#money").val())) == "NaN"){
+			alert("숫자로만 입력해주세요.");
+			$("#money").focus();
+			return false;
+		}
+	});
+	
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		$("#"+listarray[i]).click(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 			console.log(num);
 			mm1.dialog("open");//여기서 폼을 띄운다,.
 			
-			var listid = {"listid":num.target.id};// 보내는 데이터 sending to the controller.!!!
+			var listid = {"listid":num.target.id};// 보내는 데이터 , 컨트롤러 보내기전 정보  packing sending to the controller.!!!
 			
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify",// 보낼주소
@@ -145,7 +154,7 @@ $(function(){
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
 			    	console.log(response);
-			    	$("#listId").val(response.data.listId);//웹에 쏘아지는 정보들 !!!! 이건 폼안에쏘아진다.
+			    	$("#listId").val(response.data.listId);//1.리스폰스 정보를 가지고 웹 data.list로 간다 아이디를 통해2.웹에 쏘아지는 정보들 !!!! 이건 폼안에쏘아진다.
 			    	$("#listpaid").val(response.data.paid);//!!! 폼에 아이디를 만들고 여기 샵내용물을 매칭한다 그럼 정보가 쏘아진다.
 			    	$("#listbank").val(response.data.bank);
 			    	$("#listcategory").val(response.data.category);
