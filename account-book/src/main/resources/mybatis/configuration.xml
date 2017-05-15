@@ -9,6 +9,7 @@
 		<typeAlias alias="graphvo" type="com.hipo.account_book.vo.GraphVo" />
 	</typeAliases>
 	<mappers>
+		<mapper resource="mybatis/mappers/profile.xml"/>
 		<mapper resource="mybatis/mappers/front.xml" />
 		<mapper resource="mybatis/mappers/list.xml" />
 		<mapper resource="mybatis/mappers/option.xml" />

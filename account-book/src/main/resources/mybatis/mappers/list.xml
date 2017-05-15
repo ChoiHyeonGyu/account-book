@@ -222,6 +222,12 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		]]>
 	</insert>
 	
+	<delete id="gddelete" parameterType="int">
+		<![CDATA[
+			delete from GD where board_id = #{value}
+		]]>
+	</delete>
+	
 	<update id="good" parameterType="int">
 		<![CDATA[
 			update board set good = good + 1 where board_id = #{value}

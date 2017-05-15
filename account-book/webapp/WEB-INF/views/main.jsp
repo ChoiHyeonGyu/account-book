@@ -38,6 +38,7 @@
 	<script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/list.js"></script>
 	<script src="${pageContext.request.contextPath}/assets/js/option.js"></script>
+	<script src="${pageContext.request.contextPath}/assets/js/profile.js"></script>
 </head>
 <body id="page-top">
 
