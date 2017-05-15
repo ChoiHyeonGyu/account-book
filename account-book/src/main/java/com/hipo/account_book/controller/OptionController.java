@@ -30,12 +30,25 @@ public class OptionController {
 	@RequestMapping(value="/categoryAdd", method=RequestMethod.POST)
 	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, @PathVariable String id){
 		String category;
+		String category2;
 		int categoryId;
-		optionService.Add(optionvo);
-		category = optionvo.getCategory();
-		categoryId = optionService.Add1(category);
-		optionvo.setCategeoryId(categoryId);
-		optionService.Add2(optionvo);
+		category2 = optionvo.getCategory();
+		category = optionService.Add0(category2);
+		System.out.println("categorycategory:"+category);
+		System.out.println("vovvovovo---::"+optionvo);
+		if(category2.equals(category) == true){
+			System.out.println("catecate::"+optionvo);
+			categoryId = optionService.Add1(optionvo);
+			optionvo.setCategeoryId(categoryId);
+			optionService.Add2(optionvo);
+		}else{
+			System.out.println("vovvovovo+++::"+optionvo);
+			optionService.Add(optionvo);
+			categoryId = optionService.Add1(optionvo);
+			optionvo.setCategeoryId(categoryId);
+			optionService.Add2(optionvo);
+		}
+
 		return "redirect:/"+id+"/main#option";
 	}
 	

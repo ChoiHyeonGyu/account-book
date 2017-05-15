@@ -3,21 +3,21 @@
 
 <mapper namespace="option">
 
+	<select id="add0" parameterType="string" resultType="string">
+		<![CDATA[
+			select category from category where category=#{category}
+		]]>
+	</select>
+	
 	<insert id="add" parameterType="optionvo" >
 		<![CDATA[
 			insert into category values(seq_category.nextval, #{category}, 0, 0)
 		]]>
 	</insert>
 	
-	<select id="add1" parameterType="string" resultType="int">
+	<select id="add1" parameterType="optionvo" resultType="int">
 		<![CDATA[
 			select category_id as categoryId from category where category=#{category}
-		]]>
-	</select>
-	
-	<select id="checkPassword" parameterType="string" resultType="string">
-		<![CDATA[
-			select password from users where id=#{value}
 		]]>
 	</select>
 	
@@ -26,6 +26,12 @@
 			insert into userscategory values(#{id}, #{categoryId}, '0')
 		]]>
 	</insert>
+	
+	<select id="checkPassword" parameterType="string" resultType="string">
+		<![CDATA[
+			select password from users where id=#{value}
+		]]>
+	</select>
 
 	<select id="limitModify" parameterType="optionvo" resultType="int">
 		<![CDATA[
