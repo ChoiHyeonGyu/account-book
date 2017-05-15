@@ -16,15 +16,17 @@ public class OptionService {
 	@Autowired
 	private OptionDao optionDao;
 	
+	public String Add0(String category2){
+		return optionDao.add0(category2);
+	}
 	public void Add(OptionVo optionvo){
 		optionDao.add(optionvo);
 	}
 	public void Add2(OptionVo optionvo){
-		System.out.println("daoadd2-------"+optionvo);
 		optionDao.add2(optionvo);
 	}
-	public int Add1(String category){
-		return optionDao.add1(category);
+	public int Add1(OptionVo optionvo){
+		return optionDao.add1(optionvo);
 	}
 	
 	public int limitModify(OptionVo optionvo){

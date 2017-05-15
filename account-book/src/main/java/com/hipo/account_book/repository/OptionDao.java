@@ -14,16 +14,19 @@ public class OptionDao {
 	@Autowired
 	private SqlSession sql;
 	
+	public String add0(String category2) {
+		return sql.selectOne("option.add0",category2);	
+	}
+	
 	public void add(OptionVo vo) {
 		sql.insert("option.add",vo);	
 	}
 	
-	public int add1(String category) {
-		return sql.selectOne("option.add1",category);
+	public int add1(OptionVo optionvo) {
+		return sql.selectOne("option.add1",optionvo);
 	}
 	
 	public void add2(OptionVo vo) {
-		System.out.println("ddddddddaddddd*****"+vo);
 		sql.insert("option.add2",vo);	
 	}
 	
