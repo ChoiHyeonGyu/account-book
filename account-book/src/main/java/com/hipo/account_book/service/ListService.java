@@ -118,9 +118,10 @@ public class ListService {
 					boardvo.setPhoto(saveFileName);
 					
 					dao.imagesave(boardvo);
+		        } else {
+		        	boardvo.setPhoto(generateSaveFileName("無"));
+					dao.imagesave(boardvo);
 		        }
-		        boardvo.setPhoto(generateSaveFileName("無"));
-				dao.imagesave(boardvo);
 		    }
 		} catch(IOException e) {
 			new RuntimeException("upload file:"+e);

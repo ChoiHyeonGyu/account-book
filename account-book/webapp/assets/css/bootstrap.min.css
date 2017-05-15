@@ -1844,7 +1844,8 @@ pre code {
 	padding-right: 15px;
 	padding-left: 15px;
 	margin-right: auto;
-	margin-left: auto
+	margin-left: auto;
+	background-color:#222;
 }
 
 .row {
@@ -4170,7 +4171,7 @@ select[multiple].input-group-sm>.form-control, select[multiple].input-group-sm>.
 .nav {
 	padding-left: 0;
 	margin-bottom: 0;
-	list-style: none
+	list-style: none;
 }
 
 .nav>li {

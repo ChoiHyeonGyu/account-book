@@ -78,16 +78,6 @@ aside {
     border-color: fade(@gray-darker, 5%);
     .sans-serif-font;
     .transition-all;
-    .navbar-header .navbar-brand {
-        color: @theme-primary;
-        .sans-serif-font;
-        font-weight: 700;
-        text-transform: uppercase;
-        &:hover,
-        &:focus {
-            color: darken(@theme-primary, 10%);
-        }
-    }
     .navbar-header .navbar-toggle {
         font-weight: 700;
         font-size: 12px;
@@ -121,13 +111,6 @@ aside {
     @media (min-width: 768px) {
         background-color: transparent;
         border-color: fade(white, 30%);
-        .navbar-header .navbar-brand {
-            color: fade(white, 70%);
-            &:hover,
-            &:focus {
-                color: white;
-            }
-        }
         .nav > li > a,
         .nav > li > a:focus {
             color: fade(white, 70%);
@@ -138,14 +121,6 @@ aside {
         &.affix {
             background-color: white;
             border-color: fade(@gray-darker, 5%);
-            .navbar-header .navbar-brand {
-                color: @theme-primary;
-                font-size: 14px;
-                &:hover,
-                &:focus {
-                    color: darken(@theme-primary, 10%);
-                }
-            }
             .nav > li > a,
             .nav > li > a:focus {
                 color: @gray-darker;
@@ -168,54 +143,8 @@ header {
     background-image: url('../img/header.jpg');
     text-align: center;
     color: white;
-    .header-content {
-        position: relative;
-        text-align: center;
-        padding: 100px 15px 100px;
-        width: 100%;
-        .header-content-inner {
-            h1 {
-                font-weight: 700;
-                text-transform: uppercase;
-                margin-top: 0;
-                margin-bottom: 0;
-                font-size: 30px;
-            }
-            hr {
-                margin: 30px auto;
-            }
-            p {
-                font-weight: 300;
-                color: fade(white, 70%);
-                font-size: 16px;
-                margin-bottom: 50px;
-            }
-        }
-    }
     @media (min-width: 768px) {
         min-height: 100%;
-        .header-content {
-            position: absolute;
-            top: 50%;
-            -webkit-transform: translateY(-50%);
-            -ms-transform: translateY(-50%);
-            transform: translateY(-50%);
-            padding: 0 50px;
-            .header-content-inner {
-                max-width: 1000px;
-                margin-left: auto;
-                margin-right: auto;
-                h1 {
-                    font-size: 50px;
-                }
-                p {
-                    font-size: 18px;
-                    max-width: 80%;
-                    margin-left: auto;
-                    margin-right: auto;
-                }
-            }
-        }
     }
 }
 

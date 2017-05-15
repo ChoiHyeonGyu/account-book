@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<section id="list">
+<div class="container">
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12">
 		<h1 align="center">가계부 리스트</h1>
 				<form action="${pageContext.request.contextPath}/${currentuserid}/main"
 					method="post">
@@ -172,8 +172,6 @@
 			</div>
 
 		</div>
-		<c:import url="/WEB-INF/views/board.jsp" />
 	</div>
-</section>
-
+</div>
 <div id="map_ma"></div>
