@@ -50,26 +50,26 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Comportable Account-Book</a>
+                <a class="navbar-brand page-scroll" href="#">Comportable Account-Book</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#profile">Profile</a>
+                        <a class="page-scroll" href="">Profile</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#list">List</a>
+                        <a class="page-scroll" href="">List</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#graph-user">Graph-User</a>
+                        <a class="page-scroll" href="">Graph-User</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#graph-average">Graph-Average</a>
+                        <a class="page-scroll" href="">Graph-Average</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#option">Option</a>
+                        <a class="page-scroll" href="">Option</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="${pageContext.request.contextPath}/logout">logout</a>
@@ -80,8 +80,11 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    
-    <c:import url="/WEB-INF/views/list.jsp"/>
+    <br/><br/><br/>
+    <div class="container">
+    	<div style="float:left"><c:import url="/WEB-INF/views/profile.jsp"/></div>
+    	<div style="float:right"><c:import url="/WEB-INF/views/list.jsp"/></div>
+    </div>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
