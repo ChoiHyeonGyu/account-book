@@ -71,4 +71,16 @@ public class AndroidListController {
 		listService.updateList(listVo);
 	}
 
+	@RequestMapping("/addVo")
+	public void addListVo(HttpServletRequest request) throws JsonParseException, JsonMappingException, IOException {
+		ListVo vo = null;
+		String jsonListVo = request.getParameter("addVo");
+
+		ObjectMapper mapper = new ObjectMapper();
+		vo = mapper.readValue(jsonListVo, ListVo.class);
+		System.out.println("addVo Jsonconverting : " + vo.toString());
+		listService.addList(vo);
+		System.out.println("성공햇따리(수동추가)");
+	}
+
 }
