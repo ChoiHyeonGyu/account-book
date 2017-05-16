@@ -2,26 +2,10 @@ $(function(){
 	var isOverlap = false;
 	var word = "";
 	
-	var loginform = $( "#loginform" ).dialog({
-		autoOpen: false,
-		height: 230,
-		width: 265,
-		modal: true,
-		buttons: {
-			"로그인": function() {
-				$("#loginpost").submit();
-				$( this ).dialog( "close" );
-			}
-		},
-		close: function() {
-			
-		}
-	});
-	
 	var joinform = $( "#joinform" ).dialog({
 		autoOpen: false,
-		height: 930,
-		width: 600,
+		height: 700,
+		width: 520,
 		modal: true,
 	
 		close: function() {
@@ -98,11 +82,6 @@ $(function(){
 		}
 		isOverlap = false;
 		return true;
-	});
-	
-	$("#login").click(function(event){
-		event.preventDefault();
-		loginform.dialog("open");
 	});
 	
 	$("#join").click(function(event){

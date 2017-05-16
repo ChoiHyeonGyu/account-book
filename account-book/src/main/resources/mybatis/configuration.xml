@@ -12,6 +12,7 @@
 		<mapper resource="mybatis/mappers/profile.xml"/>
 		<mapper resource="mybatis/mappers/front.xml" />
 		<mapper resource="mybatis/mappers/list.xml" />
+		<mapper resource="mybatis/mappers/board.xml" />
 		<mapper resource="mybatis/mappers/option.xml" />
 		<mapper resource="mybatis/mappers/android.xml" />
 	</mappers>

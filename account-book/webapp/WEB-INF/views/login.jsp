@@ -1,54 +1,112 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/login.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/css/bootstrap-theme.min.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/login.js"></script>
-<title>편리가계부</title>
-</head>
-<body>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/facebook.js"></script>
-<img alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
-<button id="login" type="button" class="btn btn-lg btn-default">로그인</button><br/>
-<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">FACEBOOK과 연동하여 로그인</fb:login-button>
+<c:import url="/WEB-INF/views/login_top.jsp"/>
+<div class="container"> 
+	<div class="row">
+		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0" data-ride="carousel">
+	      <ol class="carousel-indicators">
+	        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+	        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+	        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+	      </ol>
+	      <div class="carousel-inner" role="listbox">
+	        <div class="item active">
+	          <div class="col-lg-12">
+	          	<div class="panel panel-default">
+						<div class="panel-heading">흠냐 이건 뭐냐?</div>
+						<div class="panel-body">
+							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div class="item">
+	          <div class="col-lg-12">
+	          	<div class="panel panel-default">
+						<div class="panel-heading">흠냐 이건 뭐냐?</div>
+						<div class="panel-body">
+							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+						</div>
+					</div>
+				</div>
+	        </div>
+	        <div class="item">
+	          <div class="col-lg-12">
+	          	<div class="panel panel-default">
+						<div class="panel-heading">흠냐 이건 뭐냐?</div>
+						<div class="panel-body">
+							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+						</div>
+					</div>
+				</div>
+	        </div>
+	      </div>
+	      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+	        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+	        <span class="sr-only">Previous</span>
+	      </a>
+	      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+	        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+	        <span class="sr-only">Next</span>
+	      </a>
+	    </div>
+		<div class="col-md-4">
+        	<div class="login-panel panel panel-default">
+            	<div class="panel-heading">
+                	<h3 class="panel-title">로그인 / 회원가입</h3>
+                </div>
+				<div class="panel-body">
+					<form method="post" action="${pageContext.request.contextPath}/connmain">
+				    	<fieldset>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="E-mail / Phone" name="id" required>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Password" name="password" type="password" required>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-success btn-block">로그인</button><br/>
+							<c:if test="${result != error}">
+								<p style="font-weight:bold; text-align:center; padding:5px 0 5px 0; color:red">회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
+							</c:if>
+							<c:if test="${res != ult}">
+								<p style="font-weight:bold; text-align:center; padding:5px 0 5px 0; color:red">로그인에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
+							</c:if>
+                            <fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">
+                            	FACEBOOK 으로 로그인
+                            </fb:login-button><br/><br/>
+                            <button id="join" type="button" class="btn btn-lg btn-info btn-block">회원가입</button>
+                        </fieldset>
+				    </form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
 	<input type="hidden" id="fbhidden" name="id" value="">
 </form>
-<button id="join" type="button" class="btn btn-lg btn-default">회원가입</button><br/>
-<div id="loginform" title="로그인" style="display:none">
-	<form id="loginpost" method="post" action="${pageContext.request.contextPath}/connmain">
-    	<input type="text" id="inputEmail" name="id" class="form-control" placeholder="Email address" required>
-    	<input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
-    </form>
-</div>
 <div id="joinform" title="회원가입" style="display:none">
 	<form id="joinpost" name="joinform" action="${pageContext.request.contextPath}/join" method="post">
-		<h3><span class="label label-default">Account</span></h3>
-		<input type="text" id="id" name="id" class="form-control" placeholder="Email / Phone" required><br/>
-		<button type="button" id="confirm" name="userRegBtn" class="btn btn-join">Confirm</button>
+		<h3><span class="label label-info">계정</span></h3>
+		<input type="text" id="id" name="id" class="form-control2" placeholder="Email / Phone" required>
+		<button type="button" id="confirm" class="btn btn-lg btn-info">중복확인</button>
 		
-		<h3><span class="label label-default">Password</span></h3>
-		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required><br/>
+		<h3><span class="label label-info">비밀번호</span></h3>
+		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
 		
-		<h3><span class="label label-default">Password Confirm</span></h3>
-		<input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required><br/>
+		<h3><span class="label label-info">비밀번호 확인</span></h3>
+		<input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required>
 		
-		<h3><span class="label label-default">Name</span></h3>
-		<input type="text" id="name" name="name" class="form-control" placeholder="Name" required><br/>
+		<h3><span class="label label-info">이름</span></h3>
+		<input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
 		
-		<h3><span class="label label-default">Gender</span></h3>
+		<h3><span class="label label-info">성별</span></h3>
 		<input type="radio" name="gender" value="남자" checked="checked"/>
 		<span class="up">Male</span>&nbsp;&nbsp; <input type="radio" name="gender" value="여자"/> 
-		<span class="up">Female</span><br/><br/>
+		<span class="up">Female</span>
 
-		<h3><span class="label label-default">Birth</span></h3>
-		<div class="dropdown theme-dropdown clearfix">
+		<h3><span class="label label-info">생년월일</span></h3>
+		<div class="dropdown theme-dropdown ">
 			<select id="year" class="dropdown-menu" name="birthYear">
 					<option value="Year">Year</option>
 					<c:forEach begin="1970" end="2017" var="i">
@@ -69,19 +127,10 @@
 			</select>
 		</div>
 		
-		<h3><span class="label label-default">Total Money</span></h3>
-		<input type="text" id="total" name="total" class="form-control" placeholder="Total Money" required><br/><br/>
+		<h3><span class="label label-info">총액</span></h3>
+		<input type="text" id="total" name="total" class="form-control" placeholder="Total Money" required><br/>
 		
-		<input type="submit" value="Create" class="btn btn-join">
+		<input type="submit" value="생성" class="btn btn-lg btn-info">
 	</form>
 </div>
-<p style="font-weight:bold; text-align:center; padding:5px 0 5px 0; color:red">
-	<c:if test="${result != error}">
-		회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.
-	</c:if>
-	<c:if test="${res != ult}">
-		로그인에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.
-	</c:if>
-</p>
-</body>
-</html>
+<c:import url="/WEB-INF/views/main_bottom.jsp"/>
