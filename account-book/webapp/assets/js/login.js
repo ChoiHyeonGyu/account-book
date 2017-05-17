@@ -89,4 +89,9 @@ $(function(){
 		joinform.dialog("open");
 	});
 	
+	$("#join2").click(function(event){
+		event.preventDefault();
+		joinform.dialog("open");
+	});
+	
 });

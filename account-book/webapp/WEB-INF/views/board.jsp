@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="row">
 	<div class="col-md-12">
-		<h1 align="center">자신의 씀씀이 이야기</h1>
+		<h1 align="center">씀씀이 이야기</h1>
 		<form action="${pageContext.request.contextPath}/${currentuserid}/board" method="post">
 			<input type="search" name="search" size="90">
 			<button type="submit" class="fa fa-search fa-2x sr-contact"></button>

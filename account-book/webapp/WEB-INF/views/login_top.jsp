@@ -44,8 +44,64 @@
 	            </ul>
 	        </div>
 	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	            
+	        	<ul class="nav navbar-nav navbar-right">
+	                <li>
+                    	<a class="page-scroll" href="${pageContext.request.contextPath}/login">로그인</a>
+                	</li>
+                	<li>
+                    	<a class="page-scroll" href="" id="join2">회원가입</a>
+                	</li>
+	            </ul>
 	        </div>
         </div>
     </div>
 </nav>
+
+<div id="joinform" title="회원가입" style="display:none">
+	<form id="joinpost" name="joinform" action="${pageContext.request.contextPath}/join" method="post">
+		<h3><span class="label label-info">계정</span></h3>
+		<input type="text" id="id" name="id" class="form-control2" placeholder="Email / Phone" required>
+		<button type="button" id="confirm" class="btn btn-lg btn-info">중복확인</button>
+		
+		<h3><span class="label label-info">비밀번호</span></h3>
+		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+		
+		<h3><span class="label label-info">비밀번호 확인</span></h3>
+		<input type="password" id="passwordConfirm" class="form-control" placeholder="Password Confirm" required>
+		
+		<h3><span class="label label-info">이름</span></h3>
+		<input type="text" id="name" name="name" class="form-control" placeholder="Name" required>
+		
+		<h3><span class="label label-info">성별</span></h3>
+		<input type="radio" name="gender" value="남자" checked="checked"/>
+		<span class="up">Male</span>&nbsp;&nbsp; <input type="radio" name="gender" value="여자"/> 
+		<span class="up">Female</span>
+
+		<h3><span class="label label-info">생년월일</span></h3>
+		<div class="dropdown theme-dropdown ">
+			<select id="year" class="dropdown-menu" name="birthYear">
+					<option value="Year">Year</option>
+					<c:forEach begin="1970" end="2017" var="i">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+			</select>
+			<select id="month" class="dropdown-menu" name="birthMonth">
+					<option value="Month">Month</option>
+					<c:forEach begin="1" end="12" var="i">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+			</select>
+			<select id="day" class="dropdown-menu" name="birthDay">
+					<option value="Day">Day</option>
+					<c:forEach begin="1" end="31" var="i">
+						<option value="${i}">${i}</option>
+					</c:forEach>
+			</select>
+		</div>
+		
+		<h3><span class="label label-info">총액</span></h3>
+		<input type="text" id="total" name="total" class="form-control" placeholder="Total Money" required><br/>
+		
+		<input type="submit" value="생성" class="btn btn-lg btn-info">
+	</form>
+</div>

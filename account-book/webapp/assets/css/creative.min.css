@@ -36,7 +36,7 @@ hr {
 }
 
 hr.light {
-	border-color: #fff
+	border-color: #fff;
 }
 
 a {
@@ -74,13 +74,12 @@ p {
 
 .text-name {
 	color: rgba(255, 255, 255, .8);
-	font-size: 35px;
+	font-size: 30px;
 }
 
-.text-comments{
+.text-comments {
 	color: rgba(255, 255, 255, .6);
-	font-size: 20px;
-	
+	font-size: 15px;
 }
 
 section {

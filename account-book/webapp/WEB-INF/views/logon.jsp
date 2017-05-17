@@ -58,10 +58,11 @@
 				<div class="panel-body">
 					<div class="row bg-primary">
 					    <div class="col-lg-8 col-lg-offset-2 text-center">
-					        <h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="310" height="310"></h2>
-					        <hr class="light">
+					        <h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="150" height="150"></h2>
+					    </div>
+					    <div class="col-lg-12 col-lg-offset-0 text-center">
 					        <p class="text-name">${v1.name}</p>
-					        <p class="text-comments">잔액:${v1.total}<br/>나이:${v1.age}</p>
+					        <p class="text-comments">잔액:${v1.total} &emsp; 나이:${v1.age}</p>
 					    </div>
 					</div>
 				</div>
