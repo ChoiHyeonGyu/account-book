@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/views/main_top.jsp"/>
     <div class="container">
-    	<div class="row">
+    	<div class="row mt">
 	    	<div class="col-lg-3"><c:import url="/WEB-INF/views/profile.jsp"/></div>
 	    	<div class="col-lg-9"><c:import url="/WEB-INF/views/board.jsp"/></div>
     	</div>

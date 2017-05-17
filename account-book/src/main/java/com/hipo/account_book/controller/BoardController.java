@@ -32,6 +32,13 @@ public class BoardController {
 	@Autowired
 	private ProfileService Pservice;
 	
+	@RequestMapping("/logon")
+	public String logon(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1",v1);
+		return "logon";
+	}
+	
 	@RequestMapping("/board")
 	public String List(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {

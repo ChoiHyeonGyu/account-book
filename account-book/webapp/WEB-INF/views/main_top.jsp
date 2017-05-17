@@ -57,40 +57,36 @@
 <body id="page-top">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-            	<img class="hipo-logo" alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/main">Comportable Account-Book</a>
+        	<div class="container">
+	            <div class="navbar-header">
+	            	<img class="hipo-logo" alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
+	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+	                </button>
+	                <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/logon">편리가계부</a>
+	                <font size="6px" color="white">|</font>
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li>
+	                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/board">씀씀이 이야기</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/graph">통계</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/help">고객센터</a>
+	                    </li>
+	                </ul>
+	            </div>
+	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	                <ul class="nav navbar-nav navbar-right">
+	                    <li>
+	                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/main">가계부</a>
+	                    </li>
+	                    <li>
+	                        <a class="page-scroll" href="${pageContext.request.contextPath}/logout">로그아웃</a>
+	                    </li>
+	                </ul>
+	            </div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/notice">공지사항</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/main">가계부</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/board">자신의 씀씀이 이야기</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/graph">통계</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/help">고객센터</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="${pageContext.request.contextPath}/logout">로그아웃</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
     </nav>
-    <br/><br/><br/>
