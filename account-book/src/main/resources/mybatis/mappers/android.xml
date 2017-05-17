@@ -31,8 +31,14 @@
 	<update id="updateList" parameterType="listvo">
  		<![CDATA[
 		update list set 
-		paid=#{paid },bank=#{bank },operations=#{operations },money=#{money },name=#{name },category=#{category },day=to_date(#{day },'yyyy-mm-dd hh:mi:ss')
+		paid=#{paid },bank=#{bank },operations=#{operations },money=#{money },name=#{name },category=#{category },day=to_date(#{day },'yyyy-mm-dd hh24:mi:ss')
  		 where list_Id = #{listId }  	
  	 	]]>
 	</update>
+	<delete id="deleteListByListId" parameterType="string">
+ 		<![CDATA[
+		delete from list where list_id=#{listId }
+ 	 	]]>
+	</delete>
+
 </mapper>

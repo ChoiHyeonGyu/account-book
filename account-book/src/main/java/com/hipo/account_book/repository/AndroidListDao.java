@@ -31,4 +31,9 @@ public class AndroidListDao {
 
 	}
 
+	public boolean deleteList(String listId) {
+		int count = sqlSession.update("android.deleteListByListId", listId);
+		return count == 1;
+	}
+
 }

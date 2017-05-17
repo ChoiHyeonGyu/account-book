@@ -26,4 +26,7 @@ public class AndroidListService {
 		return listDao.updateList(listVo);
 	}
 
+	public boolean deleteList(String listId) {
+		return listDao.deleteList(listId);
+	}
 }

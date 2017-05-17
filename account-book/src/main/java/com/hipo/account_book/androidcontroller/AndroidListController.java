@@ -83,4 +83,11 @@ public class AndroidListController {
 		System.out.println("성공햇따리(수동추가)");
 	}
 
+	@RequestMapping("/deleteVo")
+	public void deleteListVo(HttpServletRequest request) {
+		String listId = request.getParameter("list_id");
+		System.out.println("checking listId! : " + listId);
+		listService.deleteList(listId);
+		
+	}
 }
