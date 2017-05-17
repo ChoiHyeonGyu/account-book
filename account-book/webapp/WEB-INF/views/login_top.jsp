@@ -45,7 +45,7 @@
                     <a class="page-scroll" href="${pageContext.request.contextPath}/graph">통계</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="">고객센터</a>
+                    <a class="page-scroll" href="${pageContext.request.contextPath}/help">고객센터</a>
                 </li>
             </ul>
         </div>

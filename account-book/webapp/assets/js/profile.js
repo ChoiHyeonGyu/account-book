@@ -1,5 +1,3 @@
-
-
 $(function(){
 	var myBtnform1 = $("#editprofile").dialog({
 		autoOpen: false,
@@ -20,10 +18,29 @@ $(function(){
 				
 		}
 	});
+	
+	var optionsform = $("#viewoptions").dialog({
+		autoOpen: false,
+		height: 860,
+		width: 790,
+		modal: true,
+		title: "설정",
+		buttons: {
+
+		},
+		close: function() {
+				
+		}
+	});
 
 	$("#tt").click(function(event){
 		event.preventDefault();
 		console.log("dddddddddd");
 		myBtnform1.dialog("open");
+	});
+	
+	$("#showoptions").click(function(event){
+		event.preventDefault();
+		optionsform.dialog("open");
 	});
 });

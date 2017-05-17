@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="row bg-primary">
     <div class="col-lg-8 col-lg-offset-2 text-center">
         <h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="310" height="310"></h2>
         <hr class="light">
-        <p class="text-name" >${v1.name}</p>
-        <p class="text-comments">잔액 :${v1.total}<br/>나이:${v1.age}</p>
-        <a href="" class="page-scroll btn btn-default btn-xl sr-button" id="tt">Get Started!</a>
+        <p class="text-name">${v1.name}</p>
+        <p class="text-comments">잔액:${v1.total}<br/>나이:${v1.age}</p>
+        <a href="" class="fa fa-user fa-2x sr-contact" id="tt"></a>&emsp;
+        <a href="" id="showoptions" class="fa fa-cog fa-2x sr-contact"></a>
     </div>
 </div>
 
@@ -64,3 +66,5 @@
    				<input type="file" name="file">
 	</form>
 </div>
+
+<div id="viewoptions" style="display:none; background-color:#EAEAEA"><c:import url="/WEB-INF/views/option.jsp"/></div>

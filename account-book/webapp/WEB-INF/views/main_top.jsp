@@ -82,7 +82,7 @@
                         <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/graph">통계</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="">고객센터</a>
+                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/help">고객센터</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="${pageContext.request.contextPath}/logout">로그아웃</a>
