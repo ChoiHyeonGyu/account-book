@@ -4,27 +4,27 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-	<h1 align="center">가계부 리스트</h1>
+	<h1 align="center"></h1>
  		<div class="row">
 		<div class="col-md-12">
 			<form action="${pageContext.request.contextPath}/${currentuserid}/main"
 				method="post">
-				<input type="search" name="searching" size="83">
-				<input type="submit" value="검색">
+				<input type="search" name="searching" size="83" placeholder="현금,금액,카테고리">
+				<input type="submit" value="검색" >
 				<button id="myBtn">추가하기</button>
 			</form>
-			<table class="table">
+			<table class="table table-bordered">
 				<thead>
 					<tr bgcolor='white'>
-						<th>결제수단</th>
-						<th>은행</th>
-						<th>+/-</th>
-						<th>금액</th>
-						<th>상호명</th>
-						<th>카테고리</th>
-						<th>날짜</th>
-						<th>삭제</th>
-						<th>맵 확인하기</th>
+						<th class="mine1">날짜</th>
+						<th class="mine2">사용내역</th>
+						<th class="mine3">금액</th>
+						<th class="mine3">결제수단</th>
+						<th class="mine3">지출/수입/투자</th>
+						<th class="mine3">은행</th>
+						<th class="mine3">카테고리</th>
+						<th class="mine3">지도</th>
+						<th class="mine3">삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -33,18 +33,18 @@
 							listarray.push("${vo.listId}");
 						</script>
 					<tr>
-						<td>${vo.paid}</td>
-						<td>${vo.bank}</td>
-						<td>${vo.operations}</td>
+						<td><input value="${vo.day}" class="mine" ></td>
+						<td><input value="${vo.name}" class="mine" ></td>
 						<td><label id="${vo.listId}">${vo.money}</label></td>
-						<td>${vo.name}</td>
-						<td>${vo.category}</td>
-						<td>${vo.day}</td>
+						<td><input value="${vo.paid}" class="mine" ></td>
+						<td><input value="${vo.operations}" class="mine" ></td>
+						<td><input value="${vo.bank}" class="mine" ></td>
+						<td><input value="${vo.category}" class="mine"></td>
+						<td><strong id="maps${vo.listId}"
+							class="fa fa-map-marker fa-2x sr-contact"></strong></td>
 						<td><a
 							href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 								src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-						<td><strong id="maps${vo.listId}"
-							class="fa fa-map-marker fa-2x sr-contact"></strong></td>
 					</tr>
 				</c:forEach>
 			</tbody>
