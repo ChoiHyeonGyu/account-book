@@ -36,7 +36,7 @@ public class BoardController {
 	public String logon(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1",v1);
-		return "logon";
+		return "frontpage/logon";
 	}
 	
 	@RequestMapping("/board")
@@ -48,7 +48,7 @@ public class BoardController {
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("board", boardService.getBoardList(page, search));
 		model.addAttribute("option", option);
-		return "main-board";
+		return "mypage/main-board";
 	}
 	
 	@RequestMapping("/boardadd")

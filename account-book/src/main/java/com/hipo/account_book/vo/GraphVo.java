@@ -18,4 +18,16 @@ public class GraphVo {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	public int getMl() {
+		return ml;
+	}
+	public void setMl(int ml) {
+		this.ml = ml;
+	}
+	public int getLsum() {
+		return lsum;
+	}
+	public void setLsum(int lsum) {
+		this.lsum = lsum;
+	}
 }

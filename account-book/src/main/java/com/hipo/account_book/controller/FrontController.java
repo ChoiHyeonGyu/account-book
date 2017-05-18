@@ -23,9 +23,9 @@ public class FrontController {
 	@Autowired
 	private FrontService frontService;
 	
-	@RequestMapping("/login")
+	@RequestMapping("")
 	public String login(){
-		return "login";
+		return "frontpage/login";
 	}
 	
 	@ResponseBody
@@ -55,7 +55,7 @@ public class FrontController {
 			return "login";
 		}
 		frontService.join(uservo);
-		return "redirect:/login";
+		return "redirect:/";
 	}
 	
 	@RequestMapping("/connmain")

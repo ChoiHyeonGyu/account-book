@@ -44,7 +44,7 @@ public class ListController {
 		
 		/*model.addAttribute("list", list);*/
 		model.addAttribute("option", option);
-		return "main";
+		return "mypage/main";
 	}
 	/*@ResponseBody
 	@RequestMapping("/checkUpdate1")
@@ -55,14 +55,14 @@ public class ListController {
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
 		 service.delete(vo);
-		return "redirect:/"+id+"/main#list";
+		return "redirect:/"+id+"/main";
 		
 	}
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
 		service.add(vo);
 		System.out.println("정보 확인" + vo);
-		return "redirect:/"+id+"/main#list";
+		return "redirect:/"+id+"/main";
 		
 	}
 	
@@ -76,7 +76,7 @@ public class ListController {
 	public String modify1(@ModelAttribute ListVo vo,@PathVariable String id){
 		service.modify1(vo);
 		
-		return "redirect:/"+id+"/main#list";
+		return "redirect:/"+id+"/main";
 	}
 	
 	@ResponseBody

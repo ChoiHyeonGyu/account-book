@@ -6,8 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,7 +47,7 @@ public class OptionController {
 			optionService.Add2(optionvo);
 		}
 
-		return "redirect:/"+id+"/main#option";
+		return "redirect:/"+id+"/main";
 	}
 	
 	
@@ -57,10 +55,10 @@ public class OptionController {
 	public String reset(@RequestParam("resetPassword") String resetPassword, @PathVariable String id){
 		String pp = optionService.checkPassword(resetPassword, id);
 		if(pp.equals("fail")==true){
-			return "redirect:/"+id+"/main#option";
+			return "redirect:/"+id+"/main";
 		} else {
 			optionService.reset(id);
-			return "redirect:/"+id+"/main#option";
+			return "redirect:/"+id+"/main";
 		}
 	}
 	
@@ -71,7 +69,7 @@ public class OptionController {
 		categoryId = optionService.limitModify(optionvo);
 		optionvo.setCategeoryId(categoryId);
 		optionService.limitModify1(optionvo);
-		return "redirect:/"+id+"/main#option";
+		return "redirect:/"+id+"/main";
 	}
 	
 	@ResponseBody
@@ -90,7 +88,7 @@ public class OptionController {
 		vo.setCategeoryId(cid);
 		System.out.println("vovovovovo---------"+vo);
 		optionService.categoryModify1(vo);
-		return "redirect:/"+id+"/main#option";
+		return "redirect:/"+id+"/main";
 	}
 	
 	@RequestMapping("/categorydelete")
@@ -103,7 +101,7 @@ public class OptionController {
 		optionService.delete(vo);
 		
 		//return "main";
-		return "redirect:/"+id+"/main#option";
+		return "redirect:/"+id+"/main";
 	}
 	
 }
