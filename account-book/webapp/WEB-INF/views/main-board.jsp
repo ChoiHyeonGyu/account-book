@@ -4,8 +4,8 @@
 <script src="${pageContext.request.contextPath}/assets/js/board.js"></script>
     <div class="container">
     	<div class="row mt">
-	    	<div class="col-lg-3"><c:import url="/WEB-INF/views/profile.jsp"/></div>
-	    	<div class="col-lg-9"><c:import url="/WEB-INF/views/board.jsp"/></div>
+	    	<div class="col-lg-2"><c:import url="/WEB-INF/views/profile.jsp"/></div>
+	    	<div class="col-lg-10"><c:import url="/WEB-INF/views/board.jsp"/></div>
     	</div>
     </div>
 <c:import url="/WEB-INF/views/main_bottom.jsp"/>
