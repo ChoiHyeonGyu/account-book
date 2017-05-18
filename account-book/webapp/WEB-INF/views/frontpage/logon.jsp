@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/views/mypage/main_top.jsp"/>
 <div class="container"> 
 	<div class="row">
-		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0" data-ride="carousel">
+		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
 	      <ol class="carousel-indicators">
 	        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 	        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -56,13 +56,11 @@
                 	<h3 class="panel-title">프로필</h3>
                 </div>
 				<div class="panel-body">
-					<div class="row bg-primary">
-					    <div class="col-lg-8 col-lg-offset-2 text-center">
-					        <h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="150" height="150"></h2>
-					    </div>
+					<div class="row">
 					    <div class="col-lg-12 col-lg-offset-0 text-center">
-					        <p class="text-name">${v1.name}</p>
-					        <p class="text-comments">잔액:${v1.total} &emsp; 나이:${v1.age}</p>
+					    	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="170" height="170"></h2>
+					        <p>${v1.name}</p>
+					        <p>잔액:${v1.total}</p>
 					    </div>
 					</div>
 				</div>

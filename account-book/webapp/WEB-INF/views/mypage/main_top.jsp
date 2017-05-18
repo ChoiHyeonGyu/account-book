@@ -9,7 +9,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/creative.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/div.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/commonness.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/logon.css">
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>

@@ -3,7 +3,7 @@
 <c:import url="/WEB-INF/views/frontpage/login_top.jsp"/>
 <div class="container"> 
 	<div class="row">
-		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 mt" data-ride="carousel">
+		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
 	      <ol class="carousel-indicators">
 	        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 	        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
