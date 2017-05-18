@@ -162,12 +162,6 @@
 		]]>
 	</update>
 	
-	<select id="graphdayselect" parameterType="string" resultType="graphvo">
-		<![CDATA[
-			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate-1, 'dd') and trunc(sysdate, 'dd') -1/86400 group by category
-		]]>
-	</select>
-	
 	<select id="graphmonthselect" parameterType="string" resultType="graphvo">
 		<![CDATA[
 			select count(*) as cnt, category from list where id = #{value} and day between trunc(add_months(sysdate, -1), 'mm') and trunc(sysdate, 'mm') -1/86400 group by category
@@ -225,6 +219,12 @@
 			users where users.gender = a.gender and users.age = a.age) b, list, category c1, category c2 where b.id = list.id and list.operations = '-' and list.category = c1.category 
 			and c1.slave_id = c2.category_id and list.day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy')-1/86400 group by c2.category) 
 			group by category order by cnt desc
+		]]>
+	</select>
+	
+	<select id="limitgraphselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{value}
 		]]>
 	</select>
 </mapper>

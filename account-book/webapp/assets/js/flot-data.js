@@ -87,50 +87,9 @@ $(function() {
     });*/
 	
 	var beanobj = {};
-	var data1 = [];
 	var data2 = [];
 	var data3 = [];
 	var data4 = [];
-	
-	$.ajax( {
-	    url : "/account-book/"+currentid+"/graphday",
-	    type: "POST",
-	    dataType: "JSON",
-	    data: JSON.stringify(beanobj),
-	    contentType: "application/json; charset=UTF-8",
-	    success: function( response ){
-	    	if(response.data.length == 0){
-	    		data1[0] = {label: "없음", data: 1};
-	    	}
-	    	
-	    	for(var i=0; i<response.data.length; i++){
-		    	 data1[i] = {label: response.data[i].category, data: response.data[i].cnt};
-	    	}
-	    	
-	    	var plotObj = $.plot($("#flot-pie-chart"+1), data1, {
-	            series: {
-	                pie: {
-	                    show: true
-	                }
-	            },
-	            grid: {
-	                hoverable: true
-	            },
-	            tooltip: true,
-	            tooltipOpts: {
-	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-	                shifts: {
-	                    x: 20,
-	                    y: 0
-	                },
-	                defaultTheme: false
-	            }
-	        });
-	    },
-	    error: function( XHR, status, error ){
-	       console.error( status + " : " + error );	       
-	    }
-	});
 	
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/graphmonth",
@@ -1455,7 +1414,7 @@ $(function() {
 
 $(function() {
 
-    /*var barOptions = {
+    var barOptions = {
         series: {
             bars: {
                 show: true,
@@ -1489,38 +1448,6 @@ $(function() {
             [1355571900000, 6000]
         ]
     };
-    $.plot($("#flot-bar-chart"), [barData], barOptions);*/
-	
-	var barOptions = {
-        series: {
-            bars: {
-                show: true,
-                barWidth: 43200000
-            }
-        },
-        xaxis: {
-        	mode: "categories",
-    		categories: { "February": 1354521600000, "March": 1355040000000, "April": 1355223600000 }
-        },
-        grid: {
-            hoverable: true
-        },
-        legend: {
-            show: false
-        },
-        tooltip: true,
-        tooltipOpts: {
-            content: "카테고리: %x, 금액한도: %y"
-        }
-    };
-    var barData = {
-        label: "bar",
-        data: [
-            [categories[0], 1000],
-            [categories[1], 2000],
-            [categories[2], 3000]
-        ]
-    };
     $.plot($("#flot-bar-chart"), [barData], barOptions);
-
+    
 });

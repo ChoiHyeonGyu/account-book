@@ -3,6 +3,8 @@ package com.hipo.account_book.vo;
 public class GraphVo {
 	private String category;
 	private int cnt;
+	private int ml;
+	private int lsum;
 	
 	public String getCategory() {
 		return category;

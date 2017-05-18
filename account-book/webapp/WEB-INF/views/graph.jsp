@@ -2,18 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/views/main_top.jsp"/>
     <div class="container">
-    	<div class="row mt">
-    		<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">어제 소비 동향</div>
-					<div class="panel-body">
-						<div class="flot-chart">
-							<div class="flot-chart-content" id="flot-pie-chart1"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-			
+    	<div class="row mt">		
 			<div class="col-lg-12">
 				<div class="panel panel-default">
 					<div class="panel-heading">올해 소비 동향</div>

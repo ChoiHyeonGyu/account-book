@@ -129,12 +129,6 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/graphday")
-	public JSONResult graphday(@PathVariable String id, @RequestBody Map<String, Object> map){
-		return JSONResult.success(boardService.graphday(id));
-	}
-	
-	@ResponseBody
 	@RequestMapping("/graphmonth")
 	public JSONResult graphmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.graphmonth(id));
@@ -163,5 +157,11 @@ public class BoardController {
 			return JSONResult.success(boardService.transgraphavg2(map.get("age").toString()));
 		}
 		return JSONResult.success(boardService.graphavgdefault(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/limitgraph")
+	public JSONResult limitgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.limitgraph(id));
 	}
 }
