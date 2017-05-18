@@ -43,10 +43,12 @@ private SqlSession sql;
 		
 	}
 	public int dealWithSearching(String searching) {
+		
+		System.out.println("날짜 나와야함." + searching);
 		return sql.selectOne("listview.dealwithsearching", searching);
 		
 	}
-	public List<ListVo> totallist(String searching, int page, int listSize, String id) {
+	public List<ListVo> totalList(String searching, int page, int listSize, String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searching",searching);
 		map.put("page",page);  

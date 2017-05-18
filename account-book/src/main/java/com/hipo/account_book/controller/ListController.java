@@ -39,7 +39,9 @@ public class ListController {
 		model.addAttribute("v1",v1);
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
+		
 		model.addAttribute("ps", service.pageSearching(pagination,searching,id));
+		
 		/*model.addAttribute("list", list);*/
 		model.addAttribute("option", option);
 		return "main";
@@ -58,7 +60,6 @@ public class ListController {
 	}
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
-		
 		service.add(vo);
 		System.out.println("정보 확인" + vo);
 		return "redirect:/"+id+"/main#list";

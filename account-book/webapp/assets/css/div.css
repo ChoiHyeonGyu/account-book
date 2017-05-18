@@ -85,3 +85,28 @@ div#select_box select#operation {
 	margin-top:0px;
 	margin-left:17px;
 }
+.flot-chart1{
+	height: 250px;
+}
+.mine{
+	width:100%;
+	BORDER:0;
+	TEXT-ALIGN:CENTER;
+	MARGIN-ALL:0PX;
+	PADDING:0PX;
+	
+}
+.mine1{
+	TEXT-ALIGN:CENTER;
+	width:180px;
+	height:AUTO;
+}
+.mine2{
+	TEXT-ALIGN:CENTER;
+	width:100px;
+	height:AUTO;
+}
+.mine3{
+		TEXT-ALIGN:CENTER;
+	width:50px;
+}

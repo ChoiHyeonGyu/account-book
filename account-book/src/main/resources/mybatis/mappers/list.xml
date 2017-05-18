@@ -47,9 +47,9 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		<![CDATA[
 			select count(*) from list
 		]]>
-		<if test="_parameter != null and _parameter !=''">
+		<if test="_parameter !=null and _parameter !=''">
 			<![CDATA[
-				where name like '%${_parameter}%' or category like '%${_parameter}%' or paid like '%${_parameter}%' or money like '%${_parameter}%'
+				where name like '%${_parameter}%' or category like '%${_parameter}%' or paid like '%${_parameter}%' or money like '%${_parameter}%' 
 			]]>
 		</if>
 	</select> 
