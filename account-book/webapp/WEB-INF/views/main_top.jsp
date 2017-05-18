@@ -38,6 +38,7 @@
     	currentid = "${currentuserid}";
     	path = "${pageContext.request.contextPath}";
     </script>
+   
 </head>
 <body id="page-top">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
