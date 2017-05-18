@@ -46,11 +46,12 @@ private SqlSession sql;
 		return sql.selectOne("listview.dealwithsearching", searching);
 		
 	}
-	public List<ListVo> totallist(String searching, int page, int listSize) {
+	public List<ListVo> totallist(String searching, int page, int listSize, String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searching",searching);
 		map.put("page",page);  
 		map.put("listSize",listSize);
+		map.put("id",id);
 		return sql.selectList("listview.totallist",map);
 	}
 	

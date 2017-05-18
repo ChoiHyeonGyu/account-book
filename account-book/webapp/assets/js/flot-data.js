@@ -1455,7 +1455,7 @@ $(function() {
 
 $(function() {
 
-    var barOptions = {
+    /*var barOptions = {
         series: {
             bars: {
                 show: true,
@@ -1487,6 +1487,38 @@ $(function() {
             [1355306400000, 4000],
             [1355487300000, 5000],
             [1355571900000, 6000]
+        ]
+    };
+    $.plot($("#flot-bar-chart"), [barData], barOptions);*/
+	
+	var barOptions = {
+        series: {
+            bars: {
+                show: true,
+                barWidth: 43200000
+            }
+        },
+        xaxis: {
+        	mode: "categories",
+    		categories: { "February": 1354521600000, "March": 1355040000000, "April": 1355223600000 }
+        },
+        grid: {
+            hoverable: true
+        },
+        legend: {
+            show: false
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "카테고리: %x, 금액한도: %y"
+        }
+    };
+    var barData = {
+        label: "bar",
+        data: [
+            [categories[0], 1000],
+            [categories[1], 2000],
+            [categories[2], 3000]
         ]
     };
     $.plot($("#flot-bar-chart"), [barData], barOptions);

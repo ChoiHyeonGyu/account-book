@@ -39,7 +39,7 @@ public class ListController {
 		model.addAttribute("v1",v1);
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("ps", service.pageSearching(pagination,searching));
+		model.addAttribute("ps", service.pageSearching(pagination,searching,id));
 		/*model.addAttribute("list", list);*/
 		model.addAttribute("option", option);
 		return "main";
