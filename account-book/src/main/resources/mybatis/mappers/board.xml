@@ -224,7 +224,8 @@
 	
 	<select id="limitgraphselect" parameterType="string" resultType="graphvo">
 		<![CDATA[
-			select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{value}
+			select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{value} union all
+			select category, translate(money, '0123456789' || money, '0123456789') as money from list where id = #{value}
 		]]>
 	</select>
 </mapper>
