@@ -5,56 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 	<h1 align="center">가계부 리스트</h1>
-	<div class="row">
-		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 height1" data-ride="carousel">
-	      <ol class="carousel-indicators">
-	        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-	        <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-	        <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-	      </ol>
-	      <div class="carousel-inner" role="listbox">
-	        <div class="item active">
-	          <div class="col-lg-12">
-	          	<div class="panel panel-default">
-						<div class="panel-heading">흠냐 이건 뭐냐?</div>
-						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
-						</div>
-					</div>
-				</div>
-	        </div>
-	        <div class="item">
-	          <div class="col-lg-12">
-	          	<div class="panel panel-default">
-						<div class="panel-heading">흠냐 이건 뭐냐?</div>
-						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
-						</div>
-					</div>
-				</div>
-	        </div>
-	        <div class="item">
-	          <div class="col-lg-12">
-	          	<div class="panel panel-default">
-						<div class="panel-heading">흠냐 이건 뭐냐?</div>
-						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
-						</div>
-					</div>
-				</div>
-	        </div>
-	      </div>
-	      <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-	        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-	        <span class="sr-only">Previous</span>
-	      </a>
-	      <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-	        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-	        <span class="sr-only">Next</span>
-	      </a>
-	    </div>
-	    </div>
-	
  		<div class="row">
 		<div class="col-md-12">
 			<form action="${pageContext.request.contextPath}/${currentuserid}/main"
@@ -65,7 +15,7 @@
 			</form>
 			<table class="table">
 				<thead>
-					<tr bgcolor='#33cc33'>
+					<tr bgcolor='white'>
 						<th>결제수단</th>
 						<th>은행</th>
 						<th>+/-</th>
@@ -86,7 +36,7 @@
 						<td>${vo.paid}</td>
 						<td>${vo.bank}</td>
 						<td>${vo.operations}</td>
-						<td><button id="${vo.listId}">${vo.money}</button></td>
+						<td><label id="${vo.listId}">${vo.money}</label></td>
 						<td>${vo.name}</td>
 						<td>${vo.category}</td>
 						<td>${vo.day}</td>
@@ -169,7 +119,7 @@
 						<span class="label label-default">은행</span>
 					</h3>
 					<input type="text" name="bank" class="form-control"
-						placeholder="bank" required><br />
+						placeholder="bank"><br />
 
 					<h3>
 						<span class="label label-default">금액</span>
@@ -184,8 +134,7 @@
 					<input type="text" name="name" class="form-control"><br />
 					<!-- Indicates a successful or positive action -->
 					<button type="submit" class="btn btn-success" value="확인">확인</button>
-					<!-- <input type="submit" value="확인" style="margin-left:245px"> -->
-					<input type="reset" value="취소">
+					<input type="reset" class="btn btn-success" value="취소">
 				</form>
 			</div>
 		<div id="modify" title="수정하기" style="display: none">
