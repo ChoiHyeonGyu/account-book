@@ -4,18 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap-theme.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/creative.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic'>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/creative.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css">
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/login.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/viewboard.js"></script>
 <title>편리가계부</title>
@@ -23,7 +20,7 @@
 <body>
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/facebook.js"></script>
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div class="container-fluid bg-black">
     	<div class="container">
 	        <div class="navbar-header">
 	        	<img class="hipo-logo" alt="로고" src="${pageContext.request.contextPath}/assets/images/hipo-logo.png">
