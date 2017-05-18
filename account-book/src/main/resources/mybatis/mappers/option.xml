@@ -11,7 +11,7 @@
 	
 	<insert id="add" parameterType="optionvo" >
 		<![CDATA[
-			insert into category values(seq_category.nextval, #{category}, 0, 0)
+			insert into category values(seq_category.nextval, #{category}, 0)
 		]]>
 	</insert>
 	
