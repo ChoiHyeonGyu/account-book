@@ -27,7 +27,7 @@
 	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 	                <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
 	            </button>
-	            <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/login">편리가계부</a>
+	            <a class="navbar-brand page-scroll" href="${pageContext.request.contextPath}/">편리가계부</a>
 	            <font size="6px" color="white">|</font>
 	            <ul class="nav navbar-nav navbar-right">
 	                <li>
@@ -44,7 +44,7 @@
 	        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	        	<ul class="nav navbar-nav navbar-right">
 	                <li>
-                    	<a class="page-scroll" href="${pageContext.request.contextPath}/login">로그인</a>
+                    	<a class="page-scroll" href="${pageContext.request.contextPath}/">로그인</a>
                 	</li>
                 	<li>
                     	<a class="page-scroll" href="" id="join2">회원가입</a>

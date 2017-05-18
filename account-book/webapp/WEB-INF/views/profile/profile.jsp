@@ -69,4 +69,4 @@
 	</form>
 </div>
 
-<div id="viewoptions" style="display:none; background-color:#EAEAEA"><c:import url="/WEB-INF/views/option.jsp"/></div>
+<div id="viewoptions" style="display:none; background-color:#EAEAEA"><c:import url="/WEB-INF/views/profile/option.jsp"/></div>

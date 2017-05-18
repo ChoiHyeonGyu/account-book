@@ -125,7 +125,7 @@ public class BoardController {
 	
 	@RequestMapping("/graph")
 	public String graph(){
-		return "graph";
+		return "report/graph";
 	}
 	
 	@ResponseBody
