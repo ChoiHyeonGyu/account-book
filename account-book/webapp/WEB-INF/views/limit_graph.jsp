@@ -4,6 +4,4 @@
 	<strong id="yearmonth" style="font-size:30px">2017.05</strong>&emsp;
 	<button id="cr" class="fa fa-caret-right fa-2x sr-contact"></button>
 </div>
-<div class="flot-chart">
-    <div class="flot-chart-content" id="flot-bar-chart"></div>
-</div>
+<div id="morris-bar-chart"></div>

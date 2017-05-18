@@ -221,10 +221,6 @@ public class BoardService {
 		return true;
 	}
 	
-	public List<GraphVo> graphday(String id){
-		return boardDao.graphdayselect(id);
-	}
-	
 	public List<GraphVo> graphmonth(String id){
 		return boardDao.graphmonthselect(id);
 	}
@@ -251,5 +247,8 @@ public class BoardService {
 	public List<GraphVo> transgraphavg2(String age){
 		return boardDao.transgraphavgselect2(age);
 	}
-
+	
+	public List<GraphVo> limitgraph(String id){
+		return boardDao.limitgraphselect(id);
+	}
 }

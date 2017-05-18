@@ -116,10 +116,6 @@ public class BoardDao {
 	public void good(int num){
 		sqlSession.update("board.good", num);
 	}
-
-	public List<GraphVo> graphdayselect(String id){
-		return sqlSession.selectList("board.graphdayselect", id);
-	}
 	
 	public List<GraphVo> graphmonthselect(String id){
 		return sqlSession.selectList("board.graphmonthselect", id);
@@ -143,5 +139,9 @@ public class BoardDao {
 	
 	public List<GraphVo> transgraphavgselect2(String age){
 		return sqlSession.selectList("board.transgraphavgselect2", age);
+	}
+	
+	public List<GraphVo> limitgraphselect(String id){
+		return sqlSession.selectList("board.limitgraphselect", id);
 	}
 }
