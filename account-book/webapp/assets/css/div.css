@@ -79,3 +79,9 @@ div#select_box select#operation {
 .mt {
 	margin-top: 6%;
 }
+.height1 {
+	height: 300px;
+	width: 823px;
+	margin-top:0px;
+	margin-left:17px;
+}
