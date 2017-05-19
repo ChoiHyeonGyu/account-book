@@ -164,4 +164,11 @@ public class BoardController {
 	public JSONResult limitgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.limitgraph(id));
 	}
+	
+	@ResponseBody
+	@RequestMapping("/movelimitgraph")
+	public JSONResult movelimitgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
+		map.put("id", id);
+		return JSONResult.success(boardService.movelimitgraph(map));
+	}
 }

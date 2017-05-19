@@ -1,6 +1,8 @@
 $(function() {
 	var beanobj = {};
 	var data1 = [];
+	var oper = {};
+	var opernum = 0;
 	
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/limitgraph",
@@ -25,6 +27,66 @@ $(function() {
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
 	    }
+	});
+	
+	$("#cl").click(function(){
+		opernum = opernum - 1;
+		oper = {operation: opernum};
+		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/movelimitgraph",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(oper),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	for(var i=0; i<response.data.length; i++){
+			    	 data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+		    	}
+		    	Morris.Bar({
+		            element: 'morris-bar-chart',
+		            data: data1,
+		            xkey: 'y',
+		            ykeys: ['a', 'b'],
+		            labels: ['예산', '현재 사용한 금액'],
+		            hideHover: 'auto',
+		            resize: true
+		        });
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
+	});
+	
+	$("#cr").click(function(){
+		opernum = opernum + 1;
+		oper = {operation: opernum};
+		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/movelimitgraph",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(oper),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	for(var i=0; i<response.data.length; i++){
+			    	 data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+		    	}
+		    	Morris.Bar({
+		            element: 'morris-bar-chart',
+		            data: data1,
+		            xkey: 'y',
+		            ykeys: ['a', 'b'],
+		            labels: ['예산', '현재 사용한 금액'],
+		            hideHover: 'auto',
+		            resize: true
+		        });
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
 	});
 
     /*Morris.Area({
