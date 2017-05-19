@@ -44,7 +44,6 @@ private SqlSession sql;
 	}
 	public int dealWithSearching(String searching) {
 		
-		System.out.println("날짜 나와야함." + searching);
 		return sql.selectOne("listview.dealwithsearching", searching);
 		
 	}
