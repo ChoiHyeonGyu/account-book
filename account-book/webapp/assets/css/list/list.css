@@ -71,3 +71,7 @@ div#select_box select#operation {
 .fontlist{
 	font-size: 20px;
 }
+.icon12{
+	width: 400px; position: absolute; left: 50%; margin-left: -200px;
+
+}

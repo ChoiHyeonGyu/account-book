@@ -36,7 +36,7 @@
 						<input type="search" name="searching" size="108"	placeholder="현금,금액,카테고리"> <input type="submit" value="검색">
 						<button id="myBtn">추가하기</button>
 					</form>
-					<table class="table-bordered ">
+					<table class="table-bordered border-collapse ">
 						<colgroup>
 							<col width="10%" />
 							<col width="20%" />
@@ -88,7 +88,7 @@
 									<td><input value="${vo.bank}" class="mine"></td>
 									<td><input value="${vo.category}" class="mine"></td>
 									<td><strong id="maps${vo.listId}"
-										class="fa fa-map-marker fa-2x sr-contact"></strong></td>
+										class="fa fa-map-marker fa-2x sr-contact" style="vertical-align: middle;"></strong></td>
 									<td><a
 										href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
 											src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
