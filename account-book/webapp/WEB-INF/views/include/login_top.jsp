@@ -17,7 +17,6 @@
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/frontpage/login.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/frontpage/viewboard.js"></script>
 <title>편리가계부</title>
 </head>
 <body>
