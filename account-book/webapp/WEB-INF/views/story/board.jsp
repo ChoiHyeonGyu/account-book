@@ -2,6 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="row">
 	<div class="col-md-12">
+		
+		<!-- 결산월 이야기 -->
 		<h1 align="center">씀씀이 이야기</h1>
 		<form action="${pageContext.request.contextPath}/${currentuserid}/board" method="post">
 			<input type="search" name="search" size="90">
@@ -35,6 +37,8 @@
 	     	</c:forEach>
 	      </tbody>
 	    </table>
+	    
+	    <!-- 페이징처리 -->
 	    <div class="pager">
 			<ul>
 				<c:if test="${board.prevPage > 0}" >
@@ -60,9 +64,13 @@
 				</c:if>
 			</ul>
 		</div>
+		
 	</div>
 </div>
 
+<!-- 팝업영역 -->
+
+<!-- 이야기 작성 -->
 <div id="boardform" title="작성" style="display:none">
 	<form id="boardpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardadd" enctype="multipart/form-data">
    		<h3><span class="label label-primary">결산월</span></h3>
@@ -89,6 +97,7 @@
    	</form>
 </div>
 
+<!-- 상세 보기 -->
 <div id="contentform" title="상세 보기" style="display:none">
 	<br/>
 	<span id="contentmonth" class="label label-warning" style="font-size:25px"></span>
@@ -106,6 +115,7 @@
 	<button id="good" type="button" class="btn btn-lg btn-outline btn-info">추천</button>
 </div>
 
+<!-- 댓글 -->
 <div id="commentform" title="댓글" style="display:none">
 	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
 		<input type="hidden" id="commentboardId" name="boardId" value="">
@@ -124,6 +134,7 @@
 	</c:forEach>
 </div>
 
+<!-- 답글 -->
 <div id="comment1form" title="답글" style="display:none">
 	<form action="${pageContext.request.contextPath}/${currentuserid}/reply" method="post">
 		<input type="hidden" id="commentId" name="commentId" value="">
@@ -141,6 +152,7 @@
 	</c:forEach>
 </div>
 
+<!-- 이야기 수정 -->
 <div id="contenteditform" title="수정" style="display:none">
 	<form id="contenteditpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardedit" enctype="multipart/form-data">
 		<input type="hidden" id="editboardId" name="boardId" value="">
@@ -168,9 +180,12 @@
    	</form>
 </div>
 
+<!-- 이야기 삭제 -->
 <div style="display:none">
 	<form id="contentremovepost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardremove">
 		<input type="hidden" id="removeboardId" name="boardId" value="">
 		<input type="hidden" id="removeId" name="id" value="">
 	</form>
 </div>
+
+<!-- /팝업영역 -->

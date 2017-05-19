@@ -9,17 +9,6 @@
 
 .syd2{
 	margin-left:100px;
-} 
-
-.op{
-	padding:50px;
-}
-
-.line {
-	height: 1px;
-	margin: 9px 0;
-	overflow: hidden;
-	background-color: #080808;
 }
 
 #map_ma {
@@ -37,6 +26,7 @@ div#select_box {
     background: url(select_arrow.png) 180px center no-repeat; /* 화살표 이미지 */
     border: 1px solid #E9DDDD;
 }
+
 div#select_box select#operation {
     width: 100%;
     height: 40px;
@@ -61,16 +51,19 @@ div#select_box select#operation {
 	PADDING:0PX;
 	
 }
+
 .mine1{
 	TEXT-ALIGN:CENTER;
 	width:180px;
 	height:AUTO;
 }
+
 .mine2{
 	TEXT-ALIGN:CENTER;
 	width:100px;
 	height:AUTO;
 }
+
 .mine3{
 		TEXT-ALIGN:CENTER;
 	width:50px;

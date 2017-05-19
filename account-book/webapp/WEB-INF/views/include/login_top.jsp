@@ -4,22 +4,24 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- 각페이지에서 공통으로 사용하는 css, js 링크영역 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/creative.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/commonness.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/login.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/creative.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/login.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/viewboard.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/frontpage/login.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/frontpage/viewboard.js"></script>
 <title>편리가계부</title>
 </head>
 <body>
-<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/facebook.js"></script>
+
+<!-- 상단 네비게이션 바 -->
 <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid bg-black">
     	<div class="container">
@@ -56,6 +58,9 @@
     </div>
 </nav>
 
+<!-- 팝업영역  -->
+
+<!-- 회원가입 -->
 <div id="joinform" title="회원가입" style="display:none">
 	<form id="joinpost" name="joinform" action="${pageContext.request.contextPath}/join" method="post">
 		<h3><span class="label label-info">계정</span></h3>
@@ -104,3 +109,5 @@
 		<input type="submit" value="생성" class="btn btn-lg btn-info">
 	</form>
 </div>
+
+<!-- /팝업영역 -->

@@ -1,8 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/WEB-INF/views/frontpage/login_top.jsp"/>
+<!-- 해더 //최상단 메뉴 -->
+<c:import url="/WEB-INF/views/include/login_top.jsp"/>
+
+<!-- 각페이지에서 사용하는 css, js 링크영역 -->
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
+
 <div class="container"> 
 	<div class="row">
+	
+		<!-- 슬라이드 -->
 		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
 	      <ol class="carousel-indicators">
 	        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -50,6 +57,8 @@
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </div>
+	    
+	    <!-- 로그인 / 회원가입 -->
 		<div class="col-md-4">
         	<div class="login-panel panel panel-default">
             	<div class="panel-heading">
@@ -80,9 +89,14 @@
 				</div>
 			</div>
 		</div>
+		<!-- /로그인 / 회원가입 -->
 	</div>
 </div>
+
+<!-- 페이스북 정보 -->
 <form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
 	<input type="hidden" id="fbhidden" name="id" value="">
 </form>
-<c:import url="/WEB-INF/views/mypage/main_bottom.jsp"/>
+
+<!-- 푸터영역 -->
+<c:import url="/WEB-INF/views/include/main_bottom.jsp"/>

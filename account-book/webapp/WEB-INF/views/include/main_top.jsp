@@ -3,28 +3,29 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- 각페이지에서 공통으로 사용하는 css, js 링크영역 -->
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/creative.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/sb-admin-2.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/creative.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/commonness.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/logon.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/creative.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/include/creative.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/include/sb-admin-2.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot/excanvas.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.pie.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.resize.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.time.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot-tooltip/jquery.flot.tooltip.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/flot-data.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/option.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/profile.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/report/flot-data.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
 <script>
 	currentid = "${currentuserid}";
 	path = "${pageContext.request.contextPath}";
@@ -32,6 +33,8 @@
 <title>편리가계부</title>
 </head>
 <body id="page-top">
+
+	<!-- 상단 네비게이션 바 -->
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid bg-black">
         	<div class="container">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- 프로필 -->
 <div class="row">
 	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="200" height="200"></h2>
     <div class="col-lg-12 col-lg-offset-0 text-center">
@@ -12,6 +13,7 @@
     </div>
 </div><br/>
 
+<!-- 통계 -->
 <div class="panel panel-default row">
 	<div class="panel-heading">지난 달 소비 동향</div>
 	<div class="panel-body">
@@ -21,6 +23,9 @@
 	</div>
 </div>
 
+<!-- 팝업영역 -->
+
+<!-- 프로필 수정 팝업 -->
 <div id="editprofile" title="수정하기" style="display: none">
 	<form id="editprofile1" action="${pageContext.request.contextPath }/${currentuserid}/editprofile" method="post">
 
@@ -68,4 +73,7 @@
 	</form>
 </div>
 
+<!-- 설정 팝업 -->
 <div id="viewoptions" style="display:none; background-color:#EAEAEA"><c:import url="/WEB-INF/views/profile/option.jsp"/></div>
+
+<!-- /팝업영역 -->

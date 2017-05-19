@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/WEB-INF/views/mypage/main_top.jsp"/>
+<!-- 해더 //최상단 메뉴 -->
+<c:import url="/WEB-INF/views/include/main_top.jsp"/>
 <div class="container"> 
 	<div class="row">
+		
+		<!-- 슬라이드 -->
 		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
 	      <ol class="carousel-indicators">
 	        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -50,6 +53,9 @@
 	        <span class="sr-only">Next</span>
 	      </a>
 	    </div>
+	    <!-- /슬라이드 -->
+	    
+	    <!-- 프로필 -->
 		<div class="col-md-4">
         	<div class="login-panel panel panel-default">
             	<div class="panel-heading">
@@ -66,6 +72,9 @@
 				</div>
 			</div>
 		</div>
+		<!-- /프로필 -->
 	</div>
 </div>
-<c:import url="/WEB-INF/views/mypage/main_bottom.jsp"/>
+
+<!-- 푸터영역 -->
+<c:import url="/WEB-INF/views/include/main_bottom.jsp"/>

@@ -44,7 +44,7 @@ public class ListController {
 		
 		/*model.addAttribute("list", list);*/
 		model.addAttribute("option", option);
-		return "mypage/main";
+		return "list/list";
 	}
 	/*@ResponseBody
 	@RequestMapping("/checkUpdate1")
