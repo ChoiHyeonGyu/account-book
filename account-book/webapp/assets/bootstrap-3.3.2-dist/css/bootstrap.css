@@ -261,7 +261,7 @@ th {
   }
   .table-bordered th,
   .table-bordered td {
-    border: 1px solid #ddd !important;
+    border: 1px solid #d7d7d7!important;
   }
 }
 @font-face {

@@ -14,7 +14,7 @@ public class ConvertMoneyForm {
 			convertingDone = true;
 		} catch (Exception e) {
 			convertingDone = false;
-			System.out.println(e.getMessage() + " 숫자만 입력해주세요.");
+			System.out.println(e.getMessage() + " 금액입력이 아닙니다.");
 			return "";
 		}
 
@@ -33,7 +33,7 @@ public class ConvertMoneyForm {
 		return sb.toString();
 	}
 
-	final public static int convertMoney(String money) {//2,000원 -> 2000(int형)
+	final public static String convertMoney(String money) {//2,000원 -> 2000(int형)
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer token = new StringTokenizer(money, ",");
 		while (token.hasMoreTokens()) {
@@ -47,7 +47,7 @@ public class ConvertMoneyForm {
 		if (m.find()) {
 			mon = m.group(1);
 		}
-		return Integer.parseInt(mon);
+		return (mon);
 	}
 
 }

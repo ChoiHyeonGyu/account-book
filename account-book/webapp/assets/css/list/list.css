@@ -47,7 +47,7 @@ div#select_box select#operation {
 	width:100%;
 	BORDER:0;
 	TEXT-ALIGN:CENTER;
-	MARGIN-ALL:0PX;
+	MARGIN-bottom:5PX;
 	PADDING:0PX;
 	
 }
@@ -67,4 +67,7 @@ div#select_box select#operation {
 .mine3{
 		TEXT-ALIGN:CENTER;
 	width:50px;
+}
+.fontlist{
+	font-size: 20px;
 }

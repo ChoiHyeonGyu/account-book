@@ -19,8 +19,6 @@ public class ListService {
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
 
-	private boolean convertingDone = false;
-
 	public List<ListVo> getList(ListVo vo) {
 		List<ListVo> list = dao.list(vo);
 		return list;
@@ -38,7 +36,9 @@ public class ListService {
 	}
 
 	public ListVo modify(int i) {
-		return dao.modify(i);
+		ListVo listVo = dao.modify(i);
+		listVo.setMoney(ConvertMoneyForm.convertMoney(listVo.getMoney()));
+		return listVo;
 	}
 
 	public boolean modify1(ListVo vo) {
@@ -49,9 +49,14 @@ public class ListService {
 
 	public Map<String, Object> pageSearching(int pagination, String searching, String id) {
 		// 1. 페이징을 위한 기본 데이터 계산
-		searching = ConvertMoneyForm.convertForForm(searching);
-		int totalCount = dao.dealWithSearching(searching); // 데이터 수 . 왜 키워드로 받는지
-															// . 걸러서 가지고 오는것
+		int totalCount = 0;
+		String searching1 = ConvertMoneyForm.convertForForm(searching);
+		System.out.println("searching 처음 받는값 변환." + searching1);
+		totalCount = dao.dealWithSearching(searching1);
+
+		// 데이터 수 . 왜
+		// 키워드로 // 받는지 }
+		// . 걸러서 가지고 오는것
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);// 리스팅
 																			// 되는
 																			// 페이지
@@ -80,7 +85,15 @@ public class ListService {
 		int endPage = (nextPage > 0) ? (beginPage - 1) + LIST_SIZE : pageCount;
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("list", dao.totalList(searching, pagination, LIST_SIZE, id));
+
+		System.out.println("숫자 가지고 와라" + searching);
+		String search = ConvertMoneyForm.convertForForm(searching);
+		if (search.equals("")) { // TODO 숫자만 쓰라고 알려주기 totalCount =
+			map.put("list", dao.totalList(searching, pagination, LIST_SIZE, id));
+			
+		} else {
+			map.put("list", dao.totalList(search, pagination, LIST_SIZE, id));
+		}
 		map.put("totalCount", totalCount);
 		map.put("listSize", LIST_SIZE);
 		map.put("pagination", pagination);

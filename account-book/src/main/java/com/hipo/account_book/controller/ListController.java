@@ -30,7 +30,7 @@ public class ListController {
 	private OptionService optionservice;
 	@Autowired
 	private ProfileService Pservice;
-	@RequestMapping("/main")
+	@RequestMapping("/list")
 	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
 			@RequestParam (value="searching", required=false)String searching, @PathVariable String id) {
 		
@@ -56,14 +56,14 @@ public class ListController {
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id,@ModelAttribute ListVo vo){
 		 service.delete(vo);
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/list";
 		
 	}
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo,@PathVariable String id){
 		service.add(vo);
 		System.out.println("정보 확인" + vo);
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/list";
 		
 	}
 	
@@ -77,7 +77,7 @@ public class ListController {
 	public String modify1(@ModelAttribute ListVo vo,@PathVariable String id){
 		service.modify1(vo);
 		
-		return "redirect:/"+id+"/main";
+		return "redirect:/"+id+"/list";
 	}
 	
 	@ResponseBody
