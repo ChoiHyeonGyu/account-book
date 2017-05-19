@@ -49,7 +49,7 @@ public class ListService {
 
 	public Map<String, Object> pageSearching(int pagination, String searching, String id) {
 		// 1. 페이징을 위한 기본 데이터 계산
-		searching = ConvertMoneyForm.convertForForm(searching);
+		/*searching = ConvertMoneyForm.convertForForm(searching);*/
 		int totalCount = dao.dealWithSearching(searching); // 데이터 수 . 왜 키워드로 받는지
 															// . 걸러서 가지고 오는것
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);// 리스팅

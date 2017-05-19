@@ -10,7 +10,7 @@
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
 <script	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
-<script src="${pageContext.request.contextPath}/assets/js/list.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 
 <div class="container">
 	<div class="row mt">
@@ -31,11 +31,25 @@
 				<div class="col-md-12">
 				
 					<!-- 가계부리스트영역 -->
-					<form action="${pageContext.request.contextPath}/${currentuserid}/main"	method="post">
-						<input type="search" name="searching" size="83"	placeholder="현금,금액,카테고리"> <input type="submit" value="검색">
+					<div class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 월 수입  = {}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출 = {} </div>
+					<form action="${pageContext.request.contextPath}/${currentuserid}/list"	method="post">
+						<input type="search" name="searching" size="108"	placeholder="현금,금액,카테고리"> <input type="submit" value="검색">
 						<button id="myBtn">추가하기</button>
 					</form>
-					<table class="table table-bordered">
+					<table class="table-bordered ">
+						<colgroup>
+							<col width="10%" />
+							<col width="20%" />
+							<col width="10%" />
+							<col width="10%" />
+							<col width="13%" />
+							<col width="10%" />
+							<col width="10%" />
+							<col width="5%" />
+							<col width="5%" />
+							
+						</colgroup>
+						
 						<thead>
 							<tr bgcolor='white'>
 								<th class="mine1">날짜</th>
@@ -50,6 +64,17 @@
 							</tr>
 						</thead>
 						<tbody>
+						<tr>
+									<td><input value="" class="mine" placeholder="날짜"></td>
+									<td><input value="" class="mine" placeholder="사용내역"></td>
+									<td><input value="" class="mine" placeholder="금액"></td>
+									<td><input value="" class="mine" placeholder="결제수단"></td>
+									<td><input value="" class="mine" placeholder="지출/수입/투자"></td>
+									<td><input value="" class="mine" placeholder="은행"></td>
+									<td><input value="" class="mine" placeholder="카테고리"></td>
+									<td><input value="" class="mine" placeholder="지도"></td>
+									<td><input value="" class="mine" placeholder="삭제"></td>
+						</tr>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
 									listarray.push("${vo.listId}");
@@ -78,7 +103,7 @@
 						<ul>
 							<c:if test="${ps.prevPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath}/${currentuserid}/main?pagination=${ps.prevPage}&searching=${ps.searching}">◀</a></li>
+									href="${pageContext.request.contextPath}/${currentuserid}/list?pagination=${ps.prevPage}&searching=${ps.searching}">◀</a></li>
 							</c:if>
 
 							<c:forEach begin="${ps.beginPage}"
@@ -92,7 +117,7 @@
 									</c:when>
 									<c:otherwise>
 										<li><a
-											href="${pageContext.request.contextPath }/${currentuserid}/main?pagination=${page}&searching=${ps.searching}">${page}</a></li>
+											href="${pageContext.request.contextPath }/${currentuserid}/list?pagination=${page}&searching=${ps.searching}">${page}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>

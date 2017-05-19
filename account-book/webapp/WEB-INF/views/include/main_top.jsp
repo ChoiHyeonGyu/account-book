@@ -60,7 +60,7 @@
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                <ul class="nav navbar-nav navbar-right">
 	                    <li>
-	                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/main">가계부</a>
+	                        <a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/list">가계부</a>
 	                    </li>
 	                    <li>
 	                        <a class="page-scroll" href="${pageContext.request.contextPath}/logout">로그아웃</a>

@@ -30,7 +30,7 @@ public class ListController {
 	private OptionService optionservice;
 	@Autowired
 	private ProfileService Pservice;
-	@RequestMapping("/main")
+	@RequestMapping("/list")
 	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
 			@RequestParam (value="searching", required=false)String searching, @PathVariable String id) {
 		service.getList(vo);
