@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>

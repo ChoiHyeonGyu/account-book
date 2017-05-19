@@ -10,7 +10,7 @@
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
 <script	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
-<script src="${pageContext.request.contextPath}/assets/js/list.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 
 <div class="container">
 	<div class="row mt">
