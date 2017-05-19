@@ -56,7 +56,8 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	
 		<select id="totallist" parameterType="map" resultType="listvo">
     	<![CDATA[
-			select * from (select a.*, rownum as rn from (select list_id as listId, list.* from list where id = #{id}
+			select * from (
+			select a.*, rownum as rn from (select list_id as listId, to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, operations, paid, locationX, locationY, name, money from list where id = #{id}
 		]]>
 		<if test="searching != null and searching !=''"> 
 			<![CDATA[					  
