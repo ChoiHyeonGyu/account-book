@@ -87,10 +87,9 @@
 									<td><input value="${vo.operations}" class="mine"></td>
 									<td><input value="${vo.bank}" class="mine"></td>
 									<td><input value="${vo.category}" class="mine"></td>
-									<td><strong id="maps${vo.listId}"
-										class="fa fa-map-marker fa-2x sr-contact" style="vertical-align: middle;"></strong></td>
+									<td><strong id="maps${vo.listId}" class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4"></strong></td>
 									<td><a
-										href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"><img
+										href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}" class="col-lg-offset-5"><img
 											src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
 								</tr>
 							</c:forEach>
