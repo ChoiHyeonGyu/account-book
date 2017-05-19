@@ -89,11 +89,9 @@ public class ListService {
 		System.out.println("숫자 가지고 와라" + searching);
 		String search = ConvertMoneyForm.convertForForm(searching);
 		if (search.equals("")) { // TODO 숫자만 쓰라고 알려주기 totalCount =
-			/*dao.totalList(searching, pagination, LIST_SIZE, id);*/ // 데이터 수 . 왜 키워드로
 			map.put("list", dao.totalList(searching, pagination, LIST_SIZE, id));
 			
 		} else {
-			/*dao.totalList(search, pagination, LIST_SIZE, id);*/
 			map.put("list", dao.totalList(search, pagination, LIST_SIZE, id));
 		}
 		map.put("totalCount", totalCount);
