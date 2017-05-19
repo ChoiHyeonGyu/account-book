@@ -74,6 +74,6 @@
 </div>
 
 <!-- 설정 팝업 -->
-<div id="viewoptions" style="display:none; background-color:#EAEAEA"><c:import url="/WEB-INF/views/profile/option.jsp"/></div>
+<div id="viewoptions" style="display:none; background-color:#EAEAEA"><c:import url="/WEB-INF/views/mypage/left_menu/option.jsp"/></div>
 
 <!-- /팝업영역 -->

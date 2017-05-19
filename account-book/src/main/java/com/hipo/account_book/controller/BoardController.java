@@ -48,7 +48,7 @@ public class BoardController {
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("board", boardService.getBoardList(page, search));
 		model.addAttribute("option", option);
-		return "mystory/mystory";
+		return "mypage/mystory/mystory";
 	}
 	
 	@RequestMapping("/boardadd")

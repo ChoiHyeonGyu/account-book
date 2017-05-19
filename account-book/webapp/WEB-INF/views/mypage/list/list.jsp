@@ -16,7 +16,7 @@
 	
 		<!-- 왼쪽공통영역 -->
 		<div class="col-lg-2">
-			<c:import url="/WEB-INF/views/profile/profile.jsp" />
+			<c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp" />
 		</div>
 		
 		<!-- 메인컨텐츠영역 (그래프, 가계부리스트) -->

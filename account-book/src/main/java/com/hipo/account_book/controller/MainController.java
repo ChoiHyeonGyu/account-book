@@ -21,7 +21,7 @@ public class MainController {
 	@RequestMapping("/board")
 	public String List(Model model, @RequestParam(value="p", required=true, defaultValue="1") int page, @RequestParam(value="search", required=false) String search) {
 		model.addAttribute("board", boardService.getBoardList(page, search));
-		return "mystory/mystory";
+		return "mypage/mystory/mystory";
 	}
 	
 	@RequestMapping("/graph")
