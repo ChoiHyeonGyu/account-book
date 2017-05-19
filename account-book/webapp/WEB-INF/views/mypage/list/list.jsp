@@ -24,7 +24,7 @@
 		<div class="col-lg-10">
 		
 			<!-- 그래프영역 -->
-			<c:import url="/WEB-INF/views/report/limit_graph.jsp" />
+			<div>여기는 navigator 입니다.</div><c:import url="/WEB-INF/views/report/limit_graph.jsp" />
 			
 			<h1 align="center"></h1>
 			<div class="row">
@@ -170,14 +170,17 @@
 		<h3>
 			<span class="label label-default">카테고리</span>
 		</h3>
-
+	
 		<div class="dropdown theme-dropdown clearfix">
+			
 			<select id="category" class="dropdown-menu" name="category">
-				<option value="-">지출</option>
-				<option value="+">수입</option>
-				<option value="0">투자</option>
+			<c:forEach var="bb" items="${option}" >
+				<option value="${bb.category}">${bb.category}</option>
+			</c:forEach>
 			</select>
+	
 		</div>
+		
 		<h3>
 			<span class="label label-default">은행</span>
 		</h3>
