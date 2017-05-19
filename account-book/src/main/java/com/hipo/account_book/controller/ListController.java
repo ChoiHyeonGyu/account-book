@@ -33,6 +33,7 @@ public class ListController {
 	@RequestMapping("/main")
 	public String List(Model model ,@ModelAttribute OptionVo optionvo,@ModelAttribute ListVo vo, @RequestParam (value="pagination",required=true, defaultValue="1")int pagination,
 			@RequestParam (value="searching", required=false)String searching, @PathVariable String id) {
+		
 		service.getList(vo);
 		
 		UserVo v1 = Pservice.checkUpdate(id);

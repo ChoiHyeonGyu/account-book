@@ -22,7 +22,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
 						</div>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
 						</div>
 					</div>
 				</div>
@@ -42,7 +42,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
 						</div>
 					</div>
 				</div>

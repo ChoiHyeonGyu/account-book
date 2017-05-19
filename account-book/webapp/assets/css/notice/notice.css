@@ -1,0 +1,17 @@
+.notice {
+    background-color:#002266;
+    width: 7%;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.aligncenter{text-align: center;}
+
+.notice4 {border-radius: 12px;}
+.white{color: white;}

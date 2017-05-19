@@ -9,10 +9,11 @@
 
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/css/notice/notice.css">
 
+
 <div class="container">
 	<div class="row mt">
 		<div class="col-md-12">
-			<h1 align="left" style="margin-top:75px; margin-bottom: 25px;">공지 사항</h1>
+			<h1 align="left" style="margin-top:75px; margin-bottom: 25px;">FAQ</h1>
 			<table class="table">
 				<thead>
 					<tr bgcolor='#002266'>
@@ -23,43 +24,14 @@
 					</tr>
 				</thead>
 				<tbody>
+				<c:forEach var="notice" items="${notice.qnalist}">
 						<tr>
-							<td>2017-5-19 11:15:20</td>
-							<td>무지무지무지..............</td>
-							<td>cp3</td>
-							<td >100</td>
+							<td>${notice.qnaDay}</td>
+							<td>${notice.qnaTitle}</td>
+							<td>${notice.qnaDay}</td>
+							<td >${notice.qnaHit}</td>
 						</tr>
-						<tr>
-							<td>2017-5-19 11:15:20</td>
-							<td>무지무지무지..............</td>
-							<td>cp3</td>
-							<td >100</td>
-						</tr>
-						<tr>
-							<td>2017-5-19 11:15:20</td>
-							<td>무지무지무지..............</td>
-							<td>cp3</td>
-							<td >100</td>
-						</tr>
-						<tr>
-							<td>2017-5-19 11:15:20</td>
-							<td>무지무지무지..............</td>
-							<td>cp3</td>
-							<td >100</td>
-						</tr>
-						<tr>
-							<td>2017-5-19 11:15:20</td>
-							<td>무지무지무지..............</td>
-							<td>cp3</td>
-							<td >100</td>
-						</tr>
-						<tr>
-							<td>2017-5-19 11:15:20</td>
-							<td>무지무지무지..............</td>
-							<td>cp3</td>
-							<td >100</td>
-						</tr>
-						
+						</c:forEach>
 				</tbody>
 			</table>
 			<form
