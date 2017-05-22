@@ -3,7 +3,8 @@ morris.js v0.5.0
 Copyright 2014 Olly Smith All rights reserved.
 Licensed under the BSD-2-Clause License.
 */
-
+var barcolnum = [];
+var numcnt = 0;
 
 (function() {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
@@ -1498,6 +1499,7 @@ Licensed under the BSD-2-Clause License.
         var _i, _len, _ref, _results;
         _ref = this.data;
         _results = [];
+        numcnt++;
         for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
           row = _ref[idx];
           lastTop = 0;
@@ -1554,7 +1556,13 @@ Licensed under the BSD-2-Clause License.
         };
         return this.options.barColors.call(this, r, s, type);
       } else {
-        return this.options.barColors[sidx % this.options.barColors.length];
+		  if(sidx == 0){
+			  return this.options.barColors[sidx % this.options.barColors.length];
+		  } else {
+			  console.log(numcnt);
+			  return this.options.barColors[barcolnum[numcnt] % this.options.barColors.length];
+		  }
+        //return this.options.barColors[sidx % this.options.barColors.length];
       }
     };
 

@@ -8,7 +8,7 @@
         <p>잔액 : ${v1.total}</p>
         <a href="" class="fa fa-user fa-2x sr-contact" id="tt"></a>&emsp;
         <a href="" class="fa fa-align-justify fa-2x sr-contact"></a>&emsp;
-        <a href="" class="fa fa-bar-chart-o fa-2x sr-contact"></a>&emsp;
+        <a href="${pageContext.request.contextPath}/${currentuserid}/mygraph" class="fa fa-bar-chart-o fa-2x sr-contact"></a>&emsp;
         <a href="" id="showoptions" class="fa fa-cog fa-2x sr-contact"></a>
     </div>
 </div><br/>
