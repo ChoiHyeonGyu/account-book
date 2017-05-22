@@ -35,9 +35,10 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping("/notice")
-	public String Notice(Model model,  @PathVariable String id, @ModelAttribute NoticeVo noticeVo) {
+	public String Notice(Model model,  @PathVariable String id) {
 		
-		
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1",v1);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
@@ -47,16 +48,40 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/faq")
-	public String Faq(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
-			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
+	public String Faq(Model model, @PathVariable String id) {
 	
-		Map<String, Object> map = new HashMap<String, Object>();
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1",v1);
 		
+		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
 	
 		return "customer/notice/faq";
 	}
+	
+	@RequestMapping("/noticeview")
+	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id){
+		
+		System.out.println("noidnoidnoid::"+id);
+		
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1",v1);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map = noticeService.noticeView(noticeId);
+		model.addAttribute("view", map);
+		
+		return "customer/notice/noticeView";
+	}
+	
+	@RequestMapping("/qnaview")
+	public String QnaView(@RequestParam("qnaId") int noticeId){
+		
+		return "customer/notice/qnaView";
+	}
+	
 
 }

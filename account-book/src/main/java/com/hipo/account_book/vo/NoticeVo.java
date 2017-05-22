@@ -14,7 +14,7 @@ public class NoticeVo {
 	
 	@Override
 	public String toString() {
-		return "NpticeVo [noticeContent=" + noticeContent + ", qnaContent=" + qnaContent + ", noticeTitle=" + noticeTitle + ", qnaTitle=" + qnaTitle + ", noticeDay=" + noticeDay + ", qnaDay=" + qnaDay +", noticeHit=" + noticeHit +", qnaHit=" + qnaHit +"]";
+		return "NpticeVo [noticeContent=" + noticeContent + ", qnaContent=" + qnaContent + ", noticeTitle=" + noticeTitle + ", qnaTitle=" + qnaTitle + ", noticeDay=" + noticeDay + ", qnaDay=" + qnaDay +", noticeHit=" + noticeHit +", qnaHit=" + qnaHit +", noticeId=" + noticeId +", qnaId=" + qnaId +"]";
 	}
 	
 	

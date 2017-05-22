@@ -24,4 +24,14 @@ public class NoticeDao {
 		
 		return sql.selectList("notice.getList2");
 	}
+	
+	public NoticeVo noticeView(int noticeId){
+		
+		return sql.selectOne("notice.noticeview", noticeId);
+	}
+	
+	public NoticeVo noticeView2(int noticeId){
+		
+		return sql.selectOne("notice.noticeview2", noticeId);
+	}
 }

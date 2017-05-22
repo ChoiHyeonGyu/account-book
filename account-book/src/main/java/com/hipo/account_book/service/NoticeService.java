@@ -23,6 +23,7 @@ public class NoticeService {
 		
 		notice = noticeDao.getList();
 		notice2 = noticeDao.getList2();
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put( "noticelist", notice);
@@ -31,4 +32,22 @@ public class NoticeService {
 		
 		return map;
 	}
+	
+	public Map<String, Object> noticeView(int noticeId){
+		NoticeVo view;
+		NoticeVo view2;
+		
+		view = noticeDao.noticeView(noticeId);
+		view2 = noticeDao.noticeView2(noticeId);
+		
+		System.out.println("viewview:::"+view);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put( "noticeview", view);
+		map.put( "qnaview", view2);
+		
+		return map;
+	}
+	
 }
