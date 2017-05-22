@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -99,9 +100,15 @@ public class AndroidListController {
 
 	@RequestMapping("location")
 	@ResponseBody
-	public Map<String, String> getByTime(HttpServletRequest request) {
-		
-		return null;
+	public Map<String, ListVo> getByTime(HttpServletRequest request, @PathVariable String id) {
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		List<ListVo> list = listService.getLocationVos(year, month, id);
+		Map<String, ListVo> ListData = new HashMap<String, ListVo>();
+		for (int i = 0; i < list.size(); i++) {
+			ListData.put("ListVo" + i, list.get(i));
+		}
+		return ListData;
 	}
 
 }

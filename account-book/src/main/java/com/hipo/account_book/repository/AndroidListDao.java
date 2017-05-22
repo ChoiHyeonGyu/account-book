@@ -1,6 +1,8 @@
 package com.hipo.account_book.repository;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Scanner;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,10 @@ public class AndroidListDao {
 	public boolean deleteList(String listId) {
 		int count = sqlSession.update("android.deleteListByListId", listId);
 		return count == 1;
+	}
+
+	public List<ListVo> getLocationVos(Map<String, String> dateMap) {
+		return sqlSession.selectList("android.getListLocationByDate", dateMap);
 	}
 
 }
