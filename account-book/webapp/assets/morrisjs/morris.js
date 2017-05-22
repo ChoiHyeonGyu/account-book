@@ -4,8 +4,7 @@ Copyright 2014 Olly Smith All rights reserved.
 Licensed under the BSD-2-Clause License.
 */
 var barcolnum = [];
-var numcnt = 0;
-
+var numcnt = -1;
 (function() {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
     __slice = [].slice,
@@ -1499,7 +1498,6 @@ var numcnt = 0;
         var _i, _len, _ref, _results;
         _ref = this.data;
         _results = [];
-        numcnt++;
         for (idx = _i = 0, _len = _ref.length; _i < _len; idx = ++_i) {
           row = _ref[idx];
           lastTop = 0;
@@ -1507,6 +1505,7 @@ var numcnt = 0;
             var _j, _len1, _ref1, _results1;
             _ref1 = row._y;
             _results1 = [];
+            numcnt++;
             for (sidx = _j = 0, _len1 = _ref1.length; _j < _len1; sidx = ++_j) {
               ypos = _ref1[sidx];
               if (ypos !== null) {
@@ -1556,15 +1555,37 @@ var numcnt = 0;
         };
         return this.options.barColors.call(this, r, s, type);
       } else {
-		  if(sidx == 0){
-			  return this.options.barColors[sidx % this.options.barColors.length];
-		  } else {
-			  console.log(numcnt);
-			  return this.options.barColors[barcolnum[numcnt] % this.options.barColors.length];
-		  }
+    	  if(sidx == 0){
+    		  return this.options.barColors[sidx % this.options.barColors.length];
+    	  } else {
+    		  return this.options.barColors[barcolnum[numcnt] % this.options.barColors.length];
+    	  }
         //return this.options.barColors[sidx % this.options.barColors.length];
       }
     };
+    
+    Bar.prototype.colorFor2 = function(row, sidx, type) {
+        var r, s;
+        if (typeof this.options.barColors === 'function') {
+          r = {
+            x: row.x,
+            y: row.y[sidx],
+            label: row.label
+          };
+          s = {
+            index: sidx,
+            key: this.options.ykeys[sidx],
+            label: this.options.labels[sidx]
+          };
+          return this.options.barColors.call(this, r, s, type);
+        } else {
+        	if(sidx == 0){
+      		  return this.options.barColors[sidx % this.options.barColors.length];
+      	  } else {
+      		  return this.options.barColors[barcolnum[numcnt2] % this.options.barColors.length];
+      	  }
+        }
+      };
 
     Bar.prototype.hitTest = function(x) {
       if (this.data.length === 0) {
@@ -1597,9 +1618,10 @@ var numcnt = 0;
       row = this.data[index];
       content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
       _ref = row.y;
+      numcnt2++;
       for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
         y = _ref[j];
-        content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
+        content += "<div class='morris-hover-point' style='color: " + (this.colorFor2(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
       }
       if (typeof this.options.hoverCallback === 'function') {
         content = this.options.hoverCallback(index, this.options, content, row.src);

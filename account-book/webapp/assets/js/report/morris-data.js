@@ -22,9 +22,7 @@ $(function() {
 	    success: function( response ){
 	    	for(var i=0; i<response.data.length; i++){
 		    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
-	    	}
-	    	for(var i=0; i<response.data.length; i++){
-				if((response.data[i].lsum / response.data[i].ml) < 0.6){
+		    	if((response.data[i].lsum / response.data[i].ml) < 0.6){
 				    barcolnum[i] = 2;
 				} else if((response.data[i].lsum / response.data[i].ml) < 0.9) {
 					barcolnum[i] = 4;
@@ -41,8 +39,11 @@ $(function() {
 	            ykeys: ['a', 'b'],
 	            labels: ['예산', '현재 사용한 금액'],
 	            hideHover: 'auto',
-	            resize: true,
+	            resize: true
 	        });
+	    	barcolnum = [];
+	    	numcnt = -1;
+	    	numcnt2 = -1;
 	    },
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
@@ -81,20 +82,14 @@ $(function() {
 		    	}
 		    	for(var i=0; i<response.data.length; i++){
 			    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
-		    	}
-		    	for(var i=0; i<response.data.length; i++){
-					if((response.data[i].lsum / response.data[i].ml) > 1){
-					    barcol = '#9440ed';
-					    break;
-					} else if((response.data[i].lsum / response.data[i].ml) > 0.9) {
-						barcol = '#cb4b4b';
-						break;
-					} else if((response.data[i].lsum / response.data[i].ml) > 0.6) {
-						barcol = '#edc240';
-						break;
+			    	if((response.data[i].lsum / response.data[i].ml) < 0.6){
+					    barcolnum[i] = 2;
+					} else if((response.data[i].lsum / response.data[i].ml) < 0.9) {
+						barcolnum[i] = 4;
+					} else if((response.data[i].lsum / response.data[i].ml) < 1) {
+						barcolnum[i] = 5;
 					} else {
-						barcol = '#4da74d';
-						break;
+						barcolnum[i] = 6;
 					}
 		    	}
 		    	Morris.Bar({
@@ -104,14 +99,16 @@ $(function() {
 		            ykeys: ['a', 'b'],
 		            labels: ['예산', '현재 사용한 금액'],
 		            hideHover: 'auto',
-		            resize: true,
-		            barColors: ['#0b62a4', barcol, '#4da74d', '#afd8f8', '#edc240', '#cb4b4b', '#9440ed']
+		            resize: true
 		        });
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
 		    }
 		});
+		barcolnum = [];
+    	numcnt = -1;
+    	numcnt2 = -1;
 	});
 	
 	$("#cr").click(function(){
@@ -146,20 +143,14 @@ $(function() {
 		    	}
 		    	for(var i=0; i<response.data.length; i++){
 			    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
-		    	}
-		    	for(var i=0; i<response.data.length; i++){
-					if((response.data[i].lsum / response.data[i].ml) > 1){
-					    barcol = '#9440ed';
-					    break;
-					} else if((response.data[i].lsum / response.data[i].ml) > 0.9) {
-						barcol = '#cb4b4b';
-						break;
-					} else if((response.data[i].lsum / response.data[i].ml) > 0.6) {
-						barcol = '#edc240';
-						break;
+			    	if((response.data[i].lsum / response.data[i].ml) < 0.6){
+					    barcolnum[i] = 2;
+					} else if((response.data[i].lsum / response.data[i].ml) < 0.9) {
+						barcolnum[i] = 4;
+					} else if((response.data[i].lsum / response.data[i].ml) < 1) {
+						barcolnum[i] = 5;
 					} else {
-						barcol = '#4da74d';
-						break;
+						barcolnum[i] = 6;
 					}
 		    	}
 		    	Morris.Bar({
@@ -169,14 +160,16 @@ $(function() {
 		            ykeys: ['a', 'b'],
 		            labels: ['예산', '현재 사용한 금액'],
 		            hideHover: 'auto',
-		            resize: true,
-		            barColors: ['#0b62a4', barcol, '#4da74d', '#afd8f8', '#edc240', '#cb4b4b', '#9440ed']
+		            resize: true
 		        });
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
 		    }
 		});
+		barcolnum = [];
+    	numcnt = -1;
+    	numcnt2 = -1;
 	});
 
     /*Morris.Area({
