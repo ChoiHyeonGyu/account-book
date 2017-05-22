@@ -1,6 +1,8 @@
 package com.hipo.account_book.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,27 +38,24 @@ public class NoticeController {
 	public String Notice(Model model,  @PathVariable String id, @ModelAttribute NoticeVo noticeVo) {
 		
 		
-		model.addAttribute("notice", noticeService.getNotice());
-		/*
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
 		
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("board", boardService.getBoardList(page, search));
-		model.addAttribute("option", option);
-		*/
+		
 		return "customer/notice/notice";
 	}
 	
 	@RequestMapping("/faq")
 	public String Faq(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
+	
+		Map<String, Object> map = new HashMap<String, Object>();
 		
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("board", boardService.getBoardList(page, search));
-		model.addAttribute("option", option);
+		
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+	
 		return "customer/notice/faq";
 	}
 

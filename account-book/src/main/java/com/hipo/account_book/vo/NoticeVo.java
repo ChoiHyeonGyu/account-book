@@ -1,6 +1,8 @@
 package com.hipo.account_book.vo;
 
 public class NoticeVo {
+	int noticeId;
+	int qnaId;
 	String noticeContent;
 	String qnaContent;
 	String noticeTitle;
@@ -14,6 +16,32 @@ public class NoticeVo {
 	public String toString() {
 		return "NpticeVo [noticeContent=" + noticeContent + ", qnaContent=" + qnaContent + ", noticeTitle=" + noticeTitle + ", qnaTitle=" + qnaTitle + ", noticeDay=" + noticeDay + ", qnaDay=" + qnaDay +", noticeHit=" + noticeHit +", qnaHit=" + qnaHit +"]";
 	}
+	
+	
+	
+	public int getNoticeId() {
+		return noticeId;
+	}
+
+
+
+	public void setNoticeId(int noticeId) {
+		this.noticeId = noticeId;
+	}
+
+
+
+	public int getQnaId() {
+		return qnaId;
+	}
+
+
+
+	public void setQnaId(int qnaId) {
+		this.qnaId = qnaId;
+	}
+
+
 
 	public String getNoticeContent() {
 		return noticeContent;

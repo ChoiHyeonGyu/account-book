@@ -3,13 +3,13 @@
 
 <mapper namespace="notice">
 
-	<select id="getList" resultType="noticedvo">
+	<select id="getList" resultType="noticevo">
 		<![CDATA[
 			select content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice
 		]]>
 	</select>
 	
-	<select id="getList2" resultType="noticedvo">
+	<select id="getList2" resultType="noticevo">
 		<![CDATA[
 			select content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna
 		]]>
