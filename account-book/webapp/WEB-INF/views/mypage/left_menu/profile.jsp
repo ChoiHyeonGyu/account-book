@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 프로필 -->
 <div class="row">
-	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="200" height="200"></h2>
+	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"></h2>
     <div class="col-lg-12 col-lg-offset-0 text-center">
         <p>${v1.name}</p>
         <p>잔액 : ${v1.total}</p>
