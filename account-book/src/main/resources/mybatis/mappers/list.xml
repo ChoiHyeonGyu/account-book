@@ -20,7 +20,7 @@ delete from list where id = #{id} and list_Id = #{listId}
 
 
 	<insert id="add" parameterType="listvo">
-
+	
 	
 	<![CDATA[
 	
