@@ -25,7 +25,7 @@ delete from list where id = #{id} and list_Id = #{listId}
 	<![CDATA[
 	
 	insert INTO list (LIST_ID, ID, PAID, BANK, OPERATIONS, MONEY, NAME, CATEGORY, DAY)
-values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},#{category},sysdate)
+values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},#{category},#{day})
 	]]>
 	</insert>
 
@@ -74,4 +74,5 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			select * from list where list_id = #{value}
 		]]>
 	</select>
+	
 </mapper>

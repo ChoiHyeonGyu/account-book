@@ -1,42 +1,131 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
-<link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/css/list/list.css">
-<script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
-<script	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/list/list.css">
+<script
+	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
+<script
+	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
 <script src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 
 <div class="container">
 	<div class="row mt">
-	
+
 		<!-- 왼쪽공통영역 -->
 		<div class="col-lg-2">
 			<c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp" />
 		</div>
-		
+
 		<!-- 메인컨텐츠영역 (그래프, 가계부리스트) -->
 		<div class="col-lg-10">
-		
+
 			<!-- 그래프영역 -->
-			<div>여기는 navigator 입니다.</div><c:import url="/WEB-INF/views/report/limit_graph.jsp" />
-			
+			<div>여기는 navigator 입니다.</div>
+			<c:import url="/WEB-INF/views/report/limit_graph.jsp" />
+
 			<h1 align="center"></h1>
 			<div class="row">
 				<div class="col-md-12">
-				
+
 					<!-- 가계부리스트영역 -->
-					<div class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 월 수입  = {}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출 = {} </div>
-					<form action="${pageContext.request.contextPath}/${currentuserid}/list"	method="post">
-						<input type="search" name="searching" size="108"	placeholder="현금,금액,카테고리"> <input type="submit" value="검색">
-						<button id="myBtn">추가하기</button>
+					<div class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 월 수입 =
+						{}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출
+						= {}</div>
+					<form
+						action="${pageContext.request.contextPath}/${currentuserid}/list"
+						method="post">
+						<input type="search" name="searching" size="115"
+							placeholder="현금,금액,카테고리"> <input class="btn btn-default"
+							type="submit" value="검색">
+
 					</form>
-					<table class="table-bordered border-collapse ">
+
+
+					<form
+						action="${pageContext.request.contextPath }/${currentuserid}/add"
+						method="post">
+						<table class="table-bordered border-collapse" style="background: #ececec">
+
+							<colgroup>
+								<col width="10%" />
+								<col width="20%" />
+								<col width="10%" />
+								<col width="10%" />
+								<col width="13%" />
+								<col width="10%" />
+								<col width="10%" />
+								<col width="5%" />
+								<col width="5%" />
+
+							</colgroup>
+
+							<thead>
+
+								<tr>
+									<th class="mine1 tablecolor tableoption"
+										style="background: #ececec" WIDTH="50">날짜</th>
+									<th class="mine2 tablecolor" style="background: #ececec">사용내역</th>
+									<th class="mine3 tablecolor" style="background: #ececec">금액</th>
+									<th class="mine3 tablecolor" style="background: #ececec">결제수단</th>
+									<th class="mine3 tablecolor" style="background: #ececec">지출/수입/투자</th>
+									<th class="mine3 tablecolor" style="background: #ececec">은행</th>
+									<th class="mine3 tablecolor" style="background: #ececec">카테고리</th>
+									<th class="mine3 tablecolor" style="background: #ececec">지도</th>
+									<th class="mine3 tablecolor" style="background: #ececec">삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input type="text" id="datepicker" name="day"
+										class="tableinput" placeholder="날짜 입력하기"></td>
+									<td><input value="" class="mine tablecoler"
+										style="background: #ececec" placeholder="사용내역" name="name"></td>
+									<td><input value="" class="mine tablecolor "
+										style="background: #ececec" placeholder="금액" name="money"></td>
+									<td><select id="paid" name="paid" class="tableinput">
+											<option value="현금">현금</option>
+											<option value="카드">카드</option>
+									</select></td>
+									<td><select id="operations" class="tableinput"
+										name="operations">
+
+											<option value="-">지출</option>
+											<option value="+">수입</option>
+											<option value="0">투자</option>
+									</select></td>
+									<td><input value="" class="mine tablecolor"
+										style="background: #ececec" placeholder="은행" name="bank"></td>
+									<!-- <td><input value="" class="mine tablecolor"
+										style="background: #ececec" placeholder="카테고리" name="category"></td>
+									 -->
+									<td><select id="category" class="tableinput" name="category">
+										<c:forEach var="bb" items="${option}">
+											<option value="${bb.category}">${bb.category}</option>
+										</c:forEach>
+									</select></td>
+									<td><input value="" class="mine tablecolor"
+										style="background: #ececec" placeholder="지도"></td>
+									<td><input type="submit" value="저장"
+										class="btn btn-default" /></td>
+								</tr>
+								<!-- <button id="myBtn">추가</button> -->
+						</table>
+
+					</form>
+
+					<table class="table-bordered border-collapse"
+						style="background: #ececec">
 						<colgroup>
 							<col width="10%" />
 							<col width="20%" />
@@ -47,55 +136,42 @@
 							<col width="10%" />
 							<col width="5%" />
 							<col width="5%" />
-							
+
 						</colgroup>
-						
-						<thead>
-							<tr bgcolor='white'>
-								<th class="mine1">날짜</th>
-								<th class="mine2">사용내역</th>
-								<th class="mine3">금액</th>
-								<th class="mine3">결제수단</th>
-								<th class="mine3">지출/수입/투자</th>
-								<th class="mine3">은행</th>
-								<th class="mine3">카테고리</th>
-								<th class="mine3">지도</th>
-								<th class="mine3">삭제</th>
+
+						<c:forEach var="vo" items="${ps.list}" varStatus="status">
+							<script>
+								listarray.push("${vo.listId}");
+							</script>
+							<tr>
+								<td><input value="${vo.day}" class="mine tablecoler"
+									style="background: #ececec"></td>
+								<td><input value="${vo.name}" class="mine tablecoler"
+									style="background: #ececec"></td>
+								<td><label id="${vo.listId}" style="background: #ececec">${vo.money}</label></td>
+								<td><input value="${vo.paid}" class="mine tablecoler"
+									style="background: #ececec"></td>
+								<td><input value="${vo.operations}" class="mine tablecoler"
+									style="background: #ececec"></td>
+								<td><input value="${vo.bank}" class="mine tablecoler"
+									style="background: #ececec"></td>
+								<td><input value="${vo.category}" class="mine tablecoler"
+									style="background: #ececec"></td>
+								<td><strong id="maps${vo.listId}"
+									class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler"
+									style="background: #ececec"></strong></td>
+								<td><a
+									href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"
+									class="col-lg-offset-5 tablecoler"><img
+										src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
 							</tr>
-						</thead>
-						<tbody>
-						<tr>
-									<td><input value="" class="mine" placeholder="날짜"></td>
-									<td><input value="" class="mine" placeholder="사용내역"></td>
-									<td><input value="" class="mine" placeholder="금액"></td>
-									<td><input value="" class="mine" placeholder="결제수단"></td>
-									<td><input value="" class="mine" placeholder="지출/수입/투자"></td>
-									<td><input value="" class="mine" placeholder="은행"></td>
-									<td><input value="" class="mine" placeholder="카테고리"></td>
-									<td><input value="" class="mine" placeholder="지도"></td>
-									<td><input value="" class="mine" placeholder="삭제"></td>
-						</tr>
-							<c:forEach var="vo" items="${ps.list}" varStatus="status">
-								<script>
-									listarray.push("${vo.listId}");
-								</script>
-								<tr>
-									<td><input value="${vo.day}" class="mine"></td>
-									<td><input value="${vo.name}" class="mine"></td>
-									<td><label id="${vo.listId}">${vo.money}</label></td>
-									<td><input value="${vo.paid}" class="mine"></td>
-									<td><input value="${vo.operations}" class="mine"></td>
-									<td><input value="${vo.bank}" class="mine"></td>
-									<td><input value="${vo.category}" class="mine"></td>
-									<td><strong id="maps${vo.listId}" class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4"></strong></td>
-									<td><a
-										href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}" class="col-lg-offset-5"><img
-											src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
-								</tr>
-							</c:forEach>
+						</c:forEach>
 						</tbody>
 					</table>
+
 					<!-- /가계부리스트영역 -->
+
+
 
 					<!-- 페이징 -->
 					<div class="pager">
@@ -170,17 +246,17 @@
 		<h3>
 			<span class="label label-default">카테고리</span>
 		</h3>
-	
+
 		<div class="dropdown theme-dropdown clearfix">
-			
+
 			<select id="category" class="dropdown-menu" name="category">
-			<c:forEach var="bb" items="${option}" >
-				<option value="${bb.category}">${bb.category}</option>
-			</c:forEach>
+				<c:forEach var="bb" items="${option}">
+					<option value="${bb.category}">${bb.category}</option>
+				</c:forEach>
 			</select>
-	
+
 		</div>
-		
+
 		<h3>
 			<span class="label label-default">은행</span>
 		</h3>
