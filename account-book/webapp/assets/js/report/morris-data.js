@@ -41,6 +41,8 @@ $(function() {
 	            hideHover: 'auto',
 	            resize: true
 	        });
+	    	barcolnum = [];
+		    numcnt = -1;
 	    },
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
