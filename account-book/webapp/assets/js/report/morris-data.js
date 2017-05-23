@@ -41,9 +41,6 @@ $(function() {
 	            hideHover: 'auto',
 	            resize: true
 	        });
-	    	barcolnum = [];
-	    	numcnt = -1;
-	    	numcnt2 = -1;
 	    },
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
@@ -107,8 +104,7 @@ $(function() {
 		    }
 		});
 		barcolnum = [];
-    	numcnt = -1;
-    	numcnt2 = -1;
+	    numcnt = -1;
 	});
 	
 	$("#cr").click(function(){
@@ -168,8 +164,7 @@ $(function() {
 		    }
 		});
 		barcolnum = [];
-    	numcnt = -1;
-    	numcnt2 = -1;
+	    numcnt = -1;
 	});
 
     /*Morris.Area({

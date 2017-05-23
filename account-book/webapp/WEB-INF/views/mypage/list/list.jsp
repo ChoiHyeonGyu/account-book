@@ -8,7 +8,7 @@
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/css/list/list.css">
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.js"></script>
+<script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
 <script	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
 
