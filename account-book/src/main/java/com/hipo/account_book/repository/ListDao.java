@@ -59,4 +59,9 @@ private SqlSession sql;
 	public ListVo selectlocation(int listId){
 		return sql.selectOne("listview.selectlocation", listId);
 	}
+
+
+/*	public ListVo totalmonth(ListVo vo) {
+		return sql.selectOne("listview.totalmoney", parameter);
+	}*/
 }

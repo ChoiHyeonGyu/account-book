@@ -26,23 +26,19 @@ public class ListService {
 
 	public boolean delete(ListVo vo) {
 		return dao.delete(vo);
-
 	}
 
 	public String add(ListVo vo) {
-		vo.setMoney(ConvertMoneyForm.convertForForm(vo.getMoney()));
 		dao.add(vo);
 		return null;
 	}
 
 	public ListVo modify(int i) {
 		ListVo listVo = dao.modify(i);
-		listVo.setMoney(ConvertMoneyForm.convertMoney(listVo.getMoney()));
 		return listVo;
 	}
 
 	public boolean modify1(ListVo vo) {
-		vo.setMoney(ConvertMoneyForm.convertForForm(vo.getMoney()));
 		dao.modify1(vo);
 		return false;
 	}
@@ -50,10 +46,11 @@ public class ListService {
 	public Map<String, Object> pageSearching(int pagination, String searching, String id) {
 		// 1. 페이징을 위한 기본 데이터 계산
 		int totalCount = 0;
-		String searching1 = ConvertMoneyForm.convertForForm(searching);
-		System.out.println("searching 처음 받는값 변환." + searching1);
-		totalCount = dao.dealWithSearching(searching1);
-
+		
+		//String searching1 = ConvertMoneyForm.convertForForm(searching);
+		System.out.println("searching 비교대상확인." + searching);
+		totalCount = dao.dealWithSearching(searching);
+		System.out.println("totalCount checking : "+totalCount);
 		// 데이터 수 . 왜
 		// 키워드로 // 받는지 }
 		// . 걸러서 가지고 오는것
@@ -87,13 +84,16 @@ public class ListService {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		System.out.println("숫자 가지고 와라" + searching);
-		String search = ConvertMoneyForm.convertForForm(searching);
-		if (search.equals("")) { // TODO 숫자만 쓰라고 알려주기 totalCount =
+		//String search = ConvertMoneyForm.convertForForm(searching);
+		
+		/*if (search.equals("")) { // TODO 숫자만 쓰라고 알려주기 totalCount =
 			map.put("list", dao.totalList(searching, pagination, LIST_SIZE, id));
 			
 		} else {
 			map.put("list", dao.totalList(search, pagination, LIST_SIZE, id));
-		}
+		}*/
+		map.put("list", dao.totalList(searching, pagination, LIST_SIZE, id));
+		
 		map.put("totalCount", totalCount);
 		map.put("listSize", LIST_SIZE);
 		map.put("pagination", pagination);
@@ -110,5 +110,10 @@ public class ListService {
 	public ListVo loadmap(String listId) {
 		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
 	}
+
+/*	public ListVo totalmonth(ListVo vo) {
+		return dao.totalmonth(vo);
+		
+	}*/
 
 }

@@ -6,12 +6,27 @@ public class ListVo {
 	private String paid;
 	private String bank;
 	private String operations;
-	private String money;
+	private int money;
+	private String totalmoney;
+	private String totalincome;
 	private String name;
 	private String category;
 	private String day;
 	private String locationX;
 	private String locationY;
+	
+	public String getTotalmoney() {
+		return totalmoney;
+	}
+	public void setTotalmoney(String totalmoney) {
+		this.totalmoney = totalmoney;
+	}
+	public String getTotalincome() {
+		return totalincome;
+	}
+	public void setTotalincome(String totalincome) {
+		this.totalincome = totalincome;
+	}
 	
 	
 	@Override
@@ -50,10 +65,10 @@ public class ListVo {
 	public void setOperations(String operations) {
 		this.operations = operations;
 	}
-	public String getMoney() {
+	public int getMoney() {
 		return money;
 	}
-	public void setMoney(String money) {
+	public void setMoney(int money) {
 		this.money = money;
 	}
 	public String getName() {
