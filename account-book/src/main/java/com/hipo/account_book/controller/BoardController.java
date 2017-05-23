@@ -33,7 +33,7 @@ public class BoardController {
 	private ProfileService Pservice;
 	
 	@RequestMapping("/logon")
-	public String logon(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
+	public String logon(@PathVariable String id, Model model){
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1",v1);
 		return "frontpage/logon";
@@ -173,7 +173,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/mygraph")
-	public String mygraph(){
+	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1",v1);
+		List<OptionVo> option = optionservice.getCategory(optionvo);
+		model.addAttribute("option", option);
 		return "report/mygraph";
 	}
 }
