@@ -171,4 +171,9 @@ public class BoardController {
 		map.put("id", id);
 		return JSONResult.success(boardService.movelimitgraph(map));
 	}
+	
+	@RequestMapping("/mygraph")
+	public String mygraph(){
+		return "report/mygraph";
+	}
 }

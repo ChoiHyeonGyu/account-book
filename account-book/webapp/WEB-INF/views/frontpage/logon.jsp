@@ -18,7 +18,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
 						</div>
 					</div>
 				</div>
@@ -28,7 +28,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
 						</div>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/image/gonang.jpg">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
 						</div>
 					</div>
 				</div>
@@ -64,7 +64,7 @@
 				<div class="panel-body">
 					<div class="row">
 					    <div class="col-lg-12 col-lg-offset-0 text-center">
-					    	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/gonang.jpg" width="170" height="170"></h2>
+					    	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="170" height="170"></h2>
 					        <p>${v1.name}</p>
 					        <p>잔액:${v1.total}</p>
 					    </div>

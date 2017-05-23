@@ -4,7 +4,6 @@ Copyright 2014 Olly Smith All rights reserved.
 Licensed under the BSD-2-Clause License.
 */
 
-
 (function() {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
     __slice = [].slice,
@@ -1589,7 +1588,7 @@ Licensed under the BSD-2-Clause License.
       row = this.data[index];
       content = "<div class='morris-hover-row-label'>" + row.label + "</div>";
       _ref = row.y;
-      for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
+  	  for (j = _i = 0, _len = _ref.length; _i < _len; j = ++_i) {
         y = _ref[j];
         content += "<div class='morris-hover-point' style='color: " + (this.colorFor(row, j, 'label')) + "'>\n  " + this.options.labels[j] + ":\n  " + (this.yLabelFormat(y)) + "\n</div>";
       }

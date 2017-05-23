@@ -31,6 +31,8 @@ public class ListController {
 	@Autowired
 	private ProfileService Pservice;
 
+	
+		
 	@RequestMapping("/list")
 	public String List(Model model, @ModelAttribute OptionVo optionvo, @ModelAttribute ListVo vo,
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,

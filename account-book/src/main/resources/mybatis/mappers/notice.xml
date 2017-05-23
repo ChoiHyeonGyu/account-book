@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+
+	<select id="getList" resultType="noticevo">
+		<![CDATA[
+			select notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice
+		]]>
+	</select>
+	
+	<select id="getList2" resultType="noticevo">
+		<![CDATA[
+			select qna_id as qnaId, content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna
+		]]>
+	</select>
+	
+	<select id="noticeview" parameterType="int" resultType="noticevo">
+		<![CDATA[
+			select content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice where notice_id=#{noticeId}
+		]]>
+	</select>
+	
+	<select id="noticeview2" parameterType="int" resultType="noticevo">
+		<![CDATA[
+			select content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna where qna_id=#{noticeId}
+		]]>
+	</select>
+		
+</mapper>

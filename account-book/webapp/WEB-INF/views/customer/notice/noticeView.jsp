@@ -15,37 +15,32 @@
 		<div class="col-md-12">
 			<h1 align="left" style="margin-top: 75px; margin-bottom: 25px;">공지
 				사항</h1>
-			<table class="table">
+			<div class="panel panel-primary">
+				<!-- Default panel contents -->
+				<div class="panel-heading">${view.noticeview.noticeTitle }</div>
+				<table class="table table-bordered">
 				<colgroup>
-				<col width="15%">
-				<col width="55%">
-				<col width="20%">
-				<col width="10%">
+				<col width="77%">
+				<col width="16%">
+				<col width="7%">
 				</colgroup>
-				<thead>
-					<tr bgcolor='#002266'>
-						<th><span class="glyphicon glyphicon-time white"
-							aria-hidden="true"></span></th>
-						<th></th>
-						<th><span class="glyphicon glyphicon-user white"
-							aria-hidden="true"></span></th>
-						<th><span class="glyphicon glyphicon-eye-open white"
-							aria-hidden="true"></span></th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="notice" items="${notice.noticelist}">
+					<thead>
 						<tr>
-							<td>${notice.noticeDay}</td>
-							<td>
-								<a style="color:black;" href="${pageContext.request.contextPath}/${currentuserid}/noticeview?noticeId=${notice.noticeId}">${notice.noticeTitle}</a>
-							</td>
-							<td>관리자</td>
-							<td>${notice.noticeHit}</td>
+							<th><span>관리자</span></th>
+							<th><span class="glyphicon glyphicon-time gray"
+								aria-hidden="true">${view.noticeview.noticeDay }</span></th>
+							<th><span class="glyphicon glyphicon-eye-open gray"
+								aria-hidden="true">${view.noticeview.noticeHit }</span></th>
 						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+							<tr>
+								<td colspan="3">${view.noticeview.noticeContent }
+								</td>
+							</tr>
+					</tbody>
+				</table>
+			</div>
 			<form action="${pageContext.request.contextPath}/${currentuserid}/"
 				method="post">
 				<button type="button" class="fa fa-pencil notice notice4"

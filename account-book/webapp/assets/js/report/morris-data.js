@@ -1,8 +1,17 @@
 $(function() {
 	var beanobj = {};
-	var data1 = [];
 	var oper = {};
 	var opernum = 0;
+	var data1 = [];
+	
+	var d = new Date();
+	var gfy = d.getFullYear();
+	var gm = d.getMonth()+1;
+	if(d.getMonth() < 9){
+		$("#yearmonth").text(gfy+".0"+gm);
+	} else {
+		$("#yearmonth").text(gfy+"."+gm);
+	}
 	
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/limitgraph",
@@ -12,7 +21,16 @@ $(function() {
 	    contentType: "application/json; charset=UTF-8",
 	    success: function( response ){
 	    	for(var i=0; i<response.data.length; i++){
-		    	 data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+		    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+		    	if((response.data[i].lsum / response.data[i].ml) < 0.6){
+				    barcolnum[i] = 2;
+				} else if((response.data[i].lsum / response.data[i].ml) < 0.9) {
+					barcolnum[i] = 4;
+				} else if((response.data[i].lsum / response.data[i].ml) < 1) {
+					barcolnum[i] = 5;
+				} else {
+					barcolnum[i] = 6;
+				}
 	    	}
 	    	Morris.Bar({
 	            element: 'morris-bar-chart',
@@ -30,6 +48,22 @@ $(function() {
 	});
 	
 	$("#cl").click(function(){
+		gm = gm - 1;
+		if(gm == 0){
+			gfy = gfy - 1;
+			gm = 12;
+		}
+		
+		if(gm < 10){
+			$("#yearmonth").text(gfy+".0"+gm);
+		} else {
+			$("#yearmonth").text(gfy+"."+gm);
+		}
+		
+		data1 = [];
+		$("svg").remove();
+    	$(".morris-default-style").remove();
+    	
 		opernum = opernum - 1;
 		oper = {operation: opernum};
 		
@@ -40,8 +74,20 @@ $(function() {
 		    data: JSON.stringify(oper),
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
+		    	if(response.data.length == 0){
+		    		data1[0] = {y: "없음", a: 0, b: 0};
+		    	}
 		    	for(var i=0; i<response.data.length; i++){
-			    	 data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+			    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+			    	if((response.data[i].lsum / response.data[i].ml) < 0.6){
+					    barcolnum[i] = 2;
+					} else if((response.data[i].lsum / response.data[i].ml) < 0.9) {
+						barcolnum[i] = 4;
+					} else if((response.data[i].lsum / response.data[i].ml) < 1) {
+						barcolnum[i] = 5;
+					} else {
+						barcolnum[i] = 6;
+					}
 		    	}
 		    	Morris.Bar({
 		            element: 'morris-bar-chart',
@@ -57,9 +103,27 @@ $(function() {
 		       console.error( status + " : " + error );	       
 		    }
 		});
+		barcolnum = [];
+	    numcnt = -1;
 	});
 	
 	$("#cr").click(function(){
+		gm = gm + 1;
+		if(gm == 13){
+			gfy = gfy + 1;
+			gm = 1;
+		}
+		
+		if(gm < 10){
+			$("#yearmonth").text(gfy+".0"+gm);
+		} else {
+			$("#yearmonth").text(gfy+"."+gm);
+		}
+		
+		data1 = [];
+		$("svg").remove();
+    	$(".morris-default-style").remove();
+    	
 		opernum = opernum + 1;
 		oper = {operation: opernum};
 		
@@ -70,8 +134,20 @@ $(function() {
 		    data: JSON.stringify(oper),
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
+		    	if(response.data.length == 0){
+		    		data1[0] = {y: "없음", a: 0, b: 0};
+		    	}
 		    	for(var i=0; i<response.data.length; i++){
-			    	 data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+			    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
+			    	if((response.data[i].lsum / response.data[i].ml) < 0.6){
+					    barcolnum[i] = 2;
+					} else if((response.data[i].lsum / response.data[i].ml) < 0.9) {
+						barcolnum[i] = 4;
+					} else if((response.data[i].lsum / response.data[i].ml) < 1) {
+						barcolnum[i] = 5;
+					} else {
+						barcolnum[i] = 6;
+					}
 		    	}
 		    	Morris.Bar({
 		            element: 'morris-bar-chart',
@@ -87,6 +163,8 @@ $(function() {
 		       console.error( status + " : " + error );	       
 		    }
 		});
+		barcolnum = [];
+	    numcnt = -1;
 	});
 
     /*Morris.Area({
