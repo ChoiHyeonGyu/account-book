@@ -46,9 +46,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<form action="${pageContext.request.contextPath}/${currentuserid}/"
+			<form action="${pageContext.request.contextPath}/${currentuserid}/noticeAdd"
 				method="post">
-				<button type="button" class="fa fa-pencil notice notice4"
+				<button id="noticeAdd" type="button" class="fa fa-pencil notice notice4"
 					style="margin-bottom: 20px; float: right;">글쓰기</button>
 			</form>
 		</div>
