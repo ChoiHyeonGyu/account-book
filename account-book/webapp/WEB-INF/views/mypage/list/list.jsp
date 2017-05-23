@@ -33,19 +33,17 @@
 				<div class="col-md-12">
 
 					<!-- 가계부리스트영역 -->
-					<div class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 월 수입 =
+					<div class="fontlist">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   월 수입 =
 						{}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출
 						= {}</div>
-					<form
-						action="${pageContext.request.contextPath}/${currentuserid}/list"
-						method="post">
+					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
 						<input type="search" name="searching" size="115"
 							placeholder="현금,금액,카테고리"> <input class="btn btn-default"
 							type="submit" value="검색">
 
 					</form>
 
-
+<%-- 
 					<form
 						action="${pageContext.request.contextPath }/${currentuserid}/add"
 						method="post">
@@ -65,7 +63,6 @@
 							</colgroup>
 
 							<thead>
-
 								<tr>
 									<th class="mine1 tablecolor tableoption"
 										style="background: #ececec" WIDTH="50">날짜</th>
@@ -117,7 +114,7 @@
 						</table>
 
 					</form>
-
+ --%>
 					<table class="table-bordered border-collapse"
 						style="background: #ececec">
 						<colgroup>
@@ -132,7 +129,58 @@
 							<col width="5%" />
 
 						</colgroup>
+							<thead>
+								<tr>
+									<th class="mine1 tablecolor tableoption"
+										style="background: #ececec" WIDTH="50">날짜</th>
+									<th class="mine2 tablecolor" style="background: #ececec">사용내역</th>
+									<th class="mine3 tablecolor" style="background: #ececec">금액</th>
+									<th class="mine3 tablecolor" style="background: #ececec">결제수단</th>
+									<th class="mine3 tablecolor" style="background: #ececec">지출/수입/투자</th>
+									<th class="mine3 tablecolor" style="background: #ececec">은행</th>
+									<th class="mine3 tablecolor" style="background: #ececec">카테고리</th>
+									<th class="mine3 tablecolor" style="background: #ececec">지도</th>
+									<th class="mine3 tablecolor" style="background: #ececec">삭제</th>
+								</tr>
+							</thead>
+						
+							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
+								<tr>
+									<td><input type="text" id="datepicker" name="day"
+										class="tableinput" placeholder="날짜 입력하기"></td>
+									<td><input value="" class="mine tablecoler"
+										style="background: #ececec" placeholder="사용내역" name="name"></td>
+									<td><input value="" class="mine tablecolor "
+										style="background: #ececec" placeholder="금액" name="money"></td>
+									<td><select id="paid" name="paid" class="tableinput">
+											<option value="현금">현금</option>
+											<option value="카드">카드</option>
+									</select></td>
+									<td><select id="operations" class="tableinput"
+										name="operations">
 
+											<option value="-">지출</option>
+											<option value="+">수입</option>
+											<option value="0">투자</option>
+									</select></td>
+									<td><input value="" class="mine tablecolor"
+										style="background: #ececec" placeholder="은행" name="bank"></td>
+									<!-- <td><input value="" class="mine tablecolor"
+										style="background: #ececec" placeholder="카테고리" name="category"></td>
+									 -->
+									<td><select id="category" class="tableinput" name="category">
+										<c:forEach var="bb" items="${option}">
+											<option value="${bb.category}">${bb.category}</option>
+										</c:forEach>
+									</select></td>
+									<td><input value="" class="mine tablecolor"
+										style="background: #ececec" placeholder="지도"></td>
+									<td><input type="submit" value="저장"
+										class="btn btn-default" /></td>
+								</tr>
+
+						</form>
+						
 						<c:forEach var="vo" items="${ps.list}" varStatus="status">
 							<script>
 								listarray.push("${vo.listId}");
@@ -142,7 +190,7 @@
 									style="background: #ececec"></td>
 								<td><input value="${vo.name}" class="mine tablecoler"
 									style="background: #ececec"></td>
-								<td><label id="${vo.listId}" style="background: #ececec">${vo.money}</label></td>
+								<td><label id="${vo.listId}" style="background: #ececec">${vo.money}원</label></td>
 								<td><input value="${vo.paid}" class="mine tablecoler"
 									style="background: #ececec"></td>
 								<td><input value="${vo.operations}" class="mine tablecoler"

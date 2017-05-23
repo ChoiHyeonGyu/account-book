@@ -50,4 +50,14 @@ public class ConvertMoneyForm {
 		return (mon);
 	}
 
+	final public static boolean checkInt(String searching){
+		try {
+			Integer.parseInt(searching);
+			return true;
+		} catch (Exception e) {
+			return false;
+			// TODO: handle exception
+		}
+	}
+	
 }
