@@ -38,7 +38,8 @@ public class ListController {
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = false) String searching, @PathVariable String id) {
 		service.getList(vo);
-
+		
+		/*service.totalmonth(vo);*/
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
 
