@@ -180,4 +180,10 @@ public class BoardController {
 		model.addAttribute("option", option);
 		return "report/mygraph";
 	}
+	
+	@ResponseBody
+	@RequestMapping("/importgraph")
+	public JSONResult importgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.importgraph(id));
+	}
 }

@@ -148,4 +148,8 @@ public class BoardDao {
 	public List<GraphVo> movelimitgraphselect(Map<String, Object> map){
 		return sqlSession.selectList("board.movelimitgraphselect", map);
 	}
+	
+	public List<GraphVo> importgraphselect(String id){
+		return sqlSession.selectList("board.importgraphselect", id);
+	}
 }

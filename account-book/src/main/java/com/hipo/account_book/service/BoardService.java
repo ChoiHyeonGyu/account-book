@@ -255,4 +255,8 @@ public class BoardService {
 	public List<GraphVo> movelimitgraph(Map<String, Object> map){
 		return boardDao.movelimitgraphselect(map);
 	}
+	
+	public List<GraphVo> importgraph(String id){
+		return boardDao.importgraphselect(id);
+	}
 }

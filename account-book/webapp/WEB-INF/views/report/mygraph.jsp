@@ -23,12 +23,12 @@
             <div class="tab-content">
                 <div class="tab-pane fade in active" id="import">
                 	<div class="flot-chart">
-                        <div class="flot-chart-content" id="flot-line-chart-multi"></div>
+                        <div class="flot-chart-content" id="flot-line-chart-mt1"></div>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="export">
                 	<div class="flot-chart">
-                        <div class="flot-chart-content" id="flot-line-chart-multi"></div>
+                        <div class="flot-chart-content" id="flot-line-chart"></div>
                     </div>
                 </div>
             </div>
