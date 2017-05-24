@@ -7,24 +7,24 @@ public class ListVo {
 	private String bank;
 	private String operations;
 	private int money;
-	private String totalmoney;
-	private String totalincome;
+	private int totalmoney;
+	private int totalincome;
 	private String name;
 	private String category;
 	private String day;
 	private String locationX;
 	private String locationY;
 	
-	public String getTotalmoney() {
+	public int getTotalmoney() {
 		return totalmoney;
 	}
-	public void setTotalmoney(String totalmoney) {
+	public void setTotalmoney(int totalmoney) {
 		this.totalmoney = totalmoney;
 	}
-	public String getTotalincome() {
+	public int getTotalincome() {
 		return totalincome;
 	}
-	public void setTotalincome(String totalincome) {
+	public void setTotalincome(int totalincome) {
 		this.totalincome = totalincome;
 	}
 	

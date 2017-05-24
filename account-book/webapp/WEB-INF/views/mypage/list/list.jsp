@@ -33,11 +33,11 @@
 				<div class="col-md-12">
 
 					<!-- 가계부리스트영역 -->
-					<div class="fontlist">&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   월 수입 =
-						{}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출
-						= {}</div>
+					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font color="green">
+						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font color="red">
+						 ${v2}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
-						<input type="search" name="searching" size="115"
+						<input type="search" name="searching" size="117"
 							placeholder="현금,금액,카테고리"> <input class="btn btn-default"
 							type="submit" value="검색">
 
@@ -118,14 +118,14 @@
 					<table class="table-bordered border-collapse"
 						style="background: #ececec">
 						<colgroup>
-							<col width="10%" />
+							<col width="15%" />
 							<col width="20%" />
-							<col width="10%" />
+							<col width="13%" />
 							<col width="10%" />
 							<col width="13%" />
 							<col width="10%" />
-							<col width="10%" />
-							<col width="5%" />
+							<col width="15%" />
+							<col width="3%" />
 							<col width="5%" />
 
 						</colgroup>
@@ -159,9 +159,9 @@
 									<td><select id="operations" class="tableinput"
 										name="operations">
 
-											<option value="-">지출</option>
-											<option value="+">수입</option>
-											<option value="0">투자</option>
+											<option value="-" class="textline">지출</option>
+											<option value="+" class="textline">수입</option>
+											<option value="0" class="textline">투자</option>
 									</select></td>
 									<td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="은행" name="bank"></td>
@@ -176,10 +176,11 @@
 									<td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="지도"></td>
 									<td><input type="submit" value="저장"
-										class="btn btn-default" /></td>
+										class="btn btn-default  btn-sm " /> </td>
+						
 								</tr>
-
-						</form>
+								</form>	
+						
 						
 						<c:forEach var="vo" items="${ps.list}" varStatus="status">
 							<script>
@@ -193,8 +194,19 @@
 								<td><label id="${vo.listId}" style="background: #ececec">${vo.money}원</label></td>
 								<td><input value="${vo.paid}" class="mine tablecoler"
 									style="background: #ececec"></td>
-								<td><input value="${vo.operations}" class="mine tablecoler"
-									style="background: #ececec"></td>
+								<td>
+									<c:choose>
+										<c:when test="${vo.operations == '+'}">
+											<input value="수입" class="mine tablecoler" style="background: #ececec">
+										</c:when>
+										<c:when test="${vo.operations == '-'}">
+											<input value="지출" class="mine tablecoler" style="background: #ececec">
+										</c:when>
+										<c:otherwise>
+											<input value="투자" class="mine tablecoler" style="background: #ececec">
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td><input value="${vo.bank}" class="mine tablecoler"
 									style="background: #ececec"></td>
 								<td><input value="${vo.category}" class="mine tablecoler"
@@ -204,8 +216,8 @@
 									style="background: #ececec"></strong></td>
 								<td><a
 									href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"
-									class="col-lg-offset-5 tablecoler"><img
-										src="${pageContext.request.contextPath}/assets/images/delete.jpg"></a></td>
+									class="col-lg-offset-5 tablecoler glyphicon glyphicon-trash"><%-- <img
+										src="${pageContext.request.contextPath}/assets/images/delete.jpg"> --%></a></td>
 							</tr>
 						</c:forEach>
 						</tbody>

@@ -1,3 +1,7 @@
+var beanobj = {};
+var dtp = new Date().getTime()-(365.2425 * 24 * 60 * 60 * 1000);
+var dtn = new Date().getTime();
+
 //Flot Line Chart
 $(document).ready(function() {
 
@@ -86,12 +90,9 @@ $(function() {
         }
     });*/
 	
-	var beanobj = {};
-	var data2 = [];
-	var data3 = [];
 	var data4 = [];
 	
-	$.ajax( {
+	/*$.ajax( {
 	    url : "/account-book/"+currentid+"/graphmonth",
 	    type: "POST",
 	    dataType: "JSON",
@@ -129,9 +130,9 @@ $(function() {
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
 	    }
-	});
+	});*/
 	
-	$.ajax( {
+	/*$.ajax( {
 	    url : "/account-book/"+currentid+"/graphyear",
 	    type: "POST",
 	    dataType: "JSON",
@@ -169,7 +170,7 @@ $(function() {
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
 	    }
-	});
+	});*/
 	
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/graphavgdefault",
@@ -301,7 +302,7 @@ $(function() {
 
 //Flot Multiple Axes Line Chart
 $(function() {
-    var oilprices = [
+    /*var oilprices = [
         [1167692400000, 61.05],
         [1167778800000, 58.32],
         [1167865200000, 57.35],
@@ -1258,27 +1259,28 @@ $(function() {
         [1220738400000, 0.70120],
         [1220824800000, 0.7010],
         [1220911200000, 0.70050]
-    ];
+    ];*/
 
     function euroFormatter(v, axis) {
         return v.toFixed(axis.tickDecimals) + "€";
     }
-
+    
     function doPlot(position) {
-        $.plot($("#flot-line-chart-multi"), [{
+        /*$.plot($("#flot-line-chart-multi"), [{
             data: oilprices,
             label: "Oil price ($)"
         }, {
             data: exchangerates,
             label: "USD/EUR exchange rate",
             yaxis: 2
-        }], {
+        }],{
             xaxes: [{
                 mode: 'time'
             }],
             yaxes: [{
                 min: 0
-            }, {
+            },
+            {
                 // align if we are to the right
                 alignTicksWithAxis: position == "right" ? 1 : null,
                 position: position,
@@ -1300,7 +1302,89 @@ $(function() {
                 }
             }
 
-        });
+        });*/
+    	var data2 = [];
+    	var column1 = [];
+    	var data3 = [];
+    	
+    	$.ajax( {
+    	    url : "/account-book/"+currentid+"/importgraph",
+    	    type: "POST",
+    	    dataType: "JSON",
+    	    data: JSON.stringify(beanobj),
+    	    contentType: "application/json; charset=UTF-8",
+    	    success: function( response ){
+    	    	console.log(response);
+    	    	if(response.data.length == 0){
+    	    		data2[0] = {label: "없음", data: 1};
+    	    	}
+    	    	
+    	    	//[{ data: oilprices, label: "Oil price ($)"}, { data: exchangerates, label: "USD/EUR exchange rate"}]
+    	    	
+    	    	for(var i=0; i<response.data.length; i++){
+    	    		for(var j=0; j<(column1.length+1); j++){
+    	    			if(column1.length == 0){
+    	    				column1[j] = response.data[i].category;
+    	    			}
+    	    			if(column1[j] != response.data[i].category){
+    	    				var c = response.data[i].category;
+    	    				for(var k=0; k<column1.length; k++){
+    	    					console.log("더 안쪽");
+    	    					if(column1[k] != c && j==column1.length){
+    	    						console.log("도착");
+        	    					column1[k] = c;
+        	    				}
+    	    				} 
+    	    			}
+    	    		}
+    	    	}
+    	    	console.log(column1);
+    	    	//{label: response.data[i].category, data: [response.data[i].day, response.data[i].lsum]};
+    	    	/*for(var i=0; i<response.data.length; i++){
+    	    		for(var j=0; j<response.data.length; j++){
+        	    		if(column1[i].label == column1[j].label){
+        	    			data2[i].concat(column1[i],column1[j]);
+        	    		}
+        	    	}
+    	    	}
+    	    	console.log(data2);*/
+    	    	
+    	    	/*$.plot($("#flot-line-chart-mt1"), column1, {
+    	            xaxes: [{
+    	                mode: 'time',
+    	                min: dtp,
+    	                max: dtn
+    	            }],
+    	            yaxes: [{
+    	                min: 0
+    	            },
+    	            {
+    	                alignTicksWithAxis: position == "right" ? 1 : null,
+    	                position: position,
+    	                tickFormatter: euroFormatter
+    	            }],
+    	            legend: {
+    	                position: 'sw'
+    	            },
+    	            grid: {
+    	                hoverable: true
+    	            },
+    	            tooltip: true,
+    	            tooltipOpts: {
+    	                content: "%s for %x was %y",
+    	                xDateFormat: "%y-%0m-%0d",
+
+    	                onHover: function(flotItem, $tooltipEl) {
+    	                    
+    	                }
+    	            }
+    	        });*/
+    	    },
+    	    error: function( XHR, status, error ){
+    	       console.error( status + " : " + error );	       
+    	    }
+    	});
+    	
     }
 
     doPlot("right");

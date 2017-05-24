@@ -37,17 +37,23 @@ public class ListController {
 	public String List(Model model, @ModelAttribute OptionVo optionvo, @ModelAttribute ListVo vo,
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = false) String searching, @PathVariable String id) {
-		service.getList(vo);
+		/*service.getList(vo);*/
 		
-		/*service.totalmonth(vo);*/
+	
+		/*model.addAttribute("day1", money);*/
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
 
 		List<OptionVo> option = optionservice.getCategory(optionvo);
-
-		model.addAttribute("ps", service.pageSearching(pagination, searching, id));
-
-		/* model.addAttribute("list", list); */
+		Map<String,Object> m = service.pageSearching(pagination, searching, id);
+		System.out.println("mmmmmmmmmmm ~~~~~~~~~~" +m);
+		model.addAttribute("ps",m);
+		int v3 = service.totalmonth1(id);
+		System.out.println("아이디1" +id);
+		 int v2 = service.totalmonth(id);
+		 System.out.println("아이디2" +id);
+		 model.addAttribute("v2",v2);
+		 model.addAttribute("v3",v3);
 		model.addAttribute("option", option);
 		return "mypage/list/list";
 	}

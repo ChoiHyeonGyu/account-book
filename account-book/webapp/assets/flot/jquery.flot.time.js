@@ -46,7 +46,8 @@ API.txt for details.
 		var isAM = hours < 12;
 
 		if (monthNames == null) {
-			monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+			monthNames = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+			//monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 		}
 
 		if (dayNames == null) {
@@ -197,8 +198,9 @@ API.txt for details.
 	function init(plot) {
 		plot.hooks.processOptions.push(function (plot, options) {
 			$.each(plot.getAxes(), function(axisName, axis) {
-
+				
 				var opts = axis.options;
+				//console.log(axis);
 
 				if (opts.mode == "time") {
 					axis.tickGenerator = function(axis) {
@@ -394,8 +396,13 @@ API.txt for details.
 							if (span < timeUnitSize.year) {
 								fmt = "%b";
 							} else {
-								fmt = "%b %Y";
+								fmt = "%Y.%b";
 							}
+							/*if (span < timeUnitSize.year) {
+								fmt = "%b";
+							} else {
+								fmt = "%b %Y";
+							}*/
 						} else if (useQuarters && t < timeUnitSize.year) {
 							if (span < timeUnitSize.year) {
 								fmt = "Q%q";
