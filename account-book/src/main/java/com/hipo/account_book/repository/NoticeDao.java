@@ -34,4 +34,12 @@ public class NoticeDao {
 		
 		return sql.selectOne("notice.noticeview2", noticeId);
 	}
+	
+	public void noticeAdd(NoticeVo vo){
+		sql.insert("notice.noticeadd", vo);
+	}
+	
+	public void noticeHit(int noticeId){
+		sql.update("notice.hit", noticeId);
+	}
 }

@@ -1,12 +1,12 @@
-var userId;
+var userIdarray = [];
 $(document).ready(function() {
 
 	$("#noticeAdd").click(function() {
-		var id = userId;
-		if (id == "superjun3") {
+		var userId = userIdarray[0];
+		if (userId == "superjun3") {
 			$("#noticeAddform").modal();
 		} else {
-			alert("권한이 없습니다.");
+			alert("접근 권한이 없습니다.");
 		}
 	});
 });
