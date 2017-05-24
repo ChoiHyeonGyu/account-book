@@ -29,8 +29,6 @@
 	src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/frontpage/login.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/frontpage/viewboard.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">

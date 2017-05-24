@@ -697,6 +697,9 @@ jQuery.extend({
 	},
 
 	grep: function( elems, callback, inv ) {
+		console.log(elems);
+		console.log(callback);
+		console.log(inv);
 		var retVal,
 			ret = [],
 			i = 0,

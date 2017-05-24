@@ -33,20 +33,6 @@
 <script
 	src="${pageContext.request.contextPath}/assets/js/include/sb-admin-2.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/assets/flot/excanvas.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.pie.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.resize.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.time.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot-tooltip/jquery.flot.tooltip.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/report/flot-data.js"></script>
-<script
 	src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
@@ -78,20 +64,6 @@
 	src="${pageContext.request.contextPath}/assets/js/include/creative.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/include/sb-admin-2.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/excanvas.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.pie.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.resize.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot/jquery.flot.time.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/flot-tooltip/jquery.flot.tooltip.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/report/flot-data.js"></script>
 <script
 	src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
 <script

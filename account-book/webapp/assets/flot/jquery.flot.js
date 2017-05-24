@@ -110,7 +110,7 @@ Licensed under the MIT license.
 		this.pixelRatio = devicePixelRatio / backingStoreRatio;
 
 		// Size the canvas to match the internal dimensions of its container
-
+		
 		this.resize(container.width(), container.height());
 
 		// Collection of HTML div layers for text overlaid onto the canvas
@@ -710,7 +710,6 @@ Licensed under the MIT license.
         draw();
         bindEvents();
 
-
         function executeHooks(hook, args) {
             args = [plot].concat(args);
             for (var i = 0; i < hook.length; ++i)
@@ -777,6 +776,7 @@ Licensed under the MIT license.
                     weight: placeholder.css("font-weight"),
                     family: placeholder.css("font-family")
                 };
+                
 
             axisCount = options.xaxes.length || 1;
             for (i = 0; i < axisCount; ++i) {
@@ -916,6 +916,8 @@ Licensed under the MIT license.
 
         function allAxes() {
             // return flat array without annoying null entries
+        	/*console.log(xaxes);
+        	console.log(yaxes);*/
             return $.grep(xaxes.concat(yaxes), function (a) { return a; });
         }
 
@@ -1406,7 +1408,7 @@ Licensed under the MIT license.
                 legacyStyles = axis.direction + "Axis " + axis.direction + axis.n + "Axis",
                 layer = "flot-" + axis.direction + "-axis flot-" + axis.direction + axis.n + "-axis " + legacyStyles,
                 font = opts.font || "flot-tick-label tickLabel";
-
+            
             for (var i = 0; i < ticks.length; ++i) {
 
                 var t = ticks[i];
@@ -1551,6 +1553,8 @@ Licensed under the MIT license.
             $.each(allAxes(), function (_, axis) {
                 if (axis.reserveSpace && axis.ticks && axis.ticks.length) {
                     if (axis.direction === "x") {
+                    	/*console.log(axis.labelWidth);
+                    	console.log(axis.labelHeight);*/
                         margins.left = Math.max(margins.left, axis.labelWidth / 2);
                         margins.right = Math.max(margins.right, axis.labelWidth / 2);
                     } else {
@@ -1625,7 +1629,8 @@ Licensed under the MIT license.
                     allocateAxisBoxSecondPhase(axis);
                 });
             }
-
+            
+            console.log(surface.height);
             plotWidth = surface.width - plotOffset.left - plotOffset.right;
             plotHeight = surface.height - plotOffset.bottom - plotOffset.top;
 
@@ -1934,7 +1939,7 @@ Licensed under the MIT license.
         function drawBackground() {
             ctx.save();
             ctx.translate(plotOffset.left, plotOffset.top);
-
+            
             ctx.fillStyle = getColorOrGradient(options.grid.backgroundColor, plotHeight, 0, "rgba(255, 255, 255, 0)");
             ctx.fillRect(0, 0, plotWidth, plotHeight);
             ctx.restore();
@@ -2182,6 +2187,7 @@ Licensed under the MIT license.
         function drawAxisLabels() {
 
             $.each(allAxes(), function (_, axis) {
+            	
                 var box = axis.box,
                     legacyStyles = axis.direction + "Axis " + axis.direction + axis.n + "Axis",
                     layer = "flot-" + axis.direction + "-axis flot-" + axis.direction + axis.n + "-axis " + legacyStyles,
@@ -2225,6 +2231,8 @@ Licensed under the MIT license.
 
                     surface.addText(layer, x, y, tick.label, font, null, null, halign, valign);
                 }
+                /*console.log(tick);
+                console.log(x);*/
             });
         }
 

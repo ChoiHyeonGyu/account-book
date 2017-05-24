@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/views/include/main_top.jsp"/>
+<c:import url="/WEB-INF/views/include/flot.jsp" />
     <div class="container">
     	<div class="row mt">		
 			<div class="col-lg-12">

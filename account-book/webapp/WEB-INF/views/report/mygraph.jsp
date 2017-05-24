@@ -2,9 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
-
-<!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<script src="${pageContext.request.contextPath}/assets/js/report/graph.js"></script>
+<c:import url="/WEB-INF/views/include/flot.jsp" />
 
 <div class="container">
 	<div class="row mt">
@@ -17,8 +15,8 @@
 		<!-- 메인컨텐츠영역 (그래프) -->
 		<div class="col-lg-10">
 			<ul class="nav nav-tabs">
-                <li class="active"><a id="im" href="#import" data-toggle="tab">수입</a></li>
-                <li><a id="ex" href="#export" data-toggle="tab">지출</a></li>
+                <li class="active"><a href="#import" data-toggle="tab">수입</a></li>
+                <li><a href="#export" data-toggle="tab">지출</a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -30,7 +28,7 @@
                 </div>
                 <div class="tab-pane fade" id="export">
                 	<div class="flot-chart">
-                        <div class="flot-chart-content" id="flot-line-chart-mt2"></div>
+                        <div class="flot-chart-content2" id="flot-line-chart-mt2"></div>
                     </div>
                 </div>
             </div>

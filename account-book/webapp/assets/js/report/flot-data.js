@@ -1350,8 +1350,6 @@ $(function() {
     	    	if(response.data.length == 0){
     	    		data2[0] = {label: "없음", data: 1};
     	    	}
-    	    	
-    	    	//[{ data: oilprices, label: "Oil price ($)"}, { data: exchangerates, label: "USD/EUR exchange rate"}]
 
     	    	for(var i=0; i<response.data.length; i++){
     	    		column1[i] = response.data[i].category;
@@ -1420,8 +1418,6 @@ $(function() {
     	    	if(response.data.length == 0){
     	    		data3[0] = {label: "없음", data: 1};
     	    	}
-    	    	
-    	    	//[{ data: oilprices, label: "Oil price ($)"}, { data: exchangerates, label: "USD/EUR exchange rate"}]
 
     	    	for(var i=0; i<response.data.length; i++){
     	    		column4[i] = response.data[i].category;
@@ -1480,7 +1476,7 @@ $(function() {
     	    }
     	});
     }
-
+    
     doPlot("right");
 
     $("button").click(function() {
