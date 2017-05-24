@@ -25,7 +25,8 @@
 		<div class="col-lg-10">
 
 			<!-- 그래프영역 -->
-			<div>여기는 navigator 입니다.</div>
+			<a href="${pageContext.request.contextPath}/${currentuserid}/logon" >편리한가계부</a>&nbsp;/
+			<a href="${pageContext.request.contextPath}/${currentuserid}/list" >리스트</a>
 			<c:import url="/WEB-INF/views/report/limit_graph.jsp" />
 
 			<h1 align="center"></h1>
@@ -33,13 +34,13 @@
 				<div class="col-md-12">
 
 					<!-- 가계부리스트영역 -->
-					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font color="green">
+					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font color="blue">
 						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font color="red">
 						 ${v2}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
-						<input type="search" name="searching" size="121"
-							placeholder="현금,금액,카테고리"> <input class="btn btn-default"
-							type="submit" value="검색">
+						<input type="search" name="searching" size="123" class="searchbox"
+							placeholder="현금,금액,카테고리"> <button class="fa fa-search fa-1 sr-contact searchbox1"
+							type="submit"></button>
 
 					</form>
 
@@ -115,7 +116,7 @@
 
 					</form>
  --%>
-					<table class="table-bordered border-collapse"
+					<table class="table-bordered border-collapse searchbox"
 						style="background: #ececec">
 						<colgroup>
 							<col width="15%" />
@@ -124,59 +125,59 @@
 							<col width="10%" />
 							<col width="13%" />
 							<col width="10%" />
-							<col width="15%" />
-							<col width="3%" />
+							<col width="12%" />
 							<col width="5%" />
+							<col width="8%" />
 
 						</colgroup>
 							<thead>
 								<tr>
 									<th class="mine1 tablecolor tableoption"
-										style="background: #ececec" WIDTH="50">날짜</th>
-									<th class="mine2 tablecolor" style="background: #ececec">사용내역</th>
-									<th class="mine3 tablecolor" style="background: #ececec">금액</th>
-									<th class="mine3 tablecolor" style="background: #ececec">결제수단</th>
-									<th class="mine3 tablecolor" style="background: #ececec">지출/수입/투자</th>
-									<th class="mine3 tablecolor" style="background: #ececec">은행</th>
-									<th class="mine3 tablecolor" style="background: #ececec">카테고리</th>
-									<th class="mine3 tablecolor" style="background: #ececec">지도</th>
-									<th class="mine3 tablecolor" style="background: #ececec">삭제</th>
+										style="background: #d1d1d1" WIDTH="50">날짜</th>
+									<th class="mine2 tablecolor" style="background: #d1d1d1">사용내역</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">금액</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">결제수단</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">지출/수입/투자</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">은행</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">카테고리</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">지도</th>
+									<th class="mine3 tablecolor" style="background: #d1d1d1">변경</th>
 								</tr>
 							</thead>
 						
 							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
 								<tr>
 									<td><input type="text" id="datepicker" name="day"
-										class="tableinput" placeholder="날짜 입력하기"></td>
-									<td><input value="" class="mine tablecoler"
-										style="background: #ececec" placeholder="사용내역" name="name"></td>
-									<td><input value="" class="mine tablecolor "
-										style="background: #ececec" placeholder="금액" name="money"></td>
-									<td><select id="paid" name="paid" class="tableinput">
+										class="tableinput" placeholder="날짜 " required></td>
+									<td><input  type="text" value="" class="mine tablecoler"
+										style="background: #ececec" placeholder="사용내역" name="name" required></td>
+									<td><input value="" class="mine tablecolor " type="text"
+										style="background: #ececec" placeholder="금액" name="money" required></td>
+									<td><select id="paid" name="paid" class="tableinput searchbox" required>
 											<option value="현금">현금</option>
 											<option value="카드">카드</option>
 									</select></td>
-									<td><select id="operations" class="tableinput"
-										name="operations">
+									<td><select id="operations" class="tableinput searchbox"
+										name="operations" required>
 
 											<option value="-" class="textline">지출</option>
 											<option value="+" class="textline">수입</option>
 											<option value="0" class="textline">투자</option>
 									</select></td>
-									<td><input value="" class="mine tablecolor"
+									<td><input value="" class="mine tablecolor" type="text"
 										style="background: #ececec" placeholder="은행" name="bank"></td>
 									<!-- <td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="카테고리" name="category"></td>
 									 -->
-									<td><select id="category" class="tableinput" name="category">
+									<td><select id="category" class="tableinput searchbox" name="category" required>
 										<c:forEach var="bb" items="${option}">
 											<option value="${bb.category}">${bb.category}</option>
 										</c:forEach>
 									</select></td>
 									<td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="지도"></td>
-									<td><input type="submit" value="저장"
-										class="btn btn-default  btn-sm " /> </td>
+									<td><input type="submit" value="저장" style="background: #ececec"
+										class="btn btn-sm text11" /> </td>
 						
 								</tr>
 								</form>	
@@ -191,7 +192,7 @@
 									style="background: #ececec"></td>
 								<td><input value="${vo.name}" class="mine tablecoler"
 									style="background: #ececec"></td>
-								<td><label id="${vo.listId}" style="background: #ececec">${vo.money}원</label></td>
+								<td><label id="${vo.listId}"  class="text11 col-lg-offset-2" style="background: #ececec ">${vo.money}원</label></td>
 								<td><input value="${vo.paid}" class="mine tablecoler"
 									style="background: #ececec"></td>
 								<td>

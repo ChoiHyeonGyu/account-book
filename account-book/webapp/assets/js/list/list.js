@@ -23,6 +23,8 @@ $(function(){
 			changeYear:true,
 			showMonthAfterYear:true
 		});
+	
+	
 /*	var myBtnform1 = $("#modify").dialog({
 		autoOpen: false,
 		height: 800,
