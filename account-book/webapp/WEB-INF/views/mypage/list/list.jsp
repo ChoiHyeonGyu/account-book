@@ -37,7 +37,7 @@
 						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font color="red">
 						 ${v2}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
-						<input type="search" name="searching" size="117"
+						<input type="search" name="searching" size="121"
 							placeholder="현금,금액,카테고리"> <input class="btn btn-default"
 							type="submit" value="검색">
 

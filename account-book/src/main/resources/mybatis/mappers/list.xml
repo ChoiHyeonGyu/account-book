@@ -77,11 +77,11 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	
 	<select id="totalmonth" parameterType="string" resultType="int">
 		<![CDATA[
-select sum(money) from list where id = #{id} and  operations='-' and day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400		]]>
+select nvl(sum(money),0) from list where id = #{id} and  operations='-' and day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400		]]>
 	</select>
 	<select id="totalmonth1" parameterType="string" resultType="int">
 		<![CDATA[
-select sum(money) from list where id = #{id} and  operations='+' and day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400		]]>
+select nvl(sum(money),0) from list where id = #{id} and  operations='+' and day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400		]]>
 	</select>
 	
 </mapper>
