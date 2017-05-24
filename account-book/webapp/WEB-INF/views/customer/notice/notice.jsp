@@ -17,8 +17,8 @@
 				사항</h1>
 			<table class="table">
 				<colgroup>
-				<col width="15%">
-				<col width="55%">
+				<col width="25%">
+				<col width="45%">
 				<col width="20%">
 				<col width="10%">
 				</colgroup>
@@ -46,9 +46,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<form action="${pageContext.request.contextPath}/${currentuserid}/"
+			<form action="${pageContext.request.contextPath}/${currentuserid}/noticeAdd"
 				method="post">
-				<button type="button" class="fa fa-pencil notice notice4"
+				<button id="noticeAdd" type="button" class="fa fa-pencil notice notice4"
 					style="margin-bottom: 20px; float: right;">글쓰기</button>
 			</form>
 		</div>

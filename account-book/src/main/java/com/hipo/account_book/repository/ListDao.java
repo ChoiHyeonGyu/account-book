@@ -56,10 +56,28 @@ private SqlSession sql;
 		return sql.selectList("listview.totallist",map);
 	}
 	
-	public ListVo selectlocation(int listId){
+	public int selectlocation(int listId){
 		return sql.selectOne("listview.selectlocation", listId);
 	}
 
+
+	public int totalmonth(String id) {
+		
+		return sql.selectOne("listview.totalmonth", id);
+	}
+
+
+	public int totalmonth1(String id) {
+		
+		return sql.selectOne("listview.totalmonth1", id);
+	}
+
+
+/*	public int totalmonth(ListVo vo) {
+		System.out.println("돈돈돈돈돈돈" + vo);
+		return sql.selectOne("listview.totalmonth", vo);
+	}
+*/
 
 /*	public ListVo totalmonth(ListVo vo) {
 		return sql.selectOne("listview.totalmoney", parameter);

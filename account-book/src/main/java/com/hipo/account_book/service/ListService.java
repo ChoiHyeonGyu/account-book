@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hipo.account_book.repository.ListDao;
-import com.hipo.account_book.utils.ConvertMoneyForm;
 import com.hipo.account_book.vo.ListVo;
 
 @Service
@@ -28,7 +27,7 @@ public class ListService {
 		return dao.delete(vo);
 	}
 
-	public String add(ListVo vo) {
+	public ListVo add(ListVo vo) {
 		dao.add(vo);
 		return null;
 	}
@@ -93,7 +92,7 @@ public class ListService {
 			map.put("list", dao.totalList(search, pagination, LIST_SIZE, id));
 		}*/
 		map.put("list", dao.totalList(searching, pagination, LIST_SIZE, id));
-		
+		/* ListVo vo2= (ListVo) dao.totalList(searching, pagination, LIST_SIZE, id);*/
 		map.put("totalCount", totalCount);
 		map.put("listSize", LIST_SIZE);
 		map.put("pagination", pagination);
@@ -107,13 +106,19 @@ public class ListService {
 
 	}
 
-	public ListVo loadmap(String listId) {
+	public int loadmap(String listId) {
 		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
 	}
 
-/*	public ListVo totalmonth(ListVo vo) {
-		return dao.totalmonth(vo);
-		
-	}*/
+	public  int totalmonth(String id) {
+		System.out.println("아이디!!!!!!!!!!!!" +id);
+		 return dao.totalmonth(id);
+		 
+	}
+
+	public int totalmonth1(String id) {
+		System.out.println("아이디11" +id);	
+		return dao.totalmonth1(id);
+	}
 
 }
