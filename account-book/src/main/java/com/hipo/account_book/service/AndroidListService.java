@@ -17,6 +17,7 @@ public class AndroidListService {
 	private AndroidListDao listDao;
 
 	public boolean addList(ListVo listVo) {
+		System.out.println("(AndroidService)listVo! : "+listVo);
 		return listDao.addList(listVo);
 	}
 
