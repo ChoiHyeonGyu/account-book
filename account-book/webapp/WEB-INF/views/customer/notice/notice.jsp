@@ -17,8 +17,8 @@
 				사항</h1>
 			<table class="table">
 				<colgroup>
-				<col width="15%">
-				<col width="55%">
+				<col width="25%">
+				<col width="45%">
 				<col width="20%">
 				<col width="10%">
 				</colgroup>

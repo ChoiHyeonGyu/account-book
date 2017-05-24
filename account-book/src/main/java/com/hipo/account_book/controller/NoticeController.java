@@ -85,5 +85,7 @@ public class NoticeController {
 		return "customer/notice/qnaView";
 	}
 	
+	
+	
 
 }
