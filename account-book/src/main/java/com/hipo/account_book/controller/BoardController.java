@@ -186,4 +186,10 @@ public class BoardController {
 	public JSONResult importgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.importgraph(id));
 	}
+	
+	@ResponseBody
+	@RequestMapping("/exportgraph")
+	public JSONResult exportgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.exportgraph(id));
+	}
 }

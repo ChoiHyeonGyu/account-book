@@ -25,10 +25,7 @@ import com.hipo.account_book.vo.UserVo;
 @RequestMapping("/{id}")
 public class NoticeController {
 	
-	@Autowired
-	private BoardService boardService;
-	@Autowired
-	private OptionService optionservice;
+
 	@Autowired
 	private ProfileService Pservice;
 	@Autowired
@@ -70,9 +67,14 @@ public class NoticeController {
 		model.addAttribute("v1",v1);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
 		
-		map = noticeService.noticeView(noticeId);
-		model.addAttribute("view", map);
+		System.out.println("mapmapmapmap::"+map);
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		
+		map1 = noticeService.noticeView(noticeId);
+		model.addAttribute("view", map1);
 		
 		return "customer/notice/noticeView";
 	}
@@ -82,6 +84,8 @@ public class NoticeController {
 		
 		return "customer/notice/qnaView";
 	}
+	
+	
 	
 
 }

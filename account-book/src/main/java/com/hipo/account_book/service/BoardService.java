@@ -259,4 +259,8 @@ public class BoardService {
 	public List<GraphVo> importgraph(String id){
 		return boardDao.importgraphselect(id);
 	}
+	
+	public List<GraphVo> exportgraph(String id){
+		return boardDao.exportgraphselect(id);
+	}
 }
