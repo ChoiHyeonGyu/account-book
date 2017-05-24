@@ -78,7 +78,7 @@
 				</tbody>
 			</table>
 			<script>
-				userId.push=("${v1.id}");
+				userIdarray.push("${v1.id}");
 			</script>
 			<button id="noticeAdd" type="button"
 				class="fa fa-pencil notice notice4"
@@ -107,7 +107,7 @@
 					<textarea class="form-control" name="noticeContent" rows="7"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="notice1 notice4">글쓰기</button>
+					<button type="submit" class="notice1 notice4">글쓰기</button>
 				</div>
 			</div>
 		</div>
