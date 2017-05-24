@@ -33,7 +33,8 @@ public class ConvertMoneyForm {
 		return sb.toString();
 	}
 
-	final public static String convertMoney(String money) {//2,000원 -> 2000(int형)
+	final public static String convertMoney(String money) {// 2,000원 ->
+															// 2000(int형)
 		StringBuilder sb = new StringBuilder();
 		StringTokenizer token = new StringTokenizer(money, ",");
 		while (token.hasMoreTokens()) {
@@ -50,7 +51,7 @@ public class ConvertMoneyForm {
 		return (mon);
 	}
 
-	final public static boolean checkInt(String searching){
+	final public static boolean checkInt(String searching) {
 		try {
 			Integer.parseInt(searching);
 			return true;
@@ -59,5 +60,5 @@ public class ConvertMoneyForm {
 			// TODO: handle exception
 		}
 	}
-	
+
 }
