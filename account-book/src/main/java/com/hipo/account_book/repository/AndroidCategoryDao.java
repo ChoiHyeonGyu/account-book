@@ -1,5 +1,7 @@
 package com.hipo.account_book.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -26,4 +28,10 @@ public class AndroidCategoryDao {
 	public boolean addUsersCategory(OptionVo optionVo) {
 		return sqlSession.insert("android.addUsersCategory", optionVo) == 1;
 	}
+	
+	public List<OptionVo> getCategoryList(String id) {
+		return sqlSession.selectList("android.getCategoryList", id);
+	}
+	
+	
 }
