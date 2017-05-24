@@ -59,7 +59,8 @@ public class NoticeController {
 	@RequestMapping("/noticeview")
 	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id) {
 
-		System.out.println("noidnoidnoid::" + id);
+		System.out.println("noidnoidnoid::" + noticeId);
+		noticeService.NoticeHit(noticeId);
 
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
@@ -84,9 +85,14 @@ public class NoticeController {
 	}
 
 	@RequestMapping("/noticeadd")
-	public String NoticeAdd(Model model, @PathVariable String id) {
-
-		
+	public String NoticeAdd(Model model, @PathVariable String id,
+			@ModelAttribute NoticeVo vo) {
+		String content;
+		System.out.println("novonovonovo:::"+vo);
+		content = vo.getNoticeContent();
+		content = content.replace("\n","<br>");
+		vo.setNoticeContent(content);
+		noticeService.NoticeAdd(vo);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 

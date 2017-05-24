@@ -23,9 +23,9 @@
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="3%">
-						<col width="74%">
+						<col width="76%">
 						<col width="16%">
-						<col width="7%">
+						<col width="5%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -35,7 +35,7 @@
 							<th><span class="glyphicon glyphicon-time gray"
 								aria-hidden="true">${view.noticeview.noticeDay }</span></th>
 							<th><span class="glyphicon glyphicon-eye-open gray"
-								aria-hidden="true">${view.noticeview.noticeHit }</span></th>
+								aria-hidden="true"> ${view.noticeview.noticeHit }</span></th>
 						</tr>
 					</thead>
 					<tbody>

@@ -27,4 +27,15 @@
 		]]>
 	</select>
 		
+	<insert id="noticeadd" parameterType="noticevo">
+		<![CDATA[
+			insert into notice values(seq_category.nextval, #{noticeTitle}, #{noticeContent}, sysdate, 0)
+		]]>
+	</insert>	
+	
+	<update id="hit" parameterType="int">
+		<![CDATA[
+			update notice set hit = hit + 1 where notice_id = #{noticeId}
+		]]>
+	</update>
 </mapper>
