@@ -50,4 +50,11 @@ public class NoticeService {
 		return map;
 	}
 	
+	public void NoticeAdd(NoticeVo vo){
+		noticeDao.noticeAdd(vo);
+	}
+	
+	public void NoticeHit(int noticeId){
+		noticeDao.noticeHit(noticeId);
+	}
 }

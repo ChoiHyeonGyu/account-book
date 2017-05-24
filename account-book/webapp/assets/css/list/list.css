@@ -69,7 +69,7 @@ div#select_box select#operation {
 	font-size: 20px;
 }
 .tablecolor{
-	background:#c0c0c0;
+	background:#ffffff;
 }
 .tableoption{
 	width:10%;
@@ -82,3 +82,18 @@ div#select_box select#operation {
 TEXT-ALIGN:CENTER;
 	
 }
+.searchbox1{
+	background:white;
+	border-radius:5px;
+
+	}
+.searchbox{
+	border-radius:10px;
+}
+.text11{
+background:#ececec;}
+
+.fa-1 {
+  font-size: 1.4em;
+}
+/* #ececec  #f7f7f7*/

@@ -68,4 +68,11 @@
 			insert into userscategory values(#{id },#{categoryId},0)
 		]]>
 	</insert>
+
+	<select id="getCategoryList" parameterType="string" resultType="optionvo">
+		<![CDATA[
+	select a.category_id as categoryId, a.category,b.id from category a,userscategory b where a.category_id=b.category_id and b.id = #{categoryId}
+		]]>
+	</select>
+
 </mapper>

@@ -24,68 +24,82 @@ import com.hipo.account_book.vo.UserVo;
 @Controller
 @RequestMapping("/{id}")
 public class NoticeController {
-	
 
 	@Autowired
 	private ProfileService Pservice;
 	@Autowired
 	private NoticeService noticeService;
-	
+
 	@RequestMapping("/notice")
-	public String Notice(Model model,  @PathVariable String id) {
-		
+	public String Notice(Model model, @PathVariable String id) {
+
 		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
+		model.addAttribute("v1", v1);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
-		
-		
+
 		return "customer/notice/notice";
 	}
-	
+
 	@RequestMapping("/faq")
 	public String Faq(Model model, @PathVariable String id) {
-	
+
 		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		
+		model.addAttribute("v1", v1);
+
 		Map<String, Object> map = new HashMap<String, Object>();
-		
+
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
-	
+
 		return "customer/notice/faq";
 	}
-	
+
 	@RequestMapping("/noticeview")
-	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id){
-		
-		System.out.println("noidnoidnoid::"+id);
-		
+	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id) {
+
+		System.out.println("noidnoidnoid::" + noticeId);
+		noticeService.NoticeHit(noticeId);
+
 		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		
+		model.addAttribute("v1", v1);
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
-		
-		System.out.println("mapmapmapmap::"+map);
+
+		System.out.println("mapmapmapmap::" + map);
 		Map<String, Object> map1 = new HashMap<String, Object>();
-		
+
 		map1 = noticeService.noticeView(noticeId);
 		model.addAttribute("view", map1);
-		
+
 		return "customer/notice/noticeView";
 	}
-	
+
 	@RequestMapping("/qnaview")
-	public String QnaView(@RequestParam("qnaId") int noticeId){
-		
+	public String QnaView(@RequestParam("qnaId") int noticeId) {
+
 		return "customer/notice/qnaView";
 	}
-	
-	
-	
+
+	@RequestMapping("/noticeadd")
+	public String NoticeAdd(Model model, @PathVariable String id,
+			@ModelAttribute NoticeVo vo) {
+		String content;
+		System.out.println("novonovonovo:::"+vo);
+		content = vo.getNoticeContent();
+		content = content.replace("\n","<br>");
+		vo.setNoticeContent(content);
+		noticeService.NoticeAdd(vo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+
+		return "customer/notice/notice";
+	}
 
 }

@@ -1,5 +1,7 @@
 package com.hipo.account_book.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,10 @@ public class AndroidCategoryService {
 
 	public boolean addUsersCategory(OptionVo optionVo) {
 		return aCategoryDao.addUsersCategory(optionVo);
+	}
+
+	public List<OptionVo> getCategoryList(String id) {
+		return aCategoryDao.getCategoryList(id);
 	}
 
 }
