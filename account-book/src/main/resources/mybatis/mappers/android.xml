@@ -51,4 +51,21 @@
  	 	]]>
 	</delete>
 
+	<insert id="addCategory" parameterType="string">
+		<![CDATA[
+			insert into category values(seq_category.nextval,#{category },0)
+		]]>
+	</insert>
+
+	<select id="getCategoryId" parameterType="string" resultType="optionvo">
+		<![CDATA[
+			select category_id as categoryId from category where category = #{category }
+		]]>
+	</select>
+
+	<insert id="addUsersCategory" parameterType="optionvo">
+		<![CDATA[
+			insert into userscategory values(#{id },#{categoryId},0)
+		]]>
+	</insert>
 </mapper>
