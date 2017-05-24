@@ -152,4 +152,8 @@ public class BoardDao {
 	public List<GraphVo> importgraphselect(String id){
 		return sqlSession.selectList("board.importgraphselect", id);
 	}
+	
+	public List<GraphVo> exportgraphselect(String id){
+		return sqlSession.selectList("board.exportgraphselect", id);
+	}
 }

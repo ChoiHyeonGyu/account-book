@@ -234,7 +234,7 @@
 		<![CDATA[
 			select * from (select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{id}) a,
 			(select category, sum(money) as lsum from list where id = #{id} and day between trunc(add_months(sysdate, #{operation}), 'mm') and 
-			trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400 and operations = '-' group by category) b where a.category = b.category
+			trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400 and operations = '-' group by category) b where a.category = b.category order by a.category
 		]]>
 	</select>
 	
@@ -243,6 +243,13 @@
 	<select id="importgraphselect" parameterType="string" resultType="graphvo">
 		<![CDATA[
 			select sum(money) as lsum, category, day as day1 from list where id = #{value} and operations = '+'
+			and day between trunc(add_months(sysdate, -12), 'mm') and trunc(sysdate, 'dd') group by category, day order by day
+		]]>
+	</select>
+	
+	<select id="exportgraphselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where id = #{value} and operations = '-'
 			and day between trunc(add_months(sysdate, -12), 'mm') and trunc(sysdate, 'dd') group by category, day order by day
 		]]>
 	</select>
