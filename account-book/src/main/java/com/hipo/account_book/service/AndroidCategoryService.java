@@ -29,4 +29,8 @@ public class AndroidCategoryService {
 		return aCategoryDao.getCategoryList(id);
 	}
 
+	public boolean deleteCategory(OptionVo optionVo) {
+		return aCategoryDao.deleteCategory(optionVo);
+	}
+
 }

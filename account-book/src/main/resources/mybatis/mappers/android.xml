@@ -75,4 +75,10 @@
 		]]>
 	</select>
 
+	<delete id="categoryDeleteById" parameterType="optionvo">
+ 		<![CDATA[
+		delete from userscategory where category_id=#{categoryId } and id=#{id }
+ 	 	]]>
+	</delete>
+
 </mapper>
