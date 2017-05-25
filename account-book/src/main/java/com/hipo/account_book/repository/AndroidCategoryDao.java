@@ -19,19 +19,22 @@ public class AndroidCategoryDao {
 	}
 
 	public OptionVo getCategoryId(String category) {
-		System.out.println("category : "+category);
+		System.out.println("category : " + category);
 		OptionVo optionVo = sqlSession.selectOne("android.getCategoryId", category);
-		//System.out.println("id values : " + optionVo.toString());
+		// System.out.println("id values : " + optionVo.toString());
 		return optionVo;
 	}
 
 	public boolean addUsersCategory(OptionVo optionVo) {
 		return sqlSession.insert("android.addUsersCategory", optionVo) == 1;
 	}
-	
+
 	public List<OptionVo> getCategoryList(String id) {
 		return sqlSession.selectList("android.getCategoryList", id);
 	}
-	
-	
+
+	public boolean deleteCategory(OptionVo optionVo) {
+		return sqlSession.delete("android.categoryDeleteById", optionVo) == 1;
+	}
+
 }

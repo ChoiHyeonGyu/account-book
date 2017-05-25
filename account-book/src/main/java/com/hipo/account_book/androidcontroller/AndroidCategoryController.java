@@ -1,5 +1,6 @@
 package com.hipo.account_book.androidcontroller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,11 +39,24 @@ public class AndroidCategoryController {
 		System.out.println("성공!!");
 	}
 
-	@RequestMapping("/getCategory")
+	@RequestMapping("/getCategoryList")
 	@ResponseBody
-	public Map<String, OptionVo> getCategoryList(@PathVariable String id) {
+	public Map<String, String> getCategoryList(@PathVariable String id) {
 		List<OptionVo> optionList = aCategoryService.getCategoryList(id);
-		return null;
+		Map<String, String> categoryMap = new HashMap<>();
+		for (int i = 0; i < optionList.size(); i++) {
+			categoryMap.put("category" + (i + 1), optionList.get(i).getCategory());
+		}
+		return categoryMap;
+	}
+
+	@RequestMapping("/deleteCategory")
+	public void deleteCategory(HttpServletRequest request, @PathVariable String id) {
+		String category = request.getParameter("category");
+		OptionVo optionVo = aCategoryService.getCategoryId(category);
+		optionVo.setId(id);
+		if(aCategoryService.deleteCategory(optionVo));
+		System.out.println("지우기성공");
 	}
 
 }
