@@ -40,3 +40,11 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 	margin-top: 7.8%;
 	height: 335px;
 }
+
+.displaynone {
+	display: none;  
+}
+
+.visihid {
+	visibility:hidden;
+}

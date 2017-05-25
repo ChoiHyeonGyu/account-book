@@ -5,7 +5,7 @@
 <c:import url="/WEB-INF/views/include/flot.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<script src="${pageContext.request.contextPath}/assets/js/report/flot-mal.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/report/flot-mal2.js"></script>
 
 <div class="container">
 	<div class="row mt">
@@ -18,19 +18,19 @@
 		<!-- 메인컨텐츠영역 (그래프) -->
 		<div class="col-lg-10">
 			<ul class="nav nav-tabs">
-                <li class="active"><a href="#import" data-toggle="tab">수입</a></li>
-                <li><a href="#export" data-toggle="tab"><form id="ex" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph2">지출</form></a></li>
+                <li><a href="#import" data-toggle="tab"><form id="im" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph">수입</form></a></li>
+                <li class="active"><a href="#export" data-toggle="tab">지출</a></li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane fade in active" id="import">
-                	<div class="flot-chart">
-                        <div class="flot-chart-content" id="flot-line-chart-mt1"></div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="export">
+                <div class="tab-pane fade" id="import">
                 	
+                </div>
+                <div class="tab-pane fade in active" id="export">
+                	<div class="flot-chart">
+                        <div class="flot-chart-content2" id="flot-line-chart-mt2"></div>
+                    </div>
                 </div>
             </div>
 		</div>

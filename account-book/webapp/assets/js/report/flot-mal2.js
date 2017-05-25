@@ -1,45 +1,45 @@
 //Flot Multiple Axes Line Chart
 $(function() {  
-    function doPlot(position) {
-    	var data2 = [];
-    	var column1 = [];
-    	var column2 = [];
-    	var column3 = [];
+    function doPlot2(position) {
+    	var data3 = [];
+    	var column4 = [];
+    	var column5 = [];
+    	var column6 = [];
     	
     	$.ajax( {
-    	    url : "/account-book/"+currentid+"/importgraph",
+    	    url : "/account-book/"+currentid+"/exportgraph",
     	    type: "POST",
     	    dataType: "JSON",
     	    data: JSON.stringify(beanobj),
     	    contentType: "application/json; charset=UTF-8",
     	    success: function( response ){
     	    	if(response.data.length == 0){
-    	    		data2[0] = {label: "없음", data: 1};
+    	    		data3[0] = {label: "없음", data: 1};
     	    	}
 
     	    	for(var i=0; i<response.data.length; i++){
-    	    		column1[i] = response.data[i].category;
+    	    		column4[i] = response.data[i].category;
     	    	}
-    	    	column2 = column1.removeDup();
+    	    	column5 = column4.removeDup();
     	    	
     	    	for(var i=0; i<response.data.length; i++){
-    	    		for(var j=0; j<column2.length; j++){
-    	    			if(column3[j]==null || column3[j]==undefined){
-    	    				column3[j] = new Array([response.data[i].day, response.data[i].lsum]);
+    	    		for(var j=0; j<column5.length; j++){
+    	    			if(column6[j]==null || column6[j]==undefined){
+    	    				column6[j] = new Array([response.data[i].day, response.data[i].lsum]);
     	    				break;
     	    			}
-    	    			if(column2[j] == response.data[i].category){
-    	    				column3[j].push([response.data[i].day, response.data[i].lsum]);
+    	    			if(column5[j] == response.data[i].category){
+    	    				column6[j].push([response.data[i].day, response.data[i].lsum]);
     	    				break;
     	    			}
     	    		}
     	    	}
     	    	
-    	    	for(var i=0; i<column2.length; i++){
-    	    		data2[i] = {label: column2[i], data: column3[i]};
+    	    	for(var i=0; i<column5.length; i++){
+    	    		data3[i] = {label: column5[i], data: column6[i]};
     	    	}
     	    	
-    	    	$.plot($("#flot-line-chart-mt1"), data2, {
+    	    	$.plot($("#flot-line-chart-mt2"), data3, {
     	            xaxes: [{
     	                mode: 'time',
     	                min: dtp,
@@ -75,13 +75,9 @@ $(function() {
     	});
     }
     
-    doPlot("right");
-
-    $("button").click(function() {
-        doPlot($(this).text());
-    });
+    doPlot2("right");
     
-    $("#ex").click(function() {
-    	$("#ex").submit();
+    $("#im").click(function() {
+    	$("#im").submit();
     });
 });

@@ -916,8 +916,6 @@ Licensed under the MIT license.
 
         function allAxes() {
             // return flat array without annoying null entries
-        	console.log(xaxes);
-        	console.log(yaxes);
             return $.grep(xaxes.concat(yaxes), function (a) { return a; });
         }
 
@@ -1553,8 +1551,6 @@ Licensed under the MIT license.
             $.each(allAxes(), function (_, axis) {
                 if (axis.reserveSpace && axis.ticks && axis.ticks.length) {
                     if (axis.direction === "x") {
-                    	console.log(axis.labelWidth);
-                    	console.log(axis.labelHeight);
                         margins.left = Math.max(margins.left, axis.labelWidth / 2);
                         margins.right = Math.max(margins.right, axis.labelWidth / 2);
                     } else {
@@ -2230,8 +2226,6 @@ Licensed under the MIT license.
 
                     surface.addText(layer, x, y, tick.label, font, null, null, halign, valign);
                 }
-                /*console.log(tick);
-                console.log(x);*/
             });
         }
 

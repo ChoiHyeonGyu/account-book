@@ -181,6 +181,15 @@ public class BoardController {
 		return "report/mygraph";
 	}
 	
+	@RequestMapping("/mygraph2")
+	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1",v1);
+		List<OptionVo> option = optionservice.getCategory(optionvo);
+		model.addAttribute("option", option);
+		return "report/mygraph2";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/importgraph")
 	public JSONResult importgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
