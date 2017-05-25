@@ -55,7 +55,6 @@ public class OptionDao {
 	
 	public List<OptionVo> category(OptionVo vo) {
 		List<OptionVo> category = sql.selectList("option.category",vo);
-		System.out.println(" 카테카테카테카테카테" + vo);
 		return category;
 	}
 	

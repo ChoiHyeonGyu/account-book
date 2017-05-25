@@ -46,14 +46,35 @@ public class ListController {
 
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		Map<String,Object> m = service.pageSearching(pagination, searching, id);
-		System.out.println("mmmmmmmmmmm ~~~~~~~~~~" +m);
 		model.addAttribute("ps",m);
-		int v3 = service.totalmonth1(id);
-		System.out.println("아이디1" +id);
-		 int v2 = service.totalmonth(id);
-		 System.out.println("아이디2" +id);
+		int v3 = service.totalmonth1(id, "");
+		 int v2 = service.totalmonth(id, "");
 		 model.addAttribute("v2",v2);
 		 model.addAttribute("v3",v3);
+		model.addAttribute("option", option);
+		return "mypage/list/list";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/movelist")
+	public JSONResult movelist(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));
+	}
+	
+	@RequestMapping("/listaj")
+	public String Listaj(Model model, @ModelAttribute OptionVo optionvo,
+			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
+			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
+			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+
+		List<OptionVo> option = optionservice.getCategory(optionvo);
+		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
+		int v3 = service.totalmonth1(id, operation);
+		int v2 = service.totalmonth(id, operation);
+		model.addAttribute("v2",v2);
+		model.addAttribute("v3",v3);
 		model.addAttribute("option", option);
 		return "mypage/list/list";
 	}
@@ -75,10 +96,7 @@ public class ListController {
 
 	@RequestMapping("/add")
 	public String add(@ModelAttribute ListVo vo, @PathVariable String id) {
-		System.out.println("ListController add" + vo);
-
 		service.add(vo);
-		System.out.println("정보 확인" + vo);
 		return "redirect:/" + id + "/list";
 
 	}

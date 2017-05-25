@@ -5,12 +5,12 @@
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/css/list/list.css">
+<link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
+<script	src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 <script	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
 
 <div class="container">
@@ -31,11 +31,11 @@
 
 			<h1 align="center"></h1>
 			<div class="row">
-				<div class="col-md-12">
+				<div id="listall" class="col-md-12">
 
 					<!-- 가계부리스트영역 -->
-					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font color="blue">
-						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font color="red">
+					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font id="v3" color="blue">
+						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
 						 ${v2}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
 						<input type="search" name="searching" size="123" class="searchbox"
@@ -144,6 +144,7 @@
 									<th class="mine3 tablecolor" style="background: #d1d1d1">변경</th>
 								</tr>
 							</thead>
+							<tbody id="listbody">
 						
 							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
 								<tr>
@@ -181,46 +182,46 @@
 						
 								</tr>
 								</form>	
-						
-						
-						<c:forEach var="vo" items="${ps.list}" varStatus="status">
-							<script>
-								listarray.push("${vo.listId}");
-							</script>
-							<tr>
-								<td><input value="${vo.day}" class="mine tablecoler"
-									style="background: #ececec"></td>
-								<td><input value="${vo.name}" class="mine tablecoler"
-									style="background: #ececec"></td>
-								<td><label id="${vo.listId}"  class="text11 col-lg-offset-2" style="background: #ececec ">${vo.money}원</label></td>
-								<td><input value="${vo.paid}" class="mine tablecoler"
-									style="background: #ececec"></td>
-								<td>
-									<c:choose>
-										<c:when test="${vo.operations == '+'}">
-											<input value="수입" class="mine tablecoler" style="background: #ececec">
-										</c:when>
-										<c:when test="${vo.operations == '-'}">
-											<input value="지출" class="mine tablecoler" style="background: #ececec">
-										</c:when>
-										<c:otherwise>
-											<input value="투자" class="mine tablecoler" style="background: #ececec">
-										</c:otherwise>
-									</c:choose>
-								</td>
-								<td><input value="${vo.bank}" class="mine tablecoler"
-									style="background: #ececec"></td>
-								<td><input value="${vo.category}" class="mine tablecoler"
-									style="background: #ececec"></td>
-								<td><strong id="maps${vo.listId}"
-									class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler"
-									style="background: #ececec"></strong></td>
-								<td><a
-									href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"
-									class="col-lg-offset-5 tablecoler glyphicon glyphicon-trash"><%-- <img
-										src="${pageContext.request.contextPath}/assets/images/delete.jpg"> --%></a></td>
-							</tr>
-						</c:forEach>
+						<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
+							<c:forEach var="vo" items="${ps.list}" varStatus="status">
+								<script>
+									listarray.push("${vo.listId}");
+								</script>
+								<tr class="listoriginal">
+									<td><input value="${vo.day}" class="mine tablecoler"
+										style="background: #ececec"></td>
+									<td><input value="${vo.name}" class="mine tablecoler"
+										style="background: #ececec"></td>
+									<td><label id="${vo.listId}"  class="text11 col-lg-offset-2" style="background: #ececec ">${vo.money}원</label></td>
+									<td><input value="${vo.paid}" class="mine tablecoler"
+										style="background: #ececec"></td>
+									<td>
+										<c:choose>
+											<c:when test="${vo.operations == '+'}">
+												<input value="수입" class="mine tablecoler" style="background: #ececec">
+											</c:when>
+											<c:when test="${vo.operations == '-'}">
+												<input value="지출" class="mine tablecoler" style="background: #ececec">
+											</c:when>
+											<c:otherwise>
+												<input value="투자" class="mine tablecoler" style="background: #ececec">
+											</c:otherwise>
+										</c:choose>
+									</td>
+									<td><input value="${vo.bank}" class="mine tablecoler"
+										style="background: #ececec"></td>
+									<td><input value="${vo.category}" class="mine tablecoler"
+										style="background: #ececec"></td>
+									<td><strong id="maps${vo.listId}"
+										class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler"
+										style="background: #ececec"></strong></td>
+									<td><a
+										href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"
+										class="col-lg-offset-5 tablecoler glyphicon glyphicon-trash"><%-- <img
+											src="${pageContext.request.contextPath}/assets/images/delete.jpg"> --%></a></td>
+								</tr>
+						</c:forEach>	
+						<!-- /form> -->
 						</tbody>
 					</table>
 
@@ -233,7 +234,7 @@
 						<ul>
 							<c:if test="${ps.prevPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath}/${currentuserid}/list?pagination=${ps.prevPage}&searching=${ps.searching}">◀</a></li>
+									href="${pageContext.request.contextPath}/${currentuserid}/listaj?pagination=${ps.prevPage}&searching=${ps.searching}&operation=">◀</a></li>
 							</c:if>
 
 							<c:forEach begin="${ps.beginPage}"
@@ -247,14 +248,14 @@
 									</c:when>
 									<c:otherwise>
 										<li><a
-											href="${pageContext.request.contextPath }/${currentuserid}/list?pagination=${page}&searching=${ps.searching}">${page}</a></li>
+											href="${pageContext.request.contextPath }/${currentuserid}/listaj?pagination=${page}&searching=${ps.searching}&operation=">${page}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 
 							<c:if test="${ps.nextPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath }/${currentuserid}/main?pagination=${ps.nextPage}&searching=${ps.searching}">▶</a></li>
+									href="${pageContext.request.contextPath }/${currentuserid}/listaj?pagination=${ps.nextPage}&searching=${ps.searching}&operation=">▶</a></li>
 							</c:if>
 						</ul>
 					</div>

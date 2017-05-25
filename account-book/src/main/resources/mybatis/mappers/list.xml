@@ -43,13 +43,13 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  	 	]]>
 	</update>
 	
-	<select id="dealwithsearching" parameterType="string" resultType="int">
+	<select id="dealwithsearching" parameterType="map" resultType="int">
 		<![CDATA[
-			select count(*) from list
+			select count(*) from list where id = #{id} and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400
 		]]>
-		<if test="_parameter !=null and _parameter !=''">
+		<if test="searching !=null and searching !=''">
 			<![CDATA[
-				where name like '%${_parameter}%' or category like '%${_parameter}%' or paid like '%${_parameter}%' or money like '%${_parameter}%' 
+				and name like '%${searching}%' or category like '%${searching}%' or paid like '%${searching}%' or money like '%${searching}%' 
 			]]>
 		</if>
 	</select> 
@@ -68,6 +68,22 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			order by list.day desc) a) where (#{page}-1)*#{listSize}+1 <= rn and rn <= #{page}*#{listSize}
 		]]>
 	</select>
+	
+	<select id="movelistselect" parameterType="map" resultType="listvo">
+		<![CDATA[
+			select * from (
+			select a.*, rownum as rn from (select list_id as listId, to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, operations, paid, locationX, locationY, name, money from list where id = #{id}
+			and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400
+		]]>
+		<if test="searching != null and searching !=''"> 
+			<![CDATA[					  
+				and (name like '%${searching}%' or category like '%${searching}%' or paid like '%${searching}%' or money like '%${searching}%') 
+			]]>
+		</if>
+		<![CDATA[					  
+			order by list.day desc) a) where (#{page}-1)*#{listSize}+1 <= rn and rn <= #{page}*#{listSize}
+		]]>
+	</select>
 
 	<select id="selectlocation" parameterType="int" resultType="listvo">
 		<![CDATA[
@@ -75,13 +91,13 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		]]>
 	</select>
 	
-	<select id="totalmonth" parameterType="string" resultType="int">
+	<select id="totalmonth" parameterType="map" resultType="int">
 		<![CDATA[
-select nvl(sum(money),0) from list where id = #{id} and  operations='-' and day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400		]]>
+select nvl(sum(money),0) from list where id = #{id} and  operations='-' and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400		]]>
 	</select>
-	<select id="totalmonth1" parameterType="string" resultType="int">
+	<select id="totalmonth1" parameterType="map" resultType="int">
 		<![CDATA[
-select nvl(sum(money),0) from list where id = #{id} and  operations='+' and day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400		]]>
+select nvl(sum(money),0) from list where id = #{id} and  operations='+' and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400		]]>
 	</select>
 	
 </mapper>

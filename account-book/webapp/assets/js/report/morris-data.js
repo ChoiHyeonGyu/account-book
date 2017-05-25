@@ -3,6 +3,12 @@ $(function() {
 	var oper = {};
 	var opernum = 0;
 	var data1 = [];
+	var html = "";
+    var html2 = "";
+	var listarray = [];
+	var html3 = "";
+    var html4 = "";
+    var html5 = "";
 	
 	var d = new Date();
 	var gfy = d.getFullYear();
@@ -107,6 +113,68 @@ $(function() {
 		});
 		barcolnum = [];
 	    numcnt = -1;
+	    
+	    $.ajax( {
+		    url : "/account-book/"+currentid+"/movelist",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(oper),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	console.log(response);
+		    	$(".listoriginal").remove();
+	    		for(var i=0; i<response.data.list.length; i++){
+	    			if(response.data.list[i].bank == undefined){
+	    				response.data.list[i].bank = "";
+					}
+	    			html = "<tr class='listoriginal'>"+
+									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><label class='text11 col-lg-offset-2' style='background: #ececec'>"+response.data.list[i].money+"원</label></td>"+
+									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].category+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
+									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
+								"</tr>";
+	    			$("#listbody").append(html);
+	    			listarray.push(response.data.list[i].listId);
+	    		}
+	    		
+	    		$(".pager").remove();
+	    		if(response.data.prevPage > 0){
+    				html3 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
+    			}
+    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
+    				if(response.data.endPage < i){
+    					html4 += "<li>"+i+"</li>";
+    				} else if(response.data.pagination == i) {
+    					html4 += "<li class='selected'>"+i+"</li>";
+    				} else {
+    					html4 += "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
+    				}
+    			}
+    			if(response.data.nextPage > 0){
+    				html5 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
+    			}
+    			
+    			html2 = "<div class='pager'>"+
+							"<ul>"+html3+html4+html5+"</ul>"+
+						"</div>";
+    			$("#listall").append(html2);
+	    		
+	    		formap(listarray);
+	    		listarray = [];
+	    		html4 = [];
+	    		
+	    		$("#v2").text(response.data.v2);
+	    		$("#v3").text(response.data.v3);
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
 	});
 	
 	$("#cr").click(function(){
@@ -167,6 +235,68 @@ $(function() {
 		});
 		barcolnum = [];
 	    numcnt = -1;
+	    
+	    $.ajax( {
+		    url : "/account-book/"+currentid+"/movelist",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(oper),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	console.log(response);
+		    	$(".listoriginal").remove();
+	    		for(var i=0; i<response.data.list.length; i++){
+	    			if(response.data.list[i].bank == undefined){
+	    				response.data.list[i].bank = "";
+					}
+	    			html = "<tr class='listoriginal'>"+
+									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><label class='text11 col-lg-offset-2' style='background: #ececec'>"+response.data.list[i].money+"원</label></td>"+
+									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input value='"+response.data.list[i].category+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
+									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
+								"</tr>";
+	    			$("#listbody").append(html);
+	    			listarray.push(response.data.list[i].listId);
+	    		}
+	    		
+	    		$(".pager").remove();
+	    		if(response.data.prevPage > 0){
+    				html3 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
+    			}
+    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
+    				if(response.data.endPage < i){
+    					html4 += "<li>"+i+"</li>";
+    				} else if(response.data.pagination == i) {
+    					html4 += "<li class='selected'>"+i+"</li>";
+    				} else {
+    					html4 += "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
+    				}
+    			}
+    			if(response.data.nextPage > 0){
+    				html5 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
+    			}
+    			
+    			html2 = "<div class='pager'>"+
+							"<ul>"+html3+html4+html5+"</ul>"+
+						"</div>";
+    			$("#listall").append(html2);
+    			
+	    		formap(listarray);
+	    		listarray = [];
+	    		html4 = [];
+	    		
+	    		$("#v2").text(response.data.v2);
+	    		$("#v3").text(response.data.v3);
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
 	});
 
     /*Morris.Area({

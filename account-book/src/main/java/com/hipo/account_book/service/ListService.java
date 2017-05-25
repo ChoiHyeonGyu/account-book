@@ -47,9 +47,7 @@ public class ListService {
 		int totalCount = 0;
 		
 		//String searching1 = ConvertMoneyForm.convertForForm(searching);
-		System.out.println("searching 비교대상확인." + searching);
-		totalCount = dao.dealWithSearching(searching);
-		System.out.println("totalCount checking : "+totalCount);
+		totalCount = dao.dealWithSearching(0, searching, id);
 		// 데이터 수 . 왜
 		// 키워드로 // 받는지 }
 		// . 걸러서 가지고 오는것
@@ -82,7 +80,6 @@ public class ListService {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		System.out.println("숫자 가지고 와라" + searching);
 		//String search = ConvertMoneyForm.convertForForm(searching);
 		
 		/*if (search.equals("")) { // TODO 숫자만 쓰라고 알려주기 totalCount =
@@ -105,20 +102,56 @@ public class ListService {
 		return map;
 
 	}
+	
+	public Map<String, Object> movelist(String operation, int pagination, String searching, String id) {
+
+		int totalCount = dao.dealWithSearching(Integer.parseInt(operation), searching, id);
+		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);
+		int blockCount = (int) Math.ceil((double) pageCount / PAGE_SIZE);
+		int currentBlock = (int) Math.ceil((double) pagination / PAGE_SIZE);
+
+		// 2. 파라미터 page 값 검증
+		if (pagination < 1) {
+			pagination = 1;
+			currentBlock = 1;
+		} else if (pagination > pageCount) {
+			pagination = pageCount;
+			currentBlock = (int) Math.ceil((double) pagination / PAGE_SIZE);
+		}
+
+		// 3. view에서 페이지 리스트를 렌더링 하기위한 데이터 값 계산
+		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1) * PAGE_SIZE + 1;
+		int prevPage = (currentBlock > 1) ? (currentBlock - 1) * PAGE_SIZE : 0;
+		int nextPage = (currentBlock < blockCount) ? currentBlock * PAGE_SIZE + 1 : 0;
+		int endPage = (nextPage > 0) ? (beginPage - 1) + LIST_SIZE : pageCount;
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map.put("list", dao.movelistselect(Integer.parseInt(operation), searching, pagination, LIST_SIZE, id));
+		map.put("totalCount", totalCount);
+		map.put("listSize", LIST_SIZE);
+		map.put("pagination", pagination);
+		map.put("beginPage", beginPage);
+		map.put("endPage", endPage);
+		map.put("prevPage", prevPage);
+		map.put("nextPage", nextPage);
+		map.put("searching", searching);
+		map.put("v2", dao.totalmonth(id, operation));
+		map.put("v3", dao.totalmonth1(id, operation));
+
+		return map;
+	}
 
 	public int loadmap(String listId) {
 		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
 	}
 
-	public  int totalmonth(String id) {
-		System.out.println("아이디!!!!!!!!!!!!" +id);
-		 return dao.totalmonth(id);
-		 
+	public int totalmonth(String id, String operation) {
+		 return dao.totalmonth(id, operation);
 	}
 
-	public int totalmonth1(String id) {
-		System.out.println("아이디11" +id);	
-		return dao.totalmonth1(id);
+	public int totalmonth1(String id, String operation) {	
+		return dao.totalmonth1(id, operation);
 	}
 
 }

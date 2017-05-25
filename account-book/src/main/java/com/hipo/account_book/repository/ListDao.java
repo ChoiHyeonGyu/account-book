@@ -42,10 +42,12 @@ private SqlSession sql;
 		
 		
 	}
-	public int dealWithSearching(String searching) {
-		
-		return sql.selectOne("listview.dealwithsearching", searching);
-		
+	public int dealWithSearching(int operation, String searching, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("operation",operation);
+		map.put("searching",searching);
+		map.put("id",id);
+		return sql.selectOne("listview.dealwithsearching", map);
 	}
 	public List<ListVo> totalList(String searching, int page, int listSize, String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -56,20 +58,34 @@ private SqlSession sql;
 		return sql.selectList("listview.totallist",map);
 	}
 	
+	public List<ListVo> movelistselect(int operation, String searching, int page, int listSize, String id){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("operation",operation);
+		map.put("searching",searching);
+		map.put("page",page);  
+		map.put("listSize",listSize);
+		map.put("id",id);
+		return sql.selectList("listview.movelistselect", map);
+	}
+	
 	public int selectlocation(int listId){
 		return sql.selectOne("listview.selectlocation", listId);
 	}
 
 
-	public int totalmonth(String id) {
-		
-		return sql.selectOne("listview.totalmonth", id);
+	public int totalmonth(String id, String operation) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("operation",operation);
+		map.put("id",id);
+		return sql.selectOne("listview.totalmonth", map);
 	}
 
 
-	public int totalmonth1(String id) {
-		
-		return sql.selectOne("listview.totalmonth1", id);
+	public int totalmonth1(String id, String operation) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("operation",operation);
+		map.put("id",id);
+		return sql.selectOne("listview.totalmonth1", map);
 	}
 
 
