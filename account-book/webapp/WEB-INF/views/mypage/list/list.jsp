@@ -3,7 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
-<c:import url="/WEB-INF/views/include/flot.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">

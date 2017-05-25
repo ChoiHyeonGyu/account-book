@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/views/include/main_top.jsp"/>
 <c:import url="/WEB-INF/views/include/flot.jsp" />
+<script src="${pageContext.request.contextPath}/assets/js/report/flot-data.js"></script>
     <div class="container">
     	<div class="row mt">		
 			<div class="col-lg-12">

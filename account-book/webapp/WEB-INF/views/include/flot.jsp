@@ -5,4 +5,5 @@
 <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.resize.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot/jquery.flot.time.js"></script>
 <script src="${pageContext.request.contextPath}/assets/flot-tooltip/jquery.flot.tooltip.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/report/flot-data.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/assets/js/report/flot-data.js"></script> --%>
+<script src="${pageContext.request.contextPath}/assets/js/report/flot-commonness.js"></script>

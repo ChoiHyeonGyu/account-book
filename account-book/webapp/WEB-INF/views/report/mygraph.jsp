@@ -4,6 +4,9 @@
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
 <c:import url="/WEB-INF/views/include/flot.jsp" />
 
+<!-- 각페이지에서 사용하는 css, js 링크영역 -->
+<script src="${pageContext.request.contextPath}/assets/js/report/flot-mal.js"></script>
+
 <div class="container">
 	<div class="row mt">
 		
