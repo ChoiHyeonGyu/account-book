@@ -47,10 +47,8 @@ public class ListController {
 
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
-		int v3 = service.totalmonth1(id, operation);
-		int v2 = service.totalmonth(id, operation);
-		model.addAttribute("v2",v2);
-		model.addAttribute("v3",v3);
+		model.addAttribute("v2", service.totalmonth(id, operation));
+		model.addAttribute("v3", service.totalmonth1(id, operation));
 		model.addAttribute("option", option);
 		return "mypage/list/list";
 	}

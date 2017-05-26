@@ -35,8 +35,8 @@
 
 					<!-- 가계부리스트영역 -->
 					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font id="v3" color="blue">
-						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
-						 ${v2}</font>원</h2>
+						${v3.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
+						 ${v2.moneyresult}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
 						<input type="search" name="searching" size="123" class="searchbox"
 							placeholder="현금,금액,카테고리"> <button class="fa fa-search fa-1 sr-contact searchbox1"

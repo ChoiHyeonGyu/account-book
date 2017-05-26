@@ -65,7 +65,7 @@ private SqlSession sql;
 	}
 
 
-	public int totalmonth(String id, String operation) {
+	public ListVo totalmonth(String id, String operation) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("operation",operation);
 		map.put("id",id);
@@ -73,7 +73,7 @@ private SqlSession sql;
 	}
 
 
-	public int totalmonth1(String id, String operation) {
+	public ListVo totalmonth1(String id, String operation) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("operation",operation);
 		map.put("id",id);

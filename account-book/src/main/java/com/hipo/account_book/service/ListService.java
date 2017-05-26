@@ -85,11 +85,11 @@ public class ListService {
 		return dao.selectlocation(Integer.parseInt(listId.substring(4)));
 	}
 
-	public int totalmonth(String id, String operation) {
+	public ListVo totalmonth(String id, String operation) {
 		 return dao.totalmonth(id, operation);
 	}
 
-	public int totalmonth1(String id, String operation) {	
+	public ListVo totalmonth1(String id, String operation) {	
 		return dao.totalmonth1(id, operation);
 	}
 }

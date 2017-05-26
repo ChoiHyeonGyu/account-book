@@ -168,8 +168,8 @@ $(function() {
 	    		listarray = [];
 	    		html4 = [];
 	    		
-	    		$("#v2").text(response.data.v2);
-	    		$("#v3").text(response.data.v3);
+	    		$("#v2").text(response.data.v2.moneyresult);
+	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
@@ -290,8 +290,8 @@ $(function() {
 	    		listarray = [];
 	    		html4 = [];
 	    		
-	    		$("#v2").text(response.data.v2);
-	    		$("#v3").text(response.data.v3);
+	    		$("#v2").text(response.data.v2.moneyresult);
+	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
