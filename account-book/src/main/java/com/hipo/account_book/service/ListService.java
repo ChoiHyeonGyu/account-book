@@ -44,7 +44,7 @@ public class ListService {
 	
 	public Map<String, Object> movelist(String operation, int pagination, String searching, String id) {
 
-		int totalCount = dao.dealWithSearching(Integer.parseInt(operation), searching, id);
+		int totalCount = dao.dealWithSearching(Integer.parseInt(operation), searching, id);//coz how many things are there,
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);
 		int blockCount = (int) Math.ceil((double) pageCount / PAGE_SIZE);
 		int currentBlock = (int) Math.ceil((double) pagination / PAGE_SIZE);
@@ -75,7 +75,7 @@ public class ListService {
 		map.put("prevPage", prevPage);
 		map.put("nextPage", nextPage);
 		map.put("searching", searching);
-		map.put("v2", dao.totalmonth(id, operation));
+		map.put("v2", dao.totalmonth(id, operation));// 이것은 쿼리문의 결과값을 맵에 저장 .
 		map.put("v3", dao.totalmonth1(id, operation));
 
 		return map;
