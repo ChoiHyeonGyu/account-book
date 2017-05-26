@@ -7,6 +7,7 @@ public class ListVo {
 	private String bank;
 	private String operations;
 	private int money;
+	private String moneyresult;
 	private int totalmoney;
 	private int totalincome;
 	private String name;
@@ -101,7 +102,10 @@ public class ListVo {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	
-	
-
+	public String getMoneyresult() {
+		return moneyresult;
+	}
+	public void setMoneyresult(String moneyresult) {
+		this.moneyresult = moneyresult;
+	}
 }

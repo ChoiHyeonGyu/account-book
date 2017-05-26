@@ -49,14 +49,6 @@ private SqlSession sql;
 		map.put("id",id);
 		return sql.selectOne("listview.dealwithsearching", map);
 	}
-	public List<ListVo> totalList(String searching, int page, int listSize, String id) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("searching",searching);
-		map.put("page",page);  
-		map.put("listSize",listSize);
-		map.put("id",id);
-		return sql.selectList("listview.totallist",map);
-	}
 	
 	public List<ListVo> movelistselect(int operation, String searching, int page, int listSize, String id){
 		Map<String, Object> map = new HashMap<String, Object>();

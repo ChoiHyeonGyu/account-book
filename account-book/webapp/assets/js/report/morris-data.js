@@ -130,7 +130,7 @@ $(function() {
 	    			html = "<tr class='listoriginal'>"+
 									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><label class='text11 col-lg-offset-2' style='background: #ececec'>"+response.data.list[i].money+"원</label></td>"+
+									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
@@ -144,7 +144,7 @@ $(function() {
 	    		
 	    		$(".pager").remove();
 	    		if(response.data.prevPage > 0){
-    				html3 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
+    				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
     			}
     			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
     				if(response.data.endPage < i){
@@ -152,11 +152,11 @@ $(function() {
     				} else if(response.data.pagination == i) {
     					html4 += "<li class='selected'>"+i+"</li>";
     				} else {
-    					html4 += "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
+    					html4 += "<li><a href='"+path+"/"+currentid+"/list?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
     				}
     			}
     			if(response.data.nextPage > 0){
-    				html5 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
+    				html5 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
     			}
     			
     			html2 = "<div class='pager'>"+
@@ -252,7 +252,7 @@ $(function() {
 	    			html = "<tr class='listoriginal'>"+
 									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><label class='text11 col-lg-offset-2' style='background: #ececec'>"+response.data.list[i].money+"원</label></td>"+
+									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
@@ -266,7 +266,7 @@ $(function() {
 	    		
 	    		$(".pager").remove();
 	    		if(response.data.prevPage > 0){
-    				html3 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
+    				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
     			}
     			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
     				if(response.data.endPage < i){
@@ -274,11 +274,11 @@ $(function() {
     				} else if(response.data.pagination == i) {
     					html4 += "<li class='selected'>"+i+"</li>";
     				} else {
-    					html4 += "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
+    					html4 += "<li><a href='"+path+"/"+currentid+"/list?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
     				}
     			}
     			if(response.data.nextPage > 0){
-    				html5 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
+    				html5 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
     			}
     			
     			html2 = "<div class='pager'>"+

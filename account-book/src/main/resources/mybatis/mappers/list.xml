@@ -54,25 +54,12 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		</if>
 	</select> 
 	
-		<select id="totallist" parameterType="map" resultType="listvo">
-    	<![CDATA[
-			select * from (
-			select a.*, rownum as rn from (select list_id as listId, to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, operations, paid, locationX, locationY, name, money from list where id = #{id}
-		]]>
-		<if test="searching != null and searching !=''"> 
-			<![CDATA[					  
-				and (name like '%${searching}%' or category like '%${searching}%' or paid like '%${searching}%' or money like '%${searching}%') 
-			]]>
-		</if>
-		<![CDATA[					  
-			order by list.day desc) a) where (#{page}-1)*#{listSize}+1 <= rn and rn <= #{page}*#{listSize}
-		]]>
-	</select>
-	
 	<select id="movelistselect" parameterType="map" resultType="listvo">
 		<![CDATA[
 			select * from (
-			select a.*, rownum as rn from (select list_id as listId, to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, operations, paid, locationX, locationY, name, money from list where id = #{id}
+			select a.*, rownum as rn from (select list_id as listId, to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, 
+			(case when operations='+' then '수입' when operations='-' then '지출' when operations='0' then '투자' end) as operations, paid, locationX, locationY, name, 
+			to_char(money, '999,999,999,999,999') as moneyresult from list where id = #{id}
 			and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400
 		]]>
 		<if test="searching != null and searching !=''"> 

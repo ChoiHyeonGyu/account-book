@@ -192,22 +192,10 @@
 										style="background: #ececec"></td>
 									<td><input value="${vo.name}" class="mine tablecoler"
 										style="background: #ececec"></td>
-									<td><label id="${vo.listId}"  class="text11 col-lg-offset-2" style="background: #ececec ">${vo.money}원</label></td>
+									<td><input value="${vo.moneyresult}" class="mine tablecoler" style="background: #ececec"></td>
 									<td><input value="${vo.paid}" class="mine tablecoler"
 										style="background: #ececec"></td>
-									<td>
-										<c:choose>
-											<c:when test="${vo.operations == '+'}">
-												<input value="수입" class="mine tablecoler" style="background: #ececec">
-											</c:when>
-											<c:when test="${vo.operations == '-'}">
-												<input value="지출" class="mine tablecoler" style="background: #ececec">
-											</c:when>
-											<c:otherwise>
-												<input value="투자" class="mine tablecoler" style="background: #ececec">
-											</c:otherwise>
-										</c:choose>
-									</td>
+									<td><input value="${vo.operations}" class="mine tablecoler" style="background: #ececec"></td>
 									<td><input value="${vo.bank}" class="mine tablecoler"
 										style="background: #ececec"></td>
 									<td><input value="${vo.category}" class="mine tablecoler"
@@ -234,7 +222,7 @@
 						<ul>
 							<c:if test="${ps.prevPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath}/${currentuserid}/listaj?pagination=${ps.prevPage}&searching=${ps.searching}&operation=">◀</a></li>
+									href="${pageContext.request.contextPath}/${currentuserid}/list?pagination=${ps.prevPage}&searching=${ps.searching}&operation=">◀</a></li>
 							</c:if>
 
 							<c:forEach begin="${ps.beginPage}"
@@ -248,14 +236,14 @@
 									</c:when>
 									<c:otherwise>
 										<li><a
-											href="${pageContext.request.contextPath }/${currentuserid}/listaj?pagination=${page}&searching=${ps.searching}&operation=">${page}</a></li>
+											href="${pageContext.request.contextPath }/${currentuserid}/list?pagination=${page}&searching=${ps.searching}&operation=">${page}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 
 							<c:if test="${ps.nextPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath }/${currentuserid}/listaj?pagination=${ps.nextPage}&searching=${ps.searching}&operation=">▶</a></li>
+									href="${pageContext.request.contextPath }/${currentuserid}/list?pagination=${ps.nextPage}&searching=${ps.searching}&operation=">▶</a></li>
 							</c:if>
 						</ul>
 					</div>
