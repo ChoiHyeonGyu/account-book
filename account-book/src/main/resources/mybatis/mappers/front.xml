@@ -11,7 +11,7 @@
 	
 	<select id="fbselect" parameterType="string" resultType="uservo">
 		<![CDATA[
-			select id, password from users where password = #{value} and id = #{value}
+			select id, password, name from users where id = #{id} and password = #{id}
 		]]>
 	</select>
 	

@@ -19,8 +19,6 @@ public class FrontService {
 	Calendar calendar = Calendar.getInstance();
 	
 	public UserVo fblogin(Map<String, Object> map){
-		System.out.println(map.get("id").toString());
-		System.out.println(frontDao.fbselect(map.get("id").toString()));
 		return frontDao.fbselect(map.get("id").toString());
 	}
 	

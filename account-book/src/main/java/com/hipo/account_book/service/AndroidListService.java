@@ -17,7 +17,7 @@ public class AndroidListService {
 	private AndroidListDao listDao;
 
 	public boolean addList(ListVo listVo) {
-		System.out.println("(AndroidService)listVo! : "+listVo);
+		System.out.println("(AndroidService)listVo! : " + listVo);
 		return listDao.addList(listVo);
 	}
 
@@ -31,6 +31,16 @@ public class AndroidListService {
 
 	public boolean deleteList(String listId) {
 		return listDao.deleteList(listId);
+	}
+
+	public String getSumPaid(String year, String month, String id) {
+		Map<String, String> dateMap = setDateMap(year, month, id);
+		List<ListVo> listVo = listDao.getLocationVos(dateMap);
+		int sum = 0;
+		for (int i = 0; i < listVo.size(); i++) {
+			sum += listVo.get(i).getMoney();
+		}
+		return String.valueOf(sum);
 	}
 
 	public List<ListVo> getLocationVos(String year, String month, String id) {

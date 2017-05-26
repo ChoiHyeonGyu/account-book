@@ -81,7 +81,7 @@ $(function() {
         doPlot($(this).text());
     });
     
-    $("#ex").click(function() {
+    $("#ext").click(function() {
     	$("#ex").submit();
     });
 });
