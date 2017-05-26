@@ -6,8 +6,6 @@ function checkLoginState() {
 		
 		if (response.status === 'connected') {
 			FB.api('/me?fields=id,email,name,gender,birthday,age_range', function(response) {
-				console.log(response);
-				console.log(JSON.stringify(response));
 				obj = response;
 				document.getElementById('fbhidden').click();
 			});

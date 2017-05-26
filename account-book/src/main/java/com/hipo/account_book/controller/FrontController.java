@@ -40,7 +40,7 @@ public class FrontController {
 		if(uservo==null){
 			frontService.fbjoin(map);
 		}
-		return JSONResult.success(map.get("email"));
+		return JSONResult.success(map.get("id"));
 	}
 	
 	@ResponseBody

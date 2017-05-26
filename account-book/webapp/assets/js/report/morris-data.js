@@ -119,7 +119,7 @@ $(function() {
 		    type: "POST",
 		    dataType: "JSON",
 		    data: JSON.stringify(oper),
-		    contentType: "application/json; charset=UTF-8",
+		    contentType: "application/json; charset=UTF-8",  
 		    success: function( response ){
 		    	console.log(response);
 		    	$(".listoriginal").remove();
@@ -196,6 +196,7 @@ $(function() {
     	
 		opernum = opernum + 1;
 		oper = {operation: opernum};
+		console.log(opernum);
 		
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",

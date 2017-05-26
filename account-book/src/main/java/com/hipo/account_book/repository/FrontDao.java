@@ -11,8 +11,8 @@ public class FrontDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	public UserVo fbselect(UserVo uservo){
-		return sqlSession.selectOne("user.fbselect", uservo.getId());
+	public UserVo fbselect(String id){
+		return sqlSession.selectOne("user.fbselect", id);
 	}
 	
 	public void fbinsert(UserVo uservo){

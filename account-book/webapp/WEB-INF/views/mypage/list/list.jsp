@@ -44,78 +44,7 @@
 
 					</form>
 
-<%-- 
-					<form
-						action="${pageContext.request.contextPath }/${currentuserid}/add"
-						method="post">
-						<table class="table-bordered border-collapse" style="background: #ececec">
-
-							<colgroup>
-								<col width="10%" />
-								<col width="20%" />
-								<col width="10%" />
-								<col width="10%" />
-								<col width="13%" />
-								<col width="10%" />
-								<col width="10%" />
-								<col width="5%" />
-								<col width="5%" />
-
-							</colgroup>
-
-							<thead>
-								<tr>
-									<th class="mine1 tablecolor tableoption"
-										style="background: #ececec" WIDTH="50">날짜</th>
-									<th class="mine2 tablecolor" style="background: #ececec">사용내역</th>
-									<th class="mine3 tablecolor" style="background: #ececec">금액</th>
-									<th class="mine3 tablecolor" style="background: #ececec">결제수단</th>
-									<th class="mine3 tablecolor" style="background: #ececec">지출/수입/투자</th>
-									<th class="mine3 tablecolor" style="background: #ececec">은행</th>
-									<th class="mine3 tablecolor" style="background: #ececec">카테고리</th>
-									<th class="mine3 tablecolor" style="background: #ececec">지도</th>
-									<th class="mine3 tablecolor" style="background: #ececec">삭제</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input type="text" id="datepicker" name="day"
-										class="tableinput" placeholder="날짜 입력하기"></td>
-									<td><input value="" class="mine tablecoler"
-										style="background: #ececec" placeholder="사용내역" name="name"></td>
-									<td><input value="" class="mine tablecolor "
-										style="background: #ececec" placeholder="금액" name="money"></td>
-									<td><select id="paid" name="paid" class="tableinput">
-											<option value="현금">현금</option>
-											<option value="카드">카드</option>
-									</select></td>
-									<td><select id="operations" class="tableinput"
-										name="operations">
-
-											<option value="-">지출</option>
-											<option value="+">수입</option>
-											<option value="0">투자</option>
-									</select></td>
-									<td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="은행" name="bank"></td>
-									<!-- <td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="카테고리" name="category"></td>
-									 -->
-									<td><select id="category" class="tableinput" name="category">
-										<c:forEach var="bb" items="${option}">
-											<option value="${bb.category}">${bb.category}</option>
-										</c:forEach>
-									</select></td>
-									<td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="지도"></td>
-									<td><input type="submit" value="저장"
-										class="btn btn-default" /></td>
-								</tr>
-								<!-- <button id="myBtn">추가</button> -->
-						</table>
-
-					</form>
- --%>
+							<!--가계부 리스트 테일 추가 부분  -->
 					<table class="table-bordered border-collapse searchbox"
 						style="background: #ececec">
 						<colgroup>
@@ -145,7 +74,7 @@
 								</tr>
 							</thead>
 							<tbody id="listbody">
-						
+												
 							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
 								<tr>
 									<td><input type="text" id="datepicker" name="day"
@@ -182,6 +111,7 @@
 						
 								</tr>
 								</form>	
+								<!--  가계부 리스트 뿌려주는곳.	 -->
 						<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>

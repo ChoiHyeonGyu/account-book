@@ -44,7 +44,7 @@ public class ListController {
 			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
-
+		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
 		model.addAttribute("v2", service.totalmonth(id, operation));
