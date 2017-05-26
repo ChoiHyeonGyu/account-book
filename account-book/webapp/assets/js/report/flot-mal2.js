@@ -77,7 +77,7 @@ $(function() {
     
     doPlot2("right");
     
-    $("#im").click(function() {
+    $("#imt").click(function() {
     	$("#im").submit();
     });
 });

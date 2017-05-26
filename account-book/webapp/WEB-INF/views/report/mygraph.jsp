@@ -19,7 +19,7 @@
 		<div class="col-lg-10">
 			<ul class="nav nav-tabs">
                 <li class="active"><a href="#import" data-toggle="tab">수입</a></li>
-                <li><a href="#export" data-toggle="tab"><form id="ex" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph2">지출</form></a></li>
+                <li><a id="ext" href="#export" data-toggle="tab">지출</a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -40,3 +40,7 @@
 
 <!-- 푸터영역 -->
 <c:import url="/WEB-INF/views/include/main_bottom.jsp" />
+
+<!-- 다음 그래프로 넘어감 -->
+<form id="ex" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph2">
+</form>
