@@ -156,4 +156,24 @@ public class BoardDao {
 	public List<GraphVo> exportgraphselect(String id){
 		return sqlSession.selectList("board.exportgraphselect", id);
 	}
+	
+	public List<GraphVo> imreporttableselect(String id){
+		return sqlSession.selectList("board.imreporttableselect", id);
+	}
+	
+	public GraphVo imreporttablesumselect(String id){
+		return sqlSession.selectOne("board.imreporttablesumselect", id);
+	}
+	
+	public List<GraphVo> exreporttableselect(String id){
+		return sqlSession.selectList("board.exreporttableselect", id);
+	}
+	
+	public GraphVo exreporttablesumselect(String id){
+		return sqlSession.selectOne("board.exreporttablesumselect", id);
+	}
+	
+	public GraphVo dateselect(){
+		return sqlSession.selectOne("board.dateselect");
+	}
 }

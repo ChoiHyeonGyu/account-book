@@ -263,4 +263,24 @@ public class BoardService {
 	public List<GraphVo> exportgraph(String id){
 		return boardDao.exportgraphselect(id);
 	}
+	
+	public List<GraphVo> imreporttable(String id){
+		return boardDao.imreporttableselect(id);
+	}
+	
+	public GraphVo imreporttablesum(String id){
+		return boardDao.imreporttablesumselect(id);
+	}
+	
+	public List<GraphVo> exreporttable(String id){
+		return boardDao.exreporttableselect(id);
+	}
+	
+	public GraphVo exreporttablesum(String id){
+		return boardDao.exreporttablesumselect(id);
+	}
+	
+	public GraphVo date(){
+		return boardDao.dateselect();
+	}
 }

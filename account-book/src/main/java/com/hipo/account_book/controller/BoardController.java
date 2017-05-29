@@ -20,7 +20,6 @@ import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.service.ProfileService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -34,20 +33,15 @@ public class BoardController {
 	
 	@RequestMapping("/logon")
 	public String logon(@PathVariable String id, Model model){
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
 		return "frontpage/logon";
 	}
 	
 	@RequestMapping("/board")
 	public String List(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("board", boardService.getBoardList(page, search));
-		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
 		return "mypage/mystory/mystory";
 	}
 	
@@ -174,19 +168,23 @@ public class BoardController {
 	
 	@RequestMapping("/mygraph")
 	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		
+		model.addAttribute("date", boardService.date());
+		model.addAttribute("catemonth", boardService.imreporttable(id));
+		model.addAttribute("cmsum", boardService.imreporttablesum(id));
 		return "report/mygraph";
 	}
 	
 	@RequestMapping("/mygraph2")
 	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		
+		model.addAttribute("date", boardService.date());
+		model.addAttribute("catemonth", boardService.exreporttable(id));
+		model.addAttribute("cmsum", boardService.exreporttablesum(id));
 		return "report/mygraph2";
 	}
 	
