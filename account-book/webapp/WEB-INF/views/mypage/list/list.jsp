@@ -57,7 +57,6 @@
 							<col width="12%" />
 							<col width="5%" />
 							<col width="8%" />
-
 						</colgroup>
 							<thead>
 								<tr>
