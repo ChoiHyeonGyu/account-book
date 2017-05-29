@@ -13,12 +13,11 @@ $(document).ready(function() {
 
 	$("#noticeModify").click(function() {
 		var userId = userIdarray[0];
-		var noticeId = noticeIdarray[0];
-		console.log(noticeId);
+		var ni = noticeIdarray[0];
+		
 		if (userId == "superjun3") {
 			$("#noticeModifyform").modal();
-			var ni = {"noticeId" : noticeId};
-			console.log(ni);
+			var noticeId ={"noticeId":ni};
 			$.ajax({// 여기서 부터 통신이 시작된다.
 				url : "/account-book/" + currentid + "/noticemodify1",// 보낼주소
 				type : "POST",

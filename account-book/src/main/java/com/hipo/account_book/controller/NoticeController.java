@@ -111,5 +111,42 @@ public class NoticeController {
 		System.out.println("oooooooooooooo-----:"+map);
 		return JSONResult.success(noticeService.NoticeModify1(Integer.parseInt(map.get("noticeId").toString())));// 여기서																							// 에러.
 	}
+	
+	@RequestMapping("/noticemodify")
+	public String NoticeModify(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo) {
+		System.out.println("vovovomodify:"+vo);
+		
+		/*
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+		*/
+		return "customer/notice/noticeView";
+	}
+	
+	@RequestMapping("/noticedelete")
+	public String NoticeDelete(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id) {
+		System.out.println("deleteidididi:"+noticeId);
+		/*
+		System.out.println("noidnoidnoid::" + noticeId);
+		noticeService.NoticeHit(noticeId);
+
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+
+		System.out.println("mapmapmapmap::" + map);
+		Map<String, Object> map1 = new HashMap<String, Object>();
+
+		map1 = noticeService.noticeView(noticeId);
+		model.addAttribute("view", map1);
+		*/
+		return "customer/notice/notice";
+	}
 
 }

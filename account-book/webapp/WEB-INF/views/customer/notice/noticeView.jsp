@@ -138,7 +138,9 @@
 					<textarea id="noticeContent" class="form-control" name="noticeContent" rows="7"></textarea>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="notice1 notice4">글쓰기</button>
+					<button type="submit" class="notice1 notice4">수정</button>
+					<span class="noticespan notice4"><a class="" style="color: white;"
+								href="${pageContext.request.contextPath}/${currentuserid}/noticedelete?noticeId=${notice.noticeId}">삭제</a></span>
 				</div>
 			</div>
 		</div>
