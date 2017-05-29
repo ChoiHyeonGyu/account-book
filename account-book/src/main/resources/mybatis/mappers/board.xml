@@ -162,18 +162,6 @@
 		]]>
 	</update>
 	
-	<select id="graphmonthselect" parameterType="string" resultType="graphvo">
-		<![CDATA[
-			select count(*) as cnt, category from list where id = #{value} and day between trunc(add_months(sysdate, -1), 'mm') and trunc(sysdate, 'mm') -1/86400 group by category
-		]]>
-	</select>
-	
-	<select id="graphyearselect" parameterType="string" resultType="graphvo">
-		<![CDATA[
-			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy') -1/86400 group by category
-		]]>
-	</select>
-	
 	<select id="graphavgdefaultselect" parameterType="string" resultType="graphvo">
 		<![CDATA[
 			select sum(cnt) as cnt, category from (select count(*) as cnt, c.category as category from (select id from (select gender, age from users where id = #{value}) a, 
@@ -361,6 +349,37 @@
 					 to_char(trunc(add_months(sysdate, -1), 'mm'), 'YYYY/mm') Nov, 
 					 to_char(trunc(add_months(sysdate, 0), 'mm'), 'YYYY/mm') Dec 	 
 			from dual
+		]]>
+	</select>
+	
+	<select id="graphjinanmonthselect" resultType="graphvo">
+		<![CDATA[
+			select rownum, cnt, category from 
+			(select count(*) as cnt, category from list where day between trunc(add_months(sysdate, -1), 'mm') and trunc(add_months(sysdate, 0), 'mm') -1/86400 
+			group by category order by cnt desc, category) where rownum < 11
+		]]>
+	</select>
+	
+	<select id="graphttmonthselect" resultType="graphvo">
+		<![CDATA[
+			select rownum, cnt, category from 
+			(select count(*) as cnt, category from list where day between trunc(add_months(sysdate, 0), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 
+			group by category order by cnt desc, category) where rownum < 11
+		]]>
+	</select>
+	
+	<select id="allexportgraphselect" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where operations = '-'
+			and day between trunc(add_months(sysdate, -12), 'mm') and trunc(sysdate, 'dd') group by category, day order by day, lsum desc
+		]]>
+	</select>
+	
+	<select id="alllimitgraphselect" resultType="graphvo">
+		<![CDATA[
+			select * from (select category, avg(money_limit) as ml from category c, userscategory uc where c.category_id = uc.category_id group by category) a,
+			(select category, floor(avg(money)) as lsum from list where day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 and operations = '-'
+			group by category) b where a.category = b.category order by lsum desc, a.category
 		]]>
 	</select>
 </mapper>

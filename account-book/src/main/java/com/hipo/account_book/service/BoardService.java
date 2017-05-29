@@ -221,14 +221,6 @@ public class BoardService {
 		return true;
 	}
 	
-	public List<GraphVo> graphmonth(String id){
-		return boardDao.graphmonthselect(id);
-	}
-	
-	public List<GraphVo> graphyear(String id){
-		return boardDao.graphyearselect(id);
-	}
-	
 	public List<GraphVo> graphavgdefault(String id){
 		return boardDao.graphavgdefaultselect(id);
 	}
@@ -282,5 +274,21 @@ public class BoardService {
 	
 	public GraphVo date(){
 		return boardDao.dateselect();
+	}
+	
+	public List<GraphVo> graphjinanmonth(){
+		return boardDao.graphjinanmonthselect();
+	}
+	
+	public List<GraphVo> graphttmonth(){
+		return boardDao.graphttmonthselect();
+	}
+	
+	public List<GraphVo> allexportgraph(){
+		return boardDao.allexportgraphselect();
+	}
+	
+	public List<GraphVo> alllimitgraph(){
+		return boardDao.alllimitgraphselect();
 	}
 }

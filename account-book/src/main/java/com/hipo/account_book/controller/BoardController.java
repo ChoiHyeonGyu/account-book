@@ -123,18 +123,6 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/graphmonth")
-	public JSONResult graphmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
-		return JSONResult.success(boardService.graphmonth(id));
-	}
-	
-	@ResponseBody
-	@RequestMapping("/graphyear")
-	public JSONResult graphyear(@PathVariable String id, @RequestBody Map<String, Object> map){
-		return JSONResult.success(boardService.graphyear(id));
-	}
-	
-	@ResponseBody
 	@RequestMapping("/graphavgdefault")
 	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.graphavgdefault(id));
@@ -198,5 +186,29 @@ public class BoardController {
 	@RequestMapping("/exportgraph")
 	public JSONResult exportgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.exportgraph(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphjinanmonth")
+	public JSONResult graphjinanmonth(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.graphjinanmonth());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphttmonth")
+	public JSONResult graphttmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.graphttmonth());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/allexportgraph")
+	public JSONResult allexportgraph(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.allexportgraph());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/alllimitgraph")
+	public JSONResult alllimitgraph(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.alllimitgraph());
 	}
 }

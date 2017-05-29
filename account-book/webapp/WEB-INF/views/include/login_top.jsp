@@ -63,7 +63,7 @@
 					<li><a class="page-scroll"
 						href="${pageContext.request.contextPath}/board">씀씀이 이야기</a></li>
 					<li><a class="page-scroll"
-						href="${pageContext.request.contextPath}/graph">통계</a></li>
+						href="${pageContext.request.contextPath}/./graph">통계</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">고객센터
 							<span class="caret"></span>
