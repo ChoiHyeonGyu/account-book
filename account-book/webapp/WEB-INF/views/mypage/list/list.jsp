@@ -115,10 +115,12 @@
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
 									listarray.push("${vo.listId}");
+									function my1Function(val) {
+									    alert("The input value has changed. The new value is: " + val);
+									}
 								</script>
-								<tr class="listoriginal">
-									<td><input value="${vo.day}" class="mine tablecoler"
-										style="background: #ececec"></td>
+								<tr class="listoriginal"><!--?? id 아님?  -->
+									<td><input id="${vo.listId}" value="${vo.day}" class="mine tablecoler" name="modifyday" onchange="my1Function(this.value)" style="background: #ececec"></td>
 									<td><input value="${vo.name}" class="mine tablecoler"
 										style="background: #ececec"></td>
 									<td><input value="${vo.moneyresult}" class="mine tablecoler" style="background: #ececec"></td>

@@ -147,7 +147,7 @@ $(function() {
 	    		if(response.data.prevPage > 0){
     				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
     			}
-    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
+    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){// 포문 해석문제..
     				if(response.data.endPage < i){
     					html4 += "<li>"+i+"</li>";
     				} else if(response.data.pagination == i) {
@@ -166,8 +166,8 @@ $(function() {
     			$("#listall").append(html2);
 	    		
 	    		formap(listarray);
-	    		listarray = [];
-	    		html4 = [];
+	    		listarray = [];//설명 필요.
+	    		html4 = [];//설명 필요.
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
@@ -289,7 +289,7 @@ $(function() {
     			$("#listall").append(html2);
     			
 	    		formap(listarray);
-	    		listarray = [];
+	    		listarray = [];//이해가 안감,.맵이 안뜸.
 	    		html4 = [];
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);

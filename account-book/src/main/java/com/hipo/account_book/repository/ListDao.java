@@ -67,7 +67,7 @@ private SqlSession sql;
 
 	public ListVo totalmonth(String id, String operation) {
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("operation",operation);// 말그대로,.operation 저장
+		map.put("operation",operation);// 말그대로,.operation 저장//vo 에 없기때문에 . 여기다 저장후 보냄.
 		map.put("id",id);// id 저장
 		return sql.selectOne("listview.totalmonth", map);
 	}
