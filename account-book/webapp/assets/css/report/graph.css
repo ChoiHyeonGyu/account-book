@@ -13,3 +13,12 @@
 .marginleft20 {
 	margin-left:20px;
 }
+
+.disabled {
+	background-color: #eee;
+	pointer-events: none;
+}
+
+.center {
+	text-align: center;
+}

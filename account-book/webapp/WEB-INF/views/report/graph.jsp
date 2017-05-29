@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
 <c:choose>
-	<c:when test="${currentuserid == '.'}">
+	<c:when test="${currentuserid == ''}">
 		<c:import url="/WEB-INF/views/include/login_top.jsp" />
 	</c:when>
 	<c:otherwise>
@@ -16,7 +16,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/report/graph.css">
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/report/flot-data-graph.js"></script>
+<c:choose>
+	<c:when test="${currentuserid == ''}">
+		<script src="${pageContext.request.contextPath}/assets/js/report/view-flot.js"></script>
+	</c:when>
+	<c:otherwise>
+		<script src="${pageContext.request.contextPath}/assets/js/report/flot-data-graph.js"></script>
+	</c:otherwise>
+</c:choose>
 
     <div class="container">
     	<div class="row mt">
@@ -24,18 +31,19 @@
     			<!-- 상단 선택 메뉴 -->
     			<div class="col-lg-12">
 	    			<c:choose>
-	    				<c:when test="${currentuserid == '.'}">
+	    				<c:when test="${currentuserid == ''}">
 	    					<div class="dropdown theme-dropdown clearfix">
-								<select id="graph-import" class="dropdown-menu marginleft">
+								<select id="graph-import" class="dropdown-menu marginleft disabled">
 									<option>월 수입(전체)</option>
 								</select>
-								<select id="graph-gender" class="dropdown-menu marginleft20">
+								<select id="graph-gender" class="dropdown-menu marginleft20 disabled">
 									<option>성별(전체)</option>
 								</select>
-								<select id="graph-age" class="dropdown-menu marginleft20">
+								<select id="graph-age" class="dropdown-menu marginleft20 disabled">
 									<option>나이(전체)</option>
 								</select>
 							</div>
+							<p class="fontred center">/* 더 자세한 통계는 회원가입 후 이용해주세요. */</p>
 	    				</c:when>
 	    				<c:otherwise>
 	    					<div class="dropdown theme-dropdown clearfix">
