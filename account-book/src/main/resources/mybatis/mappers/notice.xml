@@ -38,4 +38,10 @@
 			update notice set hit = hit + 1 where notice_id = #{noticeId}
 		]]>
 	</update>
+	
+	<select id="modify1" parameterType="int" resultType="noticevo">
+		<![CDATA[
+			select content as noticeContent, title as noticeTitle from notice where notice_id=#{noticeId}
+		]]>
+	</select>
 </mapper>

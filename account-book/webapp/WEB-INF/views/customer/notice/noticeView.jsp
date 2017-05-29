@@ -45,6 +45,9 @@
 					</tbody>
 				</table>
 
+				<button id="noticeModify" type="button" class="notice2 notice4"
+					style="margin-bottom: 20px; float: right;">수정/삭제</button>
+
 			</div>
 			<table class="table margintop">
 				<colgroup>
@@ -66,6 +69,10 @@
 				</thead>
 				<tbody>
 					<c:forEach var="notice" items="${notice.noticelist}">
+						<script>
+							userIdarray.push("${v1.id}");
+							noticeIdarray.push("${notice.noticeId}");
+						</script>
 						<tr>
 							<td>${notice.noticeDay}</td>
 							<td><a style="color: black;"
@@ -77,9 +84,6 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<script>
-				userIdarray.push("${v1.id}");
-			</script>
 			<button id="noticeAdd" type="button"
 				class="fa fa-pencil notice notice4"
 				style="margin-bottom: 20px; float: right;">글쓰기</button>
@@ -108,6 +112,35 @@
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="notice1 notice4">글쓰기</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<div class="modal fade" id="noticeModifyform" tabindex="-1"
+	role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<form id="noticepost" method="post"
+		action="${pageContext.request.contextPath}/${currentuserid}/noticemodify">
+		<div class="modal-dialog margintop2">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title center">공지 사항</h4>
+				</div>
+				<div class="modal-body">
+					<label for="recipient-name" class="control-label">제목:</label> <input
+						type="text" id="noticeTitle" class="form-control" name="noticeTitle"> <label
+						for="message-text" class="control-label">내용:</label>
+					<textarea id="noticeContent" class="form-control" name="noticeContent" rows="7"></textarea>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="notice1 notice4">수정</button>
+					<span class="noticespan notice4"><a class="" style="color: white;"
+								href="${pageContext.request.contextPath}/${currentuserid}/noticedelete?noticeId=${notice.noticeId}">삭제</a></span>
 				</div>
 			</div>
 		</div>
