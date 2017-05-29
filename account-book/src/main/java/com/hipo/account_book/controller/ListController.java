@@ -34,7 +34,7 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/movelist")
 	public JSONResult movelist(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));
+		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));// 모름ㄴ
 	}
 	
 	@RequestMapping("/list")
@@ -42,7 +42,7 @@ public class ListController {
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
 			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
-		UserVo v1 = Pservice.checkUpdate(id);
+		UserVo v1 = Pservice.checkUpdate(id);// about profile 
 		model.addAttribute("v1", v1);
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);

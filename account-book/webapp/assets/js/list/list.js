@@ -149,10 +149,6 @@ $(function(){
 		}
 	});
 	
-	function myFunction2(val) {
-	    alert("The input value has changed. The new value is: " + val);
-	}
-	
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		$("#"+listarray[i]).click(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.

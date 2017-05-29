@@ -72,9 +72,9 @@ $(function() {
 		$("svg").remove();
     	$(".morris-default-style").remove();
     	
-		opernum = opernum - 1;
+		opernum = opernum - 1;// 버튼을 누루면 -1 or 1추가됨 .이 값으로 어떻게 값을 꺼낼수 있는지 궁금함.
 		oper = {operation: opernum};
-		
+		console.log(oper);
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",
 		    type: "POST",
@@ -122,7 +122,7 @@ $(function() {
 		    contentType: "application/json; charset=UTF-8",  
 		    success: function( response ){
 		    	console.log(response);
-		    	$(".listoriginal").remove();
+		    	$(".listoriginal").remove();// 한번 비워야 내가 부르고 싶은 달의 것만 꺼낼수 있다. .
 	    		for(var i=0; i<response.data.list.length; i++){
 	    			if(response.data.list[i].bank == undefined){
 	    				response.data.list[i].bank = "";
@@ -138,8 +138,9 @@ $(function() {
 									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
 									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
 								"</tr>";
-	    			$("#listbody").append(html);
-	    			listarray.push(response.data.list[i].listId);
+	    			
+	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
+	    			/*listarray.push(response.data.list[i].listId);*/ //안써줘도 에러 안남 .
 	    		}
 	    		
 	    		$(".pager").remove();
