@@ -41,7 +41,7 @@
 	
 	<select id="modify1" parameterType="int" resultType="noticevo">
 		<![CDATA[
-			select content as noticeContent, title as noticeTitle from notice where notice_id=#{noticeId}
+			select content as noticeContent, title as noticeTitle, notice_id as noticeId from notice where notice_id=#{noticeId}
 		]]>
 	</select>
 </mapper>

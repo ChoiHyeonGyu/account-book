@@ -136,17 +136,23 @@
 						type="text" id="noticeTitle" class="form-control" name="noticeTitle"> <label
 						for="message-text" class="control-label">내용:</label>
 					<textarea id="noticeContent" class="form-control" name="noticeContent" rows="7"></textarea>
+					<input type="hidden" id="noticeId" name="noticeId">
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="notice1 notice4">수정</button>
-					<span class="noticespan notice4"><a class="" style="color: white;"
-								href="${pageContext.request.contextPath}/${currentuserid}/noticedelete?noticeId=${notice.noticeId}">삭제</a></span>
+					<span id="noticedeletebutton" class="noticespan notice4">삭제</span>
 				</div>
 			</div>
 		</div>
 	</form>
 </div>
 
+<div style="display:none">
+	<form id="noticedeletepost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/noticedelete">
+		<input type="hidden" id="noticeId" name="noticeId" value="">
+		
+	</form>
+</div>
 
 <!-- 푸터영역 -->
 <c:import url="/WEB-INF/views/include/main_bottom.jsp" />
