@@ -196,7 +196,7 @@ public class BoardController {
 	
 	@ResponseBody
 	@RequestMapping("/graphttmonth")
-	public JSONResult graphttmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
+	public JSONResult graphttmonth(@RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.graphttmonth());
 	}
 	
