@@ -86,7 +86,7 @@ public class AndroidListController {
 
 	}
 
-	@RequestMapping("location")
+	@RequestMapping("/location")
 	@ResponseBody
 	public Map<String, ListVo> getByTime(HttpServletRequest request, @PathVariable String id) {
 		String year = request.getParameter("year");
@@ -97,6 +97,17 @@ public class AndroidListController {
 			ListData.put("ListVo" + i, list.get(i));
 		}
 		return ListData;
+	}
+
+	@RequestMapping("/getSumPaid")
+	@ResponseBody
+	public Map<String, String> getSumPaid(HttpServletRequest request, @PathVariable String id) {
+		String year = request.getParameter("year");
+		String month = request.getParameter("month");
+		String sum = listService.getSumPaid(year, month, id);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("sum", sum);
+		return map;
 	}
 
 }

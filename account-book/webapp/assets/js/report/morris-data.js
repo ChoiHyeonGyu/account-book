@@ -72,9 +72,9 @@ $(function() {
 		$("svg").remove();
     	$(".morris-default-style").remove();
     	
-		opernum = opernum - 1;
+		opernum = opernum - 1;// 버튼을 누루면 -1 or 1추가됨 .이 값으로 어떻게 값을 꺼낼수 있는지 궁금함.
 		oper = {operation: opernum};
-		
+		console.log(oper);
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",
 		    type: "POST",
@@ -119,10 +119,10 @@ $(function() {
 		    type: "POST",
 		    dataType: "JSON",
 		    data: JSON.stringify(oper),
-		    contentType: "application/json; charset=UTF-8",
+		    contentType: "application/json; charset=UTF-8",  
 		    success: function( response ){
 		    	console.log(response);
-		    	$(".listoriginal").remove();
+		    	$(".listoriginal").remove();// 한번 비워야 내가 부르고 싶은 달의 것만 꺼낼수 있다. .
 	    		for(var i=0; i<response.data.list.length; i++){
 	    			if(response.data.list[i].bank == undefined){
 	    				response.data.list[i].bank = "";
@@ -130,7 +130,7 @@ $(function() {
 	    			html = "<tr class='listoriginal'>"+
 									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><label class='text11 col-lg-offset-2' style='background: #ececec'>"+response.data.list[i].money+"원</label></td>"+
+									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
@@ -138,13 +138,14 @@ $(function() {
 									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
 									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
 								"</tr>";
-	    			$("#listbody").append(html);
-	    			listarray.push(response.data.list[i].listId);
+	    			
+	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
+	    			/*listarray.push(response.data.list[i].listId);*/ //안써줘도 에러 안남 .
 	    		}
 	    		
 	    		$(".pager").remove();
 	    		if(response.data.prevPage > 0){
-    				html3 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
+    				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
     			}
     			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
     				if(response.data.endPage < i){
@@ -152,11 +153,11 @@ $(function() {
     				} else if(response.data.pagination == i) {
     					html4 += "<li class='selected'>"+i+"</li>";
     				} else {
-    					html4 += "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
+    					html4 += "<li><a href='"+path+"/"+currentid+"/list?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
     				}
     			}
     			if(response.data.nextPage > 0){
-    				html5 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
+    				html5 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
     			}
     			
     			html2 = "<div class='pager'>"+
@@ -168,8 +169,8 @@ $(function() {
 	    		listarray = [];
 	    		html4 = [];
 	    		
-	    		$("#v2").text(response.data.v2);
-	    		$("#v3").text(response.data.v3);
+	    		$("#v2").text(response.data.v2.moneyresult);
+	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
@@ -196,6 +197,7 @@ $(function() {
     	
 		opernum = opernum + 1;
 		oper = {operation: opernum};
+		console.log(opernum);
 		
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",
@@ -252,7 +254,7 @@ $(function() {
 	    			html = "<tr class='listoriginal'>"+
 									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><label class='text11 col-lg-offset-2' style='background: #ececec'>"+response.data.list[i].money+"원</label></td>"+
+									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
@@ -266,7 +268,7 @@ $(function() {
 	    		
 	    		$(".pager").remove();
 	    		if(response.data.prevPage > 0){
-    				html3 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
+    				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
     			}
     			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
     				if(response.data.endPage < i){
@@ -274,11 +276,11 @@ $(function() {
     				} else if(response.data.pagination == i) {
     					html4 += "<li class='selected'>"+i+"</li>";
     				} else {
-    					html4 += "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
+    					html4 += "<li><a href='"+path+"/"+currentid+"/list?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
     				}
     			}
     			if(response.data.nextPage > 0){
-    				html5 = "<li><a href='"+path+"/"+currentid+"/listaj?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
+    				html5 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
     			}
     			
     			html2 = "<div class='pager'>"+
@@ -290,8 +292,8 @@ $(function() {
 	    		listarray = [];
 	    		html4 = [];
 	    		
-	    		$("#v2").text(response.data.v2);
-	    		$("#v3").text(response.data.v3);
+	    		$("#v2").text(response.data.v2.moneyresult);
+	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       

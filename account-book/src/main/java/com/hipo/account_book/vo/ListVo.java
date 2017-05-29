@@ -7,28 +7,13 @@ public class ListVo {
 	private String bank;
 	private String operations;
 	private int money;
-	private int totalmoney;
-	private int totalincome;
+	private String moneyresult;
 	private String name;
 	private String category;
 	private String day;
 	private String locationX;
 	private String locationY;
-	
-	public int getTotalmoney() {
-		return totalmoney;
-	}
-	public void setTotalmoney(int totalmoney) {
-		this.totalmoney = totalmoney;
-	}
-	public int getTotalincome() {
-		return totalincome;
-	}
-	public void setTotalincome(int totalincome) {
-		this.totalincome = totalincome;
-	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "ListVo [listId=" + listId + ", id=" + id + ", paid=" + paid + ", bank=" + bank + ", operations="
@@ -101,7 +86,10 @@ public class ListVo {
 	public void setDay(String day) {
 		this.day = day;
 	}
-	
-	
-
+	public String getMoneyresult() {
+		return moneyresult;
+	}
+	public void setMoneyresult(String moneyresult) {
+		this.moneyresult = moneyresult;
+	}
 }

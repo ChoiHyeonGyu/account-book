@@ -6,8 +6,6 @@ function checkLoginState() {
 		
 		if (response.status === 'connected') {
 			FB.api('/me?fields=id,email,name,gender,birthday,age_range', function(response) {
-				console.log(response);
-				console.log(JSON.stringify(response));
 				obj = response;
 				document.getElementById('fbhidden').click();
 			});
@@ -46,9 +44,9 @@ function checkLoginState() {
 
 window.fbAsyncInit = function() {
 	FB.init({
-		appId : 287459421697705,
+		appId : 326151361133966,
 		xfbml : true,
-		version : 'v2.9'
+		version : 'v2.8'
 	});
 	FB.AppEvents.logPageView();
 };
@@ -59,6 +57,6 @@ window.fbAsyncInit = function() {
 		return;
 	js = d.createElement(s);
 	js.id = id;
-	js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.9&appId=287459421697705";	
+	js.src = "//connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v2.8&appId=326151361133966";	
 	fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));

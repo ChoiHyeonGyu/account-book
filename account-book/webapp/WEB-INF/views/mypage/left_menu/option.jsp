@@ -79,6 +79,7 @@
 	<form id="modifypost" action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1" method="post">
 		<input id="categoryId" type="hidden" name="categoryId">
 		<input id="category" type="text" value="" name="category" class="form-control" placeholder="Category" required><br>
+		<input id="categoryname" type="text" value="" name="category" class="form-control" placeholder="Category" required><br>
 	</form>
 </div>
 

@@ -35,8 +35,8 @@
 
 					<!-- 가계부리스트영역 -->
 					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font id="v3" color="blue">
-						${v3}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
-						 ${v2}</font>원</h2>
+						${v3.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
+						 ${v2.moneyresult}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
 						<input type="search" name="searching" size="123" class="searchbox"
 							placeholder="현금,금액,카테고리"> <button class="fa fa-search fa-1 sr-contact searchbox1"
@@ -44,78 +44,7 @@
 
 					</form>
 
-<%-- 
-					<form
-						action="${pageContext.request.contextPath }/${currentuserid}/add"
-						method="post">
-						<table class="table-bordered border-collapse" style="background: #ececec">
-
-							<colgroup>
-								<col width="10%" />
-								<col width="20%" />
-								<col width="10%" />
-								<col width="10%" />
-								<col width="13%" />
-								<col width="10%" />
-								<col width="10%" />
-								<col width="5%" />
-								<col width="5%" />
-
-							</colgroup>
-
-							<thead>
-								<tr>
-									<th class="mine1 tablecolor tableoption"
-										style="background: #ececec" WIDTH="50">날짜</th>
-									<th class="mine2 tablecolor" style="background: #ececec">사용내역</th>
-									<th class="mine3 tablecolor" style="background: #ececec">금액</th>
-									<th class="mine3 tablecolor" style="background: #ececec">결제수단</th>
-									<th class="mine3 tablecolor" style="background: #ececec">지출/수입/투자</th>
-									<th class="mine3 tablecolor" style="background: #ececec">은행</th>
-									<th class="mine3 tablecolor" style="background: #ececec">카테고리</th>
-									<th class="mine3 tablecolor" style="background: #ececec">지도</th>
-									<th class="mine3 tablecolor" style="background: #ececec">삭제</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td><input type="text" id="datepicker" name="day"
-										class="tableinput" placeholder="날짜 입력하기"></td>
-									<td><input value="" class="mine tablecoler"
-										style="background: #ececec" placeholder="사용내역" name="name"></td>
-									<td><input value="" class="mine tablecolor "
-										style="background: #ececec" placeholder="금액" name="money"></td>
-									<td><select id="paid" name="paid" class="tableinput">
-											<option value="현금">현금</option>
-											<option value="카드">카드</option>
-									</select></td>
-									<td><select id="operations" class="tableinput"
-										name="operations">
-
-											<option value="-">지출</option>
-											<option value="+">수입</option>
-											<option value="0">투자</option>
-									</select></td>
-									<td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="은행" name="bank"></td>
-									<!-- <td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="카테고리" name="category"></td>
-									 -->
-									<td><select id="category" class="tableinput" name="category">
-										<c:forEach var="bb" items="${option}">
-											<option value="${bb.category}">${bb.category}</option>
-										</c:forEach>
-									</select></td>
-									<td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="지도"></td>
-									<td><input type="submit" value="저장"
-										class="btn btn-default" /></td>
-								</tr>
-								<!-- <button id="myBtn">추가</button> -->
-						</table>
-
-					</form>
- --%>
+							<!--가계부 리스트 테일 추가 부분  -->
 					<table class="table-bordered border-collapse searchbox"
 						style="background: #ececec">
 						<colgroup>
@@ -145,7 +74,7 @@
 								</tr>
 							</thead>
 							<tbody id="listbody">
-						
+												
 							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
 								<tr>
 									<td><input type="text" id="datepicker" name="day"
@@ -182,6 +111,7 @@
 						
 								</tr>
 								</form>	
+								<!--  가계부 리스트 뿌려주는곳.	 -->
 						<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
@@ -192,22 +122,10 @@
 										style="background: #ececec"></td>
 									<td><input value="${vo.name}" class="mine tablecoler"
 										style="background: #ececec"></td>
-									<td><label id="${vo.listId}"  class="text11 col-lg-offset-2" style="background: #ececec ">${vo.money}원</label></td>
+									<td><input value="${vo.moneyresult}" class="mine tablecoler" style="background: #ececec"></td>
 									<td><input value="${vo.paid}" class="mine tablecoler"
 										style="background: #ececec"></td>
-									<td>
-										<c:choose>
-											<c:when test="${vo.operations == '+'}">
-												<input value="수입" class="mine tablecoler" style="background: #ececec">
-											</c:when>
-											<c:when test="${vo.operations == '-'}">
-												<input value="지출" class="mine tablecoler" style="background: #ececec">
-											</c:when>
-											<c:otherwise>
-												<input value="투자" class="mine tablecoler" style="background: #ececec">
-											</c:otherwise>
-										</c:choose>
-									</td>
+									<td><input value="${vo.operations}" class="mine tablecoler" style="background: #ececec"></td>
 									<td><input value="${vo.bank}" class="mine tablecoler"
 										style="background: #ececec"></td>
 									<td><input value="${vo.category}" class="mine tablecoler"
@@ -234,7 +152,7 @@
 						<ul>
 							<c:if test="${ps.prevPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath}/${currentuserid}/listaj?pagination=${ps.prevPage}&searching=${ps.searching}&operation=">◀</a></li>
+									href="${pageContext.request.contextPath}/${currentuserid}/list?pagination=${ps.prevPage}&searching=${ps.searching}&operation=">◀</a></li>
 							</c:if>
 
 							<c:forEach begin="${ps.beginPage}"
@@ -248,14 +166,14 @@
 									</c:when>
 									<c:otherwise>
 										<li><a
-											href="${pageContext.request.contextPath }/${currentuserid}/listaj?pagination=${page}&searching=${ps.searching}&operation=">${page}</a></li>
+											href="${pageContext.request.contextPath }/${currentuserid}/list?pagination=${page}&searching=${ps.searching}&operation=">${page}</a></li>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 
 							<c:if test="${ps.nextPage > 0}">
 								<li><a
-									href="${pageContext.request.contextPath }/${currentuserid}/listaj?pagination=${ps.nextPage}&searching=${ps.searching}&operation=">▶</a></li>
+									href="${pageContext.request.contextPath }/${currentuserid}/list?pagination=${ps.nextPage}&searching=${ps.searching}&operation=">▶</a></li>
 							</c:if>
 						</ul>
 					</div>

@@ -19,13 +19,7 @@ public class FrontService {
 	Calendar calendar = Calendar.getInstance();
 	
 	public UserVo fblogin(Map<String, Object> map){
-		UserVo uservo = new UserVo();
-		if(map.get("email") != null){
-			uservo.setId(map.get("email").toString());
-		} else {
-			uservo.setId(map.get("id").toString());
-		}
-		return frontDao.fbselect(uservo);
+		return frontDao.fbselect(map.get("id").toString());
 	}
 	
 	public void fbjoin(Map<String, Object> map){
@@ -57,7 +51,7 @@ public class FrontService {
 		} else {
 			uservo.setAge("0");
 		}
-		uservo.setPassword("facebook");
+		uservo.setPassword(uservo.getId());
 		frontDao.fbinsert(uservo);
 	}
 	

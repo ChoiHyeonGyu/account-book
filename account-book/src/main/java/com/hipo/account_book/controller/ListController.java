@@ -30,51 +30,25 @@ public class ListController {
 	private OptionService optionservice;
 	@Autowired
 	private ProfileService Pservice;
-
-	
-		
-	@RequestMapping("/list")
-	public String List(Model model, @ModelAttribute OptionVo optionvo, @ModelAttribute ListVo vo,
-			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
-			@RequestParam(value = "searching", required = false) String searching, @PathVariable String id) {
-		/*service.getList(vo);*/
-		
-	
-		/*model.addAttribute("day1", money);*/
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1", v1);
-
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		Map<String,Object> m = service.pageSearching(pagination, searching, id);
-		model.addAttribute("ps",m);
-		int v3 = service.totalmonth1(id, "");
-		 int v2 = service.totalmonth(id, "");
-		 model.addAttribute("v2",v2);
-		 model.addAttribute("v3",v3);
-		model.addAttribute("option", option);
-		return "mypage/list/list";
-	}
 	
 	@ResponseBody
 	@RequestMapping("/movelist")
 	public JSONResult movelist(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));
+		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));// 모름ㄴ
 	}
 	
-	@RequestMapping("/listaj")
+	@RequestMapping("/list")
 	public String Listaj(Model model, @ModelAttribute OptionVo optionvo,
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
 			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
-		UserVo v1 = Pservice.checkUpdate(id);
+		UserVo v1 = Pservice.checkUpdate(id);// about profile 
 		model.addAttribute("v1", v1);
-
+		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
-		int v3 = service.totalmonth1(id, operation);
-		int v2 = service.totalmonth(id, operation);
-		model.addAttribute("v2",v2);
-		model.addAttribute("v3",v3);
+		model.addAttribute("v2", service.totalmonth(id, operation));
+		model.addAttribute("v3", service.totalmonth1(id, operation));
 		model.addAttribute("option", option);
 		return "mypage/list/list";
 	}
