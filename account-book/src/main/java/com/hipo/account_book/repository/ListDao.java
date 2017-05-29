@@ -81,6 +81,18 @@ private SqlSession sql;
 	}
 
 
+	public void modify2(Map<String, Object> s) {
+			sql.update("listview.modify2",s);		
+	}
+
+
+	public void modify3(Map<String, Object> map) {
+		System.out.println("dddddddd" + map);
+		sql.update("listview.modify3",map);
+		
+	}
+
+
 /*	public int totalmonth(ListVo vo) {
 		System.out.println("돈돈돈돈돈돈" + vo);
 		return sql.selectOne("listview.totalmonth", vo);

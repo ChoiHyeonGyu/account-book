@@ -78,16 +78,24 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map) {
+		System.out.println("정보 확인" + map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));// 여기서
 																									// 에러.
 
 	}
 
+	@ResponseBody
 	@RequestMapping("/modify1")
-	public String modify1(@ModelAttribute ListVo vo, @PathVariable String id) {
-		service.modify1(vo);
-
-		return "redirect:/" + id + "/list";
+	public JSONResult modify1(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("날짜 확인" + map);
+		return JSONResult.success(service.modify2(map));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/modify2")
+	public JSONResult modify2(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("name 정보 확인" + map);
+		return JSONResult.success(service.modify3(map));
 	}
 
 	@ResponseBody

@@ -141,18 +141,19 @@ $(function(){
 		myBtnform1.dialog("open");
 	});*/
 	
-	$("#commit").submit(function(){
+	/*$("#commit").submit(function(){
 		if(String(Number($("#money").val())) == "NaN"){
 			alert("숫자로만 입력해주세요.");
 			$("#money").focus();
 			return false;
 		}
-	});
+	});*/
 	
-	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
+	/*for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		$("#"+listarray[i]).click(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 			console.log(num);
+			
 			mm1.dialog("open");//여기서 폼을 띄운다,.
 			
 			var listid = {"listid":num.target.id};// 보내는 데이터 , 컨트롤러 보내기전 정보  packing sending to the controller.!!!
@@ -179,7 +180,7 @@ $(function(){
 			    }
 			});
 		});
-	}
+	}*/
 });
 
 var formap = function(_listarray){
@@ -250,4 +251,62 @@ var formap = function(_listarray){
 $(function(){
 	formap(listarray);
 });
+
+function my1Function(val) {
+    alert("The input value has changed. The new value is: " + val);
+	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
+		var num = listarray[i];
+		console.log(num);
+		$("#"+listarray[i]).focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+			console.log(num);
+			
+			/*mm1.dialog("open");//여기서 폼을 띄운다,.
+*/			
+			var list = {"listId":num.target.id,"listday":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+			$.ajax( {// 여기서 부터 통신이 시작된다.
+			    url : "/account-book/"+currentid+"/modify1",// 보낼주소
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+			    	console.log(response);
+			    	
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+}
+
+function my2Function(val) {
+    alert("The input value has changed. The new value is: " + val);
+	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
+		var num = listarray[i];
+		console.log(num);
+		$("#"+listarray[i]+"").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+			console.log(num);
+			
+			var list = {"listId":num.target.id,"listname":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+			$.ajax( {// 여기서 부터 통신이 시작된다.
+			    url : "/account-book/"+currentid+"/modify2",// 보낼주소
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+			    	console.log(response);
+			    	
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+}
 	
