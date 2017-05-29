@@ -53,7 +53,7 @@ $(function() {
 				success : function(response) {
 					console.log(response);
 					$("#categoryId").val(response.data.categoryId);
-					$("#category").val(response.data.category);
+					$("#categoryname").val(response.data.category);
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
