@@ -47,7 +47,7 @@ public class OptionController {
 			optionService.Add2(optionvo);
 		}
 
-		return "redirect:/"+id+"/listaj";
+		return "redirect:/"+ id +"/list";
 	}
 	
 	
@@ -55,10 +55,10 @@ public class OptionController {
 	public String reset(@RequestParam("resetPassword") String resetPassword, @PathVariable String id){
 		String pp = optionService.checkPassword(resetPassword, id);
 		if(pp.equals("fail")==true){
-			return "redirect:/"+id+"/listaj";
+			return "redirect:/"+id+"/list";
 		} else {
 			optionService.reset(id);
-			return "redirect:/"+id+"/listaj";
+			return "redirect:/"+ id +"/list";
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class OptionController {
 		categoryId = optionService.limitModify(optionvo);
 		optionvo.setCategeoryId(categoryId);
 		optionService.limitModify1(optionvo);
-		return "redirect:/"+id+"/listaj";
+		return "redirect:/"+ id +"/list";
 	}
 	
 	@ResponseBody
@@ -88,7 +88,7 @@ public class OptionController {
 		vo.setCategeoryId(cid);
 		System.out.println("vovovovovo---------"+vo);
 		optionService.categoryModify1(vo);
-		return "redirect:/"+id+"/listaj";
+		return "redirect:/"+ id +"/list";
 	}
 	
 	@RequestMapping("/categorydelete")
@@ -101,7 +101,7 @@ public class OptionController {
 		optionService.delete(vo);
 		
 		//return "main";
-		return "redirect:/"+id+"/listaj";
+		return "redirect:/"+id+"/list";
 	}
 	
 }

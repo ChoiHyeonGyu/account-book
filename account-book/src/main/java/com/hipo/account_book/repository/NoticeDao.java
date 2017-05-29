@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.NoticeVo;
 
 @Repository
@@ -41,5 +42,9 @@ public class NoticeDao {
 	
 	public void noticeHit(int noticeId){
 		sql.update("notice.hit", noticeId);
+	}
+	
+	public NoticeVo NoticeModify1(int noticeId) {
+		return sql.selectOne("notice.modify1", noticeId);
 	}
 }

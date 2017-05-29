@@ -9,9 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hipo.account_book.dto.JSONResult;
 import com.hipo.account_book.service.BoardService;
 import com.hipo.account_book.service.NoticeService;
 import com.hipo.account_book.service.OptionService;
@@ -100,6 +103,13 @@ public class NoticeController {
 		model.addAttribute("notice", map);
 
 		return "customer/notice/notice";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/noticemodify1")
+	public JSONResult noticeModify1(@PathVariable String id, @RequestBody Map<String, Object> map) {
+		System.out.println("oooooooooooooo-----:"+map);
+		return JSONResult.success(noticeService.NoticeModify1(Integer.parseInt(map.get("noticeId").toString())));// 여기서																							// 에러.
 	}
 
 }

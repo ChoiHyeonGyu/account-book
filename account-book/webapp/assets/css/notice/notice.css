@@ -25,6 +25,18 @@
     margin: 4px 2px;
     cursor: pointer;
 }
+.notice2 {
+    background-color:#EAEAEA;
+    width: 9%;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
 .aligncenter{text-align: center;}
 
 .notice4 {border-radius: 12px;}
