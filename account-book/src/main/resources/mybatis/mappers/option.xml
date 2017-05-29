@@ -68,7 +68,7 @@
 			left outer join category
 			on userscategory.category_id=category.category_id
 			left outer join list
-			on (category.category = list.category) where category.category is not NULL
+			on (category.category = list.category) and list.id = #{id} where category.category is not NULL
 			group by category.category, category.category_id, userscategory.money_limit
 			order by category.category
  		]]>

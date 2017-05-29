@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.hipo.account_book.repository.BoardDao;
 import com.hipo.account_book.repository.NoticeDao;
+import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.NoticeVo;
 import com.hipo.account_book.vo.OptionVo;
 
@@ -56,5 +57,10 @@ public class NoticeService {
 	
 	public void NoticeHit(int noticeId){
 		noticeDao.noticeHit(noticeId);
+	}
+	
+	public NoticeVo NoticeModify1(int noticeId) {
+		NoticeVo noticeVo = noticeDao.NoticeModify1(noticeId);
+		return noticeVo;
 	}
 }

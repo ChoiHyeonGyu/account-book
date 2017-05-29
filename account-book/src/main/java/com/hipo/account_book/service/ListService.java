@@ -67,7 +67,7 @@ public class ListService {
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		map.put("list", dao.movelistselect(Integer.parseInt(operation), searching, pagination, LIST_SIZE, id));
-		map.put("totalCount", totalCount);
+		map.put("totalCount", totalCount);//페이지 정보를 가지고 또다른 결과값을 불러낼수 있음 javascrip.
 		map.put("listSize", LIST_SIZE);
 		map.put("pagination", pagination);
 		map.put("beginPage", beginPage);
@@ -91,5 +91,16 @@ public class ListService {
 
 	public ListVo totalmonth1(String id, String operation) {	
 		return dao.totalmonth1(id, operation);
+	}
+
+	public Object modify2(Map<String, Object> s) {
+		dao.modify2(s);
+		return null;
+	}
+
+	public Object modify3(Map<String, Object> map) {
+		System.out.println("name !!!!!!!!!!!!!!=" + map);
+		dao.modify3(map);
+		return null;
 	}
 }
