@@ -55,11 +55,11 @@ $(function() {
 	    }
 	});
 	
-	$("#cl").click(function(){
+	$("#cl").click(function(){ //왼쪽버튼 .
 		gm = gm - 1;
 		if(gm == 0){
-			gfy = gfy - 1;
-			gm = 12;
+			gfy = gfy - 1;// 왜뺌
+			gm = 12; 
 		}
 		
 		if(gm < 10){
@@ -73,7 +73,7 @@ $(function() {
     	$(".morris-default-style").remove();
     	
 		opernum = opernum - 1;// 버튼을 누루면 -1 or 1추가됨 .이 값으로 어떻게 값을 꺼낼수 있는지 궁금함.
-		oper = {operation: opernum};
+		oper = {operation: opernum};// operation 어디에 선언된 것인지( )
 		console.log(oper);
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",
@@ -83,7 +83,7 @@ $(function() {
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
 		    	if(response.data.length == 0){
-		    		data1[0] = {y: "없음", a: 0, b: 0};
+		    		data1[0] = {y: "없음", a: 0, b: 0};// 달력 버튼으로 뭘 찾으려는 것인지.
 		    	}
 		    	for(var i=0; i<response.data.length; i++){
 			    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
@@ -108,7 +108,7 @@ $(function() {
 		        });
 		    },
 		    error: function( XHR, status, error ){
-		       console.error( status + " : " + error );	       
+		       console.error( status + " : " + error );	       // 여기서 에러나면 뭐때문인지.
 		    }
 		});
 		barcolnum = [];
@@ -137,7 +137,7 @@ $(function() {
 									"<td><input value='"+response.data.list[i].category+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
 									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
-								"</tr>";
+								"</tr>";//path +currentid > main
 	    			
 	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
 	    			/*listarray.push(response.data.list[i].listId);*/ //안써줘도 에러 안남 .
@@ -147,7 +147,7 @@ $(function() {
 	    		if(response.data.prevPage > 0){
     				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
     			}
-    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){
+    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){// 포문 해석문제..
     				if(response.data.endPage < i){
     					html4 += "<li>"+i+"</li>";
     				} else if(response.data.pagination == i) {
@@ -166,8 +166,8 @@ $(function() {
     			$("#listall").append(html2);
 	    		
 	    		formap(listarray);
-	    		listarray = [];
-	    		html4 = [];
+	    		listarray = [];//설명 필요.
+	    		html4 = [];//설명 필요.
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
@@ -289,7 +289,7 @@ $(function() {
     			$("#listall").append(html2);
     			
 	    		formap(listarray);
-	    		listarray = [];
+	    		listarray = [];//이해가 안감,.맵이 안뜸.
 	    		html4 = [];
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);
