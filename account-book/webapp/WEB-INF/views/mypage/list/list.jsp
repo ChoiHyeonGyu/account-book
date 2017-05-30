@@ -83,7 +83,7 @@
 										style="background: #ececec" placeholder="사용내역" name="name" required></td>
 									<td><input value="" class="mine tablecolor " type="text"
 										style="background: #ececec" placeholder="금액" name="money" required></td>
-									<td><select id="paid" name="paid" class="tableinput searchbox" required>
+									<td><select id="paid" name="paid" class="tableinput searchbox"  required>
 											<option value="현금">현금</option>
 											<option value="카드">카드</option>
 									</select></td>
@@ -101,7 +101,7 @@
 									 -->
 									<td><select id="category" class="tableinput searchbox" name="category" required>
 										<c:forEach var="bb" items="${option}">
-											<option value="${bb.category}">${bb.category}</option>
+											<option value="${bb.category}">${bb.category}</option> 
 										</c:forEach>
 									</select></td>
 									<td><input value="" class="mine tablecolor"
@@ -123,13 +123,42 @@
 									<td><input id="${vo.listId}" value="${vo.day}" class="mine tablecoler" name="modifyday" onchange="my1Function(this.value)" style="background: #ececec"></td>
 									<td><input id="${vo.listId}a" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
 									<td><input id="${vo.listId}b" value="${vo.moneyresult}" class="mine tablecoler" onchange="my3Function(this.value)" style="background: #ececec"></td>
-									<td><input value="${vo.paid}" class="mine tablecoler"
-										style="background: #ececec"></td>
-									<td><input value="${vo.operations}" class="mine tablecoler" style="background: #ececec"></td>
+									
+									<td><select id="${vo.listId}e" class="tableinput searchbox2" onchange="my5Function(this.value)">
+									<c:if test="${vo.paid == '현금'}">
+											<option value="${vo.paid}">${vo.paid}</option> 
+											<option value="카드">카드</option>
+									</c:if>
+									<c:if test="${vo.paid == '카드'}">
+											<option value="${vo.paid}">${vo.paid}</option>
+											<option value="현금">현금</option>
+									</c:if>
+										</select></td>
+									<td><select id="${vo.listId}d" name="paid" class="tableinput searchbox2" style="background: #ececec " required>
+											<c:if test="${vo.operations == '수입'}">
+												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="-">지출</option>
+												<option value="0">투자</option>
+											</c:if>
+											<c:if test="${vo.operations == '지출'}">
+												<option value="+">수입</option>
+												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="0">투자</option>
+											</c:if>
+											<c:if test="${vo.operations == '투자'}">
+												<option value="+">수입</option>
+												<option value="-">지출</option>
+												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+											</c:if>
+										</select></td>
 									<td><input id="${vo.listId}c"value="${vo.bank}" class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
-									<td><input value="${vo.category}" class="mine tablecoler"
-										style="background: #ececec"></td>
+									<td><select id="paid" name="paid" class="tableinput searchbox2" style="background: #ececec" required>
+											 <option value="${vo.category}" selected="selected">${vo.category}</option> 
+										<c:forEach var="bb" items="${option}">
+											<option value="${bb.category}">${bb.category}</option> 
+										</c:forEach>
+										</select></td>
 									<td><strong id="maps${vo.listId}"
 										class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler"
 										style="background: #ececec"></strong></td>

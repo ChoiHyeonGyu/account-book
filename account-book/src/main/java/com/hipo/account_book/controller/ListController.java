@@ -81,7 +81,6 @@ public class ListController {
 		System.out.println("정보 확인" + map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));// 여기서
 																									// 에러.
-
 	}
 
 	@ResponseBody
@@ -108,6 +107,21 @@ public class ListController {
 	public JSONResult modify4(@RequestBody Map<String, Object> map, @PathVariable String id) {
 		return JSONResult.success(service.modify5(map));
 	}
+	@ResponseBody
+	@RequestMapping("/modifyl")
+	 /* 은행 !*/
+	public JSONResult modifyl(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return null/*JSONResult.success(service.modifyl(map))*/;
+	}
+	@ResponseBody
+	@RequestMapping("/modify5")
+	 /* paid!*/
+	public JSONResult modify5(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return JSONResult.success(service.modify6(map));
+	}
+	
 
 	@ResponseBody
 	@RequestMapping("/maps")
