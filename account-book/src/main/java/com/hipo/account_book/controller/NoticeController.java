@@ -38,7 +38,9 @@ public class NoticeController {
 
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
+		
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
 
@@ -68,8 +70,6 @@ public class NoticeController {
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
 		
-		
-
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
@@ -84,7 +84,22 @@ public class NoticeController {
 	}
 
 	@RequestMapping("/qnaview")
-	public String QnaView(@RequestParam("qnaId") int noticeId) {
+	public String QnaView(Model model, @RequestParam("qnaId") int qnaId, @PathVariable String id) {
+		
+		noticeService.QnaHit(qnaId);
+
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+
+		System.out.println("mapmapmapmap::" + map);
+		Map<String, Object> map1 = new HashMap<String, Object>();
+
+		map1 = noticeService.noticeView(qnaId);
+		model.addAttribute("view", map1);
 
 		return "customer/notice/qnaView";
 	}
@@ -93,7 +108,7 @@ public class NoticeController {
 	public String NoticeAdd(Model model, @PathVariable String id,
 			@ModelAttribute NoticeVo vo) {
 		String content;
-		System.out.println("novonovonovo:::"+vo);
+		System.out.println("nvo:::"+vo);
 		content = vo.getNoticeContent();
 		content = content.replace("\n","<br>");
 		vo.setNoticeContent(content);
@@ -107,55 +122,140 @@ public class NoticeController {
 		return "customer/notice/notice";
 	}
 	
+	@RequestMapping("/qnaadd")
+	public String QnaAdd(Model model, @PathVariable String id,
+			@ModelAttribute NoticeVo vo) {
+		String content;
+		System.out.println("qvo:::"+vo);
+		content = vo.getQnaContent();
+		content = content.replace("\n","<br>");
+		vo.setQnaContent(content);
+		noticeService.QnaAdd(vo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+
+		return "customer/notice/faq";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/noticemodify1")
 	public JSONResult noticeModify1(@PathVariable String id, @RequestBody Map<String, Object> map) {
+		NoticeVo vo;
+		String content;
+		
 		System.out.println("oooooooooooooo-----:"+map);
-		return JSONResult.success(noticeService.NoticeModify1(Integer.parseInt(map.get("noticeId").toString())));// 여기서																							// 에러.
+		
+		vo = noticeService.NoticeModify1(Integer.parseInt(map.get("noticeId").toString()));
+		content = vo.getNoticeContent();
+		content = content.replace("<br>","\n");
+		vo.setNoticeContent(content);
+		
+		return JSONResult.success(vo);// 여기서																							// 에러.
 	}
 	
 	@RequestMapping("/noticemodify")
 	public String NoticeModify(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo) {
+		int noticeId = vo.getNoticeId();
+		String content;
+		
 		System.out.println("vovovomodify:"+vo);
 		
-		/*
+		content = vo.getNoticeContent();
+		content = content.replace("\n","<br>");
+		vo.setNoticeContent(content);
+		noticeService.NoticeModify(vo);
+		
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
+
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
-		*/
+		
+		Map<String, Object> map1 = new HashMap<String, Object>();
+
+		map1 = noticeService.noticeView(noticeId);
+		model.addAttribute("view", map1);
+		
 		return "customer/notice/noticeView";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/qnamodify1")
+	public JSONResult QnaModify1(@PathVariable String id, @RequestBody Map<String, Object> map) {
+		NoticeVo vo;
+		String content;
+		
+		System.out.println("qqqq-----:"+map);
+		
+		vo = noticeService.QnaModify1(Integer.parseInt(map.get("qnaId").toString()));
+		content = vo.getQnaContent();
+		content = content.replace("<br>","\n");
+		vo.setQnaContent(content);
+		
+		return JSONResult.success(vo);// 여기서																							// 에러.
+	}
+	
+	@RequestMapping("/qnamodify")
+	public String QnaModify(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo) {
+		int qnaId = vo.getQnaId();
+		String content;
+		
+		System.out.println("qqqmodify:"+vo);
+		
+		content = vo.getQnaContent();
+		content = content.replace("\n","<br>");
+		vo.setQnaContent(content);
+		noticeService.QnaModify(vo);
+		
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+		
+		Map<String, Object> map1 = new HashMap<String, Object>();
+
+		map1 = noticeService.noticeView(qnaId);
+		model.addAttribute("view", map1);
+		
+		return "customer/notice/qnaView";
 	}
 	
 	@RequestMapping("/noticedelete")
 	public String NoticeDelete(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo) {
 		System.out.println("deleteidididi:"+vo);
-		/*
-		System.out.println("noidnoidnoid::" + noticeId);
-		noticeService.NoticeHit(noticeId);
-
+		
+		noticeService.NoticeDelete(vo);
+		
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
 		model.addAttribute("notice", map);
-
-		System.out.println("mapmapmapmap::" + map);
-		Map<String, Object> map1 = new HashMap<String, Object>();
-
-		map1 = noticeService.noticeView(noticeId);
-		model.addAttribute("view", map1);
-		*/
+		
 		return "customer/notice/notice";
 	}
 	
-	@ResponseBody
-	@RequestMapping("/noticedelete1")
-	public JSONResult noticedelete1(@PathVariable String id, @RequestBody Map<String, Object> map) {
-		System.out.println("dddddddddd-----:"+map);
-		return JSONResult.success(noticeService.NoticeDelete1(Integer.parseInt(map.get("noticeId").toString())));// 여기서																							// 에러.
+	@RequestMapping("/qnadelete")
+	public String QnaDelete(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo) {
+		System.out.println("deleteqqqq:"+vo);
+		
+		noticeService.QnaDelete(vo);
+		
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = noticeService.getNotice();
+		model.addAttribute("notice", map);
+		
+		return "customer/notice/faq";
 	}
 
 }
