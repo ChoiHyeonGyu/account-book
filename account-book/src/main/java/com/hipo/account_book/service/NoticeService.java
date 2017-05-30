@@ -48,6 +48,8 @@ public class NoticeService {
 		map.put( "noticeview", view);
 		map.put( "qnaview", view2);
 		
+		System.out.println("qviewqview:::"+view2);
+		
 		return map;
 	}
 	
@@ -55,12 +57,41 @@ public class NoticeService {
 		noticeDao.noticeAdd(vo);
 	}
 	
+	public void QnaAdd(NoticeVo vo){
+		noticeDao.qnaAdd(vo);
+	}
+	
 	public void NoticeHit(int noticeId){
 		noticeDao.noticeHit(noticeId);
+	}
+	
+	public void QnaHit(int qnaId){
+		noticeDao.qnaHit(qnaId);
 	}
 	
 	public NoticeVo NoticeModify1(int noticeId) {
 		NoticeVo noticeVo = noticeDao.NoticeModify1(noticeId);
 		return noticeVo;
+	}
+	
+	public NoticeVo QnaModify1(int qnaId) {
+		NoticeVo noticeVo = noticeDao.QnaModify1(qnaId);
+		return noticeVo;
+	}
+	
+	public void NoticeModify(NoticeVo vo){
+		noticeDao.NoticeModify(vo);
+	}
+	
+	public void QnaModify(NoticeVo vo){
+		noticeDao.QnaModify(vo);
+	}
+	
+	public void NoticeDelete(NoticeVo vo){
+		noticeDao.NoticeDelete(vo);
+	}
+	
+	public void QnaDelete(NoticeVo vo){
+		noticeDao.QnaDelete(vo);
 	}
 }
