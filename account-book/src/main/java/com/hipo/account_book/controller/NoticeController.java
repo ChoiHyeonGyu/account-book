@@ -107,6 +107,9 @@ public class NoticeController {
 	@RequestMapping("/noticeadd")
 	public String NoticeAdd(Model model, @PathVariable String id,
 			@ModelAttribute NoticeVo vo) {
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+		
 		String content;
 		System.out.println("nvo:::"+vo);
 		content = vo.getNoticeContent();
@@ -125,6 +128,9 @@ public class NoticeController {
 	@RequestMapping("/qnaadd")
 	public String QnaAdd(Model model, @PathVariable String id,
 			@ModelAttribute NoticeVo vo) {
+		UserVo v1 = Pservice.checkUpdate(id);
+		model.addAttribute("v1", v1);
+		
 		String content;
 		System.out.println("qvo:::"+vo);
 		content = vo.getQnaContent();
