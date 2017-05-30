@@ -17,7 +17,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.hipo.account_book.repository.BoardDao;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.GraphVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Service
 public class BoardService {
@@ -221,25 +220,6 @@ public class BoardService {
 		return true;
 	}
 	
-	public List<GraphVo> graphavgdefault(String id){
-		return boardDao.graphavgdefaultselect(id);
-	}
-	
-	public List<GraphVo> transgraphavg(String gen, String age){
-		UserVo uservo = new UserVo();
-		uservo.setGender(gen);
-		uservo.setAge(age);
-		return boardDao.transgraphavgselect(uservo);
-	}
-	
-	public List<GraphVo> transgraphavg1(String gen){
-		return boardDao.transgraphavgselect1(gen);
-	}
-	
-	public List<GraphVo> transgraphavg2(String age){
-		return boardDao.transgraphavgselect2(age);
-	}
-	
 	public List<GraphVo> limitgraph(String id){
 		return boardDao.limitgraphselect(id);
 	}
@@ -290,5 +270,165 @@ public class BoardService {
 	
 	public List<GraphVo> alllimitgraph(){
 		return boardDao.alllimitgraphselect();
+	}
+	
+	public Map<String, Object> transgraphavg1(Map<String, Object> map){
+		if(map.get("profit").toString().equals("100만원 이하")){
+			map.put("profitend", "100");
+		}
+		for(int i=100; i<=950; i+=50){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+50)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+50);
+			}
+		}
+		for(int i=1000; i<=9000; i+=500){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+500)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+500);
+			}
+		}
+		if(map.get("profit").toString().equals("9500만원 ~ 1억원 사이")){
+			map.put("profitbegin", 9500);
+			map.put("profitend", 10000);
+		}
+		if(map.get("profit").toString().equals("1억원 이상")){
+			map.put("profitbegin", 10000);
+		}
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect1(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect1(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect1(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect1(mapselect));
+		return mapselect;
+	}
+	
+	public Map<String, Object> transgraphavg2(Map<String, Object> map){
+		if(map.get("profit").toString().equals("100만원 이하")){
+			map.put("profitend", "100");
+		}
+		for(int i=100; i<=950; i+=50){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+50)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+50);
+			}
+		}
+		for(int i=1000; i<=9000; i+=500){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+500)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+500);
+			}
+		}
+		if(map.get("profit").toString().equals("9500만원 ~ 1억원 사이")){
+			map.put("profitbegin", 9500);
+			map.put("profitend", 10000);
+		}
+		if(map.get("profit").toString().equals("1억원 이상")){
+			map.put("profitbegin", 10000);
+		}
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect2(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect2(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect2(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect2(mapselect));
+		return mapselect;
+	}
+	
+	public Map<String, Object> transgraphavg3(Map<String, Object> map){
+		if(map.get("profit").toString().equals("100만원 이하")){
+			map.put("profitend", "100");
+		}
+		for(int i=100; i<=950; i+=50){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+50)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+50);
+			}
+		}
+		for(int i=1000; i<=9000; i+=500){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+500)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+500);
+			}
+		}
+		if(map.get("profit").toString().equals("9500만원 ~ 1억원 사이")){
+			map.put("profitbegin", 9500);
+			map.put("profitend", 10000);
+		}
+		if(map.get("profit").toString().equals("1억원 이상")){
+			map.put("profitbegin", 10000);
+		}
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect3(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect3(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect3(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect3(mapselect));
+		return mapselect;
+	}
+	
+	public Map<String, Object> transgraphavg4(Map<String, Object> map){
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect4(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect4(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect4(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect4(mapselect));
+		return mapselect;
+	}
+	
+	public Map<String, Object> transgraphavg5(Map<String, Object> map){
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect5(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect5(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect5(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect5(mapselect));
+		return mapselect;
+	}
+	
+	public Map<String, Object> transgraphavg6(Map<String, Object> map){
+		if(map.get("profit").toString().equals("100만원 이하")){
+			map.put("profitend", "100");
+		}
+		for(int i=100; i<=950; i+=50){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+50)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+50);
+			}
+		}
+		for(int i=1000; i<=9000; i+=500){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+500)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+500);
+			}
+		}
+		if(map.get("profit").toString().equals("9500만원 ~ 1억원 사이")){
+			map.put("profitbegin", 9500);
+			map.put("profitend", 10000);
+		}
+		if(map.get("profit").toString().equals("1억원 이상")){
+			map.put("profitbegin", 10000);
+		}
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect6(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect6(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect6(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect6(mapselect));
+		return mapselect;
+	}
+
+	public Map<String, Object> transgraphavg7(Map<String, Object> map){
+		Map<String, Object> mapselect = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect7(mapselect));
+		map.put("gtms", boardDao.graphttmonthselect7(mapselect));
+		map.put("aegs", boardDao.allexportgraphselect7(mapselect));
+		map.put("algs", boardDao.alllimitgraphselect7(mapselect));
+		return mapselect;
+	}
+	
+	public Map<String, Object> transgraphavgdefault(){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("gjms", boardDao.graphjinanmonthselect());
+		map.put("gtms", boardDao.graphttmonthselect());
+		map.put("aegs", boardDao.allexportgraphselect());
+		map.put("algs", boardDao.alllimitgraphselect());
+		return map;
 	}
 }

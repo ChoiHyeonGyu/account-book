@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.GraphVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Repository
 public class BoardDao {
@@ -117,22 +116,6 @@ public class BoardDao {
 		sqlSession.update("board.good", num);
 	}
 	
-	public List<GraphVo> graphavgdefaultselect(String id){
-		return sqlSession.selectList("board.graphavgdefaultselect", id);
-	}
-	
-	public List<GraphVo> transgraphavgselect(UserVo uservo){
-		return sqlSession.selectList("board.transgraphavgselect", uservo);
-	}
-	
-	public List<GraphVo> transgraphavgselect1(String gen){
-		return sqlSession.selectList("board.transgraphavgselect1", gen);
-	}
-	
-	public List<GraphVo> transgraphavgselect2(String age){
-		return sqlSession.selectList("board.transgraphavgselect2", age);
-	}
-	
 	public List<GraphVo> limitgraphselect(String id){
 		return sqlSession.selectList("board.limitgraphselect", id);
 	}
@@ -183,5 +166,117 @@ public class BoardDao {
 	
 	public List<GraphVo> alllimitgraphselect(){
 		return sqlSession.selectList("board.alllimitgraphselect");
+	}
+	
+	public List<GraphVo> graphjinanmonthselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect1", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect1", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect1", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect1", map);
+	}
+	
+	public List<GraphVo> graphjinanmonthselect2(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect2", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect2(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect2", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect2(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect2", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect2(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect2", map);
+	}
+	
+	public List<GraphVo> graphjinanmonthselect3(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect3", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect3(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect3", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect3(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect3", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect3(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect3", map);
+	}
+	
+	public List<GraphVo> graphjinanmonthselect4(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect4", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect4(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect4", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect4(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect4", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect4(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect4", map);
+	}
+	
+	public List<GraphVo> graphjinanmonthselect5(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect5", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect5(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect5", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect5(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect5", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect5(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect5", map);
+	}
+	
+	public List<GraphVo> graphjinanmonthselect6(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect6", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect6(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect6", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect6(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect6", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect6(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect6", map);
+	}
+	
+	public List<GraphVo> graphjinanmonthselect7(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect7", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect7(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect7", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect7(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect7", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect7(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect7", map);
 	}
 }

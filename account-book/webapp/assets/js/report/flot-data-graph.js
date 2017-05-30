@@ -8,6 +8,7 @@ $(function() {
 	var column4 = [];
 	var column5 = [];
 	var column6 = [];
+	var data4 = [];
 	
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/graphjinanmonth",
@@ -191,5 +192,140 @@ $(function() {
 	    error: function( XHR, status, error ){
 	       console.error( status + " : " + error );	       
 	    }
+	});
+	
+	$("#graph-import").mouseleave(function(){
+		
+		var selectobj = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text()};
+		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/transgraphavg",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(selectobj),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	if(response.data.length == 0){
+		    		alert("이 정보에 대한 데이터가 아직 부족합니다.");
+		    	}
+		    	
+		    	for(var i=0; i<response.data.length; i++){
+			    	data4[i] = {label: response.data[i].category, data: response.data[i].cnt};
+		    	}
+		    	
+		    	var plotObj = $.plot($("#flot-pie-chart"+4), data4, {
+		            series: {
+		                pie: {
+		                    show: true
+		                }
+		            },
+		            grid: {
+		                hoverable: true
+		            },
+		            tooltip: true,
+		            tooltipOpts: {
+		                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+		                shifts: {
+		                    x: 20,
+		                    y: 0
+		                },
+		                defaultTheme: false
+		            }
+		        });
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
+	});
+	
+	$("#graph-gender").mouseleave(function(){
+		
+		var selectobj = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text()};
+		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/transgraphavg",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(selectobj),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	if(response.data.length == 0){
+		    		alert("이 정보에 대한 데이터가 아직 부족합니다.");
+		    	}
+		    	
+		    	for(var i=0; i<response.data.length; i++){
+			    	data4[i] = {label: response.data[i].category, data: response.data[i].cnt};
+		    	}
+		    	
+		    	var plotObj = $.plot($("#flot-pie-chart"+4), data4, {
+		            series: {
+		                pie: {
+		                    show: true
+		                }
+		            },
+		            grid: {
+		                hoverable: true
+		            },
+		            tooltip: true,
+		            tooltipOpts: {
+		                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+		                shifts: {
+		                    x: 20,
+		                    y: 0
+		                },
+		                defaultTheme: false
+		            }
+		        });
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
+	});
+	
+	$("#graph-age").mouseleave(function(){
+		
+		var selectobj2 = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text()};
+		
+		$.ajax( {
+		    url : "/account-book/"+currentid+"/transgraphavg",
+		    type: "POST",
+		    dataType: "JSON",
+		    data: JSON.stringify(selectobj2),
+		    contentType: "application/json; charset=UTF-8",
+		    success: function( response ){
+		    	if(response.data.length == 0){
+		    		alert("이 정보에 대한 데이터가 아직 부족합니다.");
+		    	}
+		    	
+		    	for(var i=0; i<response.data.length; i++){
+			    	data4[i] = {label: response.data[i].category, data: response.data[i].cnt};
+		    	}
+		    	
+		    	var plotObj = $.plot($("#flot-pie-chart"+4), data4, {
+		            series: {
+		                pie: {
+		                    show: true
+		                }
+		            },
+		            grid: {
+		                hoverable: true
+		            },
+		            tooltip: true,
+		            tooltipOpts: {
+		                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+		                shifts: {
+		                    x: 20,
+		                    y: 0
+		                },
+		                defaultTheme: false
+		            }
+		        });
+		    },
+		    error: function( XHR, status, error ){
+		       console.error( status + " : " + error );	       
+		    }
+		});
 	});
 });
