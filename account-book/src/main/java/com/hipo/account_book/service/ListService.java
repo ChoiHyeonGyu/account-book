@@ -145,4 +145,17 @@ public class ListService {
 		dao.modify5(id,info);
 		return null;
 	}
+
+	public Object modify6(Map<String, Object> map) {
+		System.out.println("가지고 온 정보 !!=" + map);
+		String id = map.get("listId").toString();
+		id = id.replaceAll("e","");
+		System.out.println("ddddddddddddddddddddlistId = " + id);
+		
+		info = map.get("paid").toString();
+		System.out.println("paid" + info);
+		
+		dao.modify6(id,info);
+		return null;
+	}
 }
