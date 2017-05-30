@@ -1,6 +1,5 @@
 package com.hipo.account_book.androidcontroller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,11 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hipo.account_book.service.AndroidCategoryService;
 import com.hipo.account_book.service.AndroidUserService;
-import com.hipo.account_book.vo.ListVo;
+import com.hipo.account_book.vo.OptionVo;
 import com.hipo.account_book.vo.UserVo;
 
 @Controller
@@ -25,6 +22,8 @@ public class AndroidUserController {
 
 	@Autowired
 	private AndroidUserService androidService;
+	@Autowired
+	private AndroidCategoryService aCategoryService;
 
 	@RequestMapping("/test")
 	@ResponseBody
@@ -42,11 +41,22 @@ public class AndroidUserController {
 		vo.setGender(request.getParameter("gender"));
 		vo.setPassword(request.getParameter("password"));
 		vo.setId(request.getParameter("id"));
-		String email = request.getParameter("email");
-
-		System.out.println(vo.toString());
 
 		androidService.join(vo);
+
+		String category = "생활비";
+		OptionVo optionVo = aCategoryService.getCategoryId(category);
+		if (optionVo == null) {
+			aCategoryService.addCategory(category);
+			optionVo = aCategoryService.getCategoryId(category);
+		}
+
+		optionVo.setCategory(category);
+		optionVo.setId(vo.getId());
+
+		if (aCategoryService.addUsersCategory(optionVo))
+			;
+		System.out.println("성공!!");
 
 	}
 
@@ -64,5 +74,4 @@ public class AndroidUserController {
 		return userInfo;
 	}
 
-	
 }
