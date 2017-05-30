@@ -67,6 +67,8 @@ public class NoticeController {
 
 		UserVo v1 = Pservice.checkUpdate(id);
 		model.addAttribute("v1", v1);
+		
+		
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice();
@@ -127,8 +129,8 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/noticedelete")
-	public String NoticeDelete(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id) {
-		System.out.println("deleteidididi:"+noticeId);
+	public String NoticeDelete(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo) {
+		System.out.println("deleteidididi:"+vo);
 		/*
 		System.out.println("noidnoidnoid::" + noticeId);
 		noticeService.NoticeHit(noticeId);
@@ -147,6 +149,13 @@ public class NoticeController {
 		model.addAttribute("view", map1);
 		*/
 		return "customer/notice/notice";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/noticedelete1")
+	public JSONResult noticedelete1(@PathVariable String id, @RequestBody Map<String, Object> map) {
+		System.out.println("dddddddddd-----:"+map);
+		return JSONResult.success(noticeService.NoticeDelete1(Integer.parseInt(map.get("noticeId").toString())));// 여기서																							// 에러.
 	}
 
 }

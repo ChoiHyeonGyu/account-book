@@ -14,7 +14,7 @@ $(document).ready(function() {
 	$("#noticeModify").click(function() {
 		var userId = userIdarray[0];
 		var ni = noticeIdarray[0];
-		
+		console.log(ni);
 		if (userId == "superjun3") {
 			$("#noticeModifyform").modal();
 			var noticeId ={"noticeId":ni};
@@ -38,6 +38,8 @@ $(document).ready(function() {
 	});
 	
 	$("#noticedeletebutton").click(function() {
+		var nd = noticeIdarray[0];
+		$("#deleteId").val(nd)
 		$("#noticedeletepost").submit();
 	});
 });

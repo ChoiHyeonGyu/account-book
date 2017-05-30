@@ -20,6 +20,9 @@
 			<div class="panel panel-default">
 				<!-- Default panel contents -->
 				<div class="panel-heading">${view.noticeview.noticeTitle }</div>
+				<script>
+					noticeIdarray.push("${view.noticeview.noticeId}");
+				</script>
 				<table class="table table-bordered">
 					<colgroup>
 						<col width="3%">
@@ -71,7 +74,6 @@
 					<c:forEach var="notice" items="${notice.noticelist}">
 						<script>
 							userIdarray.push("${v1.id}");
-							noticeIdarray.push("${notice.noticeId}");
 						</script>
 						<tr>
 							<td>${notice.noticeDay}</td>
@@ -149,8 +151,7 @@
 
 <div style="display:none">
 	<form id="noticedeletepost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/noticedelete">
-		<input type="hidden" id="noticeId" name="noticeId" value="">
-		
+		<input type="hidden" id="deleteId" name="noticeId" value="">
 	</form>
 </div>
 

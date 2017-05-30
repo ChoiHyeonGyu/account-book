@@ -17,7 +17,7 @@
 	
 	<select id="noticeview" parameterType="int" resultType="noticevo">
 		<![CDATA[
-			select content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice where notice_id=#{noticeId}
+			select notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice where notice_id=#{noticeId}
 		]]>
 	</select>
 	
@@ -42,6 +42,12 @@
 	<select id="modify1" parameterType="int" resultType="noticevo">
 		<![CDATA[
 			select content as noticeContent, title as noticeTitle, notice_id as noticeId from notice where notice_id=#{noticeId}
+		]]>
+	</select>
+	
+	<select id="delete1" parameterType="int" resultType="noticevo">
+		<![CDATA[
+			select notice_id as noticeId from notice where notice_id=#{noticeId}
 		]]>
 	</select>
 </mapper>

@@ -63,4 +63,9 @@ public class NoticeService {
 		NoticeVo noticeVo = noticeDao.NoticeModify1(noticeId);
 		return noticeVo;
 	}
+	
+	public NoticeVo NoticeDelete1(int noticeId) {
+		NoticeVo noticeVo = noticeDao.NoticeDelete1(noticeId);
+		return noticeVo;
+	}
 }

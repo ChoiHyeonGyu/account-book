@@ -47,4 +47,8 @@ public class NoticeDao {
 	public NoticeVo NoticeModify1(int noticeId) {
 		return sql.selectOne("notice.modify1", noticeId);
 	}
+	
+	public NoticeVo NoticeDelete1(int noticeId) {
+		return sql.selectOne("notice.delete1", noticeId);
+	}
 }
