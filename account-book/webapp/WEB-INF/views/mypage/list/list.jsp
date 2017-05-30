@@ -121,12 +121,12 @@
 								</script>
 								<tr class="listoriginal"><!--?? id 아님?  -->
 									<td><input id="${vo.listId}" value="${vo.day}" class="mine tablecoler" name="modifyday" onchange="my1Function(this.value)" style="background: #ececec"></td>
-									<td><input id="${vo.listId}!" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
-									<td><input value="${vo.moneyresult}" class="mine tablecoler" style="background: #ececec"></td>
+									<td><input id="${vo.listId}a" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
+									<td><input id="${vo.listId}b" value="${vo.moneyresult}" class="mine tablecoler" onchange="my3Function(this.value)" style="background: #ececec"></td>
 									<td><input value="${vo.paid}" class="mine tablecoler"
 										style="background: #ececec"></td>
 									<td><input value="${vo.operations}" class="mine tablecoler" style="background: #ececec"></td>
-									<td><input value="${vo.bank}" class="mine tablecoler"
+									<td><input value="${vo.bank}c" class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
 									<td><input value="${vo.category}" class="mine tablecoler"
 										style="background: #ececec"></td>

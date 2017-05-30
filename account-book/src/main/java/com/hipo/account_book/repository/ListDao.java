@@ -86,10 +86,31 @@ private SqlSession sql;
 	}
 
 
-	public void modify3(Map<String, Object> map) {
-		System.out.println("dddddddd" + map);
+	public void modify3(String id, String infovo) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id",id);
+		map.put("infovo",infovo);
+		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify3",map);
 		
+	}
+
+
+	public void modify4(String id, int money) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id",id);
+		map.put("money",money);
+		System.out.println("인트 스트링 = " + map);
+		sql.update("listview.modify4",map);
+	}
+
+
+	public void modify5(String id, String info) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id",id);
+		map.put("info",info);
+		System.out.println("ididididididdasd = " + map);
+		sql.update("listview.modify5",map);
 	}
 
 
