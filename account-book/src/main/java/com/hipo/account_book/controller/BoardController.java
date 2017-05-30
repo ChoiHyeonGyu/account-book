@@ -20,7 +20,6 @@ import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.service.ProfileService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -34,20 +33,15 @@ public class BoardController {
 	
 	@RequestMapping("/logon")
 	public String logon(@PathVariable String id, Model model){
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
 		return "frontpage/logon";
 	}
 	
 	@RequestMapping("/board")
 	public String List(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("board", boardService.getBoardList(page, search));
-		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
 		return "mypage/mystory/mystory";
 	}
 	
@@ -129,18 +123,6 @@ public class BoardController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/graphmonth")
-	public JSONResult graphmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
-		return JSONResult.success(boardService.graphmonth(id));
-	}
-	
-	@ResponseBody
-	@RequestMapping("/graphyear")
-	public JSONResult graphyear(@PathVariable String id, @RequestBody Map<String, Object> map){
-		return JSONResult.success(boardService.graphyear(id));
-	}
-	
-	@ResponseBody
 	@RequestMapping("/graphavgdefault")
 	public JSONResult graphavgdefault(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.graphavgdefault(id));
@@ -174,19 +156,23 @@ public class BoardController {
 	
 	@RequestMapping("/mygraph")
 	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		
+		model.addAttribute("date", boardService.date());
+		model.addAttribute("catemonth", boardService.imreporttable(id));
+		model.addAttribute("cmsum", boardService.imreporttablesum(id));
 		return "report/mygraph";
 	}
 	
 	@RequestMapping("/mygraph2")
 	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
-		UserVo v1 = Pservice.checkUpdate(id);
-		model.addAttribute("v1",v1);
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		
+		model.addAttribute("date", boardService.date());
+		model.addAttribute("catemonth", boardService.exreporttable(id));
+		model.addAttribute("cmsum", boardService.exreporttablesum(id));
 		return "report/mygraph2";
 	}
 	
@@ -200,5 +186,29 @@ public class BoardController {
 	@RequestMapping("/exportgraph")
 	public JSONResult exportgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.exportgraph(id));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphjinanmonth")
+	public JSONResult graphjinanmonth(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.graphjinanmonth());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphttmonth")
+	public JSONResult graphttmonth(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.graphttmonth());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/allexportgraph")
+	public JSONResult allexportgraph(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.allexportgraph());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/alllimitgraph")
+	public JSONResult alllimitgraph(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.alllimitgraph());
 	}
 }

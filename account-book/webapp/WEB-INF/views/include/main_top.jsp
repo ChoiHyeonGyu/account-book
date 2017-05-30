@@ -51,8 +51,6 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/report/graph.css">
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 <script
 	src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>

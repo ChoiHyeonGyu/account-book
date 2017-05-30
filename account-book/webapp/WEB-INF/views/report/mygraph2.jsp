@@ -30,7 +30,65 @@
                 <div class="tab-pane fade in active" id="export">
                 	<div class="flot-chart">
                         <div class="flot-chart-content2" id="flot-line-chart-mt2"></div>
-                    </div>
+                    </div><br/>
+                    <div class="table-responsive">
+	                    <table class="table table-striped table-bordered table-hover">
+	                        <thead>
+	                            <tr>
+	                                <th class="fontsize">카테고리 \ 월</th>
+	                                <th class="fontsize">${date.jan}</th>
+	                                <th class="fontsize">${date.feb}</th>
+	                                <th class="fontsize">${date.mar}</th>
+	                                <th class="fontsize">${date.apr}</th>
+	                                <th class="fontsize">${date.may}</th>
+	                                <th class="fontsize">${date.jun}</th>
+	                                <th class="fontsize">${date.jul}</th>
+	                                <th class="fontsize">${date.aug}</th>
+	                                <th class="fontsize">${date.sep}</th>
+	                                <th class="fontsize">${date.oct}</th>
+	                                <th class="fontsize">${date.nov}</th>
+	                                <th class="fontsize">${date.dec}</th>
+	                                <th class="fontsize">카테고리 합계</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<c:forEach var="cate" items="${catemonth}">
+                                	<tr>
+		                                <td class="fontsize">${cate.category}</td>
+		                                <td class="fontsize">${cate.jan}</td>
+		                                <td class="fontsize">${cate.feb}</td>
+		                                <td class="fontsize">${cate.mar}</td>
+		                                <td class="fontsize">${cate.apr}</td>
+		                                <td class="fontsize">${cate.may}</td>
+		                                <td class="fontsize">${cate.jun}</td>
+		                                <td class="fontsize">${cate.jul}</td>
+		                                <td class="fontsize">${cate.aug}</td>
+		                                <td class="fontsize">${cate.sep}</td>
+		                                <td class="fontsize">${cate.oct}</td>
+		                                <td class="fontsize">${cate.nov}</td>
+		                                <td class="fontsize">${cate.dec}</td>
+		                                <td class="fontsize">${cate.sumresult}</td>
+	                            	</tr>
+                                </c:forEach>
+                               	<tr>
+	                                <td class="fontsize"><strong>월 합계</strong></td>
+	                                <td class="fontsize">${cmsum.jan}</td>
+	                                <td class="fontsize">${cmsum.feb}</td>
+	                                <td class="fontsize">${cmsum.mar}</td>
+	                                <td class="fontsize">${cmsum.apr}</td>
+	                                <td class="fontsize">${cmsum.may}</td>
+	                                <td class="fontsize">${cmsum.jun}</td>
+	                                <td class="fontsize">${cmsum.jul}</td>
+	                                <td class="fontsize">${cmsum.aug}</td>
+	                                <td class="fontsize">${cmsum.sep}</td>
+	                                <td class="fontsize">${cmsum.oct}</td>
+	                                <td class="fontsize">${cmsum.nov}</td>
+	                                <td class="fontsize">${cmsum.dec}</td>
+	                                <td class="fontred fontsize">${cmsum.sumresult}</td>
+                            	</tr>
+	                        </tbody>
+	                    </table>
+                	</div>
                 </div>
             </div>
 		</div>

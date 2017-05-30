@@ -7,6 +7,7 @@
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/css/list/list.css">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/report/graph.css">
 <script	src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>

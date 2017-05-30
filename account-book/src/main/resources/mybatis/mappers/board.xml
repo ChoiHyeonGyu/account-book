@@ -162,18 +162,6 @@
 		]]>
 	</update>
 	
-	<select id="graphmonthselect" parameterType="string" resultType="graphvo">
-		<![CDATA[
-			select count(*) as cnt, category from list where id = #{value} and day between trunc(add_months(sysdate, -1), 'mm') and trunc(sysdate, 'mm') -1/86400 group by category
-		]]>
-	</select>
-	
-	<select id="graphyearselect" parameterType="string" resultType="graphvo">
-		<![CDATA[
-			select count(*) as cnt, category from list where id = #{value} and day between trunc(sysdate, 'yy') and trunc(add_months(sysdate, 12), 'yy') -1/86400 group by category
-		]]>
-	</select>
-	
 	<select id="graphavgdefaultselect" parameterType="string" resultType="graphvo">
 		<![CDATA[
 			select sum(cnt) as cnt, category from (select count(*) as cnt, c.category as category from (select id from (select gender, age from users where id = #{value}) a, 
@@ -251,6 +239,147 @@
 		<![CDATA[
 			select sum(money) as lsum, category, day as day1 from list where id = #{value} and operations = '-'
 			and day between trunc(add_months(sysdate, -12), 'mm') and trunc(sysdate, 'dd') group by category, day order by day
+		]]>
+	</select>
+	
+	<select id="imreporttableselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select rt.category, to_char(sum(a), '999,999,999,999,999') Jan, to_char(sum(b), '999,999,999,999,999') Feb, to_char(sum(c), '999,999,999,999,999') Mar, 
+			to_char(sum(d), '999,999,999,999,999') Apr, to_char(sum(e), '999,999,999,999,999') May, to_char(sum(f), '999,999,999,999,999') Jun, to_char(sum(g), '999,999,999,999,999') Jul, 
+			to_char(sum(h), '999,999,999,999,999') Aug, to_char(sum(i), '999,999,999,999,999') Sep, to_char(sum(j), '999,999,999,999,999') Oct, to_char(sum(k), '999,999,999,999,999') Nov, 
+			to_char(sum(l), '999,999,999,999,999') Dec, to_char(sum(a)+sum(b)+sum(c)+sum(d)+sum(e)+sum(f)+sum(g)+sum(h)+sum(i)+sum(j)+sum(k)+sum(l), '999,999,999,999,999') as sumresult
+			from (select category, 
+				 nvl(case when day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, -10), 'mm') -1/86400 then sum(money) end, 0) a, 
+				 nvl(case when day between trunc(add_months(sysdate, -10), 'mm') and trunc(add_months(sysdate, -9), 'mm') -1/86400 then sum(money) end, 0) b, 
+				 nvl(case when day between trunc(add_months(sysdate, -9), 'mm') and trunc(add_months(sysdate, -8), 'mm') -1/86400 then sum(money) end, 0) c, 
+				 nvl(case when day between trunc(add_months(sysdate, -8), 'mm') and trunc(add_months(sysdate, -7), 'mm') -1/86400 then sum(money) end, 0) d, 
+				 nvl(case when day between trunc(add_months(sysdate, -7), 'mm') and trunc(add_months(sysdate, -6), 'mm') -1/86400 then sum(money) end, 0) e, 
+				 nvl(case when day between trunc(add_months(sysdate, -6), 'mm') and trunc(add_months(sysdate, -5), 'mm') -1/86400 then sum(money) end, 0) f, 
+				 nvl(case when day between trunc(add_months(sysdate, -5), 'mm') and trunc(add_months(sysdate, -4), 'mm') -1/86400 then sum(money) end, 0) g, 
+				 nvl(case when day between trunc(add_months(sysdate, -4), 'mm') and trunc(add_months(sysdate, -3), 'mm') -1/86400 then sum(money) end, 0) h, 
+				 nvl(case when day between trunc(add_months(sysdate, -3), 'mm') and trunc(add_months(sysdate, -2), 'mm') -1/86400 then sum(money) end, 0) i, 
+				 nvl(case when day between trunc(add_months(sysdate, -2), 'mm') and trunc(add_months(sysdate, -1), 'mm') -1/86400 then sum(money) end, 0) j, 
+				 nvl(case when day between trunc(add_months(sysdate, -1), 'mm') and trunc(add_months(sysdate, 0), 'mm') -1/86400 then sum(money) end, 0) k, 
+				 nvl(case when day between trunc(add_months(sysdate, 0), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 then sum(money) end, 0) l 
+			from list where id = #{value} and operations = '+' group by category, day) rt group by rt.category
+		]]>
+	</select>
+	
+	<select id="imreporttablesumselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select to_char(sum(a), '999,999,999,999,999') Jan, to_char(sum(b), '999,999,999,999,999') Feb, to_char(sum(c), '999,999,999,999,999') Mar, 
+			to_char(sum(d), '999,999,999,999,999') Apr, to_char(sum(e), '999,999,999,999,999') May, to_char(sum(f), '999,999,999,999,999') Jun, to_char(sum(g), '999,999,999,999,999') Jul, 
+			to_char(sum(h), '999,999,999,999,999') Aug, to_char(sum(i), '999,999,999,999,999') Sep, to_char(sum(j), '999,999,999,999,999') Oct, to_char(sum(k), '999,999,999,999,999') Nov, 
+			to_char(sum(l), '999,999,999,999,999') Dec, to_char(sum(a)+sum(b)+sum(c)+sum(d)+sum(e)+sum(f)+sum(g)+sum(h)+sum(i)+sum(j)+sum(k)+sum(l), '999,999,999,999,999') as sumresult 
+			from (select category, 
+				 nvl(case when day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, -10), 'mm') -1/86400 then sum(money) end, 0) a, 
+				 nvl(case when day between trunc(add_months(sysdate, -10), 'mm') and trunc(add_months(sysdate, -9), 'mm') -1/86400 then sum(money) end, 0) b, 
+				 nvl(case when day between trunc(add_months(sysdate, -9), 'mm') and trunc(add_months(sysdate, -8), 'mm') -1/86400 then sum(money) end, 0) c, 
+				 nvl(case when day between trunc(add_months(sysdate, -8), 'mm') and trunc(add_months(sysdate, -7), 'mm') -1/86400 then sum(money) end, 0) d, 
+				 nvl(case when day between trunc(add_months(sysdate, -7), 'mm') and trunc(add_months(sysdate, -6), 'mm') -1/86400 then sum(money) end, 0) e, 
+				 nvl(case when day between trunc(add_months(sysdate, -6), 'mm') and trunc(add_months(sysdate, -5), 'mm') -1/86400 then sum(money) end, 0) f, 
+				 nvl(case when day between trunc(add_months(sysdate, -5), 'mm') and trunc(add_months(sysdate, -4), 'mm') -1/86400 then sum(money) end, 0) g, 
+				 nvl(case when day between trunc(add_months(sysdate, -4), 'mm') and trunc(add_months(sysdate, -3), 'mm') -1/86400 then sum(money) end, 0) h, 
+				 nvl(case when day between trunc(add_months(sysdate, -3), 'mm') and trunc(add_months(sysdate, -2), 'mm') -1/86400 then sum(money) end, 0) i, 
+				 nvl(case when day between trunc(add_months(sysdate, -2), 'mm') and trunc(add_months(sysdate, -1), 'mm') -1/86400 then sum(money) end, 0) j, 
+				 nvl(case when day between trunc(add_months(sysdate, -1), 'mm') and trunc(add_months(sysdate, 0), 'mm') -1/86400 then sum(money) end, 0) k, 
+				 nvl(case when day between trunc(add_months(sysdate, 0), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 then sum(money) end, 0) l 
+			from list where id = #{value} and operations = '+' group by category, day) rt
+		]]>
+	</select>
+	
+	<select id="exreporttableselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select rt.category, to_char(sum(a), '999,999,999,999,999') Jan, to_char(sum(b), '999,999,999,999,999') Feb, to_char(sum(c), '999,999,999,999,999') Mar, 
+			to_char(sum(d), '999,999,999,999,999') Apr, to_char(sum(e), '999,999,999,999,999') May, to_char(sum(f), '999,999,999,999,999') Jun, to_char(sum(g), '999,999,999,999,999') Jul, 
+			to_char(sum(h), '999,999,999,999,999') Aug, to_char(sum(i), '999,999,999,999,999') Sep, to_char(sum(j), '999,999,999,999,999') Oct, to_char(sum(k), '999,999,999,999,999') Nov, 
+			to_char(sum(l), '999,999,999,999,999') Dec, to_char(sum(a)+sum(b)+sum(c)+sum(d)+sum(e)+sum(f)+sum(g)+sum(h)+sum(i)+sum(j)+sum(k)+sum(l), '999,999,999,999,999') as sumresult
+			from (select category, 
+				 nvl(case when day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, -10), 'mm') -1/86400 then sum(money) end, 0) a, 
+				 nvl(case when day between trunc(add_months(sysdate, -10), 'mm') and trunc(add_months(sysdate, -9), 'mm') -1/86400 then sum(money) end, 0) b, 
+				 nvl(case when day between trunc(add_months(sysdate, -9), 'mm') and trunc(add_months(sysdate, -8), 'mm') -1/86400 then sum(money) end, 0) c, 
+				 nvl(case when day between trunc(add_months(sysdate, -8), 'mm') and trunc(add_months(sysdate, -7), 'mm') -1/86400 then sum(money) end, 0) d, 
+				 nvl(case when day between trunc(add_months(sysdate, -7), 'mm') and trunc(add_months(sysdate, -6), 'mm') -1/86400 then sum(money) end, 0) e, 
+				 nvl(case when day between trunc(add_months(sysdate, -6), 'mm') and trunc(add_months(sysdate, -5), 'mm') -1/86400 then sum(money) end, 0) f, 
+				 nvl(case when day between trunc(add_months(sysdate, -5), 'mm') and trunc(add_months(sysdate, -4), 'mm') -1/86400 then sum(money) end, 0) g, 
+				 nvl(case when day between trunc(add_months(sysdate, -4), 'mm') and trunc(add_months(sysdate, -3), 'mm') -1/86400 then sum(money) end, 0) h, 
+				 nvl(case when day between trunc(add_months(sysdate, -3), 'mm') and trunc(add_months(sysdate, -2), 'mm') -1/86400 then sum(money) end, 0) i, 
+				 nvl(case when day between trunc(add_months(sysdate, -2), 'mm') and trunc(add_months(sysdate, -1), 'mm') -1/86400 then sum(money) end, 0) j, 
+				 nvl(case when day between trunc(add_months(sysdate, -1), 'mm') and trunc(add_months(sysdate, 0), 'mm') -1/86400 then sum(money) end, 0) k, 
+				 nvl(case when day between trunc(add_months(sysdate, 0), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 then sum(money) end, 0) l 
+			from list where id = #{value} and operations = '-' group by category, day) rt group by rt.category
+		]]>
+	</select>
+	
+	<select id="exreporttablesumselect" parameterType="string" resultType="graphvo">
+		<![CDATA[
+			select to_char(sum(a), '999,999,999,999,999') Jan, to_char(sum(b), '999,999,999,999,999') Feb, to_char(sum(c), '999,999,999,999,999') Mar, 
+			to_char(sum(d), '999,999,999,999,999') Apr, to_char(sum(e), '999,999,999,999,999') May, to_char(sum(f), '999,999,999,999,999') Jun, to_char(sum(g), '999,999,999,999,999') Jul, 
+			to_char(sum(h), '999,999,999,999,999') Aug, to_char(sum(i), '999,999,999,999,999') Sep, to_char(sum(j), '999,999,999,999,999') Oct, to_char(sum(k), '999,999,999,999,999') Nov, 
+			to_char(sum(l), '999,999,999,999,999') Dec, to_char(sum(a)+sum(b)+sum(c)+sum(d)+sum(e)+sum(f)+sum(g)+sum(h)+sum(i)+sum(j)+sum(k)+sum(l), '999,999,999,999,999') as sumresult 
+			from (select category, 
+				 nvl(case when day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, -10), 'mm') -1/86400 then sum(money) end, 0) a, 
+				 nvl(case when day between trunc(add_months(sysdate, -10), 'mm') and trunc(add_months(sysdate, -9), 'mm') -1/86400 then sum(money) end, 0) b, 
+				 nvl(case when day between trunc(add_months(sysdate, -9), 'mm') and trunc(add_months(sysdate, -8), 'mm') -1/86400 then sum(money) end, 0) c, 
+				 nvl(case when day between trunc(add_months(sysdate, -8), 'mm') and trunc(add_months(sysdate, -7), 'mm') -1/86400 then sum(money) end, 0) d, 
+				 nvl(case when day between trunc(add_months(sysdate, -7), 'mm') and trunc(add_months(sysdate, -6), 'mm') -1/86400 then sum(money) end, 0) e, 
+				 nvl(case when day between trunc(add_months(sysdate, -6), 'mm') and trunc(add_months(sysdate, -5), 'mm') -1/86400 then sum(money) end, 0) f, 
+				 nvl(case when day between trunc(add_months(sysdate, -5), 'mm') and trunc(add_months(sysdate, -4), 'mm') -1/86400 then sum(money) end, 0) g, 
+				 nvl(case when day between trunc(add_months(sysdate, -4), 'mm') and trunc(add_months(sysdate, -3), 'mm') -1/86400 then sum(money) end, 0) h, 
+				 nvl(case when day between trunc(add_months(sysdate, -3), 'mm') and trunc(add_months(sysdate, -2), 'mm') -1/86400 then sum(money) end, 0) i, 
+				 nvl(case when day between trunc(add_months(sysdate, -2), 'mm') and trunc(add_months(sysdate, -1), 'mm') -1/86400 then sum(money) end, 0) j, 
+				 nvl(case when day between trunc(add_months(sysdate, -1), 'mm') and trunc(add_months(sysdate, 0), 'mm') -1/86400 then sum(money) end, 0) k, 
+				 nvl(case when day between trunc(add_months(sysdate, 0), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 then sum(money) end, 0) l 
+			from list where id = #{value} and operations = '-' group by category, day) rt
+		]]>
+	</select>
+	
+	<select id="dateselect" resultType="graphvo">
+		<![CDATA[
+			select to_char(trunc(add_months(sysdate, -11), 'mm'), 'YYYY/mm') Jan, 
+					 to_char(trunc(add_months(sysdate, -10), 'mm'), 'YYYY/mm') Feb, 
+					 to_char(trunc(add_months(sysdate, -9), 'mm'), 'YYYY/mm') Mar, 
+					 to_char(trunc(add_months(sysdate, -8), 'mm'), 'YYYY/mm') Apr, 
+					 to_char(trunc(add_months(sysdate, -7), 'mm'), 'YYYY/mm') May, 
+					 to_char(trunc(add_months(sysdate, -6), 'mm'), 'YYYY/mm') Jun, 
+					 to_char(trunc(add_months(sysdate, -5), 'mm'), 'YYYY/mm') Jul, 
+					 to_char(trunc(add_months(sysdate, -4), 'mm'), 'YYYY/mm') Aug, 
+					 to_char(trunc(add_months(sysdate, -3), 'mm'), 'YYYY/mm') Sep, 
+					 to_char(trunc(add_months(sysdate, -2), 'mm'), 'YYYY/mm') Oct, 
+					 to_char(trunc(add_months(sysdate, -1), 'mm'), 'YYYY/mm') Nov, 
+					 to_char(trunc(add_months(sysdate, 0), 'mm'), 'YYYY/mm') Dec 	 
+			from dual
+		]]>
+	</select>
+	
+	<select id="graphjinanmonthselect" resultType="graphvo">
+		<![CDATA[
+			select rownum, cnt, category from 
+			(select count(*) as cnt, category from list where day between trunc(add_months(sysdate, -1), 'mm') and trunc(add_months(sysdate, 0), 'mm') -1/86400 
+			group by category order by cnt desc, category) where rownum < 11
+		]]>
+	</select>
+	
+	<select id="graphttmonthselect" resultType="graphvo">
+		<![CDATA[
+			select rownum, cnt, category from 
+			(select count(*) as cnt, category from list where day between trunc(add_months(sysdate, 0), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 
+			group by category order by cnt desc, category) where rownum < 11
+		]]>
+	</select>
+	
+	<select id="allexportgraphselect" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where operations = '-'
+			and day between trunc(add_months(sysdate, -12), 'mm') and trunc(sysdate, 'dd') group by category, day order by day, lsum desc
+		]]>
+	</select>
+	
+	<select id="alllimitgraphselect" resultType="graphvo">
+		<![CDATA[
+			select * from (select category, avg(money_limit) as ml from category c, userscategory uc where c.category_id = uc.category_id group by category) a,
+			(select category, floor(avg(money)) as lsum from list where day between trunc(sysdate, 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400 and operations = '-'
+			group by category) b where a.category = b.category order by lsum desc, a.category
 		]]>
 	</select>
 </mapper>
