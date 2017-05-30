@@ -97,7 +97,7 @@ public class ListController {
 	}
 	
 	@ResponseBody
-	@RequestMapping("/modify3")
+	@RequestMapping("/modify3")/*돈돈!!!*/
 	public JSONResult modify3(@RequestBody Map<String, Object> map, @PathVariable String id) {
 		System.out.println("name 정보 확인" + map);
 		return JSONResult.success(service.modify4(map));

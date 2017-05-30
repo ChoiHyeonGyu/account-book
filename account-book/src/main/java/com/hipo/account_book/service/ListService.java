@@ -115,16 +115,19 @@ public class ListService {
 	}
 
 	public Object modify4(Map<String, Object> map) {
+		/* 돈!!! */
 		System.out.println("name !!!!!!!!!!!!!!=" + map);
 		String id = map.get("listId").toString();
-		id = id.replaceAll("a","");
+		id = id.replaceAll("b","");
 		System.out.println("ddddddddddddddddddddlistId = " + id);
 		
 		
-		money = Integer.parseInt(map.get("money").toString());
-		/*id = id.replaceAll(" ","");*/
-		System.out.println("name" + info);
-		
+		info = (map.get("money").toString());
+		info = info.replaceAll(" ","");
+		info = info.replaceAll(",","");
+		System.out.println("마지막 결과값 !!!!!!!" + info);
+		money = Integer.parseInt(info);
+		System.out.println("money = " + money);
 		dao.modify4(id,money);
 		return null;
 	}

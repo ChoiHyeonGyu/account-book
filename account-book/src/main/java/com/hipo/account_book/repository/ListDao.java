@@ -99,6 +99,7 @@ private SqlSession sql;
 
 
 	public void modify4(String id, int money) {
+		/* money */
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("id",id);
 		map.put("money",money);

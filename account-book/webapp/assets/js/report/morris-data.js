@@ -128,7 +128,7 @@ $(function() {
 	    				response.data.list[i].bank = "";
 					}
 	    			html = "<tr class='listoriginal'>"+
-									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"'  value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
 									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
