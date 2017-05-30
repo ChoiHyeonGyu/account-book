@@ -52,7 +52,7 @@ $(document).ready(function() {
 //Flot Pie Chart
 $(function() {
 
-    /*var data = [{
+    var data = [{
         label: "Series 0",
         data: 1
     }, {
@@ -84,89 +84,9 @@ $(function() {
             },
             defaultTheme: false
         }
-    });*/
+    });
 	
 	var data4 = [];
-	
-	/*$.ajax( {
-	    url : "/account-book/"+currentid+"/graphmonth",
-	    type: "POST",
-	    dataType: "JSON",
-	    data: JSON.stringify(beanobj),
-	    contentType: "application/json; charset=UTF-8",
-	    success: function( response ){
-	    	if(response.data.length == 0){
-	    		data2[0] = {label: "없음", data: 1};
-	    	}
-	    	
-	    	for(var i=0; i<response.data.length; i++){
-		    	data2[i] = {label: response.data[i].category, data: response.data[i].cnt};
-	    	}
-	    	
-	    	var plotObj = $.plot($("#flot-pie-chart"+2), data2, {
-	            series: {
-	                pie: {
-	                    show: true
-	                }
-	            },
-	            grid: {
-	                hoverable: true
-	            },
-	            tooltip: true,
-	            tooltipOpts: {
-	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-	                shifts: {
-	                    x: 20,
-	                    y: 0
-	                },
-	                defaultTheme: false
-	            }
-	        });
-	    },
-	    error: function( XHR, status, error ){
-	       console.error( status + " : " + error );	       
-	    }
-	});*/
-	
-	/*$.ajax( {
-	    url : "/account-book/"+currentid+"/graphyear",
-	    type: "POST",
-	    dataType: "JSON",
-	    data: JSON.stringify(beanobj),
-	    contentType: "application/json; charset=UTF-8",
-	    success: function( response ){
-	    	if(response.data.length == 0){
-	    		data3[0] = {label: "없음", data: 1};
-	    	}
-	    	
-	    	for(var i=0; i<response.data.length; i++){
-		    	data3[i] = {label: response.data[i].category, data: response.data[i].cnt};
-	    	}
-	    	
-	    	var plotObj = $.plot($("#flot-pie-chart"+3), data3, {
-	            series: {
-	                pie: {
-	                    show: true
-	                }
-	            },
-	            grid: {
-	                hoverable: true
-	            },
-	            tooltip: true,
-	            tooltipOpts: {
-	                content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-	                shifts: {
-	                    x: 20,
-	                    y: 0
-	                },
-	                defaultTheme: false
-	            }
-	        });
-	    },
-	    error: function( XHR, status, error ){
-	       console.error( status + " : " + error );	       
-	    }
-	});*/
 	
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/graphavgdefault",

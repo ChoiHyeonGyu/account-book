@@ -7,6 +7,7 @@
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/css/list/list.css">
 <link rel="stylesheet"	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/report/graph.css">
 <script	src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
@@ -115,14 +116,12 @@
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
 									listarray.push("${vo.listId}");
-									function my1Function(val) {
-									    alert("The input value has changed. The new value is: " + val);
-									}
+									/* 
+									} */
 								</script>
 								<tr class="listoriginal"><!--?? id 아님?  -->
 									<td><input id="${vo.listId}" value="${vo.day}" class="mine tablecoler" name="modifyday" onchange="my1Function(this.value)" style="background: #ececec"></td>
-									<td><input value="${vo.name}" class="mine tablecoler"
-										style="background: #ececec"></td>
+									<td><input id="${vo.listId}" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
 									<td><input value="${vo.moneyresult}" class="mine tablecoler" style="background: #ececec"></td>
 									<td><input value="${vo.paid}" class="mine tablecoler"
 										style="background: #ececec"></td>

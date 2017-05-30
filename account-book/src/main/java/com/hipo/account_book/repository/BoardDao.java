@@ -117,14 +117,6 @@ public class BoardDao {
 		sqlSession.update("board.good", num);
 	}
 	
-	public List<GraphVo> graphmonthselect(String id){
-		return sqlSession.selectList("board.graphmonthselect", id);
-	}
-	
-	public List<GraphVo> graphyearselect(String id){
-		return sqlSession.selectList("board.graphyearselect", id);
-	}
-	
 	public List<GraphVo> graphavgdefaultselect(String id){
 		return sqlSession.selectList("board.graphavgdefaultselect", id);
 	}
@@ -155,5 +147,41 @@ public class BoardDao {
 	
 	public List<GraphVo> exportgraphselect(String id){
 		return sqlSession.selectList("board.exportgraphselect", id);
+	}
+	
+	public List<GraphVo> imreporttableselect(String id){
+		return sqlSession.selectList("board.imreporttableselect", id);
+	}
+	
+	public GraphVo imreporttablesumselect(String id){
+		return sqlSession.selectOne("board.imreporttablesumselect", id);
+	}
+	
+	public List<GraphVo> exreporttableselect(String id){
+		return sqlSession.selectList("board.exreporttableselect", id);
+	}
+	
+	public GraphVo exreporttablesumselect(String id){
+		return sqlSession.selectOne("board.exreporttablesumselect", id);
+	}
+	
+	public GraphVo dateselect(){
+		return sqlSession.selectOne("board.dateselect");
+	}
+	
+	public List<GraphVo> graphjinanmonthselect(){
+		return sqlSession.selectList("board.graphjinanmonthselect");
+	}
+	
+	public List<GraphVo> graphttmonthselect(){
+		return sqlSession.selectList("board.graphttmonthselect");
+	}
+	
+	public List<GraphVo> allexportgraphselect(){
+		return sqlSession.selectList("board.allexportgraphselect");
+	}
+	
+	public List<GraphVo> alllimitgraphselect(){
+		return sqlSession.selectList("board.alllimitgraphselect");
 	}
 }

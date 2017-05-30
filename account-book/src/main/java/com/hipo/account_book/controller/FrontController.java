@@ -86,7 +86,32 @@ public class FrontController {
 	}
 	
 	@RequestMapping("/graph")
-	public String graph(){
+	public String graph(Model model){
+		model.addAttribute("currentuserid", "");
 		return "report/graph";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphjinanmonth")
+	public JSONResult graphjinanmonth(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.graphjinanmonth());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/graphttmonth")
+	public JSONResult graphttmonth(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.graphttmonth());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/allexportgraph")
+	public JSONResult allexportgraph(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.allexportgraph());
+	}
+	
+	@ResponseBody
+	@RequestMapping("/alllimitgraph")
+	public JSONResult alllimitgraph(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.alllimitgraph());
 	}
 }

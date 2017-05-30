@@ -41,10 +41,14 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 	height: 335px;
 }
 
-.displaynone {
-	display: none;  
+.fontred {
+	color: red;
 }
 
-.visihid {
-	visibility:hidden;
+.fontsize {
+	font-size: x-small;
+}
+
+.displaynone {
+	display: none;  
 }
