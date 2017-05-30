@@ -86,7 +86,7 @@
 									<td><select id="paid" name="paid" class="tableinput searchbox"  required>
 											<option value="현금">현금</option>
 											<option value="카드">카드</option>
-									</select></td>
+										</select></td>
 									<td><select id="operations" class="tableinput searchbox"
 										name="operations" required>
 
@@ -124,7 +124,7 @@
 									<td><input id="${vo.listId}a" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
 									<td><input id="${vo.listId}b" value="${vo.moneyresult}" class="mine tablecoler" onchange="my3Function(this.value)" style="background: #ececec"></td>
 									
-									<td><select id="${vo.listId}e" class="tableinput searchbox2" onchange="my5Function(this.value)">
+									<td><select id="${vo.listId}e"  name="paid" class="tableinput searchbox2" onchange="my5Function(this.value)" required>
 									<c:if test="${vo.paid == '현금'}">
 											<option value="${vo.paid}">${vo.paid}</option> 
 											<option value="카드">카드</option>
@@ -134,7 +134,7 @@
 											<option value="현금">현금</option>
 									</c:if>
 										</select></td>
-									<td><select id="${vo.listId}d" name="paid" class="tableinput searchbox2" style="background: #ececec " required>
+									<td><select id="${vo.listId}d" name="operations" class="tableinput searchbox2" onchange="my6Function(this.value)" required>
 											<c:if test="${vo.operations == '수입'}">
 												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
 												<option value="-">지출</option>

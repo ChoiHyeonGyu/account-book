@@ -121,6 +121,13 @@ public class ListController {
 		System.out.println("???????????  " + map);
 		return JSONResult.success(service.modify6(map));
 	}
+	@ResponseBody
+	@RequestMapping("/modify6")
+	 /* paid!*/
+	public JSONResult modify6(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return JSONResult.success(service.modify7(map));
+	}
 	
 
 	@ResponseBody
