@@ -205,6 +205,7 @@ $(function() {
 		    data: JSON.stringify(selectobj),
 		    contentType: "application/json; charset=UTF-8",
 		    success: function( response ){
+		    	console.log(response);
 		    	if(response.data.length == 0){
 		    		alert("이 정보에 대한 데이터가 아직 부족합니다.");
 		    	}
