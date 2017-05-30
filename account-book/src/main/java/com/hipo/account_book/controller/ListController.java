@@ -85,16 +85,14 @@ public class ListController {
 	}
 
 	@ResponseBody
-	@RequestMapping("/modify1")
+	@RequestMapping("/modify1")/*날짜! */
 	public JSONResult modify1(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("날짜 확인" + map);
 		return JSONResult.success(service.modify2(map));
 	}
 	
 	@ResponseBody
-	@RequestMapping("/modify2")
+	@RequestMapping("/modify2") /* 상호명 이름*/
 	public JSONResult modify2(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("name 정보 확인" + map);
 		return JSONResult.success(service.modify3(map));
 	}
 	
@@ -106,8 +104,8 @@ public class ListController {
 	}
 	@ResponseBody
 	@RequestMapping("/modify4")
+	 /* 은행 !*/
 	public JSONResult modify4(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("name 정보 확인" + map);
 		return JSONResult.success(service.modify5(map));
 	}
 

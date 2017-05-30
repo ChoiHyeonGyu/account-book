@@ -95,11 +95,12 @@ public class ListService {
 	}
 
 	public Object modify2(Map<String, Object> s) {
-		dao.modify2(s);
+		dao.modify2(s);/* 날짜! */
 		return null;
 	}
 
 	public Object modify3(Map<String, Object> map) {
+		 /* 상호명 이름*/
 		System.out.println("name !!!!!!!!!!!!!!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("a","");
@@ -129,6 +130,7 @@ public class ListService {
 	}
 
 	public Object modify5(Map<String, Object> map) {
+		/* 은행 !*/
 		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("c","");

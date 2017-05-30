@@ -64,9 +64,9 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  	 	]]>
 	</update>
 	
-	<update id="modify4" parameterType="map" >
+	<update id="modify5" parameterType="map" >
  		<![CDATA[
-		update list set bank = #{bank}
+		update list set bank = #{info}
  		 where list_Id=#{id} 	 	
  	 	]]>
 	</update>

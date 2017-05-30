@@ -82,11 +82,13 @@ private SqlSession sql;
 
 
 	public void modify2(Map<String, Object> s) {
-			sql.update("listview.modify2",s);		
+		/* 날짜*/
+		sql.update("listview.modify2",s);		
 	}
 
 
 	public void modify3(String id, String infovo) {
+		 /* 상호명 이름*/
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("id",id);
 		map.put("infovo",infovo);
@@ -106,6 +108,7 @@ private SqlSession sql;
 
 
 	public void modify5(String id, String info) {
+		/* 은행 !*/
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("id",id);
 		map.put("info",info);
