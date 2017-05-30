@@ -120,7 +120,7 @@
 								</script>
 								<tr class="listoriginal"><!--?? id 아님?  -->
 									<td><input id="${vo.listId}" value="${vo.day}" class="mine tablecoler" name="modifyday" onchange="my1Function(this.value)" style="background: #ececec"></td>
-									<td><input id="${vo.listId}" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
+									<td><input id="${vo.listId}!" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
 									<td><input value="${vo.moneyresult}" class="mine tablecoler" style="background: #ececec"></td>
 									<td><input value="${vo.paid}" class="mine tablecoler"
 										style="background: #ececec"></td>

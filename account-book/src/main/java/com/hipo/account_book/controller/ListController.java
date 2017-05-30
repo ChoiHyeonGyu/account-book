@@ -91,13 +91,13 @@ public class ListController {
 		return JSONResult.success(service.modify2(map));
 	}
 	
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping("/modify2")
 	public JSONResult modify2(@RequestBody Map<String, Object> map, @PathVariable String id) {
 		System.out.println("name 정보 확인" + map);
 		return JSONResult.success(service.modify3(map));
 	}
-
+*/
 	@ResponseBody
 	@RequestMapping("/maps")
 	public JSONResult maps(@RequestBody Map<String, Object> map) {

@@ -100,6 +100,9 @@ public class ListService {
 
 	public Object modify3(Map<String, Object> map) {
 		System.out.println("name !!!!!!!!!!!!!!=" + map);
+		String listId=map.get("listid").toString();
+		listId.replaceAll("","!");
+		
 		dao.modify3(map);
 		return null;
 	}
