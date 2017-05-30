@@ -14,7 +14,7 @@ $(document).ready(function() {
 	$("#noticeModify").click(function() {
 		var userId = userIdarray[0];
 		var ni = noticeIdarray[0];
-		
+		console.log(ni);
 		if (userId == "superjun3") {
 			$("#noticeModifyform").modal();
 			var noticeId ={"noticeId":ni};
@@ -28,12 +28,18 @@ $(document).ready(function() {
 					console.log(response);
 					$("#noticeTitle").val(response.data.noticeTitle);//1.리스폰스 정보를 가지고 웹 data.list로 간다 아이디를 통해2.웹에 쏘아지는 정보들 !!!! 이건 폼안에쏘아진다.
 					$("#noticeContent").val(response.data.noticeContent);//!!! 폼에 아이디를 만들고 여기 샵내용물을 매칭한다 그럼 정보가 쏘아진다.
-					
+					$("#noticeId").val(response.data.noticeId);
 				},
 				
 			});
 		} else {
 			alert("접근 권한이 없습니다.");
 		}
+	});
+	
+	$("#noticedeletebutton").click(function() {
+		var nd = noticeIdarray[0];
+		$("#deleteId").val(nd)
+		$("#noticedeletepost").submit();
 	});
 });

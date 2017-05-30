@@ -17,13 +17,13 @@
 	
 	<select id="noticeview" parameterType="int" resultType="noticevo">
 		<![CDATA[
-			select content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice where notice_id=#{noticeId}
+			select notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice where notice_id=#{noticeId}
 		]]>
 	</select>
 	
 	<select id="noticeview2" parameterType="int" resultType="noticevo">
 		<![CDATA[
-			select content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna where qna_id=#{noticeId}
+			select qna_id as qnaId, content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna where qna_id=#{noticeId}
 		]]>
 	</select>
 		
@@ -33,15 +33,70 @@
 		]]>
 	</insert>	
 	
+	<insert id="qnaadd" parameterType="noticevo">
+		<![CDATA[
+			insert into qna values(seq_category.nextval, #{qnaTitle}, #{qnaContent}, sysdate, 0)
+		]]>
+	</insert>
+	
 	<update id="hit" parameterType="int">
 		<![CDATA[
 			update notice set hit = hit + 1 where notice_id = #{noticeId}
 		]]>
 	</update>
 	
+	<update id="hit2" parameterType="int">
+		<![CDATA[
+			update qna set hit = hit + 1 where qna_id = #{qnaId}
+		]]>
+	</update>
+	
 	<select id="modify1" parameterType="int" resultType="noticevo">
 		<![CDATA[
-			select content as noticeContent, title as noticeTitle from notice where notice_id=#{noticeId}
+			select content as noticeContent, title as noticeTitle, notice_id as noticeId from notice where notice_id=#{noticeId}
 		]]>
 	</select>
+	
+	<select id="qnamodify1" parameterType="int" resultType="noticevo">
+		<![CDATA[
+			select content as qnaContent, title as qnaTitle, qna_id as qnaId from qna where qna_id=#{qnaId}
+		]]>
+	</select>
+	
+	<update id="modify" parameterType="noticevo">
+		<![CDATA[
+			update notice set title = #{noticeTitle} where notice_id = #{noticeId}
+		]]>
+	</update>
+	
+	<update id="modify2" parameterType="noticevo">
+		<![CDATA[
+			update notice set content = #{noticeContent} where notice_id = #{noticeId}
+		]]>
+	</update>
+	
+	<update id="qnamodify" parameterType="noticevo">
+		<![CDATA[
+			update qna set title = #{qnaTitle} where qna_id = #{qnaId}
+		]]>
+	</update>
+	
+	<update id="qnamodify2" parameterType="noticevo">
+		<![CDATA[
+			update qna set content = #{qnaContent} where qna_id = #{qnaId}
+		]]>
+	</update>
+	
+	<delete id="delete" parameterType="noticevo">
+		<![CDATA[
+			delete from notice where notice_id = #{noticeId}
+		]]>
+	</delete>
+	
+	<delete id="qdelete" parameterType="noticevo">
+		<![CDATA[
+			delete from qna where qna_id = #{qnaId}
+		]]>
+	</delete>
+	
 </mapper>

@@ -85,10 +85,16 @@ TEXT-ALIGN:CENTER;
 .searchbox1{
 	background:white;
 	border-radius:5px;
+	background:#ececec;
 
 	}
 .searchbox{
 	border-radius:10px;
+	background:#ececec;
+}
+.searchbox2{
+	border-radius:5px;
+	background:#ececec;
 }
 .text11{
 background:#ececec;}

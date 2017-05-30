@@ -81,22 +81,54 @@ public class ListController {
 		System.out.println("정보 확인" + map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));// 여기서
 																									// 에러.
-
 	}
 
 	@ResponseBody
-	@RequestMapping("/modify1")
+	@RequestMapping("/modify1")/*날짜! */
 	public JSONResult modify1(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("날짜 확인" + map);
 		return JSONResult.success(service.modify2(map));
 	}
 	
 	@ResponseBody
-	@RequestMapping("/modify2")
+	@RequestMapping("/modify2") /* 상호명 이름*/
 	public JSONResult modify2(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("name 정보 확인" + map);
 		return JSONResult.success(service.modify3(map));
 	}
+	
+	@ResponseBody
+	@RequestMapping("/modify3")/*돈돈!!!*/
+	public JSONResult modify3(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("name 정보 확인" + map);
+		return JSONResult.success(service.modify4(map));
+	}
+	@ResponseBody
+	@RequestMapping("/modify4")
+	 /* 은행 !*/
+	public JSONResult modify4(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		return JSONResult.success(service.modify5(map));
+	}
+	@ResponseBody
+	@RequestMapping("/modifyl")
+	 /* 은행 !*/
+	public JSONResult modifyl(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return null/*JSONResult.success(service.modifyl(map))*/;
+	}
+	@ResponseBody
+	@RequestMapping("/modify5")
+	 /* paid!*/
+	public JSONResult modify5(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return JSONResult.success(service.modify6(map));
+	}
+	@ResponseBody
+	@RequestMapping("/modify6")
+	 /* paid!*/
+	public JSONResult modify6(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return JSONResult.success(service.modify7(map));
+	}
+	
 
 	@ResponseBody
 	@RequestMapping("/maps")

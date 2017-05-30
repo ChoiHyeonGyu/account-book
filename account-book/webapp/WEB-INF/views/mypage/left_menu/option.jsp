@@ -3,7 +3,7 @@
 <div class="row">
 	
 	<!-- 카테고리 -->
-	<div id="categoryform" title="카테고리 추가" class="col-lg-6 col-lg-6 text-center op">
+	<div id="categoryform" title="카테고리 추가" class=" text-center">
 		<form method="post" name="카테고리 추가" id="categorypost" action="${pageContext.request.contextPath}/${currentuserid}/categoryAdd">
 			<h3><span class="label label-default">카데고리 추가</span></h3>
 			<br /> <input type="text" name="category" class="form-control1" value="" placeholder="Category" required> 
@@ -43,7 +43,7 @@
 	</div>
 	
 	<!-- 금액 한도 설정 -->
-	<div class="col-lg-6 col-lg-6 text-center op">
+	<div class=" text-center">
 		<form id="limitmodify" method="post" name="한도 설정" action="${pageContext.request.contextPath}/${currentuserid}/limitModify">
 			<h3><span class="label label-default">한도 설정</span></h3>
 			<br /> 금액한도:&nbsp;&nbsp; 

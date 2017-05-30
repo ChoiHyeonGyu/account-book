@@ -1,19 +1,28 @@
 package com.hipo.account_book.repository;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.stereotype.Repository;
 
-@ResponseBody
+@Repository
 public class AndroidChartDao {
 
 	@Autowired
-	private SqlSession sqlSesson;
-	
-	public Map<String, Integer> findCategory(Map<String, String> map) {
+	private SqlSession sqlSession;
+
+	public List<String> findCategory(String id) {
+		List<String> categoryList = sqlSession.selectList("android.getCategoryById", id);
+		return categoryList;
+	}
+
+	public List<Integer> findCategory(Map<String, String> categoryMap) {
+			
+		
 		return null;
+	
 	}
 
 }

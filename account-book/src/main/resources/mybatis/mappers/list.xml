@@ -45,15 +45,41 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	
 	<update id="modify2" parameterType="map" >
  		<![CDATA[
-		update list set day = #{listday}
+		update list set day = #{day}
  		 where list_Id=#{listId} 	 	
  	 	]]>
 	</update>
 	
 	<update id="modify3" parameterType="map" >
  		<![CDATA[
-		update list set name = #{listname}
- 		 where list_Id=#{listId} 	 	
+		update list set name = #{infovo}
+ 		 where list_Id=#{id} 	 	
+ 	 	]]>
+	</update>
+	
+	<update id="modify4" parameterType="map" >
+ 		<![CDATA[
+		update list set money = #{money}
+ 		 where list_Id=#{id} 	 	
+ 	 	]]>
+	</update>
+	
+	<update id="modify5" parameterType="map" >
+ 		<![CDATA[
+		update list set bank = #{info}
+ 		 where list_Id=#{id} 	 	
+ 	 	]]>
+	</update>
+	<update id="modify6" parameterType="map" >
+ 		<![CDATA[
+		update list set paid = #{info}
+ 		 where list_Id=#{id} 	 	
+ 	 	]]>
+	</update>
+	<update id="modify7" parameterType="map" >
+ 		<![CDATA[
+		update list set operations = #{info}
+ 		 where list_Id=#{id} 	 	
  	 	]]>
 	</update>
 	
