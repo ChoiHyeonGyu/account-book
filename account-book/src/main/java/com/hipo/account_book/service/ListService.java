@@ -14,10 +14,11 @@ import com.hipo.account_book.vo.ListVo;
 public class ListService {
 	@Autowired
 	public ListDao dao;
-
+	
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
-
+	private static String info = "";
+	private static int money = 0;
 	public List<ListVo> getList(ListVo vo) {
 		List<ListVo> list = dao.list(vo);
 		return list;
@@ -94,13 +95,51 @@ public class ListService {
 	}
 
 	public Object modify2(Map<String, Object> s) {
-		dao.modify2(s);
+		dao.modify2(s);/* 날짜! */
 		return null;
 	}
 
 	public Object modify3(Map<String, Object> map) {
+		 /* 상호명 이름*/
 		System.out.println("name !!!!!!!!!!!!!!=" + map);
-		dao.modify3(map);
+		String id = map.get("listId").toString();
+		id = id.replaceAll("a","");
+		System.out.println("ddddddddddddddddddddlistId = " + id);
+		
+		id = id.replaceAll("abcdefgh","");
+		info = map.get("name").toString();
+		System.out.println("name" + info);
+		
+		dao.modify3(id,info);
+		return null;
+	}
+
+	public Object modify4(Map<String, Object> map) {
+		System.out.println("name !!!!!!!!!!!!!!=" + map);
+		String id = map.get("listId").toString();
+		id = id.replaceAll("a","");
+		System.out.println("ddddddddddddddddddddlistId = " + id);
+		
+		
+		money = Integer.parseInt(map.get("money").toString());
+		/*id = id.replaceAll(" ","");*/
+		System.out.println("name" + info);
+		
+		dao.modify4(id,money);
+		return null;
+	}
+
+	public Object modify5(Map<String, Object> map) {
+		/* 은행 !*/
+		System.out.println("가지고 온 정보 !!=" + map);
+		String id = map.get("listId").toString();
+		id = id.replaceAll("c","");
+		System.out.println("ddddddddddddddddddddlistId = " + id);
+		
+		info = map.get("bank").toString();
+		System.out.println("bank" + info);
+		
+		dao.modify5(id,info);
 		return null;
 	}
 }

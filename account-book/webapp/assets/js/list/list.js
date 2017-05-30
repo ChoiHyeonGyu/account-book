@@ -262,7 +262,7 @@ function my1Function(val) {
 			
 			/*mm1.dialog("open");//여기서 폼을 띄운다,.
 */			
-			var list = {"listId":num.target.id,"listday":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"day":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify1",// 보낼주소
@@ -287,10 +287,11 @@ function my2Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
-		$("#"+listarray[i]+"").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+		$("#"+listarray[i]+"a").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 			console.log(num);
 			
-			var list = {"listId":num.target.id,"listname":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			
+			var list = {"listId":num.target.id,"name":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify2",// 보낼주소
@@ -309,4 +310,62 @@ function my2Function(val) {
 		});
 	}
 }
+function my3Function(val) {
+    alert("The input value has changed. The new value is: " + val);
+	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
+		var num = listarray[i];
+		console.log(num);
+		$("#"+listarray[i]+"b").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+			console.log(num);
+			
+			
+			var list = {"listId":num.target.id,"money":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+			$.ajax( {// 여기서 부터 통신이 시작된다.
+			    url : "/account-book/"+currentid+"/modify3",// 보낼주소
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+			    	console.log(response);
+			    	
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+}
+function my4Function(val) {
+    alert("The input value has changed. The new value is: " + val);
+	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
+		var num = listarray[i];
+		console.log(num);
+		$("#"+listarray[i]+"c").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+			console.log(num);
+			
+			
+			var list = {"listId":num.target.id,"bank":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+			$.ajax( {// 여기서 부터 통신이 시작된다.
+			    url : "/account-book/"+currentid+"/modify4",// 보낼주소
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+			    	console.log(response);
+			    	
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+}
+	
+
 	
