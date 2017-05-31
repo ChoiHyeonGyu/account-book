@@ -194,9 +194,16 @@ $(function() {
 	    }
 	});
 	
-	$("#graph-import").mouseleave(function(){
+	$("#graph-import").mouseup(function(){
 		
 		var selectobj = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text()};
+		data1 = [];
+		data2 = [];
+		data3 = [];
+		column4 = [];
+		column5 = [];
+		column6 = [];
+		data4 = [];
 		
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/transgraphavg",
