@@ -176,70 +176,7 @@ $(function() {
 		       console.error( status + " : " + error );	       
 		    }
 		});
-	    $.ajax( {
-		    url : "/account-book/"+currentid+"/modifyl",
-		    type: "POST",
-		    dataType: "JSON",
-		    data: JSON.stringify(oper),
-		    contentType: "application/json; charset=UTF-8",  
-		    success: function( response ){
-		    	console.log(response);
-		    	$(".listoriginal").remove();// 한번 비워야 내가 부르고 싶은 달의 것만 꺼낼수 있다. .
-	    		for(var i=0; i<response.data.list.length; i++){
-	    			if(response.data.list[i].bank == undefined){
-	    				response.data.list[i].bank = "";
-					}
-	    			html = "<tr class='listoriginal'>"+
-									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].category+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
-									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
-								"</tr>";//path +currentid > main
-	    			
-	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
-	    			/*listarray.push(response.data.list[i].listId);*/ //안써줘도 에러 안남 .
-	    		}
-	    		
-	    		$(".pager").remove();
-	    		if(response.data.prevPage > 0){
-    				html3 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.prevPage+"&searching="+response.data.searching+"&operation="+opernum+"'>◀</a></li>";
-    			}
-    			for(var i=response.data.beginPage; i<=(response.data.beginPage+response.data.listSize-1); i++){// 포문 해석문제..
-    				if(response.data.endPage < i){
-    					html4 += "<li>"+i+"</li>";
-    				} else if(response.data.pagination == i) {
-    					html4 += "<li class='selected'>"+i+"</li>";
-    				} else {
-    					html4 += "<li><a href='"+path+"/"+currentid+"/list?pagination="+(response.data.pagination+1)+"&searching="+response.data.searching+"&operation="+opernum+"'>"+i+"</a></li>";
-    				}
-    			}
-    			if(response.data.nextPage > 0){
-    				html5 = "<li><a href='"+path+"/"+currentid+"/list?pagination="+response.data.nextPage+"&searching="+response.data.searching+"&operation="+opernum+"'>▶</a></li>";
-    			}
-    			
-    			html2 = "<div class='pager'>"+
-							"<ul>"+html3+html4+html5+"</ul>"+
-						"</div>";
-    			$("#listall").append(html2);
-	    		
-	    		formap(listarray);
-	    		listarray = [];//설명 필요.
-	    		html4 = [];//설명 필요.
-	    		
-	    		$("#v2").text(response.data.v2.moneyresult);
-	    		$("#v3").text(response.data.v3.moneyresult);
-		    },
-		    error: function( XHR, status, error ){
-		       console.error( status + " : " + error );	       
-		    }
-		});
-	});
-	
+	}); 
 
 	
 	

@@ -1,33 +1,25 @@
 package com.hipo.account_book.androidcontroller;
 
-import java.io.IOException;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectReader;
+import com.hipo.account_book.service.AndroidChartService;
 
 @Controller
 @RequestMapping("/android/{id}")
 public class AndroidChartController {
+	
+	@Autowired
+	private AndroidChartService aChartService;
 
 	@RequestMapping("findCategory")
-	public void findCategory(HttpServletRequest request) {
-		String categoryJson = request.getParameter("categoryJson");
-		ObjectReader reader = new ObjectMapper().reader(Map.class);
-		try {
-			Map<String, String> map = reader.readValue(categoryJson);
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("json to map fail");
-		}
-
+	public void findCategory(@PathVariable String id) {
+		Map<String, String> categoryMap = aChartService.findCategory(id);
+		aChartService.findCategory(categoryMap,id);
 	}
 
 }

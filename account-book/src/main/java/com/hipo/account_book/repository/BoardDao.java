@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.GraphVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Repository
 public class BoardDao {
@@ -117,22 +116,6 @@ public class BoardDao {
 		sqlSession.update("board.good", num);
 	}
 	
-	public List<GraphVo> graphavgdefaultselect(String id){
-		return sqlSession.selectList("board.graphavgdefaultselect", id);
-	}
-	
-	public List<GraphVo> transgraphavgselect(UserVo uservo){
-		return sqlSession.selectList("board.transgraphavgselect", uservo);
-	}
-	
-	public List<GraphVo> transgraphavgselect1(String gen){
-		return sqlSession.selectList("board.transgraphavgselect1", gen);
-	}
-	
-	public List<GraphVo> transgraphavgselect2(String age){
-		return sqlSession.selectList("board.transgraphavgselect2", age);
-	}
-	
 	public List<GraphVo> limitgraphselect(String id){
 		return sqlSession.selectList("board.limitgraphselect", id);
 	}
@@ -183,5 +166,21 @@ public class BoardDao {
 	
 	public List<GraphVo> alllimitgraphselect(){
 		return sqlSession.selectList("board.alllimitgraphselect");
+	}
+	
+	public List<GraphVo> graphjinanmonthselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.graphjinanmonthselect1", map);
+	}
+	
+	public List<GraphVo> graphttmonthselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.graphttmonthselect1", map);
+	}
+	
+	public List<GraphVo> allexportgraphselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.allexportgraphselect1", map);
+	}
+	
+	public List<GraphVo> alllimitgraphselect1(Map<String, Object> map){
+		return sqlSession.selectList("board.alllimitgraphselect1", map);
 	}
 }

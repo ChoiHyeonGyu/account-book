@@ -158,4 +158,26 @@ public class ListService {
 		dao.modify6(id,info);
 		return null;
 	}
+
+	public Object modify7(Map<String, Object> map) {
+		System.out.println("가지고 온 정보 !!=" + map);
+		String id = map.get("listId").toString();
+		id = id.replaceAll("d","");
+		System.out.println("ddddddddddddddddddddlistId = " + id);
+		
+		info = map.get("operations").toString();
+		System.out.println("paid" + info);
+		
+		dao.modify7(id,info);
+		return null;
+	}
+
+	public Object modify8(Map<String, Object> map) {
+		System.out.println("가지고 온 정보 !!=" + map);
+		String id = map.get("listId").toString();
+		id = id.replaceAll("f","");
+		info = map.get("category").toString();
+		dao.modify8(id,info);
+		return null;
+	}
 }

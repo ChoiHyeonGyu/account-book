@@ -33,13 +33,13 @@
 	    			<c:choose>
 	    				<c:when test="${currentuserid == ''}">
 	    					<div class="dropdown theme-dropdown clearfix">
-								<select id="graph-import" class="dropdown-menu marginleft disabled">
+								<select class="dropdown-menu marginleft disabled">
 									<option>월 수입(전체)</option>
 								</select>
-								<select id="graph-gender" class="dropdown-menu marginleft20 disabled">
+								<select class="dropdown-menu marginleft20 disabled">
 									<option>성별(전체)</option>
 								</select>
-								<select id="graph-age" class="dropdown-menu marginleft20 disabled">
+								<select class="dropdown-menu marginleft20 disabled">
 									<option>나이(전체)</option>
 								</select>
 							</div>
@@ -97,9 +97,9 @@
 					</div>
 				</div>
 				
-				<div class="col-lg-6">
+				<div class="col-lg-12">
 		            <div class="panel panel-default">
-		                <div class="panel-heading">최근 1년간 소비 트렌드</div>
+		                <div class="panel-heading">최근 1년간 소비 트렌드(평균)</div>
 		                <div class="panel-body">
 		                    <div class="flot-chart">
 		                        <div class="flot-chart-content" id="flot-line-chart-yt"></div>
@@ -108,9 +108,12 @@
 		            </div>
 	            </div>
 	            
-	            <div class="col-lg-6">
+	            <div class="col-lg-12">
 	            	<div class="panel panel-default">
-		                <div class="panel-heading">회원들의 평균 금액 한도와 평균적인 사용 금액</div>
+		                <div class="panel-heading">
+		                	지난 달 회원들의 평균 금액 한도와 평균적인 사용 금액(<font class="fontgreen">초록 : 안정</font>, 노랑 : 경고, <font class="fontred">빨강 : 위험</font>, 
+		                	<font class="fontpurple">보라 : 금액이 한도와 같거나 넘음</font>)
+		                </div>
 		                <div class="panel-body">
 		                    <div id="morris-bar-chart-all" class="hei2"></div>
 		                </div>

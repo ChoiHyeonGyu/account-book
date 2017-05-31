@@ -72,7 +72,8 @@ API.txt for details.
 				switch (c) {
 					case 'a': c = "" + dayNames[d.getDay()]; break;
 					case 'b': c = "" + monthNames[d.getMonth()]; break;
-					case 'd': c = leftPad(d.getDate()); break;
+					case 'd': c = leftPad(d.getDate()+1); break;
+					//case 'd': c = leftPad(d.getDate()); break; d로 찍으면 정상적인 데이터인데 이상하게 getDate()하게 되면 하루 전날로 찍힌다;;;; GMT와 local time 사이의 시간차가 있어서 그런 듯 하다.
 					case 'e': c = leftPad(d.getDate(), " "); break;
 					case 'h':	// For back-compat with 0.7; remove in 1.0
 					case 'H': c = leftPad(hours); break;

@@ -17,7 +17,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import com.hipo.account_book.repository.BoardDao;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.GraphVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Service
 public class BoardService {
@@ -221,25 +220,6 @@ public class BoardService {
 		return true;
 	}
 	
-	public List<GraphVo> graphavgdefault(String id){
-		return boardDao.graphavgdefaultselect(id);
-	}
-	
-	public List<GraphVo> transgraphavg(String gen, String age){
-		UserVo uservo = new UserVo();
-		uservo.setGender(gen);
-		uservo.setAge(age);
-		return boardDao.transgraphavgselect(uservo);
-	}
-	
-	public List<GraphVo> transgraphavg1(String gen){
-		return boardDao.transgraphavgselect1(gen);
-	}
-	
-	public List<GraphVo> transgraphavg2(String age){
-		return boardDao.transgraphavgselect2(age);
-	}
-	
 	public List<GraphVo> limitgraph(String id){
 		return boardDao.limitgraphselect(id);
 	}
@@ -290,5 +270,37 @@ public class BoardService {
 	
 	public List<GraphVo> alllimitgraph(){
 		return boardDao.alllimitgraphselect();
+	}
+	
+	public Map<String, Object> transgraphavg(Map<String, Object> map){
+		if(map.get("profit").toString().equals("100만원 이하")){
+			map.put("profitend", "100");
+		}
+		for(int i=100; i<=950; i+=50){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+50)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+50);
+			}
+		}
+		for(int i=1000; i<=9000; i+=500){
+			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+500)+"만원 사이")){
+				map.put("profitbegin", i);
+				map.put("profitend", i+500);
+			}
+		}
+		if(map.get("profit").toString().equals("9500만원 ~ 1억원 사이")){
+			map.put("profitbegin", 9500);
+			map.put("profitend", 10000);
+		}
+		if(map.get("profit").toString().equals("1억원 이상")){
+			map.put("profitbegin", 10000);
+			map.put("profitend", 1000000000);
+		}
+		Map<String, Object> mapresult = new HashMap<String, Object>();
+		mapresult.put("gjms", boardDao.graphjinanmonthselect1(map));
+		mapresult.put("gtms", boardDao.graphttmonthselect1(map));
+		mapresult.put("aegs", boardDao.allexportgraphselect1(map));
+		mapresult.put("algs", boardDao.alllimitgraphselect1(map));
+		return mapresult;
 	}
 }

@@ -45,6 +45,18 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 	color: red;
 }
 
+.fontgreen {
+	color: green;
+}
+
+.fontyellow {
+	color: yellow;
+}
+
+.fontpurple {
+	color: purple;
+}
+
 .fontsize {
 	font-size: x-small;
 }
