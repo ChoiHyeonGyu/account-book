@@ -101,7 +101,7 @@
 									 -->
 									<td><select id="category" class="tableinput searchbox2" name="category" required>
 										<c:forEach var="bb" items="${option}">
-											<option value="${bb.category}">${bb.category}</option> 
+											<option value="${bb.category}">${bb.category}</option>
 										</c:forEach>
 									</select></td>
 									<td><input value="" class="mine tablecolor"
@@ -153,10 +153,14 @@
 										</select></td>
 									<td><input id="${vo.listId}c"value="${vo.bank}" class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
-									<td><select id="${vo.listId}f" name="category" class="tableinput searchbox2" onchange="my7Function(this.value)" required>
-											 <option value="${vo.category}" selected="selected">${vo.category}</option> 
+									<td><select id="${vo.listId}f" name="category" class="tableinput searchbox2" onchange="my7Function(this.value)" required> 
 										<c:forEach var="bb" items="${option}">
-											<option value="${bb.category}">${bb.category}</option> 
+											<c:if test="${vo.category != bb.category}">
+												<option value="${bb.category}">${bb.category}</option>
+											</c:if>
+											<c:if test="${vo.category == bb.category}">
+												<option value="${bb.category}" selected="selected">${bb.category}</option>
+											</c:if>
 										</c:forEach>
 										</select></td>
 									<td><strong id="maps${vo.listId}"
