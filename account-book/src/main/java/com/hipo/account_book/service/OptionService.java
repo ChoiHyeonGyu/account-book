@@ -27,6 +27,10 @@ public class OptionService {
 		return optionDao.add1(optionvo);
 	}
 	
+	public int Add3(OptionVo optionvo){
+		return optionDao.add3(optionvo);
+	}
+	
 	public int limitModify(OptionVo optionvo){
 		return optionDao.limitModify(optionvo);
 	}

@@ -380,21 +380,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -410,8 +410,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -453,21 +453,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -483,8 +483,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -533,21 +533,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -563,8 +563,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -606,21 +606,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -636,8 +636,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -686,21 +686,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -716,8 +716,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -758,21 +758,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -788,8 +788,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -838,21 +838,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -868,8 +868,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
@@ -912,21 +912,21 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '나이(전체)'">
@@ -942,8 +942,8 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">
 				<![CDATA[
 					(select id from users where age = #{age}) a, 
-					(select id from (select id, nvl((case when sum(money) between #{profitbegin}0000 and #{profitend}0000 then sum(money) end), 0) as summon from list where operations = '+' 
-					group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list 
+					where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '나이(전체)'">

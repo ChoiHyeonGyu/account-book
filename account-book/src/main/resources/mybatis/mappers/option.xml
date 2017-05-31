@@ -27,6 +27,12 @@
 		]]>
 	</insert>
 	
+	<select id="add3" parameterType="optionvo" resultType="int">
+		<![CDATA[
+			select count(category_id) as categoryId from userscategory where category_id=#{categoryId} and id=#{id}
+		]]>
+	</select>
+	
 	<select id="checkPassword" parameterType="string" resultType="string">
 		<![CDATA[
 			select password from users where id=#{value}
