@@ -102,7 +102,7 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title center">설정</h4>
+					<h4 class="modal-title center">카테고리 수정</h4>
 				</div>
 				<div class="modal-body">
 					<input id="categoryId" type="hidden" name="categoryId"> 

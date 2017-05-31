@@ -83,13 +83,14 @@
 
 	<select id="getCategoryById" parameterType="string" resultType="string">
 		<![CDATA[
-		select b.category as category from userscategory a,category b where a.CATEGORY_ID=b.CATEGORY_ID and a.id=#{id };
+		select b.category from userscategory a,category b where a.CATEGORY_ID=b.CATEGORY_ID and a.id=#{id }
 		]]>
 	</select>
 
-	<select id="getCategorySum" parameterType="string" resultType="integer">
+	<select id="getCategorySum" parameterType="categorychartvo"
+		resultType="integer">
 		<![CDATA[
-		select sum(money) from list where id=#{id } and category=#{category };
+		select sum(money) as sum from list where id = #{id } and category = #{category }
 		]]>
 	</select>
 </mapper>

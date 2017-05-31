@@ -8,6 +8,7 @@
 		<typeAlias alias="boardvo" type="com.hipo.account_book.vo.BoardVo" />
 		<typeAlias alias="graphvo" type="com.hipo.account_book.vo.GraphVo" />
 		<typeAlias alias="noticevo" type="com.hipo.account_book.vo.NoticeVo" />
+		<typeAlias alias="categorychartvo" type="com.hipo.account_book.vo.AndroidCategoryChartVo" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/mappers/profile.xml"/>
