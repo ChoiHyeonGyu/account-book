@@ -196,21 +196,6 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping("/transgraphavg")
 	public JSONResult transgraphavg(@PathVariable String id, @RequestBody Map<String, Object> map){
-		if(map.get("profit").toString().equals("월 수입(전체)") == false && map.get("gender").toString().equals("성별(전체)") == false && map.get("age").toString().equals("나이(전체)") == false){
-			return JSONResult.success(boardService.transgraphavg1(map));
-		} else if(map.get("profit").toString().equals("월 수입(전체)") == false && map.get("gender").toString().equals("성별(전체)") == false && map.get("age").toString().equals("나이(전체)")) {
-			return JSONResult.success(boardService.transgraphavg2(map));
-		} else if(map.get("profit").toString().equals("월 수입(전체)") == false && map.get("gender").toString().equals("성별(전체)") && map.get("age").toString().equals("나이(전체)")) {
-			return JSONResult.success(boardService.transgraphavg3(map));
-		} else if(map.get("profit").toString().equals("월 수입(전체)") && map.get("gender").toString().equals("성별(전체)") == false && map.get("age").toString().equals("나이(전체)") == false) {
-			return JSONResult.success(boardService.transgraphavg4(map));
-		} else if(map.get("profit").toString().equals("월 수입(전체)") && map.get("gender").toString().equals("성별(전체)") == false && map.get("age").toString().equals("나이(전체)")) {
-			return JSONResult.success(boardService.transgraphavg5(map));
-		} else if(map.get("profit").toString().equals("월 수입(전체)") == false && map.get("gender").toString().equals("성별(전체)") && map.get("age").toString().equals("나이(전체)") == false) {
-			return JSONResult.success(boardService.transgraphavg6(map));
-		} else if(map.get("profit").toString().equals("월 수입(전체)") && map.get("gender").toString().equals("성별(전체)") && map.get("age").toString().equals("나이(전체)") == false) {
-			return JSONResult.success(boardService.transgraphavg7(map));
-		}
-		return JSONResult.success(boardService.transgraphavgdefault());
+		return JSONResult.success(boardService.transgraphavg(map));
 	}
 }

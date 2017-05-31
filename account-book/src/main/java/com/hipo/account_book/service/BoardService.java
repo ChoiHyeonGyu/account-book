@@ -272,7 +272,7 @@ public class BoardService {
 		return boardDao.alllimitgraphselect();
 	}
 	
-	private Map<String, Object> trans(Map<String, Object> map){
+	public Map<String, Object> transgraphavg(Map<String, Object> map){
 		if(map.get("profit").toString().equals("100만원 이하")){
 			map.put("profitend", "100");
 		}
@@ -296,82 +296,11 @@ public class BoardService {
 			map.put("profitbegin", 10000);
 			map.put("profitend", 1000000000);
 		}
-		return map;
-	}
-	
-	public Map<String, Object> transgraphavg1(Map<String, Object> map){
-		Map<String, Object> mapselect = trans(map);
 		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect1(mapselect));
-		mapresult.put("gtms", boardDao.graphttmonthselect1(mapselect));
-		mapresult.put("aegs", boardDao.allexportgraphselect1(mapselect));
-		mapresult.put("algs", boardDao.alllimitgraphselect1(mapselect));
+		mapresult.put("gjms", boardDao.graphjinanmonthselect1(map));
+		mapresult.put("gtms", boardDao.graphttmonthselect1(map));
+		mapresult.put("aegs", boardDao.allexportgraphselect1(map));
+		mapresult.put("algs", boardDao.alllimitgraphselect1(map));
 		return mapresult;
-	}
-	
-	public Map<String, Object> transgraphavg2(Map<String, Object> map){
-		Map<String, Object> mapselect = trans(map);
-		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect2(mapselect));
-		mapresult.put("gtms", boardDao.graphttmonthselect2(mapselect));
-		mapresult.put("aegs", boardDao.allexportgraphselect2(mapselect));
-		mapresult.put("algs", boardDao.alllimitgraphselect2(mapselect));
-		return mapresult;
-	}
-	
-	public Map<String, Object> transgraphavg3(Map<String, Object> map){
-		Map<String, Object> mapselect = trans(map);
-		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect3(mapselect));
-		mapresult.put("gtms", boardDao.graphttmonthselect3(mapselect));
-		mapresult.put("aegs", boardDao.allexportgraphselect3(mapselect));
-		mapresult.put("algs", boardDao.alllimitgraphselect3(mapselect));
-		return mapresult;
-	}
-	
-	public Map<String, Object> transgraphavg4(Map<String, Object> map){
-		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect4(map));
-		mapresult.put("gtms", boardDao.graphttmonthselect4(map));
-		mapresult.put("aegs", boardDao.allexportgraphselect4(map));
-		mapresult.put("algs", boardDao.alllimitgraphselect4(map));
-		return mapresult;
-	}
-	
-	public Map<String, Object> transgraphavg5(Map<String, Object> map){
-		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect5(map));
-		mapresult.put("gtms", boardDao.graphttmonthselect5(map));
-		mapresult.put("aegs", boardDao.allexportgraphselect5(map));
-		mapresult.put("algs", boardDao.alllimitgraphselect5(map));
-		return mapresult;
-	}
-	
-	public Map<String, Object> transgraphavg6(Map<String, Object> map){
-		Map<String, Object> mapselect = trans(map);
-		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect6(mapselect));
-		mapresult.put("gtms", boardDao.graphttmonthselect6(mapselect));
-		mapresult.put("aegs", boardDao.allexportgraphselect6(mapselect));
-		mapresult.put("algs", boardDao.alllimitgraphselect6(mapselect));
-		return mapresult;
-	}
-
-	public Map<String, Object> transgraphavg7(Map<String, Object> map){
-		Map<String, Object> mapresult = new HashMap<String, Object>();
-		mapresult.put("gjms", boardDao.graphjinanmonthselect7(map));
-		mapresult.put("gtms", boardDao.graphttmonthselect7(map));
-		mapresult.put("aegs", boardDao.allexportgraphselect7(map));
-		mapresult.put("algs", boardDao.alllimitgraphselect7(map));
-		return mapresult;
-	}
-	
-	public Map<String, Object> transgraphavgdefault(){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("gjms", boardDao.graphjinanmonthselect());
-		map.put("gtms", boardDao.graphttmonthselect());
-		map.put("aegs", boardDao.allexportgraphselect());
-		map.put("algs", boardDao.alllimitgraphselect());
-		return map;
 	}
 }
