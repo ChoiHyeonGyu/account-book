@@ -273,17 +273,19 @@ public class BoardService {
 	}
 	
 	public Map<String, Object> transgraphavg(Map<String, Object> map){
+		map.put("profitbegin", 0);
+		map.put("profitend", 0);
 		if(map.get("profit").toString().equals("100만원 이하")){
 			map.put("profitend", "100");
 		}
 		for(int i=100; i<=950; i+=50){
-			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+50)+"만원 사이")){
+			if(map.get("profit").toString().equals((i+"만원 ~ "+(i+50)+"만원 사이").toString())){
 				map.put("profitbegin", i);
 				map.put("profitend", i+50);
 			}
 		}
 		for(int i=1000; i<=9000; i+=500){
-			if(map.get("profit").toString().equals(i+"만원 ~ "+(i+500)+"만원 사이")){
+			if(map.get("profit").toString().equals((i+"만원 ~ "+(i+500)+"만원 사이").toString())){
 				map.put("profitbegin", i);
 				map.put("profitend", i+500);
 			}
