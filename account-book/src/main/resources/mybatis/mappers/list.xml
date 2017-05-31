@@ -124,6 +124,7 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 		]]>
 	</select>
 	
+	
 	<select id="totalmonth" parameterType="map" resultType="listvo">
 		<![CDATA[
 select to_char(nvl(sum(money),0), '999,999,999,999,999') as moneyresult from list where id = #{id} and  operations='-' and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400		]]>
@@ -133,4 +134,9 @@ select to_char(nvl(sum(money),0), '999,999,999,999,999') as moneyresult from lis
 select to_char(nvl(sum(money),0), '999,999,999,999,999') as moneyresult from list where id = #{id} and  operations='+' and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400		]]>
 	</select>
 	
+	<select id="getcategorylist" parameterType="map" resultType="listvo">
+		<![CDATA[
+select b.category from userscategory a , category b  where id=#{id} and a.category_id =  b.CATEGORY_ID 
+		]]>
+	</select>
 </mapper>
