@@ -1,29 +1,7 @@
 var categoryarray = [];
 var different = false;
 $(function() {
-	var modifyform = $("#modifyform1").dialog({
-		autoOpen : false,
-		height : 150,
-		width : 265,
-		modal : true,
-		buttons : {
-			"확인" : function() {
-				//$( "#dialog-upload-form form" ).submit();
-				$("#modifypost").submit();
-				$(this).dialog("close");
-			},
-			"취소" : function() {
-				$(this).dialog("close");
-			}
-		},
-
-		close : function() {
-
-		}
-	});
 	
-	
-
 	
 	$("#limitmodify").submit(function(){
 		
@@ -39,7 +17,7 @@ $(function() {
 		var number = categoryarray[i];
 
 		$("#" + categoryarray[i]).click(function(number) {
-			modifyform.dialog("open");
+			$("#modifyform").modal();
 			var categoryid = {
 				"categoryId" : number.target.id
 			};
