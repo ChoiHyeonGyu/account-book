@@ -102,9 +102,9 @@
 					</a>
 						<ul class="dropdown-menu" role="menu">
 							<li><a class="page-scroll"
-								href="${pageContext.request.contextPath}/${currentuserid}/notice">공지사항</a></li>
+								href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 							<li><a class="page-scroll"
-								href="${pageContext.request.contextPath}/${currentuserid}/faq">FAQ</a></li>
+								href="${pageContext.request.contextPath}/faq">FAQ</a></li>
 						</ul></li>
 				</ul>
 			</div>
