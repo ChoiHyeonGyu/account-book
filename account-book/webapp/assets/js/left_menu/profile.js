@@ -19,18 +19,8 @@ $(function(){
 		}
 	});
 	
-	var optionsform = $("#viewoptions").dialog({
-		autoOpen: false,
-		height: 860,
-		width: 790,
-		modal: true,
-		title: "설정",
-		buttons: {
-
-		},
-		close: function() {
-				
-		}
+	$("#showoptions").click(function() {
+			$("#viewoptions").modal();
 	});
 
 	$("#tt").click(function(event){
@@ -39,8 +29,5 @@ $(function(){
 		myBtnform1.dialog("open");
 	});
 	
-	$("#showoptions").click(function(event){
-		event.preventDefault();
-		optionsform.dialog("open");
-	});
+	
 });
