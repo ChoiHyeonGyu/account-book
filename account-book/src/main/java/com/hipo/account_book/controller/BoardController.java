@@ -37,18 +37,19 @@ public class BoardController {
 		return "frontpage/logon";
 	}
 	
-	@RequestMapping("/board")
-	public String List(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+	@RequestMapping("/story")
+	public String story(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
 		model.addAttribute("v1",Pservice.checkUpdate(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
-		return "mypage/mystory/mystory";
+		model.addAttribute("board", boardService.getBoardList(page, search));
+		return "story/board";
 	}
 	
 	@RequestMapping("/boardadd")
 	public String boardadd(@PathVariable String id, @ModelAttribute BoardVo boardvo, @RequestParam("file") List<MultipartFile> file){
 		boardService.boardadd(id, boardvo, file);
-		return "redirect:/"+id+"/board";
+		return "redirect:/"+id+"/story";
 	}
 	
 	@ResponseBody
@@ -63,7 +64,7 @@ public class BoardController {
 		if(id.equals(boardvo.getId())){
 			boardService.boardedit(id, boardvo, file);
 		}
-		return "redirect:/"+id+"/board";
+		return "redirect:/"+id+"/story";
 	}
 	
 	@RequestMapping("/boardremove")
@@ -71,7 +72,7 @@ public class BoardController {
 		if(id.equals(boardvo.getId())){
 			boardService.boardremove(boardvo.getBoardId());
 		}
-		return "redirect:/"+id+"/board";
+		return "redirect:/"+id+"/story";
 	}
 	
 	@ResponseBody
@@ -83,7 +84,7 @@ public class BoardController {
 	@RequestMapping("/comment")
 	public String comment(@PathVariable String id, @ModelAttribute BoardVo boardvo){
 		boardService.comment(id, boardvo);
-		return "redirect:/"+id+"/board";
+		return "redirect:/"+id+"/story";
 	}
 	
 	@ResponseBody
@@ -95,7 +96,7 @@ public class BoardController {
 	@RequestMapping("/reply")
 	public String reply(@PathVariable String id, @ModelAttribute BoardVo boardvo){
 		boardService.reply(id, boardvo);
-		return "redirect:/"+id+"/board";
+		return "redirect:/"+id+"/story";
 	}
 	
 	@ResponseBody

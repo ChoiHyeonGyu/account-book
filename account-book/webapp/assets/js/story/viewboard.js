@@ -7,60 +7,13 @@ var cmtuid1 = 0;
 
 $(function(){
 	
-	var boardform = $("#boardform").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-			
-		},
-		close: function() {
-			
-		}
-	});
-	
 	var contentform = $("#contentform").dialog({
 		autoOpen: false,
 		height: 850,
 		width: 700,
 		modal: true,
 		buttons: {
-			"수정": function() {
-				if(currentid != $("#editId").val()){
-					alert("너가 수정을 할 수 있을 것 같아?");
-				} else {
-					contenteditform.dialog("open");
-				}
-				$( this ).dialog( "close" );
-			},
-			"삭제" : function() {
-				if(currentid != $("#editId").val()){
-					alert("너가 삭제를 할 수 있을 것 같아?");
-				} else {
-					$("#contentremovepost").submit();
-				}
-				$( this ).dialog( "close" );
-			}
-		},
-		close: function() {
 			
-		}
-	});
-	
-	var contenteditform = $("#contenteditform").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-			"수정": function() {
-				$("#contenteditpost").submit();
-				$( this ).dialog( "close" );
-			},
-			"취소" : function() {
-				$( this ).dialog( "close" );
-			}
 		},
 		close: function() {
 			
@@ -91,15 +44,11 @@ $(function(){
 		}
 	});
 	
-	$("#boardadd").click(function(){
-		boardform.dialog("open");
-	});
-	
 	$("#commentsviewer").click(function(){
 		commentsform.dialog("open");
 		
 		$.ajax( {
-		    url : "/account-book/"+currentid+"/commentlist",
+		    url : "/account-book/commentlist",
 		    type: "POST",
 		    dataType: "JSON",
 		    data: JSON.stringify(obj2),
@@ -125,7 +74,7 @@ $(function(){
 		    			var obj3 = {"commentid":cmtnum};
 		    			
 		    			$.ajax( {
-		    			    url : "/account-book/"+currentid+"/replylist",
+		    			    url : "/account-book/replylist",
 		    			    type: "POST",
 		    			    dataType: "JSON",
 		    			    data: JSON.stringify(obj3),
@@ -245,7 +194,7 @@ $(function(){
 			obj2 = {"boardid":num.target.id};
 			
 			$.ajax( {
-			    url : "/account-book/"+currentid+"/boardcontent",
+			    url : "/account-book/boardcontent",
 			    type: "POST",
 			    dataType: "JSON",
 			    data: JSON.stringify(obj2),
@@ -294,24 +243,4 @@ $(function(){
 			});
 		});
 	}
-	
-	$("#good").click(function(){		
-		$.ajax( {
-		    url : "/account-book/"+currentid+"/good",
-		    type: "POST",
-		    dataType: "JSON",
-		    data: JSON.stringify(obj2),
-		    contentType: "application/json; charset=UTF-8",
-		    success: function( response ){
-		    	if(response.result == "fail"){
-		    		alert("이미 추천을 하셨습니다.");
-		    	} else {
-		    		alert("이 게시글이 추천되었습니다.");
-		    	}
-		    },
-		    error: function( XHR, status, error ){
-		       console.error( status + " : " + error );	       
-		    }
-		});
-	});
 });

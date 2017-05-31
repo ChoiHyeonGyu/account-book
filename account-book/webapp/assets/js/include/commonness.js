@@ -1,0 +1,2 @@
+var currentid = "";
+var path = "";

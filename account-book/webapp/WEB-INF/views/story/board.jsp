@@ -1,88 +1,110 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="row">
-	<div class="col-md-12">
-		
-		<!-- 결산월 이야기 -->
-		<h1 align="center">씀씀이 이야기</h1>
-		<form action="${pageContext.request.contextPath}/${currentuserid}/board" method="post">
-			<input type="search" name="search" size="90">
-			<button type="submit" class="fa fa-search fa-2x sr-contact"></button>
-			<button id="boardadd" type="button" class="fa fa-pencil fa-2x sr-contact"></button>
-		</form>
-	    <table class="table">
-	      <thead>
-	        <tr>
-	          <th>결산월</th>
-	          <th>제목</th>
-	          <th>작성자</th>
-	          <th>작성일</th>
-	          <th>추천</th>
-	          <th>조회</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	      	<c:forEach var="board" items="${board.list}">
-	      		<script>
-		      		arrays.push("${board.boardId}");
-	      		</script>
-		        <tr>
-		          <td>${board.month}</td>
-		          <td><label id="${board.boardId}">${board.title}</label></td>
-		          <td>${board.name}</td>
-		          <td>${board.day}</td>
-		          <td>${board.good}</td>
-		          <td>${board.hit}</td>
-		        </tr>
-	     	</c:forEach>
-	      </tbody>
-	    </table>
-	    
-	    <!-- 페이징처리 -->
-	    <div class="pager">
-			<ul>
-				<c:if test="${board.prevPage > 0}" >
-					<li><a href="${pageContext.request.contextPath}/${currentuserid}/main?p=${board.prevPage}&search=${board.keyword}">◀</a></li>
-				</c:if>
-				
-				<c:forEach begin="${board.beginPage}" end="${board.beginPage + board.listSize - 1}" var="page">
-					<c:choose>
-						<c:when test="${board.endPage < page}">
-							<li>${page}</li> 
-						</c:when> 
-						<c:when test="${board.currentPage == page}">
-							<li class="selected">${page}</li>
-						</c:when>
-						<c:otherwise> 
-							<li><a href="${pageContext.request.contextPath }/${currentuserid}/main?p=${page}&search=${board.keyword}">${page}</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-				<c:if test="${board.nextPage > 0}" >
-					<li><a href="${pageContext.request.contextPath }/${currentuserid}/main?p=${board.nextPage}&search=${board.keyword}">▶</a></li>
-				</c:if>
-			</ul>
-		</div>
-		
-	</div>
-</div>
+<!-- 해더 //최상단 메뉴 -->
+<c:import url="/WEB-INF/views/include/main_top.jsp" />
+
+<!-- 각페이지에서 사용하는 css, js 링크영역 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/story/story.css">
+<script src="${pageContext.request.contextPath}/assets/js/story/board.js"></script>
+
+    <div class="container">
+    	<div class="row mt">
+	    	<div class="col-lg-2"><c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp"/></div>
+	    	<div class="col-lg-10">
+	    	
+	    		<!-- 게시판 -->
+	    		<div class="row">
+					<div class="col-md-12">
+						
+						<!-- 결산월 이야기 -->
+						<h1 align="center">결산월 이야기</h1>
+						<form action="${pageContext.request.contextPath}/${currentuserid}/story" method="post">
+							<input type="search" name="search" class="searchsize">
+							<button type="submit" class="fa fa-search fa-2x sr-contact"></button>
+							<button id="boardadd" type="button" class="fa fa-pencil fa-2x sr-contact"></button>
+						</form>
+					    <table class="table">
+					      <thead>
+					        <tr>
+					          <th>결산월</th>
+					          <th>제목</th>
+					          <th>작성자</th>
+					          <th>작성일</th>
+					          <th>추천</th>
+					          <th>조회</th>
+					        </tr>
+					      </thead>
+					      <tbody>
+					      	<c:forEach var="board" items="${board.list}">
+					      		<script>
+						      		arrays.push("${board.boardId}");
+					      		</script>
+						        <tr>
+						          <td>${board.month}</td>
+						          <td><label id="${board.boardId}">${board.title}</label></td>
+						          <td>${board.name}</td>
+						          <td>${board.day}</td>
+						          <td>${board.good}</td>
+						          <td>${board.hit}</td>
+						        </tr>
+					     	</c:forEach>
+					      </tbody>
+					    </table>
+					    
+					    <!-- 페이징처리 -->
+					    <div class="pager">
+							<ul>
+								<c:if test="${board.prevPage > 0}" >
+									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${board.prevPage}&search=${board.keyword}">◀</a></li>
+								</c:if>
+								
+								<c:forEach begin="${board.beginPage}" end="${board.beginPage + board.listSize - 1}" var="page">
+									<c:choose>
+										<c:when test="${board.endPage < page}">
+											<li>${page}</li> 
+										</c:when> 
+										<c:when test="${board.currentPage == page}">
+											<li class="selected">${page}</li>
+										</c:when>
+										<c:otherwise> 
+											<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${page}&search=${board.keyword}">${page}</a></li>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+								
+								<c:if test="${board.nextPage > 0}" >
+									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${board.nextPage}&search=${board.keyword}">▶</a></li>
+								</c:if>
+							</ul>
+						</div>
+						<!-- /페이징처리 -->
+					</div>
+				</div>
+				<!-- /게시판 -->
+	    	</div>
+    	</div>
+    </div>
+<c:import url="/WEB-INF/views/include/main_bottom.jsp"/>
 
 <!-- 팝업영역 -->
 
 <!-- 이야기 작성 -->
-<div id="boardform" title="작성" style="display:none">
+<div id="boardform" title="작성" class="displaynone">
 	<form id="boardpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardadd" enctype="multipart/form-data">
    		<h3><span class="label label-primary">결산월</span></h3>
    		<div class="dropdown theme-dropdown clearfix">
 	   		<select class="dropdown-menu" name="month">
-	   			<c:forEach begin="2017" end="2018" var="i">
-	   				<c:forEach begin="1" end="12" var="j" >
-	   					<c:choose>
-	   						<c:when test="${j<10}"><option>${i}.0${j}</option></c:when>
-	   						<c:otherwise><option>${i}.${j}</option></c:otherwise>
-	   					</c:choose>
-	   				</c:forEach>
+	   			<c:forEach begin="5" end="12" var="i">
+	   				<c:choose>
+   						<c:when test="${i<10}"><option>2017.0${i}</option></c:when>
+   						<c:otherwise><option>2017.${i}</option></c:otherwise>
+   					</c:choose>
+	   			</c:forEach>
+				<c:forEach begin="1" end="12" var="i">
+	   				<c:choose>
+   						<c:when test="${i<10}"><option>2018.0${i}</option></c:when>
+   						<c:otherwise><option>2018.${i}</option></c:otherwise>
+   					</c:choose>
 	   			</c:forEach>
 	   		</select>
       	</div>
@@ -98,7 +120,7 @@
 </div>
 
 <!-- 상세 보기 -->
-<div id="contentform" title="상세 보기" style="display:none">
+<div id="contentform" title="상세 보기" class="displaynone">
 	<br/>
 	<span id="contentmonth" class="label label-warning" style="font-size:25px"></span>
 	<span id="contenttitle" class="label label-warning" style="font-size:25px"></span>
@@ -116,7 +138,7 @@
 </div>
 
 <!-- 댓글 -->
-<div id="commentform" title="댓글" style="display:none">
+<div id="commentform" title="댓글" class="displaynone">
 	<form action="${pageContext.request.contextPath}/${currentuserid}/comment" method="post">
 		<input type="hidden" id="commentboardId" name="boardId" value="">
 		<input type="hidden" id="commentName" name="name" value="">
@@ -135,7 +157,7 @@
 </div>
 
 <!-- 답글 -->
-<div id="comment1form" title="답글" style="display:none">
+<div id="comment1form" title="답글" class="displaynone">
 	<form action="${pageContext.request.contextPath}/${currentuserid}/reply" method="post">
 		<input type="hidden" id="commentId" name="commentId" value="">
 		<input type="hidden" id="comment1Name" name="name" value="">
@@ -153,7 +175,7 @@
 </div>
 
 <!-- 이야기 수정 -->
-<div id="contenteditform" title="수정" style="display:none">
+<div id="contenteditform" title="수정" class="displaynone">
 	<form id="contenteditpost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardedit" enctype="multipart/form-data">
 		<input type="hidden" id="editboardId" name="boardId" value="">
 		<input type="hidden" id="editId" name="id" value="">
@@ -161,13 +183,17 @@
    		<div class="dropdown theme-dropdown clearfix">
 	   		<select class="dropdown-menu" id="editmonth" name="month">
 	   			<option></option>
-	   			<c:forEach begin="2017" end="2018" var="i">
-	   				<c:forEach begin="1" end="12" var="j" >
-	   					<c:choose>
-	   						<c:when test="${j<10}"><option>${i}.0${j}</option></c:when>
-	   						<c:otherwise><option>${i}.${j}</option></c:otherwise>
-	   					</c:choose>
-	   				</c:forEach>
+	   			<c:forEach begin="5" end="12" var="i">
+	   				<c:choose>
+   						<c:when test="${i<10}"><option>2017.0${i}</option></c:when>
+   						<c:otherwise><option>2017.${i}</option></c:otherwise>
+   					</c:choose>
+	   			</c:forEach>
+				<c:forEach begin="1" end="12" var="i">
+	   				<c:choose>
+   						<c:when test="${i<10}"><option>2018.0${i}</option></c:when>
+   						<c:otherwise><option>2018.${i}</option></c:otherwise>
+   					</c:choose>
 	   			</c:forEach>
 	   		</select>
       	</div>
@@ -181,7 +207,7 @@
 </div>
 
 <!-- 이야기 삭제 -->
-<div style="display:none">
+<div class="displaynone">
 	<form id="contentremovepost" method="post" action="${pageContext.request.contextPath}/${currentuserid}/boardremove">
 		<input type="hidden" id="removeboardId" name="boardId" value="">
 		<input type="hidden" id="removeId" name="id" value="">
