@@ -94,9 +94,7 @@
 
 <div class="modal fade" id="viewoptions" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<form id="noticepost" method="post"
-		action="${pageContext.request.contextPath}/${currentuserid}/noticemodify">
-		<div class="modal-dialog margintop2">
+		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
@@ -108,13 +106,8 @@
 				<div class="modal-body">
 					<c:import url="/WEB-INF/views/mypage/left_menu/option.jsp" />
 				</div>
-				<div class="modal-footer">
-					<button type="submit" class="notice1 notice4">수정</button>
-					<span id="noticedeletebutton" class="noticespan notice4">삭제</span>
-				</div>
 			</div>
 		</div>
-	</form>
 </div>
 
 

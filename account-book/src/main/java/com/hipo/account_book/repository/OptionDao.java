@@ -29,6 +29,10 @@ public class OptionDao {
 		sql.insert("option.add2",vo);	
 	}
 	
+	public int add3(OptionVo optionvo) {
+		return sql.selectOne("option.add3",optionvo);
+	}
+	
 	public String checkPassword(String id){
 		return sql.selectOne("option.checkPassword", id);
 	}
