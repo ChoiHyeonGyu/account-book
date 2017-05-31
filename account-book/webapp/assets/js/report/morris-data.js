@@ -9,6 +9,9 @@ $(function() {
 	var html3 = "";
     var html4 = "";
     var html5 = "";
+    var list = "";
+    var list2 = "";
+    var list3 = "";
 	
 	var d = new Date();
 	var gfy = d.getFullYear();
@@ -128,18 +131,37 @@ $(function() {
 	    			if(response.data.list[i].bank == undefined){
 	    				response.data.list[i].bank = "";
 					}
+	    			if(response.data.list[i].paid == "현금"){
+	    				list = "<option value='"+response.data.list[i].paid+"'>"+response.data.list[i].paid+"</option><option value='카드'>카드</option>";
+	    			} else {
+	    				list = "<option value='"+response.data.list[i].paid+"'>"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
+	    			}
+	    			if(response.data.list[i].operations == "수입"){
+	    				list2 = "<option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
+	    			} else if(response.data.list[i].operations == "지출") {
+	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
+	    			} else {
+	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option>";
+	    			}
+	    			for(var j=0; j<response.data.categorylist.length; j++){
+	    				if(response.data.list[i].category == response.data.categorylist[j].category){
+	    					list3 += "<option value='"+response.data.categorylist[j].category+"' selected='selected'>"+response.data.categorylist[j].category+"</option>"
+	    				} else {
+	    					list3 += "<option value='"+response.data.categorylist[j].category+"'>"+response.data.categorylist[j].category+"</option>"
+	    				}
+	    			}
 	    			html = "<tr class='listoriginal'>"+
-									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].category+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"' value='"+response.data.list[i].day+"' class='mine tablecoler' onchange='my1Function(this.value)' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"a' value='"+response.data.list[i].name+"' class='mine tablecoler' onchange='my2Function(this.value)' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"b' value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' onchange='my3Function(this.value)' style='background: #ececec'></td>"+
+									"<td><select id='"+response.data.list[i].listId+"e' class='tableinput searchbox2' onchange='my5Function(this.value)' required>"+list+"</select></td>"+
+									"<td><select id='"+response.data.list[i].listId+"d' class='tableinput searchbox2' onchange='my6Function(this.value)' required>"+list2+"</select></td>"+
+									"<td><input id='"+response.data.list[i].listId+"c' value='"+response.data.list[i].bank+"' class='mine tablecoler' onchange='my4Function(this.value)' style='background: #ececec'></td>"+
+									"<td><select id='"+response.data.list[i].listId+"f' class='tableinput searchbox2' onchange='my7Function(this.value)' required>"+list3+"</select></td>"+
 									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
 									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
 								"</tr>";//path +currentid > main
-	    			
+	    			list3 = "";
 	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
 	    			/*listarray.push(response.data.list[i].listId);*/ //안써줘도 에러 안남 .
 	    		}
@@ -168,7 +190,7 @@ $(function() {
 	    		
 	    		formap(listarray);
 	    		listarray = [];//설명 필요.
-	    		html4 = [];//설명 필요.
+	    		html4 = "";//설명 필요.
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
@@ -254,18 +276,38 @@ $(function() {
 	    			if(response.data.list[i].bank == undefined){
 	    				response.data.list[i].bank = "";
 					}
+	    			if(response.data.list[i].paid == "현금"){
+	    				list = "<option value="+response.data.list[i].paid+">"+response.data.list[i].paid+"</option><option value='카드'>카드</option>";
+	    			} else {
+	    				list = "<option value="+response.data.list[i].paid+">"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
+	    			}
+	    			if(response.data.list[i].operations == "수입"){
+	    				list2 = "<option value="+response.data.list[i].operations+">"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
+	    			} else if(response.data.list[i].operations == "지출") {
+	    				list2 = "<option value='+'>수입</option><option value="+response.data.list[i].operations+">"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
+	    			} else {
+	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value="+response.data.list[i].operations+">"+response.data.list[i].operations+"</option>";
+	    			}
+	    			for(var j=0; j<response.data.categorylist.length; j++){
+	    				if(response.data.list[i].category == response.data.categorylist[j].category){
+	    					list3 += "<option value='"+response.data.categorylist[j].category+"' selected='selected'>"+response.data.categorylist[j].category+"</option>"
+	    				} else {
+	    					list3 += "<option value='"+response.data.categorylist[j].category+"'>"+response.data.categorylist[j].category+"</option>"
+	    				}
+	    			}
 	    			html = "<tr class='listoriginal'>"+
-									"<td><input value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].paid+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].operations+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
-									"<td><input value='"+response.data.list[i].category+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"' value='"+response.data.list[i].day+"' class='mine tablecoler' onchange='my1Function(this.value)' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"a' value='"+response.data.list[i].name+"' class='mine tablecoler' onchange='my2Function(this.value)' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"b' value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' onchange='my3Function(this.value)' style='background: #ececec'></td>"+
+									"<td><select id='"+response.data.list[i].listId+"e' class='tableinput searchbox2' onchange='my5Function(this.value)' required>"+list+"</select></td>"+
+									"<td><select id='"+response.data.list[i].listId+"d' class='tableinput searchbox2' onchange='my6Function(this.value)' required>"+list2+"</select></td>"+
+									"<td><input id='"+response.data.list[i].listId+"c' value='"+response.data.list[i].bank+"' class='mine tablecoler' onchange='my4Function(this.value)' style='background: #ececec'></td>"+
+									"<td><select id='"+response.data.list[i].listId+"f' class='tableinput searchbox2' onchange='my7Function(this.value)' required>"+list3+"</select></td>"+
 									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
 									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
-								"</tr>";
+								"</tr>";//path +currentid > main
 	    			$("#listbody").append(html);
+	    			list3 = "";
 	    			listarray.push(response.data.list[i].listId);
 	    		}
 	    		
@@ -293,7 +335,7 @@ $(function() {
     			
 	    		formap(listarray);
 	    		listarray = [];//이해가 안감,.맵이 안뜸.
-	    		html4 = [];
+	    		html4 = "";
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
