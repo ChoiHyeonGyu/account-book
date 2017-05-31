@@ -144,7 +144,7 @@ $(function() {
 	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option>";
 	    			}
 	    			for(var j=0; j<response.data.categorylist.length; j++){
-	    				if(response.data.list[i].category == response.data.categorylist[j].category){
+	    				if(response.data.list[i].category == response.data.categorylist[j].category){/* list 포문은 해당 페이지 정보 밖에 없음 카테고리 list는 컨트롤러에서 받은 모든카테고리를 불러온다 */
 	    					list3 += "<option value='"+response.data.categorylist[j].category+"' selected='selected'>"+response.data.categorylist[j].category+"</option>"
 	    				} else {
 	    					list3 += "<option value='"+response.data.categorylist[j].category+"'>"+response.data.categorylist[j].category+"</option>"
@@ -163,7 +163,7 @@ $(function() {
 								"</tr>";//path +currentid > main
 	    			list3 = "";
 	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
-	    			/*listarray.push(response.data.list[i].listId);*/ //안써줘도 에러 안남 .
+	    			listarray.push(response.data.list[i].listId);
 	    		}
 	    		
 	    		$(".pager").remove();
