@@ -1,71 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- 각페이지에서 공통으로 사용하는 css, js 링크영역 -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/creative.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
-<script
-	src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
-	<script
-	src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/include/creative.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/include/sb-admin-2.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/creative.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
-<script
-	src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/include/creative.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/include/sb-admin-2.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/creative.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
+<script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/include/creative.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/include/sb-admin-2.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/include/commonness.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
 <script>
 	currentid = "${currentuserid}";
 	path = "${pageContext.request.contextPath}";
@@ -90,9 +45,7 @@
 					href="${pageContext.request.contextPath}/${currentuserid}/logon">편리가계부</a>
 				<font size="6px" color="white">|</font>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll"
-						href="${pageContext.request.contextPath}/${currentuserid}/board">씀씀이
-							이야기</a></li>
+					<li><a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/story">결산월 이야기</a></li>
 					<li><a class="page-scroll"
 						href="${pageContext.request.contextPath}/${currentuserid}/graph">통계</a>
 					</li>

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,28 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!-- 각페이지에서 공통으로 사용하는 css, js 링크영역 -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/creative.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/sb-admin-2.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/commonness.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/include/join.css">
-<script
-	src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/js/frontpage/login.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/jquery/jquery-ui.css">
@@ -39,6 +16,7 @@
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-3.2.1.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/jquery/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/include/commonness.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/frontpage/login.js"></script>
 <title>편리가계부</title>
 </head>
@@ -60,8 +38,7 @@
 					href="${pageContext.request.contextPath}/">편리가계부</a> <font
 					size="6px" color="white">|</font>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a class="page-scroll"
-						href="${pageContext.request.contextPath}/board">씀씀이 이야기</a></li>
+					<li><a class="page-scroll" href="${pageContext.request.contextPath}/story">결산월 이야기</a></li>
 					<li><a class="page-scroll"
 						href="${pageContext.request.contextPath}/graph">통계</a></li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"

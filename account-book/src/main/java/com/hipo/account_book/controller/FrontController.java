@@ -79,10 +79,29 @@ public class FrontController {
 		return "redirect:/"+id+"/logon";
 	}
 	
-	@RequestMapping("/board")
-	public String List(Model model, @RequestParam(value="p", required=true, defaultValue="1") int page, @RequestParam(value="search", required=false) String search) {
+	@RequestMapping("/story")
+	public String story(Model model, @RequestParam(value="p", required=true, defaultValue="1") int page, @RequestParam(value="search", required=false) String search) {
 		model.addAttribute("board", boardService.getBoardList(page, search));
-		return "mypage/mystory/mystory";
+		return "story/viewboard";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/boardcontent")
+	public JSONResult boardcontent(@RequestBody Map<String, Object> map){
+		boardService.hit(Integer.parseInt(map.get("boardid").toString()));
+		return JSONResult.success(boardService.boardcontent(Integer.parseInt(map.get("boardid").toString())));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/commentlist")
+	public JSONResult commentlist(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.commentlist(Integer.parseInt(map.get("boardid").toString())));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/replylist")
+	public JSONResult replylist(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.replylist(Integer.parseInt(map.get("commentid").toString())));
 	}
 	
 	@RequestMapping("/graph")
