@@ -83,11 +83,11 @@
 										style="background: #ececec" placeholder="사용내역" name="name" required></td>
 									<td><input value="" class="mine tablecolor " type="text"
 										style="background: #ececec" placeholder="금액" name="money" required></td>
-									<td><select id="paid" name="paid" class="tableinput searchbox"  required>
+									<td><select id="paid" name="paid" class="tableinput searchbox2"  required>
 											<option value="현금">현금</option>
 											<option value="카드">카드</option>
 										</select></td>
-									<td><select id="operations" class="tableinput searchbox"
+									<td><select id="operations" class="tableinput searchbox2"
 										name="operations" required>
 
 											<option value="-" class="textline">지출</option>
@@ -99,7 +99,7 @@
 									<!-- <td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="카테고리" name="category"></td>
 									 -->
-									<td><select id="category" class="tableinput searchbox" name="category" required>
+									<td><select id="category" class="tableinput searchbox2" name="category" required>
 										<c:forEach var="bb" items="${option}">
 											<option value="${bb.category}">${bb.category}</option> 
 										</c:forEach>
@@ -153,7 +153,7 @@
 										</select></td>
 									<td><input id="${vo.listId}c"value="${vo.bank}" class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
-									<td><select id="paid" name="paid" class="tableinput searchbox2" style="background: #ececec" required>
+									<td><select id="${vo.listId}f" name="category" class="tableinput searchbox2" onchange="my7Function(this.value)" required>
 											 <option value="${vo.category}" selected="selected">${vo.category}</option> 
 										<c:forEach var="bb" items="${option}">
 											<option value="${bb.category}">${bb.category}</option> 
