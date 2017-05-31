@@ -153,7 +153,7 @@
 										</select></td>
 									<td><input id="${vo.listId}c"value="${vo.bank}" class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
-									<td><select id="paid" name="paid" class="tableinput searchbox2" style="background: #ececec" required>
+									<td><select id="${vo.listId}f" name="category" class="tableinput searchbox2" onchange="my7Function(this.value)" required>
 											 <option value="${vo.category}" selected="selected">${vo.category}</option> 
 										<c:forEach var="bb" items="${option}">
 											<option value="${bb.category}">${bb.category}</option> 

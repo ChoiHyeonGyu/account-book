@@ -82,6 +82,12 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
  		 where list_Id=#{id} 	 	
  	 	]]>
 	</update>
+	<update id="modify8" parameterType="map" >
+ 		<![CDATA[
+		update list set category = #{info}
+ 		 where list_Id=#{id} 	 	
+ 	 	]]>
+	</update>
 	
 	<select id="dealwithsearching" parameterType="map" resultType="int">
 		<![CDATA[

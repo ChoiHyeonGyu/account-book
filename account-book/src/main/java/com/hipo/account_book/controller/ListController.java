@@ -109,7 +109,6 @@ public class ListController {
 	}
 	@ResponseBody
 	@RequestMapping("/modifyl")
-	 /* 은행 !*/
 	public JSONResult modifyl(@RequestBody Map<String, Object> map, @PathVariable String id) {
 		System.out.println("???????????  " + map);
 		return null/*JSONResult.success(service.modifyl(map))*/;
@@ -122,11 +121,11 @@ public class ListController {
 		return JSONResult.success(service.modify6(map));
 	}
 	@ResponseBody
-	@RequestMapping("/modify6")
+	@RequestMapping("/modify7")
 	 /* paid!*/
-	public JSONResult modify6(@RequestBody Map<String, Object> map, @PathVariable String id) {
+	public JSONResult modify7(@RequestBody Map<String, Object> map, @PathVariable String id) {
 		System.out.println("???????????  " + map);
-		return JSONResult.success(service.modify7(map));
+		return JSONResult.success(service.modify8(map));
 	}
 	
 

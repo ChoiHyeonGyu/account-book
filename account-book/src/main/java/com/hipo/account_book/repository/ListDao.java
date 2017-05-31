@@ -136,6 +136,14 @@ private SqlSession sql;
 	}
 
 
+	public void modify8(String id, String info) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("id",id);
+		map.put("info",info);
+		sql.update("listview.modify8",map);
+	}
+
+
 /*	public int totalmonth(ListVo vo) {
 		System.out.println("돈돈돈돈돈돈" + vo);
 		return sql.selectOne("listview.totalmonth", vo);
