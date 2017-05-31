@@ -80,7 +80,7 @@
 						<div class="panel-heading">지난 달 소비 트렌드</div>
 						<div class="panel-body">
 							<div class="flot-chart">
-								<div class="flot-chart-content fontred" id="flot-pie-chart1"></div>
+								<div class="flot-chart-content" id="flot-pie-chart1"></div>
 							</div>
 						</div>
 					</div>
@@ -91,7 +91,7 @@
 						<div class="panel-heading">이번 달 소비 트렌드</div>
 						<div class="panel-body">
 							<div class="flot-chart">
-								<div class="flot-chart-content fontred" id="flot-pie-chart2"></div>
+								<div class="flot-chart-content" id="flot-pie-chart2"></div>
 							</div>
 						</div>
 					</div>
@@ -102,7 +102,7 @@
 		                <div class="panel-heading">최근 1년간 소비 트렌드(평균)</div>
 		                <div class="panel-body">
 		                    <div class="flot-chart">
-		                        <div class="flot-chart-content fontred" id="flot-line-chart-yt"></div>
+		                        <div class="flot-chart-content" id="flot-line-chart-yt"></div>
 		                    </div>
 		                </div>
 		            </div>
@@ -115,7 +115,7 @@
 		                	<font class="fontpurple">보라 : 금액이 한도와 같거나 넘음</font>)
 		                </div>
 		                <div class="panel-body">
-		                    <div id="morris-bar-chart-all" class="hei2 fontred"></div>
+		                    <div id="morris-bar-chart-all" class="hei2"></div>
 		                </div>
 		            </div>
 	            </div>
