@@ -210,6 +210,7 @@ var formap = function(_listarray){
 			    data: JSON.stringify(lid),
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
+			    	console.log(response);
 			    	// var myLatlng = new google.maps.LatLng(35.837143, 128.558612); 위치값 위도 경도
 			    	var Y_point = response.data.locationY; // Y 좌표
 			    	var X_point = response.data.locationX; // X 좌표
@@ -248,12 +249,73 @@ var formap = function(_listarray){
 	}
 }
 
+var currmap = function(){
+	var again = false;
+	var mapform = $("#map_ma").dialog({
+		autoOpen: false,
+		height: 600,
+		width: 700,
+		modal: true,
+		title: "맵",
+		buttons: {
+			
+		},
+		close: function() {
+			
+		}
+	});
+		
+	$("#btnmap").click(function(){
+		if(again == false){
+			var Y_point = 37.494622; // Y 좌표
+			var X_point = 127.027610; // X 좌표
+			var zoomLevel = 18; // 지도의 확대 레벨 : 숫자가 클수록 확대정도가 큼
+			var markerTitle = "사용한 위치를 찍어보세요"; // 현재 위치 마커에 마우스를 오버올 때 나타나는 정보
+			var markerMaxWidth = 300; // 마커를 클릭했을 때 나타나는 말풍선의 최대 크기
+			
+			// 말풍선 내용
+			var contentString = '<div>사용한 위치를 찍어보세요</div>';
+			
+			var myLatlng = new google.maps.LatLng(Y_point, X_point);
+			var mapOptions = {
+				zoom: zoomLevel,
+				center: myLatlng,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			}
+			var map = new google.maps.Map(document.getElementById('map_ma'), mapOptions);
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				map: map,
+				title: markerTitle
+			});
+			var infowindow = new google.maps.InfoWindow({
+				content: contentString,
+				maxWizzzdth: markerMaxWidth
+			});
+			google.maps.event.addListener(marker, 'click', function(){
+				infowindow.open(map, marker);
+			});
+			
+			google.maps.event.addListener(map, 'click', function(mouseEvent){
+				console.log(mouseEvent.latLng.lat());
+				console.log(mouseEvent.latLng.lng());
+				$("#lat").val(mouseEvent.latLng.lat());
+				$("#lng").val(mouseEvent.latLng.lng());
+			});
+		}
+		console.log(again);
+		mapform.dialog("open");
+		again = true;
+	});
+}
+
 $(function(){
+	currmap();
 	formap(listarray);
 });
 
 function listreload(){
-	window.location.reload();
+	//window.location.reload();
 }
 
 function my1Function(val) {
@@ -284,7 +346,6 @@ function my1Function(val) {
 			});
 		});
 	}
-	listreload();
 }
 
 function my2Function(val) {
@@ -313,7 +374,6 @@ function my2Function(val) {
 			});
 		});
 	}
-	listreload();
 }
 function my3Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -342,7 +402,6 @@ function my3Function(val) {
 			});
 		});
 	}
-	listreload();
 }
 function my4Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -371,7 +430,6 @@ function my4Function(val) {
 			});
 		});
 	}
-	listreload();
 }
 function my5Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -400,7 +458,6 @@ function my5Function(val) {
 			});
 		});
 	}
-	listreload();
 } 
 function my6Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -429,7 +486,6 @@ function my6Function(val) {
 			});
 		});
 	}
-	listreload();
 } 
 function my7Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -456,5 +512,4 @@ function my7Function(val) {
 			});
 		});
 	}
-	listreload();
 }

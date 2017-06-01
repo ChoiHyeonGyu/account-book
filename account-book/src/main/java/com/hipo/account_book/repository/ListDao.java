@@ -58,7 +58,7 @@ public class ListDao {
 		return sql.selectList("listview.movelistselect", map);
 	}
 
-	public int selectlocation(int listId) {
+	public ListVo selectlocation(int listId) {
 		return sql.selectOne("listview.selectlocation", listId);
 	}
 
