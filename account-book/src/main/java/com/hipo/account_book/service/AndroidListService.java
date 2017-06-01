@@ -54,8 +54,23 @@ public class AndroidListService {
 		dateMap.put("year", year);
 		dateMap.put("month", month);
 		dateMap.put("minday", year + "/" + month + "/" + "1");
-		dateMap.put("maxday", year + "/" + month + "/" + "31");
+		for (int i = 1; i <= 12; i++) {
+			if (Integer.valueOf(month) == i) {
+				if (i == 2) {
+					dateMap.put("maxday", year + "/" + month + "/" + "28");
+					break;
+				}
+				if (i % 2 == 0) {
+					dateMap.put("maxday", year + "/" + month + "/" + "30");
+					break;
+				} else {
+					dateMap.put("maxday", year + "/" + month + "/" + "31");
+					break;
+				}
+			}
+		}
 		System.out.println(dateMap.get("minday"));
+		System.out.println(dateMap.get("maxday"));
 		return dateMap;
 	}
 
