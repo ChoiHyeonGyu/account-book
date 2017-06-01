@@ -73,11 +73,9 @@
 						</div>
 						<!-- /페이징처리 -->
 					</div>
+					<!-- /게시판 -->
 				</div>
-				<!-- /게시판 -->
 	    	</div>
-    	</div>
-    </div>
 <c:import url="/WEB-INF/views/include/main_bottom.jsp"/>
 
 <!-- 팝업영역 -->
