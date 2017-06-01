@@ -44,6 +44,11 @@ public class OptionService {
 		return optionDao.categoryModify(i);
 	}
 	
+	public OptionVo limitModify2(String category) {
+		System.out.println("intintint"+category);
+		return optionDao.limitModify2(category);
+	}
+	
 	public boolean categoryModify1(OptionVo vo) {
 		optionDao.categoryModify1(vo);
 		return false;
