@@ -34,7 +34,8 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/movelist")
 	public JSONResult movelist(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));// 모름ㄴ
+		System.out.println("맵!!!!!!!!!!!!!!!!!!!!!" + map);
+		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));
 	}
 	
 	@RequestMapping("/list")

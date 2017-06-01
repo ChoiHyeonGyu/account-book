@@ -12,6 +12,7 @@ $(function() {
     var list = "";
     var list2 = "";
     var list3 = "";
+	var lisgetid="";
 	
 	var d = new Date();
 	var gfy = d.getFullYear();
@@ -78,7 +79,7 @@ $(function() {
     	
 		opernum = opernum - 1;// 버튼을 누루면 -1 or 1추가됨 .이 값으로 어떻게 값을 꺼낼수 있는지 궁금함.
 		oper = {operation: opernum};// operation 어디에 선언된 것인지( )
-		console.log(oper);
+		listarray = [];
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",
 		    type: "POST",
@@ -117,7 +118,7 @@ $(function() {
 		});
 		barcolnum = [];
 	    numcnt = -1;
-	    
+	  /* var listgetid = {"listId":num.target.id,"":val,}*/
 	    $.ajax( {
 		    url : "/account-book/"+currentid+"/movelist",
 		    type: "POST",
@@ -151,19 +152,154 @@ $(function() {
 	    				}
 	    			}
 	    			html = "<tr class='listoriginal'>"+
-									"<td><input id='"+response.data.list[i].listId+"' value='"+response.data.list[i].day+"' class='mine tablecoler' onchange='my1Function(this.value)' style='background: #ececec'></td>"+
-									"<td><input id='"+response.data.list[i].listId+"a' value='"+response.data.list[i].name+"' class='mine tablecoler' onchange='my2Function(this.value)' style='background: #ececec'></td>"+
-									"<td><input id='"+response.data.list[i].listId+"b' value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' onchange='my3Function(this.value)' style='background: #ececec'></td>"+
-									"<td><select id='"+response.data.list[i].listId+"e' class='tableinput searchbox2' onchange='my5Function(this.value)' required>"+list+"</select></td>"+
-									"<td><select id='"+response.data.list[i].listId+"d' class='tableinput searchbox2' onchange='my6Function(this.value)' required>"+list2+"</select></td>"+
-									"<td><input id='"+response.data.list[i].listId+"c' value='"+response.data.list[i].bank+"' class='mine tablecoler' onchange='my4Function(this.value)' style='background: #ececec'></td>"+
-									"<td><select id='"+response.data.list[i].listId+"f' class='tableinput searchbox2' onchange='my7Function(this.value)' required>"+list3+"</select></td>"+
+									"<td><input id='"+response.data.list[i].listId+"' value='"+response.data.list[i].day+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"a' value='"+response.data.list[i].name+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><input id='"+response.data.list[i].listId+"b' value='"+response.data.list[i].moneyresult+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><select id='"+response.data.list[i].listId+"e' class='tableinput searchbox2' required>"+list+"</select></td>"+
+									"<td><select id='"+response.data.list[i].listId+"d' class='tableinput searchbox2' required>"+list2+"</select></td>"+
+									"<td><input id='"+response.data.list[i].listId+"c' value='"+response.data.list[i].bank+"' class='mine tablecoler' style='background: #ececec'></td>"+
+									"<td><select id='"+response.data.list[i].listId+"f' class='tableinput searchbox2' required>"+list3+"</select></td>"+
 									"<td><strong id='maps"+response.data.list[i].listId+"' class='fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler' style='background: #ececec'></strong></td>"+
 									"<td><a href='"+path+"/"+currentid+"/listdelete?listId="+response.data.list[i].listId+"' class='col-lg-offset-5 tablecoler glyphicon glyphicon-trash'></a></td>"+
 								"</tr>";//path +currentid > main
 	    			list3 = "";
 	    			$("#listbody").append(html);// 이걸 써줘야 for문으로 돌린 값들 다 더해서 리스트로 뿌릴수 있다.
 	    			listarray.push(response.data.list[i].listId);
+	    			
+	    			var num = listarray[i];
+	    			$("#listbody").on("focusout", "#"+listarray[i], function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"day":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify1",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"a", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"name":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify2",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"b", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"money":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify3",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"e", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"paid":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify5",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"d", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"operations":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify6",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"c", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"bank":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify4",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"f", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"category":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify7",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
 	    		}
 	    		
 	    		$(".pager").remove();
@@ -189,7 +325,6 @@ $(function() {
     			$("#listall").append(html2);
 	    		
 	    		formap(listarray);
-	    		listarray = [];//설명 필요.
 	    		html4 = "";//설명 필요.
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);
@@ -222,7 +357,7 @@ $(function() {
     	
 		opernum = opernum + 1;
 		oper = {operation: opernum};
-		console.log(opernum);
+		listarray = [];
 		
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/movelimitgraph",
@@ -309,6 +444,141 @@ $(function() {
 	    			$("#listbody").append(html);
 	    			list3 = "";
 	    			listarray.push(response.data.list[i].listId);
+	    			
+	    			var num = listarray[i];
+	    			$("#listbody").on("focusout", "#"+listarray[i], function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"day":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify1",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"a", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"name":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify2",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"b", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"money":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify3",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"e", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"paid":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify5",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"d", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"operations":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify6",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"c", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"bank":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify4",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
+	    			$("#listbody").on("focusout", "#"+listarray[i]+"f", function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
+	    				console.log(num);
+	    				
+	    				var list = {"listId":num.target.id,"category":num.target.value};
+	    				$.ajax( {// 여기서 부터 통신이 시작된다.
+	    				    url : "/account-book/"+currentid+"/modify7",// 보낼주소
+	    				    type: "POST",
+	    				    dataType: "JSON",
+	    				    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
+	    				    contentType: "application/json; charset=UTF-8",
+	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
+	    				    	console.log(response);
+	    				    	
+	    				    },
+	    				    error: function( XHR, status, error ){
+	    				       console.error( status + " : " + error );	       
+	    				    }
+	    				});
+	    			});
 	    		}
 	    		
 	    		$(".pager").remove();
@@ -334,7 +604,6 @@ $(function() {
     			$("#listall").append(html2);
     			
 	    		formap(listarray);
-	    		listarray = [];//이해가 안감,.맵이 안뜸.
 	    		html4 = "";
 	    		
 	    		$("#v2").text(response.data.v2.moneyresult);

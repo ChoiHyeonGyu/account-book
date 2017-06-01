@@ -252,6 +252,10 @@ $(function(){
 	formap(listarray);
 });
 
+function listreload(){
+	window.location.reload();
+}
+
 function my1Function(val) {
     alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
@@ -262,7 +266,7 @@ function my1Function(val) {
 			
 			/*mm1.dialog("open");//여기서 폼을 띄운다,.
 */			
-			var list = {"listId":num.target.id,"day":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"day":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify1",// 보낼주소
@@ -280,6 +284,7 @@ function my1Function(val) {
 			});
 		});
 	}
+	listreload();
 }
 
 function my2Function(val) {
@@ -291,8 +296,7 @@ function my2Function(val) {
 			console.log(num);
 			
 			
-			var list = {"listId":num.target.id,"name":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
-					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+			var list = {"listId":num.target.id,"name":val};
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify2",// 보낼주소
 			    type: "POST",
@@ -309,6 +313,7 @@ function my2Function(val) {
 			});
 		});
 	}
+	listreload();
 }
 function my3Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -319,7 +324,7 @@ function my3Function(val) {
 			console.log(num);
 			
 			
-			var list = {"listId":num.target.id,"money":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"money":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify3",// 보낼주소
@@ -337,6 +342,7 @@ function my3Function(val) {
 			});
 		});
 	}
+	listreload();
 }
 function my4Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -347,7 +353,7 @@ function my4Function(val) {
 			console.log(num);
 			
 			
-			var list = {"listId":num.target.id,"bank":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"bank":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify4",// 보낼주소
@@ -365,7 +371,7 @@ function my4Function(val) {
 			});
 		});
 	}
-	
+	listreload();
 }
 function my5Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -376,7 +382,7 @@ function my5Function(val) {
 			console.log(num);
 			
 			
-			var list = {"listId":num.target.id,"paid":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"paid":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify5",// 보낼주소
@@ -394,6 +400,7 @@ function my5Function(val) {
 			});
 		});
 	}
+	listreload();
 } 
 function my6Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -404,7 +411,7 @@ function my6Function(val) {
 			console.log(num);
 			
 			
-			var list = {"listId":num.target.id,"operations":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"operations":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify6",// 보낼주소
@@ -422,6 +429,7 @@ function my6Function(val) {
 			});
 		});
 	}
+	listreload();
 } 
 function my7Function(val) {
     alert("The input value has changed. The new value is: " + val);
@@ -430,7 +438,7 @@ function my7Function(val) {
 		console.log(num);
 		$("#"+listarray[i]+"f").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 			console.log(num);
-			var list = {"listId":num.target.id,"category":val,/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
+			var list = {"listId":num.target.id,"category":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify7",// 보낼주소
@@ -447,7 +455,6 @@ function my7Function(val) {
 			    }
 			});
 		});
+	}
+	listreload();
 }
-}
-
-	
