@@ -71,6 +71,14 @@ public class OptionController {
 		}
 	}
 
+	@ResponseBody
+	@RequestMapping("/limitModify2")
+	public JSONResult limitmodify2(@PathVariable String id, @RequestBody Map<String, Object> map) {
+		System.out.println("ididididididi" + map);
+		return JSONResult.success(optionService.limitModify2(map.get("category").toString()));// 여기서
+																													// 에러.
+	}
+	
 	@RequestMapping("/limitModify")
 	public String limitModify(@ModelAttribute OptionVo optionvo, @PathVariable String id) {
 		int categoryId;

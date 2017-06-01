@@ -50,6 +50,14 @@ public class OptionDao {
 		return sql.selectOne("option.categoryModify", i);
 	}
 	
+	public OptionVo limitModify2(String category) {
+		OptionVo vo;
+		System.out.println("daodaodao"+category);
+		vo = sql.selectOne("option.limitMdify2", category);
+		System.out.println("livolivo::"+vo);
+		return sql.selectOne("option.limitMdify2", category);
+	}
+	
 	public boolean categoryModify1(OptionVo vo) {
 		sql.update("option.categoryModify1", vo);
 		return false;

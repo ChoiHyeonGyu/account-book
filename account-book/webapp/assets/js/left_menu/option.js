@@ -1,7 +1,11 @@
 var categoryarray = [];
+var categoryarray1 = [];
 var different = false;
 $(function() {
 	
+	$("#categoryAdd").click(function() {
+		$("#categorymodal").modal();
+	});
 	
 	$("#limitmodify").submit(function(){
 		
@@ -32,6 +36,33 @@ $(function() {
 					console.log(response);
 					$("#categoryId").val(response.data.categoryId);
 					$("#categoryname").val(response.data.category);
+				},
+				error : function(XHR, status, error) {
+					console.error(status + " : " + error);
+				}
+			});
+		});
+	}
+	
+	for (var i = 0; i < categoryarray1.length; i++) {
+		var number1 = categoryarray1[i];
+
+		$("#" + categoryarray1[i]).click(function(number1) {
+			$("#limitmodifyform").modal();
+			var category = {
+				"category" : number1.target.id
+			};
+			console.log(category.category);
+			$.ajax({
+				url : "/account-book/" + currentid + "/limitModify2",
+				type : "POST",
+				dataType : "JSON",
+				data : JSON.stringify(category),
+				contentType : "application/json; charset=UTF-8",
+				success : function(response) {
+					console.log(response);
+					$("#limit").val(response.data.limit);
+					$("#category").val(response.data.category);
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);

@@ -51,6 +51,12 @@
  			 where category_id=#{categoryId} 	 	
  	 	]]>
 	</update>
+	
+	<select id="limitMdify2" parameterType="String" resultType="optionvo">
+ 		<![CDATA[
+ 			select c.category as category, uc.money_limit as limit from category c, userscategory uc where c.category = #{category} and uc.category_id = c.category_id
+ 		]]>
+	</select>
 
 	<select id="categoryModify" parameterType="int" resultType="optionvo">
  		<![CDATA[
