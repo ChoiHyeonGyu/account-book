@@ -216,7 +216,7 @@ $(function(){
 	
 	for(var i=0; i<arrays2.length; i++){
 		var num = arrays2[i];
-		$("#backstory"+arrays2[i]).click(function(num){
+		$("#mystory"+arrays2[i]).click(function(num){
 			$("#contentform").modal();
 			obj2 = {"boardid":num.target.title};
 			

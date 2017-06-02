@@ -86,7 +86,7 @@
 				and id = #{id} 
 			]]>
 		</if>
-		<if test="keyword == null and keyword == '' and id != null and id != ''">
+		<if test="(keyword == null or keyword == '') and id != null and id != ''">
 			<![CDATA[					  
 				where id = #{id} 
 			]]>
