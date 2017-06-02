@@ -13,4 +13,9 @@ public class ProfileDao {
 		return sql.selectOne("profile.check",id);
 	}
 
+	public UserVo profile1(String id) {
+		UserVo vo = sql.selectOne("profile.check1", id);
+		return vo ;
+	}
+
 }

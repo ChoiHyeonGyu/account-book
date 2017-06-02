@@ -14,8 +14,8 @@
 			width="200" height="200">
 	</h2>
 	<div class="col-lg-12 col-lg-offset-0 text-center">
-		<p>${v1.name}</p>
-		<p>잔액 : ${v1.total}</p> 
+		<p class="fontlist">${username.name}</p>
+		<p>잔액 : ${profile1.total}원</p>  
 
 			<span id="tt" class="fa fa-user fa-2x sr-contact pa pointer"></span>&emsp;
 			

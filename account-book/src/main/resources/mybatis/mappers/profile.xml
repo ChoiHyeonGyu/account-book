@@ -7,4 +7,10 @@
 select id,password,name,gender,age,photo,total_money as total from users where id = #{id}
  		]]>
 	</select>
+	
+	<select id="check1" resultType="uservo" parameterType="string">
+		<![CDATA[
+select to_char(nvl(sum(a.money)+c.TOTAL_MONEY-(SELECT SUM(MONEY) FROM LIST WHERE ID = #{id} AND OPERATIONS='-') ,0), '999,999,999,999,999') as total 
+ from list a, users c where a.ID = c.ID and c.id = #{id} and  a.operations='+' group by c.TOTAL_MONEY	]]>
+	</select>
 </mapper>
