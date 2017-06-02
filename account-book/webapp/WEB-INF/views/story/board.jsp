@@ -294,4 +294,81 @@
 	</form>
 </div>
 
+<!-- 나의 결산월 이야기 -->
+<div class="modal fade" id="viewmystory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title center">나의 결산월 이야기</h4>
+			</div>
+			<div class="modal-body">
+				<form action="${pageContext.request.contextPath}/${currentuserid}/story" method="post">
+					<input type="search" name="search" class="mysearchsize">
+					<button type="submit" class="fa fa-search fa-2x sr-contact"></button>
+					<button id="boardadd" type="button" class="fa fa-pencil fa-2x sr-contact"></button>
+				</form>
+			    <table class="table">
+			      <thead>
+			        <tr>
+			          <th>결산월</th>
+			          <th>제목</th>
+			          <th>작성자</th>
+			          <th>작성일</th>
+			          <th>추천</th>
+			          <th>조회</th>
+			        </tr>
+			      </thead>
+			      <tbody>
+			      	<c:forEach var="story" items="${story.list}">
+			      		<script>
+				      		arrays2.push("${story.boardId}");
+			      		</script>
+				        <tr>
+				          <td>${story.month}</td>
+				          <td><label id="mystory${story.boardId}" title="${story.boardId}">${story.title}</label></td>
+				          <td>${story.name}</td>
+				          <td>${story.day}</td>
+				          <td>${story.good}</td>
+				          <td>${story.hit}</td>
+				        </tr>
+			     	</c:forEach>
+			      </tbody>
+			    </table>
+
+			    <!-- 페이징처리 -->
+			    <div class="pager">
+					<ul>
+						<c:if test="${story.prevPage > 0}" >
+							<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${story.prevPage}&search=${story.keyword}">◀</a></li>
+						</c:if>
+						
+						<c:forEach begin="${story.beginPage}" end="${story.beginPage + story.listSize - 1}" var="page">
+							<c:choose>
+								<c:when test="${story.endPage < page}">
+									<li>${page}</li> 
+								</c:when> 
+								<c:when test="${story.currentPage == page}">
+									<li class="selected">${page}</li>
+								</c:when>
+								<c:otherwise> 
+									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${page}&search=${story.keyword}">${page}</a></li>
+								</c:otherwise>
+							</c:choose>
+						</c:forEach>
+						
+						<c:if test="${story.nextPage > 0}" >
+							<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${story.nextPage}&search=${story.keyword}">▶</a></li>
+						</c:if>
+					</ul>
+				</div>
+				<!-- /페이징처리 -->
+			</div>
+			<!-- /바디 끝 -->
+		</div>
+	</div>
+</div>
+
 <!-- /팝업영역 -->
