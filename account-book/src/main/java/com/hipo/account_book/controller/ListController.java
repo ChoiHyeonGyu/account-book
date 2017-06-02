@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hipo.account_book.dto.JSONResult;
+import com.hipo.account_book.service.BoardService;
 import com.hipo.account_book.service.ListService;
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.service.ProfileService;
@@ -30,11 +31,14 @@ public class ListController {
 	private OptionService optionservice;
 	@Autowired
 	private ProfileService Pservice;
+	@Autowired
+	private BoardService boardService;
 	
 	@ResponseBody
 	@RequestMapping("/movelist")
-	public JSONResult movelist(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("맵!!!!!!!!!!!!!!!!!!!!!" + map);
+	public JSONResult movelist(@RequestBody Map<String, Object> map, @PathVariable String id, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search, Model model) {
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return JSONResult.success(service.movelist(map.get("operation").toString(),1,"",id));
 	}
 	
@@ -42,7 +46,8 @@ public class ListController {
 	public String Listaj(Model model, @ModelAttribute OptionVo optionvo,
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
-			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
+			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search) {
 		UserVo v1 = Pservice.checkUpdate(id);// about profile 
 		model.addAttribute("v1", v1);
 		
@@ -54,6 +59,8 @@ public class ListController {
 		model.addAttribute("categorylist",service.categorylist(id));
 		model.addAttribute("operationslist",service.operationslist(id));
 		model.addAttribute("option", option);
+		
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "mypage/list/list";
 	}
 	

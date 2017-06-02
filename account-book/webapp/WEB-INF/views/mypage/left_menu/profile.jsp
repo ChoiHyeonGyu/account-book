@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/left_menu/profile.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/profile.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/story/story.css">
+<script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/story/board.js"></script>
 
 <!-- 프로필 -->
 <div class="row">
@@ -64,6 +63,7 @@
 	</div>
 </div>
 
+<c:import url="/WEB-INF/views/story/import_popup.jsp"/>
 
 <!-- 설정 팝업 -->
 

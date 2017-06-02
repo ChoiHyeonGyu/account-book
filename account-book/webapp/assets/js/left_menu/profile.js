@@ -3,7 +3,7 @@ $(function() {
 	$("#tt").click(function() {
 		$("#editprofile").modal();
 	});
-
+	
 	$("#mystory").click(function() {
 		$("#viewmystory").modal();
 	});

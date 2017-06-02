@@ -138,24 +138,28 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/mygraph")
-	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
+	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search){
 		model.addAttribute("v1",Pservice.checkUpdate(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("date", boardService.date());
 		model.addAttribute("catemonth", boardService.imreporttable(id));
 		model.addAttribute("cmsum", boardService.imreporttablesum(id));
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "report/mygraph";
 	}
 	
 	@RequestMapping("/mygraph2")
-	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
+	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search){
 		model.addAttribute("v1",Pservice.checkUpdate(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("date", boardService.date());
 		model.addAttribute("catemonth", boardService.exreporttable(id));
 		model.addAttribute("cmsum", boardService.exreporttablesum(id));
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "report/mygraph2";
 	}
 	
