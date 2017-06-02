@@ -44,7 +44,7 @@ public class ListService {
 		return false;
 	}
 	
-	public Map<String, Object> movelist(String operation, int pagination, String searching, String id) {
+	public Map<String, Object> movelist(String operation, int pagination, String searching, String id) {//웹 리스트 에뜸 웹에 직방.
 
 		int totalCount = dao.dealWithSearching(Integer.parseInt(operation), searching, id);//coz how many things are there,
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);

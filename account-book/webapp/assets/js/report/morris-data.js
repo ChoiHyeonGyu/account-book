@@ -327,6 +327,7 @@ $(function() {
 	    		formap(listarray);
 	    		html4 = "";//설명 필요.
 	    		
+	    		$("#v4").text(response.data.v4.moneyresult);
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
@@ -605,7 +606,7 @@ $(function() {
     			
 	    		formap(listarray);
 	    		html4 = "";
-	    		
+	    		$("#v4").text(response.data.v4.moneyresult);
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
