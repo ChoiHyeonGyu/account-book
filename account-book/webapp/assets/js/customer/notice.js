@@ -2,22 +2,24 @@ var userIdarray = [];
 var noticeIdarray = [];
 $(document).ready(function() {
 
-	$("#noticeAdd").click(function() {
-		var userId = userIdarray[0];
-		if (userId == "superjun3") {
+	var userId = userIdarray[0];
+	if (userId == "superjun3") {
+		$("#noticeAdd").click(function() {
 			$("#noticeAddform").modal();
-		} else {
-			alert("접근 권한이 없습니다.");
-		}
-	});
+		});
+	} else {
+		$("#noticeAdd").hide();
+	}
 
-	$("#noticeModify").click(function() {
-		var userId = userIdarray[0];
-		var ni = noticeIdarray[0];
-		console.log(ni);
-		if (userId == "superjun3") {
+	if (userId == "superjun3") {
+		$("#noticeModify").click(function() {
+			var userId = userIdarray[0];
+			var ni = noticeIdarray[0];
+			console.log(ni);
 			$("#noticeModifyform").modal();
-			var noticeId ={"noticeId":ni};
+			var noticeId = {
+				"noticeId" : ni
+			};
 			$.ajax({// 여기서 부터 통신이 시작된다.
 				url : "/account-book/" + currentid + "/noticemodify1",// 보낼주소
 				type : "POST",
@@ -30,13 +32,13 @@ $(document).ready(function() {
 					$("#noticeContent").val(response.data.noticeContent);//!!! 폼에 아이디를 만들고 여기 샵내용물을 매칭한다 그럼 정보가 쏘아진다.
 					$("#noticeId").val(response.data.noticeId);
 				},
-				
+
 			});
-		} else {
-			alert("접근 권한이 없습니다.");
-		}
-	});
-	
+		});
+	} else {
+		$("#noticeModify").hide();
+	}
+
 	$("#noticedeletebutton").click(function() {
 		var nd = noticeIdarray[0];
 		$("#deleteId").val(nd)
