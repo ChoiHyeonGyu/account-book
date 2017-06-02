@@ -7,45 +7,8 @@ var cmtuid1 = 0;
 
 $(function(){
 	
-	var contentform = $("#contentform").dialog({
-		autoOpen: false,
-		height: 850,
-		width: 700,
-		modal: true,
-		buttons: {
-			
-		},
-		close: function() {
-			
-		}
-	});
-	
-	var commentsform = $("#commentform").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-		},
-		close: function() {
-			
-		}
-	});
-	
-	var comments1form = $("#comment1form").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-		},
-		close: function() {
-			
-		}
-	});
-	
 	$("#commentsviewer").click(function(){
-		commentsform.dialog("open");
+		$("#commentform").modal();
 		
 		$.ajax( {
 		    url : "/account-book/commentlist",
@@ -69,7 +32,7 @@ $(function(){
 		    		cmtnum = response.data[i].commentId;
 		    		cmtuid = response.data[i].id
 		    		$("#commentreply"+i).click(function(){
-		    			comments1form.dialog("open");
+		    			$("#comment1form").modal();
 		    			
 		    			var obj3 = {"commentid":cmtnum};
 		    			
@@ -93,27 +56,6 @@ $(function(){
 		    			    		$("#comment1content"+i).text(response.data[i].content);
 		    			    		cmtnum1 = response.data[i].commentId;
 		    			    		cmtuid1 = response.data[i].id
-		    			    		$("#comment1delete"+i).click(function(){
-		    			    			var obj4 = {"commentid":cmtnum1, "id":cmtuid1};
-		    			    			
-		    			    			$.ajax( {
-		    			    			    url : "/account-book/"+currentid+"/commentremove",
-		    			    			    type: "POST",
-		    			    			    dataType: "JSON",
-		    			    			    data: JSON.stringify(obj4),
-		    			    			    contentType: "application/json; charset=UTF-8",
-		    			    			    success: function( response ){
-		    			    			    	if(response.result == "fail"){
-		    			    			    		alert("너가 삭제할 수 있을 것 같아?");
-		    			    			    	}
-		    			    			    },
-		    			    			    error: function( XHR, status, error ){
-		    			    			       console.error( status + " : " + error );	       
-		    			    			    }
-		    			    			});
-		    			    			
-		    			    			comments1form.dialog("close");
-		    			    		});
 		    			    	}
 		    			    	if(response.data.length == 0){
 		    			    		for(var i=0; i<=1000; i++){
@@ -138,27 +80,6 @@ $(function(){
 		    			       console.error( status + " : " + error );	       
 		    			    }
 		    			});
-		    		});
-		    		$("#commentdelete"+i).click(function(){
-		    			var obj4 = {"commentid":cmtnum, "id":cmtuid};
-		    			
-		    			$.ajax( {
-		    			    url : "/account-book/"+currentid+"/commentremove",
-		    			    type: "POST",
-		    			    dataType: "JSON",
-		    			    data: JSON.stringify(obj4),
-		    			    contentType: "application/json; charset=UTF-8",
-		    			    success: function( response ){
-		    			    	if(response.result == "fail"){
-		    			    		alert("너가 삭제할 수 있을 것 같아?");
-		    			    	}
-		    			    },
-		    			    error: function( XHR, status, error ){
-		    			       console.error( status + " : " + error );	       
-		    			    }
-		    			});
-		    			
-		    			commentsform.dialog("close");
 		    		});
 		    	}
 		    	if(response.data.length == 0){
@@ -190,9 +111,9 @@ $(function(){
 	for(var i=0; i<arrays.length; i++){
 		var num = arrays[i];
 		$("#"+arrays[i]).click(function(num){
-			contentform.dialog("open");
+			$("#contentform").modal();
 			obj2 = {"boardid":num.target.id};
-			
+
 			$.ajax( {
 			    url : "/account-book/boardcontent",
 			    type: "POST",
@@ -202,12 +123,14 @@ $(function(){
 			    success: function( response ){
 			    	$("#contentmonth").text(response.data["0"].month);
 			    	$("#contenttitle").text(response.data["0"].title);
-			    	$("#contentname").text("작성자 : "+response.data["0"].name);
+			    	$("#contentname").text(response.data["0"].name);
 			    	for(var i=0; i<=100; i++){
 			    		$("#contentphoto"+i).css('display', 'block');
 			    	}
 			    	for(var i=0; i<response.data.length; i++){
-			    		$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    		if(response.data[i].photo.match(".無") == null){
+			    			$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    		}
 			    	}
 			    	if(response.data[0].photo.indexOf('無',0) != -1){
 			    		for(var i=0; i<=100; i++){

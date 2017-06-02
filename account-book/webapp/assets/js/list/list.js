@@ -304,8 +304,8 @@ var currmap = function(){
 			});
 			
 			google.maps.event.addListener(map, 'click', function(mouseEvent){
-				console.log(mouseEvent.latLng.lat());
-				console.log(mouseEvent.latLng.lng());
+				/*console.log(mouseEvent.latLng.lat());
+				console.log(mouseEvent.latLng.lng());*/
 				$("#lat").val(mouseEvent.latLng.lat());
 				$("#lng").val(mouseEvent.latLng.lng());
 				Y_point = mouseEvent.latLng.lat();

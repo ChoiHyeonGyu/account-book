@@ -47,7 +47,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/story">결산월 이야기</a></li>
 					<li><a class="page-scroll"
-						href="${pageContext.request.contextPath}/${currentuserid}/graph">통계</a>
+						href="${pageContext.request.contextPath}/${currentuserid}/graph">전체 회원 통계</a>
 					</li>
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
 						data-toggle="dropdown" role="button" aria-expanded="false">고객센터

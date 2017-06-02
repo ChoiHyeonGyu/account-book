@@ -1,10 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/left_menu/profile.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/profile.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/story/story.css">
+<script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/story/board.js"></script>
 
 <!-- 프로필 -->
 <div class="row">
@@ -19,7 +18,7 @@
 
 			<span id="tt" class="fa fa-user fa-2x sr-contact pa pointer"></span>&emsp;
 			
-			<span id="graph1" class="fa fa-align-justify fa-2x sr-contact pa pointer"></span>&emsp;
+			<span id="mystory" class="fa fa-align-justify fa-2x sr-contact pa pointer"></span>&emsp;
 			
 			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph"
 			class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;
@@ -64,27 +63,7 @@
 	</div>
 </div>
 
-<div class="modal fade" id="viewgraph1" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title center">그래프1</h4>
-			</div>
-			<div class="modal-body">
-				<p>그래프꾸미기</p>
-			</div>
-			<div class="modal-footer">
-					<button type="submit" class="">버튼</button>
-				</div>
-		</div>
-	</div>
-</div>
-
+<c:import url="/WEB-INF/views/story/import_popup.jsp"/>
 
 <!-- 설정 팝업 -->
 
