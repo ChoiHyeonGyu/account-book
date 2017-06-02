@@ -123,7 +123,11 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			select * from list where list_id = #{value}
 		]]>
 	</select>
-	
+	 <select id="operationslist" parameterType="map" resultType="listvo">
+		<![CDATA[
+select DISTINCT (case when operations='+' then '수입' when operations='-' then '지출' when operations='0' then '투자' end) as operations from list	where id = #{id}	]]>
+	</select>
+	  
 	
 	<select id="totalmonth" parameterType="map" resultType="listvo">
 		<![CDATA[

@@ -137,7 +137,7 @@
 										</select></td>
 									<td><select id="${vo.listId}d" name="operations" class="tableinput searchbox2" onchange="my6Function(this.value)" required>
 											<c:if test="${vo.operations == '수입'}">
-												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="${vo.operations}" selected="selected">${vo.operations}</option> 
 												<option value="-">지출</option>
 												<option value="0">투자</option>
 											</c:if>

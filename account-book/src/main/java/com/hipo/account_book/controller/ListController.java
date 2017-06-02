@@ -51,17 +51,11 @@ public class ListController {
 		model.addAttribute("v2", service.totalmonth(id, operation));
 		model.addAttribute("v3", service.totalmonth1(id, operation));
 		model.addAttribute("categorylist",service.categorylist(id));
+		model.addAttribute("operationslist",service.operationslist(id));
 		model.addAttribute("option", option);
 		return "mypage/list/list";
 	}
-	/*
-	 * @ResponseBody
-	 * 
-	 * @RequestMapping("/checkUpdate1") public JSONResult
-	 * checkUpdate1(@PathVariable String id, @RequestBody Map<String, Object>
-	 * map){ return
-	 * JSONResult.success(Pservice.checkUpdate1(map.get("").toString())); }
-	 */
+	
 
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id, @ModelAttribute ListVo vo) {
@@ -121,7 +115,17 @@ public class ListController {
 	public JSONResult modify5(@RequestBody Map<String, Object> map, @PathVariable String id) {
 		System.out.println("???????????  " + map);
 		return JSONResult.success(service.modify6(map));
+		
+		
 	}
+	@ResponseBody
+	@RequestMapping("/modify6")
+	 /* paid!*/
+	public JSONResult modify6(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("???????????  " + map);
+		return JSONResult.success(service.modify7(map));
+	}
+	
 	@ResponseBody
 	@RequestMapping("/modify7")
 	 /* paid!*/

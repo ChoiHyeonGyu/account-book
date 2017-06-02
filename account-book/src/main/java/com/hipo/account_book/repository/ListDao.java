@@ -140,6 +140,12 @@ public class ListDao {
 		sql.update("listview.modify8", map);
 	}
 
+	public List<ListVo> operations(String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		return sql.selectList("listview.operationslist",map);
+	}
+
 	/*
 	 * public int totalmonth(ListVo vo) { System.out.println("돈돈돈돈돈돈" + vo);
 	 * return sql.selectOne("listview.totalmonth", vo); }
