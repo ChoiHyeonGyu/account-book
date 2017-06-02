@@ -5,13 +5,13 @@
 
 	<select id="getList" resultType="noticevo">
 		<![CDATA[
-			select notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice
+			select notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice order by day desc
 		]]>
 	</select>
 	
 	<select id="getList2" resultType="noticevo">
 		<![CDATA[
-			select qna_id as qnaId, content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna
+			select qna_id as qnaId, content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna order by day desc
 		]]>
 	</select>
 	
