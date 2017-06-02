@@ -139,8 +139,8 @@ $(function() {
 	    			}
 	    			if(response.data.list[i].operations =="수입"){
 	    				list2 = "<option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
-	    			} else if(response.data.operationslist['0'].operations == "지출") {
-	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list['0'].operations+"' selected='selected'>"+response.data.list['0'].operations+"</option><option value='0'>투자</option>";
+	    			} else if(response.data.list[i].operations == "지출") {
+	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
 	    			} else {
 	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option>";
 	    			}
@@ -416,11 +416,10 @@ $(function() {
 	    			} else {
 	    				list = "<option value="+response.data.list[i].paid+">"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
 	    			}
-	    			/*for(var j = 0; response.data.)*/
 	    			if(response.data.list[i].operations =="수입"){
 	    				list2 = "<option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
-	    			} else if(response.data.operationslist['0'].operations == "지출") {
-	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list['0'].operations+"' selected='selected'>"+response.data.list['0'].operations+"</option><option value='0'>투자</option>";
+	    			} else if(response.data.list[i].operations == "지출") {
+	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
 	    			} else {
 	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option>";
 	    			}
