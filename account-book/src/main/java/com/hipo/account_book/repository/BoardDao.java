@@ -64,6 +64,15 @@ public class BoardDao {
 		return sqlSession.selectList("board.getList", map);
 	}
 	
+	public List<BoardVo> getList(String id, String keyword, Integer page, Integer size){
+		Map<String, Object> map = new HashMap<String, Object>();// map으로 담으면 xml사용가능?? 가능하다면 형식물어보기.
+		map.put("id", id);
+		map.put("keyword", keyword);
+		map.put("page", page);
+		map.put("size", size);
+		return sqlSession.selectList("board.getList", map);
+	}
+	
 	public List<BoardVo> commentsselect(int num){
 		return sqlSession.selectList("board.commentsselect", num);
 	}

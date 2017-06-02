@@ -1,4 +1,5 @@
 var arrays = [];
+var arrays2 = [];
 var obj2 = {};
 var cmtnum = 0;
 var cmtnum1 = 0;
@@ -157,6 +158,65 @@ $(function(){
 	for(var i=0; i<arrays.length; i++){
 		var num = arrays[i];
 		$("#backstory"+arrays[i]).click(function(num){
+			$("#contentform").modal();
+			obj2 = {"boardid":num.target.title};
+			
+			$.ajax( {
+			    url : "/account-book/"+currentid+"/boardcontent",
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(obj2),
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){
+			    	$("#contentmonth").text(response.data["0"].month);
+			    	$("#contenttitle").text(response.data["0"].title);
+			    	$("#contentname").text(response.data["0"].name);
+			    	for(var i=0; i<=100; i++){
+			    		$("#contentphoto"+i).css('display', 'block');
+			    	}
+			    	for(var i=0; i<response.data.length; i++){
+			    		if(response.data[i].photo.match(".無") == null){
+			    			$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    		}
+			    	}
+			    	if(response.data[0].photo.indexOf('無',0) != -1){
+			    		for(var i=0; i<=100; i++){
+				    		$("#contentphoto"+i).css('display', 'none');
+				    	}
+			    	} else {
+			    		for(var i=response.data.length; i<=100; i++){
+				    		$("#contentphoto"+i).css('display', 'none');
+				    	}
+			    	}
+			    	$("#contentcontent").text(response.data["0"].content);
+			    	$("#contentday").text(response.data["0"].day);
+			    	$("#contentgood").text("추천 : "+response.data["0"].good);
+			    	$("#contenthit").text("조회 : "+response.data["0"].hit);
+			    	
+			    	$("#editboardId").val(response.data["0"].boardId);
+			    	$("#editId").val(response.data["0"].id);
+			    	$("#editmonth option:selected").text(response.data["0"].month);
+			    	$("#edittitle").val(response.data["0"].title);
+			    	$("#editcontent").text(response.data["0"].content);
+			    	
+			    	$("#removeboardId").val(response.data["0"].boardId);
+			    	$("#removeId").val(response.data["0"].id);
+			    	
+			    	$("#commentboardId").val(response.data["0"].boardId);
+			    	$("#commentName").val(response.data["0"].name);
+			    	
+			    	$("#comment1Name").val(response.data["0"].name);
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+	
+	for(var i=0; i<arrays2.length; i++){
+		var num = arrays2[i];
+		$("#backstory"+arrays2[i]).click(function(num){
 			$("#contentform").modal();
 			obj2 = {"boardid":num.target.title};
 			

@@ -81,6 +81,16 @@
 				where (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
 			]]>
 		</if>
+		<if test="keyword != null and keyword != '' and id != null and id != ''">
+			<![CDATA[					  
+				and id = #{id} 
+			]]>
+		</if>
+		<if test="keyword == null and keyword == '' and id != null and id != ''">
+			<![CDATA[					  
+				where id = #{id} 
+			]]>
+		</if>
 		<![CDATA[					  
 			order by board.day desc) a) where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
 		]]>

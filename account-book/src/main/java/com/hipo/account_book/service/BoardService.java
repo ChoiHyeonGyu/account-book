@@ -179,6 +179,43 @@ public class BoardService {
 		return map;
 	}
 	
+	public Map<String, Object> getBoardList(String id, int currentPage, String keyword){
+		//1. 페이징을 위한 기본 데이터 계산
+		int totalCount = boardDao.boardcount(keyword); // 데이터 수 . 왜 키워드로 받는지 . 걸러서 가지고 오는것
+		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );//리스팅 되는 페이지
+		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );//페이지수 .
+		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );//현재 페이지
+		
+		//2. 파라미터 page 값  검증
+		if( currentPage < 1 ) {
+			currentPage = 1;
+			currentBlock = 1;
+		} else if( currentPage > pageCount ) {
+			currentPage = pageCount;
+			currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );//이거의 대한 이유 소수점
+		}
+		
+		//3. view에서 페이지 리스트를 렌더링 하기위한 데이터 값 계산
+		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1)*PAGE_SIZE + 1;//이거의 대한것
+		int prevPage = ( currentBlock > 1 ) ? ( currentBlock - 1 ) * PAGE_SIZE : 0;
+		int nextPage = ( currentBlock < blockCount ) ? currentBlock * PAGE_SIZE + 1 : 0;
+		int endPage = ( nextPage > 0 ) ? ( beginPage - 1 ) + LIST_SIZE : pageCount;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put( "list", boardDao.getList(id, keyword, currentPage, LIST_SIZE) );
+		map.put( "totalCount", totalCount );
+		map.put( "listSize", LIST_SIZE );
+		map.put( "currentPage", currentPage );
+		map.put( "beginPage", beginPage );// 이것의 값은 . 어디서 뽑습니까
+		map.put( "endPage", endPage );
+		map.put( "prevPage", prevPage );
+		map.put( "nextPage", nextPage );
+		map.put( "keyword", keyword );
+		
+		return map;
+	}
+	
 	public List<BoardVo> commentlist(int num){
 		return boardDao.commentsselect(num);
 	}

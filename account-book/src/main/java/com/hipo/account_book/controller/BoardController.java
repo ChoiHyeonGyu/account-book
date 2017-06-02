@@ -43,6 +43,7 @@ public class BoardController {
 		model.addAttribute("v1",Pservice.checkUpdate(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		model.addAttribute("board", boardService.getBoardList(page, search));
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "story/board";
 	}
 	
