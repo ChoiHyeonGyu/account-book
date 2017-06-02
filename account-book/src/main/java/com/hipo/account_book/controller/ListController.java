@@ -50,6 +50,7 @@ public class ListController {
 		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
 		model.addAttribute("v2", service.totalmonth(id, operation));
 		model.addAttribute("v3", service.totalmonth1(id, operation));
+		model.addAttribute("v4",service.totalmonth2(id, operation));
 		model.addAttribute("categorylist",service.categorylist(id));
 		model.addAttribute("operationslist",service.operationslist(id));
 		model.addAttribute("option", option);

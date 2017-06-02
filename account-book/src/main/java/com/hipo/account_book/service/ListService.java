@@ -79,6 +79,7 @@ public class ListService {
 		map.put("searching", searching);
 		map.put("v2", dao.totalmonth(id, operation));// 이것은 쿼리문의 결과값을 맵에 저장 .!!
 		map.put("v3", dao.totalmonth1(id, operation));
+		map.put("v4", dao.totalmonth2(id, operation));
 		map.put("categorylist",dao.getcategory(id));
 		ListVo vo = new ListVo();
 		 vo.setId(id);
@@ -184,6 +185,10 @@ public class ListService {
 		List<ListVo> s = dao.operations(id);
 		
 		return s ;
+	}
+
+	public ListVo totalmonth2(String id, String operation) {
+		return dao.totalmonth2(id, operation) ;
 	}
 
 	
