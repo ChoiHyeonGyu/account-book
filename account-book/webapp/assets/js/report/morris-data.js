@@ -137,12 +137,12 @@ $(function() {
 	    			} else {
 	    				list = "<option value='"+response.data.list[i].paid+"'>"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
 	    			}
-	    			if(response.data.list[i].operations == "수입"){
-	    				list2 = "<option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
+	    			if(response.data.list[i].operations =="수입"){
+	    				list2 = "<option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
 	    			} else if(response.data.list[i].operations == "지출") {
-	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
+	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
 	    			} else {
-	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"'>"+response.data.list[i].operations+"</option>";
+	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option>";
 	    			}
 	    			for(var j=0; j<response.data.categorylist.length; j++){
 	    				if(response.data.list[i].category == response.data.categorylist[j].category){/* list 포문은 해당 페이지 정보 밖에 없음 카테고리 list는 컨트롤러에서 받은 모든카테고리를 불러온다 */
@@ -327,6 +327,7 @@ $(function() {
 	    		formap(listarray);
 	    		html4 = "";//설명 필요.
 	    		
+	    		$("#v4").text(response.data.v4.moneyresult);
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
 		    },
@@ -416,12 +417,12 @@ $(function() {
 	    			} else {
 	    				list = "<option value="+response.data.list[i].paid+">"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
 	    			}
-	    			if(response.data.list[i].operations == "수입"){
-	    				list2 = "<option value="+response.data.list[i].operations+">"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
+	    			if(response.data.list[i].operations =="수입"){
+	    				list2 = "<option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
 	    			} else if(response.data.list[i].operations == "지출") {
-	    				list2 = "<option value='+'>수입</option><option value="+response.data.list[i].operations+">"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
+	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
 	    			} else {
-	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value="+response.data.list[i].operations+">"+response.data.list[i].operations+"</option>";
+	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option>";
 	    			}
 	    			for(var j=0; j<response.data.categorylist.length; j++){
 	    				if(response.data.list[i].category == response.data.categorylist[j].category){
@@ -443,9 +444,9 @@ $(function() {
 								"</tr>";//path +currentid > main
 	    			$("#listbody").append(html);
 	    			list3 = "";
-	    			listarray.push(response.data.list[i].listId);
+	    		/*	listarray.push(response.data.list[i].listId);*/
 	    			
-	    			var num = listarray[i];
+	    			var num = listarray[i];// 사용가능 번호만 옮긴후 .펑션 사용,
 	    			$("#listbody").on("focusout", "#"+listarray[i], function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 	    				console.log(num);
 	    				
@@ -605,7 +606,7 @@ $(function() {
     			
 	    		formap(listarray);
 	    		html4 = "";
-	    		
+	    		$("#v4").text(response.data.v4.moneyresult);
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
 		    },

@@ -35,9 +35,9 @@
 				<div id="listall" class="col-md-12">
 
 					<!-- 가계부리스트영역 -->
-					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font id="v3" color="blue">
+					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font id="v3" color="blue">
 						${v3.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
-						 ${v2.moneyresult}</font>원</h2>
+						 ${v2.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 투자&nbsp;<font id="v4" color="green"> ${v4.moneyresult}</font>원</h2>
 					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
 						<input type="search" name="searching" size="123" class="searchbox"
 							placeholder="현금,금액,카테고리"> <button class="fa fa-search fa-1 sr-contact searchbox1"
@@ -137,7 +137,7 @@
 										</select></td>
 									<td><select id="${vo.listId}d" name="operations" class="tableinput searchbox2" onchange="my6Function(this.value)" required>
 											<c:if test="${vo.operations == '수입'}">
-												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="${vo.operations}" selected="selected">${vo.operations}</option> 
 												<option value="-">지출</option>
 												<option value="0">투자</option>
 											</c:if>

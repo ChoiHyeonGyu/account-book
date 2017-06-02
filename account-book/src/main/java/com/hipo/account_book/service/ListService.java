@@ -14,11 +14,12 @@ import com.hipo.account_book.vo.ListVo;
 public class ListService {
 	@Autowired
 	public ListDao dao;
-	
+	String id1 ="";
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
 	private static String info = "";
 	private static int money = 0;
+	
 	public List<ListVo> getList(ListVo vo) {
 		List<ListVo> list = dao.list(vo);
 		return list;
@@ -43,7 +44,7 @@ public class ListService {
 		return false;
 	}
 	
-	public Map<String, Object> movelist(String operation, int pagination, String searching, String id) {
+	public Map<String, Object> movelist(String operation, int pagination, String searching, String id) {//웹 리스트 에뜸 웹에 직방.
 
 		int totalCount = dao.dealWithSearching(Integer.parseInt(operation), searching, id);//coz how many things are there,
 		int pageCount = (int) Math.ceil((double) totalCount / LIST_SIZE);
@@ -67,7 +68,7 @@ public class ListService {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("list", dao.movelistselect(Integer.parseInt(operation), searching, pagination, LIST_SIZE, id));
+		map.put("list", dao.movelistselect(Integer.parseInt(operation), searching, pagination, LIST_SIZE, id));// actually lot of info  include listvo coz that's result as sql query.!!
 		map.put("totalCount", totalCount);//페이지 정보를 가지고 또다른 결과값을 불러낼수 있음 javascrip.
 		map.put("listSize", LIST_SIZE);
 		map.put("pagination", pagination);
@@ -76,9 +77,16 @@ public class ListService {
 		map.put("prevPage", prevPage);
 		map.put("nextPage", nextPage);
 		map.put("searching", searching);
-		map.put("v2", dao.totalmonth(id, operation));// 이것은 쿼리문의 결과값을 맵에 저장 .
+		map.put("v2", dao.totalmonth(id, operation));// 이것은 쿼리문의 결과값을 맵에 저장 .!!
 		map.put("v3", dao.totalmonth1(id, operation));
+		map.put("v4", dao.totalmonth2(id, operation));
 		map.put("categorylist",dao.getcategory(id));
+		ListVo vo = new ListVo();
+		 vo.setId(id);
+		 id1 = vo.getId();
+		id = id1.replaceAll("123","admin");
+		map.put("operationslist",dao.operations(id))  ;
+
 		return map;
 	}
 
@@ -105,11 +113,8 @@ public class ListService {
 
 	public Object modify3(Map<String, Object> map) {
 		 /* 상호명 이름*/
-		System.out.println("name !!!!!!!!!!!!!!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("a","");
-		System.out.println("ddddddddddddddddddddlistId = " + id);
-		
 		id = id.replaceAll("abcdefgh","");
 		info = map.get("name").toString();
 		System.out.println("name" + info);
@@ -120,18 +125,12 @@ public class ListService {
 
 	public Object modify4(Map<String, Object> map) {
 		/* 돈!!! */
-		System.out.println("name !!!!!!!!!!!!!!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("b","");
-		System.out.println("ddddddddddddddddddddlistId = " + id);
-		
-		
 		info = (map.get("money").toString());
 		info = info.replaceAll(" ","");
 		info = info.replaceAll(",","");
-		System.out.println("마지막 결과값 !!!!!!!" + info);
 		money = Integer.parseInt(info);
-		System.out.println("money = " + money);
 		dao.modify4(id,money);
 		return null;
 	}
@@ -141,11 +140,8 @@ public class ListService {
 		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("c","");
-		System.out.println("ddddddddddddddddddddlistId = " + id);
-		
 		info = map.get("bank").toString();
 		System.out.println("bank" + info);
-		
 		dao.modify5(id,info);
 		return null;
 	}
@@ -154,8 +150,6 @@ public class ListService {
 		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("e","");
-		System.out.println("ddddddddddddddddddddlistId = " + id);
-		
 		info = map.get("paid").toString();
 		System.out.println("paid" + info);
 		
@@ -167,8 +161,6 @@ public class ListService {
 		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("d","");
-		System.out.println("ddddddddddddddddddddlistId = " + id);
-		
 		info = map.get("operations").toString();
 		System.out.println("paid" + info);
 		
@@ -183,6 +175,20 @@ public class ListService {
 		info = map.get("category").toString();
 		dao.modify8(id,info);
 		return null;
+	}
+
+	public Object operationslist(String id) {
+		ListVo vo = new ListVo();
+		 vo.setId(id);
+		 id1 = vo.getId();
+		id = id1.replaceAll("123","admin");
+		List<ListVo> s = dao.operations(id);
+		
+		return s ;
+	}
+
+	public ListVo totalmonth2(String id, String operation) {
+		return dao.totalmonth2(id, operation) ;
 	}
 
 	

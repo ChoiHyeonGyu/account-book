@@ -77,6 +77,13 @@ public class ListDao {
 		return sql.selectOne("listview.totalmonth1", map);
 	}
 
+	public ListVo totalmonth2(String id, String operation) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id",id);
+		map.put("operation",operation);
+		return sql.selectOne("listview.totalmonth2",map);
+	}
+	
 	public List<ListVo> getcategory(String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);// id 저장
@@ -139,6 +146,13 @@ public class ListDao {
 		map.put("info", info);
 		sql.update("listview.modify8", map);
 	}
+
+	public List<ListVo> operations(String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		return sql.selectList("listview.operationslist",map);
+	}
+
 
 	/*
 	 * public int totalmonth(ListVo vo) { System.out.println("돈돈돈돈돈돈" + vo);
