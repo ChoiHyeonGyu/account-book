@@ -12,7 +12,7 @@
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
-<script	src="http://maps.google.com/maps/api/js?key=AIzaSyD4b_BFpjBL1PYY6pKL7vGrLWyB7n_qBa0"></script>
+<script	src="http://maps.google.com/maps/api/js?key=AIzaSyCYjwUYMqkN525WXgenN7_prP01O8d-2XI"></script>
 
 <div class="container">
 	<div class="row mt">
@@ -74,7 +74,6 @@
 								</tr>
 							</thead>
 							<tbody id="listbody">
-												
 							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
 								<tr>
 									<td><input type="text" id="datepicker" name="day"
@@ -104,13 +103,15 @@
 											<option value="${bb.category}">${bb.category}</option>
 										</c:forEach>
 									</select></td>
-									<td><input value="" class="mine tablecolor"
-										style="background: #ececec" placeholder="지도"></td>
+									<td>
+										<input id="btnmap" class="mine tablecolor" style="background: #ececec" placeholder="지도">
+										<input id="lat" name="locationY" type="hidden" value="">
+										<input id="lng" name="locationX" type="hidden" value="">
+									</td>
 									<td><input type="submit" value="저장" style="background: #ececec"
-										class="btn btn-sm text11" /> </td>
-						
+										class="btn btn-sm text11" /> </td>	
 								</tr>
-								</form>	
+							</form>
 								<!--  가계부 리스트 뿌려주는곳.	 -->
 						<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
