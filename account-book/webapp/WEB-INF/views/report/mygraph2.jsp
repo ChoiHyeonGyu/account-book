@@ -5,6 +5,7 @@
 <c:import url="/WEB-INF/views/include/flot.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/report/graph.css">
 <script src="${pageContext.request.contextPath}/assets/js/report/flot-mal2.js"></script>
 
 <div class="container">
@@ -36,18 +37,18 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 월</th>
-	                                <th class="fontsize">${date.jan}</th>
-	                                <th class="fontsize">${date.feb}</th>
-	                                <th class="fontsize">${date.mar}</th>
-	                                <th class="fontsize">${date.apr}</th>
-	                                <th class="fontsize">${date.may}</th>
-	                                <th class="fontsize">${date.jun}</th>
-	                                <th class="fontsize">${date.jul}</th>
-	                                <th class="fontsize">${date.aug}</th>
-	                                <th class="fontsize">${date.sep}</th>
-	                                <th class="fontsize">${date.oct}</th>
-	                                <th class="fontsize">${date.nov}</th>
-	                                <th class="fontsize">${date.dec}</th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.jan}" class="black">${date.jan}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.feb}" class="black">${date.feb}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.mar}" class="black">${date.mar}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.apr}" class="black">${date.apr}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.may}" class="black">${date.may}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.jun}" class="black">${date.jun}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.jul}" class="black">${date.jul}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.aug}" class="black">${date.aug}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.sep}" class="black">${date.sep}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.oct}" class="black">${date.oct}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.nov}" class="black">${date.nov}</a></th>
+	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mselectedmonth?month=${date.dec}" class="black">${date.dec}</a></th>
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
