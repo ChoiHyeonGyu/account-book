@@ -171,6 +171,20 @@ public class BoardController {
 	}
 	
 	@ResponseBody
+	@RequestMapping("/pselectedmonth")
+	public JSONResult pselectedmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
+		map.put("id", id);
+		return JSONResult.success(boardService.pselectedmonth(map));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/mselectedmonth")
+	public JSONResult mselectedmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
+		map.put("id", id);
+		return JSONResult.success(boardService.mselectedmonth(map));
+	}
+	
+	@ResponseBody
 	@RequestMapping("/importgraph")
 	public JSONResult importgraph(@PathVariable String id, @RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.importgraph(id));

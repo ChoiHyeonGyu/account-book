@@ -293,6 +293,14 @@ public class BoardService {
 		return boardDao.dateselect();
 	}
 	
+	public List<GraphVo> pselectedmonth(Map<String, Object> map){
+		return boardDao.pselectmonth(map);
+	}
+	
+	public List<GraphVo> mselectedmonth(Map<String, Object> map){
+		return boardDao.mselectmonth(map);
+	}
+	
 	public List<GraphVo> graphjinanmonth(){
 		return boardDao.graphjinanmonthselect();
 	}

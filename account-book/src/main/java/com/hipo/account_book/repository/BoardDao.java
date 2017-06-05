@@ -161,6 +161,14 @@ public class BoardDao {
 		return sqlSession.selectOne("board.dateselect");
 	}
 	
+	public List<GraphVo> pselectmonth(Map<String, Object> map){
+		return sqlSession.selectList("board.pselectmonth", map);
+	}
+	
+	public List<GraphVo> mselectmonth(Map<String, Object> map){
+		return sqlSession.selectList("board.mselectmonth", map);
+	}
+	
 	public List<GraphVo> graphjinanmonthselect(){
 		return sqlSession.selectList("board.graphjinanmonthselect");
 	}

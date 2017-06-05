@@ -326,6 +326,20 @@
 		]]>
 	</select>
 	
+	<select id="pselectmonth" parameterType="map" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where id = #{id} and operations = '+' and day between to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd') and 
+			add_months(to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd'), 1) - 1 / 86400 group by category, day order by day
+		]]>
+	</select>
+	
+	<select id="mselectmonth" parameterType="map" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where id = #{id} and operations = '-' and day between to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd') and 
+			add_months(to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd'), 1) - 1 / 86400 group by category, day order by day
+		]]>
+	</select>
+	
 	<select id="graphjinanmonthselect" resultType="graphvo">
 		<![CDATA[
 			select rownum, cnt, category from (select sum(cnt) as cnt, category from 
