@@ -7,11 +7,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hipo.account_book.repository.BoardDao;
 import com.hipo.account_book.repository.NoticeDao;
-import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.NoticeVo;
-import com.hipo.account_book.vo.OptionVo;
 
 @Service
 public class NoticeService {

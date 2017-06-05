@@ -1,7 +1,6 @@
 package com.hipo.account_book.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hipo.account_book.dto.JSONResult;
-import com.hipo.account_book.service.BoardService;
 import com.hipo.account_book.service.NoticeService;
-import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.service.ProfileService;
-import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.NoticeVo;
-import com.hipo.account_book.vo.OptionVo;
 import com.hipo.account_book.vo.UserVo;
 
 @Controller
