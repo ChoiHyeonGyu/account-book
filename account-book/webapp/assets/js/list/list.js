@@ -335,7 +335,6 @@ function listreload(){
 }
 
 function my1Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
@@ -365,7 +364,6 @@ function my1Function(val) {
 }
 
 function my2Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
@@ -392,7 +390,6 @@ function my2Function(val) {
 	}
 }
 function my3Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
@@ -420,7 +417,6 @@ function my3Function(val) {
 	}
 }
 function my4Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
@@ -448,7 +444,6 @@ function my4Function(val) {
 	}
 }
 function my5Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
@@ -476,7 +471,6 @@ function my5Function(val) {
 	}
 } 
 function my6Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
@@ -504,7 +498,6 @@ function my6Function(val) {
 	}
 } 
 function my7Function(val) {
-    alert("The input value has changed. The new value is: " + val);
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
