@@ -80,6 +80,7 @@ public class ListService {
 		map.put("v2", dao.totalmonth(id, operation));// 이것은 쿼리문의 결과값을 맵에 저장 .!!
 		map.put("v3", dao.totalmonth1(id, operation));
 		map.put("v4", dao.totalmonth2(id, operation));
+		map.put("v5", dao.totalmoney(id, operation));
 		map.put("categorylist",dao.getcategory(id));
 		ListVo vo = new ListVo();
 		 vo.setId(id);
@@ -181,6 +182,14 @@ public class ListService {
 
 	public ListVo totalmonth2(String id, String operation) {
 		return dao.totalmonth2(id, operation) ;
+	}
+
+	public ListVo totalmoney(String id, String operation) {
+		System.out.println("아이디값 오퍼값 " + id);
+		System.out.println("dhvjrkqt !!!!!" + operation);
+		 ListVo vo = dao.totalmoney(id,operation);
+		 System.out.println("찍히?ㅁ?ㅁ?ㅁ?ㅁ?ㅁ??ㅁㅁ??ㅁㅁ?ㅁ"+ vo);
+		 return vo ;
 	}
 
 	
