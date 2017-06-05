@@ -64,7 +64,7 @@
 				<div class="panel-body">
 					<div class="row">
 					    <div class="col-lg-12 col-lg-offset-0 text-center">
-					    	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="170" height="170"></h2>
+					    	<h2 class="section-heading"><img class="img-thumbnail" alt="사진" src="${pageContext.request.contextPath}/image/${profileall.photo}" width="170" height="170"></h2>
 					        <p>${v1.name}</p>
 					        <p>잔액:${v1.total}</p>
 					    </div>

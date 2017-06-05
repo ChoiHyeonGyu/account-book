@@ -13,4 +13,19 @@ select id,password,name,gender,age,photo,total_money as total from users where i
 select to_char(nvl(sum(a.money)+c.TOTAL_MONEY-(SELECT SUM(MONEY) FROM LIST WHERE ID = #{id} AND OPERATIONS='-') ,0), '999,999,999,999,999') as total 
  from list a, users c where a.ID = c.ID and c.id = #{id} and  a.operations='+' group by c.TOTAL_MONEY	]]>
 	</select>
+	
+	<update id="updateUserInfo" parameterType="UserVo">
+	<![CDATA[
+	UPDATE users
+	   SET name = #{name},
+	       photo  = #{photo}
+	  where id = #{id}
+	]]>
+	</update> 
+	
+	<select id="image" resultType="UserVo" parameterType="UserVo">
+<![CDATA[
+select id ,name,photo from users where id = #{id}
+]]>
+	</select> 
 </mapper>

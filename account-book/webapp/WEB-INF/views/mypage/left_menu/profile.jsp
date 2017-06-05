@@ -2,14 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/profile.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/story/story.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/list/list.css">
 <script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/story/board.js"></script>
-
 <!-- 프로필 -->
 <div class="row">
 	<h2 class="section-heading">
 		<img class="img-thumbnail" alt="사진"
-			src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
+			src="${pageContext.request.contextPath}/image/${profileall.photo}"
 			width="200" height="200">
 	</h2>
 	<div class="col-lg-12 col-lg-offset-0 text-center">
@@ -54,10 +54,35 @@
 				<h4 class="modal-title center">프로필 수정</h4>
 			</div>
 			<div class="modal-body">
-				<p>프로필수정꾸미기</p>
+			<form action="${pageContext.request.contextPath}/${currentuserid}/userinfo"
+					method="post" enctype="multipart/form-data"> 
+					<input type="hidden" name="id" value="${currentuserid}" />
+					<table class="admin-config">
+
+						<tr>
+							<td class="font2">이름  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td><input class="window1" type="text" size="40" name="name" value=""></td> 
+						</tr>
+						<tr>
+
+							<td class="font2">테마</td>
+							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}"></td>
+
+						</tr>
+						<tr>
+							<td class="t">&nbsp;</td> 
+							<td><button class="replace" >파일 업로드</button> 
+							<input type="file" name="photo" value="" class="upload window2"/></td>
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td><button class="notice" type="submit" > 기본설정 변경</button></td>
+						</tr>
+					</table>
+				</form>
 			</div>
 			<div class="modal-footer">
-					<button type="submit" class="">버튼</button>
+					<button data-dismiss="modal" type="button" class="close">취소</button>
 				</div>
 		</div>
 	</div>

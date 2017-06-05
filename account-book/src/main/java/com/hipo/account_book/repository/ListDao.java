@@ -101,7 +101,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("infovo", infovo);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify3", map);
 
 	}
@@ -111,7 +110,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("money", money);
-		System.out.println("인트 스트링 = " + map);
 		sql.update("listview.modify4", map);
 	}
 
@@ -120,7 +118,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("info", info);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify5", map);
 	}
 
@@ -128,7 +125,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("info", info);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify6", map);
 	}
 
@@ -136,7 +132,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("info", info);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify7", map);
 	}
 
