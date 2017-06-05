@@ -20,6 +20,7 @@ import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.service.ProfileService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.OptionVo;
+import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -40,7 +41,9 @@ public class BoardController {
 	@RequestMapping("/story")
 	public String story(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
-		model.addAttribute("v1",Pservice.checkUpdate(id));
+		UserVo username = Pservice.checkUpdate(id);
+		model.addAttribute("username", username);
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		model.addAttribute("board", boardService.getBoardList(page, search));
 		model.addAttribute("story", boardService.getBoardList(id, page, search));
@@ -140,7 +143,9 @@ public class BoardController {
 	@RequestMapping("/mygraph")
 	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search){
-		model.addAttribute("v1",Pservice.checkUpdate(id));
+		UserVo username = Pservice.checkUpdate(id);
+		model.addAttribute("username", username);
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("date", boardService.date());
@@ -153,7 +158,9 @@ public class BoardController {
 	@RequestMapping("/mygraph2")
 	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search){
-		model.addAttribute("v1",Pservice.checkUpdate(id));
+		UserVo username = Pservice.checkUpdate(id); 
+		model.addAttribute("username", username);
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("date", boardService.date());

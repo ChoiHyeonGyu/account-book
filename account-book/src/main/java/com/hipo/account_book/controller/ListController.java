@@ -52,9 +52,6 @@ public class ListController {
 		UserVo username = Pservice.checkUpdate(id);// about profile 
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));
-			
-		UserVo v1 = Pservice.checkUpdate(id);// about profile 
-		model.addAttribute("v1", v1);
 		
 		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
