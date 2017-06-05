@@ -33,18 +33,18 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 월</th>
-	                                <th class="fontsize">${date.jan}</th>
-	                                <th class="fontsize">${date.feb}</th>
-	                                <th class="fontsize">${date.mar}</th>
-	                                <th class="fontsize">${date.apr}</th>
-	                                <th class="fontsize">${date.may}</th>
-	                                <th class="fontsize">${date.jun}</th>
-	                                <th class="fontsize">${date.jul}</th>
-	                                <th class="fontsize">${date.aug}</th>
-	                                <th class="fontsize">${date.sep}</th>
-	                                <th class="fontsize">${date.oct}</th>
-	                                <th class="fontsize">${date.nov}</th>
-	                                <th class="fontsize">${date.dec}</th>
+	                                <th id="selectmonth1" class="fontsize">${date.jan}</th>
+	                                <th id="selectmonth2" class="fontsize">${date.feb}</th>
+	                                <th id="selectmonth3" class="fontsize">${date.mar}</th>
+	                                <th id="selectmonth4" class="fontsize">${date.apr}</th>
+	                                <th id="selectmonth5" class="fontsize">${date.may}</th>
+	                                <th id="selectmonth6" class="fontsize">${date.jun}</th>
+	                                <th id="selectmonth7" class="fontsize">${date.jul}</th>
+	                                <th id="selectmonth8" class="fontsize">${date.aug}</th>
+	                                <th id="selectmonth9" class="fontsize">${date.sep}</th>
+	                                <th id="selectmonth10" class="fontsize">${date.oct}</th>
+	                                <th id="selectmonth11" class="fontsize">${date.nov}</th>
+	                                <th id="selectmonth12" class="fontsize">${date.dec}</th>
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>

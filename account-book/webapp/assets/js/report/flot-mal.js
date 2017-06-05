@@ -76,12 +76,29 @@ $(function() {
     }
     
     doPlot("right");
-
-    $("button").click(function() {
-        doPlot($(this).text());
-    });
     
     $("#ext").click(function() {
     	$("#ex").submit();
     });
+    
+    for(var i=1; i<13; i++){
+    	$("#selectmonth"+i).click(function(){
+        	var sm = {"selectmonth": $("#selectmonth"+i).text()};
+        	console.log(sm);
+        	
+        	$.ajax( {
+        	    url : "/account-book/"+currentid+"/pselectedmonth",
+        	    type: "POST",
+        	    dataType: "JSON",
+        	    data: JSON.stringify(sm),
+        	    contentType: "application/json; charset=UTF-8",
+        	    success: function( response ){
+        	    	console.log(response);
+        	    },
+        	    error: function( XHR, status, error ){
+        	       console.error( status + " : " + error );	       
+        	    }
+        	});
+        });
+    }
 });
