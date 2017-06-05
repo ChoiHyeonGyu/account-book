@@ -46,15 +46,12 @@ public class OptionDao {
 	}
 	
 	public OptionVo categoryModify(int i) {
-		System.out.println("daodaodao"+i);
 		return sql.selectOne("option.categoryModify", i);
 	}
 	
 	public OptionVo limitModify2(String category) {
 		OptionVo vo;
-		System.out.println("daodaodao"+category);
 		vo = sql.selectOne("option.limitMdify2", category);
-		System.out.println("livolivo::"+vo);
 		return sql.selectOne("option.limitMdify2", category);
 	}
 	
@@ -71,7 +68,6 @@ public class OptionDao {
 	}
 	
 	public boolean delete(OptionVo vo) {
-		System.out.println("딜리딜리디리디....."+vo);
 		sql.delete("option.delete",vo);
 		 return false;
 	}

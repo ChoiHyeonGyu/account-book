@@ -117,7 +117,6 @@ public class ListService {
 		id = id.replaceAll("a","");
 		id = id.replaceAll("abcdefgh","");
 		info = map.get("name").toString();
-		System.out.println("name" + info);
 		
 		dao.modify3(id,info);
 		return null;
@@ -137,39 +136,32 @@ public class ListService {
 
 	public Object modify5(Map<String, Object> map) {
 		/* 은행 !*/
-		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("c","");
 		info = map.get("bank").toString();
-		System.out.println("bank" + info);
 		dao.modify5(id,info);
 		return null;
 	}
 
 	public Object modify6(Map<String, Object> map) {
-		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("e","");
 		info = map.get("paid").toString();
-		System.out.println("paid" + info);
 		
 		dao.modify6(id,info);
 		return null;
 	}
 
 	public Object modify7(Map<String, Object> map) {
-		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("d","");
 		info = map.get("operations").toString();
-		System.out.println("paid" + info);
 		
 		dao.modify7(id,info);
 		return null;
 	}
 
 	public Object modify8(Map<String, Object> map) {
-		System.out.println("가지고 온 정보 !!=" + map);
 		String id = map.get("listId").toString();
 		id = id.replaceAll("f","");
 		info = map.get("category").toString();
