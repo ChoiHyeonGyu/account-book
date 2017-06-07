@@ -47,7 +47,7 @@
 						class="fa fa-bars"></i>
 				</button>
 				<a class="navbar-brand page-scroll"
-					href="${pageContext.request.contextPath}/${currentuserid}/logon">편리가계부</a>
+					href="${pageContext.request.contextPath}/${currentuserid}/list">편리가계부</a>
 				<font size="6px" color="white">|</font>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="page-scroll" href="${pageContext.request.contextPath}/${currentuserid}/story">결산월 이야기</a></li>

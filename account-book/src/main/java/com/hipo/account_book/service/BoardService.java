@@ -129,12 +129,15 @@ public class BoardService {
 		return boardDao.contentselect(num);
 	}
 	
-	public List<BoardVo> boardcontenttable(String id, Map<String, Object> map){
-		map = arraysettings(map.get("month").toString());
-		map.put("id", id);
-		map.put("boardid", map.get("boardid").toString());
-		System.out.println(map);
-		return boardDao.contenttableselect(map);
+	public Map<String, Object> boardcontenttable(Map<String, Object> map){
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		Map<String, Object> mapresult = new HashMap<String, Object>();
+		map2 = arraysettings(map.get("month").toString());
+		map2.put("id", boardDao.findidselect(map.get("boardid").toString()));
+		mapresult.put("date", boardDao.datedetailselect(arraysettings(map.get("month").toString())));
+		mapresult.put("cateday", boardDao.mselectedtableselect(map2));
+		mapresult.put("cmsum", boardDao.mselectedtablesumselect(map2));
+		return mapresult;
 	}
 	
 	public void boardremove(int num){
@@ -346,6 +349,13 @@ public class BoardService {
 	
 	public List<GraphVo> mselectedmonth(Map<String, Object> map){
 		return boardDao.mselectmonth(map);
+	}
+	
+	public List<GraphVo> mselectedmonth2(Map<String, Object> map){
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("id", boardDao.findidselect(map.get("boardid").toString()));
+		map2.put("selectmonth", map.get("month").toString());
+		return boardDao.mselectmonth(map2);
 	}
 	
 	public List<GraphVo> graphjinanmonth(){

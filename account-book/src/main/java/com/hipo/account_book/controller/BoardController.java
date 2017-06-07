@@ -32,12 +32,6 @@ public class BoardController {
 	@Autowired
 	private ProfileService Pservice;
 	
-	@RequestMapping("/logon")
-	public String logon(@PathVariable String id, Model model){
-		model.addAttribute("v1",Pservice.checkUpdate(id));
-		return "frontpage/logon";
-	}
-	
 	@RequestMapping("/story")
 	public String story(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
@@ -67,11 +61,7 @@ public class BoardController {
 	@ResponseBody
 	@RequestMapping("/table")
 	public JSONResult table(@PathVariable String id, @RequestBody Map<String, Object> map){
-		/*model.addAttribute("month", month);
-		model.addAttribute("date", boardService.datedetail(month));
-		model.addAttribute("cateday", boardService.mselectedtable(id, month));
-		model.addAttribute("cmsum", boardService.mselectedtablesum(id, month));*/
-		return JSONResult.success(boardService.boardcontenttable(id, map));
+		return JSONResult.success(boardService.boardcontenttable(map));
 	}
 	
 	@RequestMapping("/boardadd")
@@ -246,6 +236,12 @@ public class BoardController {
 	public JSONResult mselectedmonth(@PathVariable String id, @RequestBody Map<String, Object> map){
 		map.put("id", id);
 		return JSONResult.success(boardService.mselectedmonth(map));
+	}
+	
+	@ResponseBody
+	@RequestMapping("/mselectedmonth2")
+	public JSONResult mselectedmonth2(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.mselectedmonth2(map));
 	}
 	
 	@ResponseBody

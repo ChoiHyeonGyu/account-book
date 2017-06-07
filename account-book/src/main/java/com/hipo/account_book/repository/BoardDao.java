@@ -21,6 +21,10 @@ public class BoardDao {
 		return sqlSession.selectOne("board.usernameselect", id);
 	}
 	
+	public String findidselect(String boardid){
+		return sqlSession.selectOne("board.findidselect", boardid);
+	}
+	
 	public void boardinsert(BoardVo boardvo){
 		sqlSession.insert("board.boardinsert", boardvo);
 	}
@@ -35,10 +39,6 @@ public class BoardDao {
 	
 	public List<BoardVo> contentselect(int num){
 		return sqlSession.selectList("board.contentselect", num);
-	}
-	
-	public List<BoardVo> contenttableselect(Map<String, Object> map){
-		return sqlSession.selectList("board.contenttableselect", map);
 	}
 	
 	public void boardupdate(BoardVo boardvo){

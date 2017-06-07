@@ -7,6 +7,12 @@
 			select name from users where id = #{value}
 		]]>
 	</select>
+	
+	<select id="findidselect" parameterType="string" resultType="string">
+		<![CDATA[
+			select id from board where board_id = #{value}
+		]]>
+	</select>
 
 	<insert id="boardinsert" parameterType="boardvo">
 		<![CDATA[

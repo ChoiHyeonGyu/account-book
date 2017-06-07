@@ -71,12 +71,12 @@ public class FrontController {
 			model.addAttribute("ult", uservo2);
 			return "login";
 		}
-		return "redirect:/"+uservo.getId()+"/logon";
+		return "redirect:/"+uservo.getId()+"/list";
 	}
 	
 	@RequestMapping("/main")
 	public String main(@RequestParam(value="id", required=false, defaultValue="") String id){
-		return "redirect:/"+id+"/logon";
+		return "redirect:/"+id+"/list";
 	}
 	
 	@RequestMapping("/story")

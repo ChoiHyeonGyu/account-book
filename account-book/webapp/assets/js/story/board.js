@@ -1,6 +1,7 @@
 var arrays = [];
 var arrays2 = [];
 var obj2 = {};
+var obj3 = {};
 var cmtnum = 0;
 var cmtnum1 = 0;
 var cmtuid = 0;
@@ -160,6 +161,7 @@ $(function(){
 		$("#backstory"+arrays[i]).click(function(num){
 			$("#contentform").modal();
 			obj2 = {"boardid":num.target.title};
+			$("#showgp").css('display', 'none');
 			
 			$.ajax( {
 			    url : "/account-book/"+currentid+"/boardcontent",
@@ -170,22 +172,12 @@ $(function(){
 			    success: function( response ){
 			    	$("#contentmonth").text(response.data["0"].month);
 			    	if(response.data["0"].defaultcheck == true){
-			    		requiredmonth(response.data["0"].month);
-			    		var obj3 = {"boardid":num.target.title, "month":response.data["0"].month.replace(".", "/")}
-			    		console.log(obj3);
-			    		$.ajax( {
-						    url : "/account-book/"+currentid+"/table",
-						    type: "POST",
-						    dataType: "JSON",
-						    data: JSON.stringify(obj3),
-						    contentType: "application/json; charset=UTF-8",
-						    success: function( response ){
-						    	
-						    },
-						    error: function( XHR, status, error ){
-						       console.error( status + " : " + error );	       
-						    }
-						});
+			    		$("#showgp").css('display', 'block');
+			    		if(obj3.boardid != num.target.title){
+			    			obj3 = {"boardid":num.target.title, "month":response.data["0"].month.replace(".", "/")};
+			    			flushtable(obj3);
+			    			requiredmonth(obj3);
+			    		}
 			    	}
 			    	$("#contenttitle").text(response.data["0"].title);
 			    	$("#contentname").text(response.data["0"].name);
@@ -237,6 +229,7 @@ $(function(){
 		$("#mystory"+arrays2[i]).click(function(num){
 			$("#contentform").modal();
 			obj2 = {"boardid":num.target.title};
+			$("#showgp").css('display', 'none');
 			
 			$.ajax( {
 			    url : "/account-book/"+currentid+"/boardcontent",
@@ -247,6 +240,11 @@ $(function(){
 			    success: function( response ){
 			    	$("#contentmonth").text(response.data["0"].month);
 			    	if(response.data["0"].defaultcheck == true){
+			    		$("#showgp").css('display', 'block');
+			    		if(obj3.boardid != num.target.title){
+			    			obj3 = {"boardid":num.target.title, "month":response.data["0"].month.replace(".", "/")};
+			    			flushtable(obj3);
+			    		}
 			    		requiredmonth(response.data["0"].month);
 			    	}
 			    	$("#contenttitle").text(response.data["0"].title);

@@ -41,7 +41,7 @@
 						      		arrays2.push("${story.boardId}");
 					      		</script>
 						        <tr>
-						          <td id="selectedmonth${board.boardId}">${board.month}</td>
+						          <td>${story.month}</td>
 						          <td><label id="mystory${story.boardId}" title="${story.boardId}">${story.title}</label></td>
 						          <td>${story.name}</td>
 						          <td>${story.day}</td>
