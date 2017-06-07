@@ -326,10 +326,11 @@ $(function() {
 	    		
 	    		formap(listarray);
 	    		html4 = "";//설명 필요.
-	    		
 	    		$("#v4").text(response.data.v4.moneyresult);
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
+	    		$("#v5").text(response.data.v5.moneyresult);
+
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
@@ -444,7 +445,7 @@ $(function() {
 								"</tr>";//path +currentid > main
 	    			$("#listbody").append(html);
 	    			list3 = "";
-	    		/*	listarray.push(response.data.list[i].listId);*/
+	    			listarray.push(response.data.list[i].listId);
 	    			
 	    			var num = listarray[i];// 사용가능 번호만 옮긴후 .펑션 사용,
 	    			$("#listbody").on("focusout", "#"+listarray[i], function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
@@ -609,6 +610,8 @@ $(function() {
 	    		$("#v4").text(response.data.v4.moneyresult);
 	    		$("#v2").text(response.data.v2.moneyresult);
 	    		$("#v3").text(response.data.v3.moneyresult);
+	    		$("#v5").text(response.data.v5.moneyresult);
+
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       
