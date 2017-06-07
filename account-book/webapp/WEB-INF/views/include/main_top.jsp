@@ -21,6 +21,11 @@
 <script src="${pageContext.request.contextPath}/assets/js/include/commonness.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/notice/notice.css">
+	
+	
 <script>
 	currentid = "${currentuserid}";
 	path = "${pageContext.request.contextPath}";
@@ -31,7 +36,7 @@
 
 	<!-- 상단 네비게이션 바 -->
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid bg-black">
+	<div class="container-fluid navy">
 		<div class="container">
 			<div class="navbar-header">
 				<img class="hipo-logo" alt="로고"
