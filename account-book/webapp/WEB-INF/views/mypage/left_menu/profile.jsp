@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/profile.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/story/story.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/list/list.css">
 <script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/story/board.js"></script>
 <!-- 프로필 -->
 <div class="row">
 	<h2 class="section-heading">
@@ -17,12 +15,8 @@
 		<p><font>잔액 :</font> <font color="green">${profile1.total}</font>원</p>  
 
 			<span id="tt" class="fa fa-user fa-2x sr-contact pa pointer"></span>&emsp;
-			
-			<span id="mystory" class="fa fa-align-justify fa-2x sr-contact pa pointer"></span>&emsp;
-			
-			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph"
-			class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;
-			
+			<a href="${pageContext.request.contextPath}/${currentuserid}/mystory" class="fa fa-align-justify fa-2x sr-contact pa pointer"></a>&emsp;		
+			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph" class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;			
 			<a href="${pageContext.request.contextPath}/${currentuserid}/option" class="fa fa-cog fa-2x sr-contact pa pointer"></a>
 
 	</div>
@@ -125,12 +119,3 @@
 	</div>
 	</form>
 </div>
-
-<%-- <c:import url="/WEB-INF/views/story/import_popup.jsp"/> --%>
-
-<!-- 설정 팝업 -->
-
-
-
-
-<!-- /팝업영역 -->

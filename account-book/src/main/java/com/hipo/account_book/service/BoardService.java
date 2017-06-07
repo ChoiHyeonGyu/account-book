@@ -129,6 +129,14 @@ public class BoardService {
 		return boardDao.contentselect(num);
 	}
 	
+	public List<BoardVo> boardcontenttable(String id, Map<String, Object> map){
+		map = arraysettings(map.get("month").toString());
+		map.put("id", id);
+		map.put("boardid", map.get("boardid").toString());
+		System.out.println(map);
+		return boardDao.contenttableselect(map);
+	}
+	
 	public void boardremove(int num){
 		boardDao.imagedelete(num);
 		

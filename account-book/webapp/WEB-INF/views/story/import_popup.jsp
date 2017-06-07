@@ -2,83 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 팝업영역 -->
 
-<!-- 나의 결산월 이야기 -->
-<div class="modal fade" id="viewmystory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title center">나의 결산월 이야기</h4>
-			</div>
-			<div class="modal-body">
-				<form action="${pageContext.request.contextPath}/${currentuserid}/story" method="post">
-					<input type="search" name="search" class="mysearchsize">
-					<button type="submit" class="fa fa-search fa-2x sr-contact"></button>
-					<button id="boardadd" type="button" class="fa fa-pencil fa-2x sr-contact"></button>
-				</form>
-			    <table class="table">
-			      <thead>
-			        <tr>
-			          <th>결산월</th>
-			          <th>제목</th>
-			          <th>작성자</th>
-			          <th>작성일</th>
-			          <th>추천</th>
-			          <th>조회</th>
-			        </tr>
-			      </thead>
-			      <tbody>
-			      	<c:forEach var="story" items="${story.list}">
-			      		<script>
-				      		arrays2.push("${story.boardId}");
-			      		</script>
-				        <tr>
-				          <td>${story.month}</td>
-				          <td><label id="mystory${story.boardId}" title="${story.boardId}">${story.title}</label></td>
-				          <td>${story.name}</td>
-				          <td>${story.day}</td>
-				          <td>${story.good}</td>
-				          <td>${story.hit}</td>
-				        </tr>
-			     	</c:forEach>
-			      </tbody>
-			    </table>
-
-			    <!-- 페이징처리 -->
-			    <div class="pager">
-					<ul>
-						<c:if test="${story.prevPage > 0}" >
-							<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${story.prevPage}&search=${story.keyword}">◀</a></li>
-						</c:if>
-						
-						<c:forEach begin="${story.beginPage}" end="${story.beginPage + story.listSize - 1}" var="page">
-							<c:choose>
-								<c:when test="${story.endPage < page}">
-									<li>${page}</li> 
-								</c:when> 
-								<c:when test="${story.currentPage == page}">
-									<li class="selected">${page}</li>
-								</c:when>
-								<c:otherwise> 
-									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${page}&search=${story.keyword}">${page}</a></li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						
-						<c:if test="${story.nextPage > 0}" >
-							<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${story.nextPage}&search=${story.keyword}">▶</a></li>
-						</c:if>
-					</ul>
-				</div>
-				<!-- /페이징처리 -->
-			</div>
-			<!-- /바디 끝 -->
-		</div>
-	</div>
-</div>
-
 <!-- 이야기 작성 -->
 <div class="modal fade" id="boardform" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog margintop2">
@@ -106,7 +29,8 @@
 			   						<c:otherwise><option>2018.${i}</option></c:otherwise>
 			   					</c:choose>
 				   			</c:forEach>
-				   		</select>
+				   		</select>&emsp;
+				   		<label class="checkbox-inline"><input id="defaultcheck" name="defaultcheck" type="checkbox" value="">체크하실 경우 기본 그래프와 표가 제공됩니다.</label>
 			      	</div>
 			      	<h3><span class="label label-primary">제목</span></h3>
 			      	<input type="text" name="title" class="form-control" placeholder="Title" required>
@@ -144,11 +68,173 @@
 			          <th id="contentname"></th>
 			        </tr>
 			      </thead>
-			     </table>
-			      <c:forEach var="i" begin="0" end="100">
-				  	<img alt="사진" src="" id="contentphoto${i}" class="col-lg-12">
-				  </c:forEach>
-				  <h5 id="contentcontent" style="white-space:pre-line"></h5>
+			    </table>
+			    <c:if test="${cateday != ''}">
+				    <div class="flot-chart">
+	                	<div class="flot-chart-content2" id="flot-line-chart-mt2"></div>
+	                </div><br/>
+	                <div class="table-responsive">
+		                <table class="table table-striped table-bordered table-hover">
+		                    <thead>
+		                        <tr>
+		                            <th class="fontsize">카테고리 \ 일</th>
+		                            <th class="fontsize">${date.d1}</th>
+		                            <th class="fontsize">${date.d2}</th>
+		                            <th class="fontsize">${date.d3}</th>
+		                            <th class="fontsize">${date.d4}</th>
+		                            <th class="fontsize">${date.d5}</th>
+		                            <th class="fontsize">${date.d6}</th>
+		                            <th class="fontsize">${date.d7}</th>
+		                            <th class="fontsize">${date.d8}</th>
+		                            <th class="fontsize">${date.d9}</th>
+		                            <th class="fontsize">${date.d10}</th>
+		                            <th class="fontsize">${date.d11}</th>
+		                            <th class="fontsize">카테고리 합계</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<c:forEach var="cate" items="${cateday}">
+		                           	<tr>
+		                             <td class="fontsize">${cate.category}</td>
+		                             <td class="fontsize">${cate.d1}</td>
+		                             <td class="fontsize">${cate.d2}</td>
+		                             <td class="fontsize">${cate.d3}</td>
+		                             <td class="fontsize">${cate.d4}</td>
+		                             <td class="fontsize">${cate.d5}</td>
+		                             <td class="fontsize">${cate.d6}</td>
+		                             <td class="fontsize">${cate.d7}</td>
+		                             <td class="fontsize">${cate.d8}</td>
+		                             <td class="fontsize">${cate.d9}</td>
+		                             <td class="fontsize">${cate.d10}</td>
+		                             <td class="fontsize">${cate.d11}</td>
+		                             <td class="fontsize"></td>
+		                        	</tr>
+		                           </c:forEach>
+		                          	<tr>
+		                            <td class="fontsize"><strong>일 합계</strong></td>
+		                            <td class="fontsize">${cmsum.d1}</td>
+		                            <td class="fontsize">${cmsum.d2}</td>
+		                            <td class="fontsize">${cmsum.d3}</td>
+		                            <td class="fontsize">${cmsum.d4}</td>
+		                            <td class="fontsize">${cmsum.d5}</td>
+		                            <td class="fontsize">${cmsum.d6}</td>
+		                            <td class="fontsize">${cmsum.d7}</td>
+		                            <td class="fontsize">${cmsum.d8}</td>
+		                            <td class="fontsize">${cmsum.d9}</td>
+		                            <td class="fontsize">${cmsum.d10}</td>
+		                            <td class="fontsize">${cmsum.d11}</td>
+		                            <td class="fontsize"></td>
+		                       	</tr>
+		                    </tbody>
+		                    <thead>
+		                        <tr>
+		                            <th class="fontsize">카테고리 \ 일</th>
+		                            <th class="fontsize">${date.d12}</th>
+		                            <th class="fontsize">${date.d13}</th>
+		                            <th class="fontsize">${date.d14}</th>
+		                            <th class="fontsize">${date.d15}</th>
+		                        	<th class="fontsize">${date.d16}</th>
+		                            <th class="fontsize">${date.d17}</th>
+		                            <th class="fontsize">${date.d18}</th>
+		                            <th class="fontsize">${date.d19}</th>
+		                            <th class="fontsize">${date.d20}</th>
+		                            <th class="fontsize">${date.d21}</th>
+		                            <th class="fontsize">${date.d22}</th>
+		                            <th class="fontsize">카테고리 합계</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<c:forEach var="cate" items="${cateday}">
+		                           	<tr>
+		                             <td class="fontsize">${cate.category}</td>
+		                             <td class="fontsize">${cate.d12}</td>
+		                             <td class="fontsize">${cate.d13}</td>
+		                             <td class="fontsize">${cate.d14}</td>
+		                             <td class="fontsize">${cate.d15}</td>
+		                             <td class="fontsize">${cate.d16}</td>
+		                             <td class="fontsize">${cate.d17}</td>
+		                             <td class="fontsize">${cate.d18}</td>
+		                             <td class="fontsize">${cate.d19}</td>
+		                             <td class="fontsize">${cate.d20}</td>
+		                             <td class="fontsize">${cate.d21}</td>
+		                             <td class="fontsize">${cate.d22}</td>
+		                             <td class="fontsize"></td>
+		                        	</tr>
+		                           </c:forEach>
+		                          	<tr>
+		                            <td class="fontsize"><strong>일 합계</strong></td>
+		                            <td class="fontsize">${cmsum.d12}</td>
+		                            <td class="fontsize">${cmsum.d13}</td>
+		                            <td class="fontsize">${cmsum.d14}</td>
+		                            <td class="fontsize">${cmsum.d15}</td>
+		                            <td class="fontsize">${cmsum.d16}</td>
+		                            <td class="fontsize">${cmsum.d17}</td>
+		                            <td class="fontsize">${cmsum.d18}</td>
+		                            <td class="fontsize">${cmsum.d19}</td>
+		                            <td class="fontsize">${cmsum.d20}</td>
+		                            <td class="fontsize">${cmsum.d21}</td>
+		                            <td class="fontsize">${cmsum.d22}</td>
+		                            <td class="fontsize"></td>
+		                       	</tr>
+		                    </tbody>
+		                    <thead>
+		                        <tr>
+		                        	<th class="fontsize">카테고리 \ 일</th>
+		                            <th class="fontsize">${date.d23}</th>
+		                            <th class="fontsize">${date.d24}</th>                       
+		                        	<th class="fontsize">${date.d25}</th>
+		                            <th class="fontsize">${date.d26}</th>
+		                            <th class="fontsize">${date.d27}</th>
+		                            <th class="fontsize">${date.d28}</th>
+		                            <th class="fontsize">${date.d29}</th>
+		                            <th class="fontsize">${date.d30}</th>
+		                            <th class="fontsize">${date.d31}</th>
+		                            <th class="fontsize"></th>
+		                            <th class="fontsize"></th>
+		                            <th class="fontsize">카테고리 합계</th>
+		                        </tr>
+		                    </thead>
+		                    <tbody>
+		                    	<c:forEach var="cate" items="${cateday}">
+		                           	<tr>
+		                             <td class="fontsize">${cate.category}</td>
+		                             <td class="fontsize">${cate.d23}</td>
+		                             <td class="fontsize">${cate.d24}</td>
+		                             <td class="fontsize">${cate.d25}</td>
+		                             <td class="fontsize">${cate.d26}</td>
+		                             <td class="fontsize">${cate.d27}</td>
+		                             <td class="fontsize">${cate.d28}</td>
+		                             <td class="fontsize">${cate.d29}</td>
+		                             <td class="fontsize">${cate.d30}</td>
+		                             <td class="fontsize">${cate.d31}</td>
+		                             <td class="fontsize"></td>
+		                             <td class="fontsize"></td>
+		                             <td class="fontsize">${cate.sumresult}</td>
+		                        	</tr>
+		                           </c:forEach>
+		                          	<tr>
+		                            <td class="fontsize"><strong>일 합계</strong></td>
+		                            <td class="fontsize">${cmsum.d23}</td>
+		                            <td class="fontsize">${cmsum.d24}</td>
+		                            <td class="fontsize">${cmsum.d25}</td>
+		                            <td class="fontsize">${cmsum.d26}</td>
+		                            <td class="fontsize">${cmsum.d27}</td>
+		                            <td class="fontsize">${cmsum.d28}</td>
+		                            <td class="fontsize">${cmsum.d29}</td>
+		                            <td class="fontsize">${cmsum.d30}</td>
+		                            <td class="fontsize">${cmsum.d31}</td>
+		                            <td class="fontsize"></td>
+		                            <td class="fontsize"></td>
+		                            <td class="fontred fontsize">${cmsum.sumresult}</td>
+		                       	</tr>
+		                    </tbody>
+		                </table>
+	             	</div>
+			    </c:if>
+		        <c:forEach var="i" begin="0" end="100">
+			  	  <img alt="사진" src="" id="contentphoto${i}" class="col-lg-12">
+			    </c:forEach>
+			    <h5 id="contentcontent" style="white-space:pre-line"></h5>
 			 	<table class="table">
 			      <tbody>
 			      	<tr>

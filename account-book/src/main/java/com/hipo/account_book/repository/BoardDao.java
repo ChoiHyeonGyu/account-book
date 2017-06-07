@@ -37,6 +37,10 @@ public class BoardDao {
 		return sqlSession.selectList("board.contentselect", num);
 	}
 	
+	public List<BoardVo> contenttableselect(Map<String, Object> map){
+		return sqlSession.selectList("board.contenttableselect", map);
+	}
+	
 	public void boardupdate(BoardVo boardvo){
 		sqlSession.update("board.boardupdate", boardvo);
 	}

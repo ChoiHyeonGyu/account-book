@@ -18,7 +18,7 @@
 		<!-- 메인컨텐츠영역 (그래프) -->
 		<div class="col-lg-10">
 			<ul class="nav nav-tabs">
-                <li class="active"><a href="#import" data-toggle="tab">수입</a></li>
+                <li class="active"><a id="imt" href="#import" data-toggle="tab">수입</a></li>
                 <li><a id="ext" href="#export" data-toggle="tab">지출</a></li>
             </ul>
 
@@ -198,8 +198,13 @@
 <!-- 푸터영역 -->
 <c:import url="/WEB-INF/views/include/main_bottom.jsp" />
 
+<!-- 이전 그래프로 넘어감 -->
+<form id="im" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph">
+</form>
+
 <!-- 다음 그래프로 넘어감 -->
 <form id="ex" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph2">
 </form>
 
+<!-- 해당 월 저장 -->
 <input type="hidden" id="selectedmonth" value="${month}">

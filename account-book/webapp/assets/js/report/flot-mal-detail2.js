@@ -81,4 +81,8 @@ $(function() {
     $("#imt").click(function() {
     	$("#im").submit();
     });
+    
+    $("#ext").click(function() {
+    	$("#ex").submit();
+    });
 });

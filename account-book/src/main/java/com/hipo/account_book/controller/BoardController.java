@@ -48,8 +48,30 @@ public class BoardController {
 		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		model.addAttribute("board", boardService.getBoardList(page, search));
-		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "story/board";
+	}
+	
+	@RequestMapping("/mystory")
+	public String mystory(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
+		UserVo username = Pservice.checkUpdate(id);
+		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
+		model.addAttribute("username", username);
+		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
+		return "story/mystory";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/table")
+	public JSONResult table(@PathVariable String id, @RequestBody Map<String, Object> map){
+		/*model.addAttribute("month", month);
+		model.addAttribute("date", boardService.datedetail(month));
+		model.addAttribute("cateday", boardService.mselectedtable(id, month));
+		model.addAttribute("cmsum", boardService.mselectedtablesum(id, month));*/
+		return JSONResult.success(boardService.boardcontenttable(id, map));
 	}
 	
 	@RequestMapping("/boardadd")
@@ -143,8 +165,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/mygraph")
-	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
-			@RequestParam(value="search", required=false) String search){
+	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
 		UserVo username = Pservice.checkUpdate(id);
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
@@ -154,13 +175,11 @@ public class BoardController {
 		model.addAttribute("date", boardService.date());
 		model.addAttribute("catemonth", boardService.imreporttable(id));
 		model.addAttribute("cmsum", boardService.imreporttablesum(id));
-		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "report/mygraph";
 	}
 	
 	@RequestMapping("/mygraph2")
-	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
-			@RequestParam(value="search", required=false) String search){
+	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
 		UserVo username = Pservice.checkUpdate(id); 
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
@@ -170,7 +189,6 @@ public class BoardController {
 		model.addAttribute("date", boardService.date());
 		model.addAttribute("catemonth", boardService.exreporttable(id));
 		model.addAttribute("cmsum", boardService.exreporttablesum(id));
-		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "report/mygraph2";
 	}
 	
@@ -187,8 +205,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/mydetail")
-	public String mydetail(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
-			@RequestParam(value="search", required=false) String search, @RequestParam("month") String month){
+	public String mydetail(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam("month") String month){
 		UserVo username = Pservice.checkUpdate(id);
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
@@ -199,13 +216,11 @@ public class BoardController {
 		model.addAttribute("date", boardService.datedetail(month));
 		model.addAttribute("cateday", boardService.pselectedtable(id, month));
 		model.addAttribute("cmsum", boardService.pselectedtablesum(id, month));
-		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "report/mygraph_detail";
 	}
 	
 	@RequestMapping("/mydetail2")
-	public String mydetail2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
-			@RequestParam(value="search", required=false) String search, @RequestParam("month") String month){
+	public String mydetail2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam("month") String month){
 		UserVo username = Pservice.checkUpdate(id); 
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
@@ -216,7 +231,6 @@ public class BoardController {
 		model.addAttribute("date", boardService.datedetail(month));
 		model.addAttribute("cateday", boardService.mselectedtable(id, month));
 		model.addAttribute("cmsum", boardService.mselectedtablesum(id, month));
-		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "report/mygraph_detail2";
 	}
 	

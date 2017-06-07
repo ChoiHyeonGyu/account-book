@@ -36,45 +36,45 @@
 					        </tr>
 					      </thead>
 					      <tbody>
-					      	<c:forEach var="board" items="${board.list}">
+					      	<c:forEach var="story" items="${story.list}">
 					      		<script>
-						      		arrays.push("${board.boardId}");
+						      		arrays2.push("${story.boardId}");
 					      		</script>
 						        <tr>
 						          <td id="selectedmonth${board.boardId}">${board.month}</td>
-						          <td><label id="backstory${board.boardId}" title="${board.boardId}">${board.title}</label></td>
-						          <td>${board.name}</td>
-						          <td>${board.day}</td>
-						          <td>${board.good}</td>
-						          <td>${board.hit}</td>
+						          <td><label id="mystory${story.boardId}" title="${story.boardId}">${story.title}</label></td>
+						          <td>${story.name}</td>
+						          <td>${story.day}</td>
+						          <td>${story.good}</td>
+						          <td>${story.hit}</td>
 						        </tr>
 					     	</c:forEach>
 					      </tbody>
 					    </table>
-					    
+		
 					    <!-- 페이징처리 -->
 					    <div class="pager">
 							<ul>
-								<c:if test="${board.prevPage > 0}" >
-									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${board.prevPage}&search=${board.keyword}">◀</a></li>
+								<c:if test="${story.prevPage > 0}" >
+									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${story.prevPage}&search=${story.keyword}">◀</a></li>
 								</c:if>
 								
-								<c:forEach begin="${board.beginPage}" end="${board.beginPage + board.listSize - 1}" var="page">
+								<c:forEach begin="${story.beginPage}" end="${story.beginPage + story.listSize - 1}" var="page">
 									<c:choose>
-										<c:when test="${board.endPage < page}">
+										<c:when test="${story.endPage < page}">
 											<li>${page}</li> 
 										</c:when> 
-										<c:when test="${board.currentPage == page}">
+										<c:when test="${story.currentPage == page}">
 											<li class="selected">${page}</li>
 										</c:when>
 										<c:otherwise> 
-											<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${page}&search=${board.keyword}">${page}</a></li>
+											<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${page}&search=${story.keyword}">${page}</a></li>
 										</c:otherwise>
 									</c:choose>
 								</c:forEach>
 								
-								<c:if test="${board.nextPage > 0}" >
-									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${board.nextPage}&search=${board.keyword}">▶</a></li>
+								<c:if test="${story.nextPage > 0}" >
+									<li><a href="${pageContext.request.contextPath}/${currentuserid}/story?p=${story.nextPage}&search=${story.keyword}">▶</a></li>
 								</c:if>
 							</ul>
 						</div>

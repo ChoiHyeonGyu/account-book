@@ -19,7 +19,7 @@
 		<div class="col-lg-10">
 			<ul class="nav nav-tabs">
                 <li><a id="imt" href="#import" data-toggle="tab">수입</a></li>
-                <li class="active"><a href="#export" data-toggle="tab">지출</a></li>
+                <li class="active"><a id="ext" href="#export" data-toggle="tab">지출</a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -202,4 +202,9 @@
 <form id="im" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph">
 </form>
 
+<!-- 다음 그래프로 넘어감 -->
+<form id="ex" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph2">
+</form>
+
+<!-- 해당 월 저장 -->
 <input type="hidden" id="selectedmonth" value="${month}">

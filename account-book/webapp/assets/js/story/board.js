@@ -169,6 +169,24 @@ $(function(){
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
 			    	$("#contentmonth").text(response.data["0"].month);
+			    	if(response.data["0"].defaultcheck == true){
+			    		requiredmonth(response.data["0"].month);
+			    		var obj3 = {"boardid":num.target.title, "month":response.data["0"].month.replace(".", "/")}
+			    		console.log(obj3);
+			    		$.ajax( {
+						    url : "/account-book/"+currentid+"/table",
+						    type: "POST",
+						    dataType: "JSON",
+						    data: JSON.stringify(obj3),
+						    contentType: "application/json; charset=UTF-8",
+						    success: function( response ){
+						    	
+						    },
+						    error: function( XHR, status, error ){
+						       console.error( status + " : " + error );	       
+						    }
+						});
+			    	}
 			    	$("#contenttitle").text(response.data["0"].title);
 			    	$("#contentname").text(response.data["0"].name);
 			    	for(var i=0; i<=100; i++){
@@ -228,6 +246,9 @@ $(function(){
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
 			    	$("#contentmonth").text(response.data["0"].month);
+			    	if(response.data["0"].defaultcheck == true){
+			    		requiredmonth(response.data["0"].month);
+			    	}
 			    	$("#contenttitle").text(response.data["0"].title);
 			    	$("#contentname").text(response.data["0"].name);
 			    	for(var i=0; i<=100; i++){
@@ -315,5 +336,13 @@ $(function(){
 		       console.error( status + " : " + error );	       
 		    }
 		});
+	});
+	
+	$("#defaultcheck").click(function(){
+		if($("#defaultcheck").val() == "" || $("#defaultcheck").val() == "false"){
+			$("#defaultcheck").val(true);
+		} else {
+			$("#defaultcheck").val(false);
+		}
 	});
 });

@@ -13,6 +13,7 @@ public class BoardVo {
 	private int hit;
 	private int commentId;
 	private int reply;
+	private boolean defaultcheck;
 	
 	public int getBoardId() {
 		return boardId;
@@ -85,5 +86,11 @@ public class BoardVo {
 	}
 	public void setReply(int reply) {
 		this.reply = reply;
+	}
+	public boolean isDefaultcheck() {
+		return defaultcheck;
+	}
+	public void setDefaultcheck(boolean defaultcheck) {
+		this.defaultcheck = defaultcheck;
 	}
 }

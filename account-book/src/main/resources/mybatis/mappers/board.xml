@@ -10,7 +10,7 @@
 
 	<insert id="boardinsert" parameterType="boardvo">
 		<![CDATA[
-			insert into board values(seq_board.nextval, #{id}, #{month}, #{title}, #{content}, #{name}, sysdate, 0, 0)
+			insert into board values(seq_board.nextval, #{id}, #{month}, #{title}, #{content}, #{name}, sysdate, 0, 0, #{defaultcheck})
 		]]>
 	</insert>
 
@@ -33,7 +33,7 @@
 
 	<select id="contentselect" parameterType="int" resultType="boardvo">
 		<![CDATA[
-			select board.board_id as boardId, board.*, picture.photo from board, picture where board.board_id = picture.board_id and board.board_id = #{value}
+			select board.board_id as boardId, board.*, picture.photo, board.default_check as defaultcheck from board, picture where board.board_id = picture.board_id and board.board_id = #{value}
 		]]>
 	</select>
 

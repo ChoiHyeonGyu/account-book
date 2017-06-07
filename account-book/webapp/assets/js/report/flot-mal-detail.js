@@ -78,6 +78,10 @@ $(function() {
     
     doPlot("right");
     
+    $("#imt").click(function() {
+    	$("#im").submit();
+    });
+    
     $("#ext").click(function() {
     	$("#ex").submit();
     });
