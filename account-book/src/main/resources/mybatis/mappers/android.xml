@@ -90,7 +90,18 @@
 	<select id="getCategorySum" parameterType="categorychartvo"
 		resultType="integer">
 		<![CDATA[
-		select sum(money) as sum from list where id = #{id } and category = #{category }
+		select sum(money) as sum from list where id = #{id } and category = #{category } and day BETWEEN TO_DATE (#{minDate }, 'YYYY/MM/DD')
+                   AND TO_DATE (#{maxDate }, 'YYYY/MM/DD') + 1
 		]]>
 	</select>
+	
+	<select id="getLimitGraph" parameterType="map" resultType="graphvo">
+		<![CDATA[
+			select distinct * from (select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{id }) a,
+			(select category, sum(money) as lsum from list where id = #{id } AND day BETWEEN TO_DATE (#{minDate }, 'YYYY/MM/DD')
+                   AND TO_DATE (#{maxDate }, 'YYYY/MM/DD') + 1 and operations = '-'
+			group by category) b where a.category = b.category order by a.category;
+		]]>
+	</select>
+
 </mapper>

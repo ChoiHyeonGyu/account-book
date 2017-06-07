@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hipo.account_book.repository.AndroidChartDao;
+import com.hipo.account_book.utils.SettingMaxDate;
 import com.hipo.account_book.vo.AndroidCategoryChartVo;
+import com.hipo.account_book.vo.GraphVo;
 
 @Service
 public class AndroidChartService {
@@ -29,13 +31,16 @@ public class AndroidChartService {
 
 	public List<AndroidCategoryChartVo> findCategory(Map<String, String> map, String id) {
 		List<AndroidCategoryChartVo> categoryChartList = new ArrayList<>();
-		for (int i = 0; i < map.size(); i++) {
+		for (int i = 0; i < map.size() - 3; i++) {
 			AndroidCategoryChartVo vo = new AndroidCategoryChartVo();
 			vo.setCategory(map.get("category" + i));
 			vo.setId(id);
+			vo.setMinDate((map.get("year") + "/" + map.get("month") + "/" + "01"));
+			SettingMaxDate.setMaxDate(vo, map.get("year"), map.get("month"));
+
 			categoryChartList.add(vo);
 		}
-
+		System.out.println("ChartService vo null? : " + categoryChartList.toString());
 		Integer sumArr[] = aChartDao.findCategorySum(categoryChartList);
 
 		for (int i = 0; i < sumArr.length; i++) {
@@ -52,4 +57,9 @@ public class AndroidChartService {
 			return val;
 		}
 	}
+
+	public List<GraphVo> findLimit(Map<String, String> params) {
+		return aChartDao.findLimit(params);
+	}
+
 }

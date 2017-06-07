@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hipo.account_book.repository.AndroidListDao;
+import com.hipo.account_book.utils.SettingMaxDate;
 import com.hipo.account_book.vo.ListVo;
 
 @Service
@@ -54,21 +55,7 @@ public class AndroidListService {
 		dateMap.put("year", year);
 		dateMap.put("month", month);
 		dateMap.put("minday", year + "/" + month + "/" + "1");
-		for (int i = 1; i <= 12; i++) {
-			if (Integer.valueOf(month) == i) {
-				if (i == 2) {
-					dateMap.put("maxday", year + "/" + month + "/" + "28");
-					break;
-				}
-				if (i % 2 == 0) {
-					dateMap.put("maxday", year + "/" + month + "/" + "30");
-					break;
-				} else {
-					dateMap.put("maxday", year + "/" + month + "/" + "31");
-					break;
-				}
-			}
-		}
+		SettingMaxDate.setMaxDate(dateMap, year, month);
 		System.out.println(dateMap.get("minday"));
 		System.out.println(dateMap.get("maxday"));
 		return dateMap;
