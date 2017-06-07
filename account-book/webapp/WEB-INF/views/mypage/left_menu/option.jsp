@@ -19,10 +19,8 @@
 <div class="container">
 
 	<div class="row mt">
-	<div class="col-lg-2"><c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp"/></div>
 	
-
-
+	
 		<!-- 카테고리 -->
 		<div class="col-lg-5" id="categoryform" title="카테고리 추가">
 
@@ -68,7 +66,7 @@
 				설정</h3>
 
 
-			<table class="table table-bordered" style="margin-bottom: 5px;">
+			<table class="table table-bordered text-center" style="margin-bottom: 5px;">
 				<tr class="navy">
 					<th><span class="white">카테고리</span></th>
 					<th><span class="white">금액</span></th>

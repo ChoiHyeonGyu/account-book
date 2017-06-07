@@ -31,10 +31,15 @@ public class OptionController {
 	
 	@RequestMapping("/option")
 	public String option(Model model,@ModelAttribute OptionVo optionvo, @PathVariable String id) {
+		System.out.println("erroeroeroeore++:"+id);
 		List<OptionVo> option = optionService.getCategory(optionvo);
+		System.out.println("erroeroeroeore++:");
 		model.addAttribute("option", option);
+		System.out.println("erroeroeroeore++:");
 		model.addAttribute("v1",Pservice.checkUpdate(id));
-			return "mypage/left_menu/option";
+		System.out.println("erroeroeroeore++:");
+			
+		return "mypage/left_menu/option";
 		
 	}
 
