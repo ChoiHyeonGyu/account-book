@@ -118,6 +118,21 @@ background:#ececec;}
     border-radius: 10px;
     cursor: pointer;
 }
+.notice1 {
+ background-color:#eaeaea;
+    width: 10%;
+    border: none;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    cursor: pointer;
+    }
 .window1{
 	    border-radius: 10px;
 }

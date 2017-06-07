@@ -77,6 +77,8 @@
 <!-- 프로필 수정 팝업 -->
 <div class="modal fade" id="editprofile" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<form action="${pageContext.request.contextPath}/${currentuserid}/userinfo"
+					method="post" enctype="multipart/form-data"> 
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -87,8 +89,7 @@
 				<h4 class="modal-title center">프로필 수정</h4>
 			</div>
 			<div class="modal-body">
-			<form action="${pageContext.request.contextPath}/${currentuserid}/userinfo"
-					method="post" enctype="multipart/form-data"> 
+			
 					<input type="hidden" name="id" value="${currentuserid}" />
 					<table class="admin-config">
 
@@ -108,17 +109,21 @@
 							<input type="file" name="photo" value="" class="upload window2"/></td>
 						</tr>
 						<tr>
-							<td>&nbsp;</td>
-							<td><button class="notice" type="submit" > 기본설정 변경</button></td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td></td>
 						</tr>
 					</table>
-				</form>
 			</div>
+			
 			<div class="modal-footer">
-					<button data-dismiss="modal" type="button" class="close">취소</button>
+					<!-- <button data-dismiss="modal" type="button" class="close">취소</button> -->
+					<button class="notice1" type="submit" >변경</button>
+					
 				</div>
+			
 		</div>
 	</div>
+	</form>
 </div>
 
 <%-- <c:import url="/WEB-INF/views/story/import_popup.jsp"/> --%>
