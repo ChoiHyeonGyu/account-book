@@ -1,16 +1,17 @@
 //Flot Multiple Axes Line Chart
 $(function() {
-    function doPlot(position) {
+    function doPlot(position) {	
+    	var sm = {"selectmonth": $("#selectedmonth").val()};
     	var data2 = [];
     	var column1 = [];
     	var column2 = [];
     	var column3 = [];
     	
     	$.ajax( {
-    	    url : "/account-book/"+currentid+"/importgraph",
+    	    url : "/account-book/"+currentid+"/pselectedmonth",
     	    type: "POST",
     	    dataType: "JSON",
-    	    data: JSON.stringify(beanobj),
+    	    data: JSON.stringify(sm),
     	    contentType: "application/json; charset=UTF-8",
     	    success: function( response ){
     	    	if(response.data.length == 0){
@@ -42,8 +43,8 @@ $(function() {
     	    	$.plot($("#flot-line-chart-mt1"), data2, {
     	            xaxes: [{
     	                mode: 'time',
-    	                min: dtp,
-    	                max: dtn
+    	                min: new Date($("#selectedmonth").val()).getTime(),
+    	                max: new gettimes($("#selectedmonth").val())
     	            }],
     	            yaxes: [{
     	                min: 0

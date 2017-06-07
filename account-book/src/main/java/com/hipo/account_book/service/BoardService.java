@@ -16,6 +16,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.hipo.account_book.repository.BoardDao;
 import com.hipo.account_book.vo.BoardVo;
+import com.hipo.account_book.vo.GraphDateVo;
 import com.hipo.account_book.vo.GraphVo;
 
 @Service
@@ -291,6 +292,44 @@ public class BoardService {
 	
 	public GraphVo date(){
 		return boardDao.dateselect();
+	}
+	
+	public GraphDateVo datedetail(String month){
+		return boardDao.datedetailselect(arraysettings(month));
+	}
+	
+	public List<GraphDateVo> pselectedtable(String id, String month){
+		Map<String, Object> map = arraysettings(month);
+		map.put("id", id);
+		return boardDao.pselectedtableselect(map);
+	}
+	
+	public List<GraphDateVo> mselectedtable(String id, String month){
+		Map<String, Object> map = arraysettings(month);
+		map.put("id", id);
+		return boardDao.mselectedtableselect(map);
+	}
+	
+	public GraphDateVo pselectedtablesum(String id, String month){
+		Map<String, Object> map = arraysettings(month);
+		map.put("id", id);
+		return boardDao.pselectedtablesumselect(map);
+	}
+	
+	public GraphDateVo mselectedtablesum(String id, String month){
+		Map<String, Object> map = arraysettings(month);
+		map.put("id", id);
+		return boardDao.mselectedtablesumselect(map);
+	}
+	
+	private Map<String, Object> arraysettings(String month){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("month", month);
+		String[] array1 = {"01","03","05","07","08","10","12"};
+		map.put("array1", array1);
+		String[] array2 = {"04", "06", "09", "11"};
+		map.put("array2", array2);
+		return map;
 	}
 	
 	public List<GraphVo> pselectedmonth(Map<String, Object> map){

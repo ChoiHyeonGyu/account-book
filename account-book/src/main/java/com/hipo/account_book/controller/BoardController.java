@@ -182,6 +182,38 @@ public class BoardController {
 		return JSONResult.success(boardService.exportgraph(id));
 	}
 	
+	@RequestMapping("/mydetail")
+	public String mydetail(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search, @RequestParam("month") String month){
+		UserVo username = Pservice.checkUpdate(id);
+		model.addAttribute("username", username);
+		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		
+		model.addAttribute("month", month);
+		model.addAttribute("date", boardService.datedetail(month));
+		model.addAttribute("cateday", boardService.pselectedtable(id, month));
+		model.addAttribute("cmsum", boardService.pselectedtablesum(id, month));
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
+		return "report/mygraph_detail";
+	}
+	
+	@RequestMapping("/mydetail2")
+	public String mydetail2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
+			@RequestParam(value="search", required=false) String search, @RequestParam("month") String month){
+		UserVo username = Pservice.checkUpdate(id); 
+		model.addAttribute("username", username);
+		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));
+		
+		model.addAttribute("month", month);
+		model.addAttribute("date", boardService.datedetail(month));
+		model.addAttribute("cateday", boardService.mselectedtable(id, month));
+		model.addAttribute("cmsum", boardService.mselectedtablesum(id, month));
+		model.addAttribute("story", boardService.getBoardList(id, page, search));
+		return "report/mygraph_detail2";
+	}
+	
 	@ResponseBody
 	@RequestMapping("/pselectedmonth")
 	public JSONResult pselectedmonth(@PathVariable String id, @RequestBody Map<String, Object> map){

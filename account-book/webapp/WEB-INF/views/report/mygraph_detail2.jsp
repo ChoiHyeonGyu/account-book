@@ -5,7 +5,7 @@
 <c:import url="/WEB-INF/views/include/flot.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<script src="${pageContext.request.contextPath}/assets/js/report/flot-mal2.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/report/flot-mal-detail2.js"></script>
 
 <div class="container">
 	<div class="row mt">
@@ -36,54 +36,153 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 일</th>
-	                                <th class="fontsize">${date.jan}</th>
-	                                <th class="fontsize">${date.feb}</th>
-	                                <th class="fontsize">${date.mar}</th>
-	                                <th class="fontsize">${date.apr}</th>
-	                                <th class="fontsize">${date.may}</th>
-	                                <th class="fontsize">${date.jun}</th>
-	                                <th class="fontsize">${date.jul}</th>
-	                                <th class="fontsize">${date.aug}</th>
-	                                <th class="fontsize">${date.sep}</th>
-	                                <th class="fontsize">${date.oct}</th>
-	                                <th class="fontsize">${date.nov}</th>
-	                                <th class="fontsize">${date.dec}</th>
+	                                <th class="fontsize">${date.d1}</th>
+	                                <th class="fontsize">${date.d2}</th>
+	                                <th class="fontsize">${date.d3}</th>
+	                                <th class="fontsize">${date.d4}</th>
+	                                <th class="fontsize">${date.d5}</th>
+	                                <th class="fontsize">${date.d6}</th>
+	                                <th class="fontsize">${date.d7}</th>
+	                                <th class="fontsize">${date.d8}</th>
+	                                <th class="fontsize">${date.d9}</th>
+	                                <th class="fontsize">${date.d10}</th>
+	                                <th class="fontsize">${date.d11}</th>
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	<c:forEach var="cate" items="${catemonth}">
+	                        	<c:forEach var="cate" items="${cateday}">
                                 	<tr>
 		                                <td class="fontsize">${cate.category}</td>
-		                                <td class="fontsize">${cate.jan}</td>
-		                                <td class="fontsize">${cate.feb}</td>
-		                                <td class="fontsize">${cate.mar}</td>
-		                                <td class="fontsize">${cate.apr}</td>
-		                                <td class="fontsize">${cate.may}</td>
-		                                <td class="fontsize">${cate.jun}</td>
-		                                <td class="fontsize">${cate.jul}</td>
-		                                <td class="fontsize">${cate.aug}</td>
-		                                <td class="fontsize">${cate.sep}</td>
-		                                <td class="fontsize">${cate.oct}</td>
-		                                <td class="fontsize">${cate.nov}</td>
-		                                <td class="fontsize">${cate.dec}</td>
+		                                <td class="fontsize">${cate.d1}</td>
+		                                <td class="fontsize">${cate.d2}</td>
+		                                <td class="fontsize">${cate.d3}</td>
+		                                <td class="fontsize">${cate.d4}</td>
+		                                <td class="fontsize">${cate.d5}</td>
+		                                <td class="fontsize">${cate.d6}</td>
+		                                <td class="fontsize">${cate.d7}</td>
+		                                <td class="fontsize">${cate.d8}</td>
+		                                <td class="fontsize">${cate.d9}</td>
+		                                <td class="fontsize">${cate.d10}</td>
+		                                <td class="fontsize">${cate.d11}</td>
+		                                <td class="fontsize"></td>
+	                            	</tr>
+                                </c:forEach>
+                               	<tr>
+	                                <td class="fontsize"><strong>일 합계</strong></td>
+	                                <td class="fontsize">${cmsum.d1}</td>
+	                                <td class="fontsize">${cmsum.d2}</td>
+	                                <td class="fontsize">${cmsum.d3}</td>
+	                                <td class="fontsize">${cmsum.d4}</td>
+	                                <td class="fontsize">${cmsum.d5}</td>
+	                                <td class="fontsize">${cmsum.d6}</td>
+	                                <td class="fontsize">${cmsum.d7}</td>
+	                                <td class="fontsize">${cmsum.d8}</td>
+	                                <td class="fontsize">${cmsum.d9}</td>
+	                                <td class="fontsize">${cmsum.d10}</td>
+	                                <td class="fontsize">${cmsum.d11}</td>
+	                                <td class="fontsize"></td>
+                            	</tr>
+	                        </tbody>
+	                        <thead>
+	                            <tr>
+	                                <th class="fontsize">카테고리 \ 일</th>
+	                                <th class="fontsize">${date.d12}</th>
+	                                <th class="fontsize">${date.d13}</th>
+	                                <th class="fontsize">${date.d14}</th>
+	                                <th class="fontsize">${date.d15}</th>
+	                            	<th class="fontsize">${date.d16}</th>
+	                                <th class="fontsize">${date.d17}</th>
+	                                <th class="fontsize">${date.d18}</th>
+	                                <th class="fontsize">${date.d19}</th>
+	                                <th class="fontsize">${date.d20}</th>
+	                                <th class="fontsize">${date.d21}</th>
+	                                <th class="fontsize">${date.d22}</th>
+	                                <th class="fontsize">카테고리 합계</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<c:forEach var="cate" items="${cateday}">
+                                	<tr>
+		                                <td class="fontsize">${cate.category}</td>
+		                                <td class="fontsize">${cate.d12}</td>
+		                                <td class="fontsize">${cate.d13}</td>
+		                                <td class="fontsize">${cate.d14}</td>
+		                                <td class="fontsize">${cate.d15}</td>
+		                                <td class="fontsize">${cate.d16}</td>
+		                                <td class="fontsize">${cate.d17}</td>
+		                                <td class="fontsize">${cate.d18}</td>
+		                                <td class="fontsize">${cate.d19}</td>
+		                                <td class="fontsize">${cate.d20}</td>
+		                                <td class="fontsize">${cate.d21}</td>
+		                                <td class="fontsize">${cate.d22}</td>
+		                                <td class="fontsize"></td>
+	                            	</tr>
+                                </c:forEach>
+                               	<tr>
+	                                <td class="fontsize"><strong>일 합계</strong></td>
+	                                <td class="fontsize">${cmsum.d12}</td>
+	                                <td class="fontsize">${cmsum.d13}</td>
+	                                <td class="fontsize">${cmsum.d14}</td>
+	                                <td class="fontsize">${cmsum.d15}</td>
+	                                <td class="fontsize">${cmsum.d16}</td>
+	                                <td class="fontsize">${cmsum.d17}</td>
+	                                <td class="fontsize">${cmsum.d18}</td>
+	                                <td class="fontsize">${cmsum.d19}</td>
+	                                <td class="fontsize">${cmsum.d20}</td>
+	                                <td class="fontsize">${cmsum.d21}</td>
+	                                <td class="fontsize">${cmsum.d22}</td>
+	                                <td class="fontsize"></td>
+                            	</tr>
+	                        </tbody>
+	                        <thead>
+	                            <tr>
+	                            	<th class="fontsize">카테고리 \ 일</th>
+	                                <th class="fontsize">${date.d23}</th>
+	                                <th class="fontsize">${date.d24}</th>                       
+	                            	<th class="fontsize">${date.d25}</th>
+	                                <th class="fontsize">${date.d26}</th>
+	                                <th class="fontsize">${date.d27}</th>
+	                                <th class="fontsize">${date.d28}</th>
+	                                <th class="fontsize">${date.d29}</th>
+	                                <th class="fontsize">${date.d30}</th>
+	                                <th class="fontsize">${date.d31}</th>
+	                                <th class="fontsize"></th>
+	                                <th class="fontsize"></th>
+	                                <th class="fontsize">카테고리 합계</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	<c:forEach var="cate" items="${cateday}">
+                                	<tr>
+		                                <td class="fontsize">${cate.category}</td>
+		                                <td class="fontsize">${cate.d23}</td>
+		                                <td class="fontsize">${cate.d24}</td>
+		                                <td class="fontsize">${cate.d25}</td>
+		                                <td class="fontsize">${cate.d26}</td>
+		                                <td class="fontsize">${cate.d27}</td>
+		                                <td class="fontsize">${cate.d28}</td>
+		                                <td class="fontsize">${cate.d29}</td>
+		                                <td class="fontsize">${cate.d30}</td>
+		                                <td class="fontsize">${cate.d31}</td>
+		                                <td class="fontsize"></td>
+		                                <td class="fontsize"></td>
 		                                <td class="fontsize">${cate.sumresult}</td>
 	                            	</tr>
                                 </c:forEach>
                                	<tr>
 	                                <td class="fontsize"><strong>일 합계</strong></td>
-	                                <td class="fontsize">${cmsum.jan}</td>
-	                                <td class="fontsize">${cmsum.feb}</td>
-	                                <td class="fontsize">${cmsum.mar}</td>
-	                                <td class="fontsize">${cmsum.apr}</td>
-	                                <td class="fontsize">${cmsum.may}</td>
-	                                <td class="fontsize">${cmsum.jun}</td>
-	                                <td class="fontsize">${cmsum.jul}</td>
-	                                <td class="fontsize">${cmsum.aug}</td>
-	                                <td class="fontsize">${cmsum.sep}</td>
-	                                <td class="fontsize">${cmsum.oct}</td>
-	                                <td class="fontsize">${cmsum.nov}</td>
-	                                <td class="fontsize">${cmsum.dec}</td>
+	                                <td class="fontsize">${cmsum.d23}</td>
+	                                <td class="fontsize">${cmsum.d24}</td>
+	                                <td class="fontsize">${cmsum.d25}</td>
+	                                <td class="fontsize">${cmsum.d26}</td>
+	                                <td class="fontsize">${cmsum.d27}</td>
+	                                <td class="fontsize">${cmsum.d28}</td>
+	                                <td class="fontsize">${cmsum.d29}</td>
+	                                <td class="fontsize">${cmsum.d30}</td>
+	                                <td class="fontsize">${cmsum.d31}</td>
+	                                <td class="fontsize"></td>
+	                                <td class="fontsize"></td>
 	                                <td class="fontred fontsize">${cmsum.sumresult}</td>
                             	</tr>
 	                        </tbody>
@@ -102,3 +201,5 @@
 <!-- 이전 그래프로 넘어감 -->
 <form id="im" method="post" action="${pageContext.request.contextPath}/${currentuserid}/mygraph">
 </form>
+
+<input type="hidden" id="selectedmonth" value="${month}">
