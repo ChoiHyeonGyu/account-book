@@ -1,12 +1,11 @@
 $(function() {
 	
-
 	$("#tt").click(function() {
 		$("#editprofile").modal();
 	});
-
-	$("#graph1").click(function() {
-		$("#viewgraph1").modal();
+	
+	$("#mystory").click(function() {
+		$("#viewmystory").modal();
 	});
 
 	$("#showoptions").click(function() {

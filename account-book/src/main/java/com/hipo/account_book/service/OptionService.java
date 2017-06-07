@@ -40,12 +40,10 @@ public class OptionService {
 	}
 	
 	public OptionVo categoryModify(int i) {
-		System.out.println("intintint"+i);
 		return optionDao.categoryModify(i);
 	}
 	
 	public OptionVo limitModify2(String category) {
-		System.out.println("intintint"+category);
 		return optionDao.limitModify2(category);
 	}
 	
@@ -60,7 +58,6 @@ public class OptionService {
 	}
 	
 	public boolean delete(OptionVo vo) {
-		System.out.println(".........딜리딜리디리디....."+vo);
 		return optionDao.delete(vo); 
 	}
 	

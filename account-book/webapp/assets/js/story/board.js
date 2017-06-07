@@ -1,4 +1,5 @@
 var arrays = [];
+var arrays2 = [];
 var obj2 = {};
 var cmtnum = 0;
 var cmtnum1 = 0;
@@ -6,97 +7,13 @@ var cmtuid = 0;
 var cmtuid1 = 0;
 
 $(function(){
-	
-	var boardform = $("#boardform").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-			
-		},
-		close: function() {
-			
-		}
-	});
-	
-	var contentform = $("#contentform").dialog({
-		autoOpen: false,
-		height: 850,
-		width: 700,
-		modal: true,
-		buttons: {
-			"수정": function() {
-				if(currentid != $("#editId").val()){
-					alert("너가 수정을 할 수 있을 것 같아?");
-				} else {
-					contenteditform.dialog("open");
-				}
-				$( this ).dialog( "close" );
-			},
-			"삭제" : function() {
-				if(currentid != $("#editId").val()){
-					alert("너가 삭제를 할 수 있을 것 같아?");
-				} else {
-					$("#contentremovepost").submit();
-				}
-				$( this ).dialog( "close" );
-			}
-		},
-		close: function() {
-			
-		}
-	});
-	
-	var contenteditform = $("#contenteditform").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-			"수정": function() {
-				$("#contenteditpost").submit();
-				$( this ).dialog( "close" );
-			},
-			"취소" : function() {
-				$( this ).dialog( "close" );
-			}
-		},
-		close: function() {
-			
-		}
-	});
-	
-	var commentsform = $("#commentform").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-		},
-		close: function() {
-			
-		}
-	});
-	
-	var comments1form = $("#comment1form").dialog({
-		autoOpen: false,
-		height: 660,
-		width: 500,
-		modal: true,
-		buttons: {
-		},
-		close: function() {
-			
-		}
-	});
-	
+
 	$("#boardadd").click(function(){
-		boardform.dialog("open");
+		$("#boardform").modal();
 	});
 	
 	$("#commentsviewer").click(function(){
-		commentsform.dialog("open");
+		$("#commentform").modal();
 		
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/commentlist",
@@ -120,7 +37,7 @@ $(function(){
 		    		cmtnum = response.data[i].commentId;
 		    		cmtuid = response.data[i].id
 		    		$("#commentreply"+i).click(function(){
-		    			comments1form.dialog("open");
+		    			$("#comment1form").modal();
 		    			
 		    			var obj3 = {"commentid":cmtnum};
 		    			
@@ -163,7 +80,7 @@ $(function(){
 		    			    			    }
 		    			    			});
 		    			    			
-		    			    			comments1form.dialog("close");
+		    			    			window.location.reload();
 		    			    		});
 		    			    	}
 		    			    	if(response.data.length == 0){
@@ -209,7 +126,7 @@ $(function(){
 		    			    }
 		    			});
 		    			
-		    			commentsform.dialog("close");
+		    			window.location.reload();
 		    		});
 		    	}
 		    	if(response.data.length == 0){
@@ -240,9 +157,9 @@ $(function(){
 	
 	for(var i=0; i<arrays.length; i++){
 		var num = arrays[i];
-		$("#"+arrays[i]).click(function(num){
-			contentform.dialog("open");
-			obj2 = {"boardid":num.target.id};
+		$("#backstory"+arrays[i]).click(function(num){
+			$("#contentform").modal();
+			obj2 = {"boardid":num.target.title};
 			
 			$.ajax( {
 			    url : "/account-book/"+currentid+"/boardcontent",
@@ -253,12 +170,14 @@ $(function(){
 			    success: function( response ){
 			    	$("#contentmonth").text(response.data["0"].month);
 			    	$("#contenttitle").text(response.data["0"].title);
-			    	$("#contentname").text("작성자 : "+response.data["0"].name);
+			    	$("#contentname").text(response.data["0"].name);
 			    	for(var i=0; i<=100; i++){
 			    		$("#contentphoto"+i).css('display', 'block');
 			    	}
 			    	for(var i=0; i<response.data.length; i++){
-			    		$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    		if(response.data[i].photo.match(".無") == null){
+			    			$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    		}
 			    	}
 			    	if(response.data[0].photo.indexOf('無',0) != -1){
 			    		for(var i=0; i<=100; i++){
@@ -295,7 +214,90 @@ $(function(){
 		});
 	}
 	
-	$("#good").click(function(){		
+	for(var i=0; i<arrays2.length; i++){
+		var num = arrays2[i];
+		$("#mystory"+arrays2[i]).click(function(num){
+			$("#contentform").modal();
+			obj2 = {"boardid":num.target.title};
+			
+			$.ajax( {
+			    url : "/account-book/"+currentid+"/boardcontent",
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(obj2),
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){
+			    	$("#contentmonth").text(response.data["0"].month);
+			    	$("#contenttitle").text(response.data["0"].title);
+			    	$("#contentname").text(response.data["0"].name);
+			    	for(var i=0; i<=100; i++){
+			    		$("#contentphoto"+i).css('display', 'block');
+			    	}
+			    	for(var i=0; i<response.data.length; i++){
+			    		if(response.data[i].photo.match(".無") == null){
+			    			$("#contentphoto"+i).attr('src', path+'/image/'+response.data[i].photo);
+			    		}
+			    	}
+			    	if(response.data[0].photo.indexOf('無',0) != -1){
+			    		for(var i=0; i<=100; i++){
+				    		$("#contentphoto"+i).css('display', 'none');
+				    	}
+			    	} else {
+			    		for(var i=response.data.length; i<=100; i++){
+				    		$("#contentphoto"+i).css('display', 'none');
+				    	}
+			    	}
+			    	$("#contentcontent").text(response.data["0"].content);
+			    	$("#contentday").text(response.data["0"].day);
+			    	$("#contentgood").text("추천 : "+response.data["0"].good);
+			    	$("#contenthit").text("조회 : "+response.data["0"].hit);
+			    	
+			    	$("#editboardId").val(response.data["0"].boardId);
+			    	$("#editId").val(response.data["0"].id);
+			    	$("#editmonth option:selected").text(response.data["0"].month);
+			    	$("#edittitle").val(response.data["0"].title);
+			    	$("#editcontent").text(response.data["0"].content);
+			    	
+			    	$("#removeboardId").val(response.data["0"].boardId);
+			    	$("#removeId").val(response.data["0"].id);
+			    	
+			    	$("#commentboardId").val(response.data["0"].boardId);
+			    	$("#commentName").val(response.data["0"].name);
+			    	
+			    	$("#comment1Name").val(response.data["0"].name);
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+	
+	$("#contentsedit").click(function(){
+		if(currentid != $("#editId").val()){
+			alert("너가 수정을 할 수 있을 것 같아?");
+		} else {
+			$("#contenteditform").modal();
+		}
+	});
+	
+	$("#contentschange").click(function(){
+		if(currentid != $("#editId").val()){
+			alert("너가 수정을 할 수 있을 것 같아?");
+		} else {
+			$("#contenteditpost").submit();
+		}
+	});
+	
+	$("#contentsdelete").click(function(){
+		if(currentid != $("#editId").val()){
+			alert("너가 삭제를 할 수 있을 것 같아?");
+		} else {
+			$("#contentremovepost").submit();
+		}
+	});
+	
+	$("#good").click(function(){
 		$.ajax( {
 		    url : "/account-book/"+currentid+"/good",
 		    type: "POST",

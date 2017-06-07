@@ -81,6 +81,16 @@
 				where (month like '%${keyword}%' or title like '%${keyword}%' or name like '%${keyword}%') 
 			]]>
 		</if>
+		<if test="keyword != null and keyword != '' and id != null and id != ''">
+			<![CDATA[					  
+				and id = #{id} 
+			]]>
+		</if>
+		<if test="(keyword == null or keyword == '') and id != null and id != ''">
+			<![CDATA[					  
+				where id = #{id} 
+			]]>
+		</if>
 		<![CDATA[					  
 			order by board.day desc) a) where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
 		]]>
@@ -313,6 +323,20 @@
 					 to_char(trunc(add_months(sysdate, -1), 'mm'), 'YYYY/mm') Nov, 
 					 to_char(trunc(add_months(sysdate, 0), 'mm'), 'YYYY/mm') Dec 	 
 			from dual
+		]]>
+	</select>
+	
+	<select id="pselectmonth" parameterType="map" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where id = #{id} and operations = '+' and day between to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd') and 
+			add_months(to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd'), 1) - 1 / 86400 group by category, day order by day
+		]]>
+	</select>
+	
+	<select id="mselectmonth" parameterType="map" resultType="graphvo">
+		<![CDATA[
+			select sum(money) as lsum, category, day as day1 from list where id = #{id} and operations = '-' and day between to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd') and 
+			add_months(to_date(concat(#{selectmonth}, '/01'), 'yyyy/mm/dd'), 1) - 1 / 86400 group by category, day order by day
 		]]>
 	</select>
 	

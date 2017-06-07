@@ -123,7 +123,11 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			select * from list where list_id = #{value}
 		]]>
 	</select>
-	
+	 <select id="operationslist" parameterType="map" resultType="listvo">
+		<![CDATA[
+select DISTINCT (case when operations='+' then '수입' when operations='-' then '지출' when operations='0' then '투자' end) as operations from list	where id = #{id}	]]>
+	</select>
+	  
 	
 	<select id="totalmonth" parameterType="map" resultType="listvo">
 		<![CDATA[
@@ -134,9 +138,30 @@ select to_char(nvl(sum(money),0), '999,999,999,999,999') as moneyresult from lis
 select to_char(nvl(sum(money),0), '999,999,999,999,999') as moneyresult from list where id = #{id} and  operations='+' and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400		]]>
 	</select>
 	
+	<select id="totalmonth2" parameterType="map" resultType="listvo">
+		<![CDATA[
+select to_char(nvl(sum(money),0), '999,999,999,999,999') as moneyresult from list where id = #{id} and  operations='0' and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400		]]>
+	</select>
+	
 	<select id="getcategorylist" parameterType="map" resultType="listvo">
 		<![CDATA[
 select b.category from userscategory a , category b  where id=#{id} and a.category_id =  b.CATEGORY_ID 
+		]]>
+	</select>
+	
+		<select id="ablemoney" parameterType="listvo" resultType="listvo">
+		<![CDATA[
+select to_char(nvl(sum(a.money)+c.TOTAL_MONEY-(SELECT SUM(MONEY) FROM LIST WHERE ID =#{id} AND OPERATIONS='-' 
+and day between trunc(add_months(sysdate, #{bank}), 'mm') 
+and trunc(add_months(sysdate,#{bank}+1), 'mm') -1/86400)+(select nvl(sum(money*-1),0) 
+from list where id=#{id}
+and operations='0' 
+and day between trunc(add_months(sysdate, #{bank}), 'mm') 
+and trunc(add_months(sysdate, #{bank}+1), 'mm') -1/86400) ,0), '999,999,999,999,999') as moneyresult
+from list a, users c where a.ID = c.ID and c.id = #{id} 
+and  a.operations='+' 
+and day between trunc(add_months(sysdate,#{bank}), 'mm') 
+and trunc(add_months(sysdate,#{bank}+1), 'mm') -1/86400  group by c.TOTAL_MONEy	
 		]]>
 	</select>
 </mapper>

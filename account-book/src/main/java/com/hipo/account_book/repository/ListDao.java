@@ -77,6 +77,13 @@ public class ListDao {
 		return sql.selectOne("listview.totalmonth1", map);
 	}
 
+	public ListVo totalmonth2(String id, String operation) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id",id);
+		map.put("operation",operation);
+		return sql.selectOne("listview.totalmonth2",map);
+	}
+	
 	public List<ListVo> getcategory(String id) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);// id 저장
@@ -94,7 +101,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("infovo", infovo);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify3", map);
 
 	}
@@ -104,7 +110,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("money", money);
-		System.out.println("인트 스트링 = " + map);
 		sql.update("listview.modify4", map);
 	}
 
@@ -113,7 +118,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("info", info);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify5", map);
 	}
 
@@ -121,7 +125,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("info", info);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify6", map);
 	}
 
@@ -129,7 +132,6 @@ public class ListDao {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("info", info);
-		System.out.println("ididididididdasd = " + map);
 		sql.update("listview.modify7", map);
 	}
 
@@ -139,6 +141,21 @@ public class ListDao {
 		map.put("info", info);
 		sql.update("listview.modify8", map);
 	}
+
+	public List<ListVo> operations(String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		return sql.selectList("listview.operationslist",map);
+	}
+
+	public ListVo totalmoney(String id, String operation) {
+		ListVo vo1 = new ListVo ();
+		vo1.setId(id);
+		vo1.setBank(operation);
+		ListVo vo = sql.selectOne("listview.ablemoney",vo1 );
+		 return vo;
+	}
+
 
 	/*
 	 * public int totalmonth(ListVo vo) { System.out.println("돈돈돈돈돈돈" + vo);
