@@ -87,6 +87,7 @@
 								<th class="mine3 tablecolor" style="background: #d1d1d1">변경</th>
 							</tr>
 						</thead>
+						
 						<tbody id="listbody">
 							<form
 								action="${pageContext.request.contextPath }/${currentuserid}/add"

@@ -95,12 +95,12 @@
 
 						<tr>
 							<td class="font2">이름  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td><input class="window1" type="text" size="40" name="name" value=""></td> 
+							<td><input class="window1" type="text" size="40" name="name" value="" required></td> 
 						</tr>
 						<tr>
 
 							<td class="font2">테마</td>
-							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;"></td>
+							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required></td>
 
 						</tr>
 						<tr>
