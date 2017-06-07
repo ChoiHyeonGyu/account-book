@@ -19,11 +19,11 @@
 <div class="container">
 
 	<div class="row mt">
-<%-- 
+
 	<div class="col-lg-2">
 	<c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp"/>
 	</div>
- --%>
+
 	
 	
 		<!-- 카테고리 -->

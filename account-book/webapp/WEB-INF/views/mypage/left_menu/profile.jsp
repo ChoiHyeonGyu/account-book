@@ -111,7 +111,7 @@
 	</div>
 </div>
 
-<c:import url="/WEB-INF/views/story/import_popup.jsp"/>
+<%-- <c:import url="/WEB-INF/views/story/import_popup.jsp"/> --%>
 
 <!-- 설정 팝업 -->
 
