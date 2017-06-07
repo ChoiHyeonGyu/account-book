@@ -89,7 +89,7 @@
 						<tr>
 
 							<td class="font2">테마</td>
-							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}"></td>
+							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150"></td>
 
 						</tr>
 						<tr>

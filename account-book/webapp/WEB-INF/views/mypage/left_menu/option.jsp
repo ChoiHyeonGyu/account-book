@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<c:import url="/WEB-INF/views/include/main_top.jsp" />
 <script
 	src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
 <script
@@ -14,11 +14,16 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
 
-<c:import url="/WEB-INF/views/include/main_top.jsp" />
+
 
 <div class="container">
 
 	<div class="row mt">
+<%-- 
+	<div class="col-lg-2">
+	<c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp"/>
+	</div>
+ --%>
 	
 	
 		<!-- 카테고리 -->
