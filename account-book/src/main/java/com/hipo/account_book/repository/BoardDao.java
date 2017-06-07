@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hipo.account_book.vo.BoardVo;
+import com.hipo.account_book.vo.GraphDateVo;
 import com.hipo.account_book.vo.GraphVo;
 
 @Repository
@@ -160,6 +161,26 @@ public class BoardDao {
 	
 	public GraphVo dateselect(){
 		return sqlSession.selectOne("board.dateselect");
+	}
+	
+	public GraphDateVo datedetailselect(Map<String, Object> map){
+		return sqlSession.selectOne("board.datedetailselect", map);
+	}
+	
+	public List<GraphDateVo> pselectedtableselect(Map<String, Object> map){
+		return sqlSession.selectList("board.pselectedtableselect", map);
+	}
+	
+	public List<GraphDateVo> mselectedtableselect(Map<String, Object> map){
+		return sqlSession.selectList("board.mselectedtableselect", map);
+	}
+	
+	public GraphDateVo pselectedtablesumselect(Map<String, Object> map){
+		return sqlSession.selectOne("board.pselectedtablesumselect", map);
+	}
+	
+	public GraphDateVo mselectedtablesumselect(Map<String, Object> map){
+		return sqlSession.selectOne("board.mselectedtablesumselect", map);
 	}
 	
 	public List<GraphVo> pselectmonth(Map<String, Object> map){
