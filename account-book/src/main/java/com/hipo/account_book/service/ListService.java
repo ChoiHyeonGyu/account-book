@@ -185,10 +185,7 @@ public class ListService {
 	}
 
 	public ListVo totalmoney(String id, String operation) {
-		System.out.println("아이디값 오퍼값 " + id);
-		System.out.println("dhvjrkqt !!!!!" + operation);
 		 ListVo vo = dao.totalmoney(id,operation);
-		 System.out.println("찍히?ㅁ?ㅁ?ㅁ?ㅁ?ㅁ??ㅁㅁ??ㅁㅁ?ㅁ"+ vo);
 		 return vo ;
 	}
 

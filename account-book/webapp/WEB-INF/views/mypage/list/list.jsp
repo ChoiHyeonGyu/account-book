@@ -5,14 +5,21 @@
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/list/list.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/report/graph.css">
-<script	src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
-<script	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
-<script	src="http://maps.google.com/maps/api/js?key=AIzaSyCYjwUYMqkN525WXgenN7_prP01O8d-2XI"></script>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/list/list.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/morrisjs/morris.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/assets/css/report/graph.css">
+<script src="${pageContext.request.contextPath}/assets/js/list/list.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/assets/js/report/morris-data.js"></script>
+<script
+	src="http://maps.google.com/maps/api/js?key=AIzaSyCYjwUYMqkN525WXgenN7_prP01O8d-2XI"></script>
 
 <div class="container">
 	<div class="row mt">
@@ -26,8 +33,8 @@
 		<div class="col-lg-10">
 
 			<!-- 그래프영역 -->
-			<a href="${pageContext.request.contextPath}/${currentuserid}/logon" >편리한가계부</a>&nbsp;/
-			<a href="${pageContext.request.contextPath}/${currentuserid}/list" >리스트</a>
+			<a href="${pageContext.request.contextPath}/${currentuserid}/logon">편리한가계부</a>&nbsp;/
+			<a href="${pageContext.request.contextPath}/${currentuserid}/list">리스트</a>
 			<c:import url="/WEB-INF/views/report/limit_graph.jsp" />
 
 			<h1 align="center"></h1>
@@ -35,18 +42,24 @@
 				<div id="listall" class="col-md-12">
 
 					<!-- 가계부리스트영역 -->
-					<h2 class="fontlist">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  월 수입  &nbsp;<font id="v3" color="blue">
-						${v3.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 지출&nbsp;<font id="v2" color="red">
-						 ${v2.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월 투자&nbsp;<font id="v4" color="green"> ${v4.moneyresult}</font>원
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 사용가능 금액&nbsp;<font id="v5" color="green">${v5.name}</font>원</h2>
-					<form action="${pageContext.request.contextPath}/${currentuserid}/list" method="post">
+					<h2 class="fontlist">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 월 수입 &nbsp;<font id="v3"
+							color="blue"> ${v3.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월
+						지출&nbsp;<font id="v2" color="red"> ${v2.moneyresult}</font>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월
+						투자&nbsp;<font id="v4" color="green">${v4.moneyresult}</font>원
+						&nbsp;&nbsp;&nbsp;사용가능 금액&nbsp;<font id="v5" color="purple">${v5.moneyresult}</font>원
+					</h2>
+					<form
+						action="${pageContext.request.contextPath}/${currentuserid}/list"
+						method="post">
 						<input type="search" name="searching" size="123" class="searchbox"
-							placeholder="현금,금액,카테고리"> <button class="fa fa-search fa-1 sr-contact searchbox1"
+							placeholder="현금,금액,카테고리">
+						<button class="fa fa-search fa-1 sr-contact searchbox1"
 							type="submit"></button>
 
 					</form>
 
-							<!--가계부 리스트 테일 추가 부분  -->
+					<!--가계부 리스트 테일 추가 부분  -->
 					<table class="table-bordered border-collapse searchbox"
 						style="background: #ececec">
 						<colgroup>
@@ -60,33 +73,38 @@
 							<col width="5%" />
 							<col width="8%" />
 						</colgroup>
-							<thead>
-								<tr>
-									<th class="mine1 tablecolor tableoption"
-										style="background: #d1d1d1" WIDTH="50">날짜</th>
-									<th class="mine2 tablecolor" style="background: #d1d1d1">사용내역</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">금액</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">결제수단</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">지출/수입/투자</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">은행</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">카테고리</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">지도</th>
-									<th class="mine3 tablecolor" style="background: #d1d1d1">변경</th>
-								</tr>
-							</thead>
-							<tbody id="listbody">
-							<form action="${pageContext.request.contextPath }/${currentuserid}/add"	method="post">
+						<thead>
+							<tr>
+								<th class="mine1 tablecolor tableoption"
+									style="background: #d1d1d1" WIDTH="50">날짜</th>
+								<th class="mine2 tablecolor" style="background: #d1d1d1">사용내역</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">금액</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">결제수단</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">지출/수입/투자</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">은행</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">카테고리</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">지도</th>
+								<th class="mine3 tablecolor" style="background: #d1d1d1">변경</th>
+							</tr>
+						</thead>
+						<tbody id="listbody">
+							<form
+								action="${pageContext.request.contextPath }/${currentuserid}/add"
+								method="post">
 								<tr>
 									<td><input type="text" id="datepicker" name="day"
 										class="tableinput" placeholder="날짜 " required></td>
-									<td><input  type="text" value="" class="mine tablecoler"
-										style="background: #ececec" placeholder="사용내역" name="name" required></td>
+									<td><input type="text" value="" class="mine tablecoler"
+										style="background: #ececec" placeholder="사용내역" name="name"
+										required></td>
 									<td><input value="" class="mine tablecolor " type="text"
-										style="background: #ececec" placeholder="금액" name="money" required></td>
-									<td><select id="paid" name="paid" class="tableinput searchbox2"  required>
+										style="background: #ececec" placeholder="금액" name="money"
+										required></td>
+									<td><select id="paid" name="paid"
+										class="tableinput searchbox2" required>
 											<option value="현금">현금</option>
 											<option value="카드">카드</option>
-										</select></td>
+									</select></td>
 									<td><select id="operations" class="tableinput searchbox2"
 										name="operations" required>
 
@@ -99,46 +117,57 @@
 									<!-- <td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="카테고리" name="category"></td>
 									 -->
-									<td><select id="category" class="tableinput searchbox2" name="category" required>
-										<c:forEach var="bb" items="${option}">
-											<option value="${bb.category}">${bb.category}</option>
-										</c:forEach>
+									<td><select id="category" class="tableinput searchbox2"
+										name="category" required>
+											<c:forEach var="bb" items="${option}">
+												<option value="${bb.category}">${bb.category}</option>
+											</c:forEach>
 									</select></td>
-									<td>
-										<input id="btnmap" class="mine tablecolor" style="background: #ececec" placeholder="지도">
-										<input id="lat" name="locationY" type="hidden" value="">
-										<input id="lng" name="locationX" type="hidden" value="">
-									</td>
-									<td><input type="submit" value="저장" style="background: #ececec"
-										class="btn btn-sm text11" /> </td>	
+									<td><input id="btnmap" class="mine tablecolor"
+										style="background: #ececec" placeholder="지도"> <input
+										id="lat" name="locationY" type="hidden" value=""> <input
+										id="lng" name="locationX" type="hidden" value=""></td>
+									<td><input type="submit" value="저장"
+										style="background: #ececec" class="btn btn-sm text11" /></td>
 								</tr>
 							</form>
-								<!--  가계부 리스트 뿌려주는곳.	 -->
-						<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
+							<!--  가계부 리스트 뿌려주는곳.	 -->
+							<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
 									listarray.push("${vo.listId}");
 									/* 
 									} */
 								</script>
-								<tr class="listoriginal"><!--?? id 아님?  -->
-									<td><input id="${vo.listId}" value="${vo.day}" class="mine tablecoler" name="modifyday" onchange="my1Function(this.value)" style="background: #ececec"></td>
-									<td><input id="${vo.listId}a" value="${vo.name}" class="mine tablecoler" onchange="my2Function(this.value)" style="background: #ececec"></td>
-									<td><input id="${vo.listId}b" value="${vo.moneyresult}" class="mine tablecoler" onchange="my3Function(this.value)" style="background: #ececec"></td>
-									
-									<td><select id="${vo.listId}e"  name="paid" class="tableinput searchbox2" onchange="my5Function(this.value)" required>
-									<c:if test="${vo.paid == '현금'}">
-											<option value="${vo.paid}">${vo.paid}</option> 
-											<option value="카드">카드</option>
-									</c:if>
-									<c:if test="${vo.paid == '카드'}">
-											<option value="${vo.paid}">${vo.paid}</option>
-											<option value="현금">현금</option>
-									</c:if>
-										</select></td>
-									<td><select id="${vo.listId}d" name="operations" class="tableinput searchbox2" onchange="my6Function(this.value)" required>
+								<tr class="listoriginal">
+									<!--?? id 아님?  -->
+									<td><input id="${vo.listId}" value="${vo.day}"
+										class="mine tablecoler" name="modifyday"
+										onchange="my1Function(this.value)" style="background: #ececec"></td>
+									<td><input id="${vo.listId}a" value="${vo.name}"
+										class="mine tablecoler" onchange="my2Function(this.value)"
+										style="background: #ececec"></td>
+									<td><input id="${vo.listId}b" value="${vo.moneyresult}"
+										class="mine tablecoler" onchange="my3Function(this.value)"
+										style="background: #ececec"></td>
+
+									<td><select id="${vo.listId}e" name="paid"
+										class="tableinput searchbox2"
+										onchange="my5Function(this.value)" required>
+											<c:if test="${vo.paid == '현금'}">
+												<option value="${vo.paid}">${vo.paid}</option>
+												<option value="카드">카드</option>
+											</c:if>
+											<c:if test="${vo.paid == '카드'}">
+												<option value="${vo.paid}">${vo.paid}</option>
+												<option value="현금">현금</option>
+											</c:if>
+									</select></td>
+									<td><select id="${vo.listId}d" name="operations"
+										class="tableinput searchbox2"
+										onchange="my6Function(this.value)" required>
 											<c:if test="${vo.operations == '수입'}">
-												<option value="${vo.operations}" selected="selected">${vo.operations}</option> 
+												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
 												<option value="-">지출</option>
 												<option value="0">투자</option>
 											</c:if>
@@ -152,29 +181,34 @@
 												<option value="-">지출</option>
 												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
 											</c:if>
-										</select></td>
-									<td><input id="${vo.listId}c"value="${vo.bank}" class="mine tablecoler" onchange="my4Function(this.value)"
+									</select></td>
+									<td><input id="${vo.listId}c" value="${vo.bank}"
+										class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
-									<td><select id="${vo.listId}f" name="category" class="tableinput searchbox2" onchange="my7Function(this.value)" required> 
-										<c:forEach var="bb" items="${option}">
-											<c:if test="${vo.category != bb.category}">
-												<option value="${bb.category}">${bb.category}</option>
-											</c:if>
-											<c:if test="${vo.category == bb.category}">
-												<option value="${bb.category}" selected="selected">${bb.category}</option>
-											</c:if>
-										</c:forEach>
-										</select></td>
+									<td><select id="${vo.listId}f" name="category"
+										class="tableinput searchbox2"
+										onchange="my7Function(this.value)" required>
+											<c:forEach var="bb" items="${option}">
+												<c:if test="${vo.category != bb.category}">
+													<option value="${bb.category}">${bb.category}</option>
+												</c:if>
+												<c:if test="${vo.category == bb.category}">
+													<option value="${bb.category}" selected="selected">${bb.category}</option>
+												</c:if>
+											</c:forEach>
+									</select></td>
 									<td><strong id="maps${vo.listId}"
 										class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler"
 										style="background: #ececec"></strong></td>
 									<td><a
 										href="${pageContext.request.contextPath}/${currentuserid}/listdelete?listId=${vo.listId}"
-										class="col-lg-offset-5 tablecoler glyphicon glyphicon-trash"><%-- <img
-											src="${pageContext.request.contextPath}/assets/images/delete.jpg"> --%></a></td>
+										class="col-lg-offset-5 tablecoler glyphicon glyphicon-trash">
+											<%-- <img
+											src="${pageContext.request.contextPath}/assets/images/delete.jpg"> --%>
+									</a></td>
 								</tr>
-						</c:forEach>	
-						<!-- /form> -->
+							</c:forEach>
+							<!-- /form> -->
 						</tbody>
 					</table>
 

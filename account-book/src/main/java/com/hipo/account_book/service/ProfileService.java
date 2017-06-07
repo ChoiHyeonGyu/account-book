@@ -35,19 +35,19 @@ public class ProfileService {
 		} 
 		
 		String originalFileName = photo.getOriginalFilename();
-		System.out.println("originalFileName==========="+originalFileName);
+		/*System.out.println("originalFileName==========="+originalFileName);*/
 		Long fileSize = photo.getSize();
 		String extName = originalFileName.substring(originalFileName.lastIndexOf(".")+1,originalFileName.length());
 	
 		
 		String saveFileName = generateSaveFileName(extName);
-		System.out.println("getnerateSaveFileName = = = =" +  saveFileName);
+		/*System.out.println("getnerateSaveFileName = = = =" +  saveFileName);*/
 		
 		url = URL + saveFileName;
-		System.out.println("#########" + originalFileName);
+		/*System.out.println("#########" + originalFileName);
 		System.out.println("#########" + fileSize);
 		System.out.println("#########" + extName);
-		System.out.println("#########" + saveFileName); 
+		System.out.println("#########" + saveFileName); */
 		vo.setPhoto(saveFileName);
 		vo.setName(name);
 		vo.setId(id);
@@ -55,10 +55,10 @@ public class ProfileService {
 		}catch (Exception e) {
 			System.out.println("왜 못찾지?" + e);
 		}
-		System.out.println("url = = = = = = =" + url);
+		/*System.out.println("url = = = = = = =" + url);
 		System.out.println("blogid = = = = = =" + id);
 		System.out.println("title = = = = = =" + name);
-		System.out.println("log = = = = =" + photo );
+		System.out.println("log = = = = =" + photo );*/
 		return dao.updateprofile(vo);
 		 
 		
@@ -90,7 +90,7 @@ public class ProfileService {
 	public UserVo profileall(String id) {
 	
 			UserVo vo = dao.profileall(id);
-			System.out.println("사진 =======" + vo);
+			/*System.out.println("사진 =======" + vo);*/
 			return vo;
 	}
 

@@ -118,6 +118,21 @@ background:#ececec;}
     border-radius: 10px;
     cursor: pointer;
 }
+.notice1 {
+ background-color:#eaeaea;
+    width: 10%;
+    border: none;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10px;
+    cursor: pointer;
+    }
 .window1{
 	    border-radius: 10px;
 }
@@ -135,7 +150,7 @@ background:#ececec;}
 }
 .replace{    /*button tag 에 원하는 스타일 적용*/
   position: absolute;
-  width:23%;
+  width:18%;
   border-radius: 3px;
   font-weight: 60;
   border-color: transparent;
@@ -145,4 +160,10 @@ background:#ececec;}
   cursor: pointer;
   border-radius: 10px;
   cursor: pointer;
+  MARGIN-TOP:1PX;
+  text-align:center;
+  padding:5px;
+}
+.WINDOW2{
+	MARGIN-TOP:20PX;
 }

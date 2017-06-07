@@ -23,7 +23,7 @@
 			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph"
 			class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;
 			
-			<span id="showoptions" class="fa fa-cog fa-2x sr-contact pa pointer"></span>
+			<a href="${pageContext.request.contextPath}/${currentuserid}/option" class="fa fa-cog fa-2x sr-contact pa pointer"></a>
 
 	</div>
 </div>
@@ -31,9 +31,42 @@
 
 <!-- 통계 -->
 <div class="panel panel-default row">
-	<div class="panel-heading">지난 달 소비 동향</div>
+	<div class="panel-heading">각달 투자 그래프</div>
 	<div class="panel-body">
 		<div class="flot-chart2">
+		 <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
+      </div>
+       <div class="progress">
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
+      </div>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
+        <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
+        <div class="progress-bar progress-bar-danger" style="width: 10%"><span class='sr-only'>10% Complete (danger)</span></div>
+      </div>
+      
 			<div class="flot-chart-content" id="flot-pie-chart2"></div>
 		</div>
 	</div>
@@ -44,6 +77,8 @@
 <!-- 프로필 수정 팝업 -->
 <div class="modal fade" id="editprofile" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<form action="${pageContext.request.contextPath}/${currentuserid}/userinfo"
+					method="post" enctype="multipart/form-data"> 
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -54,8 +89,7 @@
 				<h4 class="modal-title center">프로필 수정</h4>
 			</div>
 			<div class="modal-body">
-			<form action="${pageContext.request.contextPath}/${currentuserid}/userinfo"
-					method="post" enctype="multipart/form-data"> 
+			
 					<input type="hidden" name="id" value="${currentuserid}" />
 					<table class="admin-config">
 
@@ -66,49 +100,37 @@
 						<tr>
 
 							<td class="font2">테마</td>
-							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}"></td>
+							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;"></td>
 
 						</tr>
 						<tr>
 							<td class="t">&nbsp;</td> 
-							<td><button class="replace" >파일 업로드</button> 
-							<input type="file" name="photo" value="" class="upload window2"/></td>
+							<td ><label for="hahaha" class="replace " >파일 업로드</label> 
+							<input type="file" name="photo" value="" id="hahaha" class="upload WINDOW2 hidden  "/></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>
-							<td><button class="notice" type="submit" > 기본설정 변경</button></td>
+							<td></td>
 						</tr>
 					</table>
-				</form>
 			</div>
+			
 			<div class="modal-footer">
-					<button data-dismiss="modal" type="button" class="close">취소</button>
+					<!-- <button data-dismiss="modal" type="button" class="close">취소</button> -->
+					<button class="notice1" type="submit" >변경</button>
+					
 				</div>
+			
 		</div>
 	</div>
+	</form>
 </div>
 
-<c:import url="/WEB-INF/views/story/import_popup.jsp"/>
+<%-- <c:import url="/WEB-INF/views/story/import_popup.jsp"/> --%>
 
 <!-- 설정 팝업 -->
 
-<div class="modal fade" id="viewoptions" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title center">설정</h4>
-			</div>
-			<div class="modal-body">
-				<c:import url="/WEB-INF/views/mypage/left_menu/option.jsp" />
-			</div>
-		</div>
-	</div>
-</div>
+
 
 
 <!-- /팝업영역 -->

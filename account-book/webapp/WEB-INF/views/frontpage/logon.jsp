@@ -5,6 +5,8 @@
 <div class="container"> 
 	<div class="row">
 		
+		
+		
 		<!-- 슬라이드 -->
 		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
 	      <ol class="carousel-indicators">
@@ -18,7 +20,7 @@
 	          	<div class="panel panel-default">
 						<div class="panel-heading">흠냐 이건 뭐냐?</div>
 						<div class="panel-body">
-							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200"">
+							<img src="${pageContext.request.contextPath}/assets/images/cp3.jpg" width="200" height="200">
 						</div>
 					</div>
 				</div>

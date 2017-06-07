@@ -149,17 +149,10 @@ public class ListDao {
 	}
 
 	public ListVo totalmoney(String id, String operation) {
-		Map<String,Object> map = new HashMap<String,Object>();
 		ListVo vo1 = new ListVo ();
 		vo1.setId(id);
 		vo1.setBank(operation);
-		System.out.println("ddddddddddddddddddddddd" + id);
-		System.out.println("ddddddddddddddddddddddd" + operation);
-		/*map.put("id",id);
-		map.put("operation",operation);*/
-		System.out.println("asdqw3dqwdqwdqwdqwdqwdq" + vo1);
 		ListVo vo = sql.selectOne("listview.ablemoney",vo1 );
-		System.out.println("vovovovovovovovovovovovovo" + vo);
 		 return vo;
 	}
 
