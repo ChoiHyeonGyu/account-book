@@ -31,6 +31,8 @@ public class OptionController {
 	
 	@RequestMapping("/option")
 	public String option(Model model,@ModelAttribute OptionVo optionvo, @PathVariable String id) {
+		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
 		System.out.println("erroeroeroeore++:"+id);
 		List<OptionVo> option = optionService.getCategory(optionvo);
 		System.out.println("erroeroeroeore++:");
