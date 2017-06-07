@@ -100,16 +100,16 @@
 						<tr>
 
 							<td class="font2">테마</td>
-							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150"></td>
+							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;"></td>
 
 						</tr>
 						<tr>
 							<td class="t">&nbsp;</td> 
-							<td><button class="replace" >파일 업로드</button> 
-							<input type="file" name="photo" value="" class="upload window2"/></td>
+							<td ><label for="hahaha" class="replace " >파일 업로드</label> 
+							<input type="file" name="photo" value="" id="hahaha" class="upload WINDOW2 hidden  "/></td>
 						</tr>
 						<tr>
-							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td>&nbsp;</td>
 							<td></td>
 						</tr>
 					</table>
