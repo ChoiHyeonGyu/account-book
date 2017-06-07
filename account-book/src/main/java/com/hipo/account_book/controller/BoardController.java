@@ -147,7 +147,8 @@ public class BoardController {
 			@RequestParam(value="search", required=false) String search){
 		UserVo username = Pservice.checkUpdate(id);
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("date", boardService.date());
@@ -162,7 +163,8 @@ public class BoardController {
 			@RequestParam(value="search", required=false) String search){
 		UserVo username = Pservice.checkUpdate(id); 
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("date", boardService.date());
@@ -189,7 +191,8 @@ public class BoardController {
 			@RequestParam(value="search", required=false) String search, @RequestParam("month") String month){
 		UserVo username = Pservice.checkUpdate(id);
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("month", month);
@@ -205,7 +208,8 @@ public class BoardController {
 			@RequestParam(value="search", required=false) String search, @RequestParam("month") String month){
 		UserVo username = Pservice.checkUpdate(id); 
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
 		model.addAttribute("month", month);

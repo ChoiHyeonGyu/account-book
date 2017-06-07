@@ -31,7 +31,7 @@
 
 <!-- 통계 -->
 <div class="panel panel-default row">
-	<div class="panel-heading">각달 투자 그래프</div>
+	<div class="panel-heading">투자 그래프</div>
 	<div class="panel-body">
 		<div class="flot-chart2">
 		 <div class="progress">
