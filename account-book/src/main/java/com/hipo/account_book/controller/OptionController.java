@@ -1,11 +1,13 @@
 package com.hipo.account_book.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hipo.account_book.dto.JSONResult;
 import com.hipo.account_book.service.OptionService;
+import com.hipo.account_book.service.ProfileService;
 import com.hipo.account_book.vo.OptionVo;
 
 @Controller
@@ -23,6 +26,17 @@ import com.hipo.account_book.vo.OptionVo;
 public class OptionController {
 	@Autowired
 	private OptionService optionService;
+	@Autowired
+	private ProfileService Pservice;
+	
+	@RequestMapping("/option")
+	public String option(Model model,@ModelAttribute OptionVo optionvo, @PathVariable String id) {
+		List<OptionVo> option = optionService.getCategory(optionvo);
+		model.addAttribute("option", option);
+		model.addAttribute("v1",Pservice.checkUpdate(id));
+			return "mypage/left_menu/option";
+		
+	}
 
 	@RequestMapping(value = "/categoryAdd", method = RequestMethod.POST)
 	public String categoryAdd(@ModelAttribute @Valid OptionVo optionvo, @PathVariable String id) {
@@ -57,17 +71,17 @@ public class OptionController {
 			optionService.Add2(optionvo);
 		}
 
-		return "redirect:/" + id + "/list";
+		return "redirect:/" + id + "/option";
 	}
 
 	@RequestMapping("/reset")
 	public String reset(@RequestParam("resetPassword") String resetPassword, @PathVariable String id) {
 		String pp = optionService.checkPassword(resetPassword, id);
 		if (pp.equals("fail") == true) {
-			return "redirect:/" + id + "/list";
+			return "redirect:/" + id + "/option";
 		} else {
 			optionService.reset(id);
-			return "redirect:/" + id + "/list";
+			return "redirect:/" + id + "/option";
 		}
 	}
 
@@ -86,7 +100,7 @@ public class OptionController {
 		categoryId = optionService.limitModify(optionvo);
 		optionvo.setCategeoryId(categoryId);
 		optionService.limitModify1(optionvo);
-		return "redirect:/" + id + "/list";
+		return "redirect:/" + id + "/option";
 	}
 
 	@ResponseBody
@@ -107,7 +121,7 @@ public class OptionController {
 		vo.setCategeoryId(cid);
 		System.out.println("vovovovovo---------" + vo);
 		optionService.categoryModify1(vo);
-		return "redirect:/" + id + "/list";
+		return "redirect:/" + id + "/option";
 	}
 
 	@RequestMapping("/categorydelete")
@@ -121,7 +135,7 @@ public class OptionController {
 		optionService.delete(vo);
 
 		// return "main";
-		return "redirect:/" + id + "/list";
+		return "redirect:/" + id + "/option";
 	}
 
 }

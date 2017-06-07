@@ -24,7 +24,7 @@
 			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph"
 			class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;
 			
-			<span id="showoptions" class="fa fa-cog fa-2x sr-contact pa pointer"></span>
+			<a href="${pageContext.request.contextPath}/${currentuserid}/option" class="fa fa-cog fa-2x sr-contact pa pointer"></a>
 
 	</div>
 </div>
@@ -88,23 +88,7 @@
 
 <!-- 설정 팝업 -->
 
-<div class="modal fade" id="viewoptions" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title center">설정</h4>
-			</div>
-			<div class="modal-body">
-				<c:import url="/WEB-INF/views/mypage/left_menu/option.jsp" />
-			</div>
-		</div>
-	</div>
-</div>
+
 
 
 <!-- /팝업영역 -->
