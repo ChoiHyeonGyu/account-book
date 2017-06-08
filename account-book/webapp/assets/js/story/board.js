@@ -244,8 +244,8 @@ $(function(){
 			    		if(obj3.boardid != num.target.title){
 			    			obj3 = {"boardid":num.target.title, "month":response.data["0"].month.replace(".", "/")};
 			    			flushtable(obj3);
+			    			requiredmonth(obj3);
 			    		}
-			    		requiredmonth(response.data["0"].month);
 			    	}
 			    	$("#contenttitle").text(response.data["0"].title);
 			    	$("#contentname").text(response.data["0"].name);
