@@ -7,28 +7,13 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 
-
-<div class="left">
-	<img style="margin-top: 50px;"
-		src="${pageContext.request.contextPath}/assets/images/coin2.jpg"
-		width="360" height="925">
-</div>
-
-<div class="right1">
-	<img style="margin-top: 50px;"
-		src="${pageContext.request.contextPath}/assets/images/coin1.jpg"
-		width="360" height="925">
-</div>
 <div class="container">
 	<div class="row">
 
 		<!-- 슬라이드 -->
-		<div id="carousel-example-generic"
-			class="carousel slide col-md-8 col-md-offset-0 crs-mt"
-			data-ride="carousel">
+		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
 			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0"
-					class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
 				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 			</ol>
@@ -70,20 +55,19 @@
 					</div>
 				</div>
 			</div>
-			<a class="left carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="prev"> <span
-				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> 
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 				<span class="sr-only">Previous</span>
-			</a> <a class="right carousel-control" href="#carousel-example-generic"
-				role="button" data-slide="next"> <span
-				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</a> 
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> 
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 				<span class="sr-only">Next</span>
 			</a>
 		</div>
 
 		<!-- 로그인 / 회원가입 -->
 		<div class="col-md-4">
-			<div class="login-panel panel panel-default">
+			<div class="login-panel panel panel-primary">
 				<div class="panel-heading">
 					<h3 class="panel-title">로그인 / 회원가입</h3>
 				</div>
