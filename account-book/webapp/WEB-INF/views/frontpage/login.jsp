@@ -25,7 +25,7 @@
 							<div class="panel-body">
 								<img
 									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
-									width="200" height="200"">
+									width="200" height="200">
 							</div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 							<div class="panel-body">
 								<img
 									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
-									width="200" height="200"">
+									width="200" height="200">
 							</div>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 							<div class="panel-body">
 								<img
 									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
-									width="200" height="200"">
+									width="200" height="200">
 							</div>
 						</div>
 					</div>
