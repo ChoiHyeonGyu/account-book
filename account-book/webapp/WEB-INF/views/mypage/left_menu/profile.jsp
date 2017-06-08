@@ -92,6 +92,11 @@
 							<td><input class="window1" type="text" size="40" name="name" value="" required></td> 
 						</tr>
 						<tr>
+						<td class="">패스워드 변경</td>
+						<td><input class="" type="password" size="" name="password" value="" ></td>
+						
+						</tr>
+						<tr>
 
 							<td class="font2">테마</td>
 							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required></td>
