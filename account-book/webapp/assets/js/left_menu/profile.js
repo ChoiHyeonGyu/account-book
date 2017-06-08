@@ -13,6 +13,9 @@ $(function() {
 		    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
 		    	$("#nameModify").val(response.data.name);//1.리스폰스 정보를 가지고 웹 data.list로 간다 아이디를 통해2.웹에 쏘아지는 정보들 !!!! 이건 폼안에쏘아진다.
 		    	$("#passwordModify").val(response.data.password);//!!! 폼에 아이디를 만들고 여기 샵내용물을 매칭한다 그럼 정보가 쏘아진다.
+		    	if($("#hahaha").change() == false){
+		    		$("#hahaha").val(response.data.photo);
+		    	}
 		    },
 		    error: function( XHR, status, error ){
 		       console.error( status + " : " + error );	       

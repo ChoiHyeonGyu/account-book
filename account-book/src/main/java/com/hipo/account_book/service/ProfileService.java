@@ -27,43 +27,29 @@ public class ProfileService {
 	}
 
 	public boolean updateProfile(String id, String name, MultipartFile photo, String password) {
-		System.out.println("password = " + password);
 		UserVo vo = new UserVo();
-		String url = "";
-		try{
-		if(photo.isEmpty() == true){
-			return  false;
-		} 
-		
-		String originalFileName = photo.getOriginalFilename();
-		/*System.out.println("originalFileName==========="+originalFileName);*/
-		Long fileSize = photo.getSize();
-		String extName = originalFileName.substring(originalFileName.lastIndexOf(".")+1,originalFileName.length());
-	
-		
-		String saveFileName = generateSaveFileName(extName);
-		/*System.out.println("getnerateSaveFileName = = = =" +  saveFileName);*/
-		
-		url = URL + saveFileName;
-		/*System.out.println("#########" + originalFileName);
-		System.out.println("#########" + fileSize);
-		System.out.println("#########" + extName);
-		System.out.println("#########" + saveFileName); */
-		vo.setPhoto(saveFileName);
 		vo.setName(name);
 		vo.setId(id);
 		vo.setPassword(password);
-		writeFile(photo,saveFileName);//해주는 이유
+		dao.updateprofile(vo);
+		String url = "";
+		try{
+			if(photo.isEmpty() == true){
+				return  false;
+			}
+			
+			String originalFileName = photo.getOriginalFilename();
+			Long fileSize = photo.getSize();
+			String extName = originalFileName.substring(originalFileName.lastIndexOf(".")+1,originalFileName.length());
+			String saveFileName = generateSaveFileName(extName);
+			
+			url = URL + saveFileName;
+			vo.setPhoto(saveFileName);
+			writeFile(photo,saveFileName);//해주는 이유
 		}catch (Exception e) {
 			System.out.println("왜 못찾지?" + e);
 		}
-		/*System.out.println("url = = = = = = =" + url);
-		System.out.println("blogid = = = = = =" + id);
-		System.out.println("title = = = = = =" + name);
-		System.out.println("log = = = = =" + photo );*/
-		return dao.updateprofile(vo);
-		 
-		
+		return dao.updateprofilephoto(vo);
 	}
 	private void writeFile(MultipartFile file,String saveFileName)throws IOException
 	{
