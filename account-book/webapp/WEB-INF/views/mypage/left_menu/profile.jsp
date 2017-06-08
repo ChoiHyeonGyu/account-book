@@ -89,23 +89,25 @@
 
 						<tr>
 							<td class="font2">이름  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td><input class="window1" type="text" size="40" name="name" value="" required></td> 
+							<td><input id="nameModify" class="window1" type="text" size="40" name="name" value="" required></td> 
 						</tr>
 						<tr>
 						<td class="">패스워드 변경</td>
-						<td><input class="" type="password" size="" name="password" value="" ></td>
+						<td><input id="passwordModify" class="" type="password" size="" name="password" value="" ></td>
 						
 						</tr>
 						<tr>
 
-							<td class="font2">테마</td>
-							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required></td>
+							<td class="font2">사진</td>
+							<td>
+								<img id="photoModify" src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required>
+							</td>
 
 						</tr>
 						<tr>
 							<td class="t">&nbsp;</td> 
 							<td ><label for="hahaha" class="replace " >파일 업로드</label> 
-							<input type="file" name="photo" value="" id="hahaha" class="upload WINDOW2 hidden  "/></td>
+							<input type="file" name="photo" value="" id="hahaha" class="upload WINDOW2 hidden" /></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>

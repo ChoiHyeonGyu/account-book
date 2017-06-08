@@ -29,4 +29,9 @@ public class ProfileDao {
 		
 	}
 
+	public UserVo profileModify(String id) {
+		return	sql.selectOne("profile.profileModify",id);
+		 
+	}
+
 }

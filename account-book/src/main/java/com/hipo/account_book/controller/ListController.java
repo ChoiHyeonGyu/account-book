@@ -70,7 +70,12 @@ public class ListController {
 		return "redirect:/{id}/list";
 
 	}
-
+	@ResponseBody
+	@RequestMapping("/profileModify")
+	public JSONResult profilemodify(@PathVariable String id,@RequestParam Map<String,Object> map)
+	{
+		return JSONResult.success(Pservice.profileModify(id));
+	}
 	
 
 	@RequestMapping("/listdelete")

@@ -28,4 +28,9 @@ select to_char(nvl(sum(a.money)+c.TOTAL_MONEY-(SELECT SUM(MONEY) FROM LIST WHERE
 select id ,name,photo from users where id = #{id}
 ]]>
 	</select> 
+		<select id="profileModify" resultType="UserVo" parameterType="UserVo">
+<![CDATA[
+select id ,name,photo,password from users where id = #{id}
+]]>
+	</select> 
 </mapper>

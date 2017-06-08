@@ -94,6 +94,12 @@ public class ProfileService {
 			return vo;
 	}
 
+	public UserVo profileModify(String id) {
+		return	 dao.profileModify(id);
+		 
+	}
+
+
 /*	public UserVo checkUpdate1(String i) {
 		return ;
 	}
