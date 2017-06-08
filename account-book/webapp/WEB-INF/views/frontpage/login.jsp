@@ -1,14 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
 <c:import url="/WEB-INF/views/include/login_top.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
+<script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 
 
 <div class="left">
@@ -23,8 +20,6 @@
 		width="360" height="925">
 </div>
 <div class="container">
-
-
 	<div class="row">
 
 		<!-- 슬라이드 -->
@@ -97,28 +92,20 @@
 						action="${pageContext.request.contextPath}/connmain">
 						<fieldset>
 							<div class="form-group">
-								<input class="form-control" placeholder="E-mail / Phone"
-									name="id" required>
+								<input class="form-control" placeholder="E-mail / Phone" name="id" required>
 							</div>
 							<div class="form-group">
-								<input class="form-control" placeholder="Password"
-									name="password" type="password" required>
+								<input class="form-control" placeholder="Password" name="password" type="password" required>
 							</div>
 							<button type="submit" class="btn btn-lg btn-success btn-block">로그인</button>
 							<br />
 							<c:if test="${result != error}">
-								<p
-									style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">회원가입에
-									실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
+								<p style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
 							</c:if>
 							<c:if test="${res != ult}">
-								<p
-									style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">로그인에
-									실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
+								<p style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">로그인에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
 							</c:if>
-							<fb:login-button class="fackbook-login-button"
-								scope="public_profile,email,user_birthday" size="xlarge"
-								onlogin="checkLoginState()">
+							<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">
                             	FACEBOOK 으로 로그인
                             </fb:login-button>
 							<br />
@@ -137,8 +124,7 @@
 
 
 <!-- 페이스북 정보 -->
-<form method="post" action="${pageContext.request.contextPath}/main"
-	id="fbpost">
+<form method="post" action="${pageContext.request.contextPath}/main" id="fbpost">
 	<input type="hidden" id="fbhidden" name="id" value="">
 </form>
 
