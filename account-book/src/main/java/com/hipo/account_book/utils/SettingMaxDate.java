@@ -10,14 +10,14 @@ public class SettingMaxDate {
 		for (int i = 1; i <= 12; i++) {
 			if (Integer.valueOf(month) == i) {
 				if (i == 2) {
-					dateMap.put("maxday", year + "/" + month + "/" + "28");
+					dateMap.put("maxDate", year + "/" + month + "/" + "28");
 					break;
 				}
 				if (i % 2 == 0) {
-					dateMap.put("maxday", year + "/" + month + "/" + "30");
+					dateMap.put("maxDate", year + "/" + month + "/" + "30");
 					break;
 				} else {
-					dateMap.put("maxday", year + "/" + month + "/" + "31");
+					dateMap.put("maxDate", year + "/" + month + "/" + "31");
 					break;
 				}
 			}

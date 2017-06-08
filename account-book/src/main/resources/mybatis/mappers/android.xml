@@ -33,8 +33,8 @@
 	<![CDATA[
 	select list_id as listId, id, paid, bank, operations, money, name, category, DAY, locationX, locationY 
 	from list where 
-	id = #{id } and day BETWEEN TO_DATE (#{minday }, 'YYYY/MM/DD')
-                   AND TO_DATE (#{maxday }, 'YYYY/MM/DD') + 1
+	id = #{id } and day BETWEEN TO_DATE (#{minDate }, 'YYYY/MM/DD')
+                   AND TO_DATE (#{maxDate }, 'YYYY/MM/DD') + 1
 	 ]]>
 	</select>
 
@@ -100,7 +100,7 @@
 			select distinct * from (select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{id }) a,
 			(select category, sum(money) as lsum from list where id = #{id } AND day BETWEEN TO_DATE (#{minDate }, 'YYYY/MM/DD')
                    AND TO_DATE (#{maxDate }, 'YYYY/MM/DD') + 1 and operations = '-'
-			group by category) b where a.category = b.category order by a.category;
+			group by category) b where a.category = b.category order by a.category
 		]]>
 	</select>
 
