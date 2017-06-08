@@ -20,10 +20,5 @@ $(function() {
 		});
 	});
 
-	$("#hahaha").change(function(e) {
-		console.log(e);
-		console.log(e.target.value.replace("C:\\fakepath\\", ""));
-		$("#photoModify").attr('src', e.target.value.replace("C:\\fakepath\\", ""));
-	});
 
 });

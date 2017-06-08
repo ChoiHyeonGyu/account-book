@@ -19,7 +19,7 @@ public class ProfileDao {
 	}
 
 	public boolean updateprofile(UserVo vo) {
-		
+		System.out.println("유져보!!!!!!!!!!!!!!!!!!!!!!" + vo);
 		sql.update("profile.updateUserInfo",vo);
 		return false;
 	}

@@ -61,11 +61,11 @@ public class ListController {
 	
 	@RequestMapping("/userinfo")
 	public String changing(@RequestParam("id") String id, @RequestParam("name") String name,
-			@RequestParam("photo") MultipartFile photo, Model model) {
+			@RequestParam("photo") MultipartFile photo, @RequestParam("password") String password,Model model) {
 		System.out.println(
-				"vovovovovovovovovovvoovvovovovovovovovo" + "id입니다 =" + id + "name =" + name + "photo = " + photo);
+				"vovovovovovovovovovvoovvovovovovovovovo" + "id입니다 =" + id + "name =" + name + "photo = " + photo + "password = " + password);
 
-		Pservice.updateProfile(id, name, photo);
+		Pservice.updateProfile(id, name, photo, password);
 		System.out.println("final = = = = = =" + photo);
 		return "redirect:/{id}/list";
 

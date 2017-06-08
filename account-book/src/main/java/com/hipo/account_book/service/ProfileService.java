@@ -26,7 +26,8 @@ public class ProfileService {
 		return vo ;
 	}
 
-	public boolean updateProfile(String id, String name, MultipartFile photo) {
+	public boolean updateProfile(String id, String name, MultipartFile photo, String password) {
+		System.out.println("password = " + password);
 		UserVo vo = new UserVo();
 		String url = "";
 		try{
@@ -51,6 +52,7 @@ public class ProfileService {
 		vo.setPhoto(saveFileName);
 		vo.setName(name);
 		vo.setId(id);
+		vo.setPassword(password);
 		writeFile(photo,saveFileName);//해주는 이유
 		}catch (Exception e) {
 			System.out.println("왜 못찾지?" + e);
