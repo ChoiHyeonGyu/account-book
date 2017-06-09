@@ -32,6 +32,42 @@ public class OptionDao {
 	public int add3(OptionVo optionvo) {
 		return sql.selectOne("option.add3",optionvo);
 	}
+	public String Modify0(String category2) {
+		return sql.selectOne("option.modify0",category2);	
+	}
+	
+	public void Modify(OptionVo vo) {
+		sql.insert("option.modify",vo);	
+	}
+	
+	public int Modify1(OptionVo optionvo) {
+		return sql.selectOne("option.modify1",optionvo);
+	}
+	
+	public void Modify2(OptionVo vo) {
+		sql.update("option.modify2",vo);	
+	}
+	
+	public int Modify3(OptionVo optionvo) {
+		return sql.selectOne("option.modify3",optionvo);
+	}
+	
+	public void Modify4(OptionVo vo) {
+		sql.insert("option.modify4",vo);	
+	}
+	
+	public String Modify5(OptionVo optionvo) {
+		return sql.selectOne("option.modify5",optionvo);
+	}
+	
+	public boolean Modify6(OptionVo vo) {
+		sql.delete("option.modify6",vo);
+		 return false;
+	}
+	
+	public void Modify7(OptionVo vo) {
+		sql.insert("option.modify7",vo);	
+	}
 	
 	public String checkPassword(String id){
 		return sql.selectOne("option.checkPassword", id);
@@ -56,7 +92,9 @@ public class OptionDao {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		sql.update("option.categoryModify1", vo);
+		System.out.println("값~!!!!!!!!!!!" + vo);
+		sql.insert("option.categoryModify1", vo);
+		sql.insert("option.categoryModify2", vo);
 		return false;
 		
 		

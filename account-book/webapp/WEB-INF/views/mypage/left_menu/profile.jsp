@@ -29,7 +29,7 @@
 	<div class="panel-body">
 		<div class="flot-chart2">
 		 <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only">60% Complete</span></div>
       </div>
       <div class="progress">
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
@@ -92,8 +92,8 @@
 							<td><input id="nameModify" class="window1" type="text" size="40" name="name" value="" required></td> 
 						</tr>
 						<tr>
-						<td class="">패스워드 변경</td>
-						<td><input id="passwordModify" class="" type="password" size="" name="password" value="" ></td>
+						<td class="font2">비밀번호 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+						<td><input id="passwordModify" class="window1" type="password" size="" name="password" value="" ></td>
 						
 						</tr>
 						<tr>

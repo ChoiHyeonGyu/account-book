@@ -8,12 +8,25 @@ public class OptionVo {
 	private String limit;
 	private String id;
 	private String resetPassword;
-	
+	private String operations;
 
+
+	public String getOperations() {
+		return operations;
+	}
+
+	public void setOperations(String operations) {
+		this.operations = operations;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
 
 	@Override
 	public String toString() {
-		return "OptionVo [categoryId=" + categoryId + ", category=" + category + ", postCount=" + postCount + ", limit=" + limit + ", id=" + id + ", resetPassword=" + resetPassword +"]";
+		return "OptionVo [categoryId=" + categoryId + ", category=" + category + ", postCount=" + postCount + ", limit="
+				+ limit + ", id=" + id + ", resetPassword=" + resetPassword + ", operations=" + operations + "]";
 	}
 	
 	public int getCategoryId() {

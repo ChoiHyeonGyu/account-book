@@ -115,7 +115,7 @@
 	tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 	aria-hidden="true">
 	<form id="modifypost"
-		action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1"
+		action="${pageContext.request.contextPath}/${currentuserid}/categoryModify"
 		method="post">
 		<div class="modal-dialog modal-sm margintop2">
 			<div class="modal-content">
@@ -130,6 +130,14 @@
 					<input id="categoryId" type="hidden" name="categoryId"> <input
 						id="categoryname" type="text" value="" name="category"
 						class="form-control" placeholder="Category" required>
+				</div>
+				<div>
+	              <select class="select select1" id="operations" name="operations">
+				  <option value="-" class="textline">지출</option>
+    			  <option value="+" class="textline">수입</option>
+				  <option value="0" class="textline">투자</option>
+				</select>
+								
 				</div>
 				<div class="modal-footer">
 
@@ -186,6 +194,15 @@
 				<div class="modal-body">
 					<input type="text" value="" name="category" class="form-control"
 						placeholder="Category" required>
+				</div>
+				
+				<div>
+	              <select class="select select1" id="operations" name="operations">
+				  <option value="-" class="textline">지출</option>
+    			  <option value="+" class="textline">수입</option>
+				  <option value="0" class="textline">투자</option>
+				</select>
+								
 				</div>
 				<div class="modal-footer">
 					<button type="submit" class="option2 option4">추가</button>

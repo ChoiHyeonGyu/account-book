@@ -7,16 +7,11 @@
 }
 
 .marginleft {
-	margin-left:290px;
+	margin-left:210px;
 }
 
 .marginleft20 {
 	margin-left:20px;
-}
-
-.disabled {
-	background-color: #eee;
-	pointer-events: none;
 }
 
 .center {
