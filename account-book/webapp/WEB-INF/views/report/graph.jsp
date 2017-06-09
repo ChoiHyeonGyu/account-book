@@ -49,7 +49,13 @@
 							<option>여자</option>
 						</select>
 						<select id="graph-age" class="dropdown-menu marginleft20">
-							<option>나이(전체)</option>
+							<option>시작 나이(전체)</option>
+							<c:forEach begin="20" end="48" var="i">
+								<option>${i}</option>
+							</c:forEach>
+						</select>
+						<select id="graph-age1" class="dropdown-menu marginleft20">
+							<option>끝 나이(전체)</option>
 							<c:forEach begin="20" end="48" var="i">
 								<option>${i}</option>
 							</c:forEach>

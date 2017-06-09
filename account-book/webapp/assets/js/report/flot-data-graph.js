@@ -195,7 +195,8 @@ $(function() {
 	});
 	
 	function changedata(){
-		var selectobj = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text()};
+		var selectobj = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text(), 
+				"age1":$("#graph-age1 option:selected").text()};
 		data1 = [];
 		data2 = [];
 		data3 = [];
@@ -369,6 +370,10 @@ $(function() {
 	});
 	
 	$("#graph-age").change(function(){
+		changedata();
+	});
+	
+	$("#graph-age1").change(function(){
 		changedata();
 	});
 });
