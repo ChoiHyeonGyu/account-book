@@ -40,5 +40,11 @@ select id ,name,photo from users where id = #{id}
 <![CDATA[
 select id ,name,photo,password from users where id = #{id}
 ]]>
-	</select> 
+	</select>
+	
+		<select id="graphbar" resultType="UserVo" parameterType="UserVo">
+<![CDATA[
+select id ,name,photo,password from users where id = #{id}
+]]>
+	</select>  
 </mapper>

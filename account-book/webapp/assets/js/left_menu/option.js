@@ -23,11 +23,11 @@ $(function() {
 		$("#" + categoryarray[i]).click(function(number) {
 			$("#modifyform").modal();
 			var categoryid = {
-				"categoryId" : number.target.id
+				"categoryId" : number.target.id/*,"operations" : */
 			};
 
 			$.ajax({
-				url : "/account-book/" + currentid + "/categoryModify",
+				url : "/account-book/" + currentid + "/categoryModify2",
 				type : "POST",
 				dataType : "JSON",
 				data : JSON.stringify(categoryid),

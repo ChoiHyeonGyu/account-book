@@ -30,6 +30,38 @@ public class OptionService {
 	public int Add3(OptionVo optionvo){
 		return optionDao.add3(optionvo);
 	}
+	public String Modify0(String category2){
+		return optionDao.Modify0(category2);
+	}
+	public void Modify(OptionVo optionvo){
+		optionDao.Modify(optionvo);
+	}
+	public void Modify2(OptionVo optionvo){
+		System.out.println("ddqwdqwdqwdqwdqwdqwd");
+		optionDao.Modify2(optionvo);
+	}
+	public int Modify1(OptionVo optionvo){
+		return optionDao.Modify1(optionvo);
+	}
+	
+	public int Modify3(OptionVo optionvo){
+		return optionDao.Modify3(optionvo);
+	}
+	public void Modify4(OptionVo optionvo){
+		optionDao.Modify4(optionvo);
+	}
+	
+	public String Modify5(OptionVo optionvo){
+		return optionDao.Modify5(optionvo);
+	}
+	
+	public boolean Modify6(OptionVo vo) {
+		return optionDao.Modify6(vo); 
+	}
+	
+	public void Modify7(OptionVo optionvo){
+		optionDao.Modify7(optionvo);
+	}
 	
 	public int limitModify(OptionVo optionvo){
 		return optionDao.limitModify(optionvo);
@@ -48,6 +80,7 @@ public class OptionService {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
+		System.out.println("ㅇ르ㅏㅣㄴㅁ어라ㅓㅈ도갖도가ㅓㄴ오라ㅓㅗㅈㄹ" + vo);
 		optionDao.categoryModify1(vo);
 		return false;
 	}
