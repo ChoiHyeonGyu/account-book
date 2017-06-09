@@ -18,7 +18,15 @@ select to_char(nvl(sum(a.money)+c.TOTAL_MONEY-(SELECT SUM(MONEY) FROM LIST WHERE
 	<![CDATA[
 	UPDATE users
 	   SET name = #{name},
-	       photo  = #{photo}
+	       password = #{password}
+	  where id = #{id}
+	]]>
+	</update> 
+	
+	<update id="updateUserInfophoto" parameterType="UserVo">
+	<![CDATA[
+	UPDATE users
+	   SET photo  = #{photo}
 	  where id = #{id}
 	]]>
 	</update> 
@@ -26,6 +34,11 @@ select to_char(nvl(sum(a.money)+c.TOTAL_MONEY-(SELECT SUM(MONEY) FROM LIST WHERE
 	<select id="image" resultType="UserVo" parameterType="UserVo">
 <![CDATA[
 select id ,name,photo from users where id = #{id}
+]]>
+	</select> 
+		<select id="profileModify" resultType="UserVo" parameterType="UserVo">
+<![CDATA[
+select id ,name,photo,password from users where id = #{id}
 ]]>
 	</select> 
 </mapper>

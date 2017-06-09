@@ -19,14 +19,23 @@ public class ProfileDao {
 	}
 
 	public boolean updateprofile(UserVo vo) {
-		
 		sql.update("profile.updateUserInfo",vo);
+		return false;
+	}
+	
+	public boolean updateprofilephoto(UserVo vo) {
+		sql.update("profile.updateUserInfophoto",vo);
 		return false;
 	}
 
 	public UserVo profileall(String id) {
 		return sql.selectOne("profile.image", id);
 		
+	}
+
+	public UserVo profileModify(String id) {
+		return	sql.selectOne("profile.profileModify",id);
+		 
 	}
 
 }

@@ -53,7 +53,7 @@
         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
       </div>
       <div class="progress">
-        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 30%"><span class="sr-only">60% Complete</span></div>
       </div>
       <div class="progress">
         <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
@@ -89,18 +89,25 @@
 
 						<tr>
 							<td class="font2">이름  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-							<td><input class="window1" type="text" size="40" name="name" value="" required></td> 
+							<td><input id="nameModify" class="window1" type="text" size="40" name="name" value="" required></td> 
+						</tr>
+						<tr>
+						<td class="">패스워드 변경</td>
+						<td><input id="passwordModify" class="" type="password" size="" name="password" value="" ></td>
+						
 						</tr>
 						<tr>
 
-							<td class="font2">테마</td>
-							<td><img src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required></td>
+							<td class="font2">사진</td>
+							<td>
+								<img id="photoModify" src="${pageContext.request.contextPath}/image/${profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required>
+							</td>
 
 						</tr>
 						<tr>
 							<td class="t">&nbsp;</td> 
 							<td ><label for="hahaha" class="replace " >파일 업로드</label> 
-							<input type="file" name="photo" value="" id="hahaha" class="upload WINDOW2 hidden  "/></td>
+							<input type="file" name="photo" value="" id="hahaha" class="upload WINDOW2 hidden" /></td>
 						</tr>
 						<tr>
 							<td>&nbsp;</td>

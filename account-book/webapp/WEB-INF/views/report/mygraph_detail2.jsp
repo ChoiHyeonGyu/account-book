@@ -29,7 +29,7 @@
                 </div>
                 <div class="tab-pane fade in active" id="export">
                 	<div class="flot-chart">
-                        <div class="flot-chart-content2" id="flot-line-chart-mt2"></div>
+                        <div class="flot-chart-content" id="flot-line-chart-mt2"></div>
                     </div><br/>
                     <div class="table-responsive">
 	                    <table class="table table-striped table-bordered table-hover">

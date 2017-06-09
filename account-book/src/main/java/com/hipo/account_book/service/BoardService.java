@@ -63,8 +63,6 @@ public class BoardService {
 	public void boardedit(String id, BoardVo boardvo, List<MultipartFile> file){
 		boardvo.setId(id);
 		boardDao.boardupdate(boardvo);
-		deleteFile(boardvo.getBoardId());
-		boardDao.imagedelete(boardvo.getBoardId());
 		try{
 			if(file.isEmpty() == true){
 				return;
@@ -73,6 +71,8 @@ public class BoardService {
 		    {
 		        if(!file.get(i).isEmpty())
 		        {
+		        	deleteFile(boardvo.getBoardId());
+		    		boardDao.imagedelete(boardvo.getBoardId());
 		            CommonsMultipartFile cm = (CommonsMultipartFile) file.get(i);
 		            String originalFileName = cm.getOriginalFilename();
 		            String extName = originalFileName.substring(originalFileName.lastIndexOf(".")+1,originalFileName.length());
@@ -83,9 +83,6 @@ public class BoardService {
 					boardvo.setPhoto(saveFileName);
 					
 					boardDao.imagesave(boardvo);
-		        } else {
-		        	boardvo.setPhoto(generateSaveFileName("無"));
-		        	boardDao.imagesave(boardvo);
 		        }
 		    }
 		} catch(IOException e) {

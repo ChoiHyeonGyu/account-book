@@ -33,7 +33,7 @@
 		<div class="col-lg-10">
 
 			<!-- 그래프영역 -->
-			<a href="${pageContext.request.contextPath}/${currentuserid}/logon">편리한가계부</a>&nbsp;/
+			<a href="${pageContext.request.contextPath}/${currentuserid}/logon">편리한가계부</a>&nbsp;
 			<a href="${pageContext.request.contextPath}/${currentuserid}/list">리스트</a>
 			<c:import url="/WEB-INF/views/report/limit_graph.jsp" />
 
