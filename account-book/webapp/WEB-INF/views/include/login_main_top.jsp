@@ -24,7 +24,7 @@
 </script>
 <title>편리가계부</title>
 </head>
-<body>
+<body class="backgroundimage">
 
 	<!-- 상단 네비게이션 바 -->
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">

@@ -30,49 +30,31 @@
     	
     			<!-- 상단 선택 메뉴 -->
     			<div class="col-lg-12">
-	    			<c:choose>
-	    				<c:when test="${currentuserid == ''}">
-	    					<div class="dropdown theme-dropdown clearfix">
-								<select class="dropdown-menu marginleft disabled">
-									<option>월 수입(전체)</option>
-								</select>
-								<select class="dropdown-menu marginleft20 disabled">
-									<option>성별(전체)</option>
-								</select>
-								<select class="dropdown-menu marginleft20 disabled">
-									<option>나이(전체)</option>
-								</select>
-							</div>
-							<p class="fontred center">/* 더 자세한 통계는 회원가입 후 이용해주세요. */</p>
-	    				</c:when>
-	    				<c:otherwise>
-	    					<div class="dropdown theme-dropdown clearfix">
-								<select id="graph-import" class="dropdown-menu marginleft">
-									<option>월 수입(전체)</option>
-									<option>100만원 이하</option>
-									<c:forEach begin="100" end="950" step="50" var="i">
-										<option>${i}만원 ~ ${i+50}만원 사이</option>
-									</c:forEach>
-									<c:forEach begin="1000" end="9000" step="500" var="i">
-										<option>${i}만원 ~ ${i+500}만원 사이</option>
-									</c:forEach>
-									<option>9500만원 ~ 1억원 사이</option>
-									<option>1억원 이상</option>
-								</select>
-								<select id="graph-gender" class="dropdown-menu marginleft20">
-									<option>성별(전체)</option>
-									<option>남자</option>
-									<option>여자</option>
-								</select>
-								<select id="graph-age" class="dropdown-menu marginleft20">
-									<option>나이(전체)</option>
-									<c:forEach begin="20" end="48" var="i">
-										<option>${i}</option>
-									</c:forEach>
-								</select>
-							</div>
-	    				</c:otherwise>
-	    			</c:choose>
+	    			<div class="dropdown theme-dropdown clearfix">
+						<select id="graph-import" class="dropdown-menu marginleft">
+							<option>월 수입(전체)</option>
+							<option>100만원 이하</option>
+							<c:forEach begin="100" end="950" step="50" var="i">
+								<option>${i}만원 ~ ${i+50}만원 사이</option>
+							</c:forEach>
+							<c:forEach begin="1000" end="9000" step="500" var="i">
+								<option>${i}만원 ~ ${i+500}만원 사이</option>
+							</c:forEach>
+							<option>9500만원 ~ 1억원 사이</option>
+							<option>1억원 이상</option>
+						</select>
+						<select id="graph-gender" class="dropdown-menu marginleft20">
+							<option>성별(전체)</option>
+							<option>남자</option>
+							<option>여자</option>
+						</select>
+						<select id="graph-age" class="dropdown-menu marginleft20">
+							<option>나이(전체)</option>
+							<c:forEach begin="20" end="48" var="i">
+								<option>${i}</option>
+							</c:forEach>
+						</select>
+					</div>
 				</div>
 				
 				<div class="col-lg-6">

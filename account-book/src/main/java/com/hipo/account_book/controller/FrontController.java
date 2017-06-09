@@ -133,4 +133,10 @@ public class FrontController {
 	public JSONResult alllimitgraph(@RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.alllimitgraph());
 	}
+	
+	@ResponseBody
+	@RequestMapping("/transgraphavg")
+	public JSONResult transgraphavg(@RequestBody Map<String, Object> map){
+		return JSONResult.success(boardService.transgraphavg(map));
+	}
 }

@@ -1,11 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-
-
 <!-- 해더 //최상단 메뉴 -->
-<c:import url="/WEB-INF/views/include/main_top.jsp" />
+<c:choose>
+	<c:when test="${currentuserid != null}">
+		<c:import url="/WEB-INF/views/include/main_top.jsp" />
+	</c:when>
+	<c:otherwise>
+		<c:import url="/WEB-INF/views/include/login_top.jsp" />
+	</c:otherwise>
+</c:choose>
 
 <script
 	src="${pageContext.request.contextPath}/assets/js/customer/qna.js"></script>
