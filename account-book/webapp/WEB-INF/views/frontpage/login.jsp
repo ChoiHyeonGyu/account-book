@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
-<c:import url="/WEB-INF/views/include/login_top.jsp" />
+<c:import url="/WEB-INF/views/include/login_main_top.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
