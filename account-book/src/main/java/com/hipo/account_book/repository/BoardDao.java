@@ -147,24 +147,24 @@ public class BoardDao {
 		return sqlSession.selectList("board.exportgraphselect", id);
 	}
 	
-	public List<GraphVo> imreporttableselect(String id){
-		return sqlSession.selectList("board.imreporttableselect", id);
+	public List<GraphVo> imreporttableselect(Map<String, Object> map){
+		return sqlSession.selectList("board.imreporttableselect", map);
 	}
 	
-	public GraphVo imreporttablesumselect(String id){
-		return sqlSession.selectOne("board.imreporttablesumselect", id);
+	public GraphVo imreporttablesumselect(Map<String, Object> map){
+		return sqlSession.selectOne("board.imreporttablesumselect", map);
 	}
 	
-	public List<GraphVo> exreporttableselect(String id){
-		return sqlSession.selectList("board.exreporttableselect", id);
+	public List<GraphVo> exreporttableselect(Map<String, Object> map){
+		return sqlSession.selectList("board.exreporttableselect", map);
 	}
 	
-	public GraphVo exreporttablesumselect(String id){
-		return sqlSession.selectOne("board.exreporttablesumselect", id);
+	public GraphVo exreporttablesumselect(Map<String, Object> map){
+		return sqlSession.selectOne("board.exreporttablesumselect", map);
 	}
 	
-	public GraphVo dateselect(){
-		return sqlSession.selectOne("board.dateselect");
+	public GraphVo dateselect(int i){
+		return sqlSession.selectOne("board.dateselect", i);
 	}
 	
 	public GraphDateVo datedetailselect(Map<String, Object> map){

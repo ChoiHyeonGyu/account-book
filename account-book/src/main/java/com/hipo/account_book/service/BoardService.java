@@ -3,6 +3,7 @@ package com.hipo.account_book.service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -283,23 +284,55 @@ public class BoardService {
 	}
 	
 	public List<GraphVo> imreporttable(String id){
-		return boardDao.imreporttableselect(id);
+		List<Integer> importlist = new ArrayList<Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		for(int i=-11; i<=0; i++){
+			importlist.add(i);
+		}
+		map.put("intarray", importlist);
+		return boardDao.imreporttableselect(map);
 	}
 	
 	public GraphVo imreporttablesum(String id){
-		return boardDao.imreporttablesumselect(id);
+		List<Integer> importlist = new ArrayList<Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		for(int i=-11; i<=0; i++){
+			importlist.add(i);
+		}
+		map.put("intarray", importlist);
+		return boardDao.imreporttablesumselect(map);
 	}
 	
 	public List<GraphVo> exreporttable(String id){
-		return boardDao.exreporttableselect(id);
+		List<Integer> exportlist = new ArrayList<Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		for(int i=-11; i<=0; i++){
+			exportlist.add(i);
+		}
+		map.put("intarray", exportlist);
+		return boardDao.exreporttableselect(map);
 	}
 	
 	public GraphVo exreporttablesum(String id){
-		return boardDao.exreporttablesumselect(id);
+		List<Integer> exportlist = new ArrayList<Integer>();
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		for(int i=-11; i<=0; i++){
+			exportlist.add(i);
+		}
+		map.put("intarray", exportlist);
+		return boardDao.exreporttablesumselect(map);
 	}
 	
-	public GraphVo date(){
-		return boardDao.dateselect();
+	public List<GraphVo> date(){
+		List<GraphVo> datelist = new ArrayList<GraphVo>();
+		for(int i=-11; i<=0; i++){
+			datelist.add(boardDao.dateselect(i));
+		}
+		return datelist;
 	}
 	
 	public GraphDateVo datedetail(String month){
