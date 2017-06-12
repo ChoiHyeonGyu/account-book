@@ -37,18 +37,9 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 월</th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.jan}" class="black">${date.jan}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.feb}" class="black">${date.feb}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.mar}" class="black">${date.mar}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.apr}" class="black">${date.apr}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.may}" class="black">${date.may}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.jun}" class="black">${date.jun}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.jul}" class="black">${date.jul}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.aug}" class="black">${date.aug}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.sep}" class="black">${date.sep}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.oct}" class="black">${date.oct}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.nov}" class="black">${date.nov}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.dec}" class="black">${date.dec}</a></th>
+	                                <c:forEach var="date" items="${date}">
+	                                	<th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.month}" class="black">${date.month}</a></th>
+	                                </c:forEach> 
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>

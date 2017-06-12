@@ -1,21 +1,17 @@
 package com.hipo.account_book.vo;
 
 import java.sql.Date;
+import java.util.List;
 
 public class GraphVo {
-	@Override
-	public String toString() {
-		return "GraphVo [category=" + category + ", cnt=" + cnt + ", ml=" + ml + ", lsum=" + lsum + ", day1=" + day1
-				+ ", day=" + day + ", Jan=" + Jan + ", Feb=" + Feb + ", Mar=" + Mar + ", Apr=" + Apr + ", May=" + May
-				+ ", Jun=" + Jun + ", Jul=" + Jul + ", Aug=" + Aug + ", Sep=" + Sep + ", Oct=" + Oct + ", Nov=" + Nov
-				+ ", Dec=" + Dec + ", sumresult=" + sumresult + "]";
-	}
 	private String category;
 	private int cnt;
 	private int ml;
 	private int lsum;
 	private Date day1;
 	private long day;
+	private String month;
+	private List<String> montharray;
 	private String Jan;
 	private String Feb;
 	private String Mar;
@@ -66,6 +62,18 @@ public class GraphVo {
 	}
 	public void setDay(long day) {
 		this.day = day;
+	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public List<String> getMontharray() {
+		return montharray;
+	}
+	public void setMontharray(String montharray) {
+		this.montharray.add(montharray);
 	}
 	
 	public String getJan() {

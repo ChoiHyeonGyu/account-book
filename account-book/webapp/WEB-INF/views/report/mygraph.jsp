@@ -34,37 +34,17 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 월</th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.jan}" class="black">${date.jan}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.feb}" class="black">${date.feb}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.mar}" class="black">${date.mar}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.apr}" class="black">${date.apr}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.may}" class="black">${date.may}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.jun}" class="black">${date.jun}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.jul}" class="black">${date.jul}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.aug}" class="black">${date.aug}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.sep}" class="black">${date.sep}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.oct}" class="black">${date.oct}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.nov}" class="black">${date.nov}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.dec}" class="black">${date.dec}</a></th>
+	                                <c:forEach var="date" items="${date}">
+	                                	<th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.month}" class="black">${date.month}</a></th>
+	                                </c:forEach> 
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	<c:forEach var="cate" items="${catemonth}">
+	                        	<c:forEach var="catemonth" items="${catemonth}">
                                 	<tr>
-		                                <td class="fontsize">${cate.category}</td>
-		                                <td class="fontsize">${cate.jan}</td>
-		                                <td class="fontsize">${cate.feb}</td>
-		                                <td class="fontsize">${cate.mar}</td>
-		                                <td class="fontsize">${cate.apr}</td>
-		                                <td class="fontsize">${cate.may}</td>
-		                                <td class="fontsize">${cate.jun}</td>
-		                                <td class="fontsize">${cate.jul}</td>
-		                                <td class="fontsize">${cate.aug}</td>
-		                                <td class="fontsize">${cate.sep}</td>
-		                                <td class="fontsize">${cate.oct}</td>
-		                                <td class="fontsize">${cate.nov}</td>
-		                                <td class="fontsize">${cate.dec}</td>
+		                                <td class="fontsize">${catemonth.category}</td>
+		                                <td class="fontsize">${catemonth.month}</td>
 		                                <td class="fontsize">${cate.sumresult}</td>
 	                            	</tr>
                                 </c:forEach>
