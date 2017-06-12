@@ -136,7 +136,7 @@ public class BoardDao {
 	
 	public List<GraphVo> movelimitgraphselect(Map<String, Object> map){
 		List<GraphVo> vo= sqlSession.selectList("board.movelimitgraphselect", map);
-	return vo;
+		return vo;
 	}
 	
 	public List<GraphVo> importgraphselect(String id){
@@ -147,36 +147,28 @@ public class BoardDao {
 		return sqlSession.selectList("board.exportgraphselect", id);
 	}
 	
-	public List<GraphVo> imreporttableselect(Map<String, Object> map){
-		return sqlSession.selectList("board.imreporttableselect", map);
-	}
-	
-	public GraphVo imreporttablesumselect(Map<String, Object> map){
-		return sqlSession.selectOne("board.imreporttablesumselect", map);
-	}
-	
-	public List<GraphVo> exreporttableselect(Map<String, Object> map){
-		return sqlSession.selectList("board.exreporttableselect", map);
-	}
-	
-	public GraphVo exreporttablesumselect(Map<String, Object> map){
-		return sqlSession.selectOne("board.exreporttablesumselect", map);
-	}
-	
 	public GraphVo dateselect(int i){
 		return sqlSession.selectOne("board.dateselect", i);
 	}
 	
-	public GraphDateVo datedetailselect(Map<String, Object> map){
+	public List<GraphVo> reportsourceselect(Map<String, Object> map){
+		List<GraphVo> list = sqlSession.selectList("board.reportsourceselect", map);
+		list.add(sqlSession.selectOne("board.reportsourcelimitselect", map));
+		return list;
+	}
+	
+	public List<GraphVo> reportsourcesumselect(Map<String, Object> map){
+		return sqlSession.selectList("board.reportsourcesumselect", map);
+	}
+	
+	public GraphVo datedetailselect(Map<String, Object> map){
 		return sqlSession.selectOne("board.datedetailselect", map);
 	}
 	
-	public List<GraphDateVo> pselectedtableselect(Map<String, Object> map){
-		return sqlSession.selectList("board.pselectedtableselect", map);
-	}
-	
-	public List<GraphDateVo> mselectedtableselect(Map<String, Object> map){
-		return sqlSession.selectList("board.mselectedtableselect", map);
+	public List<GraphVo> selectedtableselect(Map<String, Object> map){
+		List<GraphVo> list = sqlSession.selectList("board.selectedtableselect", map);
+		list.add(sqlSession.selectOne("board.reportsourcelimitselect", map));
+		return list;
 	}
 	
 	public GraphDateVo pselectedtablesumselect(Map<String, Object> map){

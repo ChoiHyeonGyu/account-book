@@ -33,38 +33,28 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 일</th>
-	                                <th class="fontsize">${date.d1}</th>
-	                                <th class="fontsize">${date.d2}</th>
-	                                <th class="fontsize">${date.d3}</th>
-	                                <th class="fontsize">${date.d4}</th>
-	                                <th class="fontsize">${date.d5}</th>
-	                                <th class="fontsize">${date.d6}</th>
-	                                <th class="fontsize">${date.d7}</th>
-	                                <th class="fontsize">${date.d8}</th>
-	                                <th class="fontsize">${date.d9}</th>
-	                                <th class="fontsize">${date.d10}</th>
-	                                <th class="fontsize">${date.d11}</th>
+	                                <c:forEach var="date" items="${date}" begin="0" end="10" step="1">
+	                                	<th class="fontsize">${date.day2}</th>
+	                                </c:forEach>
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	<c:forEach var="cate" items="${cateday}">
-                                	<tr>
-		                                <td class="fontsize">${cate.category}</td>
-		                                <td class="fontsize">${cate.d1}</td>
-		                                <td class="fontsize">${cate.d2}</td>
-		                                <td class="fontsize">${cate.d3}</td>
-		                                <td class="fontsize">${cate.d4}</td>
-		                                <td class="fontsize">${cate.d5}</td>
-		                                <td class="fontsize">${cate.d6}</td>
-		                                <td class="fontsize">${cate.d7}</td>
-		                                <td class="fontsize">${cate.d8}</td>
-		                                <td class="fontsize">${cate.d9}</td>
-		                                <td class="fontsize">${cate.d10}</td>
-		                                <td class="fontsize">${cate.d11}</td>
-		                                <td class="fontsize"></td>
-	                            	</tr>
-                                </c:forEach>
+	                        	<c:forEach var="cateday1" items="${cateday}">
+	                        		<c:set var="catelimit" value="${cateday1.ml}"></c:set>
+	                        	</c:forEach>
+                            	<c:forEach var="cateday1" items="${cateday}" begin="0" end="${catelimit}" step="1">
+                      				<tr>
+                      					<td class="fontsize">${cateday1.category}</td>
+                      					<c:set var="catename" value="${cateday1.category}"></c:set>
+                      					<c:forEach var="cateday1" items="${cateday}" begin="0" end="${((catelimit+1)*11)-1}" step="1">
+                      						<c:if test="${cateday1.category == catename}">
+	                      						<td class="fontsize">${cateday1.day2}</td>
+	                      					</c:if>
+                         				</c:forEach>
+                         				<td class="fontsize"></td>
+                         			</tr>
+                        		</c:forEach>
                                	<tr>
 	                                <td class="fontsize"><strong>일 합계</strong></td>
 	                                <td class="fontsize">${cmsum.d1}</td>
@@ -84,38 +74,28 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 일</th>
-	                                <th class="fontsize">${date.d12}</th>
-	                                <th class="fontsize">${date.d13}</th>
-	                                <th class="fontsize">${date.d14}</th>
-	                                <th class="fontsize">${date.d15}</th>
-	                            	<th class="fontsize">${date.d16}</th>
-	                                <th class="fontsize">${date.d17}</th>
-	                                <th class="fontsize">${date.d18}</th>
-	                                <th class="fontsize">${date.d19}</th>
-	                                <th class="fontsize">${date.d20}</th>
-	                                <th class="fontsize">${date.d21}</th>
-	                                <th class="fontsize">${date.d22}</th>
+	                                <c:forEach var="date" items="${date}" begin="11" end="21" step="1">
+	                                	<th class="fontsize">${date.day2}</th>
+	                                </c:forEach>
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	<c:forEach var="cate" items="${cateday}">
-                                	<tr>
-		                                <td class="fontsize">${cate.category}</td>
-		                                <td class="fontsize">${cate.d12}</td>
-		                                <td class="fontsize">${cate.d13}</td>
-		                                <td class="fontsize">${cate.d14}</td>
-		                                <td class="fontsize">${cate.d15}</td>
-		                                <td class="fontsize">${cate.d16}</td>
-		                                <td class="fontsize">${cate.d17}</td>
-		                                <td class="fontsize">${cate.d18}</td>
-		                                <td class="fontsize">${cate.d19}</td>
-		                                <td class="fontsize">${cate.d20}</td>
-		                                <td class="fontsize">${cate.d21}</td>
-		                                <td class="fontsize">${cate.d22}</td>
-		                                <td class="fontsize"></td>
-	                            	</tr>
-                                </c:forEach>
+	                        	<c:forEach var="cateday1" items="${cateday}">
+	                        		<c:set var="catelimit" value="${cateday1.ml}"></c:set>
+	                        	</c:forEach>
+                            	<c:forEach var="cateday1" items="${cateday}" begin="0" end="${catelimit}" step="1">
+                      				<tr>
+                      					<td class="fontsize">${cateday1.category}</td>
+                      					<c:set var="catename" value="${cateday1.category}"></c:set>
+                      					<c:forEach var="cateday1" items="${cateday}" begin="${((catelimit+1)*11)}" end="${((catelimit+1)*22)-1}" step="1">
+                      						<c:if test="${cateday1.category == catename}">
+	                      						<td class="fontsize">${cateday1.day2}</td>
+	                      					</c:if>
+                         				</c:forEach>
+                         				<td class="fontsize"></td>
+                         			</tr>
+                        		</c:forEach>
                                	<tr>
 	                                <td class="fontsize"><strong>일 합계</strong></td>
 	                                <td class="fontsize">${cmsum.d12}</td>
@@ -135,38 +115,78 @@
 	                        <thead>
 	                            <tr>
 	                            	<th class="fontsize">카테고리 \ 일</th>
-	                                <th class="fontsize">${date.d23}</th>
-	                                <th class="fontsize">${date.d24}</th>                       
-	                            	<th class="fontsize">${date.d25}</th>
-	                                <th class="fontsize">${date.d26}</th>
-	                                <th class="fontsize">${date.d27}</th>
-	                                <th class="fontsize">${date.d28}</th>
-	                                <th class="fontsize">${date.d29}</th>
-	                                <th class="fontsize">${date.d30}</th>
-	                                <th class="fontsize">${date.d31}</th>
+	                            	<c:forEach var="date" items="${date}" varStatus="status" begin="22" end="30" step="1">
+	                                	<th class="fontsize">${date.day2}</th>
+	                                	<c:if test="${status.last and (date.cnt == 29)}">
+	                                		<th class="fontsize"></th>
+	                                	</c:if>
+	                                	<c:if test="${status.last and (date.cnt == 27)}">
+	                                		<th class="fontsize"></th>
+	                                		<th class="fontsize"></th>
+	                                		<th class="fontsize"></th>
+	                                	</c:if>
+	                                </c:forEach>
 	                                <th class="fontsize"></th>
 	                                <th class="fontsize"></th>
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	<c:forEach var="cate" items="${cateday}">
-                                	<tr>
-		                                <td class="fontsize">${cate.category}</td>
-		                                <td class="fontsize">${cate.d23}</td>
-		                                <td class="fontsize">${cate.d24}</td>
-		                                <td class="fontsize">${cate.d25}</td>
-		                                <td class="fontsize">${cate.d26}</td>
-		                                <td class="fontsize">${cate.d27}</td>
-		                                <td class="fontsize">${cate.d28}</td>
-		                                <td class="fontsize">${cate.d29}</td>
-		                                <td class="fontsize">${cate.d30}</td>
-		                                <td class="fontsize">${cate.d31}</td>
-		                                <td class="fontsize"></td>
-		                                <td class="fontsize"></td>
-		                                <td class="fontsize">${cate.sumresult}</td>
-	                            	</tr>
-                                </c:forEach>
+	                        	<c:forEach var="cateday1" items="${cateday}">
+	                        		<c:set var="catelimit" value="${cateday1.ml}"></c:set>
+	                        	</c:forEach>
+                            	<c:forEach var="cateday1" items="${cateday}" varStatus="status" begin="0" end="${catelimit}" step="1">
+                      				<tr>
+                      					<td class="fontsize">${cateday1.category}</td>
+                      					<c:set var="catename" value="${cateday1.category}"></c:set>
+                      					<c:if test="${cateday1.cnt == 30}">
+	                                		<c:forEach var="cateday1" items="${cateday}" varStatus="status" begin="${((catelimit+1)*22)}" end="${((catelimit+1)*32)-1}" step="1">
+	                      						<c:if test="${cateday1.category == catename}">
+	                      							<c:if test="${!status.last}">
+	                      								<td class="fontsize">${cateday1.day2}</td>
+	                      							</c:if>
+	                      							<c:if test="${status.last}">
+	                      								<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+	                      								<td class="fontsize">${cateday1.day2}</td>
+	                      							</c:if>
+		                      					</c:if>
+	                         				</c:forEach>
+		                                </c:if>
+                      					<c:if test="${cateday1.cnt == 29}">
+			                                <c:forEach var="cateday1" items="${cateday}" varStatus="status" begin="${((catelimit+1)*22)}" end="${((catelimit+1)*31)-1}" step="1">
+	                      						<c:if test="${cateday1.category == catename}">
+	                      							<c:if test="${!status.last}">
+	                      								<td class="fontsize">${cateday1.day2}</td>
+	                      							</c:if>
+	                      							<c:if test="${status.last}">
+	                      								<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+	                      								<td class="fontsize">${cateday1.day2}</td>
+	                      							</c:if>
+		                      					</c:if>
+	                         				</c:forEach>
+	                                	</c:if>
+	                                	<c:if test="${cateday1.cnt == 27}">
+	                                		<c:forEach var="cateday1" items="${cateday}" varStatus="status" begin="${((catelimit+1)*22)}" end="${((catelimit+1)*29)-1}" step="1">
+	                      						<c:if test="${cateday1.category == catename}">
+	                      							<c:if test="${!status.last}">
+	                      								<td class="fontsize">${cateday1.day2}</td>
+	                      							</c:if>
+	                      							<c:if test="${status.last}">
+	                      								<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+				                         				<td class="fontsize"></td>
+	                      								<td class="fontsize">${cateday1.day2}</td>
+	                      							</c:if>
+		                      					</c:if>
+	                         				</c:forEach>
+	                                	</c:if>
+                         			</tr>
+                        		</c:forEach>
                                	<tr>
 	                                <td class="fontsize"><strong>일 합계</strong></td>
 	                                <td class="fontsize">${cmsum.d23}</td>
