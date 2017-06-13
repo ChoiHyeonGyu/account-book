@@ -139,6 +139,26 @@
 			order by category.category
  		]]>
 	</select>
+	
+		<select id="operationscategory" parameterType="listvo" resultType="listvo">
+				<choose>
+					<when test="operations == '지출'">
+						<![CDATA[
+					 		SELECT a.category, d.LIST_ID as listId FROM category a, userscategory b, users c , list d WHERE a.CATEGORY_ID = b.CATEGORY_ID AND b.ID = c.ID and c.ID = d.ID and d.list_id = #{listId} and b.operations='-' and b.id=#{id} 
+					 	]]>
+					</when>
+					<when test="operations == '투자'">
+						<![CDATA[
+				 			SELECT a.category, d.LIST_ID as listId FROM category a, userscategory b, users c , list d WHERE a.CATEGORY_ID = b.CATEGORY_ID AND b.ID = c.ID and c.ID = d.ID and b.operations='0' and b.id=#{id} and d.list_id = #{listId}
+				 		]]>
+					</when>
+					<otherwise>
+						<![CDATA[
+				 			SELECT a.category, d.LIST_ID as listId FROM category a, userscategory b, users c , list d WHERE a.CATEGORY_ID = b.CATEGORY_ID AND b.ID = c.ID and c.ID = d.ID and b.operations='+' and b.id=#{id} and d.list_id = #{listId}
+				 		]]>
+					</otherwise>
+				</choose>
+	</select>
 
 	<delete id="delete" parameterType="optionvo">
 		<![CDATA[

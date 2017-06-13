@@ -55,8 +55,12 @@ public class ListDao {
 		map.put("page", page);
 		map.put("listSize", listSize);
 		map.put("id", id);
-		return sql.selectList("listview.movelistselect", map);
+		List<ListVo> vo = sql.selectList("listview.movelistselect", map);
+		 return vo;
+
 	}
+	
+
 
 	public ListVo selectlocation(int listId) {
 		return sql.selectOne("listview.selectlocation", listId);
@@ -154,6 +158,20 @@ public class ListDao {
 		vo1.setBank(operation);
 		ListVo vo = sql.selectOne("listview.ablemoney",vo1 );
 		 return vo;
+	}
+
+	public List<ListVo> operationCategory(String id) {
+		List<ListVo> map = sql.selectList("listview.operationcategory", id);
+		return  map;
+	}
+
+	public void operationCategory1(int i) {
+		System.out.println("iiiiiii" + i);
+	}
+
+	public List<ListVo> operations(List<ListVo> list) {
+		 List<ListVo> list1 = sql.selectList("listview.operations",list);
+		return list1;
 	}
 
 

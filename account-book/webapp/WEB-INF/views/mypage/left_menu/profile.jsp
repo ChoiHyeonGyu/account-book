@@ -24,29 +24,36 @@
 <br />
 
 <!-- 통계 -->
+<form action="${pageContext.request.contextPath }/${currentuserid}/profilegraph" method="post">
 <div class="panel panel-default row">
-	<div class="panel-heading">투자 그래프</div>
+	<div class="panel-heading">투자 그래프(목표치 금액)</div>
 	<div class="panel-body">
 		<div class="flot-chart2">
+				 <span>이번달 </span>&emsp;&emsp;&emsp;<span>1,000,000</span>
 		 <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;"><span class="sr-only">60% Complete</span></div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${profilegraph.total}%"><span>${profilegraph.total}%</span></div>
       </div>
+      <span>2월</span>
       <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"><span class="sr-only">40% Complete (success)</span></div>
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ${90}%"><span>${profilegraph.total}%</span></div>
       </div>
+      <span>3월</span>
       <div class="progress">
         <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"><span class="sr-only">20% Complete</span></div>
       </div>
+      <span>4월</span>
       <div class="progress">
         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
       </div>
+      <span>5월</span>
       <div class="progress">
         <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"><span class="sr-only">80% Complete (danger)</span></div>
       </div>
+       <span>5개월 전</span>&emsp;&emsp;&emsp;<span>1,000,000</span>
       <div class="progress">
         <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete</span></div>
       </div>
-       <div class="progress">
+       <!-- <div class="progress">
         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"><span class="sr-only">60% Complete (warning)</span></div>
       </div>
       <div class="progress">
@@ -59,12 +66,13 @@
         <div class="progress-bar progress-bar-success" style="width: 35%"><span class="sr-only">35% Complete (success)</span></div>
         <div class="progress-bar progress-bar-warning" style="width: 20%"><span class="sr-only">20% Complete (warning)</span></div>
         <div class="progress-bar progress-bar-danger" style="width: 10%"><span class='sr-only'>10% Complete (danger)</span></div>
-      </div>
+      </div> -->
       
 			<div class="flot-chart-content" id="flot-pie-chart2"></div>
 		</div>
 	</div>
 </div>
+</form>
 
 <!-- 팝업영역 -->
 

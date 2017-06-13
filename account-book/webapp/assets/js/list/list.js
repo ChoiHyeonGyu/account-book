@@ -504,7 +504,7 @@ function my7Function(val) {
 		$("#"+listarray[i]+"f").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
 			console.log(num);
 			var list = {"listId":num.target.id,"category":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
-					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+					,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify7",// 보낼주소
 			    type: "POST",

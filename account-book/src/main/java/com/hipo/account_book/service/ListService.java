@@ -1,5 +1,6 @@
 package com.hipo.account_book.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -174,9 +175,8 @@ public class ListService {
 		ListVo vo = new ListVo();
 		 vo.setId(id);
 		 id1 = vo.getId();
-		id = id1.replaceAll("123","admin");
+		id = id1.replaceAll("123","admin");// admin 으로 바꿔서 투자 나오게 함.
 		List<ListVo> s = dao.operations(id);
-		
 		return s ;
 	}
 
@@ -187,6 +187,13 @@ public class ListService {
 	public ListVo totalmoney(String id, String operation) {
 		 ListVo vo = dao.totalmoney(id,operation);
 		 return vo ;
+	}
+
+	public List<ListVo> operationCategory(String id) {
+		List<ListVo> list = dao.operationCategory(id);
+		System.out.println("돌아오는 값 " + list);
+		List<ListVo> list1 = dao.operations(list);
+		 return list1;
 	}
 
 	

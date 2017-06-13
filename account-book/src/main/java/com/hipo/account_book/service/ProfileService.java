@@ -87,6 +87,14 @@ public class ProfileService {
 		 
 	}
 
+	public UserVo graph(String id) {
+		return dao.graph(id);
+	}
+
+	public UserVo graph2(String id) {
+		return dao.graph2(id);
+	}
+
 
 /*	public UserVo checkUpdate1(String i) {
 		return ;

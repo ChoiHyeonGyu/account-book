@@ -1,6 +1,7 @@
 package com.hipo.account_book.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,6 @@ public class OptionService {
 		optionDao.Modify(optionvo);
 	}
 	public void Modify2(OptionVo optionvo){
-		System.out.println("ddqwdqwdqwdqwdqwdqwd");
 		optionDao.Modify2(optionvo);
 	}
 	public int Modify1(OptionVo optionvo){
@@ -80,7 +80,6 @@ public class OptionService {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		System.out.println("ㅇ르ㅏㅣㄴㅁ어라ㅓㅈ도갖도가ㅓㄴ오라ㅓㅗㅈㄹ" + vo);
 		optionDao.categoryModify1(vo);
 		return false;
 	}
@@ -106,5 +105,8 @@ public class OptionService {
 		} else{
 			return "fail";
 		}
+	}
+	public List<OptionVo> operationsCategory(String id) {
+		return	optionDao.operationsCategory(id);
 	}
 }

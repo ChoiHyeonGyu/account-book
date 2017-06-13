@@ -1,6 +1,8 @@
 package com.hipo.account_book.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,8 +88,6 @@ public class OptionDao {
 	}
 	
 	public OptionVo limitModify2(String category) {
-		OptionVo vo;
-		vo = sql.selectOne("option.limitMdify2", category);
 		return sql.selectOne("option.limitMdify2", category);
 	}
 	
@@ -114,5 +114,12 @@ public class OptionDao {
 		sql.delete("option.resetcategory", id);
 		sql.delete("option.resetlist", id);
 		
+	}
+
+	public List<OptionVo> operationsCategory(String id) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id", id);
+		System.out.println("mapmapmap" + map);
+		return sql.selectList("option.operationsCategory",map);
 	}
 }

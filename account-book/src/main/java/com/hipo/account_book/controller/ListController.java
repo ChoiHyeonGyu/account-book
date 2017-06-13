@@ -42,20 +42,24 @@ public class ListController {
 	public String Listaj(Model model, @ModelAttribute OptionVo optionvo,
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
-			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
+			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation,@ModelAttribute ListVo listvo) {
 		UserVo username = Pservice.checkUpdate(id);// about profile 
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
 		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
+		Map<String, Object> vo = service.movelist(operation, pagination, searching, id);
+		model.addAttribute("ps", vo);
 		model.addAttribute("v2", service.totalmonth(id, operation));
 		model.addAttribute("v3", service.totalmonth1(id, operation));
 		model.addAttribute("v4",service.totalmonth2(id, operation));
 		model.addAttribute("v5",service.totalmoney(id, operation));
 		model.addAttribute("categorylist",service.categorylist(id));
 		model.addAttribute("operationslist",service.operationslist(id));
+		List<OptionVo> option = optionservice.getCategory(optionvo);
 		model.addAttribute("option", option);
+		model.addAttribute("profilegraph",Pservice.graph(id));
+		model.addAttribute("profilegraph2",Pservice.graph2(id));
+		
 		return "mypage/list/list";
 	}
 	
@@ -147,6 +151,7 @@ public class ListController {
 	@RequestMapping("/modify7")
 	 /* paid!*/
 	public JSONResult modify7(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		System.out.println("modify 7 " + map);
 		return JSONResult.success(service.modify8(map));
 	}
 	

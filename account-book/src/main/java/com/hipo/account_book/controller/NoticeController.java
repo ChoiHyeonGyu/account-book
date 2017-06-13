@@ -55,7 +55,6 @@ public class NoticeController {
 
 		return "customer/notice/faq";
 	}
-
 	@RequestMapping("/noticeview")
 	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id) {
 

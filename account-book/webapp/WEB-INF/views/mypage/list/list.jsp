@@ -133,7 +133,7 @@
 								</tr>
 							</form>
 							<!--  가계부 리스트 뿌려주는곳.	 -->
-							<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
+						<%-- 	<form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> </form> --%>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
 									listarray.push("${vo.listId}");
@@ -186,9 +186,11 @@
 									<td><input id="${vo.listId}c" value="${vo.bank}"
 										class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
+										
 									<td><select id="${vo.listId}f" name="category"
 										class="tableinput searchbox2"
 										onchange="my7Function(this.value)" required>
+										
 											<c:forEach var="bb" items="${option}">
 												<c:if test="${vo.category != bb.category}">
 													<option value="${bb.category}">${bb.category}</option>

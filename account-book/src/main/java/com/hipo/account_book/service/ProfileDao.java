@@ -38,4 +38,13 @@ public class ProfileDao {
 		 
 	}
 
+	public UserVo graph(String id) {
+		UserVo vo= sql.selectOne("profile.graph",id);
+		return vo; 
+	}
+
+	public UserVo graph2(String id) {
+		return	sql.selectOne("profile.graph2",id);
+	}
+
 }
