@@ -1,6 +1,5 @@
 package com.hipo.account_book.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,31 +41,38 @@ public class ListController {
 	public String Listaj(Model model, @ModelAttribute OptionVo optionvo,
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
-			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation) {
+			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation,@ModelAttribute ListVo listvo) {
 		UserVo username = Pservice.checkUpdate(id);// about profile 
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
 		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
+		Map<String, Object> vo = service.movelist(operation, pagination, searching, id);
+		model.addAttribute("ps", vo);
 		model.addAttribute("v2", service.totalmonth(id, operation));
 		model.addAttribute("v3", service.totalmonth1(id, operation));
 		model.addAttribute("v4",service.totalmonth2(id, operation));
 		model.addAttribute("v5",service.totalmoney(id, operation));
 		model.addAttribute("categorylist",service.categorylist(id));
 		model.addAttribute("operationslist",service.operationslist(id));
-		model.addAttribute("option", option);
+		model.addAttribute("plusoption", optionservice.getPlusCategory(optionvo));
+		model.addAttribute("minusoption", optionservice.getMinusCategory(optionvo));
+		model.addAttribute("investmentoption", optionservice.getInvestmentCategory(optionvo));
+		model.addAttribute("profilegraph",Pservice.graph(id));// 프로필 사이드 그래프 1
+		model.addAttribute("profilegraph2",Pservice.graph2(id));
+		model.addAttribute("profilegraph3",Pservice.graph3(id));
+		model.addAttribute("profilegraph4",Pservice.graph4(id));
+		model.addAttribute("profilegraph5",Pservice.graph5(id));
+		model.addAttribute("profilegraph6",Pservice.graph6(id));
+		model.addAttribute("profilegraph7",Pservice.graph7(id));
+		 
 		return "mypage/list/list";
 	}
 	
 	@RequestMapping("/userinfo")
 	public String changing(@RequestParam("id") String id, @RequestParam("name") String name,
 			@RequestParam("photo") MultipartFile photo, @RequestParam("password") String password,Model model) {
-		System.out.println(
-				"vovovovovovovovovovvoovvovovovovovovovo" + "id입니다 =" + id + "name =" + name + "photo = " + photo + "password = " + password);
 
 		Pservice.updateProfile(id, name, photo, password);
-		System.out.println("final = = = = = =" + photo);
 		return "redirect:/{id}/list";
 
 	}
@@ -95,7 +101,6 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map) {
-		System.out.println("정보 확인" + map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));// 여기서
 																									// 에러.
 	}
@@ -126,7 +131,7 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modifyl")
 	public JSONResult modifyl(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		return null/*JSONResult.success(service.modifyl(map))*/;
+		return null;
 	}
 	@ResponseBody
 	@RequestMapping("/modify5")
@@ -140,6 +145,7 @@ public class ListController {
 	@RequestMapping("/modify6")
 	 /* paid!*/
 	public JSONResult modify6(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		map.put("id", id);
 		return JSONResult.success(service.modify7(map));
 	}
 	

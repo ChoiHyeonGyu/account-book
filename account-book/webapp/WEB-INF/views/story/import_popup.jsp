@@ -146,15 +146,15 @@
 		                    <thead>
 		                        <tr>
 		                        	<th class="fontsize">카테고리 \ 일</th>
-		                            <th id="dated23" class="fontsize">${date.d23}</th>
-		                            <th id="dated24" class="fontsize">${date.d24}</th>                       
-		                        	<th id="dated25" class="fontsize">${date.d25}</th>
-		                            <th id="dated26" class="fontsize">${date.d26}</th>
-		                            <th id="dated27" class="fontsize">${date.d27}</th>
-		                            <th id="dated28" class="fontsize">${date.d28}</th>
-		                            <th id="dated29" class="fontsize">${date.d29}</th>
-		                            <th id="dated30" class="fontsize">${date.d30}</th>
-		                            <th id="dated31" class="fontsize">${date.d31}</th>
+		                            <th id="dated23" class="fontsize"></th>
+		                            <th id="dated24" class="fontsize"></th>                       
+		                        	<th id="dated25" class="fontsize"></th>
+		                            <th id="dated26" class="fontsize"></th>
+		                            <th id="dated27" class="fontsize"></th>
+		                            <th id="dated28" class="fontsize"></th>
+		                            <th id="dated29" class="fontsize"></th>
+		                            <th id="dated30" class="fontsize"></th>
+		                            <th id="dated31" class="fontsize"></th>
 		                            <th class="fontsize"></th>
 		                            <th class="fontsize"></th>
 		                            <th class="fontsize">카테고리 합계</th>
@@ -174,7 +174,7 @@
 		                            <td id="cmsumd31" class="fontsize"></td>
 		                            <td class="fontsize"></td>
 		                            <td class="fontsize"></td>
-		                            <td id="cmsumresult" class="fontred fontsize"></td>
+		                            <td id="cmsumd32" class="fontred fontsize"></td>
 		                       	</tr>
 		                    </tbody>
 		                </table>

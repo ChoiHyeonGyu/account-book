@@ -37,7 +37,6 @@ public class OptionService {
 		optionDao.Modify(optionvo);
 	}
 	public void Modify2(OptionVo optionvo){
-		System.out.println("ddqwdqwdqwdqwdqwdqwd");
 		optionDao.Modify2(optionvo);
 	}
 	public int Modify1(OptionVo optionvo){
@@ -80,13 +79,24 @@ public class OptionService {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		System.out.println("ㅇ르ㅏㅣㄴㅁ어라ㅓㅈ도갖도가ㅓㄴ오라ㅓㅗㅈㄹ" + vo);
 		optionDao.categoryModify1(vo);
 		return false;
 	}
 	
 	public List<OptionVo> getCategory(OptionVo vo) {
 		List<OptionVo> option = optionDao.category(vo);
+		return option;
+	}
+	public List<OptionVo> getPlusCategory(OptionVo vo) {
+		List<OptionVo> option = optionDao.pluscategory(vo);
+		return option;
+	}
+	public List<OptionVo> getMinusCategory(OptionVo vo) {
+		List<OptionVo> option = optionDao.minuscategory(vo);
+		return option;
+	}
+	public List<OptionVo> getInvestmentCategory(OptionVo vo) {
+		List<OptionVo> option = optionDao.investmentcategory(vo);
 		return option;
 	}
 	
@@ -106,5 +116,8 @@ public class OptionService {
 		} else{
 			return "fail";
 		}
+	}
+	public List<OptionVo> operationsCategory(String id) {
+		return	optionDao.operationsCategory(id);
 	}
 }

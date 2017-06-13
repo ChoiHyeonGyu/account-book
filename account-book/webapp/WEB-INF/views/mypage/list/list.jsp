@@ -133,7 +133,7 @@
 								</tr>
 							</form>
 							<!--  가계부 리스트 뿌려주는곳.	 -->
-							<%-- <form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> --%>
+						<%-- 	<form id="modify11" action="${pageContext.request.contextPath }/${currentuserid}/modify1" method="post"> </form> --%>
 							<c:forEach var="vo" items="${ps.list}" varStatus="status">
 								<script>
 									listarray.push("${vo.listId}");
@@ -168,35 +168,58 @@
 										class="tableinput searchbox2"
 										onchange="my6Function(this.value)" required>
 											<c:if test="${vo.operations == '수입'}">
-												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="+" selected="selected">${vo.operations}</option>
 												<option value="-">지출</option>
 												<option value="0">투자</option>
 											</c:if>
 											<c:if test="${vo.operations == '지출'}">
 												<option value="+">수입</option>
-												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="-" selected="selected">${vo.operations}</option>
 												<option value="0">투자</option>
 											</c:if>
 											<c:if test="${vo.operations == '투자'}">
 												<option value="+">수입</option>
 												<option value="-">지출</option>
-												<option value="${vo.operations}" selected="selected">${vo.operations}</option>
+												<option value="0" selected="selected">${vo.operations}</option>
 											</c:if>
 									</select></td>
 									<td><input id="${vo.listId}c" value="${vo.bank}"
 										class="mine tablecoler" onchange="my4Function(this.value)"
 										style="background: #ececec"></td>
+										
 									<td><select id="${vo.listId}f" name="category"
 										class="tableinput searchbox2"
 										onchange="my7Function(this.value)" required>
-											<c:forEach var="bb" items="${option}">
-												<c:if test="${vo.category != bb.category}">
-													<option value="${bb.category}">${bb.category}</option>
-												</c:if>
-												<c:if test="${vo.category == bb.category}">
-													<option value="${bb.category}" selected="selected">${bb.category}</option>
-												</c:if>
-											</c:forEach>
+											<c:if test="${vo.operations == '수입'}">
+												<c:forEach var="bb" items="${plusoption}">
+													<c:if test="${vo.category != bb.category}">
+														<option value="${bb.category}">${bb.category}</option>
+													</c:if>
+													<c:if test="${vo.category == bb.category}">
+														<option value="${bb.category}" selected="selected">${bb.category}</option>
+													</c:if>
+												</c:forEach>
+											</c:if>
+											<c:if test="${vo.operations == '지출'}">
+												<c:forEach var="bb" items="${minusoption}">
+													<c:if test="${vo.category != bb.category}">
+														<option value="${bb.category}">${bb.category}</option>
+													</c:if>
+													<c:if test="${vo.category == bb.category}">
+														<option value="${bb.category}" selected="selected">${bb.category}</option>
+													</c:if>
+												</c:forEach>
+											</c:if>
+											<c:if test="${vo.operations == '투자'}">
+												<c:forEach var="bb" items="${investmentoption}">
+													<c:if test="${vo.category != bb.category}">
+														<option value="${bb.category}">${bb.category}</option>
+													</c:if>
+													<c:if test="${vo.category == bb.category}">
+														<option value="${bb.category}" selected="selected">${bb.category}</option>
+													</c:if>
+												</c:forEach>
+											</c:if>
 									</select></td>
 									<td><strong id="maps${vo.listId}"
 										class="fa fa-map-marker fa-2x sr-contact col-lg-offset-4 tablecoler"

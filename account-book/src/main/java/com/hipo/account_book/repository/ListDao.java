@@ -55,8 +55,12 @@ public class ListDao {
 		map.put("page", page);
 		map.put("listSize", listSize);
 		map.put("id", id);
-		return sql.selectList("listview.movelistselect", map);
+		List<ListVo> vo = sql.selectList("listview.movelistselect", map);
+		 return vo;
+
 	}
+	
+
 
 	public ListVo selectlocation(int listId) {
 		return sql.selectOne("listview.selectlocation", listId);
@@ -156,14 +160,17 @@ public class ListDao {
 		 return vo;
 	}
 
+	public List<ListVo> operationCategory(String id) {
+		List<ListVo> map = sql.selectList("listview.operationcategory", id);
+		return  map;
+	}
 
-	/*
-	 * public int totalmonth(ListVo vo) { System.out.println("돈돈돈돈돈돈" + vo);
-	 * return sql.selectOne("listview.totalmonth", vo); }
-	 */
+	public void operationCategory1(int i) {
+		
+	}
 
-	/*
-	 * public ListVo totalmonth(ListVo vo) { return
-	 * sql.selectOne("listview.totalmoney", parameter); }
-	 */
+	public List<ListVo> operations(List<ListVo> list) {
+		 List<ListVo> list1 = sql.selectList("listview.operations",list);
+		return list1;
+	}
 }

@@ -17,7 +17,6 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.hipo.account_book.repository.BoardDao;
 import com.hipo.account_book.vo.BoardVo;
-import com.hipo.account_book.vo.GraphDateVo;
 import com.hipo.account_book.vo.GraphVo;
 
 @Service
@@ -27,6 +26,8 @@ public class BoardService {
 	
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
+	private static final String[] array1 = {"01","03","05","07","08","10","12"};
+	private static final String[] array2 = {"04", "06", "09", "11"};
 	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
 		boardvo.setId(id);
@@ -128,13 +129,66 @@ public class BoardService {
 	}
 	
 	public Map<String, Object> boardcontenttable(Map<String, Object> map){
-		Map<String, Object> map2 = new HashMap<String, Object>();
+		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
+		List<GraphVo> datedetailtable = new ArrayList<GraphVo>();
+		List<GraphVo> datedetaits = new ArrayList<GraphVo>();
+		List<Integer> intlist = new ArrayList<Integer>();
+		String id = boardDao.findidselect(map.get("boardid").toString());
+		String month = map.get("month").toString();
+		for(int j=0; j<array1.length; j++){
+			if(month.substring(5).equals(array1[j])){
+				for(int i=-31; i<=-1; i++){
+					datedetaillist.add(boardDao.datedetailselect(arraysettings(month, i)));
+					intlist.add(i);
+				}
+				datedetailtable = boardDao.selectedtableselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetailtable.size()-1; i++){
+					datedetailtable.get(i).setCnt(30);
+				}
+				datedetaits = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetaits.size(); i++){
+					datedetaits.get(i).setCnt(30);
+				}
+			}
+		}
+		for(int j=0; j<array2.length; j++){
+			if(month.substring(5).equals(array2[j])){
+				for(int i=-30; i<=-1; i++){
+					GraphVo graphvo = boardDao.datedetailselect(arraysettings(month, i));
+					graphvo.setCnt(29);
+					datedetaillist.add(graphvo);
+					intlist.add(i);
+				}
+				datedetailtable = boardDao.selectedtableselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetailtable.size()-1; i++){
+					datedetailtable.get(i).setCnt(29);
+				}
+				datedetaits = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetaits.size(); i++){
+					datedetaits.get(i).setCnt(29);
+				}
+			}
+		}
+		if(month.substring(5).equals("02")){
+			for(int i=-28; i<=-1; i++){
+				GraphVo graphvo = boardDao.datedetailselect(arraysettings(month, i));
+				graphvo.setCnt(29);
+				datedetaillist.add(graphvo);
+				intlist.add(i);
+			}
+			datedetailtable = boardDao.selectedtableselect(arraysettings(month, intlist, id, "-"));
+			for(int i=0; i<datedetailtable.size()-1; i++){
+				datedetailtable.get(i).setCnt(27);
+			}
+			datedetaits = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "-"));
+			for(int i=0; i<datedetaits.size(); i++){
+				datedetaits.get(i).setCnt(27);
+			}
+		}
 		Map<String, Object> mapresult = new HashMap<String, Object>();
-		map2 = arraysettings(map.get("month").toString());
-		map2.put("id", boardDao.findidselect(map.get("boardid").toString()));
-		mapresult.put("date", boardDao.datedetailselect(arraysettings(map.get("month").toString())));
-		mapresult.put("cateday", boardDao.mselectedtableselect(map2));
-		mapresult.put("cmsum", boardDao.mselectedtablesumselect(map2));
+		mapresult.put("date", datedetaillist);
+		mapresult.put("cateday", datedetailtable);
+		mapresult.put("cmsum", datedetaits);
 		return mapresult;
 	}
 	
@@ -154,10 +208,10 @@ public class BoardService {
 	
 	public Map<String, Object> getBoardList(int currentPage, String keyword){
 		//1. 페이징을 위한 기본 데이터 계산
-		int totalCount = boardDao.boardcount(keyword); // 데이터 수 . 왜 키워드로 받는지 . 걸러서 가지고 오는것
-		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );//리스팅 되는 페이지
-		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );//페이지수 .
-		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );//현재 페이지
+		int totalCount = boardDao.boardcount(keyword);
+		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );
+		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );
+		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
 		
 		//2. 파라미터 page 값  검증
 		if( currentPage < 1 ) {
@@ -165,11 +219,11 @@ public class BoardService {
 			currentBlock = 1;
 		} else if( currentPage > pageCount ) {
 			currentPage = pageCount;
-			currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );//이거의 대한 이유 소수점
+			currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
 		}
 		
 		//3. view에서 페이지 리스트를 렌더링 하기위한 데이터 값 계산
-		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1)*PAGE_SIZE + 1;//이거의 대한것
+		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1)*PAGE_SIZE + 1;
 		int prevPage = ( currentBlock > 1 ) ? ( currentBlock - 1 ) * PAGE_SIZE : 0;
 		int nextPage = ( currentBlock < blockCount ) ? currentBlock * PAGE_SIZE + 1 : 0;
 		int endPage = ( nextPage > 0 ) ? ( beginPage - 1 ) + LIST_SIZE : pageCount;
@@ -180,7 +234,7 @@ public class BoardService {
 		map.put( "totalCount", totalCount );
 		map.put( "listSize", LIST_SIZE );
 		map.put( "currentPage", currentPage );
-		map.put( "beginPage", beginPage );// 이것의 값은 . 어디서 뽑습니까
+		map.put( "beginPage", beginPage );
 		map.put( "endPage", endPage );
 		map.put( "prevPage", prevPage );
 		map.put( "nextPage", nextPage );
@@ -191,10 +245,10 @@ public class BoardService {
 	
 	public Map<String, Object> getBoardList(String id, int currentPage, String keyword){
 		//1. 페이징을 위한 기본 데이터 계산
-		int totalCount = boardDao.boardcount(keyword); // 데이터 수 . 왜 키워드로 받는지 . 걸러서 가지고 오는것
-		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );//리스팅 되는 페이지
-		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );//페이지수 .
-		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );//현재 페이지
+		int totalCount = boardDao.boardcount(keyword);
+		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );
+		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );
+		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
 		
 		//2. 파라미터 page 값  검증
 		if( currentPage < 1 ) {
@@ -202,11 +256,11 @@ public class BoardService {
 			currentBlock = 1;
 		} else if( currentPage > pageCount ) {
 			currentPage = pageCount;
-			currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );//이거의 대한 이유 소수점
+			currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );
 		}
 		
 		//3. view에서 페이지 리스트를 렌더링 하기위한 데이터 값 계산
-		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1)*PAGE_SIZE + 1;//이거의 대한것
+		int beginPage = currentBlock == 0 ? 1 : (currentBlock - 1)*PAGE_SIZE + 1;
 		int prevPage = ( currentBlock > 1 ) ? ( currentBlock - 1 ) * PAGE_SIZE : 0;
 		int nextPage = ( currentBlock < blockCount ) ? currentBlock * PAGE_SIZE + 1 : 0;
 		int endPage = ( nextPage > 0 ) ? ( beginPage - 1 ) + LIST_SIZE : pageCount;
@@ -217,7 +271,7 @@ public class BoardService {
 		map.put( "totalCount", totalCount );
 		map.put( "listSize", LIST_SIZE );
 		map.put( "currentPage", currentPage );
-		map.put( "beginPage", beginPage );// 이것의 값은 . 어디서 뽑습니까
+		map.put( "beginPage", beginPage );
 		map.put( "endPage", endPage );
 		map.put( "prevPage", prevPage );
 		map.put( "nextPage", nextPage );
@@ -287,44 +341,48 @@ public class BoardService {
 		List<Integer> importlist = new ArrayList<Integer>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
+		map.put("oper", "+");
 		for(int i=-11; i<=0; i++){
 			importlist.add(i);
 		}
 		map.put("intarray", importlist);
-		return boardDao.imreporttableselect(map);
+		return boardDao.reportsourceselect(map);
 	}
 	
-	public GraphVo imreporttablesum(String id){
+	public List<GraphVo> imreporttablesum(String id){
 		List<Integer> importlist = new ArrayList<Integer>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
+		map.put("oper", "+");
 		for(int i=-11; i<=0; i++){
 			importlist.add(i);
 		}
 		map.put("intarray", importlist);
-		return boardDao.imreporttablesumselect(map);
+		return boardDao.reportsourcesumselect(map);
 	}
 	
 	public List<GraphVo> exreporttable(String id){
 		List<Integer> exportlist = new ArrayList<Integer>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
+		map.put("oper", "-");
 		for(int i=-11; i<=0; i++){
 			exportlist.add(i);
 		}
 		map.put("intarray", exportlist);
-		return boardDao.exreporttableselect(map);
+		return boardDao.reportsourceselect(map);
 	}
 	
-	public GraphVo exreporttablesum(String id){
+	public List<GraphVo> exreporttablesum(String id){
 		List<Integer> exportlist = new ArrayList<Integer>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
+		map.put("oper", "-");
 		for(int i=-11; i<=0; i++){
 			exportlist.add(i);
 		}
 		map.put("intarray", exportlist);
-		return boardDao.exreporttablesumselect(map);
+		return boardDao.reportsourcesumselect(map);
 	}
 	
 	public List<GraphVo> date(){
@@ -335,41 +393,204 @@ public class BoardService {
 		return datelist;
 	}
 	
-	public GraphDateVo datedetail(String month){
-		return boardDao.datedetailselect(arraysettings(month));
+	public List<GraphVo> datedetail(String month){
+		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
+		for(int j=0; j<array1.length; j++){
+			if(month.substring(5).equals(array1[j])){
+				for(int i=-31; i<=-1; i++){
+					datedetaillist.add(boardDao.datedetailselect(arraysettings(month, i)));
+				}
+			}
+		}
+		for(int j=0; j<array2.length; j++){
+			if(month.substring(5).equals(array2[j])){
+				for(int i=-30; i<=-1; i++){
+					GraphVo graphvo = boardDao.datedetailselect(arraysettings(month, i));
+					graphvo.setCnt(29);
+					datedetaillist.add(graphvo);
+				}
+			}
+		}
+		if(month.substring(5).equals("02")){
+			for(int i=-28; i<=-1; i++){
+				GraphVo graphvo = boardDao.datedetailselect(arraysettings(month, i));
+				graphvo.setCnt(27);
+				datedetaillist.add(graphvo);
+			}
+		}
+		return datedetaillist;
 	}
 	
-	public List<GraphDateVo> pselectedtable(String id, String month){
-		Map<String, Object> map = arraysettings(month);
-		map.put("id", id);
-		return boardDao.pselectedtableselect(map);
+	public List<GraphVo> pselectedtable(String id, String month){
+		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
+		List<Integer> intlist = new ArrayList<Integer>();
+		for(int j=0; j<array1.length; j++){
+			if(month.substring(5).equals(array1[j])){
+				for(int i=-31; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtableselect(arraysettings(month, intlist, id, "+"));
+				for(int i=0; i<datedetaillist.size()-1; i++){
+					datedetaillist.get(i).setCnt(30);
+				}
+			}
+		}
+		for(int j=0; j<array2.length; j++){
+			if(month.substring(5).equals(array2[j])){
+				for(int i=-30; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtableselect(arraysettings(month, intlist, id, "+"));
+				for(int i=0; i<datedetaillist.size()-1; i++){
+					datedetaillist.get(i).setCnt(29);
+				}
+			}
+		}
+		if(month.substring(5).equals("02")){
+			for(int i=-28; i<=-1; i++){
+				intlist.add(i);
+			}
+			datedetaillist = boardDao.selectedtableselect(arraysettings(month, intlist, id, "+"));
+			for(int i=0; i<datedetaillist.size()-1; i++){
+				datedetaillist.get(i).setCnt(27);
+			}
+		}
+		return datedetaillist;
 	}
 	
-	public List<GraphDateVo> mselectedtable(String id, String month){
-		Map<String, Object> map = arraysettings(month);
-		map.put("id", id);
-		return boardDao.mselectedtableselect(map);
+	public List<GraphVo> mselectedtable(String id, String month){
+		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
+		List<Integer> intlist = new ArrayList<Integer>();
+		for(int j=0; j<array1.length; j++){
+			if(month.substring(5).equals(array1[j])){
+				for(int i=-31; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtableselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetaillist.size()-1; i++){
+					datedetaillist.get(i).setCnt(30);
+				}
+			}
+		}
+		for(int j=0; j<array2.length; j++){
+			if(month.substring(5).equals(array2[j])){
+				for(int i=-30; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtableselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetaillist.size()-1; i++){
+					datedetaillist.get(i).setCnt(29);
+				}
+			}
+		}
+		if(month.substring(5).equals("02")){
+			for(int i=-28; i<=-1; i++){
+				intlist.add(i);
+			}
+			datedetaillist = boardDao.selectedtableselect(arraysettings(month, intlist, id, "-"));
+			for(int i=0; i<datedetaillist.size()-1; i++){
+				datedetaillist.get(i).setCnt(27);
+			}
+		}
+		return datedetaillist;
 	}
 	
-	public GraphDateVo pselectedtablesum(String id, String month){
-		Map<String, Object> map = arraysettings(month);
-		map.put("id", id);
-		return boardDao.pselectedtablesumselect(map);
+	public List<GraphVo> pselectedtablesum(String id, String month){
+		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
+		List<Integer> intlist = new ArrayList<Integer>();
+		for(int j=0; j<array1.length; j++){
+			if(month.substring(5).equals(array1[j])){
+				for(int i=-31; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "+"));
+				for(int i=0; i<datedetaillist.size(); i++){
+					datedetaillist.get(i).setCnt(30);
+				}
+			}
+		}
+		for(int j=0; j<array2.length; j++){
+			if(month.substring(5).equals(array2[j])){
+				for(int i=-30; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "+"));
+				for(int i=0; i<datedetaillist.size(); i++){
+					datedetaillist.get(i).setCnt(29);
+				}
+			}
+		}
+		if(month.substring(5).equals("02")){
+			for(int i=-28; i<=-1; i++){
+				intlist.add(i);
+			}
+			datedetaillist = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "+"));
+			for(int i=0; i<datedetaillist.size(); i++){
+				datedetaillist.get(i).setCnt(27);
+			}
+		}
+		return datedetaillist;
 	}
 	
-	public GraphDateVo mselectedtablesum(String id, String month){
-		Map<String, Object> map = arraysettings(month);
-		map.put("id", id);
-		return boardDao.mselectedtablesumselect(map);
+	public List<GraphVo> mselectedtablesum(String id, String month){
+		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
+		List<Integer> intlist = new ArrayList<Integer>();
+		for(int j=0; j<array1.length; j++){
+			if(month.substring(5).equals(array1[j])){
+				for(int i=-31; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetaillist.size(); i++){
+					datedetaillist.get(i).setCnt(30);
+				}
+			}
+		}
+		for(int j=0; j<array2.length; j++){
+			if(month.substring(5).equals(array2[j])){
+				for(int i=-30; i<=-1; i++){
+					intlist.add(i);
+				}
+				datedetaillist = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "-"));
+				for(int i=0; i<datedetaillist.size(); i++){
+					datedetaillist.get(i).setCnt(29);
+				}
+			}
+		}
+		if(month.substring(5).equals("02")){
+			for(int i=-28; i<=-1; i++){
+				intlist.add(i);
+			}
+			datedetaillist = boardDao.selectedtablesumselect(arraysettings(month, intlist, id, "-"));
+			for(int i=0; i<datedetaillist.size(); i++){
+				datedetaillist.get(i).setCnt(27);
+			}
+		}
+		return datedetaillist;
 	}
 	
-	private Map<String, Object> arraysettings(String month){
+	private Map<String, Object> arraysettings(String month, int i){
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("month", month);
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		map.put("array1", array1);
-		String[] array2 = {"04", "06", "09", "11"};
-		map.put("array2", array2);
+		map.put("i", i);
+		return map;
+	}
+	
+	private Map<String, Object> arraysettings(String month, List<Integer> intlist, String id, String operation){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("month", month);
+		map.put("intarray", intlist);
+		if(intlist.get(0).intValue() == -31){
+			map.put("startday", -31);
+		}
+		if(intlist.get(0).intValue() == -30) {
+			map.put("startday", -30);
+		}
+		if(intlist.get(0).intValue() == -28) {
+			map.put("startday", -28);
+		}
+		map.put("id", id);
+		map.put("oper", operation);
 		return map;
 	}
 	

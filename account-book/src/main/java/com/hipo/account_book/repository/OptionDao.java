@@ -1,6 +1,8 @@
 package com.hipo.account_book.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,13 +88,10 @@ public class OptionDao {
 	}
 	
 	public OptionVo limitModify2(String category) {
-		OptionVo vo;
-		vo = sql.selectOne("option.limitMdify2", category);
 		return sql.selectOne("option.limitMdify2", category);
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		System.out.println("값~!!!!!!!!!!!" + vo);
 		sql.insert("option.categoryModify1", vo);
 		sql.insert("option.categoryModify2", vo);
 		return false;
@@ -101,8 +100,16 @@ public class OptionDao {
 	}
 	
 	public List<OptionVo> category(OptionVo vo) {
-		List<OptionVo> category = sql.selectList("option.category",vo);
-		return category;
+		return sql.selectList("option.category",vo);
+	}
+	public List<OptionVo> pluscategory(OptionVo vo) {
+		return sql.selectList("option.pluscategory",vo);
+	}
+	public List<OptionVo> minuscategory(OptionVo vo) {
+		return sql.selectList("option.minuscategory",vo);
+	}
+	public List<OptionVo> investmentcategory(OptionVo vo) {
+		return sql.selectList("option.investmentcategory",vo);
 	}
 	
 	public boolean delete(OptionVo vo) {
@@ -114,5 +121,11 @@ public class OptionDao {
 		sql.delete("option.resetcategory", id);
 		sql.delete("option.resetlist", id);
 		
+	}
+
+	public List<OptionVo> operationsCategory(String id) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id", id);
+		return sql.selectList("option.operationsCategory",map);
 	}
 }

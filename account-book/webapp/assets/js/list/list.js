@@ -210,7 +210,6 @@ var formap = function(_listarray){
 			    data: JSON.stringify(lid),
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){
-			    	console.log(response);
 			    	// var myLatlng = new google.maps.LatLng(35.837143, 128.558612); 위치값 위도 경도
 			    	var Y_point = response.data.locationY; // Y 좌표
 			    	var X_point = response.data.locationX; // X 좌표
@@ -304,8 +303,6 @@ var currmap = function(){
 			});
 			
 			google.maps.event.addListener(map, 'click', function(mouseEvent){
-				/*console.log(mouseEvent.latLng.lat());
-				console.log(mouseEvent.latLng.lng());*/
 				$("#lat").val(mouseEvent.latLng.lat());
 				$("#lng").val(mouseEvent.latLng.lng());
 				Y_point = mouseEvent.latLng.lat();
@@ -337,9 +334,7 @@ function listreload(){
 function my1Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
 		$("#"+listarray[i]).focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
 			
 			/*mm1.dialog("open");//여기서 폼을 띄운다,.
 */			
@@ -352,7 +347,6 @@ function my1Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
 			    	
 			    },
 			    error: function( XHR, status, error ){
@@ -366,10 +360,7 @@ function my1Function(val) {
 function my2Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
-		$("#"+listarray[i]+"a").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
-			
+		$("#"+listarray[i]+"a").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.		
 			
 			var list = {"listId":num.target.id,"name":val};
 			$.ajax( {// 여기서 부터 통신이 시작된다.
@@ -379,7 +370,6 @@ function my2Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
 			    	
 			    },
 			    error: function( XHR, status, error ){
@@ -392,10 +382,7 @@ function my2Function(val) {
 function my3Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
 		$("#"+listarray[i]+"b").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
-			
 			
 			var list = {"listId":num.target.id,"money":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
@@ -406,7 +393,6 @@ function my3Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
 			    	
 			    },
 			    error: function( XHR, status, error ){
@@ -419,9 +405,7 @@ function my3Function(val) {
 function my4Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
 		$("#"+listarray[i]+"c").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
 			
 			
 			var list = {"listId":num.target.id,"bank":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
@@ -433,7 +417,6 @@ function my4Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
 			    	
 			    },
 			    error: function( XHR, status, error ){
@@ -446,10 +429,7 @@ function my4Function(val) {
 function my5Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
 		$("#"+listarray[i]+"e").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
-			
 			
 			var list = {"listId":num.target.id,"paid":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
@@ -460,7 +440,6 @@ function my5Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
 			    	
 			    },
 			    error: function( XHR, status, error ){
@@ -473,10 +452,7 @@ function my5Function(val) {
 function my6Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
-		$("#"+listarray[i]+"d").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
-			
+		$("#"+listarray[i]+"d").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.	
 			
 			var list = {"listId":num.target.id,"operations":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
@@ -487,8 +463,11 @@ function my6Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
-			    	
+			    	var changehtml = "";
+			    	for(var i=0; i<response.data.length; i++){
+			    		changehtml += "<option value='"+response.data[i].category+"'>"+response.data[i].category+"</option>";
+		    		}
+			    	$("#"+num.target.id.replace('d', 'f')).html(changehtml);
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       
@@ -500,11 +479,9 @@ function my6Function(val) {
 function my7Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
-		console.log(num);
 		$("#"+listarray[i]+"f").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
 			var list = {"listId":num.target.id,"category":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
-					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
+					,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
 			$.ajax( {// 여기서 부터 통신이 시작된다.
 			    url : "/account-book/"+currentid+"/modify7",// 보낼주소
 			    type: "POST",
@@ -512,7 +489,6 @@ function my7Function(val) {
 			    data: JSON.stringify(list),//제이슨 보낼때 형식, 그리고 내가 원하는 1가지 (listid)를 가지고 json방식으로 컨트롤러로 간다,.
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
-			    	console.log(response);
 			    	
 			    },
 			    error: function( XHR, status, error ){

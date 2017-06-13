@@ -124,7 +124,7 @@
  		 where category_id=#{categoryId} 	 	
  	 	]]>
 	</update>
-
+	
 	<select id="category" parameterType="optionvo" resultType="optionvo">
 		<![CDATA[
 			select category.category, count(list.category) as postCount, category.category_id as categoryId, userscategory.money_limit as limit
@@ -134,10 +134,75 @@
 			left outer join category
 			on userscategory.category_id=category.category_id
 			left outer join list
-			on (category.category = list.category) and list.id = #{id} where category.category is not NULL
+			on (category.category = list.category) and list.id = #{id} where category.category is not NULL 
 			group by category.category, category.category_id, userscategory.money_limit
 			order by category.category
  		]]>
+	</select>
+
+	<select id="pluscategory" parameterType="optionvo" resultType="optionvo">
+		<![CDATA[
+			select category.category, count(list.category) as postCount, category.category_id as categoryId, userscategory.money_limit as limit
+			from users
+			left outer join userscategory
+			on users.id=userscategory.id and users.id=#{id}
+			left outer join category
+			on userscategory.category_id=category.category_id
+			left outer join list
+			on (category.category = list.category) and list.id = #{id} where category.category is not NULL and userscategory.operations = '+'
+			group by category.category, category.category_id, userscategory.money_limit
+			order by category.category
+ 		]]>
+	</select>
+	
+	<select id="minuscategory" parameterType="optionvo" resultType="optionvo">
+		<![CDATA[
+			select category.category, count(list.category) as postCount, category.category_id as categoryId, userscategory.money_limit as limit
+			from users
+			left outer join userscategory
+			on users.id=userscategory.id and users.id=#{id}
+			left outer join category
+			on userscategory.category_id=category.category_id
+			left outer join list
+			on (category.category = list.category) and list.id = #{id} where category.category is not NULL and userscategory.operations = '-'
+			group by category.category, category.category_id, userscategory.money_limit
+			order by category.category
+ 		]]>
+	</select>
+	
+	<select id="investmentcategory" parameterType="optionvo" resultType="optionvo">
+		<![CDATA[
+			select category.category, count(list.category) as postCount, category.category_id as categoryId, userscategory.money_limit as limit
+			from users
+			left outer join userscategory
+			on users.id=userscategory.id and users.id=#{id}
+			left outer join category
+			on userscategory.category_id=category.category_id
+			left outer join list
+			on (category.category = list.category) and list.id = #{id} where category.category is not NULL and userscategory.operations = '0'
+			group by category.category, category.category_id, userscategory.money_limit
+			order by category.category
+ 		]]>
+	</select>
+	
+		<select id="operationscategory" parameterType="listvo" resultType="listvo">
+				<choose>
+					<when test="operations == '지출'">
+						<![CDATA[
+					 		SELECT a.category, d.LIST_ID as listId FROM category a, userscategory b, users c , list d WHERE a.CATEGORY_ID = b.CATEGORY_ID AND b.ID = c.ID and c.ID = d.ID and d.list_id = #{listId} and b.operations='-' and b.id=#{id} 
+					 	]]>
+					</when>
+					<when test="operations == '투자'">
+						<![CDATA[
+				 			SELECT a.category, d.LIST_ID as listId FROM category a, userscategory b, users c , list d WHERE a.CATEGORY_ID = b.CATEGORY_ID AND b.ID = c.ID and c.ID = d.ID and b.operations='0' and b.id=#{id} and d.list_id = #{listId}
+				 		]]>
+					</when>
+					<otherwise>
+						<![CDATA[
+				 			SELECT a.category, d.LIST_ID as listId FROM category a, userscategory b, users c , list d WHERE a.CATEGORY_ID = b.CATEGORY_ID AND b.ID = c.ID and c.ID = d.ID and b.operations='+' and b.id=#{id} and d.list_id = #{listId}
+				 		]]>
+					</otherwise>
+				</choose>
 	</select>
 
 	<delete id="delete" parameterType="optionvo">

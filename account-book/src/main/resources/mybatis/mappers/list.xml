@@ -10,20 +10,13 @@ select list_id as listId,id,paid,bank,operations,money,name,category,DAY,locatio
 	</select>
 
 	<delete id="delete" parameterType="listvo">
-	
 <![CDATA[
 delete from list where id = #{id} and list_Id = #{listId}
-
 ]]>
-
 	</delete>
 
-
 	<insert id="add" parameterType="listvo">
-	
-	
 	<![CDATA[
-	
 	insert INTO list (LIST_ID, ID, PAID, BANK, OPERATIONS, MONEY, NAME, CATEGORY, DAY, LOCATIONX, LOCATIONY)
 values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},#{category},#{day},#{locationX},#{locationY})
 	]]>
@@ -103,7 +96,7 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 	<select id="movelistselect" parameterType="map" resultType="listvo">
 		<![CDATA[
 			select * from (
-			select a.*, rownum as rn from (select list_id as listId, to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, 
+			select a.*, rownum as rn from (select list_id as listId, id,to_char(to_date(day, 'YY/MM/DD'), 'yyYY/MM/DD') as day, category, bank, 
 			(case when operations='+' then '수입' when operations='-' then '지출' when operations='0' then '투자' end) as operations, paid, locationX, locationY, name, 
 			to_char(money, '999,999,999,999,999') as moneyresult from list where id = #{id}
 			and day between trunc(add_months(sysdate, #{operation}), 'mm') and trunc(add_months(sysdate, #{operation}+1), 'mm') -1/86400
@@ -123,6 +116,22 @@ values (seq_list.nextval,#{id},#{paid},#{bank}, #{operations},#{money}, #{name},
 			select * from list where list_id = #{value}
 		]]>
 	</select>
+	
+	<select id="operationcategory" parameterType="string" resultType="listvo">
+		<![CDATA[
+		SELECT list_id as listId ,operations,category
+		  FROM list
+		 WHERE id = #{id}
+ 		]]>
+	</select>
+	
+	<select id="operations" parameterType="string" resultType="listvo">
+		<![CDATA[
+	 select a.OPERATIONS,b.CATEGORY from userscategory a , category b where a.CATEGORY_ID = b.CATEGORY_ID and id = '123' and operations= #{operations}
+
+ 		]]>
+	</select>
+	
 	 <select id="operationslist" parameterType="map" resultType="listvo">
 		<![CDATA[
 select DISTINCT (case when operations='+' then '수입' when operations='-' then '지출' when operations='0' then '투자' end) as operations from list	where id = #{id}	]]>
