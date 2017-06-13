@@ -1,6 +1,5 @@
 package com.hipo.account_book.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,11 +54,15 @@ public class ListController {
 		model.addAttribute("v5",service.totalmoney(id, operation));
 		model.addAttribute("categorylist",service.categorylist(id));
 		model.addAttribute("operationslist",service.operationslist(id));
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("option", option);
-		model.addAttribute("profilegraph",Pservice.graph(id));
+		model.addAttribute("option", optionservice.getCategory(optionvo));// 카테고리
+		model.addAttribute("profilegraph",Pservice.graph(id));// 프로필 사이드 그래프 1
 		model.addAttribute("profilegraph2",Pservice.graph2(id));
-		
+		model.addAttribute("profilegraph3",Pservice.graph3(id));
+		model.addAttribute("profilegraph4",Pservice.graph4(id));
+		model.addAttribute("profilegraph5",Pservice.graph5(id));
+		model.addAttribute("profilegraph6",Pservice.graph6(id));
+		model.addAttribute("profilegraph7",Pservice.graph7(id));
+		 
 		return "mypage/list/list";
 	}
 	

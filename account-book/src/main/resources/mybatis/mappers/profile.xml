@@ -51,13 +51,49 @@ select id ,name,photo,password from users where id = #{id}
 		<select id="graph" resultType="uservo" parameterType="string">
 <![CDATA[
 select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, 0), 'mm') 
-and trunc(add_months(sysdate,0+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
+and trunc(add_months(sysdate,0+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total , (select sum(money_limit) as money from userscategory  where id=#{id} and operations = '0') as photo  from userscategory a , category b, list c 
 where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
 	</select>    
 		<select id="graph2" resultType="uservo" parameterType="string">
 <![CDATA[
-select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, 0), 'mm') 
-and trunc(add_months(sysdate,0+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
+select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -1), 'mm') 
+and trunc(add_months(sysdate,-1+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
+where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
+	</select>   
+	
+	<select id="graph3" resultType="uservo" parameterType="string">
+<![CDATA[
+select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -2), 'mm') 
+and trunc(add_months(sysdate,-2+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
+where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
+	</select> 
+	
+	<select id="graph4" resultType="uservo" parameterType="string">
+<![CDATA[
+select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -3), 'mm') 
+and trunc(add_months(sysdate,-3+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
 where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
 	</select>    
+	
+	<select id="graph5" resultType="uservo" parameterType="string">
+<![CDATA[
+select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -4), 'mm') 
+and trunc(add_months(sysdate,-4+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
+where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
+	</select>    
+	
+		<select id="graph6" resultType="uservo" parameterType="string">
+<![CDATA[
+select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -5), 'mm') 
+and trunc(add_months(sysdate,-5+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
+where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
+	</select>  
+	
+		<select id="graph7" resultType="uservo" parameterType="string">
+<![CDATA[
+select distinct round(nvl((select sum(c.money) from  list c where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -5), 'mm') 
+and trunc(add_months(sysdate,0+1), 'mm') -1/86400) ,0)/(select sum(money_limit)*6 as money from userscategory where id=#{id} and operations = '0')*100, 2) as total, (select sum(money_limit)*6 as money from userscategory  where id=#{id} and operations = '0') as photo ,(select sum(money) as money from list  where id=#{id} and operations = '0' and day between trunc(add_months(sysdate, -5), 'mm') 
+and trunc(add_months(sysdate,0+1), 'mm') -1/86400) as name from userscategory a , category b, list c 
+where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
+	</select>
 </mapper>

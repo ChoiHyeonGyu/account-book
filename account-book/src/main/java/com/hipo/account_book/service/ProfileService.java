@@ -95,6 +95,26 @@ public class ProfileService {
 		return dao.graph2(id);
 	}
 
+	public UserVo graph3(String id) {
+		return dao.graph3(id);
+	}
+
+	public UserVo graph4(String id) {
+		return dao.graph4(id);
+	}
+
+	public UserVo graph5(String id) {
+		return dao.graph5(id);
+	}
+
+	public UserVo graph6(String id) {
+		return dao.graph6(id);
+	}
+
+	public UserVo graph7(String id) {
+		return dao.graph7(id);
+	}
+
 
 /*	public UserVo checkUpdate1(String i) {
 		return ;
