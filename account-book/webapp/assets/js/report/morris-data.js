@@ -30,7 +30,6 @@ $(function() {
 	    data: JSON.stringify(beanobj),
 	    contentType: "application/json; charset=UTF-8",
 	    success: function( response ){
-	    	console.log(response);
 	    	for(var i=0; i<response.data.length; i++){
 		    	data1[i] = {y: response.data[i].category, a: response.data[i].ml, b: response.data[i].lsum};
 		    	if((response.data[i].lsum / response.data[i].ml) < 0.6){

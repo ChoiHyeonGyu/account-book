@@ -1,6 +1,5 @@
 package com.hipo.account_book.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,8 +54,9 @@ public class ListController {
 		model.addAttribute("v5",service.totalmoney(id, operation));
 		model.addAttribute("categorylist",service.categorylist(id));
 		model.addAttribute("operationslist",service.operationslist(id));
-		List<OptionVo> option = optionservice.getCategory(optionvo);
-		model.addAttribute("option", option);
+		model.addAttribute("plusoption", optionservice.getPlusCategory(optionvo));
+		model.addAttribute("minusoption", optionservice.getMinusCategory(optionvo));
+		model.addAttribute("investmentoption", optionservice.getInvestmentCategory(optionvo));
 		model.addAttribute("profilegraph",Pservice.graph(id));
 		model.addAttribute("profilegraph2",Pservice.graph2(id));
 		
@@ -144,6 +144,7 @@ public class ListController {
 	@RequestMapping("/modify6")
 	 /* paid!*/
 	public JSONResult modify6(@RequestBody Map<String, Object> map, @PathVariable String id) {
+		map.put("id", id);
 		return JSONResult.success(service.modify7(map));
 	}
 	

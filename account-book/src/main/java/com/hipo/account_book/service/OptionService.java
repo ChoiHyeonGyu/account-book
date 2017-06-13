@@ -1,7 +1,6 @@
 package com.hipo.account_book.service;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +85,18 @@ public class OptionService {
 	
 	public List<OptionVo> getCategory(OptionVo vo) {
 		List<OptionVo> option = optionDao.category(vo);
+		return option;
+	}
+	public List<OptionVo> getPlusCategory(OptionVo vo) {
+		List<OptionVo> option = optionDao.pluscategory(vo);
+		return option;
+	}
+	public List<OptionVo> getMinusCategory(OptionVo vo) {
+		List<OptionVo> option = optionDao.minuscategory(vo);
+		return option;
+	}
+	public List<OptionVo> getInvestmentCategory(OptionVo vo) {
+		List<OptionVo> option = optionDao.investmentcategory(vo);
 		return option;
 	}
 	

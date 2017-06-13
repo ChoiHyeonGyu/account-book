@@ -101,8 +101,16 @@ public class OptionDao {
 	}
 	
 	public List<OptionVo> category(OptionVo vo) {
-		List<OptionVo> category = sql.selectList("option.category",vo);
-		return category;
+		return sql.selectList("option.category",vo);
+	}
+	public List<OptionVo> pluscategory(OptionVo vo) {
+		return sql.selectList("option.pluscategory",vo);
+	}
+	public List<OptionVo> minuscategory(OptionVo vo) {
+		return sql.selectList("option.minuscategory",vo);
+	}
+	public List<OptionVo> investmentcategory(OptionVo vo) {
+		return sql.selectList("option.investmentcategory",vo);
 	}
 	
 	public boolean delete(OptionVo vo) {

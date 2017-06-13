@@ -474,9 +474,7 @@ function my6Function(val) {
 	for(var i=0; i<listarray.length; i++){// 포문이돌고 num값으로 찍은 푸쉬값이 담긴다.
 		var num = listarray[i];
 		console.log(num);
-		$("#"+listarray[i]+"d").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.
-			console.log(num);
-			
+		$("#"+listarray[i]+"d").focusout(function(num){// 어느걸 찍을지 모르기 때문 #+listarray[i].click(function(num))을 입력한다.	
 			
 			var list = {"listId":num.target.id,"operations":val/*"listpaid":num.data.listpaid,"listbank":num.data.listbank,"listcategory":num.data.listcategory,
 					"listoperations":num.data.listoperations,"listmoney":num.data.listmoney,"listname":num.data.listname*/}
@@ -488,7 +486,11 @@ function my6Function(val) {
 			    contentType: "application/json; charset=UTF-8",
 			    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
 			    	console.log(response);
-			    	
+			    	var changehtml = "";
+			    	for(var i=0; i<response.data.length; i++){
+			    		changehtml += "<option value='"+response.data[i].category+"'>"+response.data[i].category+"</option>";
+		    		}
+			    	$("#"+num.target.id.replace('d', 'f')).html(changehtml);
 			    },
 			    error: function( XHR, status, error ){
 			       console.error( status + " : " + error );	       

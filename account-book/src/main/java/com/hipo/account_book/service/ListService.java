@@ -1,6 +1,5 @@
 package com.hipo.account_book.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hipo.account_book.repository.ListDao;
+import com.hipo.account_book.repository.OptionDao;
 import com.hipo.account_book.vo.ListVo;
+import com.hipo.account_book.vo.OptionVo;
 
 @Service
 public class ListService {
 	@Autowired
 	public ListDao dao;
+	@Autowired
+	private OptionDao optionDao;
 	String id1 ="";
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
@@ -154,12 +157,19 @@ public class ListService {
 		return null;
 	}
 
-	public Object modify7(Map<String, Object> map) {
+	public List<OptionVo> modify7(Map<String, Object> map) {
 		String id = map.get("listId").toString();
 		id = id.replaceAll("d","");
-		info = map.get("operations").toString();
-		
-		dao.modify7(id,info);
+		OptionVo optionvo = new OptionVo();
+		optionvo.setId(map.get("id").toString());
+		dao.modify7(id, map.get("operations").toString());
+		if(map.get("operations").toString().equals("+")){
+			return optionDao.pluscategory(optionvo);
+		} else if(map.get("operations").toString().equals("-")) {
+			return optionDao.minuscategory(optionvo);
+		} else if(map.get("operations").toString().equals("0")) {
+			return optionDao.investmentcategory(optionvo);
+		}
 		return null;
 	}
 
