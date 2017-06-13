@@ -57,9 +57,14 @@ public class ListController {
 		model.addAttribute("plusoption", optionservice.getPlusCategory(optionvo));
 		model.addAttribute("minusoption", optionservice.getMinusCategory(optionvo));
 		model.addAttribute("investmentoption", optionservice.getInvestmentCategory(optionvo));
-		model.addAttribute("profilegraph",Pservice.graph(id));
+		model.addAttribute("profilegraph",Pservice.graph(id));// 프로필 사이드 그래프 1
 		model.addAttribute("profilegraph2",Pservice.graph2(id));
-		
+		model.addAttribute("profilegraph3",Pservice.graph3(id));
+		model.addAttribute("profilegraph4",Pservice.graph4(id));
+		model.addAttribute("profilegraph5",Pservice.graph5(id));
+		model.addAttribute("profilegraph6",Pservice.graph6(id));
+		model.addAttribute("profilegraph7",Pservice.graph7(id));
+		 
 		return "mypage/list/list";
 	}
 	
