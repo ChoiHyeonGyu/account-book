@@ -26,17 +26,19 @@ public class AndroidCategoryController {
 	public void addCategory(HttpServletRequest request, @PathVariable String id) {
 		String category = request.getParameter("category");
 		OptionVo optionVo = aCategoryService.getCategoryId(category);
+
 		if (optionVo == null) {
+			System.out.println("option null in CategoryController");
 			aCategoryService.addCategory(category);
 			optionVo = aCategoryService.getCategoryId(category);
 		}
-
 		optionVo.setCategory(category);
 		optionVo.setId(id);
-
-		if (aCategoryService.addUsersCategory(optionVo))
-			;
-		System.out.println("성공!!");
+		System.out.println("Option Checking : " + optionVo.toString());
+		
+		if (aCategoryService.addUsersCategory(optionVo)) {
+			System.out.println("성공!!");
+		}
 	}
 
 	@RequestMapping("/getCategoryList")
@@ -55,8 +57,20 @@ public class AndroidCategoryController {
 		String category = request.getParameter("category");
 		OptionVo optionVo = aCategoryService.getCategoryId(category);
 		optionVo.setId(id);
-		if(aCategoryService.deleteCategory(optionVo));
+		if (aCategoryService.deleteCategory(optionVo))
+			;
 		System.out.println("지우기성공");
 	}
-	
+
+	@RequestMapping("/setLimitValue")
+	public void setLimitValue(HttpServletRequest request, @PathVariable String id) {
+		Map<String, String> params = new HashMap<>();
+		params.put("category", request.getParameter("category"));
+		params.put("id", id);
+		params.put("moneyLimit", request.getParameter("limit"));
+		params.put("categoryId", aCategoryService.getCategoryId(params.get("category")).getCategoryId() + "");
+		System.out.println("CategoryController setLimitValue MapValueChecking : " + params.toString());
+		aCategoryService.updateMoneyLimit(params);
+	}
+
 }

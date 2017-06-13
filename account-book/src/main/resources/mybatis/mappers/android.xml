@@ -65,7 +65,7 @@
 
 	<insert id="addUsersCategory" parameterType="optionvo">
 		<![CDATA[
-			insert into userscategory values(#{id },#{categoryId},0)
+			insert into userscategory values(#{id },#{categoryId},'-',0)
 		]]>
 	</insert>
 
@@ -94,7 +94,7 @@
                    AND TO_DATE (#{maxDate }, 'YYYY/MM/DD') + 1
 		]]>
 	</select>
-	
+
 	<select id="getLimitGraph" parameterType="map" resultType="graphvo">
 		<![CDATA[
 			select distinct * from (select category, money_limit as ml from category c, userscategory uc where c.category_id = uc.category_id and id = #{id }) a,
@@ -102,6 +102,11 @@
                    AND TO_DATE (#{maxDate }, 'YYYY/MM/DD') + 1 and operations = '-'
 			group by category) b where a.category = b.category order by a.category
 		]]>
-	</select>
 
+	</select>
+	<update id="monetLimitSet" parameterType="map">
+		<![CDATA[
+			update userscategory set MONEY_LIMIT=#{moneyLimit } where id=#{id } and CATEGORY_ID=#{categoryId }
+		]]>
+	</update>
 </mapper>

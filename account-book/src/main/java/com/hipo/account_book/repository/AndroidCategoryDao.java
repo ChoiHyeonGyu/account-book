@@ -1,6 +1,7 @@
 package com.hipo.account_book.repository;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +38,7 @@ public class AndroidCategoryDao {
 		return sqlSession.delete("android.categoryDeleteById", optionVo) == 1;
 	}
 
+	public boolean updateMoneyLimit(Map<String, String> params) {
+		return sqlSession.update("android.monetLimitSet", params) == 1;
+	}
 }

@@ -1,6 +1,7 @@
 package com.hipo.account_book.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,4 +34,8 @@ public class AndroidCategoryService {
 		return aCategoryDao.deleteCategory(optionVo);
 	}
 
+	public boolean updateMoneyLimit(Map<String,String> params){
+		return aCategoryDao.updateMoneyLimit(params);
+	}
+	
 }
