@@ -26,6 +26,8 @@ public class BoardService {
 	
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
+	private static final String[] array1 = {"01","03","05","07","08","10","12"};
+	private static final String[] array2 = {"04", "06", "09", "11"};
 	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
 		boardvo.setId(id);
@@ -131,8 +133,6 @@ public class BoardService {
 		List<GraphVo> datedetailtable = new ArrayList<GraphVo>();
 		List<GraphVo> datedetaits = new ArrayList<GraphVo>();
 		List<Integer> intlist = new ArrayList<Integer>();
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		String[] array2 = {"04", "06", "09", "11"};
 		String id = boardDao.findidselect(map.get("boardid").toString());
 		String month = map.get("month").toString();
 		for(int j=0; j<array1.length; j++){
@@ -395,8 +395,6 @@ public class BoardService {
 	
 	public List<GraphVo> datedetail(String month){
 		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		String[] array2 = {"04", "06", "09", "11"};
 		for(int j=0; j<array1.length; j++){
 			if(month.substring(5).equals(array1[j])){
 				for(int i=-31; i<=-1; i++){
@@ -426,8 +424,6 @@ public class BoardService {
 	public List<GraphVo> pselectedtable(String id, String month){
 		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
 		List<Integer> intlist = new ArrayList<Integer>();
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		String[] array2 = {"04", "06", "09", "11"};
 		for(int j=0; j<array1.length; j++){
 			if(month.substring(5).equals(array1[j])){
 				for(int i=-31; i<=-1; i++){
@@ -465,8 +461,6 @@ public class BoardService {
 	public List<GraphVo> mselectedtable(String id, String month){
 		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
 		List<Integer> intlist = new ArrayList<Integer>();
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		String[] array2 = {"04", "06", "09", "11"};
 		for(int j=0; j<array1.length; j++){
 			if(month.substring(5).equals(array1[j])){
 				for(int i=-31; i<=-1; i++){
@@ -504,8 +498,6 @@ public class BoardService {
 	public List<GraphVo> pselectedtablesum(String id, String month){
 		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
 		List<Integer> intlist = new ArrayList<Integer>();
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		String[] array2 = {"04", "06", "09", "11"};
 		for(int j=0; j<array1.length; j++){
 			if(month.substring(5).equals(array1[j])){
 				for(int i=-31; i<=-1; i++){
@@ -543,8 +535,6 @@ public class BoardService {
 	public List<GraphVo> mselectedtablesum(String id, String month){
 		List<GraphVo> datedetaillist = new ArrayList<GraphVo>();
 		List<Integer> intlist = new ArrayList<Integer>();
-		String[] array1 = {"01","03","05","07","08","10","12"};
-		String[] array2 = {"04", "06", "09", "11"};
 		for(int j=0; j<array1.length; j++){
 			if(month.substring(5).equals(array1[j])){
 				for(int i=-31; i<=-1; i++){
