@@ -128,6 +128,10 @@ function requiredmonth(obj3){
 }
 
 function flushtable(obj3){
+	for(var i=0; i<32; i++){
+		$("#dated"+(i+1)).text("");
+		$("#cmsumd"+(i+1)).text("");
+	}
 	$.ajax( {
 	    url : "/account-book/"+currentid+"/table",
 	    type: "POST",
@@ -135,37 +139,10 @@ function flushtable(obj3){
 	    data: JSON.stringify(obj3),
 	    contentType: "application/json; charset=UTF-8",
 	    success: function( response ){
-	    	$("#dated1").text(response.data.date.d1);
-	    	$("#dated2").text(response.data.date.d2);
-	    	$("#dated3").text(response.data.date.d3);
-	    	$("#dated4").text(response.data.date.d4);
-	    	$("#dated5").text(response.data.date.d5);
-	    	$("#dated6").text(response.data.date.d6);
-	    	$("#dated7").text(response.data.date.d7);
-	    	$("#dated8").text(response.data.date.d8);
-	    	$("#dated9").text(response.data.date.d9);
-	    	$("#dated10").text(response.data.date.d10);
-	    	$("#dated11").text(response.data.date.d11);
-	    	$("#dated12").text(response.data.date.d12);
-	    	$("#dated13").text(response.data.date.d13);
-	    	$("#dated14").text(response.data.date.d14);
-	    	$("#dated15").text(response.data.date.d15);
-	    	$("#dated16").text(response.data.date.d16);
-	    	$("#dated17").text(response.data.date.d17);
-	    	$("#dated18").text(response.data.date.d18);
-	    	$("#dated19").text(response.data.date.d19);
-	    	$("#dated20").text(response.data.date.d20);
-	    	$("#dated21").text(response.data.date.d21);
-	    	$("#dated22").text(response.data.date.d22);
-	    	$("#dated23").text(response.data.date.d23);
-	    	$("#dated24").text(response.data.date.d24);
-	    	$("#dated25").text(response.data.date.d25);
-	    	$("#dated26").text(response.data.date.d26);
-	    	$("#dated27").text(response.data.date.d27);
-	    	$("#dated28").text(response.data.date.d28);
-	    	$("#dated29").text(response.data.date.d29);
-	    	$("#dated30").text(response.data.date.d30);
-	    	$("#dated31").text(response.data.date.d31);
+	    	console.log(response);
+	    	for(var i=0; i<response.data.date.length; i++){
+	    		$("#dated"+(i+1)).text(response.data.date[i].day2);
+	    	}
 	    	
 	    	var html = "";
 	    	for(var i=0; i<lencnt; i++){
@@ -174,98 +151,84 @@ function flushtable(obj3){
 	    		$("#cd3").remove();
 	    	}
 	    	
-	    	for(var i=0; i<response.data.cateday.length; i++){
+	    	var check = 0;
+	    	for(var i=0; i<=response.data.cateday[response.data.cateday.length-1].ml; i++){
 	    		html += "<tr id='cd1'><td class='fontsize'>"+response.data.cateday[i].category+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d1+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d2+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d3+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d4+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d5+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d6+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d7+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d8+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d9+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d10+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d11+"</td>";
+	    		for(var j=0; j<(response.data.cateday[response.data.cateday.length-1].ml+1)*11; j++){
+	    			if(response.data.cateday[i].category == response.data.cateday[j].category){
+	    				html += "<td class='fontsize'>"+response.data.cateday[j].day2+"</td>";
+	    				check = j;
+	    			}
+	    		}
 	    		html += "<td class='fontsize'></td></tr>";
 	    	}
 	    	$("#cateday1").prepend(html);
 	    	html = "";
-	    	for(var i=0; i<response.data.cateday.length; i++){
+	    	check += 1;
+	    	var middlecheck = check;
+	    	for(var i=0; i<=response.data.cateday[response.data.cateday.length-1].ml; i++){
 	    		html += "<tr id='cd2'><td class='fontsize'>"+response.data.cateday[i].category+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d12+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d13+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d14+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d15+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d16+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d17+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d18+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d19+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d20+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d21+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d22+"</td>";
+	    		for(var j=middlecheck; j<(response.data.cateday[response.data.cateday.length-1].ml+1)*22; j++){
+	    			if(response.data.cateday[i].category == response.data.cateday[j].category){
+	    				html += "<td class='fontsize'>"+response.data.cateday[j].day2+"</td>";
+	    				check = j;
+	    			}
+	    		}
 	    		html += "<td class='fontsize'></td></tr>";
 	    	}
 	    	$("#cateday2").prepend(html);
 	    	html = "";
-	    	for(var i=0; i<response.data.cateday.length; i++){
+	    	check += 1;
+	    	for(var i=0; i<=response.data.cateday[response.data.cateday.length-1].ml; i++){
 	    		html += "<tr id='cd3'><td class='fontsize'>"+response.data.cateday[i].category+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d23+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d24+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d25+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d26+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d27+"</td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].d28+"</td>";
-	    		if(response.data.cateday[i].d29 == undefined){
-	    			html += "<td class='fontsize'></td>";
-			    	html += "<td class='fontsize'></td>";
-	    		} else {
-	    			html += "<td class='fontsize'>"+response.data.cateday[i].d29+"</td>";
-		    		html += "<td class='fontsize'>"+response.data.cateday[i].d30+"</td>";
-	    		}
-	    		if(response.data.cateday[i].d31 == undefined){
-	    			html += "<td class='fontsize'></td>";
-	    		} else {
-	    			html += "<td class='fontsize'>"+response.data.cateday[i].d31+"</td>";
-	    		}
-	    		html += "<td class='fontsize'></td>";
-	    		html += "<td class='fontsize'></td>";
-	    		html += "<td class='fontsize'>"+response.data.cateday[i].sumresult+"</td></tr>";
+	    		if(response.data.cateday[response.data.cateday.length-2].cnt == 30){
+	    			for(var j=check; j<(response.data.cateday[response.data.cateday.length-1].ml+1)*32; j++){
+		    			if(response.data.cateday[i].category == response.data.cateday[j].category){
+		    				if(j >= ((response.data.cateday[response.data.cateday.length-1].ml+1)*32) - (response.data.cateday[response.data.cateday.length-1].ml+1)){
+		    					html += "<td class='fontsize'></td>";
+								html += "<td class='fontsize'></td>";
+		    				}
+		    				html += "<td class='fontsize'>"+response.data.cateday[j].day2+"</td>";
+		    			}
+		    		}
+				}
+	    		if(response.data.cateday[response.data.cateday.length-2].cnt == 29){
+					for(var j=check; j<(response.data.cateday[response.data.cateday.length-1].ml+1)*31; j++){
+		    			if(response.data.cateday[i].category == response.data.cateday[j].category){
+		    				if(j >= ((response.data.cateday[response.data.cateday.length-1].ml+1)*31) - (response.data.cateday[response.data.cateday.length-1].ml+1)){
+		    					html += "<td class='fontsize'></td>";
+			    				html += "<td class='fontsize'></td>";
+								html += "<td class='fontsize'></td>";
+		    				}
+		    				html += "<td class='fontsize'>"+response.data.cateday[j].day2+"</td>";
+		    			}
+		    		}
+				}
+	    		if(response.data.cateday[response.data.cateday.length-2].cnt == 27){
+					for(var j=check; j<(response.data.cateday[response.data.cateday.length-1].ml+1)*29; j++){
+		    			if(response.data.cateday[i].category == response.data.cateday[j].category){
+		    				if(j >= ((response.data.cateday[response.data.cateday.length-1].ml+1)*29) - (response.data.cateday[response.data.cateday.length-1].ml+1)){
+		    					html += "<td class='fontsize'></td>";
+								html += "<td class='fontsize'></td>";
+			    				html += "<td class='fontsize'></td>";
+			    				html += "<td class='fontsize'></td>";
+								html += "<td class='fontsize'></td>";
+		    				}
+		    				html += "<td class='fontsize'>"+response.data.cateday[j].day2+"</td>";
+		    			}
+		    		}
+				}
+	    		html += "</tr>";
 	    	}
 	    	$("#cateday3").prepend(html);
 	    	
-	    	$("#cmsumd1").text(response.data.cmsum.d1);
-	    	$("#cmsumd2").text(response.data.cmsum.d2);
-	    	$("#cmsumd3").text(response.data.cmsum.d3);
-	    	$("#cmsumd4").text(response.data.cmsum.d4);
-	    	$("#cmsumd5").text(response.data.cmsum.d5);
-	    	$("#cmsumd6").text(response.data.cmsum.d6);
-	    	$("#cmsumd7").text(response.data.cmsum.d7);
-	    	$("#cmsumd8").text(response.data.cmsum.d8);
-	    	$("#cmsumd9").text(response.data.cmsum.d9);
-	    	$("#cmsumd10").text(response.data.cmsum.d10);
-	    	$("#cmsumd11").text(response.data.cmsum.d11);
-	    	$("#cmsumd12").text(response.data.cmsum.d12);
-	    	$("#cmsumd13").text(response.data.cmsum.d13);
-	    	$("#cmsumd14").text(response.data.cmsum.d14);
-	    	$("#cmsumd15").text(response.data.cmsum.d15);
-	    	$("#cmsumd16").text(response.data.cmsum.d16);
-	    	$("#cmsumd17").text(response.data.cmsum.d17);
-	    	$("#cmsumd18").text(response.data.cmsum.d18);
-	    	$("#cmsumd19").text(response.data.cmsum.d19);
-	    	$("#cmsumd20").text(response.data.cmsum.d20);
-	    	$("#cmsumd21").text(response.data.cmsum.d21);
-	    	$("#cmsumd22").text(response.data.cmsum.d22);
-	    	$("#cmsumd23").text(response.data.cmsum.d23);
-	    	$("#cmsumd24").text(response.data.cmsum.d24);
-	    	$("#cmsumd25").text(response.data.cmsum.d25);
-	    	$("#cmsumd26").text(response.data.cmsum.d26);
-	    	$("#cmsumd27").text(response.data.cmsum.d27);
-	    	$("#cmsumd28").text(response.data.cmsum.d28);
-	    	$("#cmsumd29").text(response.data.cmsum.d29);
-	    	$("#cmsumd30").text(response.data.cmsum.d30);
-	    	$("#cmsumd31").text(response.data.cmsum.d31);
-	    	$("#cmsumresult").text(response.data.cmsum.sumresult);
+	    	for(var i=0; i<response.data.cmsum.length; i++){
+	    		if(i == response.data.cmsum.length-1){
+	    			$("#cmsumd32").text(response.data.cmsum[i].day2);
+	    		} else {
+	    			$("#cmsumd"+(i+1)).text(response.data.cmsum[i].day2);
+	    		}
+	    	}
 	    	
 	    	lencnt = response.data.cateday.length;
 	    },

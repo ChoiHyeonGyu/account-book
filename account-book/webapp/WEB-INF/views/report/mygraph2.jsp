@@ -38,7 +38,7 @@
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 월</th>
 	                                <c:forEach var="date" items="${date}">
-	                                	<th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.month}" class="black">${date.month}</a></th>
+	                                	<th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail2?month=${date.month}" class="black">${date.month}</a></th>
 	                                </c:forEach> 
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
