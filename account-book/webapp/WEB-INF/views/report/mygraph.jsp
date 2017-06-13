@@ -34,55 +34,38 @@
 	                        <thead>
 	                            <tr>
 	                                <th class="fontsize">카테고리 \ 월</th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.jan}" class="black">${date.jan}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.feb}" class="black">${date.feb}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.mar}" class="black">${date.mar}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.apr}" class="black">${date.apr}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.may}" class="black">${date.may}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.jun}" class="black">${date.jun}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.jul}" class="black">${date.jul}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.aug}" class="black">${date.aug}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.sep}" class="black">${date.sep}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.oct}" class="black">${date.oct}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.nov}" class="black">${date.nov}</a></th>
-	                                <th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.dec}" class="black">${date.dec}</a></th>
+	                                <c:forEach var="date" items="${date}">
+	                                	<th class="fontsize"><a href="${pageContext.request.contextPath}/${currentuserid}/mydetail?month=${date.month}" class="black">${date.month}</a></th>
+	                                </c:forEach> 
 	                                <th class="fontsize">카테고리 합계</th>
 	                            </tr>
 	                        </thead>
 	                        <tbody>
-	                        	<c:forEach var="cate" items="${catemonth}">
-                                	<tr>
-		                                <td class="fontsize">${cate.category}</td>
-		                                <td class="fontsize">${cate.jan}</td>
-		                                <td class="fontsize">${cate.feb}</td>
-		                                <td class="fontsize">${cate.mar}</td>
-		                                <td class="fontsize">${cate.apr}</td>
-		                                <td class="fontsize">${cate.may}</td>
-		                                <td class="fontsize">${cate.jun}</td>
-		                                <td class="fontsize">${cate.jul}</td>
-		                                <td class="fontsize">${cate.aug}</td>
-		                                <td class="fontsize">${cate.sep}</td>
-		                                <td class="fontsize">${cate.oct}</td>
-		                                <td class="fontsize">${cate.nov}</td>
-		                                <td class="fontsize">${cate.dec}</td>
-		                                <td class="fontsize">${cate.sumresult}</td>
-	                            	</tr>
-                                </c:forEach>
+	                        	<c:forEach var="catemonth1" items="${catemonth}">
+	                        		<c:set var="catelimit" value="${catemonth1.ml}"></c:set>
+	                        	</c:forEach>
+                            	<c:forEach var="catemonth1" items="${catemonth}" begin="0" end="${catelimit}" step="1">
+                      				<tr>
+                      					<td class="fontsize">${catemonth1.category}</td>
+                      					<c:set var="catename" value="${catemonth1.category}"></c:set>
+                      					<c:forEach var="catemonth1" items="${catemonth}">
+                      						<c:if test="${catemonth1.category == catename}">
+	                      						<td class="fontsize">${catemonth1.month}</td>
+	                      					</c:if>
+                         				</c:forEach>
+                         			</tr>
+                        		</c:forEach>
+                            	
                                	<tr>
 	                                <td class="fontsize"><strong>월 합계</strong></td>
-	                                <td class="fontsize">${cmsum.jan}</td>
-	                                <td class="fontsize">${cmsum.feb}</td>
-	                                <td class="fontsize">${cmsum.mar}</td>
-	                                <td class="fontsize">${cmsum.apr}</td>
-	                                <td class="fontsize">${cmsum.may}</td>
-	                                <td class="fontsize">${cmsum.jun}</td>
-	                                <td class="fontsize">${cmsum.jul}</td>
-	                                <td class="fontsize">${cmsum.aug}</td>
-	                                <td class="fontsize">${cmsum.sep}</td>
-	                                <td class="fontsize">${cmsum.oct}</td>
-	                                <td class="fontsize">${cmsum.nov}</td>
-	                                <td class="fontsize">${cmsum.dec}</td>
-	                                <td class="fontred fontsize">${cmsum.sumresult}</td>
+	                                <c:forEach var="cmsum" items="${cmsum}" varStatus="status">
+	                                	<c:if test="${!status.last}">
+	                                		<td class="fontsize">${cmsum.month}</td>
+	                                	</c:if>
+	                                	<c:if test="${status.last}">
+	                                		<td class="fontred fontsize">${cmsum.month}</td>
+	                                	</c:if>
+	                                </c:forEach>
                             	</tr>
 	                        </tbody>
 	                    </table>
