@@ -201,7 +201,6 @@ public class ListService {
 
 	public List<ListVo> operationCategory(String id) {
 		List<ListVo> list = dao.operationCategory(id);
-		System.out.println("돌아오는 값 " + list);
 		List<ListVo> list1 = dao.operations(list);
 		 return list1;
 	}

@@ -166,22 +166,11 @@ public class ListDao {
 	}
 
 	public void operationCategory1(int i) {
-		System.out.println("iiiiiii" + i);
+		
 	}
 
 	public List<ListVo> operations(List<ListVo> list) {
 		 List<ListVo> list1 = sql.selectList("listview.operations",list);
 		return list1;
 	}
-
-
-	/*
-	 * public int totalmonth(ListVo vo) { System.out.println("돈돈돈돈돈돈" + vo);
-	 * return sql.selectOne("listview.totalmonth", vo); }
-	 */
-
-	/*
-	 * public ListVo totalmonth(ListVo vo) { return
-	 * sql.selectOne("listview.totalmoney", parameter); }
-	 */
 }

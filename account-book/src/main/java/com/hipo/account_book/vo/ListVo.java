@@ -14,12 +14,6 @@ public class ListVo {
 	private String locationX;
 	private String locationY;
 
-	@Override
-	public String toString() {
-		return "ListVo [listId=" + listId + ", id=" + id + ", paid=" + paid + ", bank=" + bank + ", operations="
-				+ operations + ", money=" + money + ", name=" + name + ", category=" + category + ", locationX="
-				+ locationX + ", locationY=" + locationY + ", day=" + day + "]";
-	}
 	public String getListId() {
 		return listId;
 	}

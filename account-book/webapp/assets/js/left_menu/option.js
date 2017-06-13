@@ -33,7 +33,6 @@ $(function() {
 				data : JSON.stringify(categoryid),
 				contentType : "application/json; charset=UTF-8",
 				success : function(response) {
-					console.log(response);
 					$("#categoryId").val(response.data.categoryId);
 					$("#categoryname").val(response.data.category);
 				},
@@ -52,7 +51,6 @@ $(function() {
 			var category = {
 				"category" : number1.target.id
 			};
-			console.log(category.category);
 			$.ajax({
 				url : "/account-book/" + currentid + "/limitModify2",
 				type : "POST",
@@ -60,7 +58,6 @@ $(function() {
 				data : JSON.stringify(category),
 				contentType : "application/json; charset=UTF-8",
 				success : function(response) {
-					console.log(response);
 					$("#limit").val(response.data.limit);
 					$("#category").val(response.data.category);
 				},

@@ -71,11 +71,8 @@ public class ListController {
 	@RequestMapping("/userinfo")
 	public String changing(@RequestParam("id") String id, @RequestParam("name") String name,
 			@RequestParam("photo") MultipartFile photo, @RequestParam("password") String password,Model model) {
-		System.out.println(
-				"vovovovovovovovovovvoovvovovovovovovovo" + "id입니다 =" + id + "name =" + name + "photo = " + photo + "password = " + password);
 
 		Pservice.updateProfile(id, name, photo, password);
-		System.out.println("final = = = = = =" + photo);
 		return "redirect:/{id}/list";
 
 	}
@@ -104,7 +101,6 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modify")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map) {
-		System.out.println("정보 확인" + map);
 		return JSONResult.success(service.modify(Integer.parseInt(map.get("listid").toString())));// 여기서
 																									// 에러.
 	}
@@ -135,7 +131,7 @@ public class ListController {
 	@ResponseBody
 	@RequestMapping("/modifyl")
 	public JSONResult modifyl(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		return null/*JSONResult.success(service.modifyl(map))*/;
+		return null;
 	}
 	@ResponseBody
 	@RequestMapping("/modify5")
@@ -157,7 +153,6 @@ public class ListController {
 	@RequestMapping("/modify7")
 	 /* paid!*/
 	public JSONResult modify7(@RequestBody Map<String, Object> map, @PathVariable String id) {
-		System.out.println("modify 7 " + map);
 		return JSONResult.success(service.modify8(map));
 	}
 	

@@ -73,7 +73,6 @@ public class OptionController {
 	}
 	@RequestMapping(value = "/categoryModify", method = RequestMethod.POST)
 	public String categoryModify(@ModelAttribute @Valid OptionVo optionvo, @PathVariable String id) {
-		System.out.println("@@@@@@@@@@@@@@@@@" + optionvo);
 		String category;
 		String category2;
 		String limit;
@@ -84,24 +83,16 @@ public class OptionController {
 		
 		category2 = optionvo.getCategory();
 		category = optionService.Modify0(category2);
-		System.out.println(category +"category2 " + category2);
 		if (category2.equals(category) == true) {
 			
 			limit = optionService.Modify5(optionvo);
-			System.out.println(limit);
 			optionvo.setLimit(limit);
 			categoryId2 = optionvo.getCategoryId();
-			System.out.println("cococo123"+optionvo);
 			categoryId = optionService.Modify1(optionvo);
 			optionvo.setCategeoryId(categoryId);
-			categoryId1 = optionService.Modify3(optionvo);
-			
-			System.out.println("categoryid"+categoryId);
-			System.out.println("categoryid1"+categoryId1);
-			
+			categoryId1 = optionService.Modify3(optionvo);			
 
 			if (categoryId1 == 0) {
-				System.out.println("vovovo"+optionvo);
 				optionService.Modify7(optionvo);
 				optionvo.setCategeoryId(categoryId2);
 				optionService.Modify6(optionvo);
@@ -109,19 +100,15 @@ public class OptionController {
 				optionService.Modify2(optionvo); //오퍼레이션스만 업데이트 해줌
 			}
 		} else {
-			System.out.println("두번쨰!!!!!!!!!!!!!!");
 			limit = optionService.Modify5(optionvo);
 			optionvo.setLimit(limit);
 			optionService.Modify(optionvo);
 			categoryId = optionService.Modify1(optionvo);
-			System.out.println("옵션보  11111111" +optionvo );
 			categoryId2 = optionvo.getCategoryId();
 			optionvo.setCategeoryId(categoryId);
-			System.out.println("get"+categoryId);
 			optionService.Modify4(optionvo);
 			optionvo.setCategeoryId(categoryId2);
 			
-			System.out.println("dd?D??D?D?D??D?"+ optionvo);
 			optionService.Modify6(optionvo);
 			
 		}
@@ -167,7 +154,6 @@ public class OptionController {
 	@RequestMapping("/categoryModify1")
 	public String categoryModify(@ModelAttribute OptionVo vo, @PathVariable String id,
 			@RequestParam("categoryId") int cid) {
-		System.out.println("아이디 및 맵 넘김." + id + " = "+ vo);
 		vo.setCategeoryId(cid);
 		vo.setOperations(vo.getOperations());
 		optionService.categoryModify1(vo);

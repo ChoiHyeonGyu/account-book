@@ -49,8 +49,8 @@ public class BoardController {
 	public String mystory(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
 		UserVo username = Pservice.checkUpdate(id);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
-		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
+		model.addAttribute("profile1",Pservice.profile1(id));
+		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("username", username);
 		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
@@ -158,7 +158,7 @@ public class BoardController {
 	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
 		UserVo username = Pservice.checkUpdate(id);
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
@@ -172,7 +172,7 @@ public class BoardController {
 	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
 		UserVo username = Pservice.checkUpdate(id); 
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
@@ -198,7 +198,7 @@ public class BoardController {
 	public String mydetail(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam("month") String month){
 		UserVo username = Pservice.checkUpdate(id);
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		
@@ -213,7 +213,7 @@ public class BoardController {
 	public String mydetail2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam("month") String month){
 		UserVo username = Pservice.checkUpdate(id); 
 		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
+		model.addAttribute("profile1",Pservice.profile1(id));
 		model.addAttribute("profileall", Pservice.profileall(id));
 		model.addAttribute("option", optionservice.getCategory(optionvo));
 		

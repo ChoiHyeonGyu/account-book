@@ -92,7 +92,6 @@ public class OptionDao {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		System.out.println("값~!!!!!!!!!!!" + vo);
 		sql.insert("option.categoryModify1", vo);
 		sql.insert("option.categoryModify2", vo);
 		return false;
@@ -127,7 +126,6 @@ public class OptionDao {
 	public List<OptionVo> operationsCategory(String id) {
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("id", id);
-		System.out.println("mapmapmap" + map);
 		return sql.selectList("option.operationsCategory",map);
 	}
 }
