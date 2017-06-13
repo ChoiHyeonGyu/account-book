@@ -137,11 +137,11 @@ $(function() {
 	    				list = "<option value='"+response.data.list[i].paid+"'>"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
 	    			}
 	    			if(response.data.list[i].operations =="수입"){
-	    				list2 = "<option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
+	    				list2 = "<option value='+' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
 	    			} else if(response.data.list[i].operations == "지출") {
-	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
+	    				list2 = "<option value='+'>수입</option><option value='-' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
 	    			} else {
-	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option>";
+	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='0' selected='selected'>"+response.data.list[i].operations+"</option>";
 	    			}
 	    			for(var j=0; j<response.data.categorylist.length; j++){
 	    				if(response.data.list[i].category == response.data.categorylist[j].category){/* list 포문은 해당 페이지 정보 밖에 없음 카테고리 list는 컨트롤러에서 받은 모든카테고리를 불러온다 */
@@ -254,7 +254,11 @@ $(function() {
 	    				    contentType: "application/json; charset=UTF-8",
 	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
 	    				    	console.log(response);
-	    				    	
+	    				    	var changehtml = "";
+	    				    	for(var i=0; i<response.data.length; i++){
+	    				    		changehtml += "<option value='"+response.data[i].category+"'>"+response.data[i].category+"</option>";
+	    			    		}
+	    				    	$("#"+num.target.id.replace('d', 'f')).html(changehtml);
 	    				    },
 	    				    error: function( XHR, status, error ){
 	    				       console.error( status + " : " + error );	       
@@ -418,11 +422,11 @@ $(function() {
 	    				list = "<option value="+response.data.list[i].paid+">"+response.data.list[i].paid+"</option><option value='현금'>현금</option>";
 	    			}
 	    			if(response.data.list[i].operations =="수입"){
-	    				list2 = "<option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
+	    				list2 = "<option value='+' selected='selected'>"+response.data.list[i].operations+"</option><option value='-'>지출</option><option value='0'>투자</option>";
 	    			} else if(response.data.list[i].operations == "지출") {
-	    				list2 = "<option value='+'>수입</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
+	    				list2 = "<option value='+'>수입</option><option value='-' selected='selected'>"+response.data.list[i].operations+"</option><option value='0'>투자</option>";
 	    			} else {
-	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='"+response.data.list[i].operations+"' selected='selected'>"+response.data.list[i].operations+"</option>";
+	    				list2 = "<option value='+'>수입</option><option value='-'>지출</option><option value='0' selected='selected'>"+response.data.list[i].operations+"</option>";
 	    			}
 	    			for(var j=0; j<response.data.categorylist.length; j++){
 	    				if(response.data.list[i].category == response.data.categorylist[j].category){
@@ -535,7 +539,11 @@ $(function() {
 	    				    contentType: "application/json; charset=UTF-8",
 	    				    success: function( response ){// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에 담겨진다.
 	    				    	console.log(response);
-	    				    	
+	    				    	var changehtml = "";
+	    				    	for(var i=0; i<response.data.length; i++){
+	    				    		changehtml += "<option value='"+response.data[i].category+"'>"+response.data[i].category+"</option>";
+	    			    		}
+	    				    	$("#"+num.target.id.replace('d', 'f')).html(changehtml);
 	    				    },
 	    				    error: function( XHR, status, error ){
 	    				       console.error( status + " : " + error );	       
