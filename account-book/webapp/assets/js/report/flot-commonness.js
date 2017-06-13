@@ -139,7 +139,6 @@ function flushtable(obj3){
 	    data: JSON.stringify(obj3),
 	    contentType: "application/json; charset=UTF-8",
 	    success: function( response ){
-	    	console.log(response);
 	    	for(var i=0; i<response.data.date.length; i++){
 	    		$("#dated"+(i+1)).text(response.data.date[i].day2);
 	    	}
