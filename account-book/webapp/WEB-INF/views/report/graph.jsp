@@ -17,7 +17,10 @@
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
 <script>
-	ex = "${ex}";
+	profit = "${profit}";
+	gender = "${gender}";
+	age = "${age}";
+	age1 = "${age1}";
 </script>
 <c:choose>
 	<c:when test="${currentuserid == ''}">

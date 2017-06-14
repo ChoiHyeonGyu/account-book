@@ -1,6 +1,5 @@
 package com.hipo.account_book.controller;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -144,12 +143,10 @@ public class FrontController {
 	public String graphex(Model model, @RequestParam(value="select-import", required=true) String import1, @RequestParam(value="select-gender", required=true) String gender, 
 			@RequestParam(value="select-age", required=true) String age, @RequestParam(value="select-age1", required=true) String age1){
 		model.addAttribute("currentuserid", "");
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("profit", import1);
-		map.put("gender", gender);
-		map.put("age", age);
-		map.put("age1", age1);
-		model.addAttribute("ex", map);
+		model.addAttribute("profit", import1);
+		model.addAttribute("gender", gender);
+		model.addAttribute("age", age);
+		model.addAttribute("age1", age1);
 		return "report/graph";
 	}
 }

@@ -1,3 +1,6 @@
 var currentid = "";
 var path = "";
-var ex = "";
+var profit = "";
+var gender = "";
+var age = "";
+var age1 = "";
