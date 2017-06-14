@@ -96,7 +96,7 @@
 			<button style="float:right">통계 보기</button>
 		</div>
 		<div class="col-md-6">
-			<img src="${pageContext.request.contextPath}/assets/images/hipo-logo.png" width="550" height="350">
+			<a href="${pageContext.request.contextPath}/${currentuserid}/story"><img src="${pageContext.request.contextPath}/assets/images/front.PNG" width="550" height="350"></a>
 		</div>
 	</div>
 </div>
