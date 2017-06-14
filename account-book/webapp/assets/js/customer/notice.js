@@ -11,7 +11,7 @@ $(document).ready(function() {
 		$("#noticeAdd").hide();
 	}
 
-	if (userId == "superjun3") {
+	if (userId == "admin") {
 		$("#noticeModify").click(function() {
 			var userId = userIdarray[0];
 			var ni = noticeIdarray[0];
