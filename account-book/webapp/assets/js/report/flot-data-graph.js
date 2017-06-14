@@ -331,7 +331,7 @@ $(function() {
 		    	
 		    	// 그래프4
 		    	for(var i=0; i<response.data.algs.length; i++){
-			    	data1[i] = {y: response.data.algs[i].category, a: response.data.algs[i].ml, b: response.data.algs[i].lsum};
+			    	data4[i] = {y: response.data.algs[i].category, a: response.data.algs[i].ml, b: response.data.algs[i].lsum};
 			    	if((response.data.algs[i].lsum / response.data.algs[i].ml) < 0.6){
 					    barcolnum[i] = 2;
 					} else if((response.data.algs[i].lsum / response.data.algs[i].ml) < 0.9) {
@@ -344,7 +344,7 @@ $(function() {
 		    	}
 		    	Morris.Bar({
 		            element: 'morris-bar-chart-all',
-		            data: data1,
+		            data: data4,
 		            xkey: 'y',
 		            ykeys: ['a', 'b'],
 		            labels: ['예산', '현재 사용한 금액'],

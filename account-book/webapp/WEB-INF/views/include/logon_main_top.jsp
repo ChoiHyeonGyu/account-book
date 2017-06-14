@@ -21,11 +21,8 @@
 <script src="${pageContext.request.contextPath}/assets/js/include/commonness.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/left_menu/profile.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/notice/notice.css">
 
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/notice/notice.css">
-	
-	
 <script>
 	currentid = "${currentuserid}";
 	path = "${pageContext.request.contextPath}";
