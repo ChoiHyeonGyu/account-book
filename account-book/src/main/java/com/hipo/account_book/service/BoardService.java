@@ -245,7 +245,7 @@ public class BoardService {
 	
 	public Map<String, Object> getBoardList(String id, int currentPage, String keyword){
 		//1. 페이징을 위한 기본 데이터 계산
-		int totalCount = boardDao.boardcount(keyword);
+		int totalCount = boardDao.myboardcount(keyword, id);
 		int pageCount = (int)Math.ceil( (double)totalCount / LIST_SIZE );
 		int blockCount = (int)Math.ceil( (double)pageCount / PAGE_SIZE );
 		int currentBlock = (int)Math.ceil( (double)currentPage / PAGE_SIZE );

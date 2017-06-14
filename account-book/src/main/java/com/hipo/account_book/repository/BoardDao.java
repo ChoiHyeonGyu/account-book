@@ -60,6 +60,13 @@ public class BoardDao {
 		return sqlSession.selectOne("board.boardcount", search);
 	}
 	
+	public int myboardcount(String search, String id){
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("search", search);
+		map.put("id", id);
+		return sqlSession.selectOne("board.myboardcount", map);
+	}
+	
 	public List<BoardVo> getList(String keyword, Integer page, Integer size){
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("keyword", keyword);

@@ -77,6 +77,17 @@
 			]]>
 		</if>
 	</select>
+	
+	<select id="myboardcount" parameterType="map" resultType="int">
+		<![CDATA[
+			select count(*) from board where id = #{id}
+		]]>
+		<if test="search != null and search != ''">
+			<![CDATA[
+				and month like '%${search}%' or title like '%${search}%' or name like '%${search}%'
+			]]>
+		</if>
+	</select>
 
 	<select id="getList" parameterType="map" resultType="boardvo">
     	<![CDATA[
