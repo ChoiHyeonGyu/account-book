@@ -36,7 +36,7 @@
 
 	<!-- 상단 네비게이션 바 -->
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid navy">
+	<div class="container-fluid bg-black">
 		<div class="container">
 			<div class="navbar-header">
 				<img class="hipo-logo" alt="로고"

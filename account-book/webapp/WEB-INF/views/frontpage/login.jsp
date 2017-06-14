@@ -24,7 +24,7 @@
 
 		<!-- 로그인 / 회원가입 -->
 		<div class="col-md-4">
-			<div class="login-panel panel panel-primary">
+			<div class="login-panel panel panel-info">
 				<div class="panel-heading">
 					<h3 class="panel-title">로그인 / 회원가입</h3>
 				</div>
@@ -38,7 +38,7 @@
 							<div class="form-group">
 								<input class="form-control" placeholder="Password" name="password" type="password" required>
 							</div>
-							<button type="submit" class="btn btn-lg btn-success btn-block">로그인</button>
+							<button type="submit" class="btn btn-lg btn-info btn-block">로그인</button>
 							<br />
 							<c:if test="${result != error}">
 								<p style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
@@ -60,7 +60,7 @@
 		<!-- /로그인 / 회원가입 -->
 		
 		<div class="col-md-6">
-			<p class="fontred">/* 원하시는 통계를 설정해주세요. */</p>
+			<p class="center fontblue"><strong>원하시는 통계를 설정해주세요.</strong></p>
 			<form method="post" action="${pageContext.request.contextPath}/graphex">
 				<div class="dropdown theme-dropdown clearfix">
 					<select name="select-import" class="dropdown-menu col-md-6" required>
@@ -93,7 +93,7 @@
 						</c:forEach>
 					</select>
 				</div><br/>
-				<button type="submit" class="btn btn-lg btn-warning btn-block">통계 보기</button>
+				<button type="submit" class="btn btn-lg btn-info btn-block">통계 보기</button>
 			</form>
 		</div>
 		<div class="col-md-6">

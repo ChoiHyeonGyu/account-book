@@ -42,11 +42,16 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 }
 
 .backgroundimage{
-	background-image: url("/account-book/assets/images/bgi.jpg");
+	background-image: url("/account-book/assets/images/bufzG9J/.jpg");
+	background-size: cover;
 }
 
 .fontred {
 	color: red;
+}
+
+.fontblue{
+	color: aqua;
 }
 
 .fontgreen {

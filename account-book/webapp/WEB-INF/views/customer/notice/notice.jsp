@@ -28,7 +28,7 @@
 					<col width="10%">
 				</colgroup>
 				<thead>
-					<tr bgcolor='#002266'>
+					<tr class="bg-black">
 						<th><span class="glyphicon glyphicon-time white"
 							aria-hidden="true"></span></th>
 						<th></th>
@@ -108,7 +108,7 @@
 				action="${pageContext.request.contextPath}/${currentuserid}/noticeAdd"
 				method="post">
 				<button id="noticeAdd" type="button"
-					class="fa fa-pencil notice notice4"
+					class="fa fa-pencil notice notice4 bg-black"
 					style="margin-bottom: 20px; float: right;">글쓰기</button>
 			</form>
 		</div>
