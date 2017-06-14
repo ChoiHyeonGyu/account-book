@@ -44,8 +44,7 @@ public class ListController {
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
 			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation,@ModelAttribute ListVo listvo) {
-		Map<String, Object> vo = service.movelist(operation, pagination, searching, id);
-		model.addAttribute("ps", vo);
+		model.addAttribute("ps", service.movelist(operation, pagination, searching, id));
 		model.addAttribute("v2", service.totalmonth(id, operation));
 		model.addAttribute("v3", service.totalmonth1(id, operation));
 		model.addAttribute("v4",service.totalmonth2(id, operation));

@@ -1,7 +1,6 @@
 package com.hipo.account_book.service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +17,7 @@ public class NoticeService {
 	private static final int LIST_SIZE = 10;
 	private static final int PAGE_SIZE = 10;
 	
-	public Map<String, Object> getNotice(int currentPage){
-		List<NoticeVo> notice;
-		List<NoticeVo> notice2;
-		
-		notice = noticeDao.getList(currentPage, LIST_SIZE);
-		notice2 = noticeDao.getList2(currentPage, LIST_SIZE);
-		
+	public Map<String, Object> getNotice(int currentPage){		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		//1. 페이징을 위한 기본 데이터 계산
@@ -69,7 +62,7 @@ public class NoticeService {
 		int nextPage2 = ( currentBlock2 < blockCount2 ) ? currentBlock2 * PAGE_SIZE + 1 : 0;
 		int endPage2 = ( nextPage2 > 0 ) ? ( beginPage2 - 1 ) + LIST_SIZE : pageCount2;
 		
-		map.put( "noticelist", notice );
+		map.put( "noticelist", noticeDao.getList(currentPage, LIST_SIZE) );
 		map.put( "totalCount", totalCount );
 		map.put( "listSize", LIST_SIZE );
 		map.put( "currentPage", currentPage );
@@ -78,7 +71,7 @@ public class NoticeService {
 		map.put( "prevPage", prevPage );
 		map.put( "nextPage", nextPage );
 		
-		map.put( "qnalist", notice2 );
+		map.put( "qnalist", noticeDao.getList2(currentPage, LIST_SIZE) );
 		map.put( "totalCount2", totalCount2 );
 		map.put( "beginPage2", beginPage2 );
 		map.put( "endPage2", endPage2 );

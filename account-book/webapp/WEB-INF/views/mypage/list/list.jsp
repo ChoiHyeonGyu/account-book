@@ -87,47 +87,45 @@
 						</thead>
 						
 						<tbody id="listbody">
-							<form
-								action="${pageContext.request.contextPath }/${currentuserid}/add"
-								method="post">
-								<tr>
-									<td><input type="text" id="datepicker" name="day"
-										class="tableinput" placeholder="날짜 " required></td>
-									<td><input type="text" value="" class="mine tablecoler"
-										style="background: #ececec" placeholder="사용내역" name="name"
+							<form action="${pageContext.request.contextPath }/${currentuserid}/add" method="post">
+								<tr class="form-group has-error">
+									<td ><input type="text" id="datepicker" name="day"
+										class=" mine tablecolor tableinput form-control text111" placeholder="날짜 " required></td>
+									<td ><input type="text" value="" class="mine tablecoler form-control text111"
+										 placeholder="사용내역" name="name"
 										required></td>
-									<td><input value="" class="mine tablecolor " type="text"
-										style="background: #ececec" placeholder="금액" name="money"
+									<td><input value="" class="mine  form-control text111" type="text"
+										 placeholder="금액" name="money"
 										required></td>
 									<td><select id="paid" name="paid"
-										class="tableinput searchbox2" required>
+										class="tableinput searchbox2  mine  tableinput form-control text111" required>
 											<option value="현금">현금</option>
 											<option value="카드">카드</option>
 									</select></td>
-									<td><select id="operations" class="tableinput searchbox2"
+									 <td><select id="operations" class="tableinput searchbox2  mine  tableinput form-control text111"
 										name="operations" required>
 
 											<option value="-" class="textline">지출</option>
 											<option value="+" class="textline">수입</option>
 											<option value="0" class="textline">투자</option>
-									</select></td>
-									<td><input value="" class="mine tablecolor" type="text"
-										style="background: #ececec" placeholder="은행" name="bank"></td>
+									</select></td> 
+									<td><input value="" class="mine tablecolor mine  tableinput form-control text111" type="text"
+										 placeholder="은행" name="bank"></td>
 									<!-- <td><input value="" class="mine tablecolor"
 										style="background: #ececec" placeholder="카테고리" name="category"></td>
 									 -->
-									<td><select id="category" class="tableinput searchbox2"
+									<td><select id="category" class="tableinput searchbox2 mine  tableinput form-control text111"
 										name="category" required>
 											<c:forEach var="bb" items="${option}">
 												<option value="${bb.category}">${bb.category}</option>
 											</c:forEach>
 									</select></td>
-									<td><input id="btnmap" class="mine tablecolor"
-										style="background: #ececec" placeholder="지도"> <input
+									<td><input id="btnmap" class="mine tablecolor mine  tableinput form-control text111"
+										 placeholder="지도"> <input
 										id="lat" name="locationY" type="hidden" value=""> <input
 										id="lng" name="locationX" type="hidden" value=""></td>
-									<td><input type="submit" value="저장"
-										style="background: #ececec" class="btn btn-sm text11" /></td>
+									<td class="text111"><input type="submit" value="저장"
+										 class="btn btn-sm text111  " /></td>
 								</tr>
 							</form>
 							<!--  가계부 리스트 뿌려주는곳.	 -->
@@ -191,7 +189,7 @@
 											<c:if test="${vo.operations == '수입'}">
 												<c:forEach var="bb" items="${plusoption}">
 													<c:if test="${vo.category != bb.category}">
-														<option value="${bb.category}">${bb.category}</option>
+														<option value="${bb.category}">${bb.category}</option>   <!--차이점  -->
 													</c:if>
 													<c:if test="${vo.category == bb.category}">
 														<option value="${bb.category}" selected="selected">${bb.category}</option>
