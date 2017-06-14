@@ -7,13 +7,9 @@ import java.util.regex.Pattern;
 public class ConvertMoneyForm {
 
 	final public static String convertForForm(String money) { // 2000 -> 2,000원
-		boolean convertingDone = false;// String이 int로 변환여부 체크(전역으로 사용하기
-										// this.converingDone=true;)
 		try {
 			Integer.parseInt(money);
-			convertingDone = true;
 		} catch (Exception e) {
-			convertingDone = false;
 			System.out.println(e.getMessage() + " 금액입력이 아닙니다.");
 			return "";
 		}

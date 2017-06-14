@@ -96,7 +96,7 @@
 
 							<td class="font2">사진</td>
 							<td>
-								<img id="photoModify" src="${pageContext.request.contextPath}/image/${defaultinfo.profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;" required>
+								<img id="photoModify" src="${pageContext.request.contextPath}/image/${defaultinfo.profileall.photo}" width="200" height="150" STYLE="MARGIN-TOP:10PX;">
 							</td>
 
 						</tr>
