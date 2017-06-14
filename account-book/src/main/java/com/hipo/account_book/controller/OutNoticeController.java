@@ -22,33 +22,33 @@ public class OutNoticeController {
 	private NoticeService noticeService;
 
 	@RequestMapping("/notice")
-	public String Notice(Model model) {		
+	public String Notice(Model model, @RequestParam(value="p", required=true, defaultValue="1") int page) {		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
 		return "customer/notice/notice";
 	}
 
 	@RequestMapping("/faq")
-	public String Faq(Model model) {
+	public String Faq(Model model, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
 		return "customer/notice/faq";
 	}
 
 	@RequestMapping("/noticeview")
-	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId) {
+	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 
 		System.out.println("noidnoidnoid::" + noticeId);
 		noticeService.NoticeHit(noticeId);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
 		System.out.println("mapmapmapmap::" + map);
@@ -61,12 +61,12 @@ public class OutNoticeController {
 	}
 
 	@RequestMapping("/qnaview")
-	public String QnaView(Model model, @RequestParam("qnaId") int qnaId) {
+	public String QnaView(Model model, @RequestParam("qnaId") int qnaId, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		
 		noticeService.QnaHit(qnaId);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
 		System.out.println("mapmapmapmap::" + map);
@@ -79,7 +79,7 @@ public class OutNoticeController {
 	}
 
 	@RequestMapping("/noticeadd")
-	public String NoticeAdd(Model model, @ModelAttribute NoticeVo vo) {		
+	public String NoticeAdd(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {		
 		String content;
 		System.out.println("nvo:::"+vo);
 		content = vo.getNoticeContent();
@@ -89,14 +89,14 @@ public class OutNoticeController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
 		return "customer/notice/notice";
 	}
 	
 	@RequestMapping("/qnaadd")
-	public String QnaAdd(Model model, @ModelAttribute NoticeVo vo) {		
+	public String QnaAdd(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {		
 		String content;
 		System.out.println("qvo:::"+vo);
 		content = vo.getQnaContent();
@@ -106,7 +106,7 @@ public class OutNoticeController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
 		return "customer/notice/faq";
@@ -129,7 +129,7 @@ public class OutNoticeController {
 	}
 	
 	@RequestMapping("/noticemodify")
-	public String NoticeModify(Model model, @ModelAttribute NoticeVo vo) {
+	public String NoticeModify(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		int noticeId = vo.getNoticeId();
 		String content;
 		
@@ -141,7 +141,7 @@ public class OutNoticeController {
 		noticeService.NoticeModify(vo);
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 		
 		Map<String, Object> map1 = new HashMap<String, Object>();
@@ -169,7 +169,7 @@ public class OutNoticeController {
 	}
 	
 	@RequestMapping("/qnamodify")
-	public String QnaModify(Model model, @ModelAttribute NoticeVo vo) {
+	public String QnaModify(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		int qnaId = vo.getQnaId();
 		String content;
 		
@@ -181,7 +181,7 @@ public class OutNoticeController {
 		noticeService.QnaModify(vo);
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 		
 		Map<String, Object> map1 = new HashMap<String, Object>();
@@ -193,26 +193,26 @@ public class OutNoticeController {
 	}
 	
 	@RequestMapping("/noticedelete")
-	public String NoticeDelete(Model model, @ModelAttribute NoticeVo vo) {
+	public String NoticeDelete(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		System.out.println("deleteidididi:"+vo);
 		
 		noticeService.NoticeDelete(vo);
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 		
 		return "customer/notice/notice";
 	}
 	
 	@RequestMapping("/qnadelete")
-	public String QnaDelete(Model model, @ModelAttribute NoticeVo vo) {
+	public String QnaDelete(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		System.out.println("deleteqqqq:"+vo);
 		
 		noticeService.QnaDelete(vo);
 
 		Map<String, Object> map = new HashMap<String, Object>();
-		map = noticeService.getNotice();
+		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 		
 		return "customer/notice/faq";

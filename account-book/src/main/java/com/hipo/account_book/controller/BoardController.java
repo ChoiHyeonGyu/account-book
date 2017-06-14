@@ -28,9 +28,9 @@ public class BoardController {
 	@Autowired
 	private CommonnessService cs;
 	
-	@RequestMapping("/logon")
+	@RequestMapping("")
 	public String login(){
-		return "frontpage/logon";
+		return "frontpage/login";
 	}
 	
 	@RequestMapping("/story")

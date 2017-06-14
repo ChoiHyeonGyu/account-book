@@ -3,15 +3,29 @@
 
 <mapper namespace="notice">
 
-	<select id="getList" resultType="noticevo">
+	<select id="getList" parameterType="map" resultType="noticevo">
 		<![CDATA[
-			select notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice order by day desc
+			select * from (select rownum as rn, notice_id as noticeId, content as noticeContent, title as noticeTitle, day as noticeDay, hit as noticeHit from notice order by day desc) a 
+			where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
 		]]>
 	</select>
 	
-	<select id="getList2" resultType="noticevo">
+	<select id="getList2" parameterType="map" resultType="noticevo">
 		<![CDATA[
-			select qna_id as qnaId, content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna order by day desc
+			select * from (select rownum as rn, qna_id as qnaId, content as qnaContent, title as qnaTitle, day as qnaDay, hit as qnaHit from qna order by day desc) a 
+			where (#{page}-1)*#{size}+1 <= rn and rn <= #{page}*#{size}
+		]]>
+	</select>
+	
+	<select id="noticecount" resultType="int">
+		<![CDATA[
+			select count(*) from notice
+		]]>
+	</select>
+	
+	<select id="qnacount" resultType="int">
+		<![CDATA[
+			select count(*) from qna
 		]]>
 	</select>
 	

@@ -54,6 +54,56 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			
+			<!-- 페이징처리 -->
+		    <div class="pager">
+				<ul>
+					<c:if test="${notice.prevPage > 0}" >
+						<c:choose>
+							<c:when test="${currentuserid != null}">
+								<li><a href="${pageContext.request.contextPath}/${currentuserid}/notice?p=${notice.prevPage}">◀</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${pageContext.request.contextPath}/notice?p=${notice.prevPage}">◀</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
+					
+					<c:forEach begin="${notice.beginPage}" end="${notice.beginPage + notice.listSize - 1}" var="page">
+						<c:choose>
+							<c:when test="${notice.endPage < page}">
+								<li>${page}</li> 
+							</c:when> 
+							<c:when test="${notice.currentPage == page}">
+								<li class="selected">${page}</li>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${currentuserid != null}">
+										<li><a href="${pageContext.request.contextPath}/${currentuserid}/notice?p=${page}">${page}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="${pageContext.request.contextPath}/notice?p=${page}">${page}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:if test="${notice.nextPage > 0}" >
+						<c:choose>
+							<c:when test="${currentuserid != null}">
+								<li><a href="${pageContext.request.contextPath}/${currentuserid}/notice?p=${notice.nextPage}">▶</a></li>
+							</c:when>
+							<c:otherwise>
+								<li><a href="${pageContext.request.contextPath}/notice?p=${notice.nextPage}">▶</a></li>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
+				</ul>
+			</div>
+			<!-- /페이징처리 -->
+			
 			<form
 				action="${pageContext.request.contextPath}/${currentuserid}/noticeAdd"
 				method="post">

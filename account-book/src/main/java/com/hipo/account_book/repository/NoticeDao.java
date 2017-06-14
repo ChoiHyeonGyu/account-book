@@ -1,6 +1,8 @@
 package com.hipo.account_book.repository;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +15,26 @@ public class NoticeDao {
 	@Autowired
 	private SqlSession sql;
 	
-	public List<NoticeVo> getList(){
-		
-		return sql.selectList("notice.getList");
+	public List<NoticeVo> getList(int page, int size){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("size", size);
+		return sql.selectList("notice.getList", map);
 	}
 	
-	public List<NoticeVo> getList2(){
-		
-		return sql.selectList("notice.getList2");
+	public List<NoticeVo> getList2(int page, int size){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("size", size);
+		return sql.selectList("notice.getList2", map);
+	}
+	
+	public int noticecount(){
+		return sql.selectOne("notice.noticecount");
+	}
+	
+	public int qnacount(){
+		return sql.selectOne("notice.qnacount");
 	}
 	
 	public NoticeVo noticeView(int noticeId){

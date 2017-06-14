@@ -3,7 +3,7 @@ var qnaIdarray = [];
 $(document).ready(function() {
 
 	var userId = userIdarray[0];
-	if (userId == "superjun3") {
+	if (userId == "admin") {
 		$("#qnaAdd").click(function() {
 			$("#qnaAddform").modal();
 		});

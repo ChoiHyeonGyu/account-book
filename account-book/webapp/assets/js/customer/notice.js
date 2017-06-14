@@ -3,7 +3,7 @@ var noticeIdarray = [];
 $(document).ready(function() {
 
 	var userId = userIdarray[0];
-	if (userId == "superjun3") {
+	if (userId == "admin") {
 		$("#noticeAdd").click(function() {
 			$("#noticeAddform").modal();
 		});

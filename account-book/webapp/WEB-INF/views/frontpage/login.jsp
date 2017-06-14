@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
-<c:import url="/WEB-INF/views/include/login_main_top.jsp" />
+<c:choose>
+	<c:when test="${currentuserid != null}">
+		<c:import url="/WEB-INF/views/include/logon_main_top.jsp" />
+	</c:when>
+	<c:otherwise>
+		<c:import url="/WEB-INF/views/include/login_main_top.jsp" />
+	</c:otherwise>
+</c:choose>
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
@@ -20,38 +27,24 @@
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
 					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">흠냐 이건 뭐냐?</div>
-							<div class="panel-body">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
-									width="200" height="200">
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="item">
 					<div class="col-lg-12">
-						<div class="panel panel-default">
-							<div class="panel-heading">흠냐 이건 뭐냐?</div>
-							<div class="panel-body">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
-									width="200" height="200">
-							</div>
-						</div>
+						
 					</div>
 				</div>
 				<div class="item">
 					<div class="col-lg-12">
-						<div class="panel panel-default">
+						<%-- <div class="panel panel-default">
 							<div class="panel-heading">흠냐 이건 뭐냐?</div>
 							<div class="panel-body">
 								<img
 									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
 									width="200" height="200">
 							</div>
-						</div>
+						</div> --%>
 					</div>
 				</div>
 			</div>
