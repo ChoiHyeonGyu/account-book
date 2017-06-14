@@ -193,6 +193,14 @@ $(function() {
 	       console.error( status + " : " + error );	       
 	    }
 	});
+
+	if(ex.length){
+		$("#graph-import option:selected").text(ex.profit);
+		$("#graph-gender option:selected").text(ex.gender);
+		$("#graph-age option:selected").text(ex.age);
+		$("#graph-age1 option:selected").text(ex.age1);
+		viewchangedata();
+	}
 	
 	function viewchangedata(){
 		var selectobj = {"profit":$("#graph-import option:selected").text(), "gender":$("#graph-gender option:selected").text(), "age":$("#graph-age option:selected").text(), 

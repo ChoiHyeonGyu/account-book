@@ -51,8 +51,7 @@
                             </fb:login-button>
 							<br />
 							<br />
-							<button id="join" type="button"
-								class="btn btn-lg btn-info btn-block">회원가입</button>
+							<button id="join" type="button"	class="btn btn-lg btn-info btn-block">회원가입</button>
 						</fieldset>
 					</form>
 				</div>
@@ -62,38 +61,40 @@
 		
 		<div class="col-md-6">
 			<p class="fontred">/* 원하시는 통계를 설정해주세요. */</p>
-			<div class="dropdown theme-dropdown clearfix">
-				<select id="graph-import" class="dropdown-menu col-md-6">
-					<option>월 수입(전체)</option>
-					<option>100만원 이하</option>
-					<c:forEach begin="100" end="950" step="50" var="i">
-						<option>${i}만원 ~ ${i+50}만원 사이</option>
-					</c:forEach>
-					<c:forEach begin="1000" end="9000" step="500" var="i">
-						<option>${i}만원 ~ ${i+500}만원 사이</option>
-					</c:forEach>
-					<option>9500만원 ~ 1억원 사이</option>
-					<option>1억원 이상</option>
-				</select>
-				<select id="graph-gender" class="dropdown-menu col-md-6">
-					<option>성별(전체)</option>
-					<option>남자</option>
-					<option>여자</option>
-				</select>
-				<select id="graph-age" class="dropdown-menu col-md-6">
-					<option>시작 나이(전체)</option>
-					<c:forEach begin="20" end="48" var="i">
-						<option>${i}</option>
-					</c:forEach>
-				</select>
-				<select id="graph-age1" class="dropdown-menu col-md-6">
-					<option>끝 나이(전체)</option>
-					<c:forEach begin="20" end="48" var="i">
-						<option>${i}</option>
-					</c:forEach>
-				</select>
-			</div>
-			<button style="float:right">통계 보기</button>
+			<form method="post" action="${pageContext.request.contextPath}/graphex">
+				<div class="dropdown theme-dropdown clearfix">
+					<select name="select-import" class="dropdown-menu col-md-6" required>
+						<option>월 수입</option>
+						<option>100만원 이하</option>
+						<c:forEach begin="100" end="950" step="50" var="i">
+							<option>${i}만원 ~ ${i+50}만원 사이</option>
+						</c:forEach>
+						<c:forEach begin="1000" end="9000" step="500" var="i">
+							<option>${i}만원 ~ ${i+500}만원 사이</option>
+						</c:forEach>
+						<option>9500만원 ~ 1억원 사이</option>
+						<option>1억원 이상</option>
+					</select>
+					<select name="select-gender" class="dropdown-menu col-md-6" required>
+						<option>성별</option>
+						<option>남자</option>
+						<option>여자</option>
+					</select>
+					<select name="select-age" class="dropdown-menu col-md-6" required>
+						<option>시작 나이</option>
+						<c:forEach begin="20" end="48" var="i">
+							<option>${i}</option>
+						</c:forEach>
+					</select>
+					<select name="select-age1" class="dropdown-menu col-md-6" required>
+						<option>끝 나이</option>
+						<c:forEach begin="20" end="48" var="i">
+							<option>${i}</option>
+						</c:forEach>
+					</select>
+				</div><br/>
+				<button type="submit" class="btn btn-lg btn-warning btn-block">통계 보기</button>
+			</form>
 		</div>
 		<div class="col-md-6">
 			<img src="${pageContext.request.contextPath}/assets/images/hipo-logo.png" width="550" height="350">

@@ -1,5 +1,6 @@
 package com.hipo.account_book.controller;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -137,5 +138,18 @@ public class FrontController {
 	@RequestMapping("/transgraphavg")
 	public JSONResult transgraphavg(@RequestBody Map<String, Object> map){
 		return JSONResult.success(boardService.transgraphavg(map));
+	}
+	
+	@RequestMapping("/graphex")
+	public String graphex(Model model, @RequestParam(value="select-import", required=true) String import1, @RequestParam(value="select-gender", required=true) String gender, 
+			@RequestParam(value="select-age", required=true) String age, @RequestParam(value="select-age1", required=true) String age1){
+		model.addAttribute("currentuserid", "");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("profit", import1);
+		map.put("gender", gender);
+		map.put("age", age);
+		map.put("age1", age1);
+		model.addAttribute("ex", map);
+		return "report/graph";
 	}
 }
