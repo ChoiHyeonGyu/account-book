@@ -32,7 +32,7 @@
 </script>
 <title>편리가계부</title>
 </head>
-<body id="page-top">
+<body id="page-top" class="backgroundimage">
 
 	<!-- 상단 네비게이션 바 -->
 	<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">

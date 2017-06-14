@@ -24,7 +24,6 @@ import com.hipo.account_book.vo.UserVo;
 public class FrontController {
 	@Autowired
 	private FrontService frontService;
-	
 	@Autowired
 	private BoardService boardService;
 	

@@ -28,6 +28,11 @@ public class BoardController {
 	@Autowired
 	private CommonnessService cs;
 	
+	@RequestMapping("/logon")
+	public String login(){
+		return "frontpage/logon";
+	}
+	
 	@RequestMapping("/story")
 	public String story(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
