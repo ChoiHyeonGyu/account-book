@@ -16,6 +16,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/report/graph.css">
 <script	src="${pageContext.request.contextPath}/assets/raphael/raphael.min.js"></script>
 <script	src="${pageContext.request.contextPath}/assets/morrisjs/morris.min.js"></script>
+<script>
+	ex = "${ex}";
+</script>
 <c:choose>
 	<c:when test="${currentuserid == ''}">
 		<script src="${pageContext.request.contextPath}/assets/js/report/view-flot.js"></script>
