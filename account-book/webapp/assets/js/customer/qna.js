@@ -11,7 +11,7 @@ $(document).ready(function() {
 		$("#qnaAdd").hide();
 	}
 
-	if (userId == "superjun3") {
+	if (userId == "admin") {
 		$("#qnaModify").click(function() {
 			var userId = userIdarray[0];
 			var qi = qnaIdarray[0];
