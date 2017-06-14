@@ -1,6 +1,5 @@
 package com.hipo.account_book.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -17,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hipo.account_book.dto.JSONResult;
+import com.hipo.account_book.service.CommonnessService;
 import com.hipo.account_book.service.OptionService;
-import com.hipo.account_book.service.ProfileService;
 import com.hipo.account_book.vo.OptionVo;
 
 @Controller
@@ -27,18 +26,12 @@ public class OptionController {
 	@Autowired
 	private OptionService optionService;
 	@Autowired
-	private ProfileService Pservice;
+	private CommonnessService cs;
 	
 	@RequestMapping("/option")
 	public String option(Model model,@ModelAttribute OptionVo optionvo, @PathVariable String id) {
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
-		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
-		List<OptionVo> option = optionService.getCategory(optionvo);
-		model.addAttribute("option", option);
-		model.addAttribute("v1",Pservice.checkUpdate(id));
-			
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		return "mypage/left_menu/option";
-		
 	}
 
 	@RequestMapping(value = "/categoryAdd", method = RequestMethod.POST)

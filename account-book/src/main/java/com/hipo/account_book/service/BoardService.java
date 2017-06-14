@@ -338,51 +338,43 @@ public class BoardService {
 	}
 	
 	public List<GraphVo> imreporttable(String id){
-		List<Integer> importlist = new ArrayList<Integer>();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("oper", "+");
-		for(int i=-11; i<=0; i++){
-			importlist.add(i);
-		}
-		map.put("intarray", importlist);
-		return boardDao.reportsourceselect(map);
+		return boardDao.reportsourceselect(importinfo(id));
 	}
 	
 	public List<GraphVo> imreporttablesum(String id){
-		List<Integer> importlist = new ArrayList<Integer>();
+		return boardDao.reportsourcesumselect(importinfo(id));
+	}
+	
+	public List<GraphVo> exreporttable(String id){
+		return boardDao.reportsourceselect(exportinfo(id));
+	}
+	
+	public List<GraphVo> exreporttablesum(String id){
+		return boardDao.reportsourcesumselect(exportinfo(id));
+	}
+	
+	private Map<String, Object> importinfo(String id){
+		List<Integer> list = new ArrayList<Integer>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("oper", "+");
 		for(int i=-11; i<=0; i++){
-			importlist.add(i);
+			list.add(i);
 		}
-		map.put("intarray", importlist);
-		return boardDao.reportsourcesumselect(map);
+		map.put("intarray", list);
+		return map;
 	}
 	
-	public List<GraphVo> exreporttable(String id){
-		List<Integer> exportlist = new ArrayList<Integer>();
+	private Map<String, Object> exportinfo(String id){
+		List<Integer> list = new ArrayList<Integer>();
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("id", id);
 		map.put("oper", "-");
 		for(int i=-11; i<=0; i++){
-			exportlist.add(i);
+			list.add(i);
 		}
-		map.put("intarray", exportlist);
-		return boardDao.reportsourceselect(map);
-	}
-	
-	public List<GraphVo> exreporttablesum(String id){
-		List<Integer> exportlist = new ArrayList<Integer>();
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("id", id);
-		map.put("oper", "-");
-		for(int i=-11; i<=0; i++){
-			exportlist.add(i);
-		}
-		map.put("intarray", exportlist);
-		return boardDao.reportsourcesumselect(map);
+		map.put("intarray", list);
+		return map;
 	}
 	
 	public List<GraphVo> date(){

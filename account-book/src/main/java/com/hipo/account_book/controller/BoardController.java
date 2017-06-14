@@ -16,11 +16,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.hipo.account_book.dto.JSONResult;
 import com.hipo.account_book.service.BoardService;
-import com.hipo.account_book.service.OptionService;
-import com.hipo.account_book.service.ProfileService;
+import com.hipo.account_book.service.CommonnessService;
 import com.hipo.account_book.vo.BoardVo;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -28,19 +26,12 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	@Autowired
-	private OptionService optionservice;
-	@Autowired
-	private ProfileService Pservice;
+	private CommonnessService cs;
 	
 	@RequestMapping("/story")
 	public String story(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
-		UserVo username = Pservice.checkUpdate(id);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
-		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("option", optionservice.getCategory(optionvo));
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		model.addAttribute("board", boardService.getBoardList(page, search));
 		return "story/board";
 	}
@@ -48,12 +39,7 @@ public class BoardController {
 	@RequestMapping("/mystory")
 	public String mystory(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {
-		UserVo username = Pservice.checkUpdate(id);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("profileall", Pservice.profileall(id));
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("option", optionservice.getCategory(optionvo));
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		model.addAttribute("story", boardService.getBoardList(id, page, search));
 		return "story/mystory";
 	}
@@ -156,12 +142,7 @@ public class BoardController {
 	
 	@RequestMapping("/mygraph")
 	public String mygraph(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
-		UserVo username = Pservice.checkUpdate(id);
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("profileall", Pservice.profileall(id));
-		model.addAttribute("option", optionservice.getCategory(optionvo));
-		
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		model.addAttribute("date", boardService.date());
 		model.addAttribute("catemonth", boardService.imreporttable(id));
 		model.addAttribute("cmsum", boardService.imreporttablesum(id));
@@ -170,12 +151,7 @@ public class BoardController {
 	
 	@RequestMapping("/mygraph2")
 	public String mygraph2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo){
-		UserVo username = Pservice.checkUpdate(id); 
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("profileall", Pservice.profileall(id));
-		model.addAttribute("option", optionservice.getCategory(optionvo));
-		
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		model.addAttribute("date", boardService.date());
 		model.addAttribute("catemonth", boardService.exreporttable(id));
 		model.addAttribute("cmsum", boardService.exreporttablesum(id));
@@ -196,12 +172,7 @@ public class BoardController {
 	
 	@RequestMapping("/mydetail")
 	public String mydetail(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam("month") String month){
-		UserVo username = Pservice.checkUpdate(id);
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("profileall", Pservice.profileall(id));
-		model.addAttribute("option", optionservice.getCategory(optionvo));
-		
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		model.addAttribute("month", month);
 		model.addAttribute("date", boardService.datedetail(month));
 		model.addAttribute("cateday", boardService.pselectedtable(id, month));
@@ -211,12 +182,7 @@ public class BoardController {
 	
 	@RequestMapping("/mydetail2")
 	public String mydetail2(@PathVariable String id, Model model, @ModelAttribute OptionVo optionvo, @RequestParam("month") String month){
-		UserVo username = Pservice.checkUpdate(id); 
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));
-		model.addAttribute("profileall", Pservice.profileall(id));
-		model.addAttribute("option", optionservice.getCategory(optionvo));
-		
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		model.addAttribute("month", month);
 		model.addAttribute("date", boardService.datedetail(month));
 		model.addAttribute("cateday", boardService.mselectedtable(id, month));

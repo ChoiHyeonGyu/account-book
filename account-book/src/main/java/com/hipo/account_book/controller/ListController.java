@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.hipo.account_book.dto.JSONResult;
+import com.hipo.account_book.service.CommonnessService;
 import com.hipo.account_book.service.ListService;
 import com.hipo.account_book.service.OptionService;
 import com.hipo.account_book.service.ProfileService;
 import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.OptionVo;
-import com.hipo.account_book.vo.UserVo;
 
 @Controller
 @RequestMapping("/{id}")
@@ -30,6 +30,8 @@ public class ListController {
 	private OptionService optionservice;
 	@Autowired
 	private ProfileService Pservice;
+	@Autowired
+	private CommonnessService cs;
 	
 	@ResponseBody
 	@RequestMapping("/movelist")
@@ -42,10 +44,6 @@ public class ListController {
 			@RequestParam(value = "pagination", required = true, defaultValue = "1") int pagination,
 			@RequestParam(value = "searching", required = true, defaultValue = "") String searching, @PathVariable String id,
 			@RequestParam(value = "operation", required = true, defaultValue = "0") String operation,@ModelAttribute ListVo listvo) {
-		UserVo username = Pservice.checkUpdate(id);// about profile 
-		model.addAttribute("username", username);
-		model.addAttribute("profile1",Pservice.profile1(id));// 프로필 설정
-		model.addAttribute("profileall", Pservice.profileall(id));// 프로필 불러오기.
 		Map<String, Object> vo = service.movelist(operation, pagination, searching, id);
 		model.addAttribute("ps", vo);
 		model.addAttribute("v2", service.totalmonth(id, operation));
@@ -57,14 +55,7 @@ public class ListController {
 		model.addAttribute("plusoption", optionservice.getPlusCategory(optionvo));
 		model.addAttribute("minusoption", optionservice.getMinusCategory(optionvo));
 		model.addAttribute("investmentoption", optionservice.getInvestmentCategory(optionvo));
-		model.addAttribute("profilegraph",Pservice.graph(id));// 프로필 사이드 그래프 1
-		model.addAttribute("profilegraph2",Pservice.graph2(id));
-		model.addAttribute("profilegraph3",Pservice.graph3(id));
-		model.addAttribute("profilegraph4",Pservice.graph4(id));
-		model.addAttribute("profilegraph5",Pservice.graph5(id));
-		model.addAttribute("profilegraph6",Pservice.graph6(id));
-		model.addAttribute("profilegraph7",Pservice.graph7(id));
-		 
+		model.addAttribute("defaultinfo", cs.defaultinfo(model, id, optionvo));
 		return "mypage/list/list";
 	}
 	
@@ -83,7 +74,6 @@ public class ListController {
 		return JSONResult.success(Pservice.profileModify(id));
 	}
 	
-
 	@RequestMapping("/listdelete")
 	public String List(@PathVariable String id, @ModelAttribute ListVo vo) {
 		service.delete(vo);
