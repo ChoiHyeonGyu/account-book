@@ -18,44 +18,8 @@
 	<div class="row">
 
 		<!-- 슬라이드 -->
-		<div id="carousel-example-generic" class="carousel slide col-md-8 col-md-offset-0 crs-mt" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-			</ol>
-			<div class="carousel-inner" role="listbox">
-				<div class="item active">
-					<div class="col-lg-12">
-						
-					</div>
-				</div>
-				<div class="item">
-					<div class="col-lg-12">
-						
-					</div>
-				</div>
-				<div class="item">
-					<div class="col-lg-12">
-						<%-- <div class="panel panel-default">
-							<div class="panel-heading">흠냐 이건 뭐냐?</div>
-							<div class="panel-body">
-								<img
-									src="${pageContext.request.contextPath}/assets/images/cp3.jpg"
-									width="200" height="200">
-							</div>
-						</div> --%>
-					</div>
-				</div>
-			</div>
-			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> 
-				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			</a> 
-			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> 
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			</a>
+		<div class="crs-mt col-md-8">
+			<iframe width="770" height="338" src="https://www.youtube.com/embed/74RzHIpZuDY" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<!-- 로그인 / 회원가입 -->
@@ -95,6 +59,45 @@
 			</div>
 		</div>
 		<!-- /로그인 / 회원가입 -->
+		
+		<div class="col-md-6">
+			<p class="fontred">/* 원하시는 통계를 설정해주세요. */</p>
+			<div class="dropdown theme-dropdown clearfix">
+				<select id="graph-import" class="dropdown-menu col-md-6">
+					<option>월 수입(전체)</option>
+					<option>100만원 이하</option>
+					<c:forEach begin="100" end="950" step="50" var="i">
+						<option>${i}만원 ~ ${i+50}만원 사이</option>
+					</c:forEach>
+					<c:forEach begin="1000" end="9000" step="500" var="i">
+						<option>${i}만원 ~ ${i+500}만원 사이</option>
+					</c:forEach>
+					<option>9500만원 ~ 1억원 사이</option>
+					<option>1억원 이상</option>
+				</select>
+				<select id="graph-gender" class="dropdown-menu col-md-6">
+					<option>성별(전체)</option>
+					<option>남자</option>
+					<option>여자</option>
+				</select>
+				<select id="graph-age" class="dropdown-menu col-md-6">
+					<option>시작 나이(전체)</option>
+					<c:forEach begin="20" end="48" var="i">
+						<option>${i}</option>
+					</c:forEach>
+				</select>
+				<select id="graph-age1" class="dropdown-menu col-md-6">
+					<option>끝 나이(전체)</option>
+					<c:forEach begin="20" end="48" var="i">
+						<option>${i}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<button style="float:right">통계 보기</button>
+		</div>
+		<div class="col-md-6">
+			<img src="${pageContext.request.contextPath}/assets/images/hipo-logo.png" width="550" height="350">
+		</div>
 	</div>
 </div>
 
