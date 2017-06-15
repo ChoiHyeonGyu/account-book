@@ -7,6 +7,7 @@ public class ListVo {
 	private String bank;
 	private String operations;
 	private int money;
+	private float persent;
 	private String moneyresult;
 	private String name;
 	private String category;
@@ -85,5 +86,18 @@ public class ListVo {
 	}
 	public void setMoneyresult(String moneyresult) {
 		this.moneyresult = moneyresult;
+	}
+	public float getPersent() {
+		return persent;
+	}
+	public void setPersent(float persent) {
+		this.persent = persent;
+	}
+	@Override
+	public String toString() {
+		return "ListVo [listId=" + listId + ", id=" + id + ", paid=" + paid + ", bank=" + bank + ", operations="
+				+ operations + ", money=" + money + ", persent=" + persent + ", moneyresult=" + moneyresult + ", name="
+				+ name + ", category=" + category + ", day=" + day + ", locationX=" + locationX + ", locationY="
+				+ locationY + "]";
 	}
 }

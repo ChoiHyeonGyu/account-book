@@ -48,12 +48,13 @@ select id ,name,photo,password from users where id = #{id}
 ]]>
 	</select> -->
 	
-		<select id="graph" resultType="uservo" parameterType="string">
+ 		<select id="graph" resultType="listvo" parameterType="string">
 <![CDATA[
-select a.MONEY_LIMIT , b.category , sum(l.money) as money , sum(l.money)/a.MONEY_LIMIT*100 as total from
-  userscategory a , category b ,list l where  a.id=#{id} and a.operations='0' and a.CATEGORY_ID = b.CATEGORY_ID  and b.CATEGORY = l.CATEGORY  group by  a.MONEY_LIMIT ,b.category]]>
+select to_char(a.MONEY_LIMIT, '999,999,999,999,999') as locationY, b.category , to_char(SUM (l.money), '999,999,999,999,999') as locationX , round(sum(l.money)/a.MONEY_LIMIT*100,2) as persent from
+  userscategory a , category b ,list l where  a.id=#{id} and a.operations='0' and a.CATEGORY_ID = b.CATEGORY_ID  and b.CATEGORY = l.CATEGORY  group by  a.MONEY_LIMIT ,b.category
+]]>
 	</select>    
-<!-- 		<select id="graph2" resultType="uservo" parameterType="string">
+	<!-- 	<select id="graph2" resultType="uservo" parameterType="string">
 <![CDATA[
 select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -1), 'mm') 
 and trunc(add_months(sysdate,-1+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 

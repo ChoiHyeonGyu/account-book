@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hipo.account_book.vo.ListVo;
 import com.hipo.account_book.vo.UserVo;
 @Repository
 public class ProfileDao {
@@ -40,13 +41,14 @@ public class ProfileDao {
 		 
 	}
 
-	public List<UserVo> graph(String id) {
-		List<UserVo> vo= sql.selectList("profile.graph",id);
+	public List<ListVo> graph(String id) {
+		System.out.println("dd"+id);
+	 List<ListVo> vo=  (sql.selectList("profile.graph",id));
 		System.out.println("vovovo" + vo);
 		return vo; 
 	}
-
-	/*public UserVo graph2(String id) {
+	/*
+	public UserVo graph2(String id) {
 		return	sql.selectOne("profile.graph2",id);
 	}
 
@@ -68,6 +70,6 @@ public class ProfileDao {
 
 	public UserVo graph7(String id) {
 		return sql.selectOne("profile.graph7",id);
-	}
-*/
+	}*/
+
 }

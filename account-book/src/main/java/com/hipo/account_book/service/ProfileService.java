@@ -3,7 +3,6 @@ package com.hipo.account_book.service;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -90,7 +89,7 @@ public class ProfileService {
 	/*public List<UserVo> graph(String id) {
 		return dao.graph(id);
 	}
-*/
+
 	public UserVo graph2(String id) {
 		return dao.graph2(id);
 	}
@@ -113,5 +112,5 @@ public class ProfileService {
 
 	public UserVo graph7(String id) {
 		return dao.graph7(id);
-	}
+	}*/
 }

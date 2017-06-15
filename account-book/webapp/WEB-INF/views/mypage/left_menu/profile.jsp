@@ -22,40 +22,22 @@
 <br />
 
 <!-- 통계 -->
-<form action="${pageContext.request.contextPath }/${currentuserid}/profilegraph" method="post">
+ <form action="${pageContext.request.contextPath }/${currentuserid}/profilegraph" method="post">
+
 <div class="panel panel-default row">
-	<div class="panel-heading">투자 그래프(목표치 금액)</div>
+
+	<div class="panel-heading">투자 현황(목표치 금액)</div>
 	<div class="panel-body">
-	
-		<div class="flot-chart2">
-				 <span> </span>&emsp;<span>${defaultinfo.profilegraph.photo}원</span>
-		 <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${defaultinfo.profilegraph.total}%"><span>${defaultinfo.profilegraph.total}%</span></div>
-      </div>
-     <%--  <span>1개월 전</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph2.total}%"><span>${defaultinfo.profilegraph2.total}%</span></div>
-      </div>
-      <span>2개월 전</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph3.total}%"><span>${defaultinfo.profilegraph3.total}%</span></div>
-      </div>
-      <span>3개월 전</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph4.total}%"><span>${defaultinfo.profilegraph4.total}%</span></div>
-      </div>
-      <span>4개월 전</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph5.total}%"><span>${defaultinfo.profilegraph5.total}%</span></div>
-      </div>
-       <span>5개월 전</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph6.total}%"><span>${defaultinfo.profilegraph6.total}%</span></div>
-      </div>
-     <span>${defaultinfo.profilegraph7.name}원 /</span>&emsp;<span>${defaultinfo.profilegraph7.photo}원</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph7.total}%"><span>${defaultinfo.profilegraph7.total}%</span></div>
-      </div> --%>
+		<div>
+			<c:forEach var="magde" items="${defaultinfo.profilegraph}">
+				<span>${magde.category}</span><br/>
+				<font color="green">￦${magde.locationX}</font> /<font color="blue"> ${magde.locationY}</font>
+		 		<div class="progress" style="margin-top:0px;">
+					<div class="progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${magde.persent}%">
+						<span>${magde.persent}%</span>
+					</div>
+				</div>
+			</c:forEach>
 			<div class="flot-chart-content" id="flot-pie-chart2"></div>
 		</div>
 	</div>
@@ -122,3 +104,28 @@
 	</div>
 	</form>
 </div>
+
+<%--  <span>1개월 전</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph2.total}%"><span>${defaultinfo.profilegraph2.total}%</span></div>
+      </div>
+      <span>2개월 전</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph3.total}%"><span>${defaultinfo.profilegraph3.total}%</span></div>
+      </div>
+      <span>3개월 전</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph4.total}%"><span>${defaultinfo.profilegraph4.total}%</span></div>
+      </div>
+      <span>4개월 전</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph5.total}%"><span>${defaultinfo.profilegraph5.total}%</span></div>
+      </div>
+       <span>5개월 전</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph6.total}%"><span>${defaultinfo.profilegraph6.total}%</span></div>
+      </div>
+     <span>${defaultinfo.profilegraph7.name}원 /</span>&emsp;<span>${defaultinfo.profilegraph7.photo}원</span>
+      <div class="progress">
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph7.total}%"><span>${defaultinfo.profilegraph7.total}%</span></div>
+      </div> --%>
