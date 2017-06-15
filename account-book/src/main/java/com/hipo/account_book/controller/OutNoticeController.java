@@ -44,14 +44,12 @@ public class OutNoticeController {
 	@RequestMapping("/noticeview")
 	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 
-		System.out.println("noidnoidnoid::" + noticeId);
 		noticeService.NoticeHit(noticeId);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
-		System.out.println("mapmapmapmap::" + map);
 		Map<String, Object> map1 = new HashMap<String, Object>();
 
 		map1 = noticeService.noticeView(noticeId);
@@ -69,7 +67,6 @@ public class OutNoticeController {
 		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
-		System.out.println("mapmapmapmap::" + map);
 		Map<String, Object> map1 = new HashMap<String, Object>();
 
 		map1 = noticeService.noticeView(qnaId);
@@ -81,7 +78,6 @@ public class OutNoticeController {
 	@RequestMapping("/noticeadd")
 	public String NoticeAdd(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {		
 		String content;
-		System.out.println("nvo:::"+vo);
 		content = vo.getNoticeContent();
 		content = content.replace("\n","<br>");
 		vo.setNoticeContent(content);
@@ -98,7 +94,6 @@ public class OutNoticeController {
 	@RequestMapping("/qnaadd")
 	public String QnaAdd(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {		
 		String content;
-		System.out.println("qvo:::"+vo);
 		content = vo.getQnaContent();
 		content = content.replace("\n","<br>");
 		vo.setQnaContent(content);
@@ -118,8 +113,6 @@ public class OutNoticeController {
 		NoticeVo vo;
 		String content;
 		
-		System.out.println("oooooooooooooo-----:"+map);
-		
 		vo = noticeService.NoticeModify1(Integer.parseInt(map.get("noticeId").toString()));
 		content = vo.getNoticeContent();
 		content = content.replace("<br>","\n");
@@ -132,8 +125,6 @@ public class OutNoticeController {
 	public String NoticeModify(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		int noticeId = vo.getNoticeId();
 		String content;
-		
-		System.out.println("vovovomodify:"+vo);
 		
 		content = vo.getNoticeContent();
 		content = content.replace("\n","<br>");
@@ -158,8 +149,6 @@ public class OutNoticeController {
 		NoticeVo vo;
 		String content;
 		
-		System.out.println("qqqq-----:"+map);
-		
 		vo = noticeService.QnaModify1(Integer.parseInt(map.get("qnaId").toString()));
 		content = vo.getQnaContent();
 		content = content.replace("<br>","\n");
@@ -172,8 +161,6 @@ public class OutNoticeController {
 	public String QnaModify(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		int qnaId = vo.getQnaId();
 		String content;
-		
-		System.out.println("qqqmodify:"+vo);
 		
 		content = vo.getQnaContent();
 		content = content.replace("\n","<br>");
@@ -194,7 +181,6 @@ public class OutNoticeController {
 	
 	@RequestMapping("/noticedelete")
 	public String NoticeDelete(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
-		System.out.println("deleteidididi:"+vo);
 		
 		noticeService.NoticeDelete(vo);
 
@@ -207,7 +193,6 @@ public class OutNoticeController {
 	
 	@RequestMapping("/qnadelete")
 	public String QnaDelete(Model model, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
-		System.out.println("deleteqqqq:"+vo);
 		
 		noticeService.QnaDelete(vo);
 

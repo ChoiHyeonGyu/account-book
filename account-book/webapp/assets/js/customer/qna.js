@@ -15,7 +15,6 @@ $(document).ready(function() {
 		$("#qnaModify").click(function() {
 			var userId = userIdarray[0];
 			var qi = qnaIdarray[0];
-			console.log(qi);
 			$("#qnaModifyform").modal();
 			var qnaId = {
 				"qnaId" : qi
@@ -30,7 +29,6 @@ $(document).ready(function() {
 				contentType : "application/json; charset=UTF-8",
 				success : function(response) {// 쿼리문을 돌고 들어온 정보는 이렇게 reponse에
 												// 담겨진다.
-					console.log(response);
 					$("#qnaTitle").val(response.data.qnaTitle);// 1.리스폰스 정보를
 																// 가지고 웹
 																// data.list로 간다

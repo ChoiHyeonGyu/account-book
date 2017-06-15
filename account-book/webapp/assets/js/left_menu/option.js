@@ -25,7 +25,6 @@ $(function() {
 			var categoryid = {
 				"categoryId" : number.target.id/*, "operations":val*/
 			};
-			console.log(categoryid);
 
 			$.ajax({
 				url : "/account-book/" + currentid + "/categoryModify2",

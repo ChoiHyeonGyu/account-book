@@ -21,8 +21,7 @@ public class CommonnessService {
 		model.addAttribute("profileall", profileDao.profileall(id));
 		model.addAttribute("option", optionDao.category(vo));
 		
-		 model.addAttribute("profilegraph",profileDao.graph(id)); 
-		 System.out.println("Service ProfileGragph: " + profileDao.graph(id));
+		 model.addAttribute("profilegraph",profileDao.graph(id));
 		/*
 		 * model.addAttribute("profilegraph2", profileDao.graph2(id));
 		 * model.addAttribute("profilegraph3", profileDao.graph3(id));

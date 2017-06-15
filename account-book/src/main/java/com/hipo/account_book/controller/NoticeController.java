@@ -57,8 +57,6 @@ public class NoticeController {
 	}
 	@RequestMapping("/noticeview")
 	public String NoticeView(Model model, @RequestParam("noticeId") int noticeId, @PathVariable String id, @RequestParam(value="p", required=true, defaultValue="1") int page) {
-
-		System.out.println("noidnoidnoid::" + noticeId);
 		noticeService.NoticeHit(noticeId);
 
 		UserVo v1 = Pservice.checkUpdate(id);
@@ -68,7 +66,6 @@ public class NoticeController {
 		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
-		System.out.println("mapmapmapmap::" + map);
 		Map<String, Object> map1 = new HashMap<String, Object>();
 
 		map1 = noticeService.noticeView(noticeId);
@@ -89,7 +86,6 @@ public class NoticeController {
 		map = noticeService.getNotice(page);
 		model.addAttribute("notice", map);
 
-		System.out.println("mapmapmapmap::" + map);
 		Map<String, Object> map1 = new HashMap<String, Object>();
 
 		map1 = noticeService.noticeView(qnaId);
@@ -105,7 +101,6 @@ public class NoticeController {
 		model.addAttribute("v1", v1);
 		
 		String content;
-		System.out.println("nvo:::"+vo);
 		content = vo.getNoticeContent();
 		content = content.replace("\n","<br>");
 		vo.setNoticeContent(content);
@@ -126,7 +121,6 @@ public class NoticeController {
 		model.addAttribute("v1", v1);
 		
 		String content;
-		System.out.println("qvo:::"+vo);
 		content = vo.getQnaContent();
 		content = content.replace("\n","<br>");
 		vo.setQnaContent(content);
@@ -146,8 +140,6 @@ public class NoticeController {
 		NoticeVo vo;
 		String content;
 		
-		System.out.println("oooooooooooooo-----:"+map);
-		
 		vo = noticeService.NoticeModify1(Integer.parseInt(map.get("noticeId").toString()));
 		content = vo.getNoticeContent();
 		content = content.replace("<br>","\n");
@@ -160,8 +152,6 @@ public class NoticeController {
 	public String NoticeModify(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		int noticeId = vo.getNoticeId();
 		String content;
-		
-		System.out.println("vovovomodify:"+vo);
 		
 		content = vo.getNoticeContent();
 		content = content.replace("\n","<br>");
@@ -189,8 +179,6 @@ public class NoticeController {
 		NoticeVo vo;
 		String content;
 		
-		System.out.println("qqqq-----:"+map);
-		
 		vo = noticeService.QnaModify1(Integer.parseInt(map.get("qnaId").toString()));
 		content = vo.getQnaContent();
 		content = content.replace("<br>","\n");
@@ -203,8 +191,6 @@ public class NoticeController {
 	public String QnaModify(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
 		int qnaId = vo.getQnaId();
 		String content;
-		
-		System.out.println("qqqmodify:"+vo);
 		
 		content = vo.getQnaContent();
 		content = content.replace("\n","<br>");
@@ -228,7 +214,6 @@ public class NoticeController {
 	
 	@RequestMapping("/noticedelete")
 	public String NoticeDelete(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
-		System.out.println("deleteidididi:"+vo);
 		
 		noticeService.NoticeDelete(vo);
 		
@@ -244,7 +229,6 @@ public class NoticeController {
 	
 	@RequestMapping("/qnadelete")
 	public String QnaDelete(Model model, @PathVariable String id, @ModelAttribute NoticeVo vo, @RequestParam(value="p", required=true, defaultValue="1") int page) {
-		System.out.println("deleteqqqq:"+vo);
 		
 		noticeService.QnaDelete(vo);
 		

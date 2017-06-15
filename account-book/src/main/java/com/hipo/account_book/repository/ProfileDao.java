@@ -42,9 +42,7 @@ public class ProfileDao {
 	}
 
 	public List<ListVo> graph(String id) {
-		System.out.println("dd"+id);
 	 List<ListVo> vo=  (sql.selectList("profile.graph",id));
-		System.out.println("vovovo" + vo);
 		return vo; 
 	}
 	/*
