@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!-- 해더 //최상단 메뉴 -->
-<c:choose>
-	<c:when test="${currentuserid != null}">
-		<c:import url="/WEB-INF/views/include/logon_main_top.jsp" />
-	</c:when>
-	<c:otherwise>
-		<c:import url="/WEB-INF/views/include/login_main_top.jsp" />
-	</c:otherwise>
-</c:choose>
+<c:import url="/WEB-INF/views/include/login_main_top.jsp" />
 
 <!-- 각페이지에서 사용하는 css, js 링크영역 -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/story/viewboard.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/customer/mainnotice.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 
 <div class="container">
@@ -59,45 +54,98 @@
 		</div>
 		<!-- /로그인 / 회원가입 -->
 		
-		<div class="col-md-6">
-			<p class="center fontblue"><strong>원하시는 통계를 설정해주세요.</strong></p>
-			<form method="post" action="${pageContext.request.contextPath}/graphex">
-				<div class="dropdown theme-dropdown clearfix">
-					<select name="select-import" class="dropdown-menu col-md-6" required>
-						<option>월 수입</option>
-						<option>100만원 이하</option>
-						<c:forEach begin="100" end="950" step="50" var="i">
-							<option>${i}만원 ~ ${i+50}만원 사이</option>
-						</c:forEach>
-						<c:forEach begin="1000" end="9000" step="500" var="i">
-							<option>${i}만원 ~ ${i+500}만원 사이</option>
-						</c:forEach>
-						<option>9500만원 ~ 1억원 사이</option>
-						<option>1억원 이상</option>
-					</select>
-					<select name="select-gender" class="dropdown-menu col-md-6" required>
-						<option>성별</option>
-						<option>남자</option>
-						<option>여자</option>
-					</select>
-					<select name="select-age" class="dropdown-menu col-md-6" required>
-						<option>시작 나이</option>
-						<c:forEach begin="20" end="48" var="i">
-							<option>${i}</option>
-						</c:forEach>
-					</select>
-					<select name="select-age1" class="dropdown-menu col-md-6" required>
-						<option>끝 나이</option>
-						<c:forEach begin="20" end="48" var="i">
-							<option>${i}</option>
-						</c:forEach>
-					</select>
-				</div><br/>
-				<button type="submit" class="btn btn-lg btn-info btn-block">통계 보기</button>
+		<div class="col-md-4">
+			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+				<input type="hidden" name="select-import" value="100만원 이하">
+				<input type="hidden" name="select-gender" value="남자">
+				<input type="hidden" name="select-age" value="20">
+				<input type="hidden" name="select-age1" value="23">
+				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/man1.jpg" width="170" height="155"></button>
+			</form>
+			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+				<input type="hidden" name="select-import" value="100만원 이하">
+				<input type="hidden" name="select-gender" value="여자">
+				<input type="hidden" name="select-age" value="20">
+				<input type="hidden" name="select-age1" value="23">
+				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/woman1.jpg" width="170" height="155"></button>
+			</form>
+			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+				<input type="hidden" name="select-import" value="300만원 ~ 350만원 사이">
+				<input type="hidden" name="select-gender" value="남자">
+				<input type="hidden" name="select-age" value="30">
+				<input type="hidden" name="select-age1" value="33">
+				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/man2.jpg" width="170" height="155"></button>
+			</form>
+			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+				<input type="hidden" name="select-import" value="300만원 ~ 350만원 사이">
+				<input type="hidden" name="select-gender" value="여자">
+				<input type="hidden" name="select-age" value="30">
+				<input type="hidden" name="select-age1" value="33">
+				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/woman2.jpg" width="170" height="155"></button>
 			</form>
 		</div>
-		<div class="col-md-6">
-			<a href="${pageContext.request.contextPath}/${currentuserid}/story"><img src="${pageContext.request.contextPath}/assets/images/front.PNG" width="550" height="350"></a>
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">결산월 탑5</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table">
+				      <thead>
+				        <tr>
+				          <th>결산월</th>
+				          <th>제목</th>
+				          <th>추천</th>
+				          <th>조회</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				      	<c:forEach var="list" items="${list}">
+				      		<script>
+					      		arrays.push("${list.boardId}");
+				      		</script>
+					        <tr>
+					          <td>${list.month}</td>
+					          <td><label id="${list.boardId}">${list.title}</label></td>
+					          <td>${list.good}</td>
+					          <td>${list.hit}</td>
+					        </tr>
+				     	</c:forEach>
+				      </tbody>
+				    </table>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">공지사항</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table">
+				      <thead>
+				        <tr>
+				          <th>제목</th>
+				          <th>조회</th>
+				        </tr>
+				      </thead>
+				      <tbody>
+				      	<c:forEach var="notice1" items="${notice}">
+				      		<form id="${notice1.noticeId}form" method="post" action="${pageContext.request.contextPath}/noticeview">
+				      			<input type="hidden" name="noticeId" value="${notice1.noticeId}">
+				      		</form>
+				      		<script>
+				      			noticeIdarray.push("${notice1.noticeId}");
+				      		</script>
+					        <tr>
+					          <td><label id="${notice1.noticeId}n">${notice1.noticeTitle}</label></td>
+					          <td>${notice1.noticeHit}</td>
+					        </tr>
+				     	</c:forEach>
+				      </tbody>
+				    </table>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -111,3 +159,5 @@
 
 <!-- 푸터영역 -->
 <c:import url="/WEB-INF/views/include/main_bottom.jsp" />
+
+<c:import url="/WEB-INF/views/story/import_main_popup.jsp"/>

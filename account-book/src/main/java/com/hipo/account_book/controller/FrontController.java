@@ -28,7 +28,9 @@ public class FrontController {
 	private BoardService boardService;
 	
 	@RequestMapping("")
-	public String login(){
+	public String login(Model model){
+		model.addAttribute("list", boardService.maintop5());
+		model.addAttribute("notice", frontService.currentnotice());
 		return "frontpage/login";
 	}
 	

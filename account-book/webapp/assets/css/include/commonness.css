@@ -42,16 +42,14 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 }
 
 .backgroundimage{
-	background-image: url("/account-book/assets/images/bufzG9J/.jpg");
-	background-size: cover;
+	background-color: #222;
+	/* background-image: url("/account-book/assets/images/logos-987108_1920.jpg");
+	background-image: url("/account-book/assets/images/book.jpg");
+	background-size: cover; */
 }
 
 .fontred {
 	color: red;
-}
-
-.fontblue{
-	color: aqua;
 }
 
 .fontgreen {
@@ -72,4 +70,10 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 
 .displaynone {
 	display: none;  
+}
+
+.mainimage {
+	padding: 0 0 0 0;
+	margin: 10px 0 0 0;
+	border: 0px;
 }

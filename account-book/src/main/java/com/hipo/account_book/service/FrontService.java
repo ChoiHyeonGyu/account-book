@@ -1,6 +1,7 @@
 package com.hipo.account_book.service;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hipo.account_book.repository.FrontDao;
+import com.hipo.account_book.vo.NoticeVo;
 import com.hipo.account_book.vo.UserVo;
 
 @Service
@@ -70,5 +72,10 @@ public class FrontService {
 	
 	public UserVo connmain(UserVo uservo){
 		return frontDao.login(uservo);
+	}
+	
+	// 메인에 뿌려줄 것
+	public List<NoticeVo> currentnotice(){
+		return frontDao.currentnoticeselect();
 	}
 }

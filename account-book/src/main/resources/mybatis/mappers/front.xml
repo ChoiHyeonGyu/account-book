@@ -32,5 +32,12 @@
 			select id, password from users where id = #{id} and password = #{password}
 		]]>
 	</select>
+	
+	
+	<select id="currentnoticeselect" resultType="noticevo">
+		<![CDATA[
+			select rownum, a.notice_id as noticeId, a.title as noticeTitle, a.hit as noticeHit from (select * from notice order by day desc) a where rownum < 6
+		]]>
+	</select>
 
 </mapper>

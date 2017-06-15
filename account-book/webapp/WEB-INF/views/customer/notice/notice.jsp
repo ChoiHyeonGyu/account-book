@@ -10,10 +10,8 @@
 	</c:otherwise>
 </c:choose>
 
-<script
-	src="${pageContext.request.contextPath}/assets/js/customer/notice.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/notice/notice.css">
+<script src="${pageContext.request.contextPath}/assets/js/customer/notice.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/notice/notice.css">
 
 <div class="container">
 	<div class="row mt">

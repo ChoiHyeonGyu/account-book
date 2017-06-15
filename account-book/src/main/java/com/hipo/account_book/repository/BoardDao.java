@@ -220,4 +220,8 @@ public class BoardDao {
 	public List<GraphVo> alllimitgraphselect1(Map<String, Object> map){
 		return sqlSession.selectList("board.alllimitgraphselect1", map);
 	}
+	
+	public List<BoardVo> maintop5select(){
+		return sqlSession.selectList("board.maintop5select");
+	}
 }
