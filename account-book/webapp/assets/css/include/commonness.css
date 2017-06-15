@@ -42,10 +42,7 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 }
 
 .backgroundimage{
-	background-color: #222;
-	/* background-image: url("/account-book/assets/images/logos-987108_1920.jpg");
-	background-image: url("/account-book/assets/images/book.jpg");
-	background-size: cover; */
+	background-color: #e3e3e3;
 }
 
 .fontred {
