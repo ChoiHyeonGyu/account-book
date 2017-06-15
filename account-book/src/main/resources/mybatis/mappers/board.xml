@@ -1387,4 +1387,10 @@
 			group by category order by lsum desc, category) where rownum < 11
 		]]>
 	</select>
+	
+	<select id="maintop5select" resultType="boardvo">
+		<![CDATA[
+			select rownum, a.board_id as boardId, a.month, a.title, a.good, a.hit from (select * from board order by good, hit desc) a where rownum < 6
+		]]>
+	</select>
 </mapper>

@@ -14,10 +14,9 @@
 		<p><font>잔액 :</font> <font color="green">${defaultinfo.profile1.total}</font>원</p>  
 
 			<span id="tt" class="fa fa-user fa-2x sr-contact pa pointer"></span>&emsp;
-			<a href="${pageContext.request.contextPath}/${currentuserid}/mystory" class="fa fa-align-justify fa-2x sr-contact pa pointer"></a>&emsp;		
-			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph" class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;			
+			<a href="${pageContext.request.contextPath}/${currentuserid}/mystory" class="fa fa-align-justify fa-2x sr-contact pa pointer"></a>&emsp;
+			<a href="${pageContext.request.contextPath}/${currentuserid}/mygraph" class="fa fa-bar-chart-o fa-2x sr-contact pa"></a>&emsp;
 			<a href="${pageContext.request.contextPath}/${currentuserid}/option" class="fa fa-cog fa-2x sr-contact pa pointer"></a>
-
 	</div>
 </div>
 <br />

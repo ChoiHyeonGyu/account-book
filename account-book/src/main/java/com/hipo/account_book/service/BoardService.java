@@ -650,4 +650,8 @@ public class BoardService {
 		mapresult.put("algs", boardDao.alllimitgraphselect1(map));
 		return mapresult;
 	}
+	
+	public List<BoardVo> maintop5(){
+		return boardDao.maintop5select();
+	}
 }
