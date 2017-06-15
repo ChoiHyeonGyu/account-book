@@ -30,8 +30,8 @@
 	<div class="panel-body">
 		<div>
 			<c:forEach var="magde" items="${defaultinfo.profilegraph}">
-				<span>${magde.category}</span><br/>
-				<font color="green">￦${magde.locationX}</font> /<font color="blue"> ${magde.locationY}</font>
+				<span class="fs">${magde.category}</span><br/>
+				<font color="#cc0033">￦${magde.locationX}</font> /<font color="blue"> ${magde.locationY}</font>
 		 		<div class="progress" style="margin-top:0px;">
 					<div class="progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${magde.persent}%">
 						<span>${magde.persent}%</span>

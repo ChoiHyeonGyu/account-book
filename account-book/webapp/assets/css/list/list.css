@@ -170,3 +170,8 @@ background:#ececec;
 .WINDOW2{
 	MARGIN-TOP:20PX;
 }
+
+.fs {
+	font-size: small;
+	font-weight: bold;
+}
