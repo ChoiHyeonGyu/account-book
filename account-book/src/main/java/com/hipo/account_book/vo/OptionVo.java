@@ -2,6 +2,12 @@ package com.hipo.account_book.vo;
 
 public class OptionVo {
 
+	@Override
+	public String toString() {
+		return "OptionVo [categoryId=" + categoryId + ", category=" + category + ", postCount=" + postCount + ", limit="
+				+ limit + ", id=" + id + ", resetPassword=" + resetPassword + ", operations=" + operations + "]";
+	}
+
 	private int categoryId;
 	private String category;
 	private int postCount;

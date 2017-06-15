@@ -23,8 +23,9 @@ $(function() {
 		$("#" + categoryarray[i]).click(function(number) {
 			$("#modifyform").modal();
 			var categoryid = {
-				"categoryId" : number.target.id/*,"operations" : */
+				"categoryId" : number.target.id/*, "operations":val*/
 			};
+			console.log(categoryid);
 
 			$.ajax({
 				url : "/account-book/" + currentid + "/categoryModify2",
@@ -35,6 +36,7 @@ $(function() {
 				success : function(response) {
 					$("#categoryId").val(response.data.categoryId);
 					$("#categoryname").val(response.data.category);
+					$("#operations").val(response.data.operations);
 				},
 				error : function(XHR, status, error) {
 					console.error(status + " : " + error);
