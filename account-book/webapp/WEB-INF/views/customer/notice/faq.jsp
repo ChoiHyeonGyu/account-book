@@ -107,7 +107,7 @@
 				action="${pageContext.request.contextPath}/${currentuserid}/qnaAdd"
 				method="post">
 				<button id="qnaAdd" type="button"
-					class="fa fa-pencil notice notice4 bg-black"
+					class="fa fa-pencil notice notice4"
 					style="margin-bottom: 20px; float: right;">글쓰기</button>
 			</form>
 		</div>

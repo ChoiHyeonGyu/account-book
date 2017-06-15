@@ -102,12 +102,9 @@
 			</div>
 			<!-- /페이징처리 -->
 			
-			<form
-				action="${pageContext.request.contextPath}/${currentuserid}/noticeAdd"
-				method="post">
+			<form action="${pageContext.request.contextPath}/${currentuserid}/noticeAdd" method="post">
 				<button id="noticeAdd" type="button"
-					class="fa fa-pencil notice notice4 bg-black"
-					style="margin-bottom: 20px; float: right;">글쓰기</button>
+					class="fa fa-pencil notice notice4" style="margin-bottom: 20px; float: right;">글쓰기</button>
 			</form>
 		</div>
 	</div>

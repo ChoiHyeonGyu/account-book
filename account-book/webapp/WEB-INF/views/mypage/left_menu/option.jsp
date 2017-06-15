@@ -2,30 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/WEB-INF/views/include/main_top.jsp" />
-<script
-	src="${pageContext.request.contextPath}/assets/js/left_menu/option.js"></script>
-<script
-	src="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
-
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/assets/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
-
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 
 <div class="container">
-
 	<div class="row mt">
 
 	<div class="col-lg-2">
 	<c:import url="/WEB-INF/views/mypage/left_menu/profile.jsp"/>
 	</div>
 
-	
-	
 		<!-- 카테고리 -->
 		<div class="col-lg-5" id="categoryform" title="카테고리 추가">
 
@@ -67,7 +52,7 @@
 		<!-- 금액 한도 설정 -->
 		<div class="col-lg-5 text-center">
 
-			<h3 align="left" style="margin-left: 15px; margin-bottom: 10px;">한도
+			<h3 align="left" style="margin-left: 15px; margin-bottom: 10px;">예산
 				설정</h3>
 
 
