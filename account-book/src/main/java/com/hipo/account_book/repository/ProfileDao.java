@@ -1,5 +1,7 @@
 package com.hipo.account_book.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -38,12 +40,13 @@ public class ProfileDao {
 		 
 	}
 
-	public UserVo graph(String id) {
-		UserVo vo= sql.selectOne("profile.graph",id);
+	public List<UserVo> graph(String id) {
+		List<UserVo> vo= sql.selectList("profile.graph",id);
+		System.out.println("vovovo" + vo);
 		return vo; 
 	}
 
-	public UserVo graph2(String id) {
+	/*public UserVo graph2(String id) {
 		return	sql.selectOne("profile.graph2",id);
 	}
 
@@ -66,5 +69,5 @@ public class ProfileDao {
 	public UserVo graph7(String id) {
 		return sql.selectOne("profile.graph7",id);
 	}
-
+*/
 }
