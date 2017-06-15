@@ -18,27 +18,30 @@ import com.hipo.account_book.vo.OptionVo;
 @Controller
 @RequestMapping("/android/{id}")
 public class AndroidCategoryController {
-	
+
 	@Autowired
 	AndroidCategoryService aCategoryService;
 
 	@RequestMapping("/addCategory")
 	public void addCategory(HttpServletRequest request, @PathVariable String id) {
 		String category = request.getParameter("category");
-		OptionVo optionVo = aCategoryService.getCategoryId(category);
-
-		if (optionVo == null) {
-			System.out.println("option null in CategoryController");
-			aCategoryService.addCategory(category);
-			optionVo = aCategoryService.getCategoryId(category);
-		}
-		optionVo.setCategory(category);
-		optionVo.setId(id);
-		System.out.println("Option Checking : " + optionVo.toString());
-		
-		if (aCategoryService.addUsersCategory(optionVo)) {
-			System.out.println("성공!!");
-		}
+		if (aCategoryService.addCategoryStraight(category, id)) {
+			System.out.println("성공!");
+		} else {
+			System.out.println("실패!");
+		} /*
+			 * OptionVo optionVo = aCategoryService.getCategoryId(category);
+			 * 
+			 * if (optionVo == null) {
+			 * System.out.println("option null in CategoryController");
+			 * aCategoryService.addCategory(category); optionVo =
+			 * aCategoryService.getCategoryId(category); }
+			 * optionVo.setCategory(category); optionVo.setId(id);
+			 * System.out.println("Option Checking : " + optionVo.toString());
+			 * 
+			 * if (aCategoryService.addUsersCategory(optionVo)) {
+			 * System.out.println("성공!!"); }
+			 */
 	}
 
 	@RequestMapping("/getCategoryList")

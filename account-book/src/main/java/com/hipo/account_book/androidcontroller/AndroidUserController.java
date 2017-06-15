@@ -45,19 +45,11 @@ public class AndroidUserController {
 		androidService.join(vo);
 
 		String category = "생활비";
-		OptionVo optionVo = aCategoryService.getCategoryId(category);
-		if (optionVo == null) {
-			aCategoryService.addCategory(category);
-			optionVo = aCategoryService.getCategoryId(category);
+		if (aCategoryService.addCategoryStraight(category, vo.getId())) {
+			System.out.println("성공!");
+		} else {
+			System.out.println("실패!");
 		}
-
-		optionVo.setCategory(category);
-		optionVo.setId(vo.getId());
-
-		if (aCategoryService.addUsersCategory(optionVo))
-			;
-		System.out.println("성공!!");
-
 	}
 
 	@RequestMapping("/login")
