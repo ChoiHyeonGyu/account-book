@@ -14,6 +14,21 @@ public class AndroidCategoryService {
 	@Autowired
 	AndroidCategoryDao aCategoryDao;
 
+	public boolean addCategoryStraight(String category, String id) {
+		OptionVo optionVo = getCategoryId(category);
+
+		if (optionVo == null) {
+			System.out.println("option null in CategoryController");
+			addCategory(category);
+			optionVo = getCategoryId(category);
+		}
+		optionVo.setCategory(category);
+		optionVo.setId(id);
+		System.out.println("Option Checking : " + optionVo.toString());
+		return addUsersCategory(optionVo);
+
+	}
+
 	public boolean addCategory(String category) {
 		return aCategoryDao.addCategory(category);
 	}
@@ -34,8 +49,8 @@ public class AndroidCategoryService {
 		return aCategoryDao.deleteCategory(optionVo);
 	}
 
-	public boolean updateMoneyLimit(Map<String,String> params){
+	public boolean updateMoneyLimit(Map<String, String> params) {
 		return aCategoryDao.updateMoneyLimit(params);
 	}
-	
+
 }
