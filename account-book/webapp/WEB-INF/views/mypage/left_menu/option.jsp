@@ -115,7 +115,7 @@
 	tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 	aria-hidden="true">
 	<form id="modifypost"
-		action="${pageContext.request.contextPath}/${currentuserid}/categoryModify"
+		action="${pageContext.request.contextPath}/${currentuserid}/categoryModify1"
 		method="post">
 		<div class="modal-dialog modal-sm margintop2">
 			<div class="modal-content">

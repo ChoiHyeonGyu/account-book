@@ -79,6 +79,7 @@ public class OptionService {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
+		System.out.println("수정수정1" + vo);
 		optionDao.categoryModify1(vo);
 		return false;
 	}
