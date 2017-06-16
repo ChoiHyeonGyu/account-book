@@ -29,11 +29,18 @@
 	<div class="panel-heading">투자 현황(목표치 금액)</div>
 	<div class="panel-body">
 		<div>
+		<div>
+		<span class="fs">목표 투자액 : <font color="blue">${defaultinfo.profilegraph2.locationY}</font> 원</span>
+		<span class="fs">총&emsp;&nbsp;투자액 :<font color="#cc0033"> ${defaultinfo.profilegraph2.moneyresult}</font> 원</span> <br/>
+      <div class="progress">
+        <div class=" progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph2.persent}%"><span>${defaultinfo.profilegraph2.persent}%</span></div>
+      </div>
+		</div>
 			<c:forEach var="magde" items="${defaultinfo.profilegraph}">
 				<span class="fs">${magde.category}</span><br/>
-				<font color="#cc0033">￦${magde.locationX}</font> /<font color="blue"> ${magde.locationY}</font>
+				<font color="#cc0033">￦${magde.locationX}</font>/<font color="blue"> ${magde.locationY}</font>
 		 		<div class="progress" style="margin-top:0px;">
-					<div class="progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${magde.persent}%">
+					<div class="progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${magde.persent}%">
 						<span>${magde.persent}%</span>
 					</div>
 				</div>
@@ -117,10 +124,7 @@
       <div class="progress">
         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph4.total}%"><span>${defaultinfo.profilegraph4.total}%</span></div>
       </div>
-      <span>4개월 전</span>
-      <div class="progress">
-        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph5.total}%"><span>${defaultinfo.profilegraph5.total}%</span></div>
-      </div>
+      
        <span>5개월 전</span>
       <div class="progress">
         <div class="progress-bar progress-bar-striped" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph6.total}%"><span>${defaultinfo.profilegraph6.total}%</span></div>

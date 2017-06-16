@@ -54,13 +54,14 @@ select to_char(a.MONEY_LIMIT, '999,999,999,999,999') as locationY, b.category , 
   userscategory a , category b ,list l where  a.id=#{id} and a.operations='0' and a.CATEGORY_ID = b.CATEGORY_ID  and b.CATEGORY = l.CATEGORY  group by  a.MONEY_LIMIT ,b.category
 ]]>
 	</select>    
-	<!-- 	<select id="graph2" resultType="uservo" parameterType="string">
+	 	<select id="graph2" resultType="listvo" parameterType="string">
 <![CDATA[
-select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -1), 'mm') 
-and trunc(add_months(sysdate,-1+1), 'mm') -1/86400) ,0)/(select sum(money_limit) as money from userscategory where id=#{id} and operations = '0')*100, 2) as total from userscategory a , category b, list c 
-where a.CATEGORY_ID = b.CATEGORY_ID and b.category = c.category and c.id = #{id}]]>
+select DISTINCT (SELECT to_char(sum(money),'999,999,999,999') FROM list where id =#{id} and list.OPERATIONS='0') as moneyresult,
+(select to_char(sum(money_limit),'999,999,999,999') from userscategory where id=#{id} and operations='0') as locationy,
+round((SELECT sum(money) FROM list where id =#{id} and list.OPERATIONS='0') /(select sum(money_limit) from userscategory where id=#{id} and operations='0')* 100,2) as persent
+  from list l ,users u , userscategory uc where l.ID = u.ID and u.ID = uc.ID and  l.id = #{id} and l.operations='0']]>
 	</select>   
-	
+	<!--  
 	<select id="graph3" resultType="uservo" parameterType="string">
 <![CDATA[
 select distinct round(nvl((select sum(c.money) from  list c   where c.id = #{id} and c.OPERATIONS ='0' and c.day between trunc(add_months(sysdate, -2), 'mm') 
