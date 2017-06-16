@@ -153,8 +153,8 @@
 					        <tr>
 					          <td>
 					          <c:choose>
-					              <c:when test="${fn:length(notice1.noticeTitle) > 25}">
-					            	  <label id="${notice1.noticeId}n">${fn:substring(notice1.noticeTitle,0,24)}...</label>
+					              <c:when test="${fn:length(notice1.noticeTitle) > 22}">
+					            	  <label id="${notice1.noticeId}n">${fn:substring(notice1.noticeTitle,0,21)}...</label>
 					              </c:when>
 				                  <c:otherwise>
 				                	  <label id="${notice1.noticeId}n">${notice1.noticeTitle}</label>
