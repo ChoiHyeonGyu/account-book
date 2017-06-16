@@ -41,8 +41,17 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 	height: 339px;
 }
 
-.right {
-	float: right;
+.loginmargintop {
+	margin-top: 50px;
+}
+
+.loginmarginbottom {
+	margin-bottom: 64px;
+}
+
+.btnloc {
+	width: 98px;
+	margin-bottom: 30px;
 }
 
 .backgroundimage{
