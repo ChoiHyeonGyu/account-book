@@ -139,16 +139,13 @@ public class OptionController {
 	@ResponseBody
 	@RequestMapping("/categoryModify2")
 	public JSONResult modify(@PathVariable String id, @RequestBody Map<String, Object> map) {
-		System.out.println("mapmap" + map);
 		return JSONResult.success(optionService.categoryModify(Integer.parseInt(map.get("categoryId").toString())));// 여기서
-																													// 에러.
-
+																													// 에러
 	}
 
 	@RequestMapping("/categoryModify1")
 	public String categoryModify(@ModelAttribute OptionVo vo, @PathVariable String id,
 			@RequestParam("categoryId") int cid) {
-		System.out.println("수정!!!!!" + vo);
 		vo.setCategeoryId(cid);
 		vo.setOperations(vo.getOperations());
 		

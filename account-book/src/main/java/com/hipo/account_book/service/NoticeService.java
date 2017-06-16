@@ -88,14 +88,10 @@ public class NoticeService {
 		view = noticeDao.noticeView(noticeId);
 		view2 = noticeDao.noticeView2(noticeId);
 		
-		System.out.println("viewview:::"+view);
-		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put( "noticeview", view);
 		map.put( "qnaview", view2);
-		
-		System.out.println("qviewqview:::"+view2);
 		
 		return map;
 	}

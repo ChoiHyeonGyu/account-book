@@ -85,7 +85,6 @@ public class OptionDao {
 	
 	public OptionVo categoryModify(int i) {
 		 OptionVo vo = sql.selectOne("option.categoryModify", i);
-		 System.out.println("voovvoovovovovovvoovvoo" + vo);
 		 return vo;
 	}
 	
@@ -94,7 +93,6 @@ public class OptionDao {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		System.out.println("수정 !!" + vo);
 		sql.insert("option.categoryModify1", vo);
 		sql.insert("option.categoryModify2", vo);
 		return false;

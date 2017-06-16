@@ -55,34 +55,41 @@
 		<!-- /로그인 / 회원가입 -->
 		
 		<div class="col-md-4">
-			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
-				<input type="hidden" name="select-import" value="100만원 이하">
-				<input type="hidden" name="select-gender" value="남자">
-				<input type="hidden" name="select-age" value="20">
-				<input type="hidden" name="select-age1" value="23">
-				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/man1.jpg" width="170" height="155"></button>
-			</form>
-			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
-				<input type="hidden" name="select-import" value="100만원 이하">
-				<input type="hidden" name="select-gender" value="여자">
-				<input type="hidden" name="select-age" value="20">
-				<input type="hidden" name="select-age1" value="23">
-				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/woman1.jpg" width="170" height="155"></button>
-			</form>
-			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
-				<input type="hidden" name="select-import" value="300만원 ~ 350만원 사이">
-				<input type="hidden" name="select-gender" value="남자">
-				<input type="hidden" name="select-age" value="30">
-				<input type="hidden" name="select-age1" value="33">
-				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/man2.jpg" width="170" height="155"></button>
-			</form>
-			<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
-				<input type="hidden" name="select-import" value="300만원 ~ 350만원 사이">
-				<input type="hidden" name="select-gender" value="여자">
-				<input type="hidden" name="select-age" value="30">
-				<input type="hidden" name="select-age1" value="33">
-				<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/woman2.jpg" width="170" height="155"></button>
-			</form>
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h3 class="panel-title">주로 사람들이 많이 찾는 통계</h3>
+				</div>
+				<div class="panel-body">
+					<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+						<input type="hidden" name="select-import" value="100만원 이하">
+						<input type="hidden" name="select-gender" value="남자">
+						<input type="hidden" name="select-age" value="20">
+						<input type="hidden" name="select-age1" value="23">
+						<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/man1.jpg" width="140" height="123.5"></button>
+					</form>
+					<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+						<input type="hidden" name="select-import" value="100만원 이하">
+						<input type="hidden" name="select-gender" value="여자">
+						<input type="hidden" name="select-age" value="20">
+						<input type="hidden" name="select-age1" value="23">
+						<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/woman1.jpg" width="140" height="123.5"></button>
+					</form>
+					<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+						<input type="hidden" name="select-import" value="300만원 ~ 350만원 사이">
+						<input type="hidden" name="select-gender" value="남자">
+						<input type="hidden" name="select-age" value="30">
+						<input type="hidden" name="select-age1" value="33">
+						<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/man2.jpg" width="140" height="123.5"></button>
+					</form>
+					<form method="post" action="${pageContext.request.contextPath}/graphex" class="col-md-6">
+						<input type="hidden" name="select-import" value="300만원 ~ 350만원 사이">
+						<input type="hidden" name="select-gender" value="여자">
+						<input type="hidden" name="select-age" value="30">
+						<input type="hidden" name="select-age1" value="33">
+						<button type="submit" class="mainimage"><img src="${pageContext.request.contextPath}/assets/images/woman2.jpg" width="140" height="123.5"></button>
+					</form>
+				</div>
+			</div>
 		</div>
 		<div class="col-md-4">
 			<div class="panel panel-info">
