@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.hipo.account_book.service.AndroidCategoryService;
+import com.hipo.account_book.androidservice.AndroidCategoryService;
 import com.hipo.account_book.vo.OptionVo;
 
 @Controller

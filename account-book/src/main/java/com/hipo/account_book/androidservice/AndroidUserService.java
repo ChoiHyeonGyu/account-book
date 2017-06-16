@@ -1,8 +1,9 @@
-package com.hipo.account_book.service;
+package com.hipo.account_book.androidservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.hipo.account_book.repository.AndroidUserDao;
+
+import com.hipo.account_book.androidrepository.AndroidUserDao;
 import com.hipo.account_book.vo.UserVo;
 
 @Service

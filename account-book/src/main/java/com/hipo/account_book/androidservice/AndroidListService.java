@@ -1,4 +1,4 @@
-package com.hipo.account_book.service;
+package com.hipo.account_book.androidservice;
 
 import java.util.HashMap;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hipo.account_book.repository.AndroidListDao;
+import com.hipo.account_book.androidrepository.AndroidListDao;
 import com.hipo.account_book.utils.SettingMaxDate;
 import com.hipo.account_book.vo.ListVo;
 
