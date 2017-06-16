@@ -7,6 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/story/viewboard.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/customer/mainnotice.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-social/bootstrap-social.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 
 <div class="container">
@@ -14,7 +15,7 @@
 
 		<!-- 슬라이드 -->
 		<div class="crs-mt col-md-8">
-			<iframe width="770" height="338" src="https://www.youtube.com/embed/74RzHIpZuDY" frameborder="0" allowfullscreen></iframe>
+			<iframe width="770" height="339" src="https://www.youtube.com/embed/74RzHIpZuDY" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<!-- 로그인 / 회원가입 -->
@@ -41,12 +42,8 @@
 							<c:if test="${res != ult}">
 								<p style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">로그인에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
 							</c:if>
-							<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">
-                            	FACEBOOK 으로 로그인
-                            </fb:login-button>
-							<br />
-							<br />
-							<button id="join" type="button"	class="btn btn-lg btn-info btn-block">회원가입</button>
+							<button id="join" type="button"	class="btn btn-lg btn-info btn-block">회원가입</button><br/><br/>
+							<fb:login-button class="fackbook-login-button right" scope="public_profile,email,user_birthday" size="large" onlogin="checkLoginState()"></fb:login-button>
 						</fieldset>
 					</form>
 				</div>
