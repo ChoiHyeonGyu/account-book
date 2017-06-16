@@ -45,11 +45,14 @@ public class ProfileDao {
 	 List<ListVo> vo=  (sql.selectList("profile.graph",id));
 		return vo; 
 	}
-	/*
-	public UserVo graph2(String id) {
-		return	sql.selectOne("profile.graph2",id);
+	
+	public ListVo graph2(String id) {
+		System.out.println("ddddddddddddddd" +id);
+		ListVo vo = sql.selectOne("profile.graph2",id);
+		System.out.println("마지막 통계 " + vo);
+			return vo;
 	}
-
+	/*
 	public UserVo graph3(String id) {
 		return sql.selectOne("profile.graph3",id);
 	}
