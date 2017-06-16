@@ -51,7 +51,7 @@
 						action="${pageContext.request.contextPath}/${currentuserid}/list"
 						method="post">
 						<input type="search" name="searching" size="123" class="searchbox"
-							placeholder="현금,금액,카테고리">
+							placeholder="결제수단,금액,카테고리">
 						<button class="fa fa-search fa-1 sr-contact searchbox1"
 							type="submit"></button>
 
