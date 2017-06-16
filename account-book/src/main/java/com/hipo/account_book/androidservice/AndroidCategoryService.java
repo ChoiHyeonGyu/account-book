@@ -1,4 +1,4 @@
-package com.hipo.account_book.service;
+package com.hipo.account_book.androidservice;
 
 import java.util.List;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hipo.account_book.repository.AndroidCategoryDao;
+import com.hipo.account_book.androidrepository.AndroidCategoryDao;
 import com.hipo.account_book.vo.OptionVo;
 
 @Service

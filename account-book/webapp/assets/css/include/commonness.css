@@ -38,7 +38,20 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 
 .crs-mt {
 	margin-top: 15%;
-	height: 338px;
+	height: 339px;
+}
+
+.loginmargintop {
+	margin-top: 50px;
+}
+
+.loginmarginbottom {
+	margin-bottom: 64px;
+}
+
+.btnloc {
+	width: 98px;
+	margin-bottom: 30px;
 }
 
 .backgroundimage{
@@ -59,6 +72,10 @@ div.pager  ul li a:hover	{ text-decoration: none; color:#f00 }
 
 .fontpurple {
 	color: purple;
+}
+
+.fontcolor {
+	color: #000;
 }
 
 .fontsize {

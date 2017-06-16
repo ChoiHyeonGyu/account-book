@@ -19,7 +19,7 @@
 	<context:annotation-config />
 
 	<context:component-scan
-		base-package="com.hipo.account_book.repository, com.hipo.account_book.service">
+		base-package="com.hipo.account_book.repository, com.hipo.account_book.service, com.hipo.account_book.androidrepository, com.hipo.account_book.androidservice">
 		<context:include-filter type="annotation"
 			expression="org.springframework.stereotype.Repository" />
 		<context:include-filter type="annotation"
@@ -37,7 +37,7 @@
 		<property name="connectionCachingEnabled" value="true" />
 		<qualifier value="main-db" />
 	</bean>
-	
+
 	<!-- MyBatis SqlSessionFactoryBean -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="oracleDatasource" />

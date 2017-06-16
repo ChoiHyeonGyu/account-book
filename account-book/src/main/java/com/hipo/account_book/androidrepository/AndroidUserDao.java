@@ -1,4 +1,4 @@
-package com.hipo.account_book.repository;
+package com.hipo.account_book.androidrepository;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;

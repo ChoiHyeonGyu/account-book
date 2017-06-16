@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hipo.account_book.service.AndroidListService;
+import com.hipo.account_book.androidservice.AndroidListService;
 import com.hipo.account_book.vo.ListVo;
 
 @Controller

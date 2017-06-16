@@ -32,16 +32,18 @@
 		<div>
 		<span class="fs">목표 투자액 : <font color="blue">${defaultinfo.profilegraph2.locationY}</font> 원</span>
 		<span class="fs">총&emsp;&nbsp;투자액 :<font color="#cc0033"> ${defaultinfo.profilegraph2.moneyresult}</font> 원</span> <br/>
-      <div class="progress">
-        <div class=" progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph2.persent}%"><span>${defaultinfo.profilegraph2.persent}%</span></div>
+      <div class="progress progress-striped active">
+        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: ${defaultinfo.profilegraph2.persent}%">
+        	<span class="fontcolor">${defaultinfo.profilegraph2.persent}%</span>
+        </div>
       </div>
 		</div>
 			<c:forEach var="magde" items="${defaultinfo.profilegraph}">
 				<span class="fs">${magde.category}</span><br/>
 				<font color="#cc0033">￦${magde.locationX}</font>/<font color="blue"> ${magde.locationY}</font>
-		 		<div class="progress" style="margin-top:0px;">
-					<div class="progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${magde.persent}%">
-						<span>${magde.persent}%</span>
+		 		<div class="progress progress-striped active" style="margin-top:0px;">
+					<div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:${magde.persent}%">
+						<span class="fontcolor">${magde.persent}%</span>
 					</div>
 				</div>
 			</c:forEach>

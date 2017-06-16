@@ -7,6 +7,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/assets/js/frontpage/facebook.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/story/viewboard.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/customer/mainnotice.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/bootstrap-social/bootstrap-social.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/left_menu/option.css">
 
 <div class="container">
@@ -14,7 +15,7 @@
 
 		<!-- 슬라이드 -->
 		<div class="crs-mt col-md-8">
-			<iframe width="770" height="338" src="https://www.youtube.com/embed/74RzHIpZuDY" frameborder="0" allowfullscreen></iframe>
+			<iframe width="770" height="339" src="https://www.youtube.com/embed/74RzHIpZuDY" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<!-- 로그인 / 회원가입 -->
@@ -27,26 +28,21 @@
 					<form method="post"
 						action="${pageContext.request.contextPath}/connmain">
 						<fieldset>
-							<div class="form-group">
+							<div class="form-group loginmargintop">
 								<input class="form-control" placeholder="E-mail / Phone" name="id" required>
 							</div>
-							<div class="form-group">
+							<div class="form-group loginmarginbottom">
 								<input class="form-control" placeholder="Password" name="password" type="password" required>
 							</div>
-							<button type="submit" class="btn btn-lg btn-info btn-block">로그인</button>
-							<br />
 							<c:if test="${result != error}">
 								<p style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">회원가입에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
 							</c:if>
 							<c:if test="${res != ult}">
 								<p style="font-weight: bold; text-align: center; padding: 5px 0 5px 0; color: red">로그인에 실패하셨습니다. 정보를 제대로 다시 입력해주세요.</p>
 							</c:if>
-							<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()">
-                            	FACEBOOK 으로 로그인
-                            </fb:login-button>
-							<br />
-							<br />
-							<button id="join" type="button"	class="btn btn-lg btn-info btn-block">회원가입</button>
+							<button type="submit" class="btn btn-lg btn-info btnloc">로그인</button>
+							<button id="join" type="button"	class="btn btn-lg btn-info btnloc">회원가입</button>
+							<fb:login-button class="fackbook-login-button" scope="public_profile,email,user_birthday" size="xlarge" onlogin="checkLoginState()"></fb:login-button>
 						</fieldset>
 					</form>
 				</div>
