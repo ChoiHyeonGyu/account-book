@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!-- 해더 //최상단 메뉴 -->
 <c:import url="/WEB-INF/views/include/login_main_top.jsp" />
 
@@ -109,7 +110,16 @@
 				      		</script>
 					        <tr>
 					          <td>${list.month}</td>
-					          <td><label id="${list.boardId}">${list.title}</label></td>
+					          <td>
+					          	<c:choose>
+						            <c:when test="${fn:length(list.title) > 16}">
+						            	<label id="${list.boardId}">${fn:substring(list.title,0,15)}...</label>
+						            </c:when>
+					                <c:otherwise>
+					                	<label id="${list.boardId}">${list.title}</label>
+					                </c:otherwise>
+					            </c:choose>
+					          </td>
 					          <td>${list.good}</td>
 					          <td>${list.hit}</td>
 					        </tr>
@@ -141,7 +151,16 @@
 				      			noticeIdarray.push("${notice1.noticeId}");
 				      		</script>
 					        <tr>
-					          <td><label id="${notice1.noticeId}n">${notice1.noticeTitle}</label></td>
+					          <td>
+					          <c:choose>
+					              <c:when test="${fn:length(notice1.noticeTitle) > 25}">
+					            	  <label id="${notice1.noticeId}n">${fn:substring(notice1.noticeTitle,0,24)}...</label>
+					              </c:when>
+				                  <c:otherwise>
+				                	  <label id="${notice1.noticeId}n">${notice1.noticeTitle}</label>
+				                  </c:otherwise>
+				              </c:choose>
+					          </td>
 					          <td>${notice1.noticeHit}</td>
 					        </tr>
 				     	</c:forEach>
