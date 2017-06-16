@@ -31,6 +31,7 @@ public class FrontController {
 	public String login(Model model){
 		model.addAttribute("list", boardService.maintop5());
 		model.addAttribute("notice", frontService.currentnotice());
+		frontService.updateuserinfo();
 		return "frontpage/login";
 	}
 	

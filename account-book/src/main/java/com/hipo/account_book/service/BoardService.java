@@ -29,6 +29,11 @@ public class BoardService {
 	private static final String[] array1 = {"01","03","05","07","08","10","12"};
 	private static final String[] array2 = {"04", "06", "09", "11"};
 	
+	public void updateage(String id, Map<String, Object> map){
+		map.put("id", id);
+		boardDao.updateage(map);
+	}
+	
 	public void boardadd(String id, BoardVo boardvo, List<MultipartFile> file){
 		boardvo.setId(id);
 		boardvo.setName(boardDao.usernameselect(id));

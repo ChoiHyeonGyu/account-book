@@ -33,6 +33,13 @@ public class BoardController {
 		return "frontpage/login";
 	}
 	
+	@ResponseBody
+	@RequestMapping("/updateage")
+	public JSONResult updateage(@PathVariable String id, @RequestBody Map<String, Object> map){
+		boardService.updateage(id, map);
+		return JSONResult.success("");
+	}
+	
 	@RequestMapping("/story")
 	public String story(Model model, @ModelAttribute OptionVo optionvo, @RequestParam(value="p", required=true, defaultValue="1") int page, 
 			@RequestParam(value="search", required=false) String search, @PathVariable String id) {

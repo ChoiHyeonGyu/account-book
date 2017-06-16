@@ -1,5 +1,25 @@
 $(function() {
 	
+	if(age == null){
+		$("#editage").modal();
+		$("#c").click(function(){
+			var ageinfo = {"age":$("#a").val()};
+			$.ajax( {
+			    url : "/account-book/"+currentid+"/updateage",
+			    type: "POST",
+			    dataType: "JSON",
+			    data: JSON.stringify(ageinfo),
+			    contentType: "application/json; charset=UTF-8",
+			    success: function( response ){
+			    	$("#editage").remove();
+			    },
+			    error: function( XHR, status, error ){
+			       console.error( status + " : " + error );	       
+			    }
+			});
+		});
+	}
+	
 	$("#tt").click(function() {
 		var profileModify = {};
 		$("#editprofile").modal();

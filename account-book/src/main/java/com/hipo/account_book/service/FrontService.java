@@ -78,4 +78,8 @@ public class FrontService {
 	public List<NoticeVo> currentnotice(){
 		return frontDao.currentnoticeselect();
 	}
+	
+	public void updateuserinfo(){
+		frontDao.updateuserinfo();
+	}
 }

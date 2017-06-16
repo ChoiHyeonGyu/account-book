@@ -2,6 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="board">
+	<update id="updateage" parameterType="map">
+		<![CDATA[
+			update users set age = #{age} where id = #{id}
+		]]>
+	</update>
+
 	<select id="usernameselect" parameterType="string" resultType="string">
 		<![CDATA[
 			select name from users where id = #{value}

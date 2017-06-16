@@ -16,6 +16,10 @@ public class BoardDao {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	public void updateage(Map<String, Object> map){
+		sqlSession.update("board.updateage", map);
+	}
+	
 	public String usernameselect(String id){
 		return sqlSession.selectOne("board.usernameselect", id);
 	}

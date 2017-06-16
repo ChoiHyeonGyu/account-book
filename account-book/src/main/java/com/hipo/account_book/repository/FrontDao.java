@@ -38,4 +38,9 @@ public class FrontDao {
 	public List<NoticeVo> currentnoticeselect(){
 		return sqlSession.selectList("user.currentnoticeselect");
 	}
+	
+	public void updateuserinfo(){
+		sqlSession.update("user.updateuserinfo");
+		sqlSession.update("user.updateuserinfo1");
+	}
 }

@@ -11,6 +11,7 @@
 	</h2>
 	<div class="col-lg-12 col-lg-offset-0 text-center">
 		<p class="fontlist">${defaultinfo.username.name}</p>
+		${defaultinfo.username.age}
 		<p><font>자산 :</font> <font color="green">${defaultinfo.profile1.total}</font>원</p>  
 
 			<span id="tt" class="fa fa-user fa-2x sr-contact pa pointer"></span>&emsp;
@@ -103,6 +104,32 @@
 		</div>
 	</div>
 	</form>
+</div>
+
+<c:if test="${defaultinfo.username.age == 'null'}">
+	<script>
+		age = null;
+	</script>
+</c:if>
+
+<div class="modal fade" id="editage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title center">나이 입력</h4>
+			</div>
+			<div class="modal-body">
+				페이스북과 연동 시에 나이가 넘어오지 못하였습니다. 통계를 위해 나이를 한 번만 입력해주세요.&emsp;
+				<input type="text" id="a" value="">
+			</div>
+			<div class="modal-footer">
+				<button class="notice1" id="c">입력</button>	
+			</div>
+		</div>
+	</div>
 </div>
 
 <%--  <span>1개월 전</span>

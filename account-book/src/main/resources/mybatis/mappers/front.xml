@@ -39,5 +39,13 @@
 			select rownum, a.notice_id as noticeId, a.title as noticeTitle, a.hit as noticeHit from (select * from notice order by day desc) a where rownum < 6
 		]]>
 	</select>
+	
+	<update id="updateuserinfo">
+		update users set gender = '남자' where gender = 'male'
+	</update>
+	
+	<update id="updateuserinfo1">
+		update users set gender = '여자' where gender = 'female'
+	</update>
 
 </mapper>
