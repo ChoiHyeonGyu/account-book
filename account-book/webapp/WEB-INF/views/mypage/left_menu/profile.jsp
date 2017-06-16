@@ -11,7 +11,6 @@
 	</h2>
 	<div class="col-lg-12 col-lg-offset-0 text-center">
 		<p class="fontlist">${defaultinfo.username.name}</p>
-		${defaultinfo.username.age}
 		<p><font>자산 :</font> <font color="green">${defaultinfo.profile1.total}</font>원</p>  
 
 			<span id="tt" class="fa fa-user fa-2x sr-contact pa pointer"></span>&emsp;
