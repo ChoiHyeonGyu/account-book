@@ -94,7 +94,7 @@
 									<td ><input type="text" value="" class="mine tablecoler form-control text111"
 										 placeholder="사용내역" name="name"
 										required></td>
-									<td><input value="" class="mine  form-control text111" type="text"
+									<td><input value="" class="mine  form-control text111" type="number"
 										 placeholder="금액" name="money"
 										required></td>
 									<td><select id="paid" name="paid"

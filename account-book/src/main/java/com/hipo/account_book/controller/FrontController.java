@@ -59,7 +59,7 @@ public class FrontController {
 		if (result.hasErrors()) {
 			model.addAttribute("result", result.getModel());
 			model.addAttribute("error", result.getAllErrors());
-			return "login";
+			return "frontpage/login";
 		}
 		frontService.join(uservo);
 		return "redirect:/";
@@ -71,7 +71,7 @@ public class FrontController {
 		if(uservo2==null){
 			model.addAttribute("res", uservo);
 			model.addAttribute("ult", uservo2);
-			return "login";
+			return "frontpage/login";
 		}
 		return "redirect:/"+uservo.getId()+"/list";
 	}
