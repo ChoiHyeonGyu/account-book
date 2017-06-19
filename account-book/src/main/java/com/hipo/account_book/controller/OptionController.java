@@ -42,7 +42,7 @@ public class OptionController {
 		int categoryId;
 
 		category2 = optionvo.getCategory();  //추가하는 카테고리 이름
-		category = optionService.Add0(category2); // 데이터베이스에서 확인 결과 같은값인지 아닌지 판별 (카테고리테이블)
+		category = optionService.Add0(category2, id); // 데이터베이스에서 확인 결과 같은값인지 아닌지 판별 (카테고리테이블)
 		if (category2.equals(category) == true) {
 			//카테고리 테이블에 이미 같은 카테고리 이름이 있을때
 			categoryId = optionService.Add1(optionvo);  //데이터베이스에서 카테고리이름으로 카테고리 아이디를 가져옴(카테고리테이블)

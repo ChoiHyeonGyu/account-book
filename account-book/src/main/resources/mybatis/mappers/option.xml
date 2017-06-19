@@ -3,9 +3,9 @@
 
 <mapper namespace="option">
 
-	<select id="add0" parameterType="string" resultType="string">
+	<select id="add0" parameterType="map" resultType="string">
 		<![CDATA[
-			select category from category where category=#{category}
+			select c.category from category c, userscategory u where c.category_id = u.category_id and c.category=#{category} and u.id = #{id}
 		]]>
 	</select>
 	
@@ -16,7 +16,7 @@
 	</insert>
 	<select id="add1" parameterType="optionvo" resultType="int">
 		<![CDATA[
-			select category_id as categoryId from category where category=#{category}
+			select distinct c.category_id from category c, userscategory u where c.category_id = u.category_id and c.category=#{category}
 		]]>
 	</select>
 	
