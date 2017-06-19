@@ -112,8 +112,8 @@
 					          <td>${list.month}</td>
 					          <td>
 					          	<c:choose>
-						            <c:when test="${fn:length(list.title) > 16}">
-						            	<label id="${list.boardId}">${fn:substring(list.title,0,15)}...</label>
+						            <c:when test="${fn:length(list.title) > 14}">
+						            	<label id="${list.boardId}">${fn:substring(list.title,0,13)}...</label>
 						            </c:when>
 					                <c:otherwise>
 					                	<label id="${list.boardId}">${list.title}</label>
