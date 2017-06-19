@@ -1,6 +1,8 @@
 package com.hipo.account_book.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -74,8 +76,11 @@ public class OptionService {
 		return optionDao.categoryModify(i);
 	}
 	
-	public OptionVo limitModify2(String category) {
-		return optionDao.limitModify2(category);
+	public OptionVo limitModify2(String category, String id) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category", category);
+		map.put("id", id);
+		return optionDao.limitModify2(map);
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
