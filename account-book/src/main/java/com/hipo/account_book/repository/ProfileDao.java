@@ -47,9 +47,7 @@ public class ProfileDao {
 	}
 	
 	public ListVo graph2(String id) {
-		System.out.println("ddddddddddddddd" +id);
 		ListVo vo = sql.selectOne("profile.graph2",id);
-		System.out.println("마지막 통계 " + vo);
 			return vo;
 	}
 	/*
