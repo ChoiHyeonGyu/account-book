@@ -15,8 +15,8 @@ public class OptionDao {
 	@Autowired
 	private SqlSession sql;
 	
-	public String add0(String category2) {
-		return sql.selectOne("option.add0",category2);	
+	public String add0(Map<String, Object> map) {
+		return sql.selectOne("option.add0", map);	
 	}
 	
 	public void add(OptionVo vo) {
@@ -24,6 +24,7 @@ public class OptionDao {
 	}
 	
 	public int add1(OptionVo optionvo) {
+		System.out.println(optionvo);
 		return sql.selectOne("option.add1",optionvo);
 	}
 	

@@ -16,8 +16,11 @@ public class OptionService {
 	@Autowired
 	private OptionDao optionDao;
 	
-	public String Add0(String category2){
-		return optionDao.add0(category2);
+	public String Add0(String category2, String id){
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("category", category2);
+		map.put("id", id);
+		return optionDao.add0(map);
 	}
 	public void Add(OptionVo optionvo){
 		optionDao.add(optionvo);
@@ -64,7 +67,8 @@ public class OptionService {
 		optionDao.Modify7(optionvo);
 	}
 	
-	public int limitModify(OptionVo optionvo){
+	public int limitModify(OptionVo optionvo, String id){
+		optionvo.setId(id);
 		return optionDao.limitModify(optionvo);
 	}
 	
