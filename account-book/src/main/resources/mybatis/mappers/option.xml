@@ -46,8 +46,7 @@
 	
 	<update id="limitModify1" parameterType="optionvo">
 		<![CDATA[
-			update userscategory set money_limit=#{limit}
- 			 where category_id=#{categoryId} 	 	
+			update userscategory set money_limit = #{limit} where id = #{id} and category_id=#{categoryId} 	 	
  	 	]]>
 	</update>
 	

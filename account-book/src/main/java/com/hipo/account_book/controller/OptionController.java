@@ -85,6 +85,7 @@ public class OptionController {
 		int categoryId;
 		categoryId = optionService.limitModify(optionvo, id);
 		optionvo.setCategeoryId(categoryId);
+		optionvo.setId(id);
 		optionService.limitModify1(optionvo);
 		return "redirect:/" + id + "/option";
 	}
