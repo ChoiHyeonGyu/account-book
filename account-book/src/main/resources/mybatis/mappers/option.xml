@@ -106,9 +106,9 @@
  	 	]]>
 	</update>
 	
-	<select id="limitMdify2" parameterType="String" resultType="optionvo">
+	<select id="limitMdify2" parameterType="map" resultType="optionvo">
  		<![CDATA[
- 			select c.category as category, uc.money_limit as limit from category c, userscategory uc where c.category = #{category} and uc.category_id = c.category_id
+ 			select c.category as category, uc.money_limit as limit from category c, userscategory uc where c.category = #{category} and id = #{id} and uc.category_id = c.category_id
  		]]>
 	</select>
 

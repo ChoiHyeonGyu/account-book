@@ -88,8 +88,8 @@ public class OptionDao {
 		 return vo;
 	}
 	
-	public OptionVo limitModify2(String category) {
-		return sql.selectOne("option.limitMdify2", category);
+	public OptionVo limitModify2(Map<String, Object> map) {
+		return sql.selectOne("option.limitMdify2", map);
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
