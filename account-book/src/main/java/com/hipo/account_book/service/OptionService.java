@@ -16,11 +16,8 @@ public class OptionService {
 	@Autowired
 	private OptionDao optionDao;
 	
-	public String Add0(String category2, String id){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("category", category2);
-		map.put("id", id);
-		return optionDao.add0(map);
+	public String Add0(String category2){
+		return optionDao.add0(category2);
 	}
 	public void Add(OptionVo optionvo){
 		optionDao.add(optionvo);
@@ -34,37 +31,6 @@ public class OptionService {
 	
 	public int Add3(OptionVo optionvo){
 		return optionDao.add3(optionvo);
-	}
-	public String Modify0(String category2){
-		return optionDao.Modify0(category2);
-	}
-	public void Modify(OptionVo optionvo){
-		optionDao.Modify(optionvo);
-	}
-	public void Modify2(OptionVo optionvo){
-		optionDao.Modify2(optionvo);
-	}
-	public int Modify1(OptionVo optionvo){
-		return optionDao.Modify1(optionvo);
-	}
-	
-	public int Modify3(OptionVo optionvo){
-		return optionDao.Modify3(optionvo);
-	}
-	public void Modify4(OptionVo optionvo){
-		optionDao.Modify4(optionvo);
-	}
-	
-	public String Modify5(OptionVo optionvo){
-		return optionDao.Modify5(optionvo);
-	}
-	
-	public boolean Modify6(OptionVo vo) {
-		return optionDao.Modify6(vo); 
-	}
-	
-	public void Modify7(OptionVo optionvo){
-		optionDao.Modify7(optionvo);
 	}
 	
 	public int limitModify(OptionVo optionvo, String id){

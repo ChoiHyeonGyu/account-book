@@ -15,8 +15,8 @@ public class OptionDao {
 	@Autowired
 	private SqlSession sql;
 	
-	public String add0(Map<String, Object> map) {
-		return sql.selectOne("option.add0", map);	
+	public String add0(String category2) {
+		return sql.selectOne("option.add0", category2);	
 	}
 	
 	public void add(OptionVo vo) {
@@ -24,7 +24,6 @@ public class OptionDao {
 	}
 	
 	public int add1(OptionVo optionvo) {
-		System.out.println(optionvo);
 		return sql.selectOne("option.add1",optionvo);
 	}
 	
@@ -34,42 +33,6 @@ public class OptionDao {
 	
 	public int add3(OptionVo optionvo) {
 		return sql.selectOne("option.add3",optionvo);
-	}
-	public String Modify0(String category2) {
-		return sql.selectOne("option.modify0",category2);	
-	}
-	
-	public void Modify(OptionVo vo) {
-		sql.insert("option.modify",vo);	
-	}
-	
-	public int Modify1(OptionVo optionvo) {
-		return sql.selectOne("option.modify1",optionvo);
-	}
-	
-	public void Modify2(OptionVo vo) {
-		sql.update("option.modify2",vo);	
-	}
-	
-	public int Modify3(OptionVo optionvo) {
-		return sql.selectOne("option.modify3",optionvo);
-	}
-	
-	public void Modify4(OptionVo vo) {
-		sql.insert("option.modify4",vo);	
-	}
-	
-	public String Modify5(OptionVo optionvo) {
-		return sql.selectOne("option.modify5",optionvo);
-	}
-	
-	public boolean Modify6(OptionVo vo) {
-		sql.delete("option.modify6",vo);
-		 return false;
-	}
-	
-	public void Modify7(OptionVo vo) {
-		sql.insert("option.modify7",vo);	
 	}
 	
 	public String checkPassword(String id){
@@ -94,11 +57,15 @@ public class OptionDao {
 	}
 	
 	public boolean categoryModify1(OptionVo vo) {
-		sql.insert("option.categoryModify1", vo);
-		sql.insert("option.categoryModify2", vo);
+		if(sql.selectOne("option.selectcateid", vo.getCategory()) == null){
+			sql.insert("option.add", vo);
+			vo.setPostCount(sql.selectOne("option.selectcateid", vo.getCategory()));
+			sql.update("option.updatecategory", vo);
+		} else {
+			vo.setPostCount(sql.selectOne("option.selectcateid", vo.getCategory()));
+			sql.update("option.updatecategory", vo);
+		}
 		return false;
-		
-		
 	}
 	
 	public List<OptionVo> category(OptionVo vo) {
