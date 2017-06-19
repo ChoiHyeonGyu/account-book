@@ -16,7 +16,7 @@
 
 		<!-- 슬라이드 -->
 		<div class="crs-mt col-md-8">
-			<iframe width="770" height="339" src="https://www.youtube.com/embed/74RzHIpZuDY" frameborder="0" allowfullscreen></iframe>
+			<iframe width="770" height="339" src="https://www.youtube.com/embed/n0_kdpd5lVQ?ecver=1" frameborder="0" allowfullscreen></iframe>
 		</div>
 
 		<!-- 로그인 / 회원가입 -->
