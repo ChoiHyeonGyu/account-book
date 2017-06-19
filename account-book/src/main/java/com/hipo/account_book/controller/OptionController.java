@@ -129,7 +129,7 @@ public class OptionController {
 	@RequestMapping("/limitModify")
 	public String limitModify(@ModelAttribute OptionVo optionvo, @PathVariable String id) {
 		int categoryId;
-		categoryId = optionService.limitModify(optionvo);
+		categoryId = optionService.limitModify(optionvo, id);
 		optionvo.setCategeoryId(categoryId);
 		optionService.limitModify1(optionvo);
 		return "redirect:/" + id + "/option";

@@ -67,7 +67,8 @@ public class OptionService {
 		optionDao.Modify7(optionvo);
 	}
 	
-	public int limitModify(OptionVo optionvo){
+	public int limitModify(OptionVo optionvo, String id){
+		optionvo.setId(id);
 		return optionDao.limitModify(optionvo);
 	}
 	

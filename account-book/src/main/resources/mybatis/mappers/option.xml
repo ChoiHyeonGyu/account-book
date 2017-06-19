@@ -95,7 +95,7 @@
 
 	<select id="limitModify" parameterType="optionvo" resultType="int">
 		<![CDATA[
-			select category_id as categoryId from category where category=#{category}
+			select c.category_id from category c, userscategory uc where uc.category_id = c.category_id and c.category=#{category} and id = #{id}
 		]]>
 	</select>
 	
