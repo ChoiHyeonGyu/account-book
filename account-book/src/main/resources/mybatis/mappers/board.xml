@@ -408,54 +408,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -481,19 +475,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -545,54 +537,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -618,19 +604,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -689,54 +673,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -762,19 +740,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -826,54 +802,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -899,19 +869,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -970,54 +938,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1043,19 +1005,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1106,54 +1066,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1179,19 +1133,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1250,54 +1202,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1323,19 +1269,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1388,54 +1332,48 @@
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender} and age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender != '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where gender = #{gender}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between 20 and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age == '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender != '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
@@ -1461,19 +1399,17 @@
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and #{age1}) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit != '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 == '끝 나이(전체)'">
 				<![CDATA[
 					(select id from users where age between #{age} and 48) a, 
-					(select id from (select id, nvl((case when sum(money) / 
-					decode((select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400), 0, 1, 
-					(select count(*) from list where operations = '+' and day between trunc(add_months(sysdate, -11), 'mm') and trunc(add_months(sysdate, 1), 'mm') -1/86400)) 
-					between #{profitbegin}*10000 and #{profitend}*10000 then sum(money) end), 0) as summon from list where operations = '+' group by id) where summon != 0) profit, 
+					(select id from (select id, nvl((case when sum(money) / decode(count(*), 0, 1, count(*)) between #{profitbegin}*10000 and #{profitend}*10000 then 
+					sum(money) / decode(count(*), 0, 1, count(*)) end), 0) 
+					as summon from list where operations = '+' group by id) where summon != 0) profit, 
 				]]>
 			</when>
 			<when test="profit == '월 수입(전체)' and gender == '성별(전체)' and age != '시작 나이(전체)' and age1 != '끝 나이(전체)'">
