@@ -49,10 +49,16 @@ select id ,name,photo,password from users where id = #{id}
 	</select> -->
 	
  		<select id="graph" resultType="listvo" parameterType="string">
-<![CDATA[
-select to_char(a.MONEY_LIMIT, '999,999,999,999,999') as locationY, b.category , to_char(SUM (l.money), '999,999,999,999,999') as locationX , round(sum(l.money)/decode(a.MONEY_LIMIT, 0, 1, a.MONEY_LIMIT)*100,2) as persent from
-  userscategory a , category b ,list l where  a.id=#{id} and a.operations='0' and a.CATEGORY_ID = b.CATEGORY_ID  and b.CATEGORY = l.CATEGORY  group by  a.MONEY_LIMIT ,b.category
-]]>
+			<![CDATA[
+				select to_char(uc.money_limit, '999,999,999,999,999') as locationY, 
+				b.category, 
+				to_char(l.money, '999,999,999,999,999') as locationX, 
+				round(l.money/decode(uc.money_limit, 0, 1, uc.money_limit)*100,2) as persent from 
+				(select category_id, money_limit from userscategory where id = #{id} and operations = '0') uc, 
+				category b, 
+				(select category, sum(money) as money from list where id = #{id} and operations = '0' group by category) l where 
+				uc.category_id = b.category_id and b.category = l.category
+			]]>
 	</select>    
 	 	<select id="graph2" resultType="listvo" parameterType="string">
 <![CDATA[
